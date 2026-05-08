@@ -1,0 +1,29 @@
+aid: close
+url: https://raw.githubusercontent.com/api-evangelist/close/refs/heads/main/apis.yml
+name: Close
+x-type: company
+description: >-
+  Close is a sales engagement CRM with calling, email, and SMS built in. The Close API exposes leads, contacts, opportunities, sequences, calls, and SMS for sales automation.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - CRM
+  - Sales Engagement
+  - Calling
+  - SMS
+  - SaaS
+created: '2026-05-08'
+modified: '2026-05-08'
+specificationVersion: '0.19'
+apis: []
+common:
+  - type: Website
+    url: https://www.close.com/
+  - type: Plans
+    url: plans/close-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/close-rate-limits.yml
+  - type: FinOps
+    url: finops/close-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
