@@ -30,6 +30,8 @@ apis:
         type: Documentation
       - url: https://developer.close.com/resources/leads/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Manage leads — Close's central CRM object representing a company /
       account. Includes contacts, opportunities, custom fields, addresses,
@@ -42,6 +44,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/contacts/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Manage individual contacts (people) within a lead, including
       emails, phones, custom fields, and titles.
@@ -53,6 +57,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/opportunities/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Manage opportunities (deals) attached to leads, with pipeline stage,
       value, status, and custom fields.
@@ -64,6 +70,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/tasks/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Manage tasks assigned to users with due dates, supporting bulk
       updates and snooze actions.
@@ -75,6 +83,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/activities/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Read and create activities — notes, calls, emails, SMS, WhatsApp,
       meetings, and custom activity types — that build a lead's timeline.
@@ -86,6 +96,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/activities/call/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Log inbound and outbound calls with duration, direction, recording
       URLs, transcripts, and disposition outcomes.
@@ -96,6 +108,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/activities/email/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Send and log emails with templates, attachments, and tracking
       against contacts and leads.
@@ -107,6 +121,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/activities/sms/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Send and log SMS and WhatsApp messages, with conversation threading
       against contacts.
@@ -118,6 +134,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/activities/meeting/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Log meeting activities synced from connected Zoom / Microsoft /
       Calendly accounts, with outcomes and notes.
@@ -129,6 +147,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/pipelines/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Manage opportunity pipelines and the configurable lead and
       opportunity statuses driving funnel progression.
@@ -140,6 +160,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/custom-fields/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Define and read custom field schemas across leads, contacts,
       opportunities, activities, and custom objects.
@@ -150,6 +172,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/custom-objects/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Define user-defined object types with custom fields for tenant-
       specific data models.
@@ -162,6 +186,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/templates/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Manage email and SMS templates with variable substitution and
       rendering for outbound messaging.
@@ -173,6 +199,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/sequences/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Manage automated multi-step sequences (cadences) and subscriber
       enrollment with stop conditions.
@@ -184,6 +212,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/bulk-actions/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Submit bulk email send / edit / delete / sequence-subscribe jobs
       that execute as background tasks.
@@ -195,6 +225,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/smart-views/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Manage saved search queries (Smart Views) with structured filter
       grammar across leads, contacts, and opportunities.
@@ -206,6 +238,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/exports/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Export leads, opportunities, and activities to CSV asynchronously
       for downstream analytics.
@@ -217,6 +251,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/reports/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Generate activity reports, funnel analysis, and status-change
       tracking across the team.
@@ -228,6 +264,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/phone-numbers/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Rent and manage Close-provided phone numbers for inbound and
       outbound calling and SMS.
@@ -238,6 +276,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/scheduling/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Manage user and shared scheduling links that customers use to book
       meetings into rep calendars.
@@ -249,6 +289,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/connected-accounts/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Manage connected email, Zoom, Microsoft, and Calendly accounts
       backing the Close calling, email, and meeting integrations.
@@ -260,6 +302,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/users/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Manage users (sales reps, managers) and their availability,
       membership in organizations, and roles.
@@ -271,6 +315,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/organization/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Manage organizations (Close workspaces) including settings,
       memberships, and inboxes.
@@ -282,6 +328,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/roles/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Manage roles and permission sets that govern access to leads,
       activities, and admin functions (Scale plan only).
@@ -292,6 +340,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/groups/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Manage user groups for assignment, reporting, and permission scoping.
   - aid: close:close-event-log-api
@@ -302,6 +352,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/event-log/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Query the 30-day historical event log of all changes across leads,
       contacts, opportunities, and activities.
@@ -313,6 +365,8 @@ apis:
     properties:
       - url: https://developer.close.com/resources/webhooks/
         type: API Reference
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       Subscribe to Close events with advanced filtering on event type and
       object attributes; deliveries include HMAC signatures.
@@ -324,6 +378,8 @@ apis:
     properties:
       - url: https://developer.close.com/topics/oauth/
         type: Documentation
+      - url: openapi/close-openapi.yml
+        type: OpenAPI
     description: >-
       OAuth 2.0 authorization for third-party applications building
       against Close, plus app registration in the Close Marketplace.
