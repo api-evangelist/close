@@ -3,27 +3,382 @@ url: https://raw.githubusercontent.com/api-evangelist/close/refs/heads/main/apis
 name: Close
 x-type: company
 description: >-
-  Close is a sales engagement CRM with calling, email, and SMS built in. The Close API exposes leads, contacts, opportunities, sequences, calls, and SMS for sales automation.
+  Close is an inside-sales CRM with calling, email, SMS, and WhatsApp built
+  in. The Close API exposes leads, contacts, opportunities, tasks,
+  activities (calls, emails, SMS, meetings, notes), pipelines, custom
+  objects, sequences, smart views, scheduling, phone numbers, reporting,
+  and webhooks for sales automation.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - CRM
   - Sales Engagement
+  - Inside Sales
   - Calling
   - SMS
   - SaaS
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: close:close-leads-api
+    name: Close Leads API
+    tags:
+      - Leads
+      - Companies
+    properties:
+      - url: https://developer.close.com/
+        type: Documentation
+      - url: https://developer.close.com/resources/leads/
+        type: API Reference
+    description: >-
+      Manage leads — Close's central CRM object representing a company /
+      account. Includes contacts, opportunities, custom fields, addresses,
+      and status.
+  - aid: close:close-contacts-api
+    name: Close Contacts API
+    tags:
+      - Contacts
+      - People
+    properties:
+      - url: https://developer.close.com/resources/contacts/
+        type: API Reference
+    description: >-
+      Manage individual contacts (people) within a lead, including
+      emails, phones, custom fields, and titles.
+  - aid: close:close-opportunities-api
+    name: Close Opportunities API
+    tags:
+      - Opportunities
+      - Pipeline
+    properties:
+      - url: https://developer.close.com/resources/opportunities/
+        type: API Reference
+    description: >-
+      Manage opportunities (deals) attached to leads, with pipeline stage,
+      value, status, and custom fields.
+  - aid: close:close-tasks-api
+    name: Close Tasks API
+    tags:
+      - Tasks
+      - Action Items
+    properties:
+      - url: https://developer.close.com/resources/tasks/
+        type: API Reference
+    description: >-
+      Manage tasks assigned to users with due dates, supporting bulk
+      updates and snooze actions.
+  - aid: close:close-activities-api
+    name: Close Activities API
+    tags:
+      - Activities
+      - Timeline
+    properties:
+      - url: https://developer.close.com/resources/activities/
+        type: API Reference
+    description: >-
+      Read and create activities — notes, calls, emails, SMS, WhatsApp,
+      meetings, and custom activity types — that build a lead's timeline.
+  - aid: close:close-calls-api
+    name: Close Calls API
+    tags:
+      - Calls
+      - Voice
+    properties:
+      - url: https://developer.close.com/resources/activities/call/
+        type: API Reference
+    description: >-
+      Log inbound and outbound calls with duration, direction, recording
+      URLs, transcripts, and disposition outcomes.
+  - aid: close:close-emails-api
+    name: Close Emails API
+    tags:
+      - Emails
+    properties:
+      - url: https://developer.close.com/resources/activities/email/
+        type: API Reference
+    description: >-
+      Send and log emails with templates, attachments, and tracking
+      against contacts and leads.
+  - aid: close:close-sms-api
+    name: Close SMS API
+    tags:
+      - SMS
+      - Texting
+    properties:
+      - url: https://developer.close.com/resources/activities/sms/
+        type: API Reference
+    description: >-
+      Send and log SMS and WhatsApp messages, with conversation threading
+      against contacts.
+  - aid: close:close-meetings-api
+    name: Close Meetings API
+    tags:
+      - Meetings
+      - Calendar
+    properties:
+      - url: https://developer.close.com/resources/activities/meeting/
+        type: API Reference
+    description: >-
+      Log meeting activities synced from connected Zoom / Microsoft /
+      Calendly accounts, with outcomes and notes.
+  - aid: close:close-pipelines-api
+    name: Close Pipelines & Statuses API
+    tags:
+      - Pipelines
+      - Statuses
+    properties:
+      - url: https://developer.close.com/resources/pipelines/
+        type: API Reference
+    description: >-
+      Manage opportunity pipelines and the configurable lead and
+      opportunity statuses driving funnel progression.
+  - aid: close:close-custom-fields-api
+    name: Close Custom Fields API
+    tags:
+      - Custom Fields
+      - Metadata
+    properties:
+      - url: https://developer.close.com/resources/custom-fields/
+        type: API Reference
+    description: >-
+      Define and read custom field schemas across leads, contacts,
+      opportunities, activities, and custom objects.
+  - aid: close:close-custom-objects-api
+    name: Close Custom Objects API
+    tags:
+      - Custom Objects
+    properties:
+      - url: https://developer.close.com/resources/custom-objects/
+        type: API Reference
+    description: >-
+      Define user-defined object types with custom fields for tenant-
+      specific data models.
+  - aid: close:close-templates-api
+    name: Close Templates API
+    tags:
+      - Templates
+      - Email
+      - SMS
+    properties:
+      - url: https://developer.close.com/resources/templates/
+        type: API Reference
+    description: >-
+      Manage email and SMS templates with variable substitution and
+      rendering for outbound messaging.
+  - aid: close:close-sequences-api
+    name: Close Sequences API
+    tags:
+      - Sequences
+      - Automation
+    properties:
+      - url: https://developer.close.com/resources/sequences/
+        type: API Reference
+    description: >-
+      Manage automated multi-step sequences (cadences) and subscriber
+      enrollment with stop conditions.
+  - aid: close:close-bulk-actions-api
+    name: Close Bulk Actions API
+    tags:
+      - Bulk
+      - Background Jobs
+    properties:
+      - url: https://developer.close.com/resources/bulk-actions/
+        type: API Reference
+    description: >-
+      Submit bulk email send / edit / delete / sequence-subscribe jobs
+      that execute as background tasks.
+  - aid: close:close-smart-views-api
+    name: Close Smart Views API
+    tags:
+      - Smart Views
+      - Saved Searches
+    properties:
+      - url: https://developer.close.com/resources/smart-views/
+        type: API Reference
+    description: >-
+      Manage saved search queries (Smart Views) with structured filter
+      grammar across leads, contacts, and opportunities.
+  - aid: close:close-exports-api
+    name: Close Exports API
+    tags:
+      - Exports
+      - Reporting
+    properties:
+      - url: https://developer.close.com/resources/exports/
+        type: API Reference
+    description: >-
+      Export leads, opportunities, and activities to CSV asynchronously
+      for downstream analytics.
+  - aid: close:close-reporting-api
+    name: Close Reporting API
+    tags:
+      - Reporting
+      - Analytics
+    properties:
+      - url: https://developer.close.com/resources/reports/
+        type: API Reference
+    description: >-
+      Generate activity reports, funnel analysis, and status-change
+      tracking across the team.
+  - aid: close:close-phone-numbers-api
+    name: Close Phone Numbers API
+    tags:
+      - Phone Numbers
+      - Telephony
+    properties:
+      - url: https://developer.close.com/resources/phone-numbers/
+        type: API Reference
+    description: >-
+      Rent and manage Close-provided phone numbers for inbound and
+      outbound calling and SMS.
+  - aid: close:close-scheduling-api
+    name: Close Scheduling Links API
+    tags:
+      - Scheduling
+    properties:
+      - url: https://developer.close.com/resources/scheduling/
+        type: API Reference
+    description: >-
+      Manage user and shared scheduling links that customers use to book
+      meetings into rep calendars.
+  - aid: close:close-connected-accounts-api
+    name: Close Connected Accounts API
+    tags:
+      - Connected Accounts
+      - Integrations
+    properties:
+      - url: https://developer.close.com/resources/connected-accounts/
+        type: API Reference
+    description: >-
+      Manage connected email, Zoom, Microsoft, and Calendly accounts
+      backing the Close calling, email, and meeting integrations.
+  - aid: close:close-users-api
+    name: Close Users API
+    tags:
+      - Users
+      - Memberships
+    properties:
+      - url: https://developer.close.com/resources/users/
+        type: API Reference
+    description: >-
+      Manage users (sales reps, managers) and their availability,
+      membership in organizations, and roles.
+  - aid: close:close-organizations-api
+    name: Close Organizations API
+    tags:
+      - Organizations
+      - Workspaces
+    properties:
+      - url: https://developer.close.com/resources/organization/
+        type: API Reference
+    description: >-
+      Manage organizations (Close workspaces) including settings,
+      memberships, and inboxes.
+  - aid: close:close-roles-api
+    name: Close Roles & Permissions API
+    tags:
+      - Roles
+      - Permissions
+    properties:
+      - url: https://developer.close.com/resources/roles/
+        type: API Reference
+    description: >-
+      Manage roles and permission sets that govern access to leads,
+      activities, and admin functions (Scale plan only).
+  - aid: close:close-groups-api
+    name: Close Groups API
+    tags:
+      - Groups
+    properties:
+      - url: https://developer.close.com/resources/groups/
+        type: API Reference
+    description: >-
+      Manage user groups for assignment, reporting, and permission scoping.
+  - aid: close:close-event-log-api
+    name: Close Event Log API
+    tags:
+      - Event Log
+      - Audit
+    properties:
+      - url: https://developer.close.com/resources/event-log/
+        type: API Reference
+    description: >-
+      Query the 30-day historical event log of all changes across leads,
+      contacts, opportunities, and activities.
+  - aid: close:close-webhooks-api
+    name: Close Webhooks API
+    tags:
+      - Webhooks
+      - Events
+    properties:
+      - url: https://developer.close.com/resources/webhooks/
+        type: API Reference
+    description: >-
+      Subscribe to Close events with advanced filtering on event type and
+      object attributes; deliveries include HMAC signatures.
+  - aid: close:close-oauth-api
+    name: Close OAuth & Apps API
+    tags:
+      - OAuth
+      - Apps
+    properties:
+      - url: https://developer.close.com/topics/oauth/
+        type: Documentation
+    description: >-
+      OAuth 2.0 authorization for third-party applications building
+      against Close, plus app registration in the Close Marketplace.
 common:
   - type: Website
     url: https://www.close.com/
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: API Reference
+    url: https://developer.close.com/resources/
+  - type: Pricing
+    url: https://www.close.com/pricing
+  - type: Login
+    url: https://app.close.com/
+  - type: Status
+    url: https://status.close.com/
+  - type: Blog
+    url: https://www.close.com/blog
+  - type: Support
+    url: https://help.close.com/
+  - type: GitHub Organization
+    url: https://github.com/closeio
+  - type: Privacy Policy
+    url: https://www.close.com/privacy
+  - type: Terms of Service
+    url: https://www.close.com/terms
+  - type: Authentication
+    url: https://developer.close.com/topics/authentication/
+  - type: Rate Limits
+    url: https://developer.close.com/api/overview/rate-limits.md
+  - type: Webhooks
+    url: https://developer.close.com/resources/webhooks/
   - type: Plans
     url: plans/close-plans-pricing.yml
   - type: RateLimits
     url: rate-limits/close-rate-limits.yml
   - type: FinOps
     url: finops/close-finops.yml
+  - type: Features
+    data:
+      - REST API at https://api.close.com/api/v1/
+      - HTTP Basic auth with API key, plus OAuth 2.0 for marketplace apps
+      - Solo $9/mo, Essentials $35, Growth $99, Scale $139 per seat (annual)
+      - Premium phone numbers $19/mo per line
+      - AI Call Assistant $50/month + $0.02/min
+      - Additional organizations $50/mo (1 included with Growth/Scale)
+      - Per-endpoint-group rate limits; org limits 3x individual key limits
+      - RateLimit header (limit / remaining / reset) on every response
+      - 30-day Event Log for change tracking
+      - Webhooks with advanced filtering and HMAC-signed deliveries
+    sources:
+      - https://www.close.com/pricing
+      - https://developer.close.com/
+      - https://developer.close.com/api/overview/rate-limits.md
+    updated: '2026-05-08'
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

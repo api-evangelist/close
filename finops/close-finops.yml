@@ -5,22 +5,20 @@ provider: Close
 providerId: close
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
-- CRM
-- Sales Engagement
-- Calling
-- SMS
-- SaaS
-- FinOps
-- Cost Management
-- FOCUS
-description: FOCUS-aligned FinOps placeholder for Close. Pipeline will replace with the provider's
-  real billing-model details once researched.
-notes: Initial scaffold — billing model has not yet been reconciled.
+  - CRM
+  - Sales Engagement
+  - FinOps
+  - FOCUS
+description: >-
+  Close bills per-seat-per-month subscriptions across Solo, Essentials,
+  Growth, and Scale tiers, plus telephony pass-through (calling minutes,
+  SMS, premium phone numbers), AI Call Assistant per-minute usage, and
+  additional-organization fees. Annual billing earns a discount.
 sources:
-- https://www.close.com/
-- https://focus.finops.org/focus-specification/v1-3/
+  - https://www.close.com/pricing
+  - https://focus.finops.org/focus-specification/v1-3/
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
@@ -30,13 +28,14 @@ alignedWith:
 publisherName: Close
 serviceCategory: CRM
 billingModel:
-  pricingCategory: To Be Reconciled
+  pricingCategory: Subscription Per Seat With Usage
   billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
-  - Usage
-  - Purchase
-  - Adjustment
+    - Purchase
+    - Usage
+    - Adjustment
+    - Tax
 focusColumns:
   ServiceName: Close
   ServiceCategory: CRM
@@ -44,24 +43,69 @@ focusColumns:
   PublisherName: Close
   InvoiceIssuerName: Close
   BillingCurrency: USD
-  ChargeCategory: Usage
+  ChargeCategory: Purchase
 meters:
-- name: api_usage
-  description: Catch-all meter pending reconciliation against the provider's published metering.
-  unit: varies
-  aggregation: sum
-  dimensions:
-  - account
-  - resource
+  - name: close_seats
+    description: Active seats on Solo / Essentials / Growth / Scale tiers.
+    unit: seat-month
+    aggregation: sum
+    dimensions:
+      - tier
+      - team
+      - cost_center
+  - name: close_phone_lines
+    description: Premium phone numbers leased per month.
+    unit: line-month
+    aggregation: sum
+    dimensions:
+      - country
+      - team
+  - name: close_call_minutes
+    description: Inbound + outbound call minutes (separate Twilio pass-through).
+    unit: minutes
+    aggregation: sum
+    dimensions:
+      - direction
+      - country
+      - user
+  - name: close_sms_messages
+    description: SMS / WhatsApp messages (Twilio pass-through).
+    unit: messages
+    aggregation: sum
+    dimensions:
+      - direction
+      - country
+      - user
+  - name: close_ai_call_assistant_minutes
+    description: AI Call Assistant minutes billed at $0.02/minute.
+    unit: minutes
+    aggregation: sum
+    dimensions:
+      - user
+      - cost_center
+  - name: close_additional_orgs
+    description: Additional Close organizations beyond the included one.
+    unit: org-month
+    aggregation: sum
+    dimensions:
+      - workspace
 principles:
-- name: Visibility
-  description: Pull provider invoices or usage exports until a self-serve usage feed is documented.
-- name: Allocation
-  description: Tag invoice line items to consuming business units in your FinOps store.
-- name: Optimization
-  description: Levers depend on the provider's billing model; review at renewal once reconciled.
-- name: Accountability
-  description: Assign a contract owner to review billing against negotiated terms.
+  - name: Visibility
+    description: >-
+      Pull Close monthly invoices and Twilio call/SMS pass-through
+      reports; track AI Call Assistant minutes against the $50 base.
+  - name: Allocation
+    description: >-
+      Allocate seats by sales team / region; allocate telephony costs to
+      the calling user and team.
+  - name: Optimization
+    description: >-
+      Lock annual billing for discount; right-size tier (Growth includes
+      Power Dialer, Scale adds Predictive Dialer); audit unused phone
+      lines and inactive seats monthly.
+  - name: Accountability
+    description: >-
+      Designate Sales Operations as contract owner; review at renewal.
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com

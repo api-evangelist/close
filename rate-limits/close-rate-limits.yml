@@ -5,32 +5,62 @@ provider: Close
 providerId: close
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
-- CRM
-- Sales Engagement
-- Calling
-- SMS
-- SaaS
-- Rate Limiting
-- Quotas
-- Throttling
-description: Placeholder rate-limit artifact for Close. Replace with real limits once the pipeline
-  researches the provider's rate-limit documentation.
-notes: Initial scaffold — limits have not yet been reconciled against the provider's documentation.
+  - CRM
+  - Sales Engagement
+  - Rate Limiting
+  - Throttling
+description: >-
+  Close enforces per-endpoint-group rate limits. Each endpoint group
+  (different URL paths and HTTP methods) has its own bucket. Limits at the
+  organization level are 3x the per-API-key limits. Some endpoints carry
+  stricter unpredictable limits in addition to the documented bucket.
 sources:
-- https://www.close.com/
+  - https://developer.close.com/api/overview/rate-limits.md
 responseCodes:
   throttled: 429
 limits:
-- name: Default
-  scope: account
-  metric: varies
-  limit: see provider documentation
-  notes: Pending reconciliation.
+  - name: Per API Key Per Endpoint Group
+    scope: token
+    metric: requests
+    notes: >-
+      Each endpoint group (path + method combination) has its own
+      per-API-key bucket. Inspect the `RateLimit` response header for
+      live limit / remaining / reset values.
+  - name: Per Organization
+    scope: organization
+    metric: requests
+    multiplier: 3x per-key
+    notes: >-
+      Organization-level limit is 3x the per-API-key limit, allowing
+      multiple keys in the same org to share headroom.
+  - name: Hidden Tighter Limits
+    scope: endpoint
+    metric: requests
+    notes: >-
+      Some endpoints have tighter unpredictable limits that may trigger
+      429 even within the documented window; rely on response headers
+      rather than precomputed budgets.
+  - name: Webhook Delivery
+    scope: subscription
+    metric: events
+    notes: >-
+      Webhooks include HMAC signatures and are retried on 5xx; receivers
+      should respond 2xx within the platform timeout.
 policies:
-- name: Backoff Strategy
-  description: Clients should implement exponential backoff with jitter and honor any Retry-After header.
+  - name: Backoff Strategy
+    description: >-
+      On 429, sleep for the number of seconds specified in the
+      `RateLimit` reset value (preferred) or the `Retry-After` header.
+  - name: Header Telemetry
+    description: >-
+      Track the `RateLimit` header (limit / remaining / reset) on every
+      response and slow down proactively as remaining drops.
+  - name: Spread Across Keys
+    description: >-
+      Use multiple API keys per organization to spread load; the org-
+      level bucket is 3x the per-key bucket.
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com
