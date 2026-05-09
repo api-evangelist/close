@@ -1,0 +1,13 @@
+{
+  "repo": "close",
+  "feeds": [
+    {
+      "source": "https://www.close.com/blog",
+      "feed_url": "https://www.close.com/blog/rss.xml",
+      "title": "Close Blog",
+      "saved": 25
+    }
+  ],
+  "fetched": "2026-05-09T20:17:51Z",
+  "post_count": 25
+}
