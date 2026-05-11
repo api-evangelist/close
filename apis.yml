@@ -435,6 +435,12 @@ common:
       - https://developer.close.com/
       - https://developer.close.com/api/overview/rate-limits.md
     updated: '2026-05-08'
+  - type: Integrations
+    url: https://close.com/integrations
+integrations:
+  - name: Dimedove AI lead qualification agents
+  - name: Roezan High-performance SMS platform
+  - name: Wrk All-in-one automation platform
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
