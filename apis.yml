@@ -1,7 +1,7 @@
 aid: close
 url: https://raw.githubusercontent.com/api-evangelist/close/refs/heads/main/apis.yml
 name: Close
-x-type: company
+kind: company
 description: >-
   Close is an inside-sales CRM with calling, email, SMS, and WhatsApp built
   in. The Close API exposes leads, contacts, opportunities, tasks,
@@ -29,7 +29,7 @@ apis:
       - url: https://developer.close.com/
         type: Documentation
       - url: https://developer.close.com/resources/leads/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -43,7 +43,7 @@ apis:
       - People
     properties:
       - url: https://developer.close.com/resources/contacts/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -56,7 +56,7 @@ apis:
       - Pipeline
     properties:
       - url: https://developer.close.com/resources/opportunities/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -69,7 +69,7 @@ apis:
       - Action Items
     properties:
       - url: https://developer.close.com/resources/tasks/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -82,7 +82,7 @@ apis:
       - Timeline
     properties:
       - url: https://developer.close.com/resources/activities/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -95,7 +95,7 @@ apis:
       - Voice
     properties:
       - url: https://developer.close.com/resources/activities/call/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -107,7 +107,7 @@ apis:
       - Emails
     properties:
       - url: https://developer.close.com/resources/activities/email/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -120,7 +120,7 @@ apis:
       - Texting
     properties:
       - url: https://developer.close.com/resources/activities/sms/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -133,7 +133,7 @@ apis:
       - Calendar
     properties:
       - url: https://developer.close.com/resources/activities/meeting/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -146,7 +146,7 @@ apis:
       - Statuses
     properties:
       - url: https://developer.close.com/resources/pipelines/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -159,7 +159,7 @@ apis:
       - Metadata
     properties:
       - url: https://developer.close.com/resources/custom-fields/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -171,7 +171,7 @@ apis:
       - Custom Objects
     properties:
       - url: https://developer.close.com/resources/custom-objects/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -185,7 +185,7 @@ apis:
       - SMS
     properties:
       - url: https://developer.close.com/resources/templates/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -198,7 +198,7 @@ apis:
       - Automation
     properties:
       - url: https://developer.close.com/resources/sequences/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -211,7 +211,7 @@ apis:
       - Background Jobs
     properties:
       - url: https://developer.close.com/resources/bulk-actions/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -224,7 +224,7 @@ apis:
       - Saved Searches
     properties:
       - url: https://developer.close.com/resources/smart-views/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -237,7 +237,7 @@ apis:
       - Reporting
     properties:
       - url: https://developer.close.com/resources/exports/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -250,7 +250,7 @@ apis:
       - Analytics
     properties:
       - url: https://developer.close.com/resources/reports/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -263,7 +263,7 @@ apis:
       - Telephony
     properties:
       - url: https://developer.close.com/resources/phone-numbers/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -275,7 +275,7 @@ apis:
       - Scheduling
     properties:
       - url: https://developer.close.com/resources/scheduling/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -288,7 +288,7 @@ apis:
       - Integrations
     properties:
       - url: https://developer.close.com/resources/connected-accounts/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -301,7 +301,7 @@ apis:
       - Memberships
     properties:
       - url: https://developer.close.com/resources/users/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -314,7 +314,7 @@ apis:
       - Workspaces
     properties:
       - url: https://developer.close.com/resources/organization/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -327,7 +327,7 @@ apis:
       - Permissions
     properties:
       - url: https://developer.close.com/resources/roles/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -339,7 +339,7 @@ apis:
       - Groups
     properties:
       - url: https://developer.close.com/resources/groups/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -351,7 +351,7 @@ apis:
       - Audit
     properties:
       - url: https://developer.close.com/resources/event-log/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -364,7 +364,7 @@ apis:
       - Events
     properties:
       - url: https://developer.close.com/resources/webhooks/
-        type: API Reference
+        type: APIReference
       - url: openapi/close-openapi.yml
         type: OpenAPI
     description: >-
@@ -388,27 +388,27 @@ common:
     url: https://www.close.com/
   - type: Documentation
     url: https://developer.close.com/
-  - type: API Reference
+  - type: APIReference
     url: https://developer.close.com/resources/
   - type: Pricing
     url: https://www.close.com/pricing
   - type: Login
     url: https://app.close.com/
-  - type: Status
+  - type: StatusPage
     url: https://status.close.com/
   - type: Blog
     url: https://www.close.com/blog
   - type: Support
     url: https://help.close.com/
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/closeio
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.close.com/privacy
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.close.com/terms
   - type: Authentication
     url: https://developer.close.com/topics/authentication/
-  - type: Rate Limits
+  - type: RateLimits
     url: https://developer.close.com/api/overview/rate-limits.md
   - type: Webhooks
     url: https://developer.close.com/resources/webhooks/
