@@ -1,0 +1,210 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Endpoints — subpackage_activities
+  description: 'API Endpoints — subpackage_activities. 1 operations. Lead operation: List or filter all activity types. Self-contained
+    Naftiko capability covering one Close business surface.'
+  tags:
+  - Close
+  - subpackage_activities
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOSE_API_KEY: CLOSE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: close-subpackage-activities
+    baseUri: https://api.close.com/api/v1
+    description: API Endpoints — subpackage_activities business capability. Self-contained, no shared references.
+    resources:
+    - name: activity
+      path: /activity/
+      operations:
+      - name: list
+        method: GET
+        description: List or filter all activity types
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: _limit
+          in: query
+          type: integer
+          description: Number of results to return.
+        - name: _skip
+          in: query
+          type: integer
+          description: Number of results to skip before returning, for pagination.
+        - name: id__in
+          in: query
+          type:
+          - array
+          - 'null'
+          description: Filter by activity IDs (comma-separated)
+        - name: lead_id
+          in: query
+          type:
+          - array
+          - 'null'
+          description: Filter by lead IDs (comma-separated)
+        - name: contact_id
+          in: query
+          type:
+          - array
+          - 'null'
+          description: Filter by contact IDs (comma-separated)
+        - name: user_id
+          in: query
+          type:
+          - array
+          - 'null'
+          description: Filter by user IDs (comma-separated)
+        - name: organization_id
+          in: query
+          type:
+          - string
+          - 'null'
+        - name: _type
+          in: query
+          type:
+          - array
+          - 'null'
+          description: Filter by activity type, e.g. Call (comma-separated)
+        - name: date_created__gte
+          in: query
+          type: string
+        - name: date_created__lte
+          in: query
+          type: string
+        - name: date_created__gt
+          in: query
+          type: string
+        - name: date_created__lt
+          in: query
+          type: string
+        - name: activity_at__gte
+          in: query
+          type: string
+        - name: activity_at__lte
+          in: query
+          type: string
+        - name: activity_at__gt
+          in: query
+          type: string
+        - name: activity_at__lt
+          in: query
+          type: string
+        - name: lead_id__in
+          in: query
+          type: string
+        - name: user_id__in
+          in: query
+          type: string
+        - name: contact_id__in
+          in: query
+          type: string
+        - name: _type__in
+          in: query
+          type: string
+        - name: _fields
+          in: query
+          type: string
+          description: Comma-separated list of fields to include in the response.
+        - name: _order_by
+          in: query
+          type: string
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.CLOSE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: close-subpackage-activities-rest
+    port: 8080
+    description: REST adapter for API Endpoints — subpackage_activities. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/activity
+      name: activity
+      description: REST surface for activity.
+      operations:
+      - method: GET
+        name: list
+        description: List or filter all activity types
+        call: close-subpackage-activities.list
+        with:
+          _limit: rest._limit
+          _skip: rest._skip
+          id__in: rest.id__in
+          lead_id: rest.lead_id
+          contact_id: rest.contact_id
+          user_id: rest.user_id
+          organization_id: rest.organization_id
+          _type: rest._type
+          date_created__gte: rest.date_created__gte
+          date_created__lte: rest.date_created__lte
+          date_created__gt: rest.date_created__gt
+          date_created__lt: rest.date_created__lt
+          activity_at__gte: rest.activity_at__gte
+          activity_at__lte: rest.activity_at__lte
+          activity_at__gt: rest.activity_at__gt
+          activity_at__lt: rest.activity_at__lt
+          lead_id__in: rest.lead_id__in
+          user_id__in: rest.user_id__in
+          contact_id__in: rest.contact_id__in
+          _type__in: rest._type__in
+          _fields: rest._fields
+          _order_by: rest._order_by
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: close-subpackage-activities-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Endpoints — subpackage_activities. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-filter-all-activity-types
+      description: List or filter all activity types
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-activities.list
+      with:
+        _limit: tools._limit
+        _skip: tools._skip
+        id__in: tools.id__in
+        lead_id: tools.lead_id
+        contact_id: tools.contact_id
+        user_id: tools.user_id
+        organization_id: tools.organization_id
+        _type: tools._type
+        date_created__gte: tools.date_created__gte
+        date_created__lte: tools.date_created__lte
+        date_created__gt: tools.date_created__gt
+        date_created__lt: tools.date_created__lt
+        activity_at__gte: tools.activity_at__gte
+        activity_at__lte: tools.activity_at__lte
+        activity_at__gt: tools.activity_at__gt
+        activity_at__lt: tools.activity_at__lt
+        lead_id__in: tools.lead_id__in
+        user_id__in: tools.user_id__in
+        contact_id__in: tools.contact_id__in
+        _type__in: tools._type__in
+        _fields: tools._fields
+        _order_by: tools._order_by
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.

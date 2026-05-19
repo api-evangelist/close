@@ -1,0 +1,490 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Endpoints — subpackage_sequences
+  description: 'API Endpoints — subpackage_sequences. 9 operations. Lead operation: List Sequences. Self-contained Naftiko
+    capability covering one Close business surface.'
+  tags:
+  - Close
+  - subpackage_sequences
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOSE_API_KEY: CLOSE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: close-subpackage-sequences
+    baseUri: https://api.close.com/api/v1
+    description: API Endpoints — subpackage_sequences business capability. Self-contained, no shared references.
+    resources:
+    - name: sequence
+      path: /sequence/
+      operations:
+      - name: list
+        method: GET
+        description: List Sequences
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: _limit
+          in: query
+          type: integer
+          description: Number of results to return.
+        - name: _skip
+          in: query
+          type: integer
+          description: Number of results to skip before returning, for pagination.
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+      - name: create
+        method: POST
+        description: Create a Sequence
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: sequence-id
+      path: /sequence/{id}/
+      operations:
+      - name: get
+        method: GET
+        description: Fetch a Sequence
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: _limit
+          in: query
+          type: integer
+          description: Number of results to return.
+        - name: _skip
+          in: query
+          type: integer
+          description: Number of results to skip before returning, for pagination.
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+      - name: update
+        method: PUT
+        description: Update a Sequence
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: delete
+        method: DELETE
+        description: Delete a Sequence
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    - name: sequence_subscription
+      path: /sequence_subscription/
+      operations:
+      - name: listsubscriptions
+        method: GET
+        description: List Sequence Subscriptions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: _limit
+          in: query
+          type: integer
+          description: Number of results to return.
+        - name: _skip
+          in: query
+          type: integer
+          description: Number of results to skip before returning, for pagination.
+        - name: contact_id
+          in: query
+          type: string
+        - name: lead_id
+          in: query
+          type: string
+        - name: sequence_id
+          in: query
+          type: string
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+      - name: createsubscription
+        method: POST
+        description: Subscribe a Contact to a Sequence
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: sequence_subscription-id
+      path: /sequence_subscription/{id}/
+      operations:
+      - name: getsubscription
+        method: GET
+        description: Fetch a single Sequence Subscription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+      - name: updatesubscription
+        method: PUT
+        description: Update a specific Subscription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.CLOSE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: close-subpackage-sequences-rest
+    port: 8080
+    description: REST adapter for API Endpoints — subpackage_sequences. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/sequence
+      name: sequence
+      description: REST surface for sequence.
+      operations:
+      - method: GET
+        name: list
+        description: List Sequences
+        call: close-subpackage-sequences.list
+        with:
+          _limit: rest._limit
+          _skip: rest._skip
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create
+        description: Create a Sequence
+        call: close-subpackage-sequences.create
+        with:
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sequence/{id}
+      name: sequence-id
+      description: REST surface for sequence-id.
+      operations:
+      - method: GET
+        name: get
+        description: Fetch a Sequence
+        call: close-subpackage-sequences.get
+        with:
+          id: rest.id
+          _limit: rest._limit
+          _skip: rest._skip
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: update
+        description: Update a Sequence
+        call: close-subpackage-sequences.update
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Delete a Sequence
+        call: close-subpackage-sequences.delete
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sequence-subscription
+      name: sequence-subscription
+      description: REST surface for sequence_subscription.
+      operations:
+      - method: GET
+        name: listsubscriptions
+        description: List Sequence Subscriptions
+        call: close-subpackage-sequences.listsubscriptions
+        with:
+          _limit: rest._limit
+          _skip: rest._skip
+          contact_id: rest.contact_id
+          lead_id: rest.lead_id
+          sequence_id: rest.sequence_id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createsubscription
+        description: Subscribe a Contact to a Sequence
+        call: close-subpackage-sequences.createsubscription
+        with:
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sequence-subscription/{id}
+      name: sequence-subscription-id
+      description: REST surface for sequence_subscription-id.
+      operations:
+      - method: GET
+        name: getsubscription
+        description: Fetch a single Sequence Subscription
+        call: close-subpackage-sequences.getsubscription
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatesubscription
+        description: Update a specific Subscription
+        call: close-subpackage-sequences.updatesubscription
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: close-subpackage-sequences-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Endpoints — subpackage_sequences. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-sequences
+      description: List Sequences
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-sequences.list
+      with:
+        _limit: tools._limit
+        _skip: tools._skip
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-sequence
+      description: Create a Sequence
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: close-subpackage-sequences.create
+      with:
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetch-sequence
+      description: Fetch a Sequence
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-sequences.get
+      with:
+        id: tools.id
+        _limit: tools._limit
+        _skip: tools._skip
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-sequence
+      description: Update a Sequence
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: close-subpackage-sequences.update
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-sequence
+      description: Delete a Sequence
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: close-subpackage-sequences.delete
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-sequence-subscriptions
+      description: List Sequence Subscriptions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-sequences.listsubscriptions
+      with:
+        _limit: tools._limit
+        _skip: tools._skip
+        contact_id: tools.contact_id
+        lead_id: tools.lead_id
+        sequence_id: tools.sequence_id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: subscribe-contact-sequence
+      description: Subscribe a Contact to a Sequence
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: close-subpackage-sequences.createsubscription
+      with:
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetch-single-sequence-subscription
+      description: Fetch a single Sequence Subscription
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-sequences.getsubscription
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-specific-subscription
+      description: Update a specific Subscription
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: close-subpackage-sequences.updatesubscription
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

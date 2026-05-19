@@ -1,0 +1,272 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Endpoints — subpackage_customObjects
+  description: 'API Endpoints — subpackage_customObjects. 5 operations. Lead operation: List Custom Object instances. Self-contained
+    Naftiko capability covering one Close business surface.'
+  tags:
+  - Close
+  - subpackage_customObjects
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOSE_API_KEY: CLOSE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: close-subpackage-customobjects
+    baseUri: https://api.close.com/api/v1
+    description: API Endpoints — subpackage_customObjects business capability. Self-contained, no shared references.
+    resources:
+    - name: custom_object
+      path: /custom_object/
+      operations:
+      - name: list
+        method: GET
+        description: List Custom Object instances
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: lead_id
+          in: query
+          type: string
+          required: true
+        - name: custom_object_type_id
+          in: query
+          type:
+          - string
+          - 'null'
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+      - name: create
+        method: POST
+        description: Create a new Custom Object instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: custom_object-id
+      path: /custom_object/{id}/
+      operations:
+      - name: get
+        method: GET
+        description: Retrieve a single Custom Object instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+      - name: update
+        method: PUT
+        description: Updating a Custom Object instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: delete
+        method: DELETE
+        description: Delete a Custom Object instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.CLOSE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: close-subpackage-customobjects-rest
+    port: 8080
+    description: REST adapter for API Endpoints — subpackage_customObjects. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/custom-object
+      name: custom-object
+      description: REST surface for custom_object.
+      operations:
+      - method: GET
+        name: list
+        description: List Custom Object instances
+        call: close-subpackage-customobjects.list
+        with:
+          lead_id: rest.lead_id
+          custom_object_type_id: rest.custom_object_type_id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create
+        description: Create a new Custom Object instance
+        call: close-subpackage-customobjects.create
+        with:
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/custom-object/{id}
+      name: custom-object-id
+      description: REST surface for custom_object-id.
+      operations:
+      - method: GET
+        name: get
+        description: Retrieve a single Custom Object instance
+        call: close-subpackage-customobjects.get
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: update
+        description: Updating a Custom Object instance
+        call: close-subpackage-customobjects.update
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Delete a Custom Object instance
+        call: close-subpackage-customobjects.delete
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: close-subpackage-customobjects-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Endpoints — subpackage_customObjects. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-custom-object-instances
+      description: List Custom Object instances
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-customobjects.list
+      with:
+        lead_id: tools.lead_id
+        custom_object_type_id: tools.custom_object_type_id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-custom-object-instance
+      description: Create a new Custom Object instance
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: close-subpackage-customobjects.create
+      with:
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: retrieve-single-custom-object-instance
+      description: Retrieve a single Custom Object instance
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-customobjects.get
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updating-custom-object-instance
+      description: Updating a Custom Object instance
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: close-subpackage-customobjects.update
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-custom-object-instance
+      description: Delete a Custom Object instance
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: close-subpackage-customobjects.delete
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,392 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Endpoints — subpackage_groups
+  description: 'API Endpoints — subpackage_groups. 7 operations. Lead operation: List Groups for your organization. Self-contained
+    Naftiko capability covering one Close business surface.'
+  tags:
+  - Close
+  - subpackage_groups
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOSE_API_KEY: CLOSE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: close-subpackage-groups
+    baseUri: https://api.close.com/api/v1
+    description: API Endpoints — subpackage_groups business capability. Self-contained, no shared references.
+    resources:
+    - name: group
+      path: /group/
+      operations:
+      - name: list
+        method: GET
+        description: List Groups for your organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: _fields
+          in: query
+          type: string
+          description: Comma-separated list of fields to include in the response.
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+      - name: create
+        method: POST
+        description: Create a Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: _fields
+          in: query
+          type: string
+          description: Comma-separated list of fields to include in the response.
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: group-group_id-member
+      path: /group/{group_id}/member/
+      operations:
+      - name: addmember
+        method: POST
+        description: Add a User to a Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: group_id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: group-group_id-member-user_id
+      path: /group/{group_id}/member/{user_id}/
+      operations:
+      - name: removemember
+        method: DELETE
+        description: Remove a User from a Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: group_id
+          in: path
+          type: string
+          required: true
+        - name: user_id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    - name: group-id
+      path: /group/{id}/
+      operations:
+      - name: get
+        method: GET
+        description: Fetch an individual Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: _fields
+          in: query
+          type: string
+          description: Comma-separated list of fields to include in the response.
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+      - name: update
+        method: PUT
+        description: Update a Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: _fields
+          in: query
+          type: string
+          description: Comma-separated list of fields to include in the response.
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: delete
+        method: DELETE
+        description: Delete a Group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.CLOSE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: close-subpackage-groups-rest
+    port: 8080
+    description: REST adapter for API Endpoints — subpackage_groups. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/group
+      name: group
+      description: REST surface for group.
+      operations:
+      - method: GET
+        name: list
+        description: List Groups for your organization
+        call: close-subpackage-groups.list
+        with:
+          _fields: rest._fields
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create
+        description: Create a Group
+        call: close-subpackage-groups.create
+        with:
+          _fields: rest._fields
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/group/{group-id}/member
+      name: group-group-id-member
+      description: REST surface for group-group_id-member.
+      operations:
+      - method: POST
+        name: addmember
+        description: Add a User to a Group
+        call: close-subpackage-groups.addmember
+        with:
+          group_id: rest.group_id
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/group/{group-id}/member/{user-id}
+      name: group-group-id-member-user-id
+      description: REST surface for group-group_id-member-user_id.
+      operations:
+      - method: DELETE
+        name: removemember
+        description: Remove a User from a Group
+        call: close-subpackage-groups.removemember
+        with:
+          group_id: rest.group_id
+          user_id: rest.user_id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/group/{id}
+      name: group-id
+      description: REST surface for group-id.
+      operations:
+      - method: GET
+        name: get
+        description: Fetch an individual Group
+        call: close-subpackage-groups.get
+        with:
+          id: rest.id
+          _fields: rest._fields
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: update
+        description: Update a Group
+        call: close-subpackage-groups.update
+        with:
+          id: rest.id
+          _fields: rest._fields
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Delete a Group
+        call: close-subpackage-groups.delete
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: close-subpackage-groups-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Endpoints — subpackage_groups. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-groups-your-organization
+      description: List Groups for your organization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-groups.list
+      with:
+        _fields: tools._fields
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-group
+      description: Create a Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: close-subpackage-groups.create
+      with:
+        _fields: tools._fields
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-user-group
+      description: Add a User to a Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: close-subpackage-groups.addmember
+      with:
+        group_id: tools.group_id
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: remove-user-group
+      description: Remove a User from a Group
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: close-subpackage-groups.removemember
+      with:
+        group_id: tools.group_id
+        user_id: tools.user_id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetch-individual-group
+      description: Fetch an individual Group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-groups.get
+      with:
+        id: tools.id
+        _fields: tools._fields
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-group
+      description: Update a Group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: close-subpackage-groups.update
+      with:
+        id: tools.id
+        _fields: tools._fields
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-group
+      description: Delete a Group
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: close-subpackage-groups.delete
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.

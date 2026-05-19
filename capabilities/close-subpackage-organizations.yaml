@@ -1,0 +1,144 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Endpoints — subpackage_organizations
+  description: 'API Endpoints — subpackage_organizations. 2 operations. Lead operation: Get an organization''s details. Self-contained
+    Naftiko capability covering one Close business surface.'
+  tags:
+  - Close
+  - subpackage_organizations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOSE_API_KEY: CLOSE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: close-subpackage-organizations
+    baseUri: https://api.close.com/api/v1
+    description: API Endpoints — subpackage_organizations business capability. Self-contained, no shared references.
+    resources:
+    - name: organization-id
+      path: /organization/{id}/
+      operations:
+      - name: get
+        method: GET
+        description: Get an organization's details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: _expand
+          in: query
+          type: string
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+      - name: update
+        method: PUT
+        description: Update an organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: _expand
+          in: query
+          type: string
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.CLOSE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: close-subpackage-organizations-rest
+    port: 8080
+    description: REST adapter for API Endpoints — subpackage_organizations. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/organization/{id}
+      name: organization-id
+      description: REST surface for organization-id.
+      operations:
+      - method: GET
+        name: get
+        description: Get an organization's details
+        call: close-subpackage-organizations.get
+        with:
+          id: rest.id
+          _expand: rest._expand
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: update
+        description: Update an organization
+        call: close-subpackage-organizations.update
+        with:
+          id: rest.id
+          _expand: rest._expand
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: close-subpackage-organizations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Endpoints — subpackage_organizations. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-organization-s-details
+      description: Get an organization's details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-organizations.get
+      with:
+        id: tools.id
+        _expand: tools._expand
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-organization
+      description: Update an organization
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: close-subpackage-organizations.update
+      with:
+        id: tools.id
+        _expand: tools._expand
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

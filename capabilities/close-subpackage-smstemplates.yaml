@@ -1,0 +1,283 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Endpoints — subpackage_smsTemplates
+  description: 'API Endpoints — subpackage_smsTemplates. 5 operations. Lead operation: List SMS templates. Self-contained
+    Naftiko capability covering one Close business surface.'
+  tags:
+  - Close
+  - subpackage_smsTemplates
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOSE_API_KEY: CLOSE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: close-subpackage-smstemplates
+    baseUri: https://api.close.com/api/v1
+    description: API Endpoints — subpackage_smsTemplates business capability. Self-contained, no shared references.
+    resources:
+    - name: sms_template
+      path: /sms_template/
+      operations:
+      - name: list
+        method: GET
+        description: List SMS templates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: _limit
+          in: query
+          type: integer
+          description: Number of results to return.
+        - name: _skip
+          in: query
+          type: integer
+          description: Number of results to skip before returning, for pagination.
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+      - name: create
+        method: POST
+        description: Create an SMS template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: sms_template-id
+      path: /sms_template/{id}/
+      operations:
+      - name: get
+        method: GET
+        description: Fetch an SMS template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: include_attachments
+          in: query
+          type: boolean
+          description: Include file attachments in the response.
+        - name: include_embedded
+          in: query
+          type: boolean
+          description: Include embedded templates used by Workflows.
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+      - name: update
+        method: PUT
+        description: Update an SMS template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: delete
+        method: DELETE
+        description: Delete an SMS template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.CLOSE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: close-subpackage-smstemplates-rest
+    port: 8080
+    description: REST adapter for API Endpoints — subpackage_smsTemplates. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/sms-template
+      name: sms-template
+      description: REST surface for sms_template.
+      operations:
+      - method: GET
+        name: list
+        description: List SMS templates
+        call: close-subpackage-smstemplates.list
+        with:
+          _limit: rest._limit
+          _skip: rest._skip
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create
+        description: Create an SMS template
+        call: close-subpackage-smstemplates.create
+        with:
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/sms-template/{id}
+      name: sms-template-id
+      description: REST surface for sms_template-id.
+      operations:
+      - method: GET
+        name: get
+        description: Fetch an SMS template
+        call: close-subpackage-smstemplates.get
+        with:
+          id: rest.id
+          include_attachments: rest.include_attachments
+          include_embedded: rest.include_embedded
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: update
+        description: Update an SMS template
+        call: close-subpackage-smstemplates.update
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Delete an SMS template
+        call: close-subpackage-smstemplates.delete
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: close-subpackage-smstemplates-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Endpoints — subpackage_smsTemplates. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-sms-templates
+      description: List SMS templates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-smstemplates.list
+      with:
+        _limit: tools._limit
+        _skip: tools._skip
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-sms-template
+      description: Create an SMS template
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: close-subpackage-smstemplates.create
+      with:
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetch-sms-template
+      description: Fetch an SMS template
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-smstemplates.get
+      with:
+        id: tools.id
+        include_attachments: tools.include_attachments
+        include_embedded: tools.include_embedded
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-sms-template
+      description: Update an SMS template
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: close-subpackage-smstemplates.update
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-sms-template
+      description: Delete an SMS template
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: close-subpackage-smstemplates.delete
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.

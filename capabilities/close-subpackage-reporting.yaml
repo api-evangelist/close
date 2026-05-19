@@ -1,0 +1,519 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Endpoints — subpackage_reporting
+  description: 'API Endpoints — subpackage_reporting. 8 operations. Lead operation: Get an activity report. Self-contained
+    Naftiko capability covering one Close business surface.'
+  tags:
+  - Close
+  - subpackage_reporting
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOSE_API_KEY: CLOSE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: close-subpackage-reporting
+    baseUri: https://api.close.com/api/v1
+    description: API Endpoints — subpackage_reporting business capability. Self-contained, no shared references.
+    resources:
+    - name: report-activity
+      path: /report/activity/
+      operations:
+      - name: getactivity
+        method: POST
+        description: Get an activity report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: report-activity-metrics
+      path: /report/activity/metrics/
+      operations:
+      - name: listactivitymetrics
+        method: GET
+        description: List the predefined metrics used in activity reports
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    - name: report-custom-org_id
+      path: /report/custom/{org_id}/
+      operations:
+      - name: getcustom
+        method: GET
+        description: Get custom report (Explorer)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+        - name: query
+          in: query
+          type: string
+        - name: x
+          in: query
+          type: string
+        - name: y
+          in: query
+          type: string
+        - name: group_by
+          in: query
+          type: string
+        - name: transform_y
+          in: query
+          type: string
+        - name: interval
+          in: query
+          type: string
+        - name: start
+          in: query
+          type: string
+        - name: end
+          in: query
+          type: string
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    - name: report-funnel-opportunity-stages
+      path: /report/funnel/opportunity/stages/
+      operations:
+      - name: getfunnelstages
+        method: POST
+        description: Get a funnel report (stages)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: report-funnel-opportunity-totals
+      path: /report/funnel/opportunity/totals/
+      operations:
+      - name: getfunneltotals
+        method: POST
+        description: Get a funnel report (totals)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: report-sent_emails-org_id
+      path: /report/sent_emails/{org_id}/
+      operations:
+      - name: getsentemails
+        method: GET
+        description: Get sent emails report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+        - name: date_start
+          in: query
+          type: string
+        - name: date_end
+          in: query
+          type: string
+        - name: user_id
+          in: query
+          type: string
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    - name: report-statuses-lead-org_id
+      path: /report/statuses/lead/{org_id}/
+      operations:
+      - name: getleadstatuses
+        method: GET
+        description: Get lead status change report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+        - name: date_start
+          in: query
+          type: string
+        - name: date_end
+          in: query
+          type: string
+        - name: query
+          in: query
+          type: string
+        - name: smart_view_id
+          in: query
+          type: string
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    - name: report-statuses-opportunity-org_id
+      path: /report/statuses/opportunity/{org_id}/
+      operations:
+      - name: getopportunitystatuses
+        method: GET
+        description: Get opportunity status change report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: org_id
+          in: path
+          type: string
+          required: true
+        - name: date_start
+          in: query
+          type: string
+        - name: date_end
+          in: query
+          type: string
+        - name: query
+          in: query
+          type: string
+        - name: smart_view_id
+          in: query
+          type: string
+        - name: user_id
+          in: query
+          type: string
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.CLOSE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: close-subpackage-reporting-rest
+    port: 8080
+    description: REST adapter for API Endpoints — subpackage_reporting. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/report/activity
+      name: report-activity
+      description: REST surface for report-activity.
+      operations:
+      - method: POST
+        name: getactivity
+        description: Get an activity report
+        call: close-subpackage-reporting.getactivity
+        with:
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/report/activity/metrics
+      name: report-activity-metrics
+      description: REST surface for report-activity-metrics.
+      operations:
+      - method: GET
+        name: listactivitymetrics
+        description: List the predefined metrics used in activity reports
+        call: close-subpackage-reporting.listactivitymetrics
+        with:
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/report/custom/{org-id}
+      name: report-custom-org-id
+      description: REST surface for report-custom-org_id.
+      operations:
+      - method: GET
+        name: getcustom
+        description: Get custom report (Explorer)
+        call: close-subpackage-reporting.getcustom
+        with:
+          org_id: rest.org_id
+          query: rest.query
+          x: rest.x
+          y: rest.y
+          group_by: rest.group_by
+          transform_y: rest.transform_y
+          interval: rest.interval
+          start: rest.start
+          end: rest.end
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/report/funnel/opportunity/stages
+      name: report-funnel-opportunity-stages
+      description: REST surface for report-funnel-opportunity-stages.
+      operations:
+      - method: POST
+        name: getfunnelstages
+        description: Get a funnel report (stages)
+        call: close-subpackage-reporting.getfunnelstages
+        with:
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/report/funnel/opportunity/totals
+      name: report-funnel-opportunity-totals
+      description: REST surface for report-funnel-opportunity-totals.
+      operations:
+      - method: POST
+        name: getfunneltotals
+        description: Get a funnel report (totals)
+        call: close-subpackage-reporting.getfunneltotals
+        with:
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/report/sent-emails/{org-id}
+      name: report-sent-emails-org-id
+      description: REST surface for report-sent_emails-org_id.
+      operations:
+      - method: GET
+        name: getsentemails
+        description: Get sent emails report
+        call: close-subpackage-reporting.getsentemails
+        with:
+          org_id: rest.org_id
+          date_start: rest.date_start
+          date_end: rest.date_end
+          user_id: rest.user_id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/report/statuses/lead/{org-id}
+      name: report-statuses-lead-org-id
+      description: REST surface for report-statuses-lead-org_id.
+      operations:
+      - method: GET
+        name: getleadstatuses
+        description: Get lead status change report
+        call: close-subpackage-reporting.getleadstatuses
+        with:
+          org_id: rest.org_id
+          date_start: rest.date_start
+          date_end: rest.date_end
+          query: rest.query
+          smart_view_id: rest.smart_view_id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/report/statuses/opportunity/{org-id}
+      name: report-statuses-opportunity-org-id
+      description: REST surface for report-statuses-opportunity-org_id.
+      operations:
+      - method: GET
+        name: getopportunitystatuses
+        description: Get opportunity status change report
+        call: close-subpackage-reporting.getopportunitystatuses
+        with:
+          org_id: rest.org_id
+          date_start: rest.date_start
+          date_end: rest.date_end
+          query: rest.query
+          smart_view_id: rest.smart_view_id
+          user_id: rest.user_id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: close-subpackage-reporting-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Endpoints — subpackage_reporting. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-activity-report
+      description: Get an activity report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: close-subpackage-reporting.getactivity
+      with:
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-predefined-metrics-used-activity
+      description: List the predefined metrics used in activity reports
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-reporting.listactivitymetrics
+      with:
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-custom-report-explorer
+      description: Get custom report (Explorer)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-reporting.getcustom
+      with:
+        org_id: tools.org_id
+        query: tools.query
+        x: tools.x
+        y: tools.y
+        group_by: tools.group_by
+        transform_y: tools.transform_y
+        interval: tools.interval
+        start: tools.start
+        end: tools.end
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-funnel-report-stages
+      description: Get a funnel report (stages)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: close-subpackage-reporting.getfunnelstages
+      with:
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-funnel-report-totals
+      description: Get a funnel report (totals)
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: close-subpackage-reporting.getfunneltotals
+      with:
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-sent-emails-report
+      description: Get sent emails report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-reporting.getsentemails
+      with:
+        org_id: tools.org_id
+        date_start: tools.date_start
+        date_end: tools.date_end
+        user_id: tools.user_id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-lead-status-change-report
+      description: Get lead status change report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-reporting.getleadstatuses
+      with:
+        org_id: tools.org_id
+        date_start: tools.date_start
+        date_end: tools.date_end
+        query: tools.query
+        smart_view_id: tools.smart_view_id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-opportunity-status-change-report
+      description: Get opportunity status change report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-reporting.getopportunitystatuses
+      with:
+        org_id: tools.org_id
+        date_start: tools.date_start
+        date_end: tools.date_end
+        query: tools.query
+        smart_view_id: tools.smart_view_id
+        user_id: tools.user_id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.

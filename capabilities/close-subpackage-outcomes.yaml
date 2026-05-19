@@ -1,0 +1,283 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Endpoints — subpackage_outcomes
+  description: 'API Endpoints — subpackage_outcomes. 5 operations. Lead operation: List or filter outcomes. Self-contained
+    Naftiko capability covering one Close business surface.'
+  tags:
+  - Close
+  - subpackage_outcomes
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOSE_API_KEY: CLOSE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: close-subpackage-outcomes
+    baseUri: https://api.close.com/api/v1
+    description: API Endpoints — subpackage_outcomes business capability. Self-contained, no shared references.
+    resources:
+    - name: outcome
+      path: /outcome/
+      operations:
+      - name: list
+        method: GET
+        description: List or filter outcomes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: _limit
+          in: query
+          type: integer
+          description: Number of results to return.
+        - name: _skip
+          in: query
+          type: integer
+          description: Number of results to skip before returning, for pagination.
+        - name: _fields
+          in: query
+          type: string
+          description: Comma-separated list of fields to include in the response.
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+      - name: create
+        method: POST
+        description: Create an outcome
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: outcome-id
+      path: /outcome/{id}/
+      operations:
+      - name: get
+        method: GET
+        description: Fetch a single outcome
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: _fields
+          in: query
+          type: string
+          description: Comma-separated list of fields to include in the response.
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+      - name: update
+        method: PUT
+        description: Update an outcome
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: delete
+        method: DELETE
+        description: Delete an outcome
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.CLOSE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: close-subpackage-outcomes-rest
+    port: 8080
+    description: REST adapter for API Endpoints — subpackage_outcomes. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/outcome
+      name: outcome
+      description: REST surface for outcome.
+      operations:
+      - method: GET
+        name: list
+        description: List or filter outcomes
+        call: close-subpackage-outcomes.list
+        with:
+          _limit: rest._limit
+          _skip: rest._skip
+          _fields: rest._fields
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create
+        description: Create an outcome
+        call: close-subpackage-outcomes.create
+        with:
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/outcome/{id}
+      name: outcome-id
+      description: REST surface for outcome-id.
+      operations:
+      - method: GET
+        name: get
+        description: Fetch a single outcome
+        call: close-subpackage-outcomes.get
+        with:
+          id: rest.id
+          _fields: rest._fields
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: update
+        description: Update an outcome
+        call: close-subpackage-outcomes.update
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Delete an outcome
+        call: close-subpackage-outcomes.delete
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: close-subpackage-outcomes-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Endpoints — subpackage_outcomes. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-filter-outcomes
+      description: List or filter outcomes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-outcomes.list
+      with:
+        _limit: tools._limit
+        _skip: tools._skip
+        _fields: tools._fields
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-outcome
+      description: Create an outcome
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: close-subpackage-outcomes.create
+      with:
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetch-single-outcome
+      description: Fetch a single outcome
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-outcomes.get
+      with:
+        id: tools.id
+        _fields: tools._fields
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-outcome
+      description: Update an outcome
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: close-subpackage-outcomes.update
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-outcome
+      description: Delete an outcome
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: close-subpackage-outcomes.delete
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.

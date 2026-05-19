@@ -1,0 +1,257 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Endpoints — subpackage_users
+  description: 'API Endpoints — subpackage_users. 4 operations. Lead operation: Fetch information about yourself. Self-contained
+    Naftiko capability covering one Close business surface.'
+  tags:
+  - Close
+  - subpackage_users
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOSE_API_KEY: CLOSE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: close-subpackage-users
+    baseUri: https://api.close.com/api/v1
+    description: API Endpoints — subpackage_users business capability. Self-contained, no shared references.
+    resources:
+    - name: me
+      path: /me/
+      operations:
+      - name: getme
+        method: GET
+        description: Fetch information about yourself
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: _fields
+          in: query
+          type: string
+          description: Comma-separated list of fields to include in the response.
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    - name: user
+      path: /user/
+      operations:
+      - name: list
+        method: GET
+        description: List users in your organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: _order_by
+          in: query
+          type: string
+        - name: _limit
+          in: query
+          type: integer
+          description: Number of results to return.
+        - name: _skip
+          in: query
+          type: integer
+          description: Number of results to skip before returning, for pagination.
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    - name: user-availability
+      path: /user/availability/
+      operations:
+      - name: listavailabilities
+        method: GET
+        description: List user availability statuses
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organization_id
+          in: query
+          type: string
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    - name: user-id
+      path: /user/{id}/
+      operations:
+      - name: get
+        method: GET
+        description: Fetch a single user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: _order_by
+          in: query
+          type: string
+        - name: _limit
+          in: query
+          type: integer
+          description: Number of results to return.
+        - name: _skip
+          in: query
+          type: integer
+          description: Number of results to skip before returning, for pagination.
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.CLOSE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: close-subpackage-users-rest
+    port: 8080
+    description: REST adapter for API Endpoints — subpackage_users. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/me
+      name: me
+      description: REST surface for me.
+      operations:
+      - method: GET
+        name: getme
+        description: Fetch information about yourself
+        call: close-subpackage-users.getme
+        with:
+          _fields: rest._fields
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user
+      name: user
+      description: REST surface for user.
+      operations:
+      - method: GET
+        name: list
+        description: List users in your organization
+        call: close-subpackage-users.list
+        with:
+          _order_by: rest._order_by
+          _limit: rest._limit
+          _skip: rest._skip
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user/availability
+      name: user-availability
+      description: REST surface for user-availability.
+      operations:
+      - method: GET
+        name: listavailabilities
+        description: List user availability statuses
+        call: close-subpackage-users.listavailabilities
+        with:
+          organization_id: rest.organization_id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/user/{id}
+      name: user-id
+      description: REST surface for user-id.
+      operations:
+      - method: GET
+        name: get
+        description: Fetch a single user
+        call: close-subpackage-users.get
+        with:
+          id: rest.id
+          _order_by: rest._order_by
+          _limit: rest._limit
+          _skip: rest._skip
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: close-subpackage-users-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Endpoints — subpackage_users. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: fetch-information-about-yourself
+      description: Fetch information about yourself
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-users.getme
+      with:
+        _fields: tools._fields
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-users-your-organization
+      description: List users in your organization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-users.list
+      with:
+        _order_by: tools._order_by
+        _limit: tools._limit
+        _skip: tools._skip
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-user-availability-statuses
+      description: List user availability statuses
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-users.listavailabilities
+      with:
+        organization_id: tools.organization_id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetch-single-user
+      description: Fetch a single user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-users.get
+      with:
+        id: tools.id
+        _order_by: tools._order_by
+        _limit: tools._limit
+        _skip: tools._skip
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.

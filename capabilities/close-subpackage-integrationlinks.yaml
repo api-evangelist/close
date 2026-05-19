@@ -1,0 +1,259 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Endpoints — subpackage_integrationLinks
+  description: 'API Endpoints — subpackage_integrationLinks. 5 operations. Lead operation: Get all integration links for your
+    organization. Self-contained Naftiko capability covering one Close business surface.'
+  tags:
+  - Close
+  - subpackage_integrationLinks
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOSE_API_KEY: CLOSE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: close-subpackage-integrationlinks
+    baseUri: https://api.close.com/api/v1
+    description: API Endpoints — subpackage_integrationLinks business capability. Self-contained, no shared references.
+    resources:
+    - name: integration_link
+      path: /integration_link/
+      operations:
+      - name: list
+        method: GET
+        description: Get all integration links for your organization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+      - name: create
+        method: POST
+        description: Create an integration link
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: integration_link-id
+      path: /integration_link/{id}/
+      operations:
+      - name: get
+        method: GET
+        description: Get a single integration link
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+      - name: update
+        method: PUT
+        description: Update an integration link
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: delete
+        method: DELETE
+        description: Delete an integration link
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.CLOSE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: close-subpackage-integrationlinks-rest
+    port: 8080
+    description: REST adapter for API Endpoints — subpackage_integrationLinks. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/integration-link
+      name: integration-link
+      description: REST surface for integration_link.
+      operations:
+      - method: GET
+        name: list
+        description: Get all integration links for your organization
+        call: close-subpackage-integrationlinks.list
+        with:
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create
+        description: Create an integration link
+        call: close-subpackage-integrationlinks.create
+        with:
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/integration-link/{id}
+      name: integration-link-id
+      description: REST surface for integration_link-id.
+      operations:
+      - method: GET
+        name: get
+        description: Get a single integration link
+        call: close-subpackage-integrationlinks.get
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: update
+        description: Update an integration link
+        call: close-subpackage-integrationlinks.update
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Delete an integration link
+        call: close-subpackage-integrationlinks.delete
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: close-subpackage-integrationlinks-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Endpoints — subpackage_integrationLinks. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-all-integration-links-your
+      description: Get all integration links for your organization
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-integrationlinks.list
+      with:
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-integration-link
+      description: Create an integration link
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: close-subpackage-integrationlinks.create
+      with:
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-single-integration-link
+      description: Get a single integration link
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-integrationlinks.get
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-integration-link
+      description: Update an integration link
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: close-subpackage-integrationlinks.update
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-integration-link
+      description: Delete an integration link
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: close-subpackage-integrationlinks.delete
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.

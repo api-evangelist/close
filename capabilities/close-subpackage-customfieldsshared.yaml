@@ -1,0 +1,481 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Endpoints — subpackage_customFieldsShared
+  description: 'API Endpoints — subpackage_customFieldsShared. 9 operations. Lead operation: List Shared Custom Fields. Self-contained
+    Naftiko capability covering one Close business surface.'
+  tags:
+  - Close
+  - subpackage_customFieldsShared
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOSE_API_KEY: CLOSE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: close-subpackage-customfieldsshared
+    baseUri: https://api.close.com/api/v1
+    description: API Endpoints — subpackage_customFieldsShared business capability. Self-contained, no shared references.
+    resources:
+    - name: custom_field-shared
+      path: /custom_field/shared/
+      operations:
+      - name: list
+        method: GET
+        description: List Shared Custom Fields
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: _fields
+          in: query
+          type: string
+          description: Comma-separated list of fields to include in the response.
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+      - name: create
+        method: POST
+        description: Create a new Shared Custom Field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: custom_field-shared-id
+      path: /custom_field/shared/{id}/
+      operations:
+      - name: get
+        method: GET
+        description: Fetch Shared Custom Field's details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: _fields
+          in: query
+          type: string
+          description: Comma-separated list of fields to include in the response.
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+      - name: update
+        method: PUT
+        description: Update a Shared Custom Field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: delete
+        method: DELETE
+        description: Delete a Shared Custom Field
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    - name: custom_field-shared-scf_id-association
+      path: /custom_field/shared/{scf_id}/association/
+      operations:
+      - name: createassociation
+        method: POST
+        description: Associate a Shared Custom Field with an object type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: scf_id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: custom_field-shared-scf_id-association-object_type
+      path: /custom_field/shared/{scf_id}/association/{object_type}/
+      operations:
+      - name: getassociation
+        method: GET
+        description: Fetch a Shared Custom Field Association
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: scf_id
+          in: path
+          type: string
+          required: true
+        - name: object_type
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+      - name: updateassociation
+        method: PUT
+        description: Update an existing Shared Custom Field Association
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: scf_id
+          in: path
+          type: string
+          required: true
+        - name: object_type
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: deleteassociation
+        method: DELETE
+        description: Disassociate a Shared Custom Field from an object type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: scf_id
+          in: path
+          type: string
+          required: true
+        - name: object_type
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.CLOSE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: close-subpackage-customfieldsshared-rest
+    port: 8080
+    description: REST adapter for API Endpoints — subpackage_customFieldsShared. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/custom-field/shared
+      name: custom-field-shared
+      description: REST surface for custom_field-shared.
+      operations:
+      - method: GET
+        name: list
+        description: List Shared Custom Fields
+        call: close-subpackage-customfieldsshared.list
+        with:
+          _fields: rest._fields
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create
+        description: Create a new Shared Custom Field
+        call: close-subpackage-customfieldsshared.create
+        with:
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/custom-field/shared/{id}
+      name: custom-field-shared-id
+      description: REST surface for custom_field-shared-id.
+      operations:
+      - method: GET
+        name: get
+        description: Fetch Shared Custom Field's details
+        call: close-subpackage-customfieldsshared.get
+        with:
+          id: rest.id
+          _fields: rest._fields
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: update
+        description: Update a Shared Custom Field
+        call: close-subpackage-customfieldsshared.update
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Delete a Shared Custom Field
+        call: close-subpackage-customfieldsshared.delete
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/custom-field/shared/{scf-id}/association
+      name: custom-field-shared-scf-id-association
+      description: REST surface for custom_field-shared-scf_id-association.
+      operations:
+      - method: POST
+        name: createassociation
+        description: Associate a Shared Custom Field with an object type
+        call: close-subpackage-customfieldsshared.createassociation
+        with:
+          scf_id: rest.scf_id
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/custom-field/shared/{scf-id}/association/{object-type}
+      name: custom-field-shared-scf-id-association-object-type
+      description: REST surface for custom_field-shared-scf_id-association-object_type.
+      operations:
+      - method: GET
+        name: getassociation
+        description: Fetch a Shared Custom Field Association
+        call: close-subpackage-customfieldsshared.getassociation
+        with:
+          scf_id: rest.scf_id
+          object_type: rest.object_type
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateassociation
+        description: Update an existing Shared Custom Field Association
+        call: close-subpackage-customfieldsshared.updateassociation
+        with:
+          scf_id: rest.scf_id
+          object_type: rest.object_type
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteassociation
+        description: Disassociate a Shared Custom Field from an object type
+        call: close-subpackage-customfieldsshared.deleteassociation
+        with:
+          scf_id: rest.scf_id
+          object_type: rest.object_type
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: close-subpackage-customfieldsshared-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Endpoints — subpackage_customFieldsShared. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: list-shared-custom-fields
+      description: List Shared Custom Fields
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-customfieldsshared.list
+      with:
+        _fields: tools._fields
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-new-shared-custom-field
+      description: Create a new Shared Custom Field
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: close-subpackage-customfieldsshared.create
+      with:
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetch-shared-custom-field-s-details
+      description: Fetch Shared Custom Field's details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-customfieldsshared.get
+      with:
+        id: tools.id
+        _fields: tools._fields
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-shared-custom-field
+      description: Update a Shared Custom Field
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: close-subpackage-customfieldsshared.update
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-shared-custom-field
+      description: Delete a Shared Custom Field
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: close-subpackage-customfieldsshared.delete
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: associate-shared-custom-field-object
+      description: Associate a Shared Custom Field with an object type
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: close-subpackage-customfieldsshared.createassociation
+      with:
+        scf_id: tools.scf_id
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetch-shared-custom-field-association
+      description: Fetch a Shared Custom Field Association
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-customfieldsshared.getassociation
+      with:
+        scf_id: tools.scf_id
+        object_type: tools.object_type
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-existing-shared-custom-field
+      description: Update an existing Shared Custom Field Association
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: close-subpackage-customfieldsshared.updateassociation
+      with:
+        scf_id: tools.scf_id
+        object_type: tools.object_type
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: disassociate-shared-custom-field-object
+      description: Disassociate a Shared Custom Field from an object type
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: close-subpackage-customfieldsshared.deleteassociation
+      with:
+        scf_id: tools.scf_id
+        object_type: tools.object_type
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.

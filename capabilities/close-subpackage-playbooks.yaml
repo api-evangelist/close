@@ -1,0 +1,392 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Endpoints — subpackage_playbooks
+  description: 'API Endpoints — subpackage_playbooks. 7 operations. Lead operation: List or filter playbooks. Self-contained
+    Naftiko capability covering one Close business surface.'
+  tags:
+  - Close
+  - subpackage_playbooks
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOSE_API_KEY: CLOSE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: close-subpackage-playbooks
+    baseUri: https://api.close.com/api/v1
+    description: API Endpoints — subpackage_playbooks business capability. Self-contained, no shared references.
+    resources:
+    - name: playbook
+      path: /playbook/
+      operations:
+      - name: list
+        method: GET
+        description: List or filter playbooks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: _limit
+          in: query
+          type: integer
+          description: Number of results to return.
+        - name: _skip
+          in: query
+          type: integer
+          description: Number of results to skip before returning, for pagination.
+        - name: is_archived
+          in: query
+          type:
+          - boolean
+          - 'null'
+          description: Filter for archived or not-archived playbooks. When not provided, both archived and not-archived playbooks
+            will be returned.
+        - name: position__gt
+          in: query
+          type:
+          - integer
+          - 'null'
+          description: Filters for where the playbook's `position` is greater than the given value.
+        - name: created_at__lt
+          in: query
+          type:
+          - string
+          - 'null'
+          description: Filters for where the playbook's `created_at` (creation date) is before the given value.
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+      - name: create
+        method: POST
+        description: Create a playbook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: playbook-id
+      path: /playbook/{id}/
+      operations:
+      - name: get
+        method: GET
+        description: Fetch a single playbook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+      - name: update
+        method: PUT
+        description: Update a playbook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: delete
+        method: DELETE
+        description: Delete a playbook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    - name: playbook-id-archive
+      path: /playbook/{id}/archive/
+      operations:
+      - name: archive
+        method: POST
+        description: Archive a playbook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    - name: playbook-id-unarchive
+      path: /playbook/{id}/unarchive/
+      operations:
+      - name: unarchive
+        method: POST
+        description: Unarchive a playbook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.CLOSE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: close-subpackage-playbooks-rest
+    port: 8080
+    description: REST adapter for API Endpoints — subpackage_playbooks. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/playbook
+      name: playbook
+      description: REST surface for playbook.
+      operations:
+      - method: GET
+        name: list
+        description: List or filter playbooks
+        call: close-subpackage-playbooks.list
+        with:
+          _limit: rest._limit
+          _skip: rest._skip
+          is_archived: rest.is_archived
+          position__gt: rest.position__gt
+          created_at__lt: rest.created_at__lt
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create
+        description: Create a playbook
+        call: close-subpackage-playbooks.create
+        with:
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/playbook/{id}
+      name: playbook-id
+      description: REST surface for playbook-id.
+      operations:
+      - method: GET
+        name: get
+        description: Fetch a single playbook
+        call: close-subpackage-playbooks.get
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: update
+        description: Update a playbook
+        call: close-subpackage-playbooks.update
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Delete a playbook
+        call: close-subpackage-playbooks.delete
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/playbook/{id}/archive
+      name: playbook-id-archive
+      description: REST surface for playbook-id-archive.
+      operations:
+      - method: POST
+        name: archive
+        description: Archive a playbook
+        call: close-subpackage-playbooks.archive
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/playbook/{id}/unarchive
+      name: playbook-id-unarchive
+      description: REST surface for playbook-id-unarchive.
+      operations:
+      - method: POST
+        name: unarchive
+        description: Unarchive a playbook
+        call: close-subpackage-playbooks.unarchive
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: close-subpackage-playbooks-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Endpoints — subpackage_playbooks. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-filter-playbooks
+      description: List or filter playbooks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-playbooks.list
+      with:
+        _limit: tools._limit
+        _skip: tools._skip
+        is_archived: tools.is_archived
+        position__gt: tools.position__gt
+        created_at__lt: tools.created_at__lt
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-playbook
+      description: Create a playbook
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: close-subpackage-playbooks.create
+      with:
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetch-single-playbook
+      description: Fetch a single playbook
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-playbooks.get
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-playbook
+      description: Update a playbook
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: close-subpackage-playbooks.update
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-playbook
+      description: Delete a playbook
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: close-subpackage-playbooks.delete
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: archive-playbook
+      description: Archive a playbook
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: close-subpackage-playbooks.archive
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: unarchive-playbook
+      description: Unarchive a playbook
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: close-subpackage-playbooks.unarchive
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.

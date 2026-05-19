@@ -1,0 +1,134 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Endpoints — subpackage_customFieldSchemas
+  description: 'API Endpoints — subpackage_customFieldSchemas. 2 operations. Lead operation: Retrieve a custom field schema.
+    Self-contained Naftiko capability covering one Close business surface.'
+  tags:
+  - Close
+  - subpackage_customFieldSchemas
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOSE_API_KEY: CLOSE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: close-subpackage-customfieldschemas
+    baseUri: https://api.close.com/api/v1
+    description: API Endpoints — subpackage_customFieldSchemas business capability. Self-contained, no shared references.
+    resources:
+    - name: custom_field_schema-object_type
+      path: /custom_field_schema/{object_type}/
+      operations:
+      - name: get
+        method: GET
+        description: Retrieve a custom field schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: object_type
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+      - name: update
+        method: PUT
+        description: Update a custom field schema
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: object_type
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: bearer
+      token: '{{env.CLOSE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: close-subpackage-customfieldschemas-rest
+    port: 8080
+    description: REST adapter for API Endpoints — subpackage_customFieldSchemas. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/custom-field-schema/{object-type}
+      name: custom-field-schema-object-type
+      description: REST surface for custom_field_schema-object_type.
+      operations:
+      - method: GET
+        name: get
+        description: Retrieve a custom field schema
+        call: close-subpackage-customfieldschemas.get
+        with:
+          object_type: rest.object_type
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: update
+        description: Update a custom field schema
+        call: close-subpackage-customfieldschemas.update
+        with:
+          object_type: rest.object_type
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: close-subpackage-customfieldschemas-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Endpoints — subpackage_customFieldSchemas. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: retrieve-custom-field-schema
+      description: Retrieve a custom field schema
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-customfieldschemas.get
+      with:
+        object_type: tools.object_type
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-custom-field-schema
+      description: Update a custom field schema
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: close-subpackage-customfieldschemas.update
+      with:
+        object_type: tools.object_type
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

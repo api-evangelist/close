@@ -1,0 +1,389 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Endpoints — subpackage_comments
+  description: 'API Endpoints — subpackage_comments. 7 operations. Lead operation: Fetch multiple comments. Self-contained
+    Naftiko capability covering one Close business surface.'
+  tags:
+  - Close
+  - subpackage_comments
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOSE_API_KEY: CLOSE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: close-subpackage-comments
+    baseUri: https://api.close.com/api/v1
+    description: API Endpoints — subpackage_comments business capability. Self-contained, no shared references.
+    resources:
+    - name: comment
+      path: /comment/
+      operations:
+      - name: list
+        method: GET
+        description: Fetch multiple comments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: thread_id
+          in: query
+          type:
+          - string
+          - 'null'
+        - name: object_id
+          in: query
+          type:
+          - string
+          - 'null'
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+      - name: create
+        method: POST
+        description: Create a Comment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: comment-id
+      path: /comment/{id}/
+      operations:
+      - name: get
+        method: GET
+        description: Fetch an individual comment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+      - name: update
+        method: PUT
+        description: Update a Comment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+      - name: delete
+        method: DELETE
+        description: Remove a comment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    - name: comment_thread
+      path: /comment_thread/
+      operations:
+      - name: listthreads
+        method: GET
+        description: Fetch multiple comment threads
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: _limit
+          in: query
+          type: integer
+          description: Number of results to return.
+        - name: _skip
+          in: query
+          type: integer
+          description: Number of results to skip before returning, for pagination.
+        - name: ids
+          in: query
+          type:
+          - array
+          - 'null'
+        - name: object_ids
+          in: query
+          type:
+          - array
+          - 'null'
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    - name: comment_thread-id
+      path: /comment_thread/{id}/
+      operations:
+      - name: getthread
+        method: GET
+        description: Fetch an individual comment thread
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.CLOSE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: close-subpackage-comments-rest
+    port: 8080
+    description: REST adapter for API Endpoints — subpackage_comments. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/comment
+      name: comment
+      description: REST surface for comment.
+      operations:
+      - method: GET
+        name: list
+        description: Fetch multiple comments
+        call: close-subpackage-comments.list
+        with:
+          thread_id: rest.thread_id
+          object_id: rest.object_id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: create
+        description: Create a Comment
+        call: close-subpackage-comments.create
+        with:
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/comment/{id}
+      name: comment-id
+      description: REST surface for comment-id.
+      operations:
+      - method: GET
+        name: get
+        description: Fetch an individual comment
+        call: close-subpackage-comments.get
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: update
+        description: Update a Comment
+        call: close-subpackage-comments.update
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: delete
+        description: Remove a comment
+        call: close-subpackage-comments.delete
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/comment-thread
+      name: comment-thread
+      description: REST surface for comment_thread.
+      operations:
+      - method: GET
+        name: listthreads
+        description: Fetch multiple comment threads
+        call: close-subpackage-comments.listthreads
+        with:
+          _limit: rest._limit
+          _skip: rest._skip
+          ids: rest.ids
+          object_ids: rest.object_ids
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/comment-thread/{id}
+      name: comment-thread-id
+      description: REST surface for comment_thread-id.
+      operations:
+      - method: GET
+        name: getthread
+        description: Fetch an individual comment thread
+        call: close-subpackage-comments.getthread
+        with:
+          id: rest.id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: close-subpackage-comments-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Endpoints — subpackage_comments. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: fetch-multiple-comments
+      description: Fetch multiple comments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-comments.list
+      with:
+        thread_id: tools.thread_id
+        object_id: tools.object_id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-comment
+      description: Create a Comment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: close-subpackage-comments.create
+      with:
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetch-individual-comment
+      description: Fetch an individual comment
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-comments.get
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-comment
+      description: Update a Comment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: close-subpackage-comments.update
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: remove-comment
+      description: Remove a comment
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: close-subpackage-comments.delete
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetch-multiple-comment-threads
+      description: Fetch multiple comment threads
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-comments.listthreads
+      with:
+        _limit: tools._limit
+        _skip: tools._skip
+        ids: tools.ids
+        object_ids: tools.object_ids
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: fetch-individual-comment-thread
+      description: Fetch an individual comment thread
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-comments.getthread
+      with:
+        id: tools.id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.

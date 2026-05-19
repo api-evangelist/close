@@ -1,0 +1,187 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: API Endpoints — subpackage_dialers
+  description: 'API Endpoints — subpackage_dialers. 2 operations. Lead operation: List or filter all dialer sessions. Self-contained
+    Naftiko capability covering one Close business surface.'
+  tags:
+  - Close
+  - subpackage_dialers
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    CLOSE_API_KEY: CLOSE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: close-subpackage-dialers
+    baseUri: https://api.close.com/api/v1
+    description: API Endpoints — subpackage_dialers business capability. Self-contained, no shared references.
+    resources:
+    - name: dialer
+      path: /dialer/
+      operations:
+      - name: list
+        method: GET
+        description: List or filter all dialer sessions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: organization_id
+          in: query
+          type:
+          - string
+          - 'null'
+        - name: source_type
+          in: query
+          type: string
+        - name: source_value
+          in: query
+          type:
+          - string
+          - 'null'
+        - name: status
+          in: query
+          type:
+          - string
+          - 'null'
+        - name: status__in
+          in: query
+          type:
+          - string
+          - 'null'
+        - name: user_id
+          in: query
+          type:
+          - string
+          - 'null'
+        - name: _limit
+          in: query
+          type: integer
+          description: Number of results to return.
+        - name: _skip
+          in: query
+          type: integer
+          description: Number of results to skip before returning, for pagination.
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    - name: dialer-id
+      path: /dialer/{id}/
+      operations:
+      - name: get
+        method: GET
+        description: Get a single dialer session
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: organization_id
+          in: query
+          type:
+          - string
+          - 'null'
+        - name: Authorization
+          in: header
+          type: string
+          description: Use your API key as the username and leave the password empty.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.CLOSE_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: close-subpackage-dialers-rest
+    port: 8080
+    description: REST adapter for API Endpoints — subpackage_dialers. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/dialer
+      name: dialer
+      description: REST surface for dialer.
+      operations:
+      - method: GET
+        name: list
+        description: List or filter all dialer sessions
+        call: close-subpackage-dialers.list
+        with:
+          organization_id: rest.organization_id
+          source_type: rest.source_type
+          source_value: rest.source_value
+          status: rest.status
+          status__in: rest.status__in
+          user_id: rest.user_id
+          _limit: rest._limit
+          _skip: rest._skip
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/dialer/{id}
+      name: dialer-id
+      description: REST surface for dialer-id.
+      operations:
+      - method: GET
+        name: get
+        description: Get a single dialer session
+        call: close-subpackage-dialers.get
+        with:
+          id: rest.id
+          organization_id: rest.organization_id
+          Authorization: rest.Authorization
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: close-subpackage-dialers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for API Endpoints — subpackage_dialers. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: list-filter-all-dialer-sessions
+      description: List or filter all dialer sessions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-dialers.list
+      with:
+        organization_id: tools.organization_id
+        source_type: tools.source_type
+        source_value: tools.source_value
+        status: tools.status
+        status__in: tools.status__in
+        user_id: tools.user_id
+        _limit: tools._limit
+        _skip: tools._skip
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-single-dialer-session
+      description: Get a single dialer session
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: close-subpackage-dialers.get
+      with:
+        id: tools.id
+        organization_id: tools.organization_id
+        Authorization: tools.Authorization
+      outputParameters:
+      - type: object
+        mapping: $.
