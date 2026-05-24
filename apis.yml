@@ -509,6 +509,8 @@ common:
   updated: '2026-05-08'
 - type: Integrations
   url: https://close.com/integrations
+- type: LLMsTxt
+  url: https://developer.close.com/llms.txt
 integrations:
 - name: Dimedove AI lead qualification agents
 - name: Roezan High-performance SMS platform
