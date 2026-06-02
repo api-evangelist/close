@@ -2,12 +2,20 @@
   "repo": "close",
   "feeds": [
     {
-      "source": "https://www.close.com/blog",
+      "source": "https://www.close.com/blog/rss.xml",
       "feed_url": "https://www.close.com/blog/rss.xml",
-      "title": "Close Blog",
-      "saved": 25
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://status.close.com/",
+      "feed_url": "https://status.close.com/history.atom",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
     }
   ],
-  "fetched": "2026-05-17T20:20:35Z",
-  "post_count": 50
+  "fetched": "2026-06-01T23:35:02Z",
+  "post_count": 53
 }
