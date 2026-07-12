@@ -338,6 +338,12 @@ apis:
       OAuth 2.0 authorization for third-party applications building against Close, plus app registration in the Close
       Marketplace.
 common:
+  - type: TrustCenter
+    url: security/close-trust-center.yml
+  - type: DomainSecurity
+    url: security/close-domain-security.yml
+  - type: Authentication
+    url: authentication/close-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/close-crm
   - type: Website

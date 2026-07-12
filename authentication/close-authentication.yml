@@ -1,0 +1,18 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/close-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: ApiKeyAuth
+  type: http
+  scheme: basic
+  description: Use your API key as the username and leave the password empty.
+  sources:
+  - openapi/close-openapi.yml
+- name: OAuth2
+  type: http
+  scheme: bearer
+  sources:
+  - openapi/close-openapi.yml
