@@ -338,6 +338,8 @@ apis:
       OAuth 2.0 authorization for third-party applications building against Close, plus app registration in the Close
       Marketplace.
 common:
+  - type: AgenticAccess
+    url: agentic-access/close-agentic-access.yml
   - type: TrustCenter
     url: security/close-trust-center.yml
   - type: DomainSecurity
