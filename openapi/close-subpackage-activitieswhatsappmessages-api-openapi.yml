@@ -1,0 +1,725 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_activitiesWhatsappMessages API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_activitiesWhatsappMessages
+paths:
+  /activity/whatsapp_message/:
+    get:
+      operationId: list
+      summary: List or filter all WhatsAppMessage activities
+      description: Filter by `external_whatsapp_message_id` to find messages to update or delete based on changes in WhatsApp.
+      tags:
+      - subpackage_activitiesWhatsappMessages
+      parameters:
+      - name: _limit
+        in: query
+        description: Number of results to return.
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: _skip
+        in: query
+        description: Number of results to skip before returning, for pagination.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: id__in
+        in: query
+        description: Filter by activity IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: lead_id
+        in: query
+        description: Filter by lead IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: contact_id
+        in: query
+        description: Filter by contact IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: user_id
+        in: query
+        description: Filter by user IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: organization_id
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: _type
+        in: query
+        description: Filter by activity type, e.g. Call (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: date_created__gte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityWhatsappMessageGetParametersDateCreatedGte'
+      - name: date_created__lte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityWhatsappMessageGetParametersDateCreatedLte'
+      - name: date_created__gt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityWhatsappMessageGetParametersDateCreatedGt'
+      - name: date_created__lt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityWhatsappMessageGetParametersDateCreatedLt'
+      - name: activity_at__gte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityWhatsappMessageGetParametersActivityAtGte'
+      - name: activity_at__lte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityWhatsappMessageGetParametersActivityAtLte'
+      - name: activity_at__gt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityWhatsappMessageGetParametersActivityAtGt'
+      - name: activity_at__lt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityWhatsappMessageGetParametersActivityAtLt'
+      - name: external_whatsapp_message_id
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activities.whatsapp_messages_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Create a WhatsAppMessage activity
+      description: '`external_whatsapp_message_id` must be the ID of the message inside WhatsApp. You can filter by this field to find messages in Close to update or delete based on updates or deletions in WhatsApp.
+
+
+        `message_markdown` must be the body of the message in the WhatsApp Markdown format. The `message_html` read-only field will return the HTML representation of this message.
+
+
+        To include an attachment, you must first upload the file to Close using the [Files API](https://developer.close.com/api/resources/files). Then, add an object to the `attachments` array with the following fields: `url`, `filename`, and `content_type`. The `url` should be the URL provided in the `download.url` field of the response from the [Files API](https://developer.close.com/api/resources/files). It must begin with `https://app.close.com/go/file/`.
+
+
+        `integration_link` (optional) is a URL string that can be provided by the integration partner creating the WhatsApp message. This can be used to link back to the message in the external system.
+
+
+        `response_to_id` (optional) is the Close activity ID of another WhatsApp message activity (not the WhatsApp native message ID) that this message is replying to. This field creates a thread relationship between messages, allowing you to track conversation flow and message replies within WhatsApp threads. The ID must be a valid WhatsApp message activity ID in Close (e.g., `acti_...`).
+
+
+        Only WhatsApp Markdown messages and file attachments are supported. No support is provided for Polls, Events, Locations, etc.
+
+
+        **Important**: The total size of all attachments for a single WhatsApp message activity cannot exceed 25MB.
+
+
+        When creating a new WhatsApp message with the direction set to `incoming`, you can pass the query parameter `send_to_inbox` with the value of `true` to create a corresponding Inbox Notification for the message.'
+      tags:
+      - subpackage_activitiesWhatsappMessages
+      parameters:
+      - name: send_to_inbox
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WhatsAppMessageActivity'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWhatsAppMessage'
+  /activity/whatsapp_message/{id}/:
+    get:
+      operationId: get
+      summary: Get a single WhatsAppMessage activity
+      tags:
+      - subpackage_activitiesWhatsappMessages
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WhatsAppMessageActivity'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    put:
+      operationId: update
+      summary: Update a WhatsAppMessage activity
+      tags:
+      - subpackage_activitiesWhatsappMessages
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WhatsAppMessageActivity'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateWhatsAppMessage'
+    delete:
+      operationId: delete
+      summary: Delete a WhatsAppMessage activity
+      tags:
+      - subpackage_activitiesWhatsappMessages
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activities.whatsapp_messages_delete_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    WhatsAppMessageActivity:
+      type: object
+      properties:
+        _type:
+          type: string
+        activity_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        contact_id:
+          type:
+          - string
+          - 'null'
+        created_by:
+          type:
+          - string
+          - 'null'
+        created_by_name:
+          type:
+          - string
+          - 'null'
+        date_created:
+          type: string
+          format: date-time
+        date_updated:
+          type: string
+          format: date-time
+        direction:
+          $ref: '#/components/schemas/CommunicationDirection'
+        external_whatsapp_message_id:
+          type: string
+        id:
+          type: string
+        integration_link:
+          type:
+          - string
+          - 'null'
+        integration_name:
+          type:
+          - string
+          - 'null'
+        lead_id:
+          type:
+          - string
+          - 'null'
+        local_phone:
+          type: string
+        local_phone_formatted:
+          type: string
+        message_html:
+          type: string
+        message_markdown:
+          type: string
+        organization_id:
+          type: string
+        remote_phone:
+          type: string
+        remote_phone_formatted:
+          type: string
+        response_to_id:
+          type:
+          - string
+          - 'null'
+        sequence_id:
+          type:
+          - string
+          - 'null'
+        sequence_name:
+          type:
+          - string
+          - 'null'
+        sequence_subscription_id:
+          type:
+          - string
+          - 'null'
+        source:
+          $ref: '#/components/schemas/CreationSource'
+        text:
+          type: string
+        updated_by:
+          type:
+          - string
+          - 'null'
+        updated_by_name:
+          type:
+          - string
+          - 'null'
+        user_id:
+          type:
+          - string
+          - 'null'
+        user_name:
+          type:
+          - string
+          - 'null'
+        users:
+          type: array
+          items:
+            type: string
+      required:
+      - _type
+      - activity_at
+      - contact_id
+      - created_by
+      - date_created
+      - date_updated
+      - direction
+      - external_whatsapp_message_id
+      - id
+      - integration_link
+      - integration_name
+      - lead_id
+      - local_phone
+      - local_phone_formatted
+      - message_html
+      - message_markdown
+      - organization_id
+      - remote_phone
+      - remote_phone_formatted
+      - response_to_id
+      - source
+      - text
+      - updated_by
+      - user_id
+      - users
+      title: WhatsAppMessageActivity
+    WhatsAppAttachmentData:
+      type: object
+      properties:
+        content_type:
+          type: string
+        filename:
+          type: string
+        url:
+          type: string
+      required:
+      - content_type
+      - filename
+      - url
+      title: WhatsAppAttachmentData
+    UpdateWhatsAppMessage:
+      type: object
+      properties:
+        activity_at:
+          type: string
+          format: date-time
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/WhatsAppAttachmentData'
+        contact_id:
+          type: string
+        direction:
+          $ref: '#/components/schemas/CommunicationDirection'
+        integration_link:
+          type:
+          - string
+          - 'null'
+          format: uri
+        local_phone:
+          type: string
+        message_markdown:
+          type: string
+        remote_phone:
+          type: string
+        response_to_id:
+          type:
+          - string
+          - 'null'
+        user_id:
+          type: string
+      title: UpdateWhatsAppMessage
+    ActivityWhatsappMessageGetParametersActivityAtLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityWhatsappMessageGetParametersActivityAtLte
+    CommunicationDirection:
+      type: string
+      enum:
+      - incoming
+      - outgoing
+      description: Direction of communication. Outgoing means the communication flowing from the user to the lead/contact. Inbound means the opposite.
+      title: CommunicationDirection
+    ActivityWhatsappMessageGetParametersActivityAtGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityWhatsappMessageGetParametersActivityAtGt
+    ActivityWhatsappMessageGetParametersActivityAtLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityWhatsappMessageGetParametersActivityAtLt
+    activities.whatsapp_messages_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.whatsapp_messages_delete_Response_200
+    ActivityWhatsappMessageGetParametersDateCreatedGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityWhatsappMessageGetParametersDateCreatedGte
+    activities.whatsapp_messages_list_Response_200:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/WhatsAppMessageActivity'
+        has_more:
+          type: boolean
+      required:
+      - data
+      - has_more
+      title: activities.whatsapp_messages_list_Response_200
+    ActivityWhatsappMessageGetParametersDateCreatedLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityWhatsappMessageGetParametersDateCreatedLt
+    CreateWhatsAppMessage:
+      type: object
+      properties:
+        activity_at:
+          type: string
+          format: date-time
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/WhatsAppAttachmentData'
+        contact_id:
+          type: string
+        direction:
+          $ref: '#/components/schemas/CommunicationDirection'
+        external_whatsapp_message_id:
+          type: string
+        integration_link:
+          type:
+          - string
+          - 'null'
+          format: uri
+        lead_id:
+          type: string
+        local_phone:
+          type: string
+        message_markdown:
+          type: string
+        remote_phone:
+          type: string
+        response_to_id:
+          type:
+          - string
+          - 'null'
+        user_id:
+          type:
+          - string
+          - 'null'
+      required:
+      - activity_at
+      - contact_id
+      - direction
+      - external_whatsapp_message_id
+      - lead_id
+      - local_phone
+      - message_markdown
+      - remote_phone
+      title: CreateWhatsAppMessage
+    Attachment:
+      type: object
+      properties:
+        content_type:
+          type:
+          - string
+          - 'null'
+        filename:
+          type:
+          - string
+          - 'null'
+        size:
+          type:
+          - integer
+          - 'null'
+        thumbnail_url:
+          type:
+          - string
+          - 'null'
+        url:
+          type: string
+      required:
+      - content_type
+      - filename
+      - size
+      - url
+      title: Attachment
+    CreationSource:
+      type: string
+      enum:
+      - ui
+      - api
+      - import
+      - clipper
+      - email
+      - suggestion
+      - segment-integration
+      - customerio-integration
+      - calendly-integration
+      - ai
+      - whatsapp
+      - webform
+      title: CreationSource
+    ActivityWhatsappMessageGetParametersActivityAtGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityWhatsappMessageGetParametersActivityAtGte
+    ActivityWhatsappMessageGetParametersDateCreatedGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityWhatsappMessageGetParametersDateCreatedGt
+    ActivityWhatsappMessageGetParametersDateCreatedLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityWhatsappMessageGetParametersDateCreatedLte
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

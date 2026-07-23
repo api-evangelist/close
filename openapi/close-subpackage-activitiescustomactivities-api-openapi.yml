@@ -1,0 +1,535 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_activitiesCustomActivities API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_activitiesCustomActivities
+paths:
+  /activity/custom/:
+    get:
+      operationId: list
+      summary: List or filter all Custom Activity instances
+      description: 'Custom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).
+
+
+        If you''re filtering by `custom_activity_type_id` or `custom_activity_type_id__in` parameter, the `lead_id` parameter will be required as well. If you want to retrieve all Custom Activity instances of a specific type regardless of the lead, you will need to get leads that contain such an activity type using [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) and provide those Lead IDs one at a time to this endpoint.'
+      tags:
+      - subpackage_activitiesCustomActivities
+      parameters:
+      - name: _limit
+        in: query
+        description: Number of results to return.
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: _skip
+        in: query
+        description: Number of results to skip before returning, for pagination.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: id__in
+        in: query
+        description: Filter by activity IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: lead_id
+        in: query
+        description: Filter by lead IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: contact_id
+        in: query
+        description: Filter by contact IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: user_id
+        in: query
+        description: Filter by user IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: organization_id
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: _type
+        in: query
+        description: Filter by activity type, e.g. Call (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: date_created__gte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityCustomGetParametersDateCreatedGte'
+      - name: date_created__lte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityCustomGetParametersDateCreatedLte'
+      - name: date_created__gt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityCustomGetParametersDateCreatedGt'
+      - name: date_created__lt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityCustomGetParametersDateCreatedLt'
+      - name: activity_at__gte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityCustomGetParametersActivityAtGte'
+      - name: activity_at__lte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityCustomGetParametersActivityAtLte'
+      - name: activity_at__gt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityCustomGetParametersActivityAtGt'
+      - name: activity_at__lt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityCustomGetParametersActivityAtLt'
+      - name: custom_activity_type_id
+        in: query
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: custom_activity_type_id__in
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activities.custom_activities_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Create a new Custom Activity instance
+      description: 'Custom Activity instances will be created by default with the ''published'' status. All required fields will be validated in this status. To create an activity without setting all required fields, you can use the "draft" status.
+
+
+        A Custom Activity can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a Custom Activity.'
+      tags:
+      - subpackage_activitiesCustomActivities
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activities.custom_activities_create_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCustomActivity'
+  /activity/custom/{id}/:
+    get:
+      operationId: get
+      summary: Get a single Custom Activity instance
+      tags:
+      - subpackage_activitiesCustomActivities
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activities.custom_activities_get_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    put:
+      operationId: update
+      summary: Updating a Custom Activity instance
+      description: 'A Custom Activity can be updated to add, change or remove any Custom Fields and to change the status between "draft" and "published".
+
+
+        A Custom Activity can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a Custom Activity.'
+      tags:
+      - subpackage_activitiesCustomActivities
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activities.custom_activities_update_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCustomActivity'
+    delete:
+      operationId: delete
+      summary: Delete a Custom Activity instance
+      tags:
+      - subpackage_activitiesCustomActivities
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activities.custom_activities_delete_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    UpdateCustomActivity:
+      type: object
+      properties:
+        activity_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        contact_id:
+          type:
+          - string
+          - 'null'
+        custom_fields:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            description: Any type
+        pinned:
+          type:
+          - boolean
+          - 'null'
+        status:
+          $ref: '#/components/schemas/UpdateCustomActivityStatus'
+      title: UpdateCustomActivity
+    CreateCustomActivity:
+      type: object
+      properties:
+        activity_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        contact_id:
+          type:
+          - string
+          - 'null'
+        created_by_id:
+          type:
+          - string
+          - 'null'
+        custom_activity_type_id:
+          type: string
+        custom_fields:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            description: Any type
+        date_created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        lead_id:
+          type: string
+        organization_id:
+          type:
+          - string
+          - 'null'
+        pinned:
+          type:
+          - boolean
+          - 'null'
+        status:
+          $ref: '#/components/schemas/CreateCustomActivityStatus'
+        user_id:
+          type:
+          - string
+          - 'null'
+      required:
+      - custom_activity_type_id
+      - lead_id
+      title: CreateCustomActivity
+    ActivityCustomGetParametersActivityAtLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCustomGetParametersActivityAtLte
+    ActivityCustomGetParametersDateCreatedLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCustomGetParametersDateCreatedLte
+    activities.custom_activities_get_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.custom_activities_get_Response_200
+    ActivityCustomGetParametersActivityAtGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCustomGetParametersActivityAtGt
+    ActivityCustomGetParametersActivityAtLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCustomGetParametersActivityAtLt
+    ActivityCustomGetParametersDateCreatedLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCustomGetParametersDateCreatedLt
+    CreateCustomActivityStatus:
+      type: string
+      enum:
+      - draft
+      - published
+      title: CreateCustomActivityStatus
+    ActivityCustomGetParametersDateCreatedGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCustomGetParametersDateCreatedGt
+    activities.custom_activities_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.custom_activities_delete_Response_200
+    activities.custom_activities_update_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.custom_activities_update_Response_200
+    ActivityCustomGetParametersDateCreatedGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCustomGetParametersDateCreatedGte
+    activities.custom_activities_create_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.custom_activities_create_Response_200
+    ActivityCustomGetParametersActivityAtGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCustomGetParametersActivityAtGte
+    activities.custom_activities_list_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.custom_activities_list_Response_200
+    UpdateCustomActivityStatus:
+      type: string
+      enum:
+      - draft
+      - published
+      title: UpdateCustomActivityStatus
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

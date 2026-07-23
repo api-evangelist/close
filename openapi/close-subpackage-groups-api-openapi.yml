@@ -1,0 +1,416 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_groups API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_groups
+paths:
+  /group/:
+    get:
+      operationId: list
+      summary: List Groups for your organization
+      description: Note that list endpoint does not support retrieving members for all groups. Use individual group endpoint instead.
+      tags:
+      - subpackage_groups
+      parameters:
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/groups_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Create a Group
+      description: Create a new group. The `name` is required and must be unique within the organization. The group is created with no members. Use the member endpoint to add users.
+      tags:
+      - subpackage_groups
+      parameters:
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGroup'
+  /group/{group_id}/member/:
+    post:
+      operationId: add-member
+      summary: Add a User to a Group
+      description: Add a user to a group by providing the `user_id`. If the user is already a member, nothing changes.
+      tags:
+      - subpackage_groups
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupMember'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGroupMember'
+  /group/{group_id}/member/{user_id}/:
+    delete:
+      operationId: remove-member
+      summary: Remove a User from a Group
+      description: If the user is not a member of the group, nothing changes.
+      tags:
+      - subpackage_groups
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+  /group/{id}/:
+    get:
+      operationId: get
+      summary: Fetch an individual Group
+      tags:
+      - subpackage_groups
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    put:
+      operationId: update
+      summary: Update a Group
+      description: You can use this endpoint to rename a Group. If a name is not unique, an error will be returned.
+      tags:
+      - subpackage_groups
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGroup'
+    delete:
+      operationId: delete
+      summary: Delete a Group
+      description: Delete a group. Members will be removed from the group but not from the organization. Deletion is only allowed if the group is not referenced by saved reports or smart views.
+      tags:
+      - subpackage_groups
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    GroupMember:
+      type: object
+      properties:
+        user_id:
+          type: string
+      required:
+      - user_id
+      title: GroupMember
+    Group:
+      type: object
+      properties:
+        id:
+          type: string
+        members:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/GroupMember'
+        name:
+          type: string
+        organization_id:
+          type: string
+      required:
+      - id
+      - name
+      - organization_id
+      title: Group
+    CreateGroup:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+      - name
+      title: CreateGroup
+    CreateGroupMember:
+      type: object
+      properties:
+        user_id:
+          type: string
+      required:
+      - user_id
+      title: CreateGroupMember
+    groups_list_Response_200:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Group'
+        has_more:
+          type: boolean
+      required:
+      - data
+      - has_more
+      title: groups_list_Response_200
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

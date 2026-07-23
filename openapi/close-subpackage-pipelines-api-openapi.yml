@@ -1,0 +1,207 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_pipelines API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_pipelines
+paths:
+  /pipeline/:
+    get:
+      operationId: list
+      summary: List Pipelines for your organization
+      tags:
+      - subpackage_pipelines
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pipelines_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Create a Pipeline
+      tags:
+      - subpackage_pipelines
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pipelines_create_Response_201'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /pipeline/{id}/:
+    put:
+      operationId: update
+      summary: Update a Pipeline
+      description: "You can use this endpoint to:\n\n* Rename a Pipeline.\n* Reorder Opportunity Statuses within a Pipeline.\n* Move an Opportunity Status from a different Pipeline into this one.\n    * To do so, include `{\"id\": \"id_of_the_status_from_another_pipeline\"}` in the `statuses` list."
+      tags:
+      - subpackage_pipelines
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/pipelines_update_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+    delete:
+      operationId: delete
+      summary: Delete a Pipeline
+      description: Deletion is only allowed if the Pipeline doesn't contain any Opportunity Statuses. Delete all statuses first or move them to another pipeline.
+      tags:
+      - subpackage_pipelines
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    pipelines_update_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: pipelines_update_Response_200
+    pipelines_list_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: pipelines_list_Response_200
+    pipelines_create_Response_201:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: pipelines_create_Response_201
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

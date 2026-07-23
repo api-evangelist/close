@@ -1,0 +1,261 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_activities
+paths:
+  /activity/:
+    get:
+      operationId: list
+      summary: List or filter all activity types
+      description: "To list only a specific activity type (e.g., only `Call` or `LeadStatusChange`), use the other resources listed separately. When querying activities for a single lead (using the `lead_id` parameter), you can ask for multiple activity types using `_type__in`.\n\nWhen listing [Custom Activities](https://developer.close.com/api/resources/activities/custom-activities), `_type` and `_type__in` can include Custom Activity Type ids (e.g. `actitype_1h5m6uHM9BZOpwVhyRJb4Y`) to filter by a specific custom activity type or `Custom` to list custom activities of any type.\n\nThe following filtering parameters can only be used for listing activities on a single lead (using the `lead_id` parameter): `user_id`, `user_id__in`, `contact_id`, `contact_id__in`, `_type`, `_type__in`.\n\nAll activities have two sortable datetime fields: `date_created` and `activity_at`. `date_created` denotes when an activity was created or synced into Close and `activity_at` denotes when that activity actually occurred. For example, on outgoing Email activities, `date_created` is equal to when the email was first created in Close, and `activity_at` is equal to when the email was actually sent. For Meeting activities, `activity_at` is equal to the scheduled time of the meeting. On custom activities, users are able to update the `activity_at` field at any time.\n\nSorting by `-activity_at` can only be used when listing activities on a single lead using the `lead_id` parameter. In addition, you can only use the date-based filters of the field you're currently sorting on. This means that if you want to use `activity_at__lt` and `activity_at__gt` as filters, you need to include `_order_by=-activity_at` in your request.\n\n`thread_emails` parameter:\n\n - (Default) when this parameter is not present, `Email` objects will be returned for each email message.\n - A value of `true` will return `EmailThread` objects representing email conversations. Stripped-down version of `Email` objects will also be returned.\n - A value of `only` will return `EmailThread` objects representing email conversations. `Email` objects will not be returned."
+      tags:
+      - subpackage_activities
+      parameters:
+      - name: _limit
+        in: query
+        description: Number of results to return.
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: _skip
+        in: query
+        description: Number of results to skip before returning, for pagination.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: id__in
+        in: query
+        description: Filter by activity IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: lead_id
+        in: query
+        description: Filter by lead IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: contact_id
+        in: query
+        description: Filter by contact IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: user_id
+        in: query
+        description: Filter by user IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: organization_id
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: _type
+        in: query
+        description: Filter by activity type, e.g. Call (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: date_created__gte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityGetParametersDateCreatedGte'
+      - name: date_created__lte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityGetParametersDateCreatedLte'
+      - name: date_created__gt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityGetParametersDateCreatedGt'
+      - name: date_created__lt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityGetParametersDateCreatedLt'
+      - name: activity_at__gte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityGetParametersActivityAtGte'
+      - name: activity_at__lte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityGetParametersActivityAtLte'
+      - name: activity_at__gt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityGetParametersActivityAtGt'
+      - name: activity_at__lt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityGetParametersActivityAtLt'
+      - name: lead_id__in
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: user_id__in
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: contact_id__in
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: _type__in
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: _order_by
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activities_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    ActivityGetParametersDateCreatedGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityGetParametersDateCreatedGt
+    ActivityGetParametersDateCreatedLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityGetParametersDateCreatedLte
+    ActivityGetParametersDateCreatedLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityGetParametersDateCreatedLt
+    ActivityGetParametersDateCreatedGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityGetParametersDateCreatedGte
+    activities_list_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities_list_Response_200
+    ActivityGetParametersActivityAtLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityGetParametersActivityAtLt
+    ActivityGetParametersActivityAtGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityGetParametersActivityAtGt
+    ActivityGetParametersActivityAtGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityGetParametersActivityAtGte
+    ActivityGetParametersActivityAtLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityGetParametersActivityAtLte
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

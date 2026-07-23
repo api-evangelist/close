@@ -1,0 +1,740 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_activitiesCalls API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_activitiesCalls
+paths:
+  /activity/call/:
+    get:
+      operationId: list
+      summary: List or filter all Call activities
+      tags:
+      - subpackage_activitiesCalls
+      parameters:
+      - name: _limit
+        in: query
+        description: Number of results to return.
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: _skip
+        in: query
+        description: Number of results to skip before returning, for pagination.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: id__in
+        in: query
+        description: Filter by activity IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: lead_id
+        in: query
+        description: Filter by lead IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: contact_id
+        in: query
+        description: Filter by contact IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: user_id
+        in: query
+        description: Filter by user IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: organization_id
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: _type
+        in: query
+        description: Filter by activity type, e.g. Call (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: date_created__gte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityCallGetParametersDateCreatedGte'
+      - name: date_created__lte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityCallGetParametersDateCreatedLte'
+      - name: date_created__gt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityCallGetParametersDateCreatedGt'
+      - name: date_created__lt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityCallGetParametersDateCreatedLt'
+      - name: activity_at__gte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityCallGetParametersActivityAtGte'
+      - name: activity_at__lte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityCallGetParametersActivityAtLte'
+      - name: activity_at__gt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityCallGetParametersActivityAtGt'
+      - name: activity_at__lt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityCallGetParametersActivityAtLt'
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activities.calls_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Log an external Call activity
+      description: 'Use this endpoint to log calls made outside of the Close built-in VoIP system.
+
+
+        *status*: defaults to `completed`
+
+
+        *direction* (optional): `outbound` or `inbound`
+
+
+        *recording_url*: you can post a URL pointing to the MP3 recording of your call. For security reasons, we require the URL to be secure (i.e. starting with https://)'
+      tags:
+      - subpackage_activitiesCalls
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallActivity'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCallActivity'
+  /activity/call/{id}/:
+    get:
+      operationId: get
+      summary: Get a single Call activity
+      tags:
+      - subpackage_activitiesCalls
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallActivity'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    put:
+      operationId: update
+      summary: Update a Call activity
+      description: 'Most commonly used to update `note_html` or `outcome_id`. Some fields (`status`, `duration`, `direction`) cannot be updated for internal calls made through Close''s VoIP system.
+
+
+        **`note_html` and `note`**: setting one overwrites the other. If both are provided, `note_html` takes precedence. `note_html` supports rich-text HTML; `note` is plaintext only.'
+      tags:
+      - subpackage_activitiesCalls
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CallActivity'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateCallActivity'
+    delete:
+      operationId: delete
+      summary: Delete a Call activity
+      tags:
+      - subpackage_activitiesCalls
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activities.calls_delete_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    activities.calls_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.calls_delete_Response_200
+    ActivityCallGetParametersActivityAtLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCallGetParametersActivityAtLt
+    UpdateCallActivityStatus:
+      type: string
+      enum:
+      - created
+      - in-progress
+      - completed
+      - cancel
+      - no-answer
+      - busy
+      - failed
+      - timeout
+      title: UpdateCallActivityStatus
+    ActivityCallGetParametersDateCreatedLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCallGetParametersDateCreatedLt
+    activities.calls_list_Response_200:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/CallActivity'
+        has_more:
+          type: boolean
+      required:
+      - data
+      - has_more
+      title: activities.calls_list_Response_200
+    ActivityCallGetParametersActivityAtGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCallGetParametersActivityAtGt
+    CreateCallActivity:
+      type: object
+      properties:
+        activity_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        contact_id:
+          type:
+          - string
+          - 'null'
+        conversation_type_id:
+          type:
+          - string
+          - 'null'
+        created_by_id:
+          type:
+          - string
+          - 'null'
+        custom_fields:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            description: Any type
+        date_created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        direction:
+          $ref: '#/components/schemas/CreateCallActivityDirection'
+        duration:
+          type:
+          - integer
+          - 'null'
+        lead_id:
+          type:
+          - string
+          - 'null'
+        note:
+          type:
+          - string
+          - 'null'
+        note_html:
+          type:
+          - string
+          - 'null'
+        organization_id:
+          type:
+          - string
+          - 'null'
+        outcome_id:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+          description: Phone number in E.164 format
+        playbook_id:
+          type:
+          - string
+          - 'null'
+        quality_info:
+          type:
+          - string
+          - 'null'
+        recording_url:
+          type:
+          - string
+          - 'null'
+          format: uri
+        source:
+          $ref: '#/components/schemas/CreateCallActivitySource'
+        status:
+          $ref: '#/components/schemas/CreateCallActivityStatus'
+        user_id:
+          type:
+          - string
+          - 'null'
+        voicemail_url:
+          type:
+          - string
+          - 'null'
+          format: uri
+      title: CreateCallActivity
+    PhoneActivitySource:
+      type: string
+      enum:
+      - Close.io
+      - External
+      description: Source of a phone activity. Describes whether the phone activity (such as a call or an SMS) was handled by Close's telephony provider or handled externally by a 3rd party and is merely logged in Close.
+      title: PhoneActivitySource
+    CreateCallActivityDirection:
+      type: string
+      enum:
+      - inbound
+      - outbound
+      title: CreateCallActivityDirection
+    CallStatus:
+      type: string
+      enum:
+      - created
+      - in-progress
+      - completed
+      - cancel
+      - no-answer
+      - busy
+      - failed
+      - timeout
+      description: Current status of the call.
+      title: CallStatus
+    ActivityCallGetParametersActivityAtLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCallGetParametersActivityAtLte
+    ActivityCallGetParametersDateCreatedGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCallGetParametersDateCreatedGt
+    ActivityCallGetParametersDateCreatedLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCallGetParametersDateCreatedLte
+    ActivityCallGetParametersActivityAtGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCallGetParametersActivityAtGte
+    CallActivity:
+      type: object
+      properties:
+        _type:
+          type: string
+        activity_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        contact_id:
+          type:
+          - string
+          - 'null'
+        created_by:
+          type:
+          - string
+          - 'null'
+        created_by_name:
+          type:
+          - string
+          - 'null'
+        date_created:
+          type: string
+          format: date-time
+        date_updated:
+          type: string
+          format: date-time
+        id:
+          type: string
+        lead_id:
+          type:
+          - string
+          - 'null'
+        organization_id:
+          type: string
+        outcome_id:
+          type:
+          - string
+          - 'null'
+        sequence_id:
+          type:
+          - string
+          - 'null'
+        sequence_name:
+          type:
+          - string
+          - 'null'
+        sequence_subscription_id:
+          type:
+          - string
+          - 'null'
+        source:
+          $ref: '#/components/schemas/PhoneActivitySource'
+        status:
+          $ref: '#/components/schemas/CallStatus'
+        updated_by:
+          type:
+          - string
+          - 'null'
+        updated_by_name:
+          type:
+          - string
+          - 'null'
+        user_id:
+          type:
+          - string
+          - 'null'
+        user_name:
+          type:
+          - string
+          - 'null'
+        users:
+          type: array
+          items:
+            type: string
+      required:
+      - _type
+      - activity_at
+      - contact_id
+      - created_by
+      - date_created
+      - date_updated
+      - id
+      - lead_id
+      - organization_id
+      - outcome_id
+      - source
+      - status
+      - updated_by
+      - user_id
+      - users
+      title: CallActivity
+    CreateCallActivitySource:
+      type: string
+      enum:
+      - Close.io
+      - External
+      title: CreateCallActivitySource
+    CreateCallActivityStatus:
+      type: string
+      enum:
+      - created
+      - in-progress
+      - completed
+      - cancel
+      - no-answer
+      - busy
+      - failed
+      - timeout
+      title: CreateCallActivityStatus
+    ActivityCallGetParametersDateCreatedGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCallGetParametersDateCreatedGte
+    UpdateCallActivity:
+      type: object
+      properties:
+        activity_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        contact_id:
+          type:
+          - string
+          - 'null'
+        conversation_type_id:
+          type:
+          - string
+          - 'null'
+        custom_fields:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            description: Any type
+        duration:
+          type:
+          - integer
+          - 'null'
+        lead_id:
+          type:
+          - string
+          - 'null'
+        note:
+          type:
+          - string
+          - 'null'
+        note_html:
+          type:
+          - string
+          - 'null'
+        outcome_id:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+          description: Phone number in E.164 format
+        playbook_id:
+          type:
+          - string
+          - 'null'
+        quality_info:
+          type:
+          - string
+          - 'null'
+        recording_url:
+          type:
+          - string
+          - 'null'
+          format: uri
+        status:
+          $ref: '#/components/schemas/UpdateCallActivityStatus'
+        user_id:
+          type:
+          - string
+          - 'null'
+        voicemail_url:
+          type:
+          - string
+          - 'null'
+          format: uri
+      title: UpdateCallActivity
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

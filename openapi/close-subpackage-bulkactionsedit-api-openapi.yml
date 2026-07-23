@@ -1,0 +1,307 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_bulkActionsEdit API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_bulkActionsEdit
+paths:
+  /bulk_action/edit/:
+    get:
+      operationId: list
+      summary: List bulk edits
+      tags:
+      - subpackage_bulkActionsEdit
+      parameters:
+      - name: _limit
+        in: query
+        description: Number of results to return.
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: _skip
+        in: query
+        description: Number of results to skip before returning, for pagination.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bulk_actions.edit_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Initiate a new bulk edit
+      description: "Pass additional parameters depending on which `type` is passed:\n\n - `set_lead_status` will set the Lead Status on all leads. It expects:\n  - `lead_status_id` - ID of the Lead Status to use.\n - `clear_custom_field` will clear/remove/unset a specific custom field from all leads. It expects:\n  - `custom_field_id` or `custom_field_name` - ID or exact name of the custom field to remove.\n - `set_custom_field` will set/update/add a specific custom field on all leads. It expects:\n  - `custom_field_id` or `custom_field_name` - ID or exact name of the custom field to set/update.\n  - `custom_field_value` - New value. Use `custom_field_values` to pass multiple values to custom fields that support it.\n  - `custom_field_operation` - `replace`, `add`, or `remove` (defaults to `replace`). Only applicable for custom fields that accept multiple values.\n\nUse `\"send_done_email\": false` if you don't want to get a confirmation email after the bulk action is done."
+      tags:
+      - subpackage_bulkActionsEdit
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkEditAction'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /bulk_action/edit/{id}/:
+    get:
+      operationId: get
+      summary: Fetch a single bulk edit object
+      tags:
+      - subpackage_bulkActionsEdit
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkEditAction'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    bulk_actions.edit_list_Response_200:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BulkEditAction'
+        has_more:
+          type: boolean
+      required:
+      - data
+      - has_more
+      title: bulk_actions.edit_list_Response_200
+    BulkEditActionType:
+      type: string
+      enum:
+      - set_custom_field
+      - clear_custom_field
+      - set_lead_status
+      - set_contact_custom_field
+      - clear_contact_custom_field
+      - set_activity_custom_field
+      - clear_activity_custom_field
+      - set_global_custom_field
+      - clear_global_custom_field
+      - set_opportunity_custom_field
+      - clear_opportunity_custom_field
+      - set_custom_object_custom_field
+      - clear_custom_object_custom_field
+      title: BulkEditActionType
+    BulkEditAction:
+      type: object
+      properties:
+        created_by:
+          type:
+          - string
+          - 'null'
+        custom_field_name:
+          type:
+          - string
+          - 'null'
+        custom_field_value:
+          type:
+          - string
+          - 'null'
+        date_created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        date_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        id:
+          type: string
+        lead_status_id:
+          type:
+          - string
+          - 'null'
+        n_leads:
+          type:
+          - integer
+          - 'null'
+        n_leads_processed:
+          type: integer
+        n_objects:
+          type:
+          - integer
+          - 'null'
+        n_objects_processed:
+          type: integer
+        organization_id:
+          type: string
+        query:
+          type:
+          - string
+          - 'null'
+        results_limit:
+          type:
+          - integer
+          - 'null'
+        s_query:
+          type: object
+          additionalProperties:
+            description: Any type
+        send_done_email:
+          type: boolean
+        sort:
+          type: array
+          items:
+            type: object
+            additionalProperties:
+              description: Any type
+        status:
+          oneOf:
+          - $ref: '#/components/schemas/BulkActionStatus'
+          - type: 'null'
+        type:
+          $ref: '#/components/schemas/BulkEditActionType'
+        updated_by:
+          type:
+          - string
+          - 'null'
+      required:
+      - created_by
+      - custom_field_name
+      - custom_field_value
+      - date_created
+      - date_updated
+      - id
+      - lead_status_id
+      - n_leads
+      - n_leads_processed
+      - n_objects
+      - n_objects_processed
+      - organization_id
+      - query
+      - results_limit
+      - s_query
+      - send_done_email
+      - sort
+      - status
+      - type
+      - updated_by
+      title: BulkEditAction
+    BulkActionStatus:
+      type: string
+      enum:
+      - created
+      - loading
+      - processing
+      - done
+      - paused
+      - resuming
+      - error
+      title: BulkActionStatus
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

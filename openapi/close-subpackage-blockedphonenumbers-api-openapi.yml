@@ -1,0 +1,437 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_blockedPhoneNumbers API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_blockedPhoneNumbers
+paths:
+  /blocked_phone_number/:
+    get:
+      operationId: list
+      summary: List Blocked Phone Numbers
+      tags:
+      - subpackage_blockedPhoneNumbers
+      parameters:
+      - name: _limit
+        in: query
+        description: Number of results to return.
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: _skip
+        in: query
+        description: Number of results to skip before returning, for pagination.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/blocked_phone_numbers_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Create a Blocked Phone Number
+      description: 'Once this record is created, the phone number you have specified will no longer work for outbound nor inbound calls. That means:
+
+
+        * Nobody in your organization will be able to call that phone number.
+
+        * That phone number will not be able to call anybody in your organization.'
+      tags:
+      - subpackage_blockedPhoneNumbers
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlockedPhoneNumber'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateBlockedPhoneNumber'
+  /blocked_phone_number/settings/:
+    get:
+      operationId: get-settings
+      summary: Retrieve Blocked Phone Number settings
+      tags:
+      - subpackage_blockedPhoneNumbers
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlockedPhoneNumberSettings'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    put:
+      operationId: update-settings
+      summary: Update Blocked Phone Number settings
+      tags:
+      - subpackage_blockedPhoneNumbers
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlockedPhoneNumberSettings'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateBlockedPhoneNumberSettings'
+  /blocked_phone_number/{id}/:
+    get:
+      operationId: get
+      summary: Retrieve a single Blocked Phone Number
+      tags:
+      - subpackage_blockedPhoneNumbers
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlockedPhoneNumber'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    put:
+      operationId: update
+      summary: Update a Blocked Phone Number
+      tags:
+      - subpackage_blockedPhoneNumbers
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlockedPhoneNumber'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateBlockedPhoneNumber'
+    delete:
+      operationId: delete
+      summary: Delete a Blocked Phone Number
+      description: 'Once the given Blocked Phone Number record is deleted, the specified "
+
+        "phone number will again be able to make calls into your organization "
+
+        "and you''ll be able to make calls to it.'
+      tags:
+      - subpackage_blockedPhoneNumbers
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    CreateBlockedPhoneNumber:
+      type: object
+      properties:
+        phone:
+          type: string
+          description: The phone number (in E.164 format) that you wish to block.
+        reason:
+          type: string
+          description: The reason why you wish to block a given phone number.
+      required:
+      - phone
+      - reason
+      title: CreateBlockedPhoneNumber
+    UpdateBlockedPhoneNumber:
+      type: object
+      properties:
+        reason:
+          type: string
+          description: The updated reason for blocking the given phone number.
+      required:
+      - reason
+      title: UpdateBlockedPhoneNumber
+    UpdateBlockedPhoneNumberSettings:
+      type: object
+      properties:
+        reject_anonymous_inbound_calls:
+          type: boolean
+      required:
+      - reject_anonymous_inbound_calls
+      title: UpdateBlockedPhoneNumberSettings
+    blocked_phone_numbers_list_Response_200:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BlockedPhoneNumber'
+        has_more:
+          type: boolean
+      required:
+      - data
+      - has_more
+      title: blocked_phone_numbers_list_Response_200
+    BlockedPhoneNumberSettings:
+      type: object
+      properties:
+        reject_anonymous_inbound_calls:
+          type: boolean
+      required:
+      - reject_anonymous_inbound_calls
+      title: BlockedPhoneNumberSettings
+    BlockedPhoneNumber:
+      type: object
+      properties:
+        created_by:
+          type: string
+          description: User who created this Blocked Number initially.
+        date_created:
+          type: string
+          format: date-time
+          description: When this Blocked Number was created.
+        date_updated:
+          type: string
+          format: date-time
+          description: When this Blocked Number was last updated.
+        id:
+          type: string
+        organization_id:
+          type: string
+        phone:
+          type: string
+          description: The phone number (in E.164 format) to block.
+        reason:
+          type: string
+          description: The reason for blocking the given phone number.
+        updated_by:
+          type: string
+          description: User who most recently updated this Blocked Number.
+      required:
+      - created_by
+      - date_created
+      - date_updated
+      - id
+      - organization_id
+      - phone
+      - reason
+      - updated_by
+      title: BlockedPhoneNumber
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

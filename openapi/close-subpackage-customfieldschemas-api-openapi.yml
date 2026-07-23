@@ -1,0 +1,120 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_customFieldSchemas API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_customFieldSchemas
+paths:
+  /custom_field_schema/{object_type}/:
+    get:
+      operationId: get
+      summary: Retrieve a custom field schema
+      tags:
+      - subpackage_customFieldSchemas
+      parameters:
+      - name: object_type
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/custom_field_schemas_get_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    put:
+      operationId: update
+      summary: Update a custom field schema
+      description: 'To reorder Custom Fields (and thus change the order in which they are displayed in the Close UI), you simply need to supply a `fields` list with `{"id": ...}` items corresponding to the IDs of the Custom Fields belonging to the given Schema. Note that any IDs that are omitted from the list with be automatically appended to the end of the list. If you want to remove some Fields from the Schema, then delete the Custom Field or – in case of Shared Custom Fields – disassociate the Field from the given object.'
+      tags:
+      - subpackage_customFieldSchemas
+      parameters:
+      - name: object_type
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/custom_field_schemas_update_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+components:
+  schemas:
+    custom_field_schemas_update_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: custom_field_schemas_update_Response_200
+    custom_field_schemas_get_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: custom_field_schemas_get_Response_200
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

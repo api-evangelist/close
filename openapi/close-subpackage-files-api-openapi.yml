@@ -1,0 +1,79 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_files API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_files
+paths:
+  /files/upload/:
+    post:
+      operationId: create
+      summary: Generate a signed S3 POST
+      description: Get the data needed to make a request to S3 to store your file.
+      tags:
+      - subpackage_files
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/files_create_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UploadFile'
+components:
+  schemas:
+    UploadFile:
+      type: object
+      properties:
+        content_type:
+          type: string
+        filename:
+          type: string
+      required:
+      - content_type
+      - filename
+      title: UploadFile
+    files_create_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: files_create_Response_200
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

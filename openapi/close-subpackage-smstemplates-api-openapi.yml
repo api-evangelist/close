@@ -1,0 +1,346 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_smsTemplates API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_smsTemplates
+paths:
+  /sms_template/:
+    get:
+      operationId: list
+      summary: List SMS templates
+      tags:
+      - subpackage_smsTemplates
+      parameters:
+      - name: _limit
+        in: query
+        description: Number of results to return.
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: _skip
+        in: query
+        description: Number of results to skip before returning, for pagination.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/sms_templates_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Create an SMS template
+      tags:
+      - subpackage_smsTemplates
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/sms_templates_create_Response_201'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSMSTemplate'
+  /sms_template/{id}/:
+    get:
+      operationId: get
+      summary: Fetch an SMS template
+      tags:
+      - subpackage_smsTemplates
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: include_attachments
+        in: query
+        description: Include file attachments in the response.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: include_embedded
+        in: query
+        description: Include embedded templates used by Workflows.
+        required: false
+        schema:
+          type: boolean
+          default: false
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/sms_templates_get_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    put:
+      operationId: update
+      summary: Update an SMS template
+      tags:
+      - subpackage_smsTemplates
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/sms_templates_update_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSMSTemplate'
+    delete:
+      operationId: delete
+      summary: Delete an SMS template
+      tags:
+      - subpackage_smsTemplates
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    CreateSMSTemplate:
+      type: object
+      properties:
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateSMSTemplateAttachment'
+        is_shared:
+          type: boolean
+        name:
+          type: string
+        text:
+          type: string
+      required:
+      - name
+      title: CreateSMSTemplate
+    sms_templates_create_Response_201:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: sms_templates_create_Response_201
+    SMSTemplateStatus:
+      type: string
+      enum:
+      - active
+      - archived
+      title: SMSTemplateStatus
+    sms_templates_list_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: sms_templates_list_Response_200
+    UpdateSMSTemplate:
+      type: object
+      properties:
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/UpdateSMSTemplateAttachment'
+        is_shared:
+          type: boolean
+        name:
+          type: string
+        status:
+          $ref: '#/components/schemas/SMSTemplateStatus'
+        text:
+          type: string
+      title: UpdateSMSTemplate
+    sms_templates_get_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: sms_templates_get_Response_200
+    CreateSMSTemplateAttachment:
+      type: object
+      properties:
+        content_type:
+          type: string
+        filename:
+          type: string
+        url:
+          type: string
+      required:
+      - content_type
+      - filename
+      - url
+      title: CreateSMSTemplateAttachment
+    sms_templates_update_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: sms_templates_update_Response_200
+    UpdateSMSTemplateAttachment:
+      type: object
+      properties:
+        content_type:
+          type: string
+        filename:
+          type: string
+        url:
+          type: string
+      required:
+      - content_type
+      - filename
+      - url
+      title: UpdateSMSTemplateAttachment
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

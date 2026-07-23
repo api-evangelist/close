@@ -1,0 +1,1006 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_activitiesEmails API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_activitiesEmails
+paths:
+  /activity/email/:
+    get:
+      operationId: list
+      summary: List or filter all Email activities
+      description: You'll get one object per email message.
+      tags:
+      - subpackage_activitiesEmails
+      parameters:
+      - name: _limit
+        in: query
+        description: Number of results to return.
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: _skip
+        in: query
+        description: Number of results to skip before returning, for pagination.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: id__in
+        in: query
+        description: Filter by activity IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: lead_id
+        in: query
+        description: Filter by lead IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: contact_id
+        in: query
+        description: Filter by contact IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: user_id
+        in: query
+        description: Filter by user IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: organization_id
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: _type
+        in: query
+        description: Filter by activity type, e.g. Call (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: date_created__gte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityEmailGetParametersDateCreatedGte'
+      - name: date_created__lte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityEmailGetParametersDateCreatedLte'
+      - name: date_created__gt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityEmailGetParametersDateCreatedGt'
+      - name: date_created__lt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityEmailGetParametersDateCreatedLt'
+      - name: activity_at__gte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityEmailGetParametersActivityAtGte'
+      - name: activity_at__lte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityEmailGetParametersActivityAtLte'
+      - name: activity_at__gt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityEmailGetParametersActivityAtGt'
+      - name: activity_at__lt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityEmailGetParametersActivityAtLt'
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activities.emails_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Create an Email activity
+      description: "*status* must be one of the following:\n\n - `inbox` to log an already received email.\n - `draft` to create a draft email.\n - `scheduled` to send an email at a scheduled date and time, which must be specified in the `date_scheduled` field.\n - `outbox` to actually **send** an email. To delay email sending by a few seconds (to allow undo), specify `send_in` in seconds (must be less than 60).\n - `sent` to log an already sent email.\n\nOnly drafts can be modified, and their status can be changed to `scheduled` (to send later) or `outbox` (to send immediately). Scheduled emails, or emails in outbox that weren't sent yet can be canceled by setting the status back to `draft`.\n\nFor scheduled, outbox, or sent emails, a `followup_date` may be posted, which will have Close create an email followup task if no response was received.\n\nWe'll render an Email Template server-side if you include a `template_id` _without_ including `body_text` or `body_html` in your POST.\n\nTo specify both a sender name and a sender email address when posting an email, you can use the `sender` field with the format `\"sender\": \"\"John Smith\" <emailaddress@example.com>\"`\n\nThe `sender` field is **required** for emails with status `inbox`, `scheduled`, `outbox`, or `error`. It may be omitted for `draft` (since the sender can be specified later before sending) and `sent` (where it defaults to the email address of the `user` associated with the email or the owner of the API key).\n\nTo include an attachment, you must first upload the file to Close using the [Files API](https://developer.close.com/api/resources/files). Then, add an object to the `attachments` array with the following fields: `url`, `filename`, `content_type`, and `size`. The `url` should be the URL provided in the `download.url` field of the response from the [Files API](https://developer.close.com/api/resources/files). It must begin `https://app.close.com/go/file/`."
+      tags:
+      - subpackage_activitiesEmails
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailActivity'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEmailActivity'
+  /activity/email/{id}/:
+    get:
+      operationId: get
+      summary: Get a single Email activity
+      tags:
+      - subpackage_activitiesEmails
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailActivity'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    put:
+      operationId: update
+      summary: Update an Email activity
+      description: 'This can be used to modify a draft or send it once the draft is complete.
+
+
+        When changing a draft''s status to `scheduled` or `outbox`, the `sender` field is required if not already set on the email.'
+      tags:
+      - subpackage_activitiesEmails
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailActivity'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateEmailActivity'
+    delete:
+      operationId: delete
+      summary: Delete an Email activity
+      tags:
+      - subpackage_activitiesEmails
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activities.emails_delete_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    ActivityEmailGetParametersDateCreatedLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityEmailGetParametersDateCreatedLte
+    UpdateEmailActivity:
+      type: object
+      properties:
+        account_id:
+          type:
+          - string
+          - 'null'
+        activity_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        attachments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/UpdateEmailActivityAttachmentsItems'
+        bcc:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        body_html:
+          type:
+          - string
+          - 'null'
+        body_text:
+          type:
+          - string
+          - 'null'
+        cc:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        contact_id:
+          type:
+          - string
+          - 'null'
+        followup_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        followup_sequence_add_cc_bcc:
+          type:
+          - boolean
+          - 'null'
+        followup_sequence_delay:
+          type:
+          - integer
+          - 'null'
+        followup_sequence_id:
+          type:
+          - string
+          - 'null'
+        in_reply_to_id:
+          type:
+          - string
+          - 'null'
+        opens:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/UpdateEmailActivityOpensItems'
+        sender:
+          type:
+          - string
+          - 'null'
+          format: email
+        status:
+          $ref: '#/components/schemas/UpdateEmailActivityStatus'
+        subject:
+          type:
+          - string
+          - 'null'
+        template_id:
+          type:
+          - string
+          - 'null'
+        to:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        user_id:
+          type:
+          - string
+          - 'null'
+      title: UpdateEmailActivity
+    CommunicationDirection:
+      type: string
+      enum:
+      - incoming
+      - outgoing
+      description: Direction of communication. Outgoing means the communication flowing from the user to the lead/contact. Inbound means the opposite.
+      title: CommunicationDirection
+    MessageStatus:
+      type: string
+      enum:
+      - inbox
+      - draft
+      - scheduled
+      - outbox
+      - sent
+      - error
+      description: Status of a message, such as Email or SMS.
+      title: MessageStatus
+    CreateEmailActivityStatus:
+      type: string
+      enum:
+      - inbox
+      - draft
+      - scheduled
+      - outbox
+      - sent
+      - error
+      title: CreateEmailActivityStatus
+    UpdateEmailActivityOpensItems:
+      type: object
+      properties:
+        opened_at:
+          type: string
+          format: date-time
+      required:
+      - opened_at
+      title: UpdateEmailActivityOpensItems
+    activities.emails_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.emails_delete_Response_200
+    ActivityEmailGetParametersDateCreatedLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityEmailGetParametersDateCreatedLt
+    ActivityEmailGetParametersActivityAtGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityEmailGetParametersActivityAtGt
+    ActivityEmailGetParametersDateCreatedGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityEmailGetParametersDateCreatedGte
+    ActivityEmailGetParametersActivityAtGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityEmailGetParametersActivityAtGte
+    CreateEmailActivity:
+      type: object
+      properties:
+        account_id:
+          type:
+          - string
+          - 'null'
+        activity_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        attachments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CreateEmailActivityAttachmentsItems'
+        bcc:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        body_html:
+          type:
+          - string
+          - 'null'
+        body_text:
+          type:
+          - string
+          - 'null'
+        cc:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        contact_id:
+          type:
+          - string
+          - 'null'
+        created_by_id:
+          type:
+          - string
+          - 'null'
+        date_created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        followup_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        followup_sequence_add_cc_bcc:
+          type:
+          - boolean
+          - 'null'
+        followup_sequence_delay:
+          type:
+          - integer
+          - 'null'
+        followup_sequence_id:
+          type:
+          - string
+          - 'null'
+        in_reply_to_id:
+          type:
+          - string
+          - 'null'
+        lead_id:
+          type: string
+        opens:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CreateEmailActivityOpensItems'
+        organization_id:
+          type:
+          - string
+          - 'null'
+        sender:
+          type:
+          - string
+          - 'null'
+          format: email
+        status:
+          $ref: '#/components/schemas/CreateEmailActivityStatus'
+        subject:
+          type:
+          - string
+          - 'null'
+        template_id:
+          type:
+          - string
+          - 'null'
+        to:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        user_id:
+          type:
+          - string
+          - 'null'
+      required:
+      - lead_id
+      - status
+      title: CreateEmailActivity
+    UpdateEmailActivityAttachmentsItems:
+      type: object
+      properties:
+        content_id:
+          type:
+          - string
+          - 'null'
+        content_type:
+          type:
+          - string
+          - 'null'
+        filename:
+          type: string
+        inline_only:
+          type: boolean
+        size:
+          type: integer
+        url:
+          type: string
+          format: uri
+      required:
+      - filename
+      - size
+      - url
+      title: UpdateEmailActivityAttachmentsItems
+    Attachment:
+      type: object
+      properties:
+        content_type:
+          type:
+          - string
+          - 'null'
+        filename:
+          type:
+          - string
+          - 'null'
+        size:
+          type:
+          - integer
+          - 'null'
+        thumbnail_url:
+          type:
+          - string
+          - 'null'
+        url:
+          type: string
+      required:
+      - content_type
+      - filename
+      - size
+      - url
+      title: Attachment
+    UpdateEmailActivityStatus:
+      type: string
+      enum:
+      - inbox
+      - draft
+      - scheduled
+      - outbox
+      - sent
+      - error
+      title: UpdateEmailActivityStatus
+    ActivityEmailGetParametersDateCreatedGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityEmailGetParametersDateCreatedGt
+    activities.emails_list_Response_200:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailActivity'
+        has_more:
+          type: boolean
+      required:
+      - data
+      - has_more
+      title: activities.emails_list_Response_200
+    CreateEmailActivityOpensItems:
+      type: object
+      properties:
+        opened_at:
+          type: string
+          format: date-time
+      required:
+      - opened_at
+      title: CreateEmailActivityOpensItems
+    ActivityEmailGetParametersActivityAtLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityEmailGetParametersActivityAtLte
+    ActivityEmailGetParametersActivityAtLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityEmailGetParametersActivityAtLt
+    CreateEmailActivityAttachmentsItems:
+      type: object
+      properties:
+        content_id:
+          type:
+          - string
+          - 'null'
+        content_type:
+          type:
+          - string
+          - 'null'
+        filename:
+          type: string
+        inline_only:
+          type: boolean
+        size:
+          type: integer
+        url:
+          type: string
+          format: uri
+      required:
+      - filename
+      - size
+      - url
+      title: CreateEmailActivityAttachmentsItems
+    EmailActivity:
+      type: object
+      properties:
+        _type:
+          type: string
+        activity_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        agent_action_reason:
+          type:
+          - string
+          - 'null'
+        agent_config_id:
+          type:
+          - string
+          - 'null'
+        attachments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/Attachment'
+        bcc:
+          type: array
+          items:
+            type: string
+        body_html:
+          type:
+          - string
+          - 'null'
+        body_preview:
+          type:
+          - string
+          - 'null'
+        body_text:
+          type:
+          - string
+          - 'null'
+        bulk_email_action_id:
+          type:
+          - string
+          - 'null'
+        cc:
+          type: array
+          items:
+            type: string
+        contact_id:
+          type:
+          - string
+          - 'null'
+        created_by:
+          type:
+          - string
+          - 'null'
+        created_by_name:
+          type:
+          - string
+          - 'null'
+        date_created:
+          type: string
+          format: date-time
+        date_scheduled:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        date_sent:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        date_updated:
+          type: string
+          format: date-time
+        direction:
+          oneOf:
+          - $ref: '#/components/schemas/CommunicationDirection'
+          - type: 'null'
+        email_account_id:
+          type:
+          - string
+          - 'null'
+        envelope:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            description: Any type
+        followup_sequence_add_cc_bcc:
+          type: boolean
+        followup_sequence_delay:
+          type:
+          - integer
+          - 'null'
+        followup_sequence_id:
+          type:
+          - string
+          - 'null'
+        has_reply:
+          type: boolean
+        id:
+          type: string
+        in_reply_to_id:
+          type:
+          - string
+          - 'null'
+        lead_id:
+          type:
+          - string
+          - 'null'
+        message_ids:
+          type: array
+          items:
+            type: string
+        need_smtp_credentials:
+          type: boolean
+        opens:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+            additionalProperties:
+              type: string
+        opens_summary:
+          type:
+          - string
+          - 'null'
+        organization_id:
+          type: string
+        references:
+          type: array
+          items:
+            type: string
+        send_as_id:
+          type:
+          - string
+          - 'null'
+        send_attempts:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+            additionalProperties:
+              type: string
+        sender:
+          type:
+          - string
+          - 'null'
+        sequence_id:
+          type:
+          - string
+          - 'null'
+        sequence_name:
+          type:
+          - string
+          - 'null'
+        sequence_subscription_id:
+          type:
+          - string
+          - 'null'
+        status:
+          $ref: '#/components/schemas/MessageStatus'
+        subject:
+          type:
+          - string
+          - 'null'
+        template_id:
+          type:
+          - string
+          - 'null'
+        template_name:
+          type:
+          - string
+          - 'null'
+        thread_id:
+          type:
+          - string
+          - 'null'
+        to:
+          type: array
+          items:
+            type: string
+        updated_by:
+          type:
+          - string
+          - 'null'
+        updated_by_name:
+          type:
+          - string
+          - 'null'
+        user_id:
+          type:
+          - string
+          - 'null'
+        user_name:
+          type:
+          - string
+          - 'null'
+        users:
+          type: array
+          items:
+            type: string
+      required:
+      - _type
+      - activity_at
+      - bcc
+      - body_html
+      - body_text
+      - bulk_email_action_id
+      - cc
+      - contact_id
+      - created_by
+      - date_created
+      - date_scheduled
+      - date_sent
+      - date_updated
+      - direction
+      - followup_sequence_add_cc_bcc
+      - followup_sequence_delay
+      - has_reply
+      - id
+      - in_reply_to_id
+      - lead_id
+      - message_ids
+      - need_smtp_credentials
+      - opens_summary
+      - organization_id
+      - references
+      - send_as_id
+      - sender
+      - status
+      - subject
+      - template_id
+      - thread_id
+      - to
+      - updated_by
+      - user_id
+      - users
+      title: EmailActivity
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

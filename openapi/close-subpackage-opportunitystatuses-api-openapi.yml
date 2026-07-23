@@ -1,0 +1,229 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_opportunityStatuses API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_opportunityStatuses
+paths:
+  /status/opportunity/:
+    get:
+      operationId: list
+      summary: List opportunity statuses for your organization
+      tags:
+      - subpackage_opportunityStatuses
+      parameters:
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/opportunity_statuses_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Create an opportunity status
+      description: Create a new opportunity status. The status must belong to a pipeline (specified by `pipeline_id`) and have a `type` of `active`, `won`, or `lost`.
+      tags:
+      - subpackage_opportunityStatuses
+      parameters:
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/opportunity_statuses_create_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /status/opportunity/{id}/:
+    put:
+      operationId: update
+      summary: Rename an opportunity status
+      tags:
+      - subpackage_opportunityStatuses
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/opportunity_statuses_update_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+    delete:
+      operationId: delete
+      summary: Delete an opportunity status
+      description: You should make sure no opportunities are assigned this status, first.
+      tags:
+      - subpackage_opportunityStatuses
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/opportunity_statuses_delete_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    opportunity_statuses_create_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: opportunity_statuses_create_Response_200
+    opportunity_statuses_update_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: opportunity_statuses_update_Response_200
+    opportunity_statuses_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: opportunity_statuses_delete_Response_200
+    opportunity_statuses_list_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: opportunity_statuses_list_Response_200
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

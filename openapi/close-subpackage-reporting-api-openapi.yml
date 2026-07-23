@@ -1,0 +1,513 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_reporting API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_reporting
+paths:
+  /report/activity/:
+    post:
+      operationId: get-activity
+      summary: Get an activity report
+      description: "The activity report returns the organization's metrics per time period (**overview** report) or user (**comparison** report).\n\nEvery report accepts the following parameters:\n\n* `datetime_range`: a time range to fetch data for. Either this field or `relative_range` needs to be specified.\n* `relative_range`: a relative time range to fetch data for. The allowed values are: `today`, `this-week`, `this-month`, `this-quarter`, `this-year`, `yesterday`, `last-week`, `last-month`, `last-quarter`, `last-year`, and `all-time`. Either this field or `datetime_range` needs to be specified.\n* `query`: a query to apply to the report to filter out data.\n  The value of the field is a dictionary with the key `type` and any type-specific keys. For now only the type `saved_search` is allowed which takes the extra key `saved_search_id` to specify the ID of a saved search. This parameter is *optional*.\n* `users`: a list of user IDs to limit the report results to. This parameter is *optional*.\n* `type`: the type of the report. The available values are `overview` and `comparison`.\n  This parameter is *mandatory*.\n* `metrics`: a list of metrics (see [above](#list-the-predefined-metrics-used-in-activity-reports)) to fetch for the report. This parameter is *mandatory*.\n\nThe report can be requested either in a JSON format or in a CSV file. The format can be specified with the `accept` header."
+      tags:
+      - subpackage_reporting
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/reporting_getActivity_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /report/activity/metrics/:
+    get:
+      operationId: list-activity-metrics
+      summary: List the predefined metrics used in activity reports
+      description: List available metrics that can be used in activity reports.
+      tags:
+      - subpackage_reporting
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/reporting_listActivityMetrics_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+  /report/custom/{org_id}/:
+    get:
+      operationId: get-custom
+      summary: Get custom report (Explorer)
+      description: "This endpoint returns data that allows graphing of arbitrary metrics and is what powers \"Explorer\" in the UI.\n\n - `query` is an optional search query filter. When reporting on leads, any regular lead search query may be used. When reporting on activities or opportunities, only properties of the chosen object type may be used. For example, `direction:incoming` may be used if `x` starts with `email.`. Defaults to `*`, which includes all objects.\n - `y` is made up of the object type and field which is reported on the Y axis. For example the value `lead.count` (used by default) may be used to graph the number of leads, or a numeric field may be used. Examples: `call.duration` (for call length), `opportunity.value` (for value of opportunities).\n - `x` is the field which is reported on the X axis, for example \"lead.custom.MRR\" or \"opportunity.date_created\".\n - `interval`: Graph interval, i.e. the precision of the X axis. For time based graphs (`x` is a date field), one of `auto`, `hour`, `day`, `week`, `month`, `quarter`, `year` (defaults to `auto`, which is chosen based on `start` and `end`). For graphs with a numeric X axis, an integer number can be specified to indicate the histogram interval (`auto` by default).\n - `group_by`: Optional field name by which the report will be grouped. When grouping, a separate series will be returned for each group. By default no grouping is applied.\n - `transform_y`: Transformation function that gets applied to the `y` parameter. One of `sum` (default), `avg`, `min`, or `max`. Does not apply for `.count` `y` values if `x` is of the same object type.\n - `start`: Date or integer of the start of the X axis range. For dates, defaults to the date of creation of your organization.\n - `end`: Date or integer of the end of the X axis range. For dates, defaults to now.\n\n To get a full list of fields that can be used, do a GET to `/report/custom/fields/`. Only the `number` data type can be used for the `y` parameter."
+      tags:
+      - subpackage_reporting
+      parameters:
+      - name: org_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: query
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: x
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: y
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: group_by
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: transform_y
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ReportCustomOrgIdGetParametersTransformY'
+      - name: interval
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: start
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: end
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/reporting_getCustom_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+  /report/funnel/opportunity/stages/:
+    post:
+      operationId: get-funnel-stages
+      summary: Get a funnel report (stages)
+      description: "The opportunity funnel \"stages\" report returns the pipeline funnel's metrics for the selected opportunities, aggregated (JSON format only) and per-user (JSON and CSV formats).\n\nEvery report accepts the following parameters:\n\n* `pipeline`: ID of the pipeline defining the funnel statuses.\n* `type`: the type of the report. The available values are `created-cohort` and `active-stage-cohort`.\n* `report_relative_range`: a relative time range to fetch data for. The allowed values are: `today`, `this-week`, `this-month`, `this-quarter`, `this-year`, `yesterday`, `last-week`, `last-month`, `last-quarter`, `last-year`, and `all-time`.\n* `report_datetime_range`: a time range to fetch data for.\n* `cohort_relative_range`: a relative time range defining the cohort of created opportunities to fetch data for, by date of creation of those opportunities. The allowed values are: `today`, `this-week`, `this-month`, `this-quarter`, `this-year`, `yesterday`, `last-week`, `last-month`, `last-quarter`, `last-year`, and `all-time`. Either this field or `cohort_datetime_range` needs to be specified for `created-cohort` reports. Its value will be ignored for `active-stage-cohort` reports.\n* `cohort_datetime_range`: a time range defining the cohort of created opportunities to fetch data for, by date of creation of those opportunities. Either this field or `cohort_relative_range` needs to be specified for `created-cohort` reports. Its value will be ignored for `active-stage-cohort` reports.\n* `compared_relative_range`: a relative time range to fetch comparison data for. Only allowed in combination with `report_relative_range` (for `active-stage-cohort` reports) or `cohort_relative_range` (for `created-cohort` reports). The allowed values are: `today`, `this-week`, `this-month`, `this-quarter`, `this-year`, `yesterday`, `last-week`, `last-month`, `last-quarter`, `last-year`, and `all-time`.\n* `compared_datetime_range`: a relative time range to fetch comparison data for. Only allowed in combination with `report_datetime_range` (for `active-stage-cohort` reports) or `cohort_datetime_range` (for `created-cohort` reports). The allowed values are: `same-days-last-week`, `same-days-last-month`, `same-days-last-quarter`, `same-days-last-year`.\n* `compared_custom_range`: a time range to fetch comparison data for.\n* `query`: a query to apply to the report to filter out data.\n  The value of the field is a dictionary with the key `type` and any type-specific keys. For now only the type `saved_search` is allowed which takes the extra key `saved_search_id` to specify the ID of a saved search. This parameter is *optional*.\n* `users`: a list of user IDs or group IDs to limit the report results to. When it's empty, the report will include all the available users. This parameter is *optional*.\n\nThe report can be requested either in JSON format or in CSV format. The format can be specified with the `accept` header.\n\nIn JSON format, it includes aggregated and per-user data. When requested in CSV format, it includes only per-user data.\n\nWhen `compared_datetime_range`, `compared_relative_range`, or `compared_custom_range` are used, the report returned is the compared one, not the base one."
+      tags:
+      - subpackage_reporting
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/reporting_getFunnelStages_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /report/funnel/opportunity/totals/:
+    post:
+      operationId: get-funnel-totals
+      summary: Get a funnel report (totals)
+      description: "The opportunity funnel \"totals\" report returns the pipeline funnel's metrics for the selected opportunities, aggregated (JSON format only) and per-user (JSON and CSV formats).\n\nEvery report accepts the following parameters:\n\n* `pipeline`: ID of the pipeline defining the funnel statuses.\n* `type`: the type of the report. The available values are `created-cohort` and `active-stage-cohort`.\n* `report_relative_range`: a relative time range to fetch data for. The allowed values are: `today`, `this-week`, `this-month`, `this-quarter`, `this-year`, `yesterday`, `last-week`, `last-month`, `last-quarter`, `last-year`, and `all-time`.\n* `report_datetime_range`: a time range to fetch data for.\n* `cohort_relative_range`: a relative time range defining the cohort of created opportunities to fetch data for, by date of creation of those opportunities. The allowed values are: `today`, `this-week`, `this-month`, `this-quarter`, `this-year`, `yesterday`, `last-week`, `last-month`, `last-quarter`, `last-year`, and `all-time`. Either this field or `cohort_datetime_range` needs to be specified for `created-cohort` reports. Its value will be ignored for `active-stage-cohort` reports.\n* `cohort_datetime_range`: a time range defining the cohort of created opportunities to fetch data for, by date of creation of those opportunities. Either this field or `cohort_relative_range` needs to be specified for `created-cohort` reports. Its value will be ignored for `active-stage-cohort` reports.\n* `compared_relative_range`: a relative time range to fetch comparison data for. Only allowed in combination with `report_relative_range` (for `active-stage-cohort` reports) or `cohort_relative_range` (for `created-cohort` reports). The allowed values are: `today`, `this-week`, `this-month`, `this-quarter`, `this-year`, `yesterday`, `last-week`, `last-month`, `last-quarter`, `last-year`, and `all-time`.\n* `compared_datetime_range`: a relative time range to fetch comparison data for. Only allowed in combination with `report_datetime_range` (for `active-stage-cohort` reports) or `cohort_datetime_range` (for `created-cohort` reports). The allowed values are: `same-days-last-week`, `same-days-last-month`, `same-days-last-quarter`, `same-days-last-year`.\n* `compared_custom_range`: a time range to fetch comparison data for.\n* `query`: a query to apply to the report to filter out data.\n  The value of the field is a dictionary with the key `type` and any type-specific keys. For now only the type `saved_search` is allowed which takes the extra key `saved_search_id` to specify the ID of a saved search. This parameter is *optional*.\n* `users`: a list of user IDs or group IDs to limit the report results to. When it's empty, the report will include all the available users. This parameter is *optional*.\n\nThe report can be requested either in JSON format or in CSV format. The format can be specified with the `accept` header.\n\nIn JSON format, it includes aggregated and per-user data. When requested in CSV format, it includes only per-user data.\n\nWhen `compared_datetime_range`, `compared_relative_range`, or `compared_custom_range` are used, the report returned is the compared one, not the base one."
+      tags:
+      - subpackage_reporting
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/reporting_getFunnelTotals_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /report/sent_emails/{org_id}/:
+    get:
+      operationId: get-sent-emails
+      summary: Get sent emails report
+      tags:
+      - subpackage_reporting
+      parameters:
+      - name: org_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: date_start
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: date_end
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: user_id
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/reporting_getSentEmails_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+  /report/statuses/lead/{org_id}/:
+    get:
+      operationId: get-lead-statuses
+      summary: Get lead status change report
+      description: "Get a lead status change report.\n\nThe date range is optional. A report may be requested\nfor a specific time period or overall. You can specify\neither a `query` or `smart_view_id` (but not both) to\nfilter leads included in the report.\n\nThe following fields are returned (when requesting an\noverall report, some inapplicable fields will not be\nreturned):\n\n* `status_overview`: A list of all statuses with:\n    * `status_id`, `status_label`,\n      `status_is_deleted`: The ID and label of the\n      status, and whether it was deleted.\n    * `started`: Number of leads in this status at\n      the start of the period.\n    * `ended`: Number in this status at the end.\n    * `change`: Net change during the period\n      (`ended` minus `started`).\n    * `change_percent`: Net change in percent.\n    * `gained`: Number that were not in this status\n      at the beginning but were at the end.\n    * `lost`: Number that were in this status at the\n      beginning but were not at the end.\n    * `entered`: Number that entered this status at\n      some point during the period.\n    * `left`: Number that left this status at some\n      point during the period.\n    * `_queries`: A dictionary containing search\n      queries for the different states (`started`,\n      `ended`, `gained`, `lost`, `entered`, `left`).\n    * `_leads_page_urls`: A dictionary containing\n      paths to the lead search UI page.\n* `status_transitions`: A list of all status\n  transitions (aggregated by start/end status) for\n  the given period with:\n    * `from_status_id`, `from_status_label`,\n      `from_status_is_deleted`: Starting status\n      (null for created leads).\n    * `to_status_id`, `to_status_label`,\n      `to_status_is_deleted`: Ending status.\n    * `count`: The number that transitioned.\n    * `_query`: The search query for those records.\n    * `_leads_page_url`: Path to the search UI page.\n* `status_transitions_summary`: Status transitions\n  summarized for the period. E.g. a lead that went\n  A→B→C is counted as A→C."
+      tags:
+      - subpackage_reporting
+      parameters:
+      - name: org_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: date_start
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: date_end
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: query
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: smart_view_id
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/reporting_getLeadStatuses_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+  /report/statuses/opportunity/{org_id}/:
+    get:
+      operationId: get-opportunity-statuses
+      summary: Get opportunity status change report
+      description: "Get an opportunity status change report.\n\nThe date range is optional. A report may be requested\nfor a specific time period or overall. You can specify\neither a `query` or `smart_view_id` (but not both) to\nfilter opportunities included in the report. The\nreport may optionally be filtered by the opportunity\nuser.\n\nThe following fields are returned (when requesting an\noverall report, some inapplicable fields will not be\nreturned):\n\n* `status_overview`: A list of all statuses with:\n    * `status_id`, `status_label`,\n      `status_is_deleted`: The ID and label of the\n      status, and whether it was deleted.\n    * `started`: Number of opportunities in this\n      status at the start of the period.\n    * `ended`: Number in this status at the end.\n    * `change`: Net change during the period\n      (`ended` minus `started`).\n    * `change_percent`: Net change in percent.\n    * `gained`: Number that were not in this status\n      at the beginning but were at the end.\n    * `lost`: Number that were in this status at the\n      beginning but were not at the end.\n    * `entered`: Number that entered this status at\n      some point during the period.\n    * `left`: Number that left this status at some\n      point during the period.\n    * `_queries`: A dictionary containing search\n      queries for the different states (`started`,\n      `ended`, `gained`, `lost`, `entered`, `left`).\n      Search queries are wrapped in a nested\n      `opportunity(...)` clause. To pass the query\n      to the opportunities API endpoint, use only\n      the query within the parentheses.\n    * `_leads_page_urls`: A dictionary containing\n      paths to the lead search UI page.\n    * `_opportunities_page_urls`: A dictionary\n      containing paths to the opportunity UI page.\n* `status_transitions`: A list of all status\n  transitions (aggregated by start/end status) for\n  the given period with:\n    * `from_status_id`, `from_status_label`,\n      `from_status_is_deleted`: Starting status\n      (null for created opportunities).\n    * `to_status_id`, `to_status_label`,\n      `to_status_is_deleted`: Ending status.\n    * `count`: The number that transitioned.\n    * `_query`: The search query for those records.\n    * `_leads_page_url`: Path to the search UI page.\n    * `_opportunities_page_url`: Path to the\n      opportunity UI page.\n* `status_transitions_summary`: Status transitions\n  summarized for the period. E.g. an opportunity\n  that went A→B→C is counted as A→C."
+      tags:
+      - subpackage_reporting
+      parameters:
+      - name: org_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: date_start
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: date_end
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: query
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: smart_view_id
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: user_id
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/reporting_getOpportunityStatuses_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    reporting_getActivity_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: reporting_getActivity_Response_200
+    reporting_getSentEmails_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: reporting_getSentEmails_Response_200
+    reporting_listActivityMetrics_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: reporting_listActivityMetrics_Response_200
+    reporting_getFunnelTotals_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: reporting_getFunnelTotals_Response_200
+    reporting_getCustom_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: reporting_getCustom_Response_200
+    reporting_getFunnelStages_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: reporting_getFunnelStages_Response_200
+    ReportCustomOrgIdGetParametersTransformY:
+      type: string
+      enum:
+      - sum
+      - avg
+      - min
+      - max
+      title: ReportCustomOrgIdGetParametersTransformY
+    reporting_getOpportunityStatuses_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: reporting_getOpportunityStatuses_Response_200
+    reporting_getLeadStatuses_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: reporting_getLeadStatuses_Response_200
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

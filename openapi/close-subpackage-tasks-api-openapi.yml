@@ -1,0 +1,862 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_tasks API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_tasks
+paths:
+  /task/:
+    get:
+      operationId: list
+      summary: List or filter tasks
+      description: 'The `view` parameter can be used to conveniently access the different task views. It accepts one of the following values:
+
+
+        * `inbox`: Shows incomplete tasks up to the end of the user''s day only (taking the time zone into account).
+
+        * `future`: Shows incomplete tasks starting from the user''s tomorrow only (taking the time zone into account).
+
+        * `archive`: Shows complete tasks only.
+
+
+        Note that a `view` value of `inbox` or `future` will override any `date__lt` or `date__gte` parameters included in the same request.
+
+
+        The `_order_by` field allows ordering by `date` or `date_created` (descending order by prepending a minus, e.g. `_order_by=-date`).'
+      tags:
+      - subpackage_tasks
+      parameters:
+      - name: _limit
+        in: query
+        description: Number of results to return.
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: _skip
+        in: query
+        description: Number of results to skip before returning, for pagination.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: assigned_to
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: format
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: id
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: id__in
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: is_complete
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: lead_id
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: _order_by
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: organization_id
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: _type
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: _type__in
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: view
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date__lt
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date__lte
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date__gt
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date__gte
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: due_date
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: due_date__lt
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: due_date__lte
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: due_date__gt
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: due_date__gte
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date_created__lt
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date_created__lte
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date_created__gt
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date_created__gte
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date_updated__lt
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date_updated__lte
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date_updated__gt
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date_updated__gte
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tasks_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Create a task
+      description: Provide the type of task to be created in the `_type` field. Currently only tasks of type `lead` and `outgoing_call` can be created.
+      tags:
+      - subpackage_tasks
+      parameters:
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tasks_create_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+    put:
+      operationId: bulk-update
+      summary: Bulk-update tasks
+      description: 'Any of the filters of the GET endpoint may be used. For example, to update multiple tasks with given IDs A, B and C, `id__in=A,B,C` would be passed.
+
+
+        Only the `assigned_to`, `date` and `is_complete` fields may be updated.'
+      tags:
+      - subpackage_tasks
+      parameters:
+      - name: assigned_to
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: format
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: id
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: id__in
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: is_complete
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: lead_id
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: _order_by
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: organization_id
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: _type
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: _type__in
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: view
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date__lt
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date__lte
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date__gt
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date__gte
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: due_date
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: due_date__lt
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: due_date__lte
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: due_date__gt
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: due_date__gte
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date_created__lt
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date_created__lte
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date_created__gt
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date_created__gte
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date_updated__lt
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date_updated__lte
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date_updated__gt
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: date_updated__gte
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tasks_bulkUpdate_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkUpdateNotifications'
+  /task/{id}/:
+    get:
+      operationId: get
+      summary: Fetch a task's details
+      tags:
+      - subpackage_tasks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tasks_get_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    put:
+      operationId: update
+      summary: Update a task
+      description: The `assigned_to`, `date` (either a date or a date-time), and `is_complete` fields may be updated on all tasks. If the task type is `lead`, the `text` field may also be modified.
+      tags:
+      - subpackage_tasks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tasks_update_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateNotification'
+    delete:
+      operationId: delete
+      summary: Delete a task
+      tags:
+      - subpackage_tasks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/tasks_delete_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    tasks_update_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: tasks_update_Response_200
+    BulkUpdateNotificationsDate:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: BulkUpdateNotificationsDate
+    UpdateNotificationDueDate:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: UpdateNotificationDueDate
+    tasks_get_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: tasks_get_Response_200
+    UpdateNotification:
+      type: object
+      properties:
+        agent_config_id:
+          type:
+          - string
+          - 'null'
+        assigned_to:
+          type: string
+        contact_id:
+          type:
+          - string
+          - 'null'
+        created_by:
+          type: string
+        date:
+          $ref: '#/components/schemas/UpdateNotificationDate'
+        due_date:
+          $ref: '#/components/schemas/UpdateNotificationDueDate'
+        is_complete:
+          type: boolean
+        is_dateless:
+          type: boolean
+        lead_id:
+          type: string
+        organization_id:
+          type: string
+        priority:
+          $ref: '#/components/schemas/TaskPriority'
+        resolution:
+          oneOf:
+          - $ref: '#/components/schemas/NotificationResolution'
+          - type: 'null'
+        text:
+          type: string
+      title: UpdateNotification
+    BulkUpdateNotifications:
+      type: object
+      properties:
+        assigned_to:
+          type: string
+        date:
+          $ref: '#/components/schemas/BulkUpdateNotificationsDate'
+        is_complete:
+          type: boolean
+        organization_id:
+          type: string
+        priority:
+          $ref: '#/components/schemas/TaskPriority'
+        resolution:
+          oneOf:
+          - $ref: '#/components/schemas/NotificationResolution'
+          - type: 'null'
+        text:
+          type: string
+      title: BulkUpdateNotifications
+    tasks_create_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: tasks_create_Response_200
+    UpdateNotificationDate:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: UpdateNotificationDate
+    TaskPriority:
+      type: string
+      enum:
+      - high
+      - medium
+      title: TaskPriority
+    tasks_list_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: tasks_list_Response_200
+    tasks_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: tasks_delete_Response_200
+    tasks_bulkUpdate_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: tasks_bulkUpdate_Response_200
+    NotificationResolution:
+      type: string
+      enum:
+      - abandoned
+      - skipped
+      title: NotificationResolution
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

@@ -1,0 +1,880 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_activitiesSms API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_activitiesSms
+paths:
+  /activity/sms/:
+    get:
+      operationId: list
+      summary: List or filter all SMS activities
+      description: 'Get a list of matching SMS activities.
+
+
+        MMS messages are considered SMS messages with attachments. Attachments have identical fields to email attachments (`url`, `filename`, `size` and `content_type`), a `media_id` uniquely identifying an attachment, and if Close was able to generate a thumbnail, a `thumbnail_url` too.
+
+
+        Accessing `url` or `thumbnail_url` requires an authenticated session and leads to a temporarily signed S3 URL.'
+      tags:
+      - subpackage_activitiesSms
+      parameters:
+      - name: _limit
+        in: query
+        description: Number of results to return.
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: _skip
+        in: query
+        description: Number of results to skip before returning, for pagination.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: id__in
+        in: query
+        description: Filter by activity IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: lead_id
+        in: query
+        description: Filter by lead IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: contact_id
+        in: query
+        description: Filter by contact IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: user_id
+        in: query
+        description: Filter by user IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: organization_id
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: _type
+        in: query
+        description: Filter by activity type, e.g. Call (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: date_created__gte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivitySmsGetParametersDateCreatedGte'
+      - name: date_created__lte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivitySmsGetParametersDateCreatedLte'
+      - name: date_created__gt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivitySmsGetParametersDateCreatedGt'
+      - name: date_created__lt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivitySmsGetParametersDateCreatedLt'
+      - name: activity_at__gte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivitySmsGetParametersActivityAtGte'
+      - name: activity_at__lte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivitySmsGetParametersActivityAtLte'
+      - name: activity_at__gt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivitySmsGetParametersActivityAtGt'
+      - name: activity_at__lt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivitySmsGetParametersActivityAtLt'
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activities.sms_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Create an SMS activity
+      description: "*status* must be one of the following:\n\n - `inbox` to log an already received SMS.\n - `draft` to create a draft SMS.\n - `scheduled` to send an SMS at a scheduled date and time, which must be specified in the `date_scheduled` field.\n - `outbox` to actually **send** an SMS. To delay SMS sending by a few seconds (to allow undo), specify `send_in` in seconds (must be less than 60).\n - `sent` to log an already sent SMS.\n\nOnly drafts can be modified, and their status can be changed to `scheduled` (to send later) or `outbox` (to send immediately). Scheduled SMS, or SMS in outbox that weren't sent yet can be canceled by setting the status back to `draft`.\n\nYou have to provide a `local_phone` that will be used to send the SMS. The number you choose has to be associated with a Phone Number of type `internal`. See the [Phone Numbers](https://developer.close.com/api/resources/phone-numbers) paragraph for more details.\n\nA `template_id` referencing an SMS Template may be provided instead of `text` to automatically render that template and use the content as `text`.\n\nWhen `direction` is not provided, but `status=\"inbox\"`, `direction` will default to \"inbound\". Otherwise, `direction` defaults to \"outbound\".\n\nWhen creating a new SMS with the status set to `inbox`, you can pass the query parameter `send_to_inbox` with the value of `true`  to create a corresponding Inbox Notification for the SMS."
+      tags:
+      - subpackage_activitiesSms
+      parameters:
+      - name: send_to_inbox
+        in: query
+        required: false
+        schema:
+          type: boolean
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SMSActivity'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSMSActivity'
+  /activity/sms/{id}/:
+    get:
+      operationId: get
+      summary: Get a single SMS activity
+      tags:
+      - subpackage_activitiesSms
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SMSActivity'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    put:
+      operationId: update
+      summary: Update an SMS activity
+      description: 'This can be used to modify a draft or send it once the draft is complete.
+
+
+        To send an SMS immediately, you can update its `status` to `outbox`. To send it at a later time, change the `status` to `scheduled` and provide the desired date & time in the `date_scheduled` field.'
+      tags:
+      - subpackage_activitiesSms
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SMSActivity'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateSMSActivity'
+    delete:
+      operationId: delete
+      summary: Delete an SMS activity
+      tags:
+      - subpackage_activitiesSms
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activities.sms_delete_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    PhoneActivityDirection:
+      type: string
+      enum:
+      - inbound
+      - outbound
+      description: Direction of a phone activity, such as a call or an SMS message.
+      title: PhoneActivityDirection
+    ActivitySmsGetParametersDateCreatedGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivitySmsGetParametersDateCreatedGt
+    MessageStatus:
+      type: string
+      enum:
+      - inbox
+      - draft
+      - scheduled
+      - outbox
+      - sent
+      - error
+      description: Status of a message, such as Email or SMS.
+      title: MessageStatus
+    ActivitySmsGetParametersDateCreatedGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivitySmsGetParametersDateCreatedGte
+    CreateSmsActivityAttachmentsItemsContentType:
+      type: string
+      enum:
+      - application/pdf
+      - application/vcard
+      - audio/3gpp
+      - audio/3gpp2
+      - audio/L24
+      - audio/ac3
+      - audio/amr
+      - audio/amr-nb
+      - audio/basic
+      - audio/mp4
+      - audio/mpeg
+      - audio/ogg
+      - audio/vnd.rn-realaudio
+      - audio/vnd.wave
+      - audio/webm
+      - image/bmp
+      - image/gif
+      - image/jpeg
+      - image/jpg
+      - image/png
+      - image/tiff
+      - text/calendar
+      - text/csv
+      - text/directory
+      - text/richtext
+      - text/rtf
+      - text/vcard
+      - text/x-vcard
+      - video/3gpp
+      - video/3gpp-tt
+      - video/3gpp2
+      - video/H261
+      - video/H263
+      - video/H263-1998
+      - video/H263-2000
+      - video/H264
+      - video/mp4
+      - video/mpeg
+      - video/quicktime
+      - video/webm
+      title: CreateSmsActivityAttachmentsItemsContentType
+    SMSActivity:
+      type: object
+      properties:
+        _type:
+          type: string
+        activity_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        agent_action_reason:
+          type:
+          - string
+          - 'null'
+        agent_config_id:
+          type:
+          - string
+          - 'null'
+        contact_id:
+          type:
+          - string
+          - 'null'
+        cost:
+          type:
+          - string
+          - 'null'
+        created_by:
+          type:
+          - string
+          - 'null'
+        created_by_name:
+          type:
+          - string
+          - 'null'
+        date_created:
+          type: string
+          format: date-time
+        date_scheduled:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        date_sent:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        date_updated:
+          type: string
+          format: date-time
+        direction:
+          $ref: '#/components/schemas/PhoneActivityDirection'
+        error_message:
+          type:
+          - string
+          - 'null'
+        id:
+          type: string
+        lead_id:
+          type:
+          - string
+          - 'null'
+        local_country_iso:
+          type:
+          - string
+          - 'null'
+        local_phone:
+          type:
+          - string
+          - 'null'
+        local_phone_formatted:
+          type:
+          - string
+          - 'null'
+        organization_id:
+          type: string
+        remote_country_iso:
+          type:
+          - string
+          - 'null'
+        remote_phone:
+          type:
+          - string
+          - 'null'
+        remote_phone_formatted:
+          type:
+          - string
+          - 'null'
+        sequence_id:
+          type:
+          - string
+          - 'null'
+        sequence_name:
+          type:
+          - string
+          - 'null'
+        sequence_subscription_id:
+          type:
+          - string
+          - 'null'
+        source:
+          $ref: '#/components/schemas/PhoneActivitySource'
+        status:
+          $ref: '#/components/schemas/MessageStatus'
+        template_id:
+          type:
+          - string
+          - 'null'
+        text:
+          type:
+          - string
+          - 'null'
+        updated_by:
+          type:
+          - string
+          - 'null'
+        updated_by_name:
+          type:
+          - string
+          - 'null'
+        user_id:
+          type:
+          - string
+          - 'null'
+        user_name:
+          type:
+          - string
+          - 'null'
+        users:
+          type: array
+          items:
+            type: string
+      required:
+      - _type
+      - activity_at
+      - contact_id
+      - cost
+      - created_by
+      - date_created
+      - date_scheduled
+      - date_sent
+      - date_updated
+      - direction
+      - error_message
+      - id
+      - lead_id
+      - local_country_iso
+      - local_phone
+      - local_phone_formatted
+      - organization_id
+      - remote_country_iso
+      - remote_phone
+      - remote_phone_formatted
+      - source
+      - status
+      - template_id
+      - text
+      - updated_by
+      - user_id
+      - users
+      title: SMSActivity
+    PhoneActivitySource:
+      type: string
+      enum:
+      - Close.io
+      - External
+      description: Source of a phone activity. Describes whether the phone activity (such as a call or an SMS) was handled by Close's telephony provider or handled externally by a 3rd party and is merely logged in Close.
+      title: PhoneActivitySource
+    UpdateSmsActivityStatus:
+      type: string
+      enum:
+      - inbox
+      - draft
+      - scheduled
+      - outbox
+      - sent
+      - error
+      title: UpdateSmsActivityStatus
+    ActivitySmsGetParametersActivityAtGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivitySmsGetParametersActivityAtGt
+    ActivitySmsGetParametersActivityAtLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivitySmsGetParametersActivityAtLte
+    UpdateSmsActivityAttachmentsItemsContentType:
+      type: string
+      enum:
+      - application/pdf
+      - application/vcard
+      - audio/3gpp
+      - audio/3gpp2
+      - audio/L24
+      - audio/ac3
+      - audio/amr
+      - audio/amr-nb
+      - audio/basic
+      - audio/mp4
+      - audio/mpeg
+      - audio/ogg
+      - audio/vnd.rn-realaudio
+      - audio/vnd.wave
+      - audio/webm
+      - image/bmp
+      - image/gif
+      - image/jpeg
+      - image/jpg
+      - image/png
+      - image/tiff
+      - text/calendar
+      - text/csv
+      - text/directory
+      - text/richtext
+      - text/rtf
+      - text/vcard
+      - text/x-vcard
+      - video/3gpp
+      - video/3gpp-tt
+      - video/3gpp2
+      - video/H261
+      - video/H263
+      - video/H263-1998
+      - video/H263-2000
+      - video/H264
+      - video/mp4
+      - video/mpeg
+      - video/quicktime
+      - video/webm
+      title: UpdateSmsActivityAttachmentsItemsContentType
+    CreateSmsActivityStatus:
+      type: string
+      enum:
+      - inbox
+      - draft
+      - scheduled
+      - outbox
+      - sent
+      - error
+      title: CreateSmsActivityStatus
+    CreateSmsActivitySource:
+      type: string
+      enum:
+      - Close.io
+      - External
+      title: CreateSmsActivitySource
+    ActivitySmsGetParametersDateCreatedLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivitySmsGetParametersDateCreatedLte
+    activities.sms_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.sms_delete_Response_200
+    ActivitySmsGetParametersDateCreatedLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivitySmsGetParametersDateCreatedLt
+    CreateSmsActivityDirection:
+      type: string
+      enum:
+      - inbound
+      - outbound
+      title: CreateSmsActivityDirection
+    UpdateSmsActivityAttachmentsItems:
+      type: object
+      properties:
+        content_type:
+          $ref: '#/components/schemas/UpdateSmsActivityAttachmentsItemsContentType'
+        filename:
+          type: string
+        url:
+          type: string
+      required:
+      - content_type
+      - filename
+      - url
+      title: UpdateSmsActivityAttachmentsItems
+    CreateSmsActivityAttachmentsItems:
+      type: object
+      properties:
+        content_type:
+          $ref: '#/components/schemas/CreateSmsActivityAttachmentsItemsContentType'
+        filename:
+          type: string
+        url:
+          type: string
+      required:
+      - content_type
+      - filename
+      - url
+      title: CreateSmsActivityAttachmentsItems
+    CreateSMSActivity:
+      type: object
+      properties:
+        activity_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        attachments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CreateSmsActivityAttachmentsItems'
+        contact_id:
+          type:
+          - string
+          - 'null'
+        created_by_id:
+          type:
+          - string
+          - 'null'
+        date_created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        direction:
+          $ref: '#/components/schemas/CreateSmsActivityDirection'
+        lead_id:
+          type:
+          - string
+          - 'null'
+        local_phone:
+          type:
+          - string
+          - 'null'
+          description: Phone number in E.164 format
+        organization_id:
+          type:
+          - string
+          - 'null'
+        remote_phone:
+          type:
+          - string
+          - 'null'
+          description: Phone number in E.164 format
+        source:
+          $ref: '#/components/schemas/CreateSmsActivitySource'
+        status:
+          $ref: '#/components/schemas/CreateSmsActivityStatus'
+        template_id:
+          type:
+          - string
+          - 'null'
+        text:
+          type:
+          - string
+          - 'null'
+        user_id:
+          type:
+          - string
+          - 'null'
+      required:
+      - status
+      title: CreateSMSActivity
+    ActivitySmsGetParametersActivityAtLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivitySmsGetParametersActivityAtLt
+    activities.sms_list_Response_200:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SMSActivity'
+        has_more:
+          type: boolean
+      required:
+      - data
+      - has_more
+      title: activities.sms_list_Response_200
+    UpdateSMSActivity:
+      type: object
+      properties:
+        activity_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        attachments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/UpdateSmsActivityAttachmentsItems'
+        contact_id:
+          type:
+          - string
+          - 'null'
+        lead_id:
+          type:
+          - string
+          - 'null'
+        local_phone:
+          type:
+          - string
+          - 'null'
+          description: Phone number in E.164 format
+        remote_phone:
+          type:
+          - string
+          - 'null'
+          description: Phone number in E.164 format
+        status:
+          $ref: '#/components/schemas/UpdateSmsActivityStatus'
+        template_id:
+          type:
+          - string
+          - 'null'
+        text:
+          type:
+          - string
+          - 'null'
+        user_id:
+          type:
+          - string
+          - 'null'
+      title: UpdateSMSActivity
+    ActivitySmsGetParametersActivityAtGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivitySmsGetParametersActivityAtGte
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

@@ -1,0 +1,180 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_dialers API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_dialers
+paths:
+  /dialer/:
+    get:
+      operationId: list
+      summary: List or filter all dialer sessions
+      tags:
+      - subpackage_dialers
+      parameters:
+      - name: organization_id
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: source_type
+        in: query
+        required: false
+        schema:
+          oneOf:
+          - $ref: '#/components/schemas/DialerGetParametersSourceTypeSchema'
+          - type: 'null'
+      - name: source_value
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: status
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: status__in
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: user_id
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: _limit
+        in: query
+        description: Number of results to return.
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: _skip
+        in: query
+        description: Number of results to skip before returning, for pagination.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dialers_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+  /dialer/{id}/:
+    get:
+      operationId: get
+      summary: Get a single dialer session
+      description: Once you have a `source_value` for a dialer session and `source_type=saved-search`, you can use the [saved_search endpoint](https://developer.close.com/api/resources/smart-views/get) to find out more information about the Smart View being used.
+      tags:
+      - subpackage_dialers
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: organization_id
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/dialers_get_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    dialers_get_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: dialers_get_Response_200
+    DialerGetParametersSourceTypeSchema:
+      type: string
+      enum:
+      - saved-search
+      - shared-entry
+      title: DialerGetParametersSourceTypeSchema
+    dialers_list_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: dialers_list_Response_200
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

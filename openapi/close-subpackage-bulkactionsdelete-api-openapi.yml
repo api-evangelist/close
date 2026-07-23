@@ -1,0 +1,284 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_bulkActionsDelete API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_bulkActionsDelete
+paths:
+  /bulk_action/delete/:
+    get:
+      operationId: list
+      summary: List bulk deletes
+      tags:
+      - subpackage_bulkActionsDelete
+      parameters:
+      - name: _limit
+        in: query
+        description: Number of results to return.
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: _skip
+        in: query
+        description: Number of results to skip before returning, for pagination.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bulk_actions.delete_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Initiate a new bulk delete
+      description: 'Use `"send_done_email": false` if you don''t want to get a confirmation email after the bulk action is done.'
+      tags:
+      - subpackage_bulkActionsDelete
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkDeleteAction'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /bulk_action/delete/{id}/:
+    get:
+      operationId: get
+      summary: Fetch a single bulk delete object
+      tags:
+      - subpackage_bulkActionsDelete
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkDeleteAction'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    BulkActionObjectType:
+      type: string
+      enum:
+      - lead
+      - contact
+      - call
+      - custom_activity
+      - form_submission
+      title: BulkActionObjectType
+    bulk_actions.delete_list_Response_200:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BulkDeleteAction'
+        has_more:
+          type: boolean
+      required:
+      - data
+      - has_more
+      title: bulk_actions.delete_list_Response_200
+    BulkActionStatus:
+      type: string
+      enum:
+      - created
+      - loading
+      - processing
+      - done
+      - paused
+      - resuming
+      - error
+      title: BulkActionStatus
+    BulkDeleteAction:
+      type: object
+      properties:
+        bulk_object_type:
+          $ref: '#/components/schemas/BulkActionObjectType'
+        created_by:
+          type:
+          - string
+          - 'null'
+        date_created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        date_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        id:
+          type: string
+        n_leads:
+          type:
+          - integer
+          - 'null'
+        n_leads_processed:
+          type: integer
+        n_objects:
+          type:
+          - integer
+          - 'null'
+        n_objects_processed:
+          type: integer
+        organization_id:
+          type: string
+        query:
+          type:
+          - string
+          - 'null'
+        results_limit:
+          type:
+          - integer
+          - 'null'
+        s_query:
+          type: object
+          additionalProperties:
+            description: Any type
+        send_done_email:
+          type: boolean
+        sort:
+          type: array
+          items:
+            type: object
+            additionalProperties:
+              description: Any type
+        status:
+          oneOf:
+          - $ref: '#/components/schemas/BulkActionStatus'
+          - type: 'null'
+        updated_by:
+          type:
+          - string
+          - 'null'
+      required:
+      - bulk_object_type
+      - created_by
+      - date_created
+      - date_updated
+      - id
+      - n_leads
+      - n_leads_processed
+      - n_objects
+      - n_objects_processed
+      - organization_id
+      - query
+      - results_limit
+      - s_query
+      - send_done_email
+      - sort
+      - status
+      - updated_by
+      title: BulkDeleteAction
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

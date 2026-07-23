@@ -1,0 +1,418 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_smartViews API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_smartViews
+paths:
+  /saved_search/:
+    get:
+      operationId: list
+      summary: List Smart Views
+      description: 'Accepts:
+
+
+        - A `type` filter that accepts either `lead` or `contact`. Defaults to `lead`.
+
+        - A `type__in` filter that can be used to select multiple comma-separated types: `lead,contact`.'
+      tags:
+      - subpackage_smartViews
+      parameters:
+      - name: _limit
+        in: query
+        description: Number of results to return.
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: _skip
+        in: query
+        description: Number of results to skip before returning, for pagination.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: type
+        in: query
+        required: false
+        schema:
+          oneOf:
+          - $ref: '#/components/schemas/SavedSearchType'
+          - type: 'null'
+      - name: type__in
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/SavedSearchType'
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/smart_views_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Create a Smart View
+      description: 'Create a Lead or Contact Smart View.
+
+
+        For Lead Smart Views, the `type` field is optional (since `lead` is the default `type`).
+
+
+        When creating a Smart View, you must specify that you want to get objects of the appropriate type via an `object_type` clause as per the [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) section. See the examples below.'
+      tags:
+      - subpackage_smartViews
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SavedSearch'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /saved_search/{id}/:
+    get:
+      operationId: get
+      summary: Get a single Smart View
+      tags:
+      - subpackage_smartViews
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SavedSearch'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    put:
+      operationId: update
+      summary: Update a Smart View
+      tags:
+      - subpackage_smartViews
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SavedSearch'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+    delete:
+      operationId: delete
+      summary: Delete a Smart View
+      tags:
+      - subpackage_smartViews
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/smart_views_delete_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    smart_views_list_Response_200:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SavedSearch'
+        has_more:
+          type: boolean
+      required:
+      - data
+      - has_more
+      title: smart_views_list_Response_200
+    SavedSearchType:
+      type: string
+      enum:
+      - lead
+      - contact
+      - opportunity
+      - call
+      - email
+      - sms
+      - meeting
+      - note
+      - whatsapp_message
+      - custom_activity
+      - form_submission
+      title: SavedSearchType
+    smart_views_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: smart_views_delete_Response_200
+    SavedSearch:
+      type: object
+      properties:
+        date_created:
+          type: string
+          format: date-time
+        date_updated:
+          type: string
+          format: date-time
+        description:
+          type:
+          - string
+          - 'null'
+        id:
+          type: string
+        is_shared:
+          type: boolean
+        is_user_dependent:
+          type:
+          - boolean
+          - 'null'
+        name:
+          type: string
+        organization_id:
+          type: string
+        query:
+          type:
+          - string
+          - 'null'
+        s_query:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            description: Any type
+        selected_fields:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+            additionalProperties:
+              description: Any type
+        shared_with:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        sharing_settings:
+          oneOf:
+          - $ref: '#/components/schemas/SharingSettingsEmbeddedResponse'
+          - type: 'null'
+        type:
+          $ref: '#/components/schemas/SavedSearchType'
+        user_id:
+          type:
+          - string
+          - 'null'
+      required:
+      - date_created
+      - date_updated
+      - description
+      - id
+      - is_shared
+      - is_user_dependent
+      - name
+      - organization_id
+      - query
+      - s_query
+      - type
+      - user_id
+      title: SavedSearch
+    SharingSettingsEmbeddedResponse:
+      type: object
+      properties:
+        created_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        created_by_id:
+          type:
+          - string
+          - 'null'
+        group_ids:
+          type: array
+          items:
+            type: string
+        updated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        updated_by_id:
+          type:
+          - string
+          - 'null'
+        user_ids:
+          type: array
+          items:
+            type: string
+        whole_org:
+          type: boolean
+      required:
+      - created_at
+      - created_by_id
+      - group_ids
+      - updated_at
+      - updated_by_id
+      - user_ids
+      - whole_org
+      title: SharingSettingsEmbeddedResponse
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

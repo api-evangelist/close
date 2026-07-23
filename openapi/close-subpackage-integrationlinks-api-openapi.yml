@@ -1,0 +1,328 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_integrationLinks API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_integrationLinks
+paths:
+  /integration_link/:
+    get:
+      operationId: list
+      summary: Get all integration links for your organization
+      tags:
+      - subpackage_integrationLinks
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/integration_links_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Create an integration link
+      tags:
+      - subpackage_integrationLinks
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationLink'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateIntegrationLink'
+  /integration_link/{id}/:
+    get:
+      operationId: get
+      summary: Get a single integration link
+      tags:
+      - subpackage_integrationLinks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationLink'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    put:
+      operationId: update
+      summary: Update an integration link
+      tags:
+      - subpackage_integrationLinks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IntegrationLink'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateIntegrationLink'
+    delete:
+      operationId: delete
+      summary: Delete an integration link
+      tags:
+      - subpackage_integrationLinks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/integration_links_delete_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    IntegrationLink:
+      type: object
+      properties:
+        created_by:
+          type:
+          - string
+          - 'null'
+        date_created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        date_updated:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        id:
+          type: string
+        name:
+          type: string
+        organization_id:
+          type: string
+        type:
+          $ref: '#/components/schemas/IntegrationLinkType'
+        updated_by:
+          type:
+          - string
+          - 'null'
+        url:
+          type: string
+      required:
+      - created_by
+      - date_created
+      - date_updated
+      - id
+      - name
+      - organization_id
+      - type
+      - updated_by
+      - url
+      title: IntegrationLink
+    CreateIntegrationLink:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/IntegrationLinkType'
+        url:
+          type: string
+      required:
+      - name
+      - type
+      - url
+      title: CreateIntegrationLink
+    IntegrationLinkType:
+      type: string
+      enum:
+      - lead
+      - contact
+      - opportunity
+      title: IntegrationLinkType
+    UpdateIntegrationLink:
+      type: object
+      properties:
+        name:
+          type:
+          - string
+          - 'null'
+        type:
+          oneOf:
+          - $ref: '#/components/schemas/IntegrationLinkType'
+          - type: 'null'
+        url:
+          type:
+          - string
+          - 'null'
+      title: UpdateIntegrationLink
+    integration_links_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: integration_links_delete_Response_200
+    integration_links_list_Response_200:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/IntegrationLink'
+        has_more:
+          type: boolean
+      required:
+      - data
+      - has_more
+      title: integration_links_list_Response_200
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

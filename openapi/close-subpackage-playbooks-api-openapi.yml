@@ -1,0 +1,494 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_playbooks API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_playbooks
+paths:
+  /playbook/:
+    get:
+      operationId: list
+      summary: List or filter playbooks
+      description: Fetch a list of playbooks for the organization. Results are sorted by position ascending.
+      tags:
+      - subpackage_playbooks
+      parameters:
+      - name: _limit
+        in: query
+        description: Number of results to return.
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: _skip
+        in: query
+        description: Number of results to skip before returning, for pagination.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: is_archived
+        in: query
+        description: Filter for archived or not-archived playbooks. When not provided, both archived and not-archived playbooks will be returned.
+        required: false
+        schema:
+          type:
+          - boolean
+          - 'null'
+      - name: position__gt
+        in: query
+        description: Filters for where the playbook's `position` is greater than the given value.
+        required: false
+        schema:
+          type:
+          - integer
+          - 'null'
+      - name: created_at__lt
+        in: query
+        description: Filters for where the playbook's `created_at` (creation date) is before the given value.
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/playbooks_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Create a playbook
+      description: Create a new playbook for the organization.
+      tags:
+      - subpackage_playbooks
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Playbook'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePlaybook'
+  /playbook/{id}/:
+    get:
+      operationId: get
+      summary: Fetch a single playbook
+      tags:
+      - subpackage_playbooks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Playbook'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    put:
+      operationId: update
+      summary: Update a playbook
+      description: Update an existing playbook.
+      tags:
+      - subpackage_playbooks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Playbook'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePlaybook'
+    delete:
+      operationId: delete
+      summary: Delete a playbook
+      description: Delete an existing playbook.
+      tags:
+      - subpackage_playbooks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+  /playbook/{id}/archive/:
+    post:
+      operationId: archive
+      summary: Archive a playbook
+      description: Archive an existing playbook. Archived playbooks are hidden from active listings but retain their associated history.
+      tags:
+      - subpackage_playbooks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Playbook'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+  /playbook/{id}/unarchive/:
+    post:
+      operationId: unarchive
+      summary: Unarchive a playbook
+      description: Restore a previously archived playbook to active status.
+      tags:
+      - subpackage_playbooks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Playbook'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    UpdatePlaybook:
+      type: object
+      properties:
+        custom_field_ids:
+          type: array
+          items:
+            type: string
+          description: IDs of [Shared Custom Fields](/api/resources/custom-fields/custom-fields-shared) to associate with this Playbook.
+        description:
+          type:
+          - string
+          - 'null'
+          description: Description of the playbook.
+        name:
+          type: string
+        outcome_ids:
+          type: array
+          items:
+            type: string
+          description: IDs of [Outcomes](/api/resources/outcomes/) that should be associated with this Playbook.
+        summary_guidance:
+          type:
+          - string
+          - 'null'
+          description: Guidance for AI summaries of calls and meetings associated with this Playbook.
+      title: UpdatePlaybook
+    playbooks_list_Response_200:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Playbook'
+        has_more:
+          type: boolean
+      required:
+      - data
+      - has_more
+      title: playbooks_list_Response_200
+    Playbook:
+      type: object
+      properties:
+        archived_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        archived_by_id:
+          type:
+          - string
+          - 'null'
+        created_at:
+          type: string
+          format: date-time
+        created_by_id:
+          type: string
+        custom_field_ids:
+          type: array
+          items:
+            type: string
+        description:
+          type:
+          - string
+          - 'null'
+        id:
+          type: string
+        name:
+          type: string
+        organization_id:
+          type: string
+        outcome_ids:
+          type: array
+          items:
+            type: string
+        position:
+          type:
+          - integer
+          - 'null'
+        summary_guidance:
+          type:
+          - string
+          - 'null'
+        updated_at:
+          type: string
+          format: date-time
+        updated_by_id:
+          type: string
+      required:
+      - archived_at
+      - archived_by_id
+      - created_at
+      - created_by_id
+      - custom_field_ids
+      - description
+      - id
+      - name
+      - organization_id
+      - outcome_ids
+      - position
+      - summary_guidance
+      - updated_at
+      - updated_by_id
+      title: Playbook
+    CreatePlaybook:
+      type: object
+      properties:
+        custom_field_ids:
+          type: array
+          items:
+            type: string
+          description: IDs of [Shared Custom Fields](/api/resources/custom-fields/custom-fields-shared) to associate with this Playbook.
+        description:
+          type:
+          - string
+          - 'null'
+          description: Description of the playbook.
+        name:
+          type: string
+        outcome_ids:
+          type: array
+          items:
+            type: string
+          description: IDs of [Outcomes](/api/resources/outcomes/) that should be associated with this Playbook.
+        summary_guidance:
+          type:
+          - string
+          - 'null'
+          description: Guidance for AI summaries of calls and meetings associated with this Playbook.
+      required:
+      - name
+      title: CreatePlaybook
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

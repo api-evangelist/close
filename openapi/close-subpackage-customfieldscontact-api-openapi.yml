@@ -1,0 +1,288 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_customFieldsContact API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_customFieldsContact
+paths:
+  /custom_field/contact/:
+    get:
+      operationId: list
+      summary: List Contact Custom Fields
+      description: List all the contact custom fields for your organization.
+      tags:
+      - subpackage_customFieldsContact
+      parameters:
+      - name: _limit
+        in: query
+        description: Number of results to return.
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: _skip
+        in: query
+        description: Number of results to skip before returning, for pagination.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/custom_fields.contact_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Create a new Contact Custom Field
+      tags:
+      - subpackage_customFieldsContact
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/custom_fields.contact_create_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /custom_field/contact/{id}/:
+    get:
+      operationId: get
+      summary: Fetch Contact Custom Field's details
+      tags:
+      - subpackage_customFieldsContact
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/custom_fields.contact_get_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    put:
+      operationId: update
+      summary: Update a Contact Custom Field
+      description: 'You can rename it, change its type, change whether it accepts multiple values or not, change whether editing its values is restricted to specific Roles, or update the options for a "choices" field type. The updated name will immediately appear in the Close UI and only valid values for the updated `type` will be returned by the Contact API.
+
+
+        Some of the type changes need to convert all of the existing values for a given Custom Field to the new type. When this is required, the response will include an additional `converting_to_type` field. When the conversion is done, `converting_to_type` will no longer be returned.'
+      tags:
+      - subpackage_customFieldsContact
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/custom_fields.contact_update_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+    delete:
+      operationId: delete
+      summary: Delete a Contact Custom Field
+      description: Delete a contact custom field. The field will immediately disappear from API responses and values on existing contacts will be permanently removed.
+      tags:
+      - subpackage_customFieldsContact
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/custom_fields.contact_delete_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    custom_fields.contact_list_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: custom_fields.contact_list_Response_200
+    custom_fields.contact_get_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: custom_fields.contact_get_Response_200
+    custom_fields.contact_create_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: custom_fields.contact_create_Response_200
+    custom_fields.contact_update_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: custom_fields.contact_update_Response_200
+    custom_fields.contact_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: custom_fields.contact_delete_Response_200
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

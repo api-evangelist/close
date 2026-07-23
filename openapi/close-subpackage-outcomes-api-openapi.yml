@@ -1,0 +1,389 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_outcomes API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_outcomes
+paths:
+  /outcome/:
+    get:
+      operationId: list
+      summary: List or filter outcomes
+      description: Fetch a list of outcomes.
+      tags:
+      - subpackage_outcomes
+      parameters:
+      - name: _limit
+        in: query
+        description: Number of results to return.
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: _skip
+        in: query
+        description: Number of results to skip before returning, for pagination.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/outcomes_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Create an outcome
+      description: Create a new outcome for the organization.
+      tags:
+      - subpackage_outcomes
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOutcome'
+  /outcome/{id}/:
+    get:
+      operationId: get
+      summary: Fetch a single outcome
+      tags:
+      - subpackage_outcomes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    put:
+      operationId: update
+      summary: Update an outcome
+      description: Update an existing outcome.
+      tags:
+      - subpackage_outcomes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Outcome'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOutcome'
+    delete:
+      operationId: delete
+      summary: Delete an outcome
+      description: 'Delete an existing outcome.
+
+
+        All of the calls and/or meetings associated with this outcome will still retain that reference, but you won''t be able to set that outcome on any new calls & meetings nor find its definition in the API.'
+      tags:
+      - subpackage_outcomes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/outcomes_delete_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    CreateOutcome:
+      type: object
+      properties:
+        applies_to:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/OutcomeAppliesTo'
+          description: 'Deprecated. This field will be derived from `type` in a future update: `custom` applies to calls and meetings, `vm-dropped` applies to calls only.'
+        description:
+          type:
+          - string
+          - 'null'
+          description: Explain what the outcome means and when it should be used.
+        name:
+          type: string
+          description: Displayed to users wherever outcomes can be selected.
+        type:
+          $ref: '#/components/schemas/OutcomeType'
+          description: Set to `vm-dropped` if this outcome should be automatically set on calls whenever a team member performs a Voicemail Drop. Otherwise, leave empty or explicitly set to `custom` (default).
+      required:
+      - name
+      title: CreateOutcome
+    outcomes_list_Response_200:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Outcome'
+        has_more:
+          type: boolean
+      required:
+      - data
+      - has_more
+      title: outcomes_list_Response_200
+    outcomes_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: outcomes_delete_Response_200
+    OutcomeType:
+      type: string
+      enum:
+      - vm-dropped
+      - custom
+      title: OutcomeType
+    OutcomeAppliesTo:
+      type: string
+      enum:
+      - calls
+      - meetings
+      title: OutcomeAppliesTo
+    Outcome:
+      type: object
+      properties:
+        applies_to:
+          type: array
+          items:
+            $ref: '#/components/schemas/OutcomeAppliesTo'
+        created_by:
+          type:
+          - string
+          - 'null'
+        date_created:
+          type: string
+          format: date-time
+        date_updated:
+          type: string
+          format: date-time
+        description:
+          type:
+          - string
+          - 'null'
+        id:
+          type: string
+        name:
+          type: string
+        organization_id:
+          type: string
+        type:
+          $ref: '#/components/schemas/OutcomeType'
+        updated_by:
+          type:
+          - string
+          - 'null'
+      required:
+      - applies_to
+      - created_by
+      - date_created
+      - date_updated
+      - description
+      - id
+      - name
+      - organization_id
+      - type
+      - updated_by
+      title: Outcome
+    UpdateOutcome:
+      type: object
+      properties:
+        applies_to:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/OutcomeAppliesTo'
+          description: 'Deprecated. This field will be derived from `type` in a future update: `custom` applies to calls and meetings, `vm-dropped` applies to calls only.'
+        description:
+          type:
+          - string
+          - 'null'
+          description: Explain what the outcome means and when it should be used.
+        name:
+          type:
+          - string
+          - 'null'
+          description: Displayed to users wherever outcomes can be selected.
+        type:
+          oneOf:
+          - $ref: '#/components/schemas/OutcomeType'
+          - type: 'null'
+          description: Set to `vm-dropped` if this outcome should be automatically set on calls whenever a team member performs a Voicemail Drop. Otherwise, leave empty or explicitly set to `custom` (default).
+      title: UpdateOutcome
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

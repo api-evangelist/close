@@ -1,0 +1,1154 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_leads API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_leads
+paths:
+  /lead/:
+    get:
+      operationId: list
+      summary: List Leads
+      tags:
+      - subpackage_leads
+      parameters:
+      - name: _limit
+        in: query
+        description: Number of results to return.
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: _skip
+        in: query
+        description: Number of results to skip before returning, for pagination.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/leads_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Create a new lead
+      description: 'Contacts, addresses, and custom fields can all be nested in the lead. Activities, tasks, and opportunities must be posted separately.
+
+
+        **status / status_id** (optional): Post either `status` or `status_id` (but not both). If neither is provided, the organization''s default (first) status will be used. Using `status_id` is recommended so that users can rename statuses in the UI without breaking your implementation.
+
+
+        **custom.FIELD_ID** (optional): Set custom fields by setting `custom.FIELD_ID` to the field value, where FIELD_ID is the ID of the custom field, e.g.:
+
+
+        ```json
+
+        { "custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c": "value", "custom.cf_8wtBWsdRU2Fur7GDnEeXQ7ra2Vu7R4hG1SNYdiEhh0F": "other value" }
+
+        ```
+
+
+        If a custom field has `accepts_multiple_values: true`, the entire value will be replaced. For example, given a Lead has a Custom Choice Field with value `["A", "B"]`, adding choice `"C"` would mean setting the value to `["A", "B", "C"]`.
+
+
+        Note that using the `custom` field dict or the `custom.FIELD_NAME` syntax (instead of custom field IDs) is deprecated and will be removed from the API. See [Custom Fields](https://developer.close.com/api/resources/custom-fields) for more details.'
+      tags:
+      - subpackage_leads
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Lead'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /lead/merge/:
+    post:
+      operationId: merge
+      summary: Merge two leads
+      description: For details and definitions of 'source' and 'destination', see the Merge Leads feature in the UI.
+      tags:
+      - subpackage_leads
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/leads_merge_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /lead/{id}/:
+    get:
+      operationId: get
+      summary: Get a single Lead
+      tags:
+      - subpackage_leads
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Lead'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    put:
+      operationId: update
+      summary: Update an existing lead
+      description: 'Supports non-destructive patches. Nested `contacts` cannot be updated through this endpoint -- use the Contacts API instead.
+
+
+        **status**: See `status` and `status_id` guidance on the create endpoint.
+
+
+        **custom.FIELD_ID** (optional): See `custom.FIELD_ID` guidance on the create endpoint. You can also unset a single field, e.g.:
+
+
+        ```json
+
+        { "custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c": null }
+
+        ```
+
+
+        If the custom field accepts multiple values, you can specify `.add` or `.remove` as part of the field key to add/remove a single value to/from a list of values, e.g.:
+
+
+        ```json
+
+        { "custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c.add": "Wednesday" }
+
+        ```
+
+
+        adds "Wednesday" to the list of values which already exist on the given lead.'
+      tags:
+      - subpackage_leads
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Lead'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+    delete:
+      operationId: delete
+      summary: Delete a lead
+      tags:
+      - subpackage_leads
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/leads_delete_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    StalledOpportunityActionTypeV2:
+      type: string
+      enum:
+      - change_status
+      - adjust_close_date
+      - follow_up_email
+      - follow_up_call
+      - follow_up_sms
+      title: StalledOpportunityActionTypeV2
+    WorkflowStatus:
+      type: string
+      enum:
+      - active
+      - paused
+      - draft
+      title: WorkflowStatus
+    StatusReason:
+      type: string
+      enum:
+      - manual
+      - pending-call-timed-out
+      - bulk-action
+      - rate-limited
+      - sequence-deleted
+      - workflow-paused
+      - filter-not-matched
+      - reply-received
+      - call-answered
+      - meeting-booked
+      - lead-status-changed
+      - outcome-met
+      - account-invalid
+      - account-failures
+      - sending-throttled-too-long
+      - membership-inactive
+      - send-as-error
+      - email-bounced
+      - call-failed
+      - sms-failed
+      - no-user-phone
+      - billing-error
+      - assignment-field-invalid
+      - lead-status-field-invalid
+      - assignees-missing
+      - run-as-disabled
+      - lead-not-visible
+      - internal-error
+      - field-mapping-error
+      - filter-config-invalid
+      - email-ai-generation-failed
+      description: Reason for each higher level status on a Workflow run.
+      title: StatusReason
+    LeadAddress:
+      type: object
+      properties:
+        address_1:
+          type:
+          - string
+          - 'null'
+        address_2:
+          type:
+          - string
+          - 'null'
+        city:
+          type:
+          - string
+          - 'null'
+        country:
+          type:
+          - string
+          - 'null'
+        label:
+          type:
+          - string
+          - 'null'
+        state:
+          type:
+          - string
+          - 'null'
+        tz_ids:
+          type: array
+          items:
+            type: string
+        zipcode:
+          type:
+          - string
+          - 'null'
+      required:
+      - address_1
+      - address_2
+      - city
+      - country
+      - label
+      - state
+      - zipcode
+      title: LeadAddress
+    OpportunitySuggestedActionDetails:
+      oneOf:
+      - $ref: '#/components/schemas/OpportunityChangeStatusActionDetails'
+      - $ref: '#/components/schemas/OpportunityFollowUpEmailActionDetails'
+      - $ref: '#/components/schemas/OpportunityFollowUpSMSActionDetails'
+      - $ref: '#/components/schemas/OpportunityFollowUpCallActionDetails'
+      - $ref: '#/components/schemas/OpportunityAdjustCloseDateActionDetails'
+      title: OpportunitySuggestedActionDetails
+    OpportunityFollowUpEmailActionDetails:
+      type: object
+      properties:
+        contact_id:
+          type: string
+        message_draft:
+          type: string
+        subject_draft:
+          type: string
+      required:
+      - contact_id
+      - message_draft
+      - subject_draft
+      title: OpportunityFollowUpEmailActionDetails
+    WorkflowRunStatus:
+      type: string
+      enum:
+      - active
+      - paused
+      - finished
+      - goal
+      - error
+      title: WorkflowRunStatus
+    OpportunityValuePeriod:
+      type: string
+      enum:
+      - one_time
+      - monthly
+      - annual
+      title: OpportunityValuePeriod
+    CommentSummary:
+      type: object
+      properties:
+        comment_count:
+          type: integer
+        thread_id:
+          type: string
+      required:
+      - comment_count
+      - thread_id
+      title: CommentSummary
+    OpportunityAdjustCloseDateActionDetails:
+      type: object
+      properties:
+        close_date:
+          type: string
+          format: date
+      required:
+      - close_date
+      title: OpportunityAdjustCloseDateActionDetails
+    ContactRecentCall:
+      type: object
+      properties:
+        dialer_id:
+          type:
+          - string
+          - 'null'
+        duration:
+          type: integer
+        finish_timestamp:
+          type: string
+          format: date-time
+        id:
+          type: string
+        status:
+          $ref: '#/components/schemas/CallStatus'
+      required:
+      - dialer_id
+      - duration
+      - finish_timestamp
+      - id
+      - status
+      title: ContactRecentCall
+    CallStatus:
+      type: string
+      enum:
+      - created
+      - in-progress
+      - completed
+      - cancel
+      - no-answer
+      - busy
+      - failed
+      - timeout
+      description: Current status of the call.
+      title: CallStatus
+    Contact:
+      type: object
+      properties:
+        created_by:
+          type:
+          - string
+          - 'null'
+        date_created:
+          type: string
+          format: date-time
+        date_updated:
+          type: string
+          format: date-time
+        display_name:
+          type: string
+        emails:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactEmail'
+        id:
+          type: string
+        integration_links:
+          type: array
+          items:
+            $ref: '#/components/schemas/RenderedIntegrationLink'
+        lead_id:
+          type:
+          - string
+          - 'null'
+        lead_suggestions_operation_id:
+          type:
+          - string
+          - 'null'
+        name:
+          type:
+          - string
+          - 'null'
+        organization_id:
+          type: string
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactPhone'
+        recent_calls:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactRecentCall'
+        subscriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/BasicSubscriptionInfoForContact'
+        timezone:
+          type:
+          - string
+          - 'null'
+        timezone_source:
+          type:
+          - string
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        updated_by:
+          type:
+          - string
+          - 'null'
+        urls:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactUrl'
+      required:
+      - created_by
+      - date_created
+      - date_updated
+      - display_name
+      - id
+      - name
+      - organization_id
+      - title
+      - updated_by
+      title: Contact
+    StalledOpportunityCommunicationIssue:
+      type: string
+      enum:
+      - no_issue
+      - cant_get_in_touch
+      - no_communication_attempts
+      title: StalledOpportunityCommunicationIssue
+    Attachment:
+      type: object
+      properties:
+        content_type:
+          type:
+          - string
+          - 'null'
+        filename:
+          type:
+          - string
+          - 'null'
+        size:
+          type:
+          - integer
+          - 'null'
+        thumbnail_url:
+          type:
+          - string
+          - 'null'
+        url:
+          type: string
+      required:
+      - content_type
+      - filename
+      - size
+      - url
+      title: Attachment
+    BasicSubscriptionInfoForContact:
+      type: object
+      properties:
+        contact_email:
+          type:
+          - string
+          - 'null'
+        date_created:
+          type: string
+          format: date-time
+        initial_email_id:
+          type:
+          - string
+          - 'null'
+        sequence_id:
+          type: string
+        sequence_name:
+          type: string
+        sequence_status:
+          $ref: '#/components/schemas/WorkflowStatus'
+        start_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        subscription_id:
+          type: string
+        subscription_status:
+          $ref: '#/components/schemas/WorkflowRunStatus'
+        subscription_status_reason:
+          oneOf:
+          - $ref: '#/components/schemas/StatusReason'
+          - type: 'null'
+      required:
+      - contact_email
+      - date_created
+      - initial_email_id
+      - sequence_id
+      - sequence_name
+      - sequence_status
+      - start_date
+      - subscription_id
+      - subscription_status
+      - subscription_status_reason
+      title: BasicSubscriptionInfoForContact
+    OpportunityFollowUpSMSActionDetails:
+      type: object
+      properties:
+        contact_id:
+          type: string
+        message_draft:
+          type: string
+      required:
+      - contact_id
+      - message_draft
+      title: OpportunityFollowUpSMSActionDetails
+    OpportunityStatusType:
+      type: string
+      enum:
+      - won
+      - lost
+      - active
+      title: OpportunityStatusType
+    OpportunityFollowUpCallActionDetails:
+      type: object
+      properties:
+        call_plan:
+          type: string
+        contact_id:
+          type: string
+      required:
+      - call_plan
+      - contact_id
+      title: OpportunityFollowUpCallActionDetails
+    leads_list_Response_200:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Lead'
+        has_more:
+          type: boolean
+      required:
+      - data
+      - has_more
+      title: leads_list_Response_200
+    Opportunity:
+      type: object
+      properties:
+        annualized_expected_value:
+          type:
+          - integer
+          - 'null'
+        annualized_value:
+          type:
+          - integer
+          - 'null'
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        comment_summary:
+          oneOf:
+          - $ref: '#/components/schemas/CommentSummary'
+          - type: 'null'
+        confidence:
+          type: integer
+        contact_id:
+          type:
+          - string
+          - 'null'
+        contact_name:
+          type:
+          - string
+          - 'null'
+        created_by:
+          type:
+          - string
+          - 'null'
+        created_by_name:
+          type:
+          - string
+          - 'null'
+        date_created:
+          type: string
+          format: date-time
+        date_lost:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        date_updated:
+          type: string
+          format: date-time
+        date_won:
+          type:
+          - string
+          - 'null'
+          format: date
+        expected_value:
+          type:
+          - integer
+          - 'null'
+        id:
+          type: string
+        integration_links:
+          type: array
+          items:
+            $ref: '#/components/schemas/RenderedIntegrationLink'
+        is_stalled:
+          type: boolean
+        lead_id:
+          type: string
+        lead_name:
+          type:
+          - string
+          - 'null'
+        lead_primary_email:
+          oneOf:
+          - $ref: '#/components/schemas/ContactEmail'
+          - type: 'null'
+        lead_primary_phone:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ContactPhone'
+        note:
+          type:
+          - string
+          - 'null'
+        organization_id:
+          type: string
+        pipeline_id:
+          type:
+          - string
+          - 'null'
+        pipeline_name:
+          type:
+          - string
+          - 'null'
+        stall_status:
+          oneOf:
+          - $ref: '#/components/schemas/StalledOpportunityActionItems'
+          - type: 'null'
+        status_display_name:
+          type: string
+        status_id:
+          type: string
+        status_label:
+          type: string
+        status_type:
+          $ref: '#/components/schemas/OpportunityStatusType'
+        suggested_action:
+          oneOf:
+          - $ref: '#/components/schemas/OpportunitySuggestedAction'
+          - type: 'null'
+        updated_by:
+          type:
+          - string
+          - 'null'
+        updated_by_name:
+          type:
+          - string
+          - 'null'
+        user_id:
+          type: string
+        user_name:
+          type:
+          - string
+          - 'null'
+        value:
+          type:
+          - integer
+          - 'null'
+        value_currency:
+          type:
+          - string
+          - 'null'
+        value_formatted:
+          type:
+          - string
+          - 'null'
+        value_period:
+          $ref: '#/components/schemas/OpportunityValuePeriod'
+      required:
+      - annualized_expected_value
+      - annualized_value
+      - confidence
+      - contact_id
+      - created_by
+      - date_created
+      - date_lost
+      - date_updated
+      - date_won
+      - expected_value
+      - id
+      - lead_id
+      - note
+      - organization_id
+      - status_id
+      - updated_by
+      - user_id
+      - value
+      - value_period
+      title: Opportunity
+    OpportunitySuggestedAction:
+      type: object
+      properties:
+        action:
+          $ref: '#/components/schemas/StalledOpportunityActionTypeV2'
+        details:
+          oneOf:
+          - $ref: '#/components/schemas/OpportunitySuggestedActionDetails'
+          - type: 'null'
+        justification:
+          type: string
+      required:
+      - action
+      - details
+      - justification
+      title: OpportunitySuggestedAction
+    leads_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: leads_delete_Response_200
+    ContactPhone:
+      type: object
+      properties:
+        country:
+          type:
+          - string
+          - 'null'
+        outbound_sms_blocked:
+          type: boolean
+        phone:
+          type: string
+        phone_formatted:
+          type: string
+        type:
+          type: string
+        tz_ids:
+          type: array
+          items:
+            type: string
+      required:
+      - phone
+      - type
+      title: ContactPhone
+    ContactUrl:
+      type: object
+      properties:
+        type:
+          type: string
+        url:
+          type: string
+      required:
+      - type
+      - url
+      title: ContactUrl
+    OpportunityChangeStatusActionDetails:
+      type: object
+      properties:
+        status_id:
+          type: string
+      required:
+      - status_id
+      title: OpportunityChangeStatusActionDetails
+    RenderedIntegrationLink:
+      type: object
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+      required:
+      - name
+      - url
+      title: RenderedIntegrationLink
+    ActionItem:
+      type: object
+      properties:
+        action:
+          $ref: '#/components/schemas/StalledOpportunityActionTypeV1'
+          description: The recommended next step to progress or resolve the stalled opportunity
+        justification:
+          type: string
+          description: A short justification for the recommended action in the sales pipeline. Maximum 2 sentences.
+      required:
+      - action
+      - justification
+      title: ActionItem
+    leads_merge_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: leads_merge_Response_200
+    Lead:
+      type: object
+      properties:
+        addresses:
+          type: array
+          items:
+            $ref: '#/components/schemas/LeadAddress'
+        contact_ids:
+          type: array
+          items:
+            type: string
+        contacts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+        contacts_summary:
+          type: string
+        created_by:
+          type:
+          - string
+          - 'null'
+        created_by_name:
+          type:
+          - string
+          - 'null'
+        date_created:
+          type: string
+          format: date-time
+        date_updated:
+          type: string
+          format: date-time
+        description:
+          type:
+          - string
+          - 'null'
+        display_name:
+          type: string
+        html_url:
+          type: string
+        id:
+          type: string
+        integration_links:
+          type: array
+          items:
+            $ref: '#/components/schemas/RenderedIntegrationLink'
+        localtime:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        name:
+          type:
+          - string
+          - 'null'
+        opportunities:
+          type: array
+          items:
+            $ref: '#/components/schemas/Opportunity'
+        organization_id:
+          type: string
+        primary_address_summary:
+          type:
+          - string
+          - 'null'
+        primary_email:
+          oneOf:
+          - $ref: '#/components/schemas/ContactEmail'
+          - type: 'null'
+        primary_phone:
+          oneOf:
+          - $ref: '#/components/schemas/ContactPhone'
+          - type: 'null'
+        recent_calls:
+          type: array
+          items:
+            type: object
+            additionalProperties:
+              description: Any type
+        source:
+          type:
+          - string
+          - 'null'
+        status_id:
+          type: string
+        status_label:
+          type: string
+        summaries:
+          type: array
+          items:
+            type: object
+            additionalProperties:
+              description: Any type
+        tasks:
+          type: array
+          items:
+            type: object
+            additionalProperties:
+              description: Any type
+        updated_by:
+          type:
+          - string
+          - 'null'
+        updated_by_name:
+          type:
+          - string
+          - 'null'
+        url:
+          type:
+          - string
+          - 'null'
+      required:
+      - contact_ids
+      - created_by
+      - date_created
+      - date_updated
+      - description
+      - html_url
+      - id
+      - name
+      - organization_id
+      - status_id
+      - updated_by
+      - url
+      title: Lead
+    ContactEmail:
+      type: object
+      properties:
+        email:
+          type: string
+        is_unsubscribed:
+          type: boolean
+        type:
+          type: string
+      required:
+      - email
+      - is_unsubscribed
+      - type
+      title: ContactEmail
+    StalledOpportunityActionItems:
+      type: object
+      properties:
+        communication_issue:
+          $ref: '#/components/schemas/StalledOpportunityCommunicationIssue'
+          description: The communication issue that is causing the stalled opportunity. If there is no issue, set to NoIssue.
+        next_action:
+          $ref: '#/components/schemas/ActionItem'
+          description: An action item recommended to progress or resolve the stalled opportunity.
+      required:
+      - communication_issue
+      - next_action
+      title: StalledOpportunityActionItems
+    StalledOpportunityActionTypeV1:
+      type: string
+      enum:
+      - mark_as_lost
+      - change_status
+      - follow_up
+      - adjust_close_date
+      - ask_someone_else_to_reach_out
+      - change_communication_method
+      title: StalledOpportunityActionTypeV1
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

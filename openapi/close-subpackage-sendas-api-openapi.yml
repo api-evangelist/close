@@ -1,0 +1,316 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_sendAs API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_sendAs
+paths:
+  /send_as/:
+    get:
+      operationId: list
+      summary: List Send As Associations
+      description: A user only has access to associations they are involved in. This means that when using this endpoint, `allowing_user_id` or `allowed_user_id` must be equal to your user ID. If neither filter is provided, `allowing_user_id` is assumed by default.
+      tags:
+      - subpackage_sendAs
+      parameters:
+      - name: allowed_user_id
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: allowing_user_id
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/send_as_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Create a Send As Association
+      description: Create a send-as permission. The `allowing_user_id` must be equal to your own user ID.
+      tags:
+      - subpackage_sendAs
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/send_as_create_Response_201'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+    delete:
+      operationId: delete-by-user
+      summary: Delete a Send As Association by allowed user
+      description: 'The `allowing_user_id` must be equal to your user ID.
+
+
+        Supply both the `allowing_user_id` and the `allowed_user_id` to delete an association by those users.'
+      tags:
+      - subpackage_sendAs
+      parameters:
+      - name: allowed_user_id
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: allowing_user_id
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+  /send_as/bulk/:
+    post:
+      operationId: bulk-create
+      summary: Edit Send As Associations in bulk
+      description: 'You can allow and disallow many other users to send as you in a single command by supplying the user IDs you want to allow and disallow.
+
+
+        Once completed, this endpoint returns all existing associations where your user is the allowing user.'
+      tags:
+      - subpackage_sendAs
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/send_as_bulkCreate_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /send_as/{id}/:
+    get:
+      operationId: get
+      summary: Retrieve a single Send As Association
+      tags:
+      - subpackage_sendAs
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/send_as_get_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    delete:
+      operationId: delete
+      summary: Delete a Send As Association by ID
+      tags:
+      - subpackage_sendAs
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    send_as_create_Response_201:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: send_as_create_Response_201
+    send_as_list_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: send_as_list_Response_200
+    send_as_bulkCreate_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: send_as_bulkCreate_Response_200
+    send_as_get_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: send_as_get_Response_200
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

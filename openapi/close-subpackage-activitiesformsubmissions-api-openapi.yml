@@ -1,0 +1,500 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_activitiesFormSubmissions API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_activitiesFormSubmissions
+paths:
+  /activity/form_submission/:
+    get:
+      operationId: list
+      summary: List or filter all FormSubmission activities
+      description: Get a list of matching FormSubmission activities. In addition to standard Activity filtering parameters, you can filter by specific form(s) using the `form_id` or `form_id__in` parameters.
+      tags:
+      - subpackage_activitiesFormSubmissions
+      parameters:
+      - name: _limit
+        in: query
+        description: Number of results to return.
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: _skip
+        in: query
+        description: Number of results to skip before returning, for pagination.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: id__in
+        in: query
+        description: Filter by activity IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: lead_id
+        in: query
+        description: Filter by lead IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: contact_id
+        in: query
+        description: Filter by contact IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: user_id
+        in: query
+        description: Filter by user IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: organization_id
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: _type
+        in: query
+        description: Filter by activity type, e.g. Call (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: date_created__gte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityFormSubmissionGetParametersDateCreatedGte'
+      - name: date_created__lte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityFormSubmissionGetParametersDateCreatedLte'
+      - name: date_created__gt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityFormSubmissionGetParametersDateCreatedGt'
+      - name: date_created__lt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityFormSubmissionGetParametersDateCreatedLt'
+      - name: activity_at__gte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityFormSubmissionGetParametersActivityAtGte'
+      - name: activity_at__lte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityFormSubmissionGetParametersActivityAtLte'
+      - name: activity_at__gt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityFormSubmissionGetParametersActivityAtGt'
+      - name: activity_at__lt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityFormSubmissionGetParametersActivityAtLt'
+      - name: lead_id__in
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: user_id__in
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: contact_id__in
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: _type__in
+        in: query
+        required: false
+        schema:
+          type: string
+      - name: form_id
+        in: query
+        description: Filter by a specific form ID.
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: form_id__in
+        in: query
+        description: Filter by multiple form IDs (comma-separated).
+        required: false
+        schema:
+          type: string
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activities.form_submissions_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+  /activity/form_submission/{id}/:
+    get:
+      operationId: get
+      summary: Get a single FormSubmission activity
+      tags:
+      - subpackage_activitiesFormSubmissions
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: _fields
+        in: query
+        description: Comma-separated list of fields to include in the response.
+        required: false
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormSubmissionActivity'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    delete:
+      operationId: delete
+      summary: Delete a FormSubmission activity
+      tags:
+      - subpackage_activitiesFormSubmissions
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activities.form_submissions_delete_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    FormSubmissionActivityValuesByName:
+      oneOf:
+      - type: string
+      - type: boolean
+      title: FormSubmissionActivityValuesByName
+    FormSubmissionActivity:
+      type: object
+      properties:
+        _type:
+          type: string
+        activity_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        contact_id:
+          type:
+          - string
+          - 'null'
+        created_by:
+          type:
+          - string
+          - 'null'
+        created_by_name:
+          type:
+          - string
+          - 'null'
+        date_created:
+          type: string
+          format: date-time
+        date_updated:
+          type: string
+          format: date-time
+        form_configuration_id:
+          type: string
+        form_id:
+          type: string
+        form_name:
+          type:
+          - string
+          - 'null'
+        id:
+          type: string
+        ip_address:
+          type:
+          - string
+          - 'null'
+        lead_id:
+          type:
+          - string
+          - 'null'
+        organization_id:
+          type: string
+        origin:
+          type:
+          - string
+          - 'null'
+        source_url:
+          type:
+          - string
+          - 'null'
+        source_url_normalized:
+          type:
+          - string
+          - 'null'
+        updated_by:
+          type:
+          - string
+          - 'null'
+        updated_by_name:
+          type:
+          - string
+          - 'null'
+        user_id:
+          type:
+          - string
+          - 'null'
+        user_name:
+          type:
+          - string
+          - 'null'
+        users:
+          type: array
+          items:
+            type: string
+        values:
+          type: object
+          additionalProperties:
+            oneOf:
+            - $ref: '#/components/schemas/FormSubmissionActivityValues'
+            - type: 'null'
+        values_by_name:
+          type: object
+          additionalProperties:
+            oneOf:
+            - $ref: '#/components/schemas/FormSubmissionActivityValuesByName'
+            - type: 'null'
+      required:
+      - _type
+      - activity_at
+      - contact_id
+      - created_by
+      - date_created
+      - date_updated
+      - form_configuration_id
+      - form_id
+      - id
+      - ip_address
+      - lead_id
+      - organization_id
+      - origin
+      - source_url
+      - source_url_normalized
+      - updated_by
+      - user_id
+      - users
+      - values
+      - values_by_name
+      title: FormSubmissionActivity
+    ActivityFormSubmissionGetParametersActivityAtGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityFormSubmissionGetParametersActivityAtGte
+    ActivityFormSubmissionGetParametersDateCreatedLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityFormSubmissionGetParametersDateCreatedLt
+    FormSubmissionActivityValues:
+      oneOf:
+      - type: string
+      - type: boolean
+      title: FormSubmissionActivityValues
+    ActivityFormSubmissionGetParametersDateCreatedGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityFormSubmissionGetParametersDateCreatedGte
+    ActivityFormSubmissionGetParametersActivityAtLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityFormSubmissionGetParametersActivityAtLt
+    activities.form_submissions_list_Response_200:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FormSubmissionActivity'
+        has_more:
+          type: boolean
+      required:
+      - data
+      - has_more
+      title: activities.form_submissions_list_Response_200
+    ActivityFormSubmissionGetParametersActivityAtLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityFormSubmissionGetParametersActivityAtLte
+    ActivityFormSubmissionGetParametersDateCreatedGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityFormSubmissionGetParametersDateCreatedGt
+    activities.form_submissions_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.form_submissions_delete_Response_200
+    ActivityFormSubmissionGetParametersDateCreatedLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityFormSubmissionGetParametersDateCreatedLte
+    ActivityFormSubmissionGetParametersActivityAtGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityFormSubmissionGetParametersActivityAtGt
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

@@ -1,0 +1,299 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_webhooks API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_webhooks
+paths:
+  /webhook/:
+    get:
+      operationId: list
+      summary: List Webhook subscriptions
+      description: List all webhook subscriptions for the organization.
+      tags:
+      - subpackage_webhooks
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/webhooks_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Create new Webhook subscription
+      description: "The subscription will send events to the specified URL.\n\nParameters:\n  - `url` - Destination URL for the webhook subscription\n  - `events` - A list of events to subscribe to. Each event has an `object_type` and an `action` from values in the [event log](https://developer.close.com/api/resources/events/list-of-event-types). You can also use [Webhook Filters](https://developer.close.com/api/resources/webhooks/webhook-filters) while creating your subscription so that an event only fires to a Webhook when certain conditions are met.\n  - `verify_ssl` (optional)\n    - `true` (default) - Verify SSL certificate of destination webhook URL.\n    - `false` - Disable SSL certificate validation on destination webhook URL. We recommend using https to protect your data during delivery."
+      tags:
+      - subpackage_webhooks
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/webhooks_create_Response_201'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWebhook'
+  /webhook/{id}/:
+    get:
+      operationId: get
+      summary: Retrieve a single Webhook subscription
+      description: The response contains the subscription details.
+      tags:
+      - subpackage_webhooks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/webhooks_get_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    put:
+      operationId: update
+      summary: Update existing Webhook subscription
+      description: "All parameters are optional. Only the parameters that are provided will be updated.\n\nParameters:\n  - `url` - Destination URL for the webhook subscription\n  - `events` - A list of events to subscribe to. Each event has an `object_type` and an `action` from values in the [event log](https://developer.close.com/api/resources/events/list-of-event-types). You can also use [Webhook Filters](https://developer.close.com/api/resources/webhooks/webhook-filters) while creating your subscription so that an event only fires to a Webhook when certain conditions are met.\n  - `status` - Subscription status\n    - `active` - activate the subscription\n    - `paused` - pause the subscription\n  - `verify_ssl`\n    - `false` - Disable SSL certificate validation on destination webhook URL. We recommend using https to protect your data during delivery.\n    - `true` - Verify SSL certificate of destination webhook URL."
+      tags:
+      - subpackage_webhooks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/webhooks_update_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+    delete:
+      operationId: delete
+      summary: Delete Webhook subscription
+      tags:
+      - subpackage_webhooks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/webhooks_delete_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    webhooks_update_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: webhooks_update_Response_200
+    CreateWebhook:
+      type: object
+      properties:
+        event_filter:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            description: Any type
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookSubscriptionEvent'
+        url:
+          type: string
+        verify_ssl:
+          type: boolean
+          default: true
+      required:
+      - events
+      - url
+      title: CreateWebhook
+    webhooks_list_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: webhooks_list_Response_200
+    webhooks_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: webhooks_delete_Response_200
+    webhooks_create_Response_201:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: webhooks_create_Response_201
+    WebhookSubscriptionEvent:
+      type: object
+      properties:
+        action:
+          type: string
+        extra_filter:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            description: Any type
+        object_type:
+          type: string
+      required:
+      - action
+      - object_type
+      title: WebhookSubscriptionEvent
+    webhooks_get_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: webhooks_get_Response_200
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

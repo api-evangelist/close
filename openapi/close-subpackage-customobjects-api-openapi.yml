@@ -1,0 +1,273 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_customObjects API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_customObjects
+paths:
+  /custom_object/:
+    get:
+      operationId: list
+      summary: List Custom Object instances
+      description: 'The `lead_id` parameter is required. If you want to retrieve all Custom Object instances regardless of the lead, you will need to use [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering).
+
+
+        Custom Fields values appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object).
+
+
+        Back references to each Custom Object are not collected in this response. If you need to access this information, please use the `back_reference_fields` on the Custom Object Type and [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) to search for objects that reference the Custom Object Instance.'
+      tags:
+      - subpackage_customObjects
+      parameters:
+      - name: lead_id
+        in: query
+        required: true
+        schema:
+          type: string
+      - name: custom_object_type_id
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/custom_objects_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Create a new Custom Object instance
+      description: "Custom Field values can be set using the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object).\n\nThe following fields are required:\n  - `custom_object_type_id`: The type of Custom Object you are creating determines the Custom Fields that can be used.\n  - `lead_id`: The Lead that this Custom Object instance will belong to.\n  - `name`: Each Custom Object has a name, used for display."
+      tags:
+      - subpackage_customObjects
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/custom_objects_create_Response_201'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /custom_object/{id}/:
+    get:
+      operationId: get
+      summary: Retrieve a single Custom Object instance
+      tags:
+      - subpackage_customObjects
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/custom_objects_get_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    put:
+      operationId: update
+      summary: Updating a Custom Object instance
+      description: A Custom Object can be updated to add, change or remove any Custom Fields, and to change the `name` property.
+      tags:
+      - subpackage_customObjects
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/custom_objects_update_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+    delete:
+      operationId: delete
+      summary: Delete a Custom Object instance
+      tags:
+      - subpackage_customObjects
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    custom_objects_create_Response_201:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: custom_objects_create_Response_201
+    custom_objects_update_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: custom_objects_update_Response_200
+    custom_objects_list_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: custom_objects_list_Response_200
+    custom_objects_get_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: custom_objects_get_Response_200
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

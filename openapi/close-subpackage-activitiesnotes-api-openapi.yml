@@ -1,0 +1,617 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_activitiesNotes API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_activitiesNotes
+paths:
+  /activity/note/:
+    get:
+      operationId: list
+      summary: List or filter all Note activities
+      tags:
+      - subpackage_activitiesNotes
+      parameters:
+      - name: _limit
+        in: query
+        description: Number of results to return.
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: _skip
+        in: query
+        description: Number of results to skip before returning, for pagination.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: id__in
+        in: query
+        description: Filter by activity IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: lead_id
+        in: query
+        description: Filter by lead IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: contact_id
+        in: query
+        description: Filter by contact IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: user_id
+        in: query
+        description: Filter by user IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: organization_id
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: _type
+        in: query
+        description: Filter by activity type, e.g. Call (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: date_created__gte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityNoteGetParametersDateCreatedGte'
+      - name: date_created__lte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityNoteGetParametersDateCreatedLte'
+      - name: date_created__gt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityNoteGetParametersDateCreatedGt'
+      - name: date_created__lt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityNoteGetParametersDateCreatedLt'
+      - name: activity_at__gte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityNoteGetParametersActivityAtGte'
+      - name: activity_at__lte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityNoteGetParametersActivityAtLte'
+      - name: activity_at__gt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityNoteGetParametersActivityAtGt'
+      - name: activity_at__lt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityNoteGetParametersActivityAtLt'
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activities.notes_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Create a Note activity
+      description: 'To include an attachment, you must first upload the file to Close using the [Files API](https://developer.close.com/api/resources/files). Then, add an object to the `attachments` array with the following fields: `url`, `filename` and `content_type`. The `url` should be the URL provided in the `download.url` field of the response from the [Files API](https://developer.close.com/api/resources/files). It must begin `https://app.close.com/go/file/`.
+
+
+        A note can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a note.'
+      tags:
+      - subpackage_activitiesNotes
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivityBase'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateNoteActivity'
+  /activity/note/{id}/:
+    get:
+      operationId: get
+      summary: Get a single Note activity
+      tags:
+      - subpackage_activitiesNotes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivityBase'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    put:
+      operationId: update
+      summary: Update a Note activity
+      description: '**`note_html` and `note`**: setting one overwrites the other. If both are provided, `note_html` takes precedence. `note_html` supports rich-text HTML; `note` is plaintext only.
+
+
+        A note can be pinned or unpinned by setting `pinned` to `true` or `false`.'
+      tags:
+      - subpackage_activitiesNotes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivityBase'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateNoteActivity'
+    delete:
+      operationId: delete
+      summary: Delete a Note activity
+      tags:
+      - subpackage_activitiesNotes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activities.notes_delete_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    ActivityNoteGetParametersDateCreatedLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityNoteGetParametersDateCreatedLte
+    ActivityNoteGetParametersDateCreatedGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityNoteGetParametersDateCreatedGt
+    ActivityNoteGetParametersActivityAtGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityNoteGetParametersActivityAtGte
+    ActivityBase:
+      type: object
+      properties:
+        _type:
+          type: string
+        activity_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        contact_id:
+          type:
+          - string
+          - 'null'
+        created_by:
+          type:
+          - string
+          - 'null'
+        created_by_name:
+          type:
+          - string
+          - 'null'
+        date_created:
+          type: string
+          format: date-time
+        date_updated:
+          type: string
+          format: date-time
+        id:
+          type: string
+        lead_id:
+          type:
+          - string
+          - 'null'
+        organization_id:
+          type: string
+        updated_by:
+          type:
+          - string
+          - 'null'
+        updated_by_name:
+          type:
+          - string
+          - 'null'
+        user_id:
+          type:
+          - string
+          - 'null'
+        user_name:
+          type:
+          - string
+          - 'null'
+        users:
+          type: array
+          items:
+            type: string
+      required:
+      - _type
+      - activity_at
+      - contact_id
+      - created_by
+      - date_created
+      - date_updated
+      - id
+      - lead_id
+      - organization_id
+      - updated_by
+      - user_id
+      - users
+      title: ActivityBase
+    ActivityNoteGetParametersDateCreatedGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityNoteGetParametersDateCreatedGte
+    activities.notes_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.notes_delete_Response_200
+    CreateNoteActivityAttachmentsItems:
+      type: object
+      properties:
+        content_type:
+          type:
+          - string
+          - 'null'
+        filename:
+          type: string
+        url:
+          type: string
+          format: uri
+      required:
+      - filename
+      - url
+      title: CreateNoteActivityAttachmentsItems
+    UpdateNoteActivity:
+      type: object
+      properties:
+        activity_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        attachments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/UpdateNoteActivityAttachmentsItems'
+        contact_id:
+          type:
+          - string
+          - 'null'
+        note:
+          type:
+          - string
+          - 'null'
+        note_html:
+          type:
+          - string
+          - 'null'
+        pinned:
+          type:
+          - boolean
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+      title: UpdateNoteActivity
+    ActivityNoteGetParametersActivityAtLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityNoteGetParametersActivityAtLt
+    ActivityNoteGetParametersActivityAtGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityNoteGetParametersActivityAtGt
+    CreateNoteActivity:
+      type: object
+      properties:
+        activity_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        attachments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CreateNoteActivityAttachmentsItems'
+        contact_id:
+          type:
+          - string
+          - 'null'
+        created_by_id:
+          type:
+          - string
+          - 'null'
+        date_created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        lead_id:
+          type: string
+        note:
+          type:
+          - string
+          - 'null'
+        note_html:
+          type:
+          - string
+          - 'null'
+        organization_id:
+          type:
+          - string
+          - 'null'
+        pinned:
+          type:
+          - boolean
+          - 'null'
+        title:
+          type:
+          - string
+          - 'null'
+        user_id:
+          type:
+          - string
+          - 'null'
+      required:
+      - lead_id
+      title: CreateNoteActivity
+    ActivityNoteGetParametersDateCreatedLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityNoteGetParametersDateCreatedLt
+    UpdateNoteActivityAttachmentsItems:
+      type: object
+      properties:
+        content_type:
+          type:
+          - string
+          - 'null'
+        filename:
+          type: string
+        url:
+          type: string
+          format: uri
+      required:
+      - filename
+      - url
+      title: UpdateNoteActivityAttachmentsItems
+    activities.notes_list_Response_200:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ActivityBase'
+        has_more:
+          type: boolean
+      required:
+      - data
+      - has_more
+      title: activities.notes_list_Response_200
+    ActivityNoteGetParametersActivityAtLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityNoteGetParametersActivityAtLte
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

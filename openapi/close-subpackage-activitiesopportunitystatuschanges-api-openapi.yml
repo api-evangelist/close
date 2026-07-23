@@ -1,0 +1,383 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_activitiesOpportunityStatusChanges API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_activitiesOpportunityStatusChanges
+paths:
+  /activity/status_change/opportunity/:
+    get:
+      operationId: list
+      summary: List or filter all OpportunityStatusChange activities
+      tags:
+      - subpackage_activitiesOpportunityStatusChanges
+      parameters:
+      - name: _limit
+        in: query
+        description: Number of results to return.
+        required: false
+        schema:
+          type: integer
+          default: 100
+      - name: _skip
+        in: query
+        description: Number of results to skip before returning, for pagination.
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: id__in
+        in: query
+        description: Filter by activity IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: lead_id
+        in: query
+        description: Filter by lead IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: contact_id
+        in: query
+        description: Filter by contact IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: user_id
+        in: query
+        description: Filter by user IDs (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: organization_id
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: _type
+        in: query
+        description: Filter by activity type, e.g. Call (comma-separated)
+        required: false
+        schema:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+      - name: date_created__gte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityStatusChangeOpportunityGetParametersDateCreatedGte'
+      - name: date_created__lte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityStatusChangeOpportunityGetParametersDateCreatedLte'
+      - name: date_created__gt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityStatusChangeOpportunityGetParametersDateCreatedGt'
+      - name: date_created__lt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityStatusChangeOpportunityGetParametersDateCreatedLt'
+      - name: activity_at__gte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityStatusChangeOpportunityGetParametersActivityAtGte'
+      - name: activity_at__lte
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityStatusChangeOpportunityGetParametersActivityAtLte'
+      - name: activity_at__gt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityStatusChangeOpportunityGetParametersActivityAtGt'
+      - name: activity_at__lt
+        in: query
+        required: false
+        schema:
+          $ref: '#/components/schemas/ActivityStatusChangeOpportunityGetParametersActivityAtLt'
+      - name: opportunity_id
+        in: query
+        required: false
+        schema:
+          type:
+          - string
+          - 'null'
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activities.opportunity_status_changes_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Create a new OpportunityStatusChange activity
+      description: Creating an opportunity status change does not change the opportunity's status. It only logs the status change event. This should only be used to import historical status changes from another system.
+      tags:
+      - subpackage_activitiesOpportunityStatusChanges
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activities.opportunity_status_changes_create_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /activity/status_change/opportunity/{id}/:
+    get:
+      operationId: get
+      summary: Get a single OpportunityStatusChange activity
+      tags:
+      - subpackage_activitiesOpportunityStatusChanges
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activities.opportunity_status_changes_get_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    delete:
+      operationId: delete
+      summary: Delete a single OpportunityStatusChange activity
+      description: 'Deleting an OpportunityStatusChange does not change the status of the Opportunity. It only removes the status change event from the Lead''s activity feed.
+
+
+        It should only be used if the status change is irrelevant (such as records for a change that has been reverted) and having it in the activity feed is causing integration problems with another system.'
+      tags:
+      - subpackage_activitiesOpportunityStatusChanges
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/activities.opportunity_status_changes_delete_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+components:
+  schemas:
+    ActivityStatusChangeOpportunityGetParametersActivityAtLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityStatusChangeOpportunityGetParametersActivityAtLte
+    ActivityStatusChangeOpportunityGetParametersActivityAtGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityStatusChangeOpportunityGetParametersActivityAtGte
+    activities.opportunity_status_changes_get_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.opportunity_status_changes_get_Response_200
+    activities.opportunity_status_changes_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.opportunity_status_changes_delete_Response_200
+    ActivityStatusChangeOpportunityGetParametersDateCreatedGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityStatusChangeOpportunityGetParametersDateCreatedGte
+    ActivityStatusChangeOpportunityGetParametersDateCreatedGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityStatusChangeOpportunityGetParametersDateCreatedGt
+    activities.opportunity_status_changes_list_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.opportunity_status_changes_list_Response_200
+    ActivityStatusChangeOpportunityGetParametersDateCreatedLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityStatusChangeOpportunityGetParametersDateCreatedLt
+    ActivityStatusChangeOpportunityGetParametersActivityAtGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityStatusChangeOpportunityGetParametersActivityAtGt
+    ActivityStatusChangeOpportunityGetParametersDateCreatedLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityStatusChangeOpportunityGetParametersDateCreatedLte
+    activities.opportunity_status_changes_create_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.opportunity_status_changes_create_Response_200
+    ActivityStatusChangeOpportunityGetParametersActivityAtLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityStatusChangeOpportunityGetParametersActivityAtLt
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer

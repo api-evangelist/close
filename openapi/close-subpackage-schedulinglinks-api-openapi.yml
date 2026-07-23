@@ -1,0 +1,685 @@
+openapi: 3.1.0
+info:
+  title: API Endpoints subpackage_activities subpackage_schedulingLinks API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+tags:
+- name: subpackage_schedulingLinks
+paths:
+  /scheduling_link/:
+    get:
+      operationId: list
+      summary: List User Scheduling Links
+      tags:
+      - subpackage_schedulingLinks
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/scheduling_links_list_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create
+      summary: Create a User Scheduling Link
+      tags:
+      - subpackage_schedulingLinks
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/scheduling_links_create_Response_201'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /scheduling_link/integration/:
+    post:
+      operationId: create-integration
+      summary: Create or update a Scheduling Link via OAuth
+      description: 'Please note that only OAuth apps can perform this operation. Using API key will result in an error. See [Authentication with OAuth](https://developer.close.com/api/overview/oauth-authentication) for more information.
+
+
+        Create or update a user scheduling link, managed by your application. Uses the integration-provided `source_id` field to identify and merge duplicate resources created by the same OAuth Application. If a scheduling link created by your OAuth application with the specified `source_id` does not exist, a new one will be created. Otherwise, the scheduling link resource will be updated. Requires authentication via OAuth.'
+      tags:
+      - subpackage_schedulingLinks
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/scheduling_links_createIntegration_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /scheduling_link/integration/{source_id}/:
+    delete:
+      operationId: delete-integration
+      summary: Delete a User Scheduling Link via OAuth integration
+      description: 'Please note that only OAuth apps can perform this operation. Using API key will result in an error. See [Authentication with OAuth](https://developer.close.com/api/overview/oauth-authentication) for more information.
+
+
+        Uses the `source_id` field to identify and delete the specified User Scheduling Link created by your OAuth Application.'
+      tags:
+      - subpackage_schedulingLinks
+      parameters:
+      - name: source_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+  /scheduling_link/{id}/:
+    get:
+      operationId: get
+      summary: Fetch a User Scheduling Link
+      tags:
+      - subpackage_schedulingLinks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/scheduling_links_get_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    put:
+      operationId: update
+      summary: Update a User Scheduling Link
+      tags:
+      - subpackage_schedulingLinks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/scheduling_links_update_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+    delete:
+      operationId: delete
+      summary: Delete a User Scheduling Link
+      tags:
+      - subpackage_schedulingLinks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+  /shared_scheduling_link/:
+    get:
+      operationId: list-shared
+      summary: List Shared Scheduling Links
+      tags:
+      - subpackage_schedulingLinks
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/scheduling_links_listShared_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    post:
+      operationId: create-shared
+      summary: Create a Shared Scheduling Link
+      tags:
+      - subpackage_schedulingLinks
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/scheduling_links_createShared_Response_201'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /shared_scheduling_link/{id}/:
+    get:
+      operationId: get-shared
+      summary: Fetch a Shared Scheduling Link
+      tags:
+      - subpackage_schedulingLinks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/scheduling_links_getShared_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+    put:
+      operationId: update-shared
+      summary: Update a Shared Scheduling Link
+      tags:
+      - subpackage_schedulingLinks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/scheduling_links_updateShared_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+    delete:
+      operationId: delete-shared
+      summary: Delete a Shared Scheduling Link
+      tags:
+      - subpackage_schedulingLinks
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+  /shared_scheduling_link_association/:
+    post:
+      operationId: create-shared-association
+      summary: Map a Shared Scheduling Link
+      description: 'Map a Shared Scheduling Link to either a User Scheduling Link or a URL.
+
+
+        See the examples below for both mapping options.'
+      tags:
+      - subpackage_schedulingLinks
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/scheduling_links_createSharedAssociation_Response_201'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+  /shared_scheduling_link_association/unmap/:
+    post:
+      operationId: delete-shared-association
+      summary: Unmap a Shared Scheduling Link
+      tags:
+      - subpackage_schedulingLinks
+      parameters:
+      - name: Authorization
+        in: header
+        description: Use your API key as the username and leave the password empty.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/scheduling_links_deleteSharedAssociation_Response_200'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Any type
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                description: Any type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              description: Any type
+components:
+  schemas:
+    scheduling_links_listShared_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: scheduling_links_listShared_Response_200
+    scheduling_links_updateShared_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: scheduling_links_updateShared_Response_200
+    scheduling_links_createIntegration_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: scheduling_links_createIntegration_Response_200
+    scheduling_links_create_Response_201:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: scheduling_links_create_Response_201
+    scheduling_links_createSharedAssociation_Response_201:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: scheduling_links_createSharedAssociation_Response_201
+    scheduling_links_deleteSharedAssociation_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: scheduling_links_deleteSharedAssociation_Response_200
+    scheduling_links_update_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: scheduling_links_update_Response_200
+    scheduling_links_getShared_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: scheduling_links_getShared_Response_200
+    scheduling_links_get_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: scheduling_links_get_Response_200
+    scheduling_links_list_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: scheduling_links_list_Response_200
+    scheduling_links_createShared_Response_201:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: scheduling_links_createShared_Response_201
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: basic
+      description: Use your API key as the username and leave the password empty.
+    OAuth2:
+      type: http
+      scheme: bearer
