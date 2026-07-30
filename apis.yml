@@ -6,7 +6,20 @@ description: >-
   Close is an inside-sales CRM with calling, email, SMS, and WhatsApp built in. The Close API exposes leads, contacts,
   opportunities, tasks, activities (calls, emails, SMS, meetings, notes), pipelines, custom objects, sequences, smart
   views, scheduling, phone numbers, reporting, and webhooks for sales automation.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/close.png
 tags:
   - CRM
   - Sales Engagement
@@ -18,325 +31,4136 @@ created: '2026-05-08'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: close:close-leads-api
-    name: Close Leads API
-    tags:
-      - Leads
-      - Companies
-    properties:
-      - url: https://developer.close.com/
-        type: Documentation
-      - url: https://developer.close.com/resources/leads/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: >-
-      Manage leads — Close's central CRM object representing a company / account. Includes contacts, opportunities,
-      custom fields, addresses, and status.
-  - aid: close:close-contacts-api
-    name: Close Contacts API
-    tags:
-      - Contacts
-      - People
-    properties:
-      - url: https://developer.close.com/resources/contacts/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: Manage individual contacts (people) within a lead, including emails, phones, custom fields, and titles.
-  - aid: close:close-opportunities-api
-    name: Close Opportunities API
-    tags:
-      - Opportunities
-      - Pipeline
-    properties:
-      - url: https://developer.close.com/resources/opportunities/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: Manage opportunities (deals) attached to leads, with pipeline stage, value, status, and custom fields.
-  - aid: close:close-tasks-api
-    name: Close Tasks API
-    tags:
-      - Tasks
-      - Action Items
-    properties:
-      - url: https://developer.close.com/resources/tasks/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: Manage tasks assigned to users with due dates, supporting bulk updates and snooze actions.
-  - aid: close:close-activities-api
-    name: Close Activities API
-    tags:
-      - Activities
-      - Timeline
-    properties:
-      - url: https://developer.close.com/resources/activities/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: >-
-      Read and create activities — notes, calls, emails, SMS, WhatsApp, meetings, and custom activity types — that build
-      a lead's timeline.
-  - aid: close:close-calls-api
-    name: Close Calls API
-    tags:
-      - Calls
-      - Voice
-    properties:
-      - url: https://developer.close.com/resources/activities/call/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: Log inbound and outbound calls with duration, direction, recording URLs, transcripts, and disposition outcomes.
-  - aid: close:close-emails-api
-    name: Close Emails API
-    tags:
-      - Emails
-    properties:
-      - url: https://developer.close.com/resources/activities/email/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: Send and log emails with templates, attachments, and tracking against contacts and leads.
-  - aid: close:close-sms-api
-    name: Close SMS API
-    tags:
-      - SMS
-      - Texting
-    properties:
-      - url: https://developer.close.com/resources/activities/sms/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: Send and log SMS and WhatsApp messages, with conversation threading against contacts.
-  - aid: close:close-meetings-api
-    name: Close Meetings API
-    tags:
-      - Meetings
-      - Calendar
-    properties:
-      - url: https://developer.close.com/resources/activities/meeting/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: Log meeting activities synced from connected Zoom / Microsoft / Calendly accounts, with outcomes and notes.
-  - aid: close:close-pipelines-api
-    name: Close Pipelines & Statuses API
-    tags:
-      - Pipelines
-      - Statuses
-    properties:
-      - url: https://developer.close.com/resources/pipelines/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: Manage opportunity pipelines and the configurable lead and opportunity statuses driving funnel progression.
-  - aid: close:close-custom-fields-api
-    name: Close Custom Fields API
-    tags:
-      - Custom Fields
-      - Metadata
-    properties:
-      - url: https://developer.close.com/resources/custom-fields/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: Define and read custom field schemas across leads, contacts, opportunities, activities, and custom objects.
-  - aid: close:close-custom-objects-api
-    name: Close Custom Objects API
-    tags:
-      - Custom Objects
-    properties:
-      - url: https://developer.close.com/resources/custom-objects/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: Define user-defined object types with custom fields for tenant- specific data models.
-  - aid: close:close-templates-api
-    name: Close Templates API
-    tags:
-      - Templates
-      - Email
-      - SMS
-    properties:
-      - url: https://developer.close.com/resources/templates/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: Manage email and SMS templates with variable substitution and rendering for outbound messaging.
-  - aid: close:close-sequences-api
-    name: Close Sequences API
-    tags:
-      - Sequences
-      - Automation
-    properties:
-      - url: https://developer.close.com/resources/sequences/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: Manage automated multi-step sequences (cadences) and subscriber enrollment with stop conditions.
-  - aid: close:close-bulk-actions-api
-    name: Close Bulk Actions API
-    tags:
-      - Bulk
-      - Background Jobs
-    properties:
-      - url: https://developer.close.com/resources/bulk-actions/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: Submit bulk email send / edit / delete / sequence-subscribe jobs that execute as background tasks.
-  - aid: close:close-smart-views-api
-    name: Close Smart Views API
-    tags:
-      - Smart Views
-      - Saved Searches
-    properties:
-      - url: https://developer.close.com/resources/smart-views/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: >-
-      Manage saved search queries (Smart Views) with structured filter grammar across leads, contacts, and
-      opportunities.
-  - aid: close:close-exports-api
-    name: Close Exports API
-    tags:
-      - Exports
-      - Reporting
-    properties:
-      - url: https://developer.close.com/resources/exports/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: Export leads, opportunities, and activities to CSV asynchronously for downstream analytics.
-  - aid: close:close-reporting-api
-    name: Close Reporting API
-    tags:
-      - Reporting
-      - Analytics
-    properties:
-      - url: https://developer.close.com/resources/reports/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: Generate activity reports, funnel analysis, and status-change tracking across the team.
-  - aid: close:close-phone-numbers-api
-    name: Close Phone Numbers API
-    tags:
-      - Phone Numbers
-      - Telephony
-    properties:
-      - url: https://developer.close.com/resources/phone-numbers/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: Rent and manage Close-provided phone numbers for inbound and outbound calling and SMS.
-  - aid: close:close-scheduling-api
-    name: Close Scheduling Links API
-    tags:
-      - Scheduling
-    properties:
-      - url: https://developer.close.com/resources/scheduling/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: Manage user and shared scheduling links that customers use to book meetings into rep calendars.
-  - aid: close:close-connected-accounts-api
-    name: Close Connected Accounts API
-    tags:
-      - Connected Accounts
-      - Integrations
-    properties:
-      - url: https://developer.close.com/resources/connected-accounts/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: >-
-      Manage connected email, Zoom, Microsoft, and Calendly accounts backing the Close calling, email, and meeting
-      integrations.
-  - aid: close:close-users-api
-    name: Close Users API
-    tags:
-      - Users
-      - Memberships
-    properties:
-      - url: https://developer.close.com/resources/users/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: Manage users (sales reps, managers) and their availability, membership in organizations, and roles.
-  - aid: close:close-organizations-api
-    name: Close Organizations API
-    tags:
-      - Organizations
-      - Workspaces
-    properties:
-      - url: https://developer.close.com/resources/organization/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: Manage organizations (Close workspaces) including settings, memberships, and inboxes.
-  - aid: close:close-roles-api
-    name: Close Roles & Permissions API
-    tags:
-      - Roles
-      - Permissions
-    properties:
-      - url: https://developer.close.com/resources/roles/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: Manage roles and permission sets that govern access to leads, activities, and admin functions (Scale plan only).
-  - aid: close:close-groups-api
-    name: Close Groups API
-    tags:
-      - Groups
-    properties:
-      - url: https://developer.close.com/resources/groups/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: Manage user groups for assignment, reporting, and permission scoping.
-  - aid: close:close-event-log-api
-    name: Close Event Log API
-    tags:
-      - Event Log
-      - Audit
-    properties:
-      - url: https://developer.close.com/resources/event-log/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: Query the 30-day historical event log of all changes across leads, contacts, opportunities, and activities.
-  - aid: close:close-webhooks-api
-    name: Close Webhooks API
-    tags:
-      - Webhooks
-      - Events
-    properties:
-      - url: https://developer.close.com/resources/webhooks/
-        type: APIReference
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: >-
-      Subscribe to Close events with advanced filtering on event type and object attributes; deliveries include HMAC
-      signatures.
-  - aid: close:close-oauth-api
-    name: Close OAuth & Apps API
-    tags:
-      - OAuth
-      - Apps
-    properties:
-      - url: https://developer.close.com/topics/oauth/
-        type: Documentation
-      - url: openapi/close-openapi.yml
-        type: OpenAPI
-    description: >-
-      OAuth 2.0 authorization for third-party applications building against Close, plus app registration in the Close
-      Marketplace.
+- aid: close:close-subpackage-activities-api
+  name: Close subpackage_activities API
+  description: The subpackage_activities API from Close — 1 operation(s) for subpackage_activities.
+  tags:
+  - subpackage_activities
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-activities-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-activitiescalls-api
+  name: Close subpackage_activitiesCalls API
+  description: >-
+    The subpackage_activitiesCalls API from Close — 2 operation(s) for subpackage_activitiescalls.
+  tags:
+  - subpackage_activitiesCalls
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-activitiescalls-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-activitiescreations-api
+  name: Close subpackage_activitiesCreations API
+  description: >-
+    The subpackage_activitiesCreations API from Close — 2 operation(s) for subpackage_activitiescreations.
+  tags:
+  - subpackage_activitiesCreations
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-activitiescreations-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-activitiescustomactivities-api
+  name: Close subpackage_activitiesCustomActivities API
+  description: >-
+    The subpackage_activitiesCustomActivities API from Close — 2 operation(s) for subpackage_activitiescustomactivities.
+  tags:
+  - subpackage_activitiesCustomActivities
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-activitiescustomactivities-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-activitiesemails-api
+  name: Close subpackage_activitiesEmails API
+  description: >-
+    The subpackage_activitiesEmails API from Close — 2 operation(s) for subpackage_activitiesemails.
+  tags:
+  - subpackage_activitiesEmails
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-activitiesemails-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-activitiesemailthreads-api
+  name: Close subpackage_activitiesEmailThreads API
+  description: >-
+    The subpackage_activitiesEmailThreads API from Close — 2 operation(s) for subpackage_activitiesemailthreads.
+  tags:
+  - subpackage_activitiesEmailThreads
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-activitiesemailthreads-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-activitiesformsubmissions-api
+  name: Close subpackage_activitiesFormSubmissions API
+  description: >-
+    The subpackage_activitiesFormSubmissions API from Close — 2 operation(s) for subpackage_activitiesformsubmissions.
+  tags:
+  - subpackage_activitiesFormSubmissions
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-activitiesformsubmissions-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-activitiesleadmerges-api
+  name: Close subpackage_activitiesLeadMerges API
+  description: >-
+    The subpackage_activitiesLeadMerges API from Close — 2 operation(s) for subpackage_activitiesleadmerges.
+  tags:
+  - subpackage_activitiesLeadMerges
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-activitiesleadmerges-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-activitiesleadstatuschanges-api
+  name: Close subpackage_activitiesLeadStatusChanges API
+  description: >-
+    The subpackage_activitiesLeadStatusChanges API from Close — 2 operation(s) for subpackage_activitiesleadstatuschanges.
+  tags:
+  - subpackage_activitiesLeadStatusChanges
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-activitiesleadstatuschanges-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-activitiesmeetings-api
+  name: Close subpackage_activitiesMeetings API
+  description: >-
+    The subpackage_activitiesMeetings API from Close — 3 operation(s) for subpackage_activitiesmeetings.
+  tags:
+  - subpackage_activitiesMeetings
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-activitiesmeetings-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-activitiesnotes-api
+  name: Close subpackage_activitiesNotes API
+  description: >-
+    The subpackage_activitiesNotes API from Close — 2 operation(s) for subpackage_activitiesnotes.
+  tags:
+  - subpackage_activitiesNotes
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-activitiesnotes-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-activitiesopportunitystatuschanges-api
+  name: Close subpackage_activitiesOpportunityStatusChanges API
+  description: >-
+    The subpackage_activitiesOpportunityStatusChanges API from Close — 2 operation(s) for subpackage_activitiesopportunitystatuschanges.
+  tags:
+  - subpackage_activitiesOpportunityStatusChanges
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-activitiesopportunitystatuschanges-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-activitiessms-api
+  name: Close subpackage_activitiesSms API
+  description: >-
+    The subpackage_activitiesSms API from Close — 2 operation(s) for subpackage_activitiessms.
+  tags:
+  - subpackage_activitiesSms
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-activitiessms-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-activitiestaskcompletions-api
+  name: Close subpackage_activitiesTaskCompletions API
+  description: >-
+    The subpackage_activitiesTaskCompletions API from Close — 2 operation(s) for subpackage_activitiestaskcompletions.
+  tags:
+  - subpackage_activitiesTaskCompletions
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-activitiestaskcompletions-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-activitieswhatsappmessages-api
+  name: Close subpackage_activitiesWhatsappMessages API
+  description: >-
+    The subpackage_activitiesWhatsappMessages API from Close — 2 operation(s) for subpackage_activitieswhatsappmessages.
+  tags:
+  - subpackage_activitiesWhatsappMessages
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-activitieswhatsappmessages-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-blockedphonenumbers-api
+  name: Close subpackage_blockedPhoneNumbers API
+  description: >-
+    The subpackage_blockedPhoneNumbers API from Close — 3 operation(s) for subpackage_blockedphonenumbers.
+  tags:
+  - subpackage_blockedPhoneNumbers
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-blockedphonenumbers-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-bulkactionsdelete-api
+  name: Close subpackage_bulkActionsDelete API
+  description: >-
+    The subpackage_bulkActionsDelete API from Close — 2 operation(s) for subpackage_bulkactionsdelete.
+  tags:
+  - subpackage_bulkActionsDelete
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-bulkactionsdelete-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-bulkactionsedit-api
+  name: Close subpackage_bulkActionsEdit API
+  description: >-
+    The subpackage_bulkActionsEdit API from Close — 2 operation(s) for subpackage_bulkactionsedit.
+  tags:
+  - subpackage_bulkActionsEdit
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-bulkactionsedit-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-bulkactionsemail-api
+  name: Close subpackage_bulkActionsEmail API
+  description: >-
+    The subpackage_bulkActionsEmail API from Close — 2 operation(s) for subpackage_bulkactionsemail.
+  tags:
+  - subpackage_bulkActionsEmail
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-bulkactionsemail-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-bulkactionssequencesubscriptions-api
+  name: Close subpackage_bulkActionsSequenceSubscriptions API
+  description: >-
+    The subpackage_bulkActionsSequenceSubscriptions API from Close — 2 operation(s) for subpackage_bulkactionssequencesubscriptions.
+  tags:
+  - subpackage_bulkActionsSequenceSubscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-bulkactionssequencesubscriptions-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-comments-api
+  name: Close subpackage_comments API
+  description: The subpackage_comments API from Close — 4 operation(s) for subpackage_comments.
+  tags:
+  - subpackage_comments
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-comments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-connectedaccounts-api
+  name: Close subpackage_connectedAccounts API
+  description: >-
+    The subpackage_connectedAccounts API from Close — 2 operation(s) for subpackage_connectedaccounts.
+  tags:
+  - subpackage_connectedAccounts
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-connectedaccounts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-contacts-api
+  name: Close subpackage_contacts API
+  description: The subpackage_contacts API from Close — 2 operation(s) for subpackage_contacts.
+  tags:
+  - subpackage_contacts
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-contacts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-customactivitytypes-api
+  name: Close subpackage_customActivityTypes API
+  description: >-
+    The subpackage_customActivityTypes API from Close — 2 operation(s) for subpackage_customactivitytypes.
+  tags:
+  - subpackage_customActivityTypes
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-customactivitytypes-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-customfieldsactivity-api
+  name: Close subpackage_customFieldsActivity API
+  description: >-
+    The subpackage_customFieldsActivity API from Close — 2 operation(s) for subpackage_customfieldsactivity.
+  tags:
+  - subpackage_customFieldsActivity
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-customfieldsactivity-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-customfieldschemas-api
+  name: Close subpackage_customFieldSchemas API
+  description: >-
+    The subpackage_customFieldSchemas API from Close — 1 operation(s) for subpackage_customfieldschemas.
+  tags:
+  - subpackage_customFieldSchemas
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-customfieldschemas-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-customfieldscontact-api
+  name: Close subpackage_customFieldsContact API
+  description: >-
+    The subpackage_customFieldsContact API from Close — 2 operation(s) for subpackage_customfieldscontact.
+  tags:
+  - subpackage_customFieldsContact
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-customfieldscontact-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-customfieldscustomobject-api
+  name: Close subpackage_customFieldsCustomObject API
+  description: >-
+    The subpackage_customFieldsCustomObject API from Close — 2 operation(s) for subpackage_customfieldscustomobject.
+  tags:
+  - subpackage_customFieldsCustomObject
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-customfieldscustomobject-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-customfieldslead-api
+  name: Close subpackage_customFieldsLead API
+  description: >-
+    The subpackage_customFieldsLead API from Close — 2 operation(s) for subpackage_customfieldslead.
+  tags:
+  - subpackage_customFieldsLead
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-customfieldslead-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-customfieldsopportunity-api
+  name: Close subpackage_customFieldsOpportunity API
+  description: >-
+    The subpackage_customFieldsOpportunity API from Close — 2 operation(s) for subpackage_customfieldsopportunity.
+  tags:
+  - subpackage_customFieldsOpportunity
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-customfieldsopportunity-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-customfieldsshared-api
+  name: Close subpackage_customFieldsShared API
+  description: >-
+    The subpackage_customFieldsShared API from Close — 4 operation(s) for subpackage_customfieldsshared.
+  tags:
+  - subpackage_customFieldsShared
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-customfieldsshared-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-customobjects-api
+  name: Close subpackage_customObjects API
+  description: >-
+    The subpackage_customObjects API from Close — 2 operation(s) for subpackage_customobjects.
+  tags:
+  - subpackage_customObjects
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-customobjects-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-customobjecttypes-api
+  name: Close subpackage_customObjectTypes API
+  description: >-
+    The subpackage_customObjectTypes API from Close — 2 operation(s) for subpackage_customobjecttypes.
+  tags:
+  - subpackage_customObjectTypes
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-customobjecttypes-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-dialers-api
+  name: Close subpackage_dialers API
+  description: The subpackage_dialers API from Close — 2 operation(s) for subpackage_dialers.
+  tags:
+  - subpackage_dialers
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-dialers-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-emailtemplates-api
+  name: Close subpackage_emailTemplates API
+  description: >-
+    The subpackage_emailTemplates API from Close — 3 operation(s) for subpackage_emailtemplates.
+  tags:
+  - subpackage_emailTemplates
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-emailtemplates-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-events-api
+  name: Close subpackage_events API
+  description: The subpackage_events API from Close — 2 operation(s) for subpackage_events.
+  tags:
+  - subpackage_events
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-events-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-exports-api
+  name: Close subpackage_exports API
+  description: The subpackage_exports API from Close — 4 operation(s) for subpackage_exports.
+  tags:
+  - subpackage_exports
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-exports-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-fieldenrichment-api
+  name: Close subpackage_fieldEnrichment API
+  description: >-
+    The subpackage_fieldEnrichment API from Close — 1 operation(s) for subpackage_fieldenrichment.
+  tags:
+  - subpackage_fieldEnrichment
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-fieldenrichment-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-files-api
+  name: Close subpackage_files API
+  description: The subpackage_files API from Close — 1 operation(s) for subpackage_files.
+  tags:
+  - subpackage_files
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-files-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-groups-api
+  name: Close subpackage_groups API
+  description: The subpackage_groups API from Close — 4 operation(s) for subpackage_groups.
+  tags:
+  - subpackage_groups
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-groups-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-integrationlinks-api
+  name: Close subpackage_integrationLinks API
+  description: >-
+    The subpackage_integrationLinks API from Close — 2 operation(s) for subpackage_integrationlinks.
+  tags:
+  - subpackage_integrationLinks
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-integrationlinks-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-leads-api
+  name: Close subpackage_leads API
+  description: The subpackage_leads API from Close — 3 operation(s) for subpackage_leads.
+  tags:
+  - subpackage_leads
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-leads-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-leadstatuses-api
+  name: Close subpackage_leadStatuses API
+  description: The subpackage_leadStatuses API from Close — 2 operation(s) for subpackage_leadstatuses.
+  tags:
+  - subpackage_leadStatuses
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-leadstatuses-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-memberships-api
+  name: Close subpackage_memberships API
+  description: The subpackage_memberships API from Close — 3 operation(s) for subpackage_memberships.
+  tags:
+  - subpackage_memberships
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-memberships-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-opportunities-api
+  name: Close subpackage_opportunities API
+  description: >-
+    The subpackage_opportunities API from Close — 2 operation(s) for subpackage_opportunities.
+  tags:
+  - subpackage_opportunities
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-opportunities-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-opportunitystatuses-api
+  name: Close subpackage_opportunityStatuses API
+  description: >-
+    The subpackage_opportunityStatuses API from Close — 2 operation(s) for subpackage_opportunitystatuses.
+  tags:
+  - subpackage_opportunityStatuses
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-opportunitystatuses-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-organizations-api
+  name: Close subpackage_organizations API
+  description: >-
+    The subpackage_organizations API from Close — 1 operation(s) for subpackage_organizations.
+  tags:
+  - subpackage_organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-organizations-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-outcomes-api
+  name: Close subpackage_outcomes API
+  description: The subpackage_outcomes API from Close — 2 operation(s) for subpackage_outcomes.
+  tags:
+  - subpackage_outcomes
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-outcomes-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-phonenumbers-api
+  name: Close subpackage_phoneNumbers API
+  description: The subpackage_phoneNumbers API from Close — 3 operation(s) for subpackage_phonenumbers.
+  tags:
+  - subpackage_phoneNumbers
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-phonenumbers-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-pipelines-api
+  name: Close subpackage_pipelines API
+  description: The subpackage_pipelines API from Close — 2 operation(s) for subpackage_pipelines.
+  tags:
+  - subpackage_pipelines
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-pipelines-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-playbooks-api
+  name: Close subpackage_playbooks API
+  description: The subpackage_playbooks API from Close — 4 operation(s) for subpackage_playbooks.
+  tags:
+  - subpackage_playbooks
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-playbooks-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-reporting-api
+  name: Close subpackage_reporting API
+  description: The subpackage_reporting API from Close — 8 operation(s) for subpackage_reporting.
+  tags:
+  - subpackage_reporting
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-reporting-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-roles-api
+  name: Close subpackage_roles API
+  description: The subpackage_roles API from Close — 2 operation(s) for subpackage_roles.
+  tags:
+  - subpackage_roles
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-roles-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-schedulinglinks-api
+  name: Close subpackage_schedulingLinks API
+  description: >-
+    The subpackage_schedulingLinks API from Close — 8 operation(s) for subpackage_schedulinglinks.
+  tags:
+  - subpackage_schedulingLinks
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-schedulinglinks-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-sendas-api
+  name: Close subpackage_sendAs API
+  description: The subpackage_sendAs API from Close — 3 operation(s) for subpackage_sendas.
+  tags:
+  - subpackage_sendAs
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-sendas-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-sequences-api
+  name: Close subpackage_sequences API
+  description: The subpackage_sequences API from Close — 4 operation(s) for subpackage_sequences.
+  tags:
+  - subpackage_sequences
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-sequences-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-smartviews-api
+  name: Close subpackage_smartViews API
+  description: The subpackage_smartViews API from Close — 2 operation(s) for subpackage_smartviews.
+  tags:
+  - subpackage_smartViews
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-smartviews-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-smstemplates-api
+  name: Close subpackage_smsTemplates API
+  description: The subpackage_smsTemplates API from Close — 2 operation(s) for subpackage_smstemplates.
+  tags:
+  - subpackage_smsTemplates
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-smstemplates-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-tasks-api
+  name: Close subpackage_tasks API
+  description: The subpackage_tasks API from Close — 2 operation(s) for subpackage_tasks.
+  tags:
+  - subpackage_tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-tasks-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-unsubscribedemails-api
+  name: Close subpackage_unsubscribedEmails API
+  description: >-
+    The subpackage_unsubscribedEmails API from Close — 2 operation(s) for subpackage_unsubscribedemails.
+  tags:
+  - subpackage_unsubscribedEmails
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-unsubscribedemails-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-users-api
+  name: Close subpackage_users API
+  description: The subpackage_users API from Close — 4 operation(s) for subpackage_users.
+  tags:
+  - subpackage_users
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-users-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
+- aid: close:close-subpackage-webhooks-api
+  name: Close subpackage_webhooks API
+  description: The subpackage_webhooks API from Close — 2 operation(s) for subpackage_webhooks.
+  tags:
+  - subpackage_webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/close-subpackage-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://developer.close.com/
+  - type: APIReference
+    url: https://developer.close.com/resources/leads/
+  - type: APIReference
+    url: https://developer.close.com/resources/contacts/
+  - type: APIReference
+    url: https://developer.close.com/resources/opportunities/
+  - type: APIReference
+    url: https://developer.close.com/resources/tasks/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/call/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/email/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/sms/
+  - type: APIReference
+    url: https://developer.close.com/resources/activities/meeting/
+  - type: APIReference
+    url: https://developer.close.com/resources/pipelines/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-fields/
+  - type: APIReference
+    url: https://developer.close.com/resources/custom-objects/
+  - type: APIReference
+    url: https://developer.close.com/resources/templates/
+  - type: APIReference
+    url: https://developer.close.com/resources/sequences/
+  - type: APIReference
+    url: https://developer.close.com/resources/bulk-actions/
+  - type: APIReference
+    url: https://developer.close.com/resources/smart-views/
+  - type: APIReference
+    url: https://developer.close.com/resources/exports/
+  - type: APIReference
+    url: https://developer.close.com/resources/reports/
+  - type: APIReference
+    url: https://developer.close.com/resources/phone-numbers/
+  - type: APIReference
+    url: https://developer.close.com/resources/scheduling/
+  - type: APIReference
+    url: https://developer.close.com/resources/connected-accounts/
+  - type: APIReference
+    url: https://developer.close.com/resources/users/
+  - type: APIReference
+    url: https://developer.close.com/resources/organization/
+  - type: APIReference
+    url: https://developer.close.com/resources/roles/
+  - type: APIReference
+    url: https://developer.close.com/resources/groups/
+  - type: APIReference
+    url: https://developer.close.com/resources/event-log/
+  - type: APIReference
+    url: https://developer.close.com/resources/webhooks/
+  - type: Documentation
+    url: https://developer.close.com/topics/oauth/
 common:
   - type: AgenticAccess
     url: agentic-access/close-agentic-access.yml
