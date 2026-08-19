@@ -1,0 +1,240 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints subpackage_activities subpackage_activitiesMeetings API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_activitiesMeetings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or filter all Meeting activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/activity/meeting/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "_limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return."
+              },
+              {
+                "name": "_skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip before returning, for pagination."
+              },
+              {
+                "name": "id__in",
+                "value": "",
+                "type": "query",
+                "description": "Filter by activity IDs (comma-separated)"
+              },
+              {
+                "name": "lead_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by lead IDs (comma-separated)"
+              },
+              {
+                "name": "contact_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by contact IDs (comma-separated)"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by user IDs (comma-separated)"
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by activity type, e.g. Call (comma-separated)"
+              },
+              {
+                "name": "date_created__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "activity_at__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "activity_at__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "activity_at__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "activity_at__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response."
+              }
+            ]
+          },
+          "docs": "List or filter all Meeting activities"
+        },
+        {
+          "info": {
+            "name": "Get a single Meeting activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/activity/meeting/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response."
+              }
+            ]
+          },
+          "docs": "Meeting transcripts can be accessed using this API but are not loaded by default. To load transcripts, use the `_fields` parameter with `transcripts` value.\n\nThe `transcripts` field is an array of objects for each Close Notetaker bot that joined the meeting. Typically, there will be only one transcript. Transcripts are ordered by the time bots joined the meeting.\n\nExample transcripts in response:\n\n```json\n{ \"transcripts\": [ { \"utterances\": [ { \"speaker_label\": \"John Lead\", \"speaker_side\": \"conta"
+        },
+        {
+          "info": {
+            "name": "Update a Meeting activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.close.com/api/v1/activity/meeting/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Most commonly this can be used to update a meetings's `user_note_html` or `outcome_id`."
+        },
+        {
+          "info": {
+            "name": "Delete a Meeting activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.close.com/api/v1/activity/meeting/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Meeting activity"
+        },
+        {
+          "info": {
+            "name": "Create or update third-party Meeting integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/activity/meeting/:id/integration/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Please note that only OAuth apps can perform this operation. Using API key will result in an error. See [Authentication with OAuth](https://developer.close.com/api/overview/oauth-authentication) for more information.\n\nThird party integrations are presented as tabs titled with OAuth app name in the activity feed. When invoked for the first time with a given OAuth app a new integration is created, subsequent calls with the same OAuth app will update an existing integration. Submitting an empty JSO"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

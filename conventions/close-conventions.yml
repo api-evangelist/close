@@ -1,0 +1,136 @@
+generated: '2026-08-13'
+method: searched
+source: https://developer.close.com/api/overview
+docs:
+  - https://developer.close.com/api/overview
+  - https://developer.close.com/api/overview/pagination
+  - https://developer.close.com/api/overview/fields
+  - https://developer.close.com/api/overview/filter-parameters
+  - https://developer.close.com/api/overview/rate-limits
+  - https://developer.close.com/api/overview/http-response-codes
+  - https://developer.close.com/api/overview/timezone-offsets
+description: >-
+  Cross-cutting request/response semantics for the Close REST API, read from the
+  API Overview pages and cross-checked against the published OpenAPI at
+  https://api.close.com/api/openapi.json.
+base_url: https://api.close.com/api/v1
+media_type: application/json
+authentication:
+  styles:
+    - kind: http-basic
+      description: >-
+        API key as the HTTP Basic username with an empty password. Note the
+        trailing colon in Close's own curl examples (-u yourapikey:).
+      docs: https://developer.close.com/api/overview/api-key-authentication
+    - kind: oauth2
+      flow: authorizationCode
+      description: Bearer access token for user-facing integrations and marketplace apps.
+      docs: https://developer.close.com/api/overview/oauth-authentication
+  artifact: authentication/close-authentication.yml
+idempotency:
+  supported: false
+  key_header: null
+  note: >-
+    Close documents no idempotency key, no request-replay window and no
+    at-most-once create semantics anywhere in its API overview, resource
+    reference or OpenAPI. Retrying a POST after a timeout can create a duplicate
+    lead, contact, opportunity, task or activity. The only related guarantee
+    Close publishes is on the OUTBOUND side — webhook deliveries are retried for
+    up to 72 hours and event ordering is explicitly not guaranteed, which makes
+    consumer-side deduplication on event id the caller's responsibility.
+  evidence: >-
+    Searched developer.close.com (llms.txt page index, API overview, all
+    overview subpages) and the 300-operation OpenAPI on 2026-08-13: no
+    Idempotency-Key parameter, header or prose reference exists.
+pagination:
+  styles:
+    - style: offset
+      default: true
+      params: [_skip, _limit]
+      response_fields: [data, has_more]
+      applies_to: most list endpoints, e.g. /lead/, /contact/
+      limits: >-
+        Per-resource maximum _limit; exceeding it returns 400. There is also a
+        maximum _skip that varies per resource, so deep pagination fails rather
+        than degrading.
+      deep_pagination_guidance: >-
+        Close tells integrators not to page deeply with _skip/_limit and instead
+        to window on date_created, or to use the Export API for bulk extraction.
+    - style: cursor
+      params: [cursor, _cursor, _limit]
+      applies_to:
+        - Advanced Filtering API (cursor + _limit in the request body)
+        - Events API (_cursor + _limit query parameters)
+      rationale: Avoids result drift when data changes between pages.
+field_selection:
+  param: _fields
+  style: comma-separated allow-list
+  example: /lead/?_fields=id,display_name
+  note: >-
+    Close warns that responses can contain fields not present in the documented
+    sample response, and that undocumented non-custom fields may change without
+    warning and must not be relied on by integrations.
+partial_update:
+  semantics: PUT-behaves-as-PATCH
+  note: >-
+    Every PUT in the Close API is a partial update — send only the fields that
+    changed. This is unusual enough that an agent following normal REST
+    expectations would over-send and risk clobbering fields it did not intend
+    to; it does not, because omitted fields are left alone.
+long_request_workaround:
+  body_param: _params
+  method_override_header: x-http-method-override
+  note: >-
+    Filters can be sent as a JSON object under a _params key in a POST body with
+    x-http-method-override: GET, so long ID lists do not blow the ~2000-character
+    URL limit. The same header helps clients that cannot issue verbs other than
+    GET and POST.
+timezone:
+  header: x-tz-offset
+  docs: https://developer.close.com/api/overview/timezone-offsets
+rich_text:
+  note: >-
+    Several fields (notes, comments, email bodies, opportunity notes) are rich
+    text with a restricted HTML tag set.
+  docs: https://developer.close.com/api/overview/rich-text
+versioning:
+  scheme: uri-path
+  current: v1
+  base: https://api.close.com/api/v1
+  note: >-
+    No version header, no date-pinned version train. Additive changes ship into
+    v1 and are announced on the API changelog.
+  artifact: lifecycle/close-lifecycle.yml
+error_envelope:
+  format: json
+  rfc9457: false
+  note: >-
+    Close does not use application/problem+json. Errors return a JSON body with
+    an "error" string on generic failures (observed on 404s from api.close.com)
+    and field-level validation structures on 400s. No stable machine-readable
+    error type registry is published.
+  artifact: errors/close-problem-types.yml
+rate_limit_signal:
+  header: RateLimit
+  format: 'RateLimit: limit=100, remaining=50, reset=5'
+  fields: [limit, remaining, reset]
+  retry_after: true
+  retry_after_spec: RFC 7231
+  status_on_exhaustion: 429
+  deprecated_headers: [x-rate-limit-limit, x-rate-limit-remaining, x-rate-limit-reset]
+  guidance: >-
+    Close recommends honouring the rate_reset value over Retry-After for a more
+    accurate wait, and warns some endpoints carry stricter unpredictable limits
+    where only rate_reset and retry-after are set.
+  artifact: rate-limits/close-rate-limits.yml
+request_tracing:
+  request_id_header: null
+  note: >-
+    No request-id response header is documented. A request_id does appear inside
+    webhook event payloads (e.g. "req_4S2L8JTBAA1OUS74SVmfbN"), correlating an
+    event back to the API call that caused it, but it is not surfaced on the
+    synchronous response.
+change_tracking:
+  event_log: https://developer.close.com/api/resources/events
+  retention_days: 30
+  webhooks: asyncapi/close-webhooks.yml

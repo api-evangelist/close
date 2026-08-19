@@ -1,0 +1,209 @@
+generated: '2026-08-13'
+method: searched
+status: published
+source: https://developer.close.com/mcp
+tools_source: https://developer.close.com/mcp/tools
+deployment:
+  mode: remote
+  endpoint: https://mcp.close.com/mcp
+  auth: oauth
+  verified: probed
+  note: >-
+    Close ships a first-party hosted remote MCP server. There is no npx/stdio
+    package — the only distribution is the HTTPS endpoint, so an agent can reach
+    it without any local installation. POST to the endpoint on 2026-08-13
+    returned HTTP 401 with
+    'WWW-Authenticate: Bearer error="invalid_token", resource_metadata=
+    "https://mcp.close.com/.well-known/oauth-protected-resource"',
+    which is a correct RFC 9728 challenge and confirms the endpoint is live and
+    OAuth-protected.
+server:
+  name: close
+  transport: http
+  protocol: HTTP Streamable
+  url: https://mcp.close.com/mcp
+  sse_supported: false
+  sse_note: >-
+    Close's own FAQ states SSE is not currently supported and asks teams needing
+    it to email support@close.com.
+authentication:
+  primary: oauth2
+  oauth:
+    dynamic_client_registration: true
+    registration_endpoint: https://api.close.com/oauth2/register/
+    authorization_endpoint: https://app.close.com/oauth2/authorize/
+    token_endpoint: https://api.close.com/oauth2/token/
+    protected_resource_metadata: https://mcp.close.com/.well-known/oauth-protected-resource
+    authorization_server_metadata: https://api.close.com/.well-known/oauth-authorization-server
+    scopes: [mcp.read, mcp.write_safe, mcp.write_destructive, offline_access]
+  alternative:
+    kind: api-key
+    headers:
+      - name: Close-API-Key
+        description: A Close API key created under Settings -> Developer -> API Keys.
+      - name: Close-Scope
+        description: >-
+          One of mcp.read, mcp.write_safe or mcp.write_destructive. Determines
+          which tools the server exposes for the session.
+scopes:
+  - scope: mcp.read
+    description: Read-only access. Search, fetch and report tools only.
+    tool_count: 57
+  - scope: mcp.write_safe
+    description: Everything in mcp.read plus create/update tools that add data.
+    tool_count: 16
+    cumulative_tool_count: 73
+  - scope: mcp.write_destructive
+    description: >-
+      Everything in mcp.read and mcp.write_safe plus update, delete and
+      irreversible tools (delete_lead, delete_contact, enrich_field,
+      schedule_voice_agent_call, apply_voice_agent_update).
+    tool_count: 34
+    cumulative_tool_count: 107
+clients_documented:
+  - Claude (org connector + custom connector)
+  - Claude Code
+  - ChatGPT
+  - Cursor
+  - VS Code / GitHub Copilot
+  - n8n
+introspection:
+  tools_list: gated
+  http_status: 401
+  probed: '2026-08-13'
+  note: >-
+    tools/list requires an OAuth access token or a Close-API-Key header, so the
+    live inputSchema for each tool could not be captured anonymously. The tool
+    inventory below is transcribed verbatim from Close's published tool
+    reference (names + descriptions + scope tier), NOT invented. Input schemas
+    require authenticated introspection.
+docs_mcp_server:
+  url: https://developer.close.com/_mcp/server
+  transport: http
+  auth: none
+  verified: probed
+  http_status: 200
+  tools:
+    - name: searchDocs
+      description: >-
+        Search the documentation at https://developer.close.com. Returns
+        relevant doc passages with source URLs.
+      read_only: true
+  note: >-
+    A SECOND, separate MCP server. This one is anonymous and only searches the
+    developer docs; it is not the CRM data server. Recorded here so the two are
+    not conflated.
+tool_count: 107
+tools:
+  - {name: activity_search, scope: mcp.read, title: Activity Search}
+  - {name: aggregation, scope: mcp.read, title: Aggregate Objects}
+  - {name: close_product_knowledge_search, scope: mcp.read, title: Close Product Knowledge Search}
+  - {name: customized_builtin_labels, scope: mcp.read, title: Customized Builtin Labels}
+  - {name: fetch, scope: mcp.read, title: Fetch Object}
+  - {name: fetch_call, scope: mcp.read, title: Fetch Call}
+  - {name: fetch_call_task, scope: mcp.read, title: Fetch Call Task}
+  - {name: fetch_comment, scope: mcp.read, title: Fetch Comment}
+  - {name: fetch_contact, scope: mcp.read, title: Fetch Contact}
+  - {name: fetch_custom_activity_instance, scope: mcp.read, title: Fetch Custom Activity Instance}
+  - {name: fetch_custom_object_instance, scope: mcp.read, title: Fetch Custom Object Instance}
+  - {name: fetch_custom_object_type, scope: mcp.read, title: Fetch Custom Object Type}
+  - {name: fetch_email_template, scope: mcp.read, title: Fetch Email Template}
+  - {name: fetch_lead, scope: mcp.read, title: Fetch Lead}
+  - {name: fetch_lead_smart_view, scope: mcp.read, title: Fetch Lead Smart View}
+  - {name: fetch_lead_status, scope: mcp.read, title: Fetch Lead Status}
+  - {name: fetch_meeting_transcript, scope: mcp.read, title: Fetch Meeting Transcript}
+  - {name: fetch_note, scope: mcp.read, title: Fetch Note}
+  - {name: fetch_opportunity, scope: mcp.read, title: Fetch Opportunity}
+  - {name: fetch_opportunity_status, scope: mcp.read, title: Fetch Opportunity Status}
+  - {name: fetch_pipeline_and_opportunity_statuses, scope: mcp.read, title: Fetch Pipeline}
+  - {name: fetch_sms_template, scope: mcp.read, title: Fetch SMS Template}
+  - {name: fetch_task, scope: mcp.read, title: Fetch Task}
+  - {name: find_agent_configs, scope: mcp.read, title: Find Agent Configs}
+  - {name: find_call_outcomes, scope: mcp.read, title: Find Call Outcomes}
+  - {name: find_call_tasks, scope: mcp.read, title: Find Call Tasks}
+  - {name: find_contact_custom_fields, scope: mcp.read, title: List Contact Custom Fields}
+  - {name: find_custom_activities, scope: mcp.read, title: Find Custom Activity Types}
+  - {name: find_custom_activity_instances, scope: mcp.read, title: Find Custom Activity Instances}
+  - {name: find_custom_object_instances, scope: mcp.read, title: Find Custom Object Instances}
+  - {name: find_custom_object_types, scope: mcp.read, title: Find Custom Object Types}
+  - {name: find_email_templates, scope: mcp.read, title: Find Email Templates}
+  - {name: find_forms, scope: mcp.read, title: Find Web Forms}
+  - {name: find_groups, scope: mcp.read, title: Find Groups}
+  - {name: find_lead_custom_fields, scope: mcp.read, title: List Lead Custom Fields}
+  - {name: find_lead_smart_views, scope: mcp.read, title: Find Lead Smart Views}
+  - {name: find_lead_statuses, scope: mcp.read, title: Find Lead Statuses}
+  - {name: find_meeting_outcomes, scope: mcp.read, title: Find Meeting Outcomes}
+  - {name: find_notes, scope: mcp.read, title: Find Notes}
+  - {name: find_opportunities, scope: mcp.read, title: Find Opportunities}
+  - {name: find_opportunity_custom_fields, scope: mcp.read, title: List Opportunity Custom Fields}
+  - {name: find_pipelines_and_opportunity_statuses, scope: mcp.read, title: Find Pipelines}
+  - {name: find_scheduling_links, scope: mcp.read, title: Find Scheduling Links}
+  - {name: find_sms_templates, scope: mcp.read, title: Find SMS Templates}
+  - {name: find_tasks, scope: mcp.read, title: Find Tasks}
+  - {name: find_voice_agents, scope: mcp.read, title: Find Voice Agents}
+  - {name: find_workflows, scope: mcp.read, title: Find Workflows}
+  - {name: get_fields, scope: mcp.read, title: Get Fields}
+  - {name: get_voice_agent_overview_report, scope: mcp.read, title: Get Voice Agent Overview Report}
+  - {name: get_voice_agent_performance_report, scope: mcp.read, title: Get Voice Agent Performance Report}
+  - {name: get_voice_agents, scope: mcp.read, title: Get Voice Agents}
+  - {name: lead_search, scope: mcp.read, title: Lead Search}
+  - {name: org_info, scope: mcp.read, title: Org Info}
+  - {name: org_users, scope: mcp.read, title: Org Users}
+  - {name: paginate_search, scope: mcp.read, title: Paginate Search Results}
+  - {name: propose_voice_agent_update, scope: mcp.read, title: Propose Voice Agent Update}
+  - {name: search, scope: mcp.read, title: Search Objects}
+  - {name: create_address, scope: mcp.write_safe, title: Create Address}
+  - {name: create_comment, scope: mcp.write_safe, title: Create Comment}
+  - {name: create_contact, scope: mcp.write_safe, title: Create Contact}
+  - {name: create_custom_activity_instance, scope: mcp.write_safe, title: Create Custom Activity Instance}
+  - {name: create_custom_object_instance, scope: mcp.write_safe, title: Create Custom Object Instance}
+  - {name: create_draft_email, scope: mcp.write_safe, title: Create Draft Email}
+  - {name: create_email_template, scope: mcp.write_safe, title: Create Email Template}
+  - {name: create_lead, scope: mcp.write_safe, title: Create Lead}
+  - {name: create_lead_status, scope: mcp.write_safe, title: Create Lead Status}
+  - {name: create_note, scope: mcp.write_safe, title: Create Note}
+  - {name: create_opportunity, scope: mcp.write_safe, title: Create Opportunity}
+  - {name: create_opportunity_status_tool, scope: mcp.write_safe, title: Create Opportunity Status}
+  - {name: create_pipeline, scope: mcp.write_safe, title: Create Pipeline}
+  - {name: create_sms_template, scope: mcp.write_safe, title: Create SMS Template}
+  - {name: create_task, scope: mcp.write_safe, title: Create Task}
+  - {name: create_workflow, scope: mcp.write_safe, title: Create Workflow}
+  - {name: apply_voice_agent_update, scope: mcp.write_destructive, title: Apply Voice Agent Update}
+  - {name: create_call_task, scope: mcp.write_destructive, title: Create Call Task}
+  - {name: delete_address, scope: mcp.write_destructive, title: Delete Address}
+  - {name: delete_call_task, scope: mcp.write_destructive, title: Delete Call Task}
+  - {name: delete_contact, scope: mcp.write_destructive, title: Delete Contact}
+  - {name: delete_custom_activity_instance, scope: mcp.write_destructive, title: Delete Custom Activity Instance}
+  - {name: delete_custom_object_instance, scope: mcp.write_destructive, title: Delete Custom Object Instance}
+  - {name: delete_email_template, scope: mcp.write_destructive, title: Delete Email Template}
+  - {name: delete_lead, scope: mcp.write_destructive, title: Delete Lead}
+  - {name: delete_lead_smart_view, scope: mcp.write_destructive, title: Delete Lead Smart View}
+  - {name: delete_lead_status, scope: mcp.write_destructive, title: Delete Lead Status}
+  - {name: delete_note, scope: mcp.write_destructive, title: Delete Note}
+  - {name: delete_opportunity, scope: mcp.write_destructive, title: Delete Opportunity}
+  - {name: delete_opportunity_status_tool, scope: mcp.write_destructive, title: Delete Opportunity Status}
+  - {name: delete_pipeline, scope: mcp.write_destructive, title: Delete Pipeline}
+  - {name: delete_sms_template, scope: mcp.write_destructive, title: Delete SMS Template}
+  - {name: delete_task, scope: mcp.write_destructive, title: Delete Task}
+  - {name: enrich_field, scope: mcp.write_destructive, title: Enrich Field}
+  - {name: schedule_voice_agent_call, scope: mcp.write_destructive, title: Schedule Voice Agent Call}
+  - {name: update_call_task, scope: mcp.write_destructive, title: Update Call Task}
+  - {name: update_contact, scope: mcp.write_destructive, title: Update Contact}
+  - {name: update_custom_activity_instance, scope: mcp.write_destructive, title: Update Custom Activity Instance}
+  - {name: update_custom_object_instance, scope: mcp.write_destructive, title: Update Custom Object Instance}
+  - {name: update_draft_email, scope: mcp.write_destructive, title: Update Draft Email}
+  - {name: update_email_template, scope: mcp.write_destructive, title: Update Email Template}
+  - {name: update_lead, scope: mcp.write_destructive, title: Update Lead}
+  - {name: update_lead_smart_view, scope: mcp.write_destructive, title: Update Lead Smart View}
+  - {name: update_lead_status, scope: mcp.write_destructive, title: Update Lead Status}
+  - {name: update_note, scope: mcp.write_destructive, title: Update Note}
+  - {name: update_opportunity, scope: mcp.write_destructive, title: Update Opportunity}
+  - {name: update_opportunity_status_tool, scope: mcp.write_destructive, title: Update Opportunity Status}
+  - {name: update_pipeline, scope: mcp.write_destructive, title: Update Pipeline}
+  - {name: update_sms_template, scope: mcp.write_destructive, title: Update SMS Template}
+  - {name: update_task, scope: mcp.write_destructive, title: Update Task}
+x-evidence:
+  - {url: 'https://mcp.close.com/mcp', method: POST, http_status: 401, fetched: '2026-08-13'}
+  - {url: 'https://mcp.close.com/.well-known/oauth-protected-resource', http_status: 200, fetched: '2026-08-13'}
+  - {url: 'https://developer.close.com/_mcp/server', method: POST, http_status: 200, fetched: '2026-08-13'}
+  - {url: 'https://developer.close.com/mcp/tools.md', http_status: 200, fetched: '2026-08-13'}

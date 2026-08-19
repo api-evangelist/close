@@ -1,0 +1,723 @@
+{
+  "item": [
+    {
+      "id": "4dc06704-472c-42df-a141-4808c94010a0",
+      "name": "subpackage_events",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2a306ce5-d061-4f29-86b2-6cd346af73c7",
+          "name": "Retrieve a list of events",
+          "request": {
+            "name": "Retrieve a list of events",
+            "description": {
+              "content": "The list of available object types and actions is available [here](https://developer.close.com/api/resources/events/list-of-event-types). The event log can be filtered by the following parameters:\n\n- `date_updated`: The date/time of when the event was last updated, in ISO format. Can be filtered by range (`date_updated__gte=X&date_updated__lte=Y`). Note: For pagination, it is recommended to use cursors instead of this filter (see below).\n- `object_type`: If specified, only events for objects of a given type are returned. Example: `object_type=lead`\n- `object_id`: If specified, only events for the given object are returned. No related object events are returned. Example: `object_id=lead_123`\n- `action`: Only events of specified actions are returned. Example: `action=deleted`\n- `lead_id`: If specified, events for the given lead, including any of its related objects (contacts, activities, opportunities, tasks) are returned.\n- `user_id`: Only return events of the given user.\n- `request_id`: Only events emitted while processing this specific API request.\n\nOnly certain combinations of filters are supported. `date_updated` can be optionally used with any allowed filter combination. Supported combinations are:\n\n- `object_type` and `object_id`\n- `object_type` and `action`\n- `object_id` and `action`\n- `lead_id` and `object_type`\n- `lead_id`, `object_type` and `action`\n- `lead_id`, `user_id` and `object_type`\n- `lead_id`, `user_id`, `object_type` and `action`\n- `lead_id` and `user_id`\n- `user_id` and `object_id`\n- `user_id`, `object_id` and `action`\n- `user_id` and `object_type`\n- `user_id`, `object_type` and `action`\n- Just `lead_id`\n- Just `user_id`\n- Just `request_id`\n\nThe response is a dictionary with the following fields:\n\n- `data`: A list of events (dictionaries), using the format outlined in “Event format”.\n- `cursor_next`: Cursor string to retrieve the next page of events, i.e. events before the given ID (earlier date), or `null` if no more objects are available.\n- `cursor_previous`: Cursor string to retrieve the previous page of events, i.e. events after the given ID (later date), or `null` if no more objects are available.\n\nEvents are always ordered by date (latest first), i.e. the `date_updated` field. Note that even though `date_created` and `date_updated` may only have millisecond-precision, two or more events for the same object are guaranteed to be returned in the proper order.\n\nThe endpoint supports the following parameters for pagination, and does *not* support `_skip`:\n\n- `_cursor`: Pagination using a cursor string (`cursor_next` or `cursor_previous` from a previous response). Note that you still need to supply any other filters (except for `date_updated`) that were used in the previous query.\n- `_limit`: Maximum number of events to return (capped at and defaulting to 50).\n\nCursors are a reliable way to go to the next or previous page of events (unlike filtering by `date_updated`, where you may need to account for and filter out multiple events happening in the same millisecond). However, cursors are not designed to stream new events: Events may be visible through the API in a different order than they were triggered (but the ordering returned by the API is correct). Also, event consolidation of multiple recent events to the same object may occur. To avoid missing recent events when paginating, we recommend to scan the latest five minutes of events.\n\nIn the example response, to retrieve the next older batch of events, specify `_cursor=cursor2`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_limit",
+                  "value": "100",
+                  "description": "Number of results to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "_skip",
+                  "value": "0",
+                  "description": "Number of results to skip before returning, for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "object_type",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "object_id",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lead_id",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "action",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_updated__gt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_updated__gte",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_updated__lt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_updated__lte",
+                  "value": "<string,null>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "da279f3c-6f7b-4120-902e-2c6ed4a5a9c6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "object_type",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "object_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "action",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lte",
+                      "value": "<string,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "931a87fc-08bd-40e7-bf07-df1aac949c79",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "object_type",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "object_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "action",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lte",
+                      "value": "<string,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ea12da3-ec3e-4a02-b7ed-3220755ab95d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "object_type",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "object_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "action",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lte",
+                      "value": "<string,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1e3ec2b-8d8c-49b1-b1e1-9decdf24230d",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "object_type",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "object_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "action",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lte",
+                      "value": "<string,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c2c47a75-c6ae-406f-b830-03f5bf802623",
+          "name": "Retrieve a single event by ID",
+          "request": {
+            "name": "Retrieve a single event by ID",
+            "description": {
+              "content": "The response contains a dictionary with a single event, using the format outlined in “Event format”.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8ecb515b-6508-421a-8489-d294fbce1947",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d712651d-1eed-4958-a042-47534d1b0f9f",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bcfb4691-e7ab-435d-b25e-19b2b57ec451",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45515b44-340d-4e5c-bc5e-97a74a618bd8",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.close.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7687965c-7429-40c8-a57c-7d26059c3db1",
+    "name": "API Endpoints subpackage_activities subpackage_events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,333 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints subpackage_activities subpackage_schedulingLinks API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_schedulingLinks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List User Scheduling Links",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/scheduling_link/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "List User Scheduling Links"
+        },
+        {
+          "info": {
+            "name": "Create a User Scheduling Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/scheduling_link/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a User Scheduling Link"
+        },
+        {
+          "info": {
+            "name": "Create or update a Scheduling Link via OAuth",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/scheduling_link/integration/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Please note that only OAuth apps can perform this operation. Using API key will result in an error. See [Authentication with OAuth](https://developer.close.com/api/overview/oauth-authentication) for more information.\n\nCreate or update a user scheduling link, managed by your application. Uses the integration-provided `source_id` field to identify and merge duplicate resources created by the same OAuth Application. If a scheduling link created by your OAuth application with the specified `source_i"
+        },
+        {
+          "info": {
+            "name": "Delete a User Scheduling Link via OAuth integration",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.close.com/api/v1/scheduling_link/integration/:source_id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "source_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Please note that only OAuth apps can perform this operation. Using API key will result in an error. See [Authentication with OAuth](https://developer.close.com/api/overview/oauth-authentication) for more information.\n\nUses the `source_id` field to identify and delete the specified User Scheduling Link created by your OAuth Application."
+        },
+        {
+          "info": {
+            "name": "Fetch a User Scheduling Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/scheduling_link/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a User Scheduling Link"
+        },
+        {
+          "info": {
+            "name": "Update a User Scheduling Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.close.com/api/v1/scheduling_link/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a User Scheduling Link"
+        },
+        {
+          "info": {
+            "name": "Delete a User Scheduling Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.close.com/api/v1/scheduling_link/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a User Scheduling Link"
+        },
+        {
+          "info": {
+            "name": "List Shared Scheduling Links",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/shared_scheduling_link/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "List Shared Scheduling Links"
+        },
+        {
+          "info": {
+            "name": "Create a Shared Scheduling Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/shared_scheduling_link/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Shared Scheduling Link"
+        },
+        {
+          "info": {
+            "name": "Fetch a Shared Scheduling Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/shared_scheduling_link/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a Shared Scheduling Link"
+        },
+        {
+          "info": {
+            "name": "Update a Shared Scheduling Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.close.com/api/v1/shared_scheduling_link/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a Shared Scheduling Link"
+        },
+        {
+          "info": {
+            "name": "Delete a Shared Scheduling Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.close.com/api/v1/shared_scheduling_link/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Shared Scheduling Link"
+        },
+        {
+          "info": {
+            "name": "Map a Shared Scheduling Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/shared_scheduling_link_association/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Map a Shared Scheduling Link to either a User Scheduling Link or a URL.\n\nSee the examples below for both mapping options."
+        },
+        {
+          "info": {
+            "name": "Unmap a Shared Scheduling Link",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/shared_scheduling_link_association/unmap/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unmap a Shared Scheduling Link"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

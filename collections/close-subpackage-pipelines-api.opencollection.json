@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints subpackage_activities subpackage_pipelines API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_pipelines",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Pipelines for your organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/pipeline/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "List Pipelines for your organization"
+        },
+        {
+          "info": {
+            "name": "Create a Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/pipeline/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Pipeline"
+        },
+        {
+          "info": {
+            "name": "Update a Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.close.com/api/v1/pipeline/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "You can use this endpoint to:\n\n* Rename a Pipeline.\n* Reorder Opportunity Statuses within a Pipeline.\n* Move an Opportunity Status from a different Pipeline into this one.\n    * To do so, include `{\"id\": \"id_of_the_status_from_another_pipeline\"}` in the `statuses` list."
+        },
+        {
+          "info": {
+            "name": "Delete a Pipeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.close.com/api/v1/pipeline/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletion is only allowed if the Pipeline doesn't contain any Opportunity Statuses. Delete all statuses first or move them to another pipeline."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints subpackage_activities subpackage_unsubscribedEmails API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_unsubscribedEmails",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all unsubscribed emails",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/unsubscribe/email/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Get a list of unsubscribed email addresses."
+        },
+        {
+          "info": {
+            "name": "Unsubscribe an email address",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/unsubscribe/email/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This is useful for when you have an email address that has unsubscribed in another context (like a mailing list) and you want to unsubscribe them from messages from Close as well."
+        },
+        {
+          "info": {
+            "name": "Resubscribe an email address",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.close.com/api/v1/unsubscribe/email/:email_address/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "email_address",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Resubscribe an email address"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

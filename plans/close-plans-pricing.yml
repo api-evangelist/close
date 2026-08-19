@@ -4,7 +4,17 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Close
 providerId: close
 created: '2026-05-08'
-modified: '2026-05-08'
+# Provenance 2026-08-13: originally written by the API Evangelist bulk sweep dated
+# 2026-05-08 (roadmap#35). Every tier, price and add-on below was re-read from
+# https://www.close.com/pricing on 2026-08-13 and matched exactly, so this artifact
+# is upgraded to method: searched. Annual and monthly prices confirmed:
+# Solo $9/$19, Essentials $35/$49, Growth $99/$109, Scale $139/$149 per user/month.
+method: searched
+source: https://www.close.com/pricing
+modified: '2026-08-13'
+verified: '2026-08-13'
+plan_count: 4
+addon_count: 3
 reconciled: true
 tags:
   - CRM
@@ -16,6 +26,39 @@ description: >-
   Annual billing offers a discount versus month-to-month.
 sources:
   - https://www.close.com/pricing
+included_quotas:
+  note: >-
+    Read from https://www.close.com/pricing on 2026-08-13. AI credits power
+    Chloe (Close's AI teammate) and the AI features including field enrichment;
+    they refresh monthly with no rollover and additional credits are purchasable.
+  ai_credits_per_user_per_month:
+    solo: 500
+    essentials: 1000
+    growth: 1500
+    scale: 2000
+  ai_credit_pool_ceiling_per_month:
+    essentials: 10000
+    growth: 15000
+    scale: 20000
+  leads:
+    solo: 10000
+    essentials: unlimited
+    growth: unlimited
+    scale: unlimited
+  custom_fields:
+    solo: 250
+    essentials: 250
+    growth: 250
+    scale: 250
+  custom_activity_instances_per_month:
+    growth: 50000
+    scale: unlimited
+  opportunities_per_lead: 300
+  api_access: all plans (API keys or OAuth), including the event log API
+  enterprise: >-
+    No published enterprise tier. Close directs larger or more complex buyers to
+    "Talk to us" for custom pricing via a demo.
+  money_back_guarantee_days: 30
 plans:
   - id: close-solo
     name: Solo

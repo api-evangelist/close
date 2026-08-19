@@ -1,0 +1,158 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints subpackage_activities subpackage_customFieldsActivity API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_customFieldsActivity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Activity Custom Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/custom_field/activity/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "_limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return."
+              },
+              {
+                "name": "_skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip before returning, for pagination."
+              },
+              {
+                "name": "_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response."
+              }
+            ]
+          },
+          "docs": "List all the activity custom fields for your organization."
+        },
+        {
+          "info": {
+            "name": "Create a new Activity Custom Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/custom_field/activity/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activity Custom Fields belong to Custom Activities, and have additional attributes:\n\n- `custom_activity_type_id` – the ID of the Custom Activity Type this Field\n  should belong to.\n- `required` – whether the Field will be required to publish the activity."
+        },
+        {
+          "info": {
+            "name": "Fetch Activity Custom Field's details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/custom_field/activity/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response."
+              }
+            ]
+          },
+          "docs": "Fetch Activity Custom Field's details"
+        },
+        {
+          "info": {
+            "name": "Update an Activity Custom Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.close.com/api/v1/custom_field/activity/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "You can rename it, change whether it accepts multiple values or not, change the \"required\" flag, change whether editing its values is restricted to specific Roles, or update the options for a \"choices\" field type. The updated name will immediately appear in the Close UI and only valid values for the updated `type` will be returned by the Custom Activity API.\n\nThe `custom_activity_type_id` and `type` values cannot be changed."
+        },
+        {
+          "info": {
+            "name": "Delete an Activity Custom Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.close.com/api/v1/custom_field/activity/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an activity custom field. The field will immediately disappear from API responses and values on existing activities will be permanently removed."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

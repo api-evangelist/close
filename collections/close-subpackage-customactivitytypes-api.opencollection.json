@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints subpackage_activities subpackage_customActivityTypes API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_customActivityTypes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Custom Activity Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/custom_activity/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "List all custom activity types defined in the organization. The response includes all Custom Activity Types, including their Custom Field metadata."
+        },
+        {
+          "info": {
+            "name": "Create new Custom Activity Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/custom_activity/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The type must be created before activity custom fields can be added."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single Custom Activity Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/custom_activity/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "The response contains the Custom Activity Type including most Custom Field metadata."
+        },
+        {
+          "info": {
+            "name": "Update existing Custom Activity Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.close.com/api/v1/custom_activity/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The type's `name`, `description`, `api_create_only`, `editable_with_roles` and `is_archived` may be updated here. These properties will be updated immediately in the Custom Activity API.\n\nField order can be set here, but adding, modifying or removing fields from a Custom Activity Type must be done using the Custom Field API. The field order is a display property only, and does not affect the request and response for the Custom Activity API."
+        },
+        {
+          "info": {
+            "name": "Delete a Custom Activity Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.close.com/api/v1/custom_activity/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Custom Activity Type"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

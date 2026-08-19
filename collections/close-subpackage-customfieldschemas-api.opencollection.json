@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints subpackage_activities subpackage_customFieldSchemas API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_customFieldSchemas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a custom field schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/custom_field_schema/:object_type/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "object_type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a custom field schema"
+        },
+        {
+          "info": {
+            "name": "Update a custom field schema",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.close.com/api/v1/custom_field_schema/:object_type/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "object_type",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "To reorder Custom Fields (and thus change the order in which they are displayed in the Close UI), you simply need to supply a `fields` list with `{\"id\": ...}` items corresponding to the IDs of the Custom Fields belonging to the given Schema. Note that any IDs that are omitted from the list with be automatically appended to the end of the list. If you want to remove some Fields from the Schema, then delete the Custom Field or – in case of Shared Custom Fields – disassociate the Field from the giv"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

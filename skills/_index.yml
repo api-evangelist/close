@@ -1,0 +1,77 @@
+generated: '2026-08-13'
+method: generated
+source: >-
+  Authored from openapi/_original/close-api-openapi.json (every operationId
+  verified present in the spec before it was written into a skill),
+  conventions/close-conventions.yml, errors/close-problem-types.yml,
+  asyncapi/close-webhooks.yml and mcp/close-mcp.yml. Close publishes no
+  AGENTS.md or first-party skill files — searched developer.close.com,
+  close.com and the github.com/closeio organization on 2026-08-13.
+provider: Close
+api_base: https://api.close.com/api/v1
+skills:
+  - file: close-create-lead-and-log-first-touch.md
+    name: Create a Close lead and log the first touch
+    api: openapi/_original/close-api-openapi.json
+    operations:
+      - leads_list
+      - leads_create
+      - contacts_create
+      - activities.notes_create
+      - activities.calls_create
+      - activities.emails_create
+    covers: >-
+      The lead-is-a-company model, duplicate avoidance in the absence of any
+      idempotency key, and the first-activity write.
+  - file: close-manage-opportunity-pipeline.md
+    name: Open and advance a Close opportunity through a pipeline
+    api: openapi/_original/close-api-openapi.json
+    operations:
+      - pipelines_list
+      - opportunity_statuses_list
+      - opportunities_create
+      - opportunities_list
+      - opportunities_get
+      - opportunities_update
+      - activities.opportunity_status_changes_list
+    covers: >-
+      Per-org status ids, value in cents, PUT-as-PATCH stage moves, and reading
+      deal history from status-change activities.
+  - file: close-subscribe-to-webhooks.md
+    name: Subscribe to Close webhooks and verify deliveries
+    api: openapi/_original/close-api-openapi.json
+    operations:
+      - webhooks_create
+      - webhooks_list
+      - webhooks_get
+      - webhooks_update
+      - webhooks_delete
+      - events_list
+      - events_get
+    covers: >-
+      HMAC-SHA256 signature verification, the auto-pause thresholds, unordered
+      delivery, and 30-day event-log backfill.
+  - file: close-bulk-extract-and-paginate.md
+    name: Page through and bulk-extract Close data without hitting the ceilings
+    api: openapi/_original/close-api-openapi.json
+    operations:
+      - leads_list
+      - contacts_list
+      - activities_list
+      - events_list
+      - exports_create_lead
+      - exports_get_lead
+      - exports_list_lead
+      - exports_create_opportunity
+      - exports_get
+    covers: >-
+      The _skip ceiling, date windowing, cursor surfaces, the async Export API,
+      x-http-method-override for long filters, and per-endpoint-group throttling.
+  - file: close-connect-the-mcp-server.md
+    name: Connect an agent to the Close MCP server at the right privilege level
+    api: mcp/close-mcp.yml
+    operations: []
+    covers: >-
+      OAuth DCR versus client-asserted API-key scope, the three cumulative tool
+      tiers, the irreversible tools in mcp.write_destructive, and the MCP-only
+      versus REST-only capability split.

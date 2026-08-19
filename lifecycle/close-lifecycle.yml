@@ -1,0 +1,79 @@
+generated: '2026-08-13'
+method: searched
+source: https://developer.close.com/api/overview/changelog
+versioning:
+  scheme: uri-path
+  current: v1
+  base: https://api.close.com/api/v1
+  semver: false
+  docs: https://developer.close.com/api/overview
+  note: >-
+    Close has shipped a single API version since launch. Changes land additively
+    in v1 and are announced on the dated API changelog. There is no version
+    header, no date-pinned version train and no published policy for how long a
+    version is supported.
+deprecation:
+  policy_url: null
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  practice: announced-in-changelog
+  note: >-
+    Close does not publish a deprecation policy document, and does not emit
+    RFC 8594 Sunset or Deprecation response headers. What it does do
+    consistently is announce field- and endpoint-level deprecations on the dated
+    API changelog, with a stated migration path and a "will be removed in a
+    future update" horizon — real notice, but no committed date and no
+    machine-readable signal an agent could detect at runtime.
+  announcements:
+    - date: '2026-07-21'
+      subject: 'phone numbers: user_id, is_group_number, sharing'
+      url: https://developer.close.com/api/overview/changelog/2026/7/21
+    - date: '2026-03-06'
+      subject: 'Outcomes: applies_to on write operations'
+      url: https://developer.close.com/api/overview/changelog/2026/3/6
+    - date: '2024-12-02'
+      subject: 'memberships: record_calls'
+      url: https://developer.close.com/api/overview/changelog/2024/12/2
+    - date: '2024-04-24'
+      subject: rate-limit details in the 429 response body
+      url: https://developer.close.com/api/overview/changelog/2024/4/24
+    - date: '2023-07-21'
+      subject: 'x-rate-limit-* headers replaced by the RateLimit header'
+      url: https://developer.close.com/api/overview/changelog/2023/7/21
+deprecated_operations: []
+deprecated_operations_note: >-
+  Zero of the 300 operations in Close's published OpenAPI carry
+  `deprecated: true`, even though the changelog announces live deprecations
+  (phone-number sharing/user_id/is_group_number, Outcome applies_to). The spec
+  and the changelog disagree; an agent reading only the spec would not know a
+  field is on its way out.
+status_page:
+  url: https://status.close.com/
+  http_status: 200
+  probed: '2026-08-13'
+  linked_from: https://close.com (footer, "System status")
+sla:
+  url: null
+  uptime_target: null
+  note: >-
+    No public SLA or uptime commitment was found on close.com, the developer
+    docs or the status page.
+support:
+  email: support@close.com
+  help_center: https://help.close.com/
+  docs: https://developer.close.com/
+experimental_surfaces:
+  - surface: OpenAPI specification
+    url: https://api.close.com/api/openapi.json
+    status: experimental
+    since: '2026-04-06'
+    note: >-
+      Close labels its own spec experimental and states it does not yet contain
+      100% coverage of request/response schemas.
+  - surface: MCP server
+    url: https://mcp.close.com/mcp
+    status: generally-available
+    note: Documented across Claude, Claude Code, ChatGPT, Cursor, VS Code and n8n.
+product_changelog: https://close.com/changelog
+api_changelog: https://developer.close.com/api/overview/changelog

@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints subpackage_activities subpackage_customFieldsCustomObject API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_customFieldsCustomObject",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Custom Object Custom Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/custom_field/custom_object_type/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "List all the custom object custom fields for your organization."
+        },
+        {
+          "info": {
+            "name": "Create a new Custom Object Custom Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/custom_field/custom_object_type/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Custom Object Custom Fields belong to Custom Objects, and have additional attributes:\n\n- `custom_object_type_id` – the ID of the Custom Object Type this Field\n  should belong to.\n- `required` – whether the Field will be required to save the object."
+        },
+        {
+          "info": {
+            "name": "Fetch Custom Object Custom Field's details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/custom_field/custom_object_type/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch Custom Object Custom Field's details"
+        },
+        {
+          "info": {
+            "name": "Update a Custom Object Custom Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.close.com/api/v1/custom_field/custom_object_type/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "You can rename it, change whether it accepts multiple values or not, change the \"required\" flag, change whether editing its values is restricted to specific Roles, or update the options for a \"choices\" field type. The updated name will immediately appear in the Close UI and only valid values for the updated `type` will be returned by the Custom Object API.\n\nThe `custom_object_type_id` and `type` values cannot be changed."
+        },
+        {
+          "info": {
+            "name": "Delete a Custom Object Custom Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.close.com/api/v1/custom_field/custom_object_type/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a custom field from a custom object type. The field will immediately disappear from API responses and values on existing custom object instances will be permanently removed."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,142 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Close API
+  version: 1.0.0
+extends: openapi/_original/close-api-openapi.json
+x-provenance:
+  generated: '2026-08-13'
+  method: generated
+  source: >-
+    Derived from the artifacts in all/close/ against Close's published OpenAPI at
+    https://api.close.com/api/openapi.json. Adds discovery, runtime-semantics and
+    agent-surface facts that Close documents in prose but does not carry in the
+    spec. The original spec is never mutated.
+actions:
+  - target: $.info
+    description: >-
+      Attach provenance, the real base URL and the documented runtime semantics
+      Close publishes outside the contract.
+    update:
+      x-apievangelist-provider: close
+      x-apievangelist-source: https://api.close.com/api/openapi.json
+      x-apievangelist-harvested: '2026-08-13'
+      x-apievangelist-maturity: experimental
+      x-apievangelist-maturity-note: >-
+        Close states this spec is experimental and does not yet contain 100%
+        coverage of request/response schemas.
+      x-apievangelist-docs: https://developer.close.com/api/overview
+      x-apievangelist-changelog: https://developer.close.com/api/overview/changelog
+      x-apievangelist-status-page: https://status.close.com/
+      x-apievangelist-llms-txt: https://developer.close.com/llms.txt
+  - target: $.info
+    description: Runtime semantics documented on the API overview pages but absent from the contract.
+    update:
+      x-rate-limit:
+        header: RateLimit
+        fields: [limit, remaining, reset]
+        retry_after: true
+        status: 429
+        scope: per-endpoint-group, per-API-key and per-organization (org = 3x key)
+        docs: https://developer.close.com/api/overview/rate-limits
+      x-pagination:
+        default:
+          style: offset
+          params: [_skip, _limit]
+          response_fields: [data, has_more]
+        alternate:
+          style: cursor
+          params: [cursor, _cursor, _limit]
+          applies_to: [Advanced Filtering API, Events API]
+        docs: https://developer.close.com/api/overview/pagination
+      x-field-selection:
+        param: _fields
+        docs: https://developer.close.com/api/overview/fields
+      x-partial-update:
+        semantics: PUT-behaves-as-PATCH
+        docs: https://developer.close.com/api/overview/fields
+      x-method-override:
+        header: x-http-method-override
+        body_param: _params
+        docs: https://developer.close.com/api/overview/filter-parameters
+      x-idempotency:
+        supported: false
+        note: >-
+          No idempotency key is documented or present in the contract. A retried
+          POST can duplicate a lead, contact, opportunity, task or activity.
+      x-error-contract:
+        rfc9457: false
+        undeclared_statuses: ['402', '405', '415', '429']
+        note: >-
+          No 5xx responses are declared on any operation, so the spec gives an
+          agent no guidance on server-error retryability.
+  - target: $.info
+    description: Agent surfaces Close ships that the OpenAPI does not reference.
+    update:
+      x-mcp-server:
+        url: https://mcp.close.com/mcp
+        transport: HTTP Streamable
+        auth: [oauth2, api-key-header]
+        scopes: [mcp.read, mcp.write_safe, mcp.write_destructive]
+        tools: 107
+        docs: https://developer.close.com/mcp
+        crosswalk: mcp/close-tool-crosswalk.yml
+      x-agent-card: null
+      x-agent-card-note: >-
+        No A2A agent card served on any Close host as of 2026-08-13.
+  - target: $.servers
+    description: Annotate the single production server with the docs-confirmed base.
+    update:
+      - url: https://api.close.com/api/v1
+        description: Production. Confirmed on https://developer.close.com/api/overview.
+        x-apievangelist-verified: '2026-08-13'
+  - target: $.components.securitySchemes.ApiKeyAuth
+    description: >-
+      Record the key-management surface and the org/user scoping the spec does
+      not describe.
+    update:
+      x-key-management: Close app -> Settings -> Developer -> API Keys
+      x-key-scope: one user + organization pair; carries that user's full permissions
+      x-docs: https://developer.close.com/api/overview/api-key-authentication
+  - target: $.components.securitySchemes.OAuth2
+    description: Record the discovery, revocation and DCR endpoints.
+    update:
+      x-authorization-server-metadata: https://api.close.com/.well-known/oauth-authorization-server
+      x-revocation-endpoint: https://api.close.com/oauth2/revoke/
+      x-registration-endpoint: https://api.close.com/oauth2/register/
+      x-pkce: S256
+      x-refresh-token-rotation: true
+      x-docs: https://developer.close.com/api/overview/oauth-authentication
+  - target: $.paths['/webhook/']
+    description: >-
+      Bind the webhook management resource to the captured event catalog, which
+      the spec's empty `webhooks` block does not carry.
+    update:
+      x-event-catalog: asyncapi/close-webhooks.yml
+      x-event-object-types: 38
+      x-signing: HMAC-SHA256 over close-sig-timestamp + payload
+      x-signature-headers: [close-sig-hash, close-sig-timestamp]
+      x-delivery-retry-window-hours: 72
+      x-ordering-guaranteed: false
+      x-subscriptions-per-organization: 40
+  - target: $.paths['/event/']
+    description: Record the event-log retention window.
+    update:
+      x-retention-days: 30
+      x-pagination-style: cursor
+  - target: $.paths['/phone_number/request/internal/'].post
+    description: >-
+      Surface the 2026-07-21 changelog deprecation, which the spec does not mark.
+    update:
+      x-deprecated-fields:
+        - field: sharing
+          announced: '2026-07-21'
+          note: Now optional, defaults to personal. Will be removed in a future update.
+      x-deprecation-notice: https://developer.close.com/api/overview/changelog/2026/7/21
+  - target: $.paths['/outcome/'].post
+    description: Surface the 2026-03-06 changelog deprecation on Outcome writes.
+    update:
+      x-deprecated-fields:
+        - field: applies_to
+          announced: '2026-03-06'
+          note: Ignored on create/update in a future update; derived from `type` instead.
+      x-deprecation-notice: https://developer.close.com/api/overview/changelog/2026/3/6

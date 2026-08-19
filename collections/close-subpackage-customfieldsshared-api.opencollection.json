@@ -1,0 +1,265 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints subpackage_activities subpackage_customFieldsShared API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_customFieldsShared",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Shared Custom Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/custom_field/shared/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response."
+              }
+            ]
+          },
+          "docs": "List all the shared custom fields for your organization."
+        },
+        {
+          "info": {
+            "name": "Create a new Shared Custom Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/custom_field/shared/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Shared Custom Field"
+        },
+        {
+          "info": {
+            "name": "Fetch Shared Custom Field's details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/custom_field/shared/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response."
+              }
+            ]
+          },
+          "docs": "Fetch Shared Custom Field's details"
+        },
+        {
+          "info": {
+            "name": "Update a Shared Custom Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.close.com/api/v1/custom_field/shared/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "You can rename it or update the options for a \"choices\" field type. The updated name will immediately appear in the Close UI and only valid values for the updated `choices` will be returned by the Lead/Contact/Custom Activity APIs.\n\nThe `type` value cannot be changed."
+        },
+        {
+          "info": {
+            "name": "Delete a Shared Custom Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.close.com/api/v1/custom_field/shared/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a shared custom field and all its associations. The field will immediately disappear from API responses and values on all associated object types will be permanently removed."
+        },
+        {
+          "info": {
+            "name": "Associate a Shared Custom Field with an object type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/custom_field/shared/:scf_id/association/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "scf_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Associates a Shared Custom Field with an object type such as Lead, Contact, or Custom Activity Type. Once associated, the Shared Custom Field can be set on objects of that type.\n\nThis endpoint accepts the following attributes:\n\n- `object_type` – can be one of: `lead`, `contact`, `opportunity`, `custom_activity_type`,\n  `custom_object_type`.\n- `custom_activity_type_id` – ID of the Custom Activity Type that you want to\n  associate this Shared Field with. Only relevant if you chose the `object_type"
+        },
+        {
+          "info": {
+            "name": "Fetch a Shared Custom Field Association",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/custom_field/shared/:scf_id/association/:object_type/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "scf_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "object_type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetch a Shared Custom Field Association"
+        },
+        {
+          "info": {
+            "name": "Update an existing Shared Custom Field Association",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.close.com/api/v1/custom_field/shared/:scf_id/association/:object_type/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "scf_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "object_type",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "You can change the `required` or the `editable_with_roles` attributes. Everything else cannot be changed.\n\nThe `object_type` in the URL can be either:\n\n- `lead` when editing the association with the Lead object.\n- `contact` when editing the association with the Contact object.\n- `opportunity` when editing the association with the Opportunity object.\n- `custom_activity_type/<catype_id>` when editing the association with a specific\n  Custom Activity Type.\n- `custom_object_type/<cotype_id>` when ed"
+        },
+        {
+          "info": {
+            "name": "Disassociate a Shared Custom Field from an object type",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.close.com/api/v1/custom_field/shared/:scf_id/association/:object_type/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "scf_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "object_type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove the association between a shared custom field and an object type. The field will immediately disappear from API responses for that object type and all stored values will be permanently deleted.\n\nThe `object_type` in the URL can be `lead`, `contact`, `opportunity`, `custom_activity_type/<catype_id>`, or `custom_object_type/<cotype_id>`.\n\nIf the field was `required` on the associated type, removing the association also removes that requirement."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1751 @@
+{
+  "item": [
+    {
+      "id": "0ae8ae15-1fe6-4c7c-8eb8-2d0c741f37c4",
+      "name": "subpackage_activitiesNotes",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cb189290-6b46-48e6-b4d2-a4ae51c88827",
+          "name": "List or filter all Note activities",
+          "request": {
+            "name": "List or filter all Note activities",
+            "description": {},
+            "url": {
+              "path": [
+                "activity",
+                "note",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_limit",
+                  "value": "100",
+                  "description": "Number of results to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "_skip",
+                  "value": "0",
+                  "description": "Number of results to skip before returning, for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "id__in",
+                  "value": "<string>",
+                  "description": "Filter by activity IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "id__in",
+                  "value": "<string>",
+                  "description": "Filter by activity IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "lead_id",
+                  "value": "<string>",
+                  "description": "Filter by lead IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "lead_id",
+                  "value": "<string>",
+                  "description": "Filter by lead IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "contact_id",
+                  "value": "<string>",
+                  "description": "Filter by contact IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "contact_id",
+                  "value": "<string>",
+                  "description": "Filter by contact IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "Filter by user IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "Filter by user IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "organization_id",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_type",
+                  "value": "<string>",
+                  "description": "Filter by activity type, e.g. Call (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "_type",
+                  "value": "<string>",
+                  "description": "Filter by activity type, e.g. Call (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__gte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__lte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__gt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__lt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__gte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__lte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__gt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__lt",
+                  "value": "<dateTime>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7f3a8a9b-7d48-4428-b698-0edac9a5bb08",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "note",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"_type\": \"string\",\n      \"activity_at\": \"1986-01-23T23:38:04.331Z\",\n      \"contact_id\": \"string\",\n      \"created_by\": \"string\",\n      \"date_created\": \"2023-05-10T21:19:03.428Z\",\n      \"date_updated\": \"1947-07-25T21:03:06.814Z\",\n      \"id\": \"string\",\n      \"lead_id\": \"string\",\n      \"organization_id\": \"string\",\n      \"updated_by\": \"string\",\n      \"user_id\": \"string\",\n      \"users\": [\n        \"string\",\n        \"string\"\n      ],\n      \"created_by_name\": \"string\",\n      \"updated_by_name\": \"string\",\n      \"user_name\": \"string\"\n    },\n    {\n      \"_type\": \"string\",\n      \"activity_at\": \"1971-04-12T19:44:44.976Z\",\n      \"contact_id\": \"string\",\n      \"created_by\": \"string\",\n      \"date_created\": \"2016-02-29T06:20:14.811Z\",\n      \"date_updated\": \"1947-05-17T11:55:18.691Z\",\n      \"id\": \"string\",\n      \"lead_id\": \"string\",\n      \"organization_id\": \"string\",\n      \"updated_by\": \"string\",\n      \"user_id\": \"string\",\n      \"users\": [\n        \"string\",\n        \"string\"\n      ],\n      \"created_by_name\": \"string\",\n      \"updated_by_name\": \"string\",\n      \"user_name\": \"string\"\n    }\n  ],\n  \"has_more\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eba75544-1dfb-49a8-aedb-be671f0c3f0f",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "note",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "403a9d9d-1bb2-4205-838d-caec5054b054",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "note",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d160e628-5377-46e0-95f0-845d7fbb029b",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "note",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "1986-03-25T05:31:29.392Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d4d7a947-e301-410f-bbb1-bfa2791a5501",
+          "name": "Create a Note activity",
+          "request": {
+            "name": "Create a Note activity",
+            "description": {
+              "content": "To include an attachment, you must first upload the file to Close using the [Files API](https://developer.close.com/api/resources/files). Then, add an object to the `attachments` array with the following fields: `url`, `filename` and `content_type`. The `url` should be the URL provided in the `download.url` field of the response from the [Files API](https://developer.close.com/api/resources/files). It must begin `https://app.close.com/go/file/`.\n\nA note can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a note.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activity",
+                "note",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lead_id\": \"<string>\",\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"filename\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"content_type\": \"<string,null>\"\n    },\n    {\n      \"filename\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"content_type\": \"<string,null>\"\n    }\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"created_by_id\": \"<string,null>\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"note\": \"<string,null>\",\n  \"note_html\": \"<string,null>\",\n  \"organization_id\": \"<string,null>\",\n  \"pinned\": \"<boolean,null>\",\n  \"title\": \"<string,null>\",\n  \"user_id\": \"<string,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e0c387bd-aa52-47bf-8fef-ce5bd3bb3e28",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "note",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lead_id\": \"<string>\",\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"filename\": \"string\",\n      \"url\": \"https://SoHVbNeZsUc.ewkr5WIbd0qbgv-NiNHSxbrrkAj.SrvJmyJ\",\n      \"content_type\": \"string\"\n    },\n    {\n      \"filename\": \"string\",\n      \"url\": \"https://ev.spBB8NNNYv4gfIKRYHyxwwEf9UrQwq\",\n      \"content_type\": \"string\"\n    }\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"created_by_id\": \"<string,null>\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"note\": \"<string,null>\",\n  \"note_html\": \"<string,null>\",\n  \"organization_id\": \"<string,null>\",\n  \"pinned\": \"<boolean,null>\",\n  \"title\": \"<string,null>\",\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"activity_at\": \"2017-09-27T01:29:54.434Z\",\n  \"contact_id\": \"string\",\n  \"created_by\": \"string\",\n  \"date_created\": \"1988-04-14T14:26:31.349Z\",\n  \"date_updated\": \"1999-12-16T16:13:23.959Z\",\n  \"id\": \"string\",\n  \"lead_id\": \"string\",\n  \"organization_id\": \"string\",\n  \"updated_by\": \"string\",\n  \"user_id\": \"string\",\n  \"users\": [\n    \"string\",\n    \"string\"\n  ],\n  \"created_by_name\": \"string\",\n  \"updated_by_name\": \"string\",\n  \"user_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3752669b-0959-4d5b-a2e5-9307ace5eb01",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "note",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lead_id\": \"<string>\",\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"filename\": \"string\",\n      \"url\": \"https://SoHVbNeZsUc.ewkr5WIbd0qbgv-NiNHSxbrrkAj.SrvJmyJ\",\n      \"content_type\": \"string\"\n    },\n    {\n      \"filename\": \"string\",\n      \"url\": \"https://ev.spBB8NNNYv4gfIKRYHyxwwEf9UrQwq\",\n      \"content_type\": \"string\"\n    }\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"created_by_id\": \"<string,null>\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"note\": \"<string,null>\",\n  \"note_html\": \"<string,null>\",\n  \"organization_id\": \"<string,null>\",\n  \"pinned\": \"<boolean,null>\",\n  \"title\": \"<string,null>\",\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f0ce0665-32fb-4263-8d74-bdcfe271f7f4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "note",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lead_id\": \"<string>\",\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"filename\": \"string\",\n      \"url\": \"https://SoHVbNeZsUc.ewkr5WIbd0qbgv-NiNHSxbrrkAj.SrvJmyJ\",\n      \"content_type\": \"string\"\n    },\n    {\n      \"filename\": \"string\",\n      \"url\": \"https://ev.spBB8NNNYv4gfIKRYHyxwwEf9UrQwq\",\n      \"content_type\": \"string\"\n    }\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"created_by_id\": \"<string,null>\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"note\": \"<string,null>\",\n  \"note_html\": \"<string,null>\",\n  \"organization_id\": \"<string,null>\",\n  \"pinned\": \"<boolean,null>\",\n  \"title\": \"<string,null>\",\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b0155bb-77ab-4454-ba27-edc58ce81db1",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "note",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lead_id\": \"<string>\",\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"filename\": \"string\",\n      \"url\": \"https://SoHVbNeZsUc.ewkr5WIbd0qbgv-NiNHSxbrrkAj.SrvJmyJ\",\n      \"content_type\": \"string\"\n    },\n    {\n      \"filename\": \"string\",\n      \"url\": \"https://ev.spBB8NNNYv4gfIKRYHyxwwEf9UrQwq\",\n      \"content_type\": \"string\"\n    }\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"created_by_id\": \"<string,null>\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"note\": \"<string,null>\",\n  \"note_html\": \"<string,null>\",\n  \"organization_id\": \"<string,null>\",\n  \"pinned\": \"<boolean,null>\",\n  \"title\": \"<string,null>\",\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b0e523b0-d92b-4892-bf7e-2dee6f43ab06",
+          "name": "Get a single Note activity",
+          "request": {
+            "name": "Get a single Note activity",
+            "description": {},
+            "url": {
+              "path": [
+                "activity",
+                "note",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c6e4cb2d-095e-4b61-b5b5-6bc4e9fc6625",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "note",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"activity_at\": \"2017-09-27T01:29:54.434Z\",\n  \"contact_id\": \"string\",\n  \"created_by\": \"string\",\n  \"date_created\": \"1988-04-14T14:26:31.349Z\",\n  \"date_updated\": \"1999-12-16T16:13:23.959Z\",\n  \"id\": \"string\",\n  \"lead_id\": \"string\",\n  \"organization_id\": \"string\",\n  \"updated_by\": \"string\",\n  \"user_id\": \"string\",\n  \"users\": [\n    \"string\",\n    \"string\"\n  ],\n  \"created_by_name\": \"string\",\n  \"updated_by_name\": \"string\",\n  \"user_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12e02c83-bb78-46cd-abea-048028d0b4fa",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "note",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1d593e8-5792-4501-8b57-7f69ba7e323d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "note",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1390d01b-a833-4b32-80cd-db2b058ad772",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "note",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f40416d7-4293-4702-b52f-6f94393e2e25",
+          "name": "Update a Note activity",
+          "request": {
+            "name": "Update a Note activity",
+            "description": {
+              "content": "**`note_html` and `note`**: setting one overwrites the other. If both are provided, `note_html` takes precedence. `note_html` supports rich-text HTML; `note` is plaintext only.\n\nA note can be pinned or unpinned by setting `pinned` to `true` or `false`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activity",
+                "note",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"filename\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"content_type\": \"<string,null>\"\n    },\n    {\n      \"filename\": \"<string>\",\n      \"url\": \"<uri>\",\n      \"content_type\": \"<string,null>\"\n    }\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"note\": \"<string,null>\",\n  \"note_html\": \"<string,null>\",\n  \"pinned\": \"<boolean,null>\",\n  \"title\": \"<string,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "096b2435-3541-4e44-afa0-4c81aa48cab7",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "note",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"filename\": \"string\",\n      \"url\": \"http://BbGRf.kswmF08cFYVKzvR+6eaCkdHyc+ZP6Cx,e9VLu,FvmUqGF-kq\",\n      \"content_type\": \"string\"\n    },\n    {\n      \"filename\": \"string\",\n      \"url\": \"http://RvPVxxullqSLQJwoxVYiaD.tzgvVtm0HSvlxcAMYDdixOJQTNcQY5fQGWo,7cWxPzFnoED2Pf\",\n      \"content_type\": \"string\"\n    }\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"note\": \"<string,null>\",\n  \"note_html\": \"<string,null>\",\n  \"pinned\": \"<boolean,null>\",\n  \"title\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"activity_at\": \"2017-09-27T01:29:54.434Z\",\n  \"contact_id\": \"string\",\n  \"created_by\": \"string\",\n  \"date_created\": \"1988-04-14T14:26:31.349Z\",\n  \"date_updated\": \"1999-12-16T16:13:23.959Z\",\n  \"id\": \"string\",\n  \"lead_id\": \"string\",\n  \"organization_id\": \"string\",\n  \"updated_by\": \"string\",\n  \"user_id\": \"string\",\n  \"users\": [\n    \"string\",\n    \"string\"\n  ],\n  \"created_by_name\": \"string\",\n  \"updated_by_name\": \"string\",\n  \"user_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89efd549-dca1-4e35-b441-facc7a9b8ddb",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "note",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"filename\": \"string\",\n      \"url\": \"http://BbGRf.kswmF08cFYVKzvR+6eaCkdHyc+ZP6Cx,e9VLu,FvmUqGF-kq\",\n      \"content_type\": \"string\"\n    },\n    {\n      \"filename\": \"string\",\n      \"url\": \"http://RvPVxxullqSLQJwoxVYiaD.tzgvVtm0HSvlxcAMYDdixOJQTNcQY5fQGWo,7cWxPzFnoED2Pf\",\n      \"content_type\": \"string\"\n    }\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"note\": \"<string,null>\",\n  \"note_html\": \"<string,null>\",\n  \"pinned\": \"<boolean,null>\",\n  \"title\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c81f9c1-93de-458c-9206-0139779ee71d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "note",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"filename\": \"string\",\n      \"url\": \"http://BbGRf.kswmF08cFYVKzvR+6eaCkdHyc+ZP6Cx,e9VLu,FvmUqGF-kq\",\n      \"content_type\": \"string\"\n    },\n    {\n      \"filename\": \"string\",\n      \"url\": \"http://RvPVxxullqSLQJwoxVYiaD.tzgvVtm0HSvlxcAMYDdixOJQTNcQY5fQGWo,7cWxPzFnoED2Pf\",\n      \"content_type\": \"string\"\n    }\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"note\": \"<string,null>\",\n  \"note_html\": \"<string,null>\",\n  \"pinned\": \"<boolean,null>\",\n  \"title\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "27a8a153-1fa4-4095-a58f-db1de3788a6f",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "note",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"filename\": \"string\",\n      \"url\": \"http://BbGRf.kswmF08cFYVKzvR+6eaCkdHyc+ZP6Cx,e9VLu,FvmUqGF-kq\",\n      \"content_type\": \"string\"\n    },\n    {\n      \"filename\": \"string\",\n      \"url\": \"http://RvPVxxullqSLQJwoxVYiaD.tzgvVtm0HSvlxcAMYDdixOJQTNcQY5fQGWo,7cWxPzFnoED2Pf\",\n      \"content_type\": \"string\"\n    }\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"note\": \"<string,null>\",\n  \"note_html\": \"<string,null>\",\n  \"pinned\": \"<boolean,null>\",\n  \"title\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab6267f5-6d99-4b36-bcad-93b63f5e7725",
+          "name": "Delete a Note activity",
+          "request": {
+            "name": "Delete a Note activity",
+            "description": {},
+            "url": {
+              "path": [
+                "activity",
+                "note",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7ad13913-f9fb-420f-b771-41cd2b215b41",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "note",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7da1cd24-ed04-4d3e-aeeb-9c1519103d5c",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "note",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "41f201f7-70d8-43d4-85ef-531fe20c9c30",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "note",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c505fc25-9329-4eb3-acdc-a544bf0cdfbc",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "note",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.close.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f99b1e06-3435-4d82-bb54-49639c08d823",
+    "name": "API Endpoints subpackage_activities subpackage_activitiesNotes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

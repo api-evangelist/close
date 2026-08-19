@@ -1,0 +1,206 @@
+generated: '2026-08-13'
+method: searched
+source: https://developer.close.com/api/overview/changelog
+index: https://developer.close.com/api/overview/changelog/llms.txt
+description: >-
+  Close keeps a dated API changelog separate from the product changelog at
+  close.com/changelog. Each entry is its own page under
+  /api/overview/changelog/<year>/<month>/<day> and is available as markdown by
+  appending .md. Entries are prose announcements, not semantic version bumps —
+  Close ships additively into v1 and there is no version number attached to a
+  release.
+scheme: dated-entries
+versioning:
+  current: v1
+  style: uri-path
+  semver: false
+  note: The API version has been v1 since launch; changes are announced, not versioned.
+product_changelog: https://close.com/changelog
+entry_count_published: 60
+window: recent entries captured 2024-01-01 through 2026-07-21
+entries:
+  - date: '2026-07-21'
+    title: '`user_id` and `is_group_number` deprecated on phone numbers'
+    kind: deprecation
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2026/7/21
+    highlights: >-
+      The group-vs-personal phone-number distinction is being retired. The
+      `sharing` field on POST /phone_number/request/internal/ is deprecated and
+      now optional (defaults to `personal`). `user_id` and `is_group_number` on
+      the Phone Number API are deprecated. Removal is announced for "a future
+      update" with no dated sunset.
+  - date: '2026-07-16'
+    title: Membership creation security enhancement
+    kind: behavior-change
+    breaking: true
+    url: https://developer.close.com/api/overview/changelog/2026/7/16
+    highlights: >-
+      Creating a membership via the API now requires the organization to have
+      "Restrict new users to emails from these domains" enabled, and the new
+      member's email must be on a verified domain. Membership creation now also
+      supports API-key auth (partially reversing the 2024-06-10 restriction).
+  - date: '2026-06-01'
+    title: Rich text notes on Opportunities
+    kind: addition
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2026/6/1
+  - date: '2026-05-07'
+    title: Forms API
+    kind: addition
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2026/5/7
+    highlights: >-
+      New read-only Forms API — list forms built in Close and inspect their
+      field definitions, including field types and select-field choices.
+  - date: '2026-05-04'
+    title: Playbooks API
+    kind: addition
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2026/5/4
+  - date: '2026-04-10'
+    title: Blocked Phone Numbers API
+    kind: addition
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2026/4/10
+  - date: '2026-04-06'
+    title: OpenAPI Spec now available
+    kind: addition
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2026/4/6
+    highlights: >-
+      Close began publishing an OpenAPI spec at
+      https://api.close.com/api/openapi.json, explicitly labelled experimental
+      and not yet at 100% request/response schema coverage. This is the spec
+      captured at openapi/_original/close-api-openapi.json.
+  - date: '2026-03-06'
+    title: '`applies_to` field on Outcomes deprecated for write operations'
+    kind: deprecation
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2026/3/6
+    highlights: >-
+      `applies_to` is deprecated on Outcome create/update and will be derived
+      from `type` in a future update. Read responses keep returning it.
+  - date: '2026-01-14'
+    title: Form Submissions API
+    kind: addition
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2026/1/14
+  - date: '2025-12-17'
+    title: Sender field requirements for Email activities
+    kind: behavior-change
+    breaking: true
+    url: https://developer.close.com/api/overview/changelog/2025/12/17
+  - date: '2025-08-25'
+    title: Note titles and pinned_at timestamps
+    kind: addition
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2025/8/25
+  - date: '2025-08-14'
+    title: Transcription related fields in Meeting API
+    kind: addition
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2025/8/14
+  - date: '2025-07-29'
+    title: Outcome API
+    kind: addition
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2025/7/29
+  - date: '2025-07-16'
+    title: Field Enrichment API
+    kind: addition
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2025/7/16
+  - date: '2025-06-25'
+    title: WhatsApp Messages API
+    kind: addition
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2025/6/25
+  - date: '2025-02-14'
+    title: lead_id is now optional when creating a Contact or Opportunity
+    kind: relaxation
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2025/2/14
+  - date: '2025-01-06'
+    title: Updating Webhook Subscriptions
+    kind: addition
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2025/1/6
+  - date: '2024-12-02'
+    title: record_calls field on memberships deprecated
+    kind: deprecation
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2024/12/2
+  - date: '2024-11-06'
+    title: Date format in CSV Exports
+    kind: behavior-change
+    breaking: true
+    url: https://developer.close.com/api/overview/changelog/2024/11/6
+  - date: '2024-09-09'
+    title: Archiving Custom Object Types
+    kind: addition
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2024/9/9
+  - date: '2024-08-28'
+    title: Custom Objects are now public
+    kind: ga
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2024/8/28
+  - date: '2024-06-26'
+    title: Delete Lead & Opportunity status change activities
+    kind: addition
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2024/6/26
+  - date: '2024-06-20'
+    title: Create Lead & Opportunity status change activities
+    kind: addition
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2024/6/20
+  - date: '2024-06-10'
+    title: Disallow Membership creation via API Keys
+    kind: behavior-change
+    breaking: true
+    url: https://developer.close.com/api/overview/changelog/2024/6/10
+  - date: '2024-06-07'
+    title: Lead API only returns incomplete tasks
+    kind: behavior-change
+    breaking: true
+    url: https://developer.close.com/api/overview/changelog/2024/6/7
+  - date: '2024-04-24'
+    title: Rate limit body deprecated
+    kind: deprecation
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2024/4/24
+    highlights: >-
+      Rate-limit details moved out of the 429 response body; consumers must read
+      the RateLimit header instead.
+  - date: '2024-03-28'
+    title: Commenting API
+    kind: addition
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2024/3/28
+  - date: '2024-03-27'
+    title: Pipeline fields in Opportunities
+    kind: addition
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2024/3/27
+  - date: '2024-02-26'
+    title: Files API, Email Attachments
+    kind: addition
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2024/2/26
+  - date: '2024-02-21'
+    title: Custom Objects (BETA)
+    kind: addition
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2024/2/21
+  - date: '2024-02-15'
+    title: Email Unsubscribe
+    kind: addition
+    breaking: false
+    url: https://developer.close.com/api/overview/changelog/2024/2/15
+older_entries_available: true
+older_entries_note: >-
+  The published index runs back to 2021-04-22 (Shared Custom Fields). Earlier
+  entries are reachable from the same index at
+  https://developer.close.com/api/overview/changelog/llms.txt.

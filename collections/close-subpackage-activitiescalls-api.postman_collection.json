@@ -1,0 +1,1751 @@
+{
+  "item": [
+    {
+      "id": "b7650384-3376-4aa3-bb84-5d1580a60af2",
+      "name": "subpackage_activitiesCalls",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d31d64cb-43b5-4d3c-8218-aaeadc51e244",
+          "name": "List or filter all Call activities",
+          "request": {
+            "name": "List or filter all Call activities",
+            "description": {},
+            "url": {
+              "path": [
+                "activity",
+                "call",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_limit",
+                  "value": "100",
+                  "description": "Number of results to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "_skip",
+                  "value": "0",
+                  "description": "Number of results to skip before returning, for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "id__in",
+                  "value": "<string>",
+                  "description": "Filter by activity IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "id__in",
+                  "value": "<string>",
+                  "description": "Filter by activity IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "lead_id",
+                  "value": "<string>",
+                  "description": "Filter by lead IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "lead_id",
+                  "value": "<string>",
+                  "description": "Filter by lead IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "contact_id",
+                  "value": "<string>",
+                  "description": "Filter by contact IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "contact_id",
+                  "value": "<string>",
+                  "description": "Filter by contact IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "Filter by user IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "Filter by user IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "organization_id",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_type",
+                  "value": "<string>",
+                  "description": "Filter by activity type, e.g. Call (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "_type",
+                  "value": "<string>",
+                  "description": "Filter by activity type, e.g. Call (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__gte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__lte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__gt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__lt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__gte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__lte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__gt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__lt",
+                  "value": "<dateTime>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "018c93a3-6a63-4ae8-a78f-75890433006b",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "call",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"_type\": \"string\",\n      \"activity_at\": \"2005-08-28T02:24:04.553Z\",\n      \"contact_id\": \"string\",\n      \"created_by\": \"string\",\n      \"date_created\": \"1963-03-15T10:42:09.432Z\",\n      \"date_updated\": \"2002-06-06T19:49:38.063Z\",\n      \"id\": \"string\",\n      \"lead_id\": \"string\",\n      \"organization_id\": \"string\",\n      \"outcome_id\": \"string\",\n      \"source\": \"External\",\n      \"status\": \"cancel\",\n      \"updated_by\": \"string\",\n      \"user_id\": \"string\",\n      \"users\": [\n        \"string\",\n        \"string\"\n      ],\n      \"created_by_name\": \"string\",\n      \"sequence_id\": \"string\",\n      \"sequence_name\": \"string\",\n      \"sequence_subscription_id\": \"string\",\n      \"updated_by_name\": \"string\",\n      \"user_name\": \"string\"\n    },\n    {\n      \"_type\": \"string\",\n      \"activity_at\": \"2004-11-05T22:23:32.109Z\",\n      \"contact_id\": \"string\",\n      \"created_by\": \"string\",\n      \"date_created\": \"2025-06-20T08:04:56.469Z\",\n      \"date_updated\": \"2018-06-26T18:53:08.574Z\",\n      \"id\": \"string\",\n      \"lead_id\": \"string\",\n      \"organization_id\": \"string\",\n      \"outcome_id\": \"string\",\n      \"source\": \"External\",\n      \"status\": \"failed\",\n      \"updated_by\": \"string\",\n      \"user_id\": \"string\",\n      \"users\": [\n        \"string\",\n        \"string\"\n      ],\n      \"created_by_name\": \"string\",\n      \"sequence_id\": \"string\",\n      \"sequence_name\": \"string\",\n      \"sequence_subscription_id\": \"string\",\n      \"updated_by_name\": \"string\",\n      \"user_name\": \"string\"\n    }\n  ],\n  \"has_more\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a0fee45-1154-4ea8-9fa4-b23958b873c7",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "call",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45815271-baca-499a-85fb-92add2700416",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "call",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b1f60c30-a8c5-4ce8-adf2-7683fccb7bf2",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "call",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "2016-03-11T07:46:49.344Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f865c921-08bb-404e-a45f-a5708153fcd0",
+          "name": "Log an external Call activity",
+          "request": {
+            "name": "Log an external Call activity",
+            "description": {
+              "content": "Use this endpoint to log calls made outside of the Close built-in VoIP system.\n\n*status*: defaults to `completed`\n\n*direction* (optional): `outbound` or `inbound`\n\n*recording_url*: you can post a URL pointing to the MP3 recording of your call. For security reasons, we require the URL to be secure (i.e. starting with https://)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activity",
+                "call",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"activity_at\": \"<string,null-date-time>\",\n  \"contact_id\": \"<string,null>\",\n  \"conversation_type_id\": \"<string,null>\",\n  \"created_by_id\": \"<string,null>\",\n  \"custom_fields\": {\n    \"key_0\": {}\n  },\n  \"date_created\": \"<string,null-date-time>\",\n  \"direction\": \"<string>\",\n  \"duration\": \"<integer,null>\",\n  \"lead_id\": \"<string,null>\",\n  \"note\": \"<string,null>\",\n  \"note_html\": \"<string,null>\",\n  \"organization_id\": \"<string,null>\",\n  \"outcome_id\": \"<string,null>\",\n  \"phone\": \"<string,null>\",\n  \"playbook_id\": \"<string,null>\",\n  \"quality_info\": \"<string,null>\",\n  \"recording_url\": \"<string,null-uri>\",\n  \"source\": \"<string>\",\n  \"status\": \"<string>\",\n  \"user_id\": \"<string,null>\",\n  \"voicemail_url\": \"<string,null-uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2d824cc3-cd6c-4b9c-8b9c-70705e3d91e0",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "call",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<string,null-date-time>\",\n  \"contact_id\": \"<string,null>\",\n  \"conversation_type_id\": \"<string,null>\",\n  \"created_by_id\": \"<string,null>\",\n  \"custom_fields\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"date_created\": \"<string,null-date-time>\",\n  \"direction\": \"inbound\",\n  \"duration\": \"<integer,null>\",\n  \"lead_id\": \"<string,null>\",\n  \"note\": \"<string,null>\",\n  \"note_html\": \"<string,null>\",\n  \"organization_id\": \"<string,null>\",\n  \"outcome_id\": \"<string,null>\",\n  \"phone\": \"<string,null>\",\n  \"playbook_id\": \"<string,null>\",\n  \"quality_info\": \"<string,null>\",\n  \"recording_url\": \"<string,null-uri>\",\n  \"source\": \"Close.io\",\n  \"status\": \"completed\",\n  \"user_id\": \"<string,null>\",\n  \"voicemail_url\": \"<string,null-uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"activity_at\": \"1998-09-16T07:51:58.244Z\",\n  \"contact_id\": \"string\",\n  \"created_by\": \"string\",\n  \"date_created\": \"1997-09-14T23:36:47.918Z\",\n  \"date_updated\": \"2004-08-12T04:33:50.274Z\",\n  \"id\": \"string\",\n  \"lead_id\": \"string\",\n  \"organization_id\": \"string\",\n  \"outcome_id\": \"string\",\n  \"source\": \"External\",\n  \"status\": \"busy\",\n  \"updated_by\": \"string\",\n  \"user_id\": \"string\",\n  \"users\": [\n    \"string\",\n    \"string\"\n  ],\n  \"created_by_name\": \"string\",\n  \"sequence_id\": \"string\",\n  \"sequence_name\": \"string\",\n  \"sequence_subscription_id\": \"string\",\n  \"updated_by_name\": \"string\",\n  \"user_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "520ce2a1-e873-4535-926b-0a7050a1e278",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "call",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<string,null-date-time>\",\n  \"contact_id\": \"<string,null>\",\n  \"conversation_type_id\": \"<string,null>\",\n  \"created_by_id\": \"<string,null>\",\n  \"custom_fields\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"date_created\": \"<string,null-date-time>\",\n  \"direction\": \"inbound\",\n  \"duration\": \"<integer,null>\",\n  \"lead_id\": \"<string,null>\",\n  \"note\": \"<string,null>\",\n  \"note_html\": \"<string,null>\",\n  \"organization_id\": \"<string,null>\",\n  \"outcome_id\": \"<string,null>\",\n  \"phone\": \"<string,null>\",\n  \"playbook_id\": \"<string,null>\",\n  \"quality_info\": \"<string,null>\",\n  \"recording_url\": \"<string,null-uri>\",\n  \"source\": \"Close.io\",\n  \"status\": \"completed\",\n  \"user_id\": \"<string,null>\",\n  \"voicemail_url\": \"<string,null-uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "04f78c99-bd21-4293-8117-7c05fd54ef48",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "call",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<string,null-date-time>\",\n  \"contact_id\": \"<string,null>\",\n  \"conversation_type_id\": \"<string,null>\",\n  \"created_by_id\": \"<string,null>\",\n  \"custom_fields\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"date_created\": \"<string,null-date-time>\",\n  \"direction\": \"inbound\",\n  \"duration\": \"<integer,null>\",\n  \"lead_id\": \"<string,null>\",\n  \"note\": \"<string,null>\",\n  \"note_html\": \"<string,null>\",\n  \"organization_id\": \"<string,null>\",\n  \"outcome_id\": \"<string,null>\",\n  \"phone\": \"<string,null>\",\n  \"playbook_id\": \"<string,null>\",\n  \"quality_info\": \"<string,null>\",\n  \"recording_url\": \"<string,null-uri>\",\n  \"source\": \"Close.io\",\n  \"status\": \"completed\",\n  \"user_id\": \"<string,null>\",\n  \"voicemail_url\": \"<string,null-uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "168e1d02-9532-44ed-96ed-127eb6d50248",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "call",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<string,null-date-time>\",\n  \"contact_id\": \"<string,null>\",\n  \"conversation_type_id\": \"<string,null>\",\n  \"created_by_id\": \"<string,null>\",\n  \"custom_fields\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"date_created\": \"<string,null-date-time>\",\n  \"direction\": \"inbound\",\n  \"duration\": \"<integer,null>\",\n  \"lead_id\": \"<string,null>\",\n  \"note\": \"<string,null>\",\n  \"note_html\": \"<string,null>\",\n  \"organization_id\": \"<string,null>\",\n  \"outcome_id\": \"<string,null>\",\n  \"phone\": \"<string,null>\",\n  \"playbook_id\": \"<string,null>\",\n  \"quality_info\": \"<string,null>\",\n  \"recording_url\": \"<string,null-uri>\",\n  \"source\": \"Close.io\",\n  \"status\": \"completed\",\n  \"user_id\": \"<string,null>\",\n  \"voicemail_url\": \"<string,null-uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4824d738-1650-4774-a310-818edf8fb8ff",
+          "name": "Get a single Call activity",
+          "request": {
+            "name": "Get a single Call activity",
+            "description": {},
+            "url": {
+              "path": [
+                "activity",
+                "call",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "097e0844-461a-4206-9e67-e6ed7c93dcae",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "call",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"activity_at\": \"1998-09-16T07:51:58.244Z\",\n  \"contact_id\": \"string\",\n  \"created_by\": \"string\",\n  \"date_created\": \"1997-09-14T23:36:47.918Z\",\n  \"date_updated\": \"2004-08-12T04:33:50.274Z\",\n  \"id\": \"string\",\n  \"lead_id\": \"string\",\n  \"organization_id\": \"string\",\n  \"outcome_id\": \"string\",\n  \"source\": \"External\",\n  \"status\": \"busy\",\n  \"updated_by\": \"string\",\n  \"user_id\": \"string\",\n  \"users\": [\n    \"string\",\n    \"string\"\n  ],\n  \"created_by_name\": \"string\",\n  \"sequence_id\": \"string\",\n  \"sequence_name\": \"string\",\n  \"sequence_subscription_id\": \"string\",\n  \"updated_by_name\": \"string\",\n  \"user_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8da3066f-7caa-4ba7-a7f0-cf77fe578b34",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "call",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77407da1-2f57-4574-906e-15ba4afce12a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "call",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "90571713-c557-4f90-bd20-b53b865ef798",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "call",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aec73999-e458-412a-b096-5463ead8aaa2",
+          "name": "Update a Call activity",
+          "request": {
+            "name": "Update a Call activity",
+            "description": {
+              "content": "Most commonly used to update `note_html` or `outcome_id`. Some fields (`status`, `duration`, `direction`) cannot be updated for internal calls made through Close's VoIP system.\n\n**`note_html` and `note`**: setting one overwrites the other. If both are provided, `note_html` takes precedence. `note_html` supports rich-text HTML; `note` is plaintext only.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activity",
+                "call",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"activity_at\": \"<string,null-date-time>\",\n  \"contact_id\": \"<string,null>\",\n  \"conversation_type_id\": \"<string,null>\",\n  \"custom_fields\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"duration\": \"<integer,null>\",\n  \"lead_id\": \"<string,null>\",\n  \"note\": \"<string,null>\",\n  \"note_html\": \"<string,null>\",\n  \"outcome_id\": \"<string,null>\",\n  \"phone\": \"<string,null>\",\n  \"playbook_id\": \"<string,null>\",\n  \"quality_info\": \"<string,null>\",\n  \"recording_url\": \"<string,null-uri>\",\n  \"status\": \"<string>\",\n  \"user_id\": \"<string,null>\",\n  \"voicemail_url\": \"<string,null-uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d34b26c4-a19d-43a9-bc56-b30e758328c0",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "call",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<string,null-date-time>\",\n  \"contact_id\": \"<string,null>\",\n  \"conversation_type_id\": \"<string,null>\",\n  \"custom_fields\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"duration\": \"<integer,null>\",\n  \"lead_id\": \"<string,null>\",\n  \"note\": \"<string,null>\",\n  \"note_html\": \"<string,null>\",\n  \"outcome_id\": \"<string,null>\",\n  \"phone\": \"<string,null>\",\n  \"playbook_id\": \"<string,null>\",\n  \"quality_info\": \"<string,null>\",\n  \"recording_url\": \"<string,null-uri>\",\n  \"status\": \"busy\",\n  \"user_id\": \"<string,null>\",\n  \"voicemail_url\": \"<string,null-uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"activity_at\": \"1998-09-16T07:51:58.244Z\",\n  \"contact_id\": \"string\",\n  \"created_by\": \"string\",\n  \"date_created\": \"1997-09-14T23:36:47.918Z\",\n  \"date_updated\": \"2004-08-12T04:33:50.274Z\",\n  \"id\": \"string\",\n  \"lead_id\": \"string\",\n  \"organization_id\": \"string\",\n  \"outcome_id\": \"string\",\n  \"source\": \"External\",\n  \"status\": \"busy\",\n  \"updated_by\": \"string\",\n  \"user_id\": \"string\",\n  \"users\": [\n    \"string\",\n    \"string\"\n  ],\n  \"created_by_name\": \"string\",\n  \"sequence_id\": \"string\",\n  \"sequence_name\": \"string\",\n  \"sequence_subscription_id\": \"string\",\n  \"updated_by_name\": \"string\",\n  \"user_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f40edfda-41a6-4945-bc97-df3d47d60c33",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "call",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<string,null-date-time>\",\n  \"contact_id\": \"<string,null>\",\n  \"conversation_type_id\": \"<string,null>\",\n  \"custom_fields\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"duration\": \"<integer,null>\",\n  \"lead_id\": \"<string,null>\",\n  \"note\": \"<string,null>\",\n  \"note_html\": \"<string,null>\",\n  \"outcome_id\": \"<string,null>\",\n  \"phone\": \"<string,null>\",\n  \"playbook_id\": \"<string,null>\",\n  \"quality_info\": \"<string,null>\",\n  \"recording_url\": \"<string,null-uri>\",\n  \"status\": \"busy\",\n  \"user_id\": \"<string,null>\",\n  \"voicemail_url\": \"<string,null-uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a730abf8-ff3d-44c9-804a-43ce0fbd3c2c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "call",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<string,null-date-time>\",\n  \"contact_id\": \"<string,null>\",\n  \"conversation_type_id\": \"<string,null>\",\n  \"custom_fields\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"duration\": \"<integer,null>\",\n  \"lead_id\": \"<string,null>\",\n  \"note\": \"<string,null>\",\n  \"note_html\": \"<string,null>\",\n  \"outcome_id\": \"<string,null>\",\n  \"phone\": \"<string,null>\",\n  \"playbook_id\": \"<string,null>\",\n  \"quality_info\": \"<string,null>\",\n  \"recording_url\": \"<string,null-uri>\",\n  \"status\": \"busy\",\n  \"user_id\": \"<string,null>\",\n  \"voicemail_url\": \"<string,null-uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4fabef11-fc58-45c3-865d-f4c8e3429167",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "call",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<string,null-date-time>\",\n  \"contact_id\": \"<string,null>\",\n  \"conversation_type_id\": \"<string,null>\",\n  \"custom_fields\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"duration\": \"<integer,null>\",\n  \"lead_id\": \"<string,null>\",\n  \"note\": \"<string,null>\",\n  \"note_html\": \"<string,null>\",\n  \"outcome_id\": \"<string,null>\",\n  \"phone\": \"<string,null>\",\n  \"playbook_id\": \"<string,null>\",\n  \"quality_info\": \"<string,null>\",\n  \"recording_url\": \"<string,null-uri>\",\n  \"status\": \"busy\",\n  \"user_id\": \"<string,null>\",\n  \"voicemail_url\": \"<string,null-uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af45ecee-6bec-4fe4-9bf3-267da217a272",
+          "name": "Delete a Call activity",
+          "request": {
+            "name": "Delete a Call activity",
+            "description": {},
+            "url": {
+              "path": [
+                "activity",
+                "call",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c894707e-b4cb-4fec-8c6e-83f2010caa86",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "call",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d6d00b1-2fc2-41bf-9994-9acfe0dd94e0",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "call",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c893c591-2549-404a-b4aa-1951f6161242",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "call",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6cbe9d76-5bad-417d-b1fe-37a0dbd752b7",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "call",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.close.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bb02edf2-2617-4389-9957-8db371f0b45b",
+    "name": "API Endpoints subpackage_activities subpackage_activitiesCalls API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

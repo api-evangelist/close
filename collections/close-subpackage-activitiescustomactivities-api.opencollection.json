@@ -1,0 +1,231 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints subpackage_activities subpackage_activitiesCustomActivities API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_activitiesCustomActivities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or filter all Custom Activity instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/activity/custom/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "_limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return."
+              },
+              {
+                "name": "_skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip before returning, for pagination."
+              },
+              {
+                "name": "id__in",
+                "value": "",
+                "type": "query",
+                "description": "Filter by activity IDs (comma-separated)"
+              },
+              {
+                "name": "lead_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by lead IDs (comma-separated)"
+              },
+              {
+                "name": "contact_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by contact IDs (comma-separated)"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by user IDs (comma-separated)"
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by activity type, e.g. Call (comma-separated)"
+              },
+              {
+                "name": "date_created__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "activity_at__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "activity_at__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "activity_at__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "activity_at__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "custom_activity_type_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "custom_activity_type_id__in",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Custom Fields appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-activity).\n\nIf you're filtering by `custom_activity_type_id` or `custom_activity_type_id__in` parameter, the `lead_id` parameter will be required as well. If you want to retrieve all Custom Activity instances of a specific type regardless of the lead, you will need to get leads that contain such an activity type using [Advanced Filtering](https"
+        },
+        {
+          "info": {
+            "name": "Create a new Custom Activity instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/activity/custom/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Custom Activity instances will be created by default with the 'published' status. All required fields will be validated in this status. To create an activity without setting all required fields, you can use the \"draft\" status.\n\nA Custom Activity can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a Custom Activity."
+        },
+        {
+          "info": {
+            "name": "Get a single Custom Activity instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/activity/custom/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a single Custom Activity instance"
+        },
+        {
+          "info": {
+            "name": "Updating a Custom Activity instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.close.com/api/v1/activity/custom/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "A Custom Activity can be updated to add, change or remove any Custom Fields and to change the status between \"draft\" and \"published\".\n\nA Custom Activity can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a Custom Activity."
+        },
+        {
+          "info": {
+            "name": "Delete a Custom Activity instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.close.com/api/v1/activity/custom/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Custom Activity instance"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

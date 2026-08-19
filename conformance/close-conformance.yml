@@ -1,0 +1,163 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://api.close.com/api/openapi.json + https://developer.close.com/api/overview
+  + live /.well-known probes on api.close.com and mcp.close.com
+description: >-
+  Which cross-cutting standards the Close platform actually conforms to, judged
+  from the published contract and live probes rather than from marketing claims.
+  Close is strong on the OAuth/MCP identity stack and weak on HTTP error and
+  discovery conventions.
+standards:
+  - id: openapi-3.1
+    conforms: true
+    evidence: >-
+      https://api.close.com/api/openapi.json declares openapi 3.1.0 with 158
+      paths, 300 operations, 172 component schemas, 64 declared tags and
+      operationIds unique across the document.
+    caveat: >-
+      Close labels the spec experimental and states it does not carry 100%
+      request/response schema coverage. No 5xx or 429 responses are declared.
+  - id: oauth2-rfc6749
+    conforms: true
+    evidence: >-
+      authorizationCode flow declared in components.securitySchemes with
+      authorization, token and revocation endpoints.
+  - id: oauth2-pkce-rfc7636
+    conforms: true
+    evidence: >-
+      code_challenge_methods_supported ["S256"] in
+      /.well-known/oauth-authorization-server.
+  - id: oauth2-authorization-server-metadata-rfc8414
+    conforms: true
+    evidence: >-
+      https://api.close.com/.well-known/oauth-authorization-server returned 200
+      with issuer, authorization_endpoint, token_endpoint, revocation_endpoint,
+      registration_endpoint on 2026-08-13.
+  - id: oauth2-protected-resource-metadata-rfc9728
+    conforms: true
+    evidence: >-
+      https://mcp.close.com/.well-known/oauth-protected-resource returned 200
+      with resource, authorization_servers, scopes_supported and
+      bearer_methods_supported; the MCP 401 carries a matching
+      WWW-Authenticate resource_metadata pointer.
+  - id: oauth2-dynamic-client-registration-rfc7591
+    conforms: true
+    evidence: >-
+      registration_endpoint https://api.close.com/oauth2/register/ advertised in
+      authorization server metadata; Close's MCP docs state DCR support.
+  - id: oauth2-token-revocation-rfc7009
+    conforms: true
+    evidence: revocation_endpoint https://api.close.com/oauth2/revoke/ advertised and documented.
+  - id: openid-connect-discovery
+    conforms: false
+    evidence: /.well-known/openid-configuration returns 404 on api.close.com.
+  - id: http-basic-rfc7617
+    conforms: true
+    evidence: API keys authenticate as the HTTP Basic username with an empty password.
+  - id: mcp
+    conforms: true
+    evidence: >-
+      Hosted server at https://mcp.close.com/mcp over HTTP Streamable transport
+      with OAuth 2.0 DCR; 107 published tools across three scope tiers. A second
+      anonymous docs server at https://developer.close.com/_mcp/server answered
+      tools/list with HTTP 200.
+    caveat: SSE transport is explicitly not supported.
+  - id: a2a
+    conforms: false
+    evidence: >-
+      /.well-known/agent-card.json and /.well-known/agent.json returned 404 on
+      close.com, www.close.com, api.close.com, mcp.close.com and
+      developer.close.com.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      No application/problem+json media type anywhere in the spec; errors are a
+      bare JSON object with an "error" string.
+  - id: rfc9116-security-txt
+    conforms: false
+    evidence: /.well-known/security.txt returned 404 on all four Close hosts.
+  - id: rfc8615-well-known-api-catalog
+    conforms: false
+    evidence: /.well-known/api-catalog returned 404 on api.close.com.
+  - id: rfc8594-sunset-header
+    conforms: false
+    evidence: >-
+      No Sunset or Deprecation headers documented or observed; deprecations are
+      announced in prose on the changelog only.
+  - id: ratelimit-headers
+    conforms: true
+    evidence: >-
+      Close returns a single RateLimit header carrying limit, remaining and
+      reset, in the IETF draft-standard structured form, plus retry-after per
+      RFC 7231 on every 429.
+  - id: retry-after-rfc7231
+    conforms: true
+    evidence: Every 429 is guaranteed to carry retry-after.
+  - id: llms-txt
+    conforms: true
+    evidence: >-
+      https://developer.close.com/llms.txt (60KB, full page index) and
+      https://close.com/llms.txt (16KB, company/product) both returned 200.
+      Close additionally serves any docs page as markdown by appending .md and
+      any section index by appending /llms.txt.
+  - id: content-signals
+    conforms: true
+    evidence: >-
+      https://close.com/robots.txt carries "Content-Signal: ai-train=no,
+      search=yes" — a machine-readable AI-usage preference.
+  - id: webhook-hmac-signing
+    conforms: true
+    evidence: >-
+      Deliveries are signed with a SHA-256 HMAC over the concatenation of the
+      close-sig-timestamp header and the payload, verified against
+      close-sig-hash. Verification code is published.
+  - id: soc2-type2
+    conforms: true
+    evidence: https://close.com/security states SOC 2 Type 2 certification.
+    kind: compliance-program
+  - id: gdpr
+    conforms: true
+    evidence: https://close.com/gdpr — Data Controller and Data Processor obligations.
+    kind: compliance-program
+  - id: ccpa
+    conforms: true
+    evidence: https://close.com/ccpa
+    kind: compliance-program
+  - id: iso-27001
+    conforms: false
+    evidence: No claim found on close.com/security, the Trust Center shell or the footer legal pages.
+  - id: pci-dss
+    conforms: false
+    evidence: No claim found. Close is not a payments provider.
+  - id: hipaa
+    conforms: false
+    evidence: No claim found.
+  - id: fhir-r4
+    conforms: false
+    evidence: Not a healthcare API.
+  - id: scim2
+    conforms: false
+    evidence: >-
+      No /Users or /Groups SCIM paths in the spec. Close has native user,
+      membership, role and group resources but no SCIM provisioning endpoint.
+  - id: odata
+    conforms: false
+  - id: jsonapi
+    conforms: false
+    evidence: 'Responses are bare JSON with a data/has_more envelope on list endpoints.'
+  - id: asyncapi
+    conforms: false
+    evidence: >-
+      Close documents a full webhook and event-log surface but publishes no
+      AsyncAPI document. See asyncapi/close-webhooks.yml.
+  - id: idempotency-key
+    conforms: false
+    evidence: >-
+      No idempotency key, header or replay window is documented or present in
+      the spec. See conventions/close-conventions.yml.
+summary:
+  conforms: 16
+  does_not_conform: 13
+  strongest: OAuth 2.0 / MCP identity stack (RFC 8414, 9728, 7591, 7636, 7009 all satisfied)
+  weakest: HTTP semantics and discovery (no RFC 9457, no security.txt, no api-catalog, no Sunset, no idempotency)

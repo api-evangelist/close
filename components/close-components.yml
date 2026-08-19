@@ -1,0 +1,81 @@
+generated: '2026-08-13'
+method: searched
+source: https://developer.close.com/api/resources/forms
+description: >-
+  Close ships no JavaScript element library, web-component package or embeddable
+  dashboard SDK — there is nothing on npm or a CDN to load. What it does ship is
+  three hosted, prebuilt surfaces that are configured in the Close app and then
+  placed elsewhere: web forms embedded on the customer's own site, scheduling
+  links inserted into outbound messages, and integration links injected into
+  Close's own UI. Recorded because they are the only client-side surface Close
+  exposes, and because each has a matching API resource.
+component_library: null
+component_library_note: >-
+  Searched npm (closeio, close.io, @close, @closeio scopes), the github.com/closeio
+  organization and the developer docs on 2026-08-13. No UI component or element
+  library exists; the only npm package Close publishes is the server-side
+  close.io API wrapper (see packages/close-packages.yml).
+families:
+  - name: Web Forms
+    kind: hosted-embeddable
+    description: >-
+      No-code forms built in the Close app and embedded on the customer's
+      website. Each submission creates or updates a Lead and Contact and records
+      a Form Submission activity on the Lead's timeline.
+    builder: https://app.close.com/settings/web-forms/
+    docs: https://developer.close.com/api/resources/forms
+    help: https://help.close.com/docs/forms
+    api:
+      operations: [forms_list, forms_fetch]
+      read_only: true
+      note: >-
+        The Forms API is read-only — a form cannot be created or modified
+        through the API, only listed and inspected. Field definitions come back
+        as formfld_ ids, which are the keys in the `values` map on each Form
+        Submission activity; listing forms is how a consumer decodes a
+        submission payload.
+    event: activity.form_submission
+    availability: all plans
+  - name: Scheduling Links
+    kind: hosted-embeddable
+    description: >-
+      Booking links Close users embed in emails, SMS and templates. Personal
+      links resolve to a URL; shared links resolve to a template tag that Close
+      substitutes at send time.
+    docs: https://developer.close.com/api/resources/scheduling-links-guide
+    api:
+      operations:
+        - scheduling_links_list
+        - scheduling_links_create
+        - scheduling_links_get
+        - scheduling_links_update
+        - scheduling_links_delete
+        - scheduling_links_list_shared
+        - scheduling_links_create_shared
+        - scheduling_links_create_integration
+    integration_note: >-
+      Third-party schedulers (Calendly and similar) can register their links via
+      scheduling_links_create_integration using OAuth.
+  - name: Integration Links
+    kind: host-app-injection
+    direction: inbound
+    description: >-
+      Custom links a partner or internal tool registers so they appear on Lead,
+      Contact and Opportunity pages inside Close's own UI. The inverse of an
+      embedded component — the third party places a surface inside Close rather
+      than the other way round.
+    docs: https://developer.close.com/api/resources/integration-links
+    api:
+      operations:
+        - integration_links_list
+        - integration_links_create
+        - integration_links_get
+        - integration_links_update
+        - integration_links_delete
+editor_extensions:
+  - name: Close plugin for Cursor
+    repository: https://github.com/closeio/cursor-plugin
+    official: true
+    note: >-
+      Described by Close as its official Cursor plugin. An IDE extension, not a
+      customer-facing UI component; listed here so it is not missed.

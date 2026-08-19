@@ -1,0 +1,198 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints subpackage_activities subpackage_activitiesOpportunityStatusChanges API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_activitiesOpportunityStatusChanges",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or filter all OpportunityStatusChange activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/activity/status_change/opportunity/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "_limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return."
+              },
+              {
+                "name": "_skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip before returning, for pagination."
+              },
+              {
+                "name": "id__in",
+                "value": "",
+                "type": "query",
+                "description": "Filter by activity IDs (comma-separated)"
+              },
+              {
+                "name": "lead_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by lead IDs (comma-separated)"
+              },
+              {
+                "name": "contact_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by contact IDs (comma-separated)"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by user IDs (comma-separated)"
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by activity type, e.g. Call (comma-separated)"
+              },
+              {
+                "name": "date_created__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "activity_at__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "activity_at__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "activity_at__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "activity_at__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "opportunity_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List or filter all OpportunityStatusChange activities"
+        },
+        {
+          "info": {
+            "name": "Create a new OpportunityStatusChange activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/activity/status_change/opportunity/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creating an opportunity status change does not change the opportunity's status. It only logs the status change event. This should only be used to import historical status changes from another system."
+        },
+        {
+          "info": {
+            "name": "Get a single OpportunityStatusChange activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/activity/status_change/opportunity/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a single OpportunityStatusChange activity"
+        },
+        {
+          "info": {
+            "name": "Delete a single OpportunityStatusChange activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.close.com/api/v1/activity/status_change/opportunity/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deleting an OpportunityStatusChange does not change the status of the Opportunity. It only removes the status change event from the Lead's activity feed.\n\nIt should only be used if the status change is irrelevant (such as records for a change that has been reverted) and having it in the activity feed is causing integration problems with another system."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

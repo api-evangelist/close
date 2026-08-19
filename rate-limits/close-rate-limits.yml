@@ -4,7 +4,15 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Close
 providerId: close
 created: '2026-05-08'
-modified: '2026-05-08'
+# Provenance 2026-08-13: originally written by the API Evangelist bulk sweep dated
+# 2026-05-08 (roadmap#35). Re-verified line by line against the live Close rate-limit
+# documentation on 2026-08-13 and upgraded to method: searched. The response-header
+# contract, the 3x organization multiplier and the rate_reset guidance below are all
+# stated verbatim by Close.
+method: searched
+source: https://developer.close.com/api/overview/rate-limits
+modified: '2026-08-13'
+verified: '2026-08-13'
 reconciled: true
 tags:
   - CRM
@@ -20,6 +28,40 @@ sources:
   - https://developer.close.com/api/overview/rate-limits.md
 responseCodes:
   throttled: 429
+headers:
+  primary:
+    name: RateLimit
+    format: 'RateLimit: limit=100, remaining=50, reset=5'
+    fields:
+      - {name: limit, meaning: 'request limit enforced for this endpoint group; some endpoints allow bursting over it'}
+      - {name: remaining, meaning: requests left in the enforcement window}
+      - {name: reset, meaning: seconds remaining before this enforcement window ends (decimal)}
+    present_on: most responses, and guaranteed on every 429
+  retry_after:
+    name: retry-after
+    spec: RFC 7231
+    guaranteed_on_429: true
+    note: >-
+      Equivalent to the old x-rate-limit-reset rounded up to the next integer.
+      Close recommends using rate_reset instead for a more accurate wait time.
+  deprecated:
+    names:
+      - x-rate-limit-limit
+      - x-rate-limit-remaining
+      - x-rate-limit-reset
+    deprecated_on: '2023-07-21'
+    replaced_by: RateLimit
+  body:
+    deprecated_on: '2024-04-24'
+    note: Rate-limit detail was removed from the 429 response body; read the header.
+limit_count: 3
+limit_count_note: >-
+  Close publishes the rate-limit MECHANISM in full (bucket scope, header contract,
+  429 behaviour, the 3x org multiplier) but publishes no NUMBERS. The only figure
+  in the docs is an illustrative example ("if the API key rate limit maximum is
+  20 RPS, the organization wide limit would be 60 RPS"), explicitly hypothetical.
+  A consumer cannot know a budget in advance and must read it off the RateLimit
+  header at runtime.
 limits:
   - name: Per API Key Per Endpoint Group
     scope: token
@@ -46,8 +88,12 @@ limits:
     scope: subscription
     metric: events
     notes: >-
-      Webhooks include HMAC signatures and are retried on 5xx; receivers
-      should respond 2xx within the platform timeout.
+      Outbound deliveries are retried with exponential backoff up to every
+      20 minutes, for up to 72 hours, then dropped. A subscription is paused
+      automatically at a 100,000-event backlog or after 3 days of total
+      delivery failure. Maximum 40 subscriptions per organization (500 for
+      Zapier, Backendless, Integrately and Customer.io Journeys). See
+      asyncapi/close-webhooks.yml.
 policies:
   - name: Backoff Strategy
     description: >-

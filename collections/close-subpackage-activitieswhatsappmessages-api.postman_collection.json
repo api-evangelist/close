@@ -1,0 +1,1798 @@
+{
+  "item": [
+    {
+      "id": "85c48d16-b020-4eff-9e1a-773edf6ca920",
+      "name": "subpackage_activitiesWhatsappMessages",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b9d0697b-c177-4187-bd47-ebef3ff1d145",
+          "name": "List or filter all WhatsAppMessage activities",
+          "request": {
+            "name": "List or filter all WhatsAppMessage activities",
+            "description": {
+              "content": "Filter by `external_whatsapp_message_id` to find messages to update or delete based on changes in WhatsApp.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activity",
+                "whatsapp_message",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_limit",
+                  "value": "100",
+                  "description": "Number of results to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "_skip",
+                  "value": "0",
+                  "description": "Number of results to skip before returning, for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "id__in",
+                  "value": "<string>",
+                  "description": "Filter by activity IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "id__in",
+                  "value": "<string>",
+                  "description": "Filter by activity IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "lead_id",
+                  "value": "<string>",
+                  "description": "Filter by lead IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "lead_id",
+                  "value": "<string>",
+                  "description": "Filter by lead IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "contact_id",
+                  "value": "<string>",
+                  "description": "Filter by contact IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "contact_id",
+                  "value": "<string>",
+                  "description": "Filter by contact IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "Filter by user IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "Filter by user IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "organization_id",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_type",
+                  "value": "<string>",
+                  "description": "Filter by activity type, e.g. Call (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "_type",
+                  "value": "<string>",
+                  "description": "Filter by activity type, e.g. Call (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__gte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__lte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__gt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__lt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__gte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__lte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__gt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__lt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "external_whatsapp_message_id",
+                  "value": "<string,null>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "14370bac-f594-445a-8cc7-f6f72afb9752",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "whatsapp_message",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "external_whatsapp_message_id",
+                      "value": "<string,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"_type\": \"string\",\n      \"activity_at\": \"1977-09-06T07:33:08.686Z\",\n      \"contact_id\": \"string\",\n      \"created_by\": \"string\",\n      \"date_created\": \"2015-08-18T23:05:01.758Z\",\n      \"date_updated\": \"2006-05-19T08:40:42.445Z\",\n      \"direction\": \"outgoing\",\n      \"external_whatsapp_message_id\": \"string\",\n      \"id\": \"string\",\n      \"integration_link\": \"string\",\n      \"integration_name\": \"string\",\n      \"lead_id\": \"string\",\n      \"local_phone\": \"string\",\n      \"local_phone_formatted\": \"string\",\n      \"message_html\": \"string\",\n      \"message_markdown\": \"string\",\n      \"organization_id\": \"string\",\n      \"remote_phone\": \"string\",\n      \"remote_phone_formatted\": \"string\",\n      \"response_to_id\": \"string\",\n      \"source\": \"webform\",\n      \"text\": \"string\",\n      \"updated_by\": \"string\",\n      \"user_id\": \"string\",\n      \"users\": [\n        \"string\",\n        \"string\"\n      ],\n      \"attachments\": [\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 4751,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        },\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 9242,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        }\n      ],\n      \"created_by_name\": \"string\",\n      \"sequence_id\": \"string\",\n      \"sequence_name\": \"string\",\n      \"sequence_subscription_id\": \"string\",\n      \"updated_by_name\": \"string\",\n      \"user_name\": \"string\"\n    },\n    {\n      \"_type\": \"string\",\n      \"activity_at\": \"1988-02-10T13:56:20.756Z\",\n      \"contact_id\": \"string\",\n      \"created_by\": \"string\",\n      \"date_created\": \"1975-08-23T07:04:31.698Z\",\n      \"date_updated\": \"2019-03-28T03:04:35.213Z\",\n      \"direction\": \"outgoing\",\n      \"external_whatsapp_message_id\": \"string\",\n      \"id\": \"string\",\n      \"integration_link\": \"string\",\n      \"integration_name\": \"string\",\n      \"lead_id\": \"string\",\n      \"local_phone\": \"string\",\n      \"local_phone_formatted\": \"string\",\n      \"message_html\": \"string\",\n      \"message_markdown\": \"string\",\n      \"organization_id\": \"string\",\n      \"remote_phone\": \"string\",\n      \"remote_phone_formatted\": \"string\",\n      \"response_to_id\": \"string\",\n      \"source\": \"ui\",\n      \"text\": \"string\",\n      \"updated_by\": \"string\",\n      \"user_id\": \"string\",\n      \"users\": [\n        \"string\",\n        \"string\"\n      ],\n      \"attachments\": [\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 9476,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        },\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 317,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        }\n      ],\n      \"created_by_name\": \"string\",\n      \"sequence_id\": \"string\",\n      \"sequence_name\": \"string\",\n      \"sequence_subscription_id\": \"string\",\n      \"updated_by_name\": \"string\",\n      \"user_name\": \"string\"\n    }\n  ],\n  \"has_more\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dc559f73-0f02-4910-8aee-169f3aced099",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "whatsapp_message",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "external_whatsapp_message_id",
+                      "value": "<string,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "67c3d511-7d41-44c8-ae8c-6af31dfb31d5",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "whatsapp_message",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "external_whatsapp_message_id",
+                      "value": "<string,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40f45b27-12d1-4b67-9ad6-496f56fb8a84",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "whatsapp_message",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "1973-03-28T10:07:44.893Z"
+                    },
+                    {
+                      "key": "external_whatsapp_message_id",
+                      "value": "<string,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70077b3f-15d8-4434-97ec-d3bef17d7cb8",
+          "name": "Create a WhatsAppMessage activity",
+          "request": {
+            "name": "Create a WhatsAppMessage activity",
+            "description": {
+              "content": "`external_whatsapp_message_id` must be the ID of the message inside WhatsApp. You can filter by this field to find messages in Close to update or delete based on updates or deletions in WhatsApp.\n\n`message_markdown` must be the body of the message in the WhatsApp Markdown format. The `message_html` read-only field will return the HTML representation of this message.\n\nTo include an attachment, you must first upload the file to Close using the [Files API](https://developer.close.com/api/resources/files). Then, add an object to the `attachments` array with the following fields: `url`, `filename`, and `content_type`. The `url` should be the URL provided in the `download.url` field of the response from the [Files API](https://developer.close.com/api/resources/files). It must begin with `https://app.close.com/go/file/`.\n\n`integration_link` (optional) is a URL string that can be provided by the integration partner creating the WhatsApp message. This can be used to link back to the message in the external system.\n\n`response_to_id` (optional) is the Close activity ID of another WhatsApp message activity (not the WhatsApp native message ID) that this message is replying to. This field creates a thread relationship between messages, allowing you to track conversation flow and message replies within WhatsApp threads. The ID must be a valid WhatsApp message activity ID in Close (e.g., `acti_...`).\n\nOnly WhatsApp Markdown messages and file attachments are supported. No support is provided for Polls, Events, Locations, etc.\n\n**Important**: The total size of all attachments for a single WhatsApp message activity cannot exceed 25MB.\n\nWhen creating a new WhatsApp message with the direction set to `incoming`, you can pass the query parameter `send_to_inbox` with the value of `true` to create a corresponding Inbox Notification for the message.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activity",
+                "whatsapp_message",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "send_to_inbox",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"activity_at\": \"<dateTime>\",\n  \"contact_id\": \"<string>\",\n  \"direction\": \"<string>\",\n  \"external_whatsapp_message_id\": \"<string>\",\n  \"lead_id\": \"<string>\",\n  \"local_phone\": \"<string>\",\n  \"message_markdown\": \"<string>\",\n  \"remote_phone\": \"<string>\",\n  \"attachments\": [\n    {\n      \"content_type\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"content_type\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"integration_link\": \"<string,null-uri>\",\n  \"response_to_id\": \"<string,null>\",\n  \"user_id\": \"<string,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2314e5df-11f0-4148-907f-66a7ca7b10df",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "whatsapp_message",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "send_to_inbox",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<dateTime>\",\n  \"contact_id\": \"<string>\",\n  \"direction\": \"incoming\",\n  \"external_whatsapp_message_id\": \"<string>\",\n  \"lead_id\": \"<string>\",\n  \"local_phone\": \"<string>\",\n  \"message_markdown\": \"<string>\",\n  \"remote_phone\": \"<string>\",\n  \"attachments\": [\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"integration_link\": \"<string,null-uri>\",\n  \"response_to_id\": \"<string,null>\",\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"activity_at\": \"1950-04-23T21:18:36.905Z\",\n  \"contact_id\": \"string\",\n  \"created_by\": \"string\",\n  \"date_created\": \"2003-02-25T22:19:44.151Z\",\n  \"date_updated\": \"1997-03-14T10:03:05.242Z\",\n  \"direction\": \"incoming\",\n  \"external_whatsapp_message_id\": \"string\",\n  \"id\": \"string\",\n  \"integration_link\": \"string\",\n  \"integration_name\": \"string\",\n  \"lead_id\": \"string\",\n  \"local_phone\": \"string\",\n  \"local_phone_formatted\": \"string\",\n  \"message_html\": \"string\",\n  \"message_markdown\": \"string\",\n  \"organization_id\": \"string\",\n  \"remote_phone\": \"string\",\n  \"remote_phone_formatted\": \"string\",\n  \"response_to_id\": \"string\",\n  \"source\": \"email\",\n  \"text\": \"string\",\n  \"updated_by\": \"string\",\n  \"user_id\": \"string\",\n  \"users\": [\n    \"string\",\n    \"string\"\n  ],\n  \"attachments\": [\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"size\": 3840,\n      \"url\": \"string\",\n      \"thumbnail_url\": \"string\"\n    },\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"size\": 8139,\n      \"url\": \"string\",\n      \"thumbnail_url\": \"string\"\n    }\n  ],\n  \"created_by_name\": \"string\",\n  \"sequence_id\": \"string\",\n  \"sequence_name\": \"string\",\n  \"sequence_subscription_id\": \"string\",\n  \"updated_by_name\": \"string\",\n  \"user_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c3dae08c-d6a4-46fc-bf98-f3d22889ef35",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "whatsapp_message",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "send_to_inbox",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<dateTime>\",\n  \"contact_id\": \"<string>\",\n  \"direction\": \"incoming\",\n  \"external_whatsapp_message_id\": \"<string>\",\n  \"lead_id\": \"<string>\",\n  \"local_phone\": \"<string>\",\n  \"message_markdown\": \"<string>\",\n  \"remote_phone\": \"<string>\",\n  \"attachments\": [\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"integration_link\": \"<string,null-uri>\",\n  \"response_to_id\": \"<string,null>\",\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cd9b1566-cc7f-46af-ab28-79b2bdd71533",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "whatsapp_message",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "send_to_inbox",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<dateTime>\",\n  \"contact_id\": \"<string>\",\n  \"direction\": \"incoming\",\n  \"external_whatsapp_message_id\": \"<string>\",\n  \"lead_id\": \"<string>\",\n  \"local_phone\": \"<string>\",\n  \"message_markdown\": \"<string>\",\n  \"remote_phone\": \"<string>\",\n  \"attachments\": [\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"integration_link\": \"<string,null-uri>\",\n  \"response_to_id\": \"<string,null>\",\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df889ec9-648d-4b80-b0f0-c5365248d94c",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "whatsapp_message",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "send_to_inbox",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<dateTime>\",\n  \"contact_id\": \"<string>\",\n  \"direction\": \"incoming\",\n  \"external_whatsapp_message_id\": \"<string>\",\n  \"lead_id\": \"<string>\",\n  \"local_phone\": \"<string>\",\n  \"message_markdown\": \"<string>\",\n  \"remote_phone\": \"<string>\",\n  \"attachments\": [\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"integration_link\": \"<string,null-uri>\",\n  \"response_to_id\": \"<string,null>\",\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4bb00c9-a061-44f3-9e26-95eeb570ec0f",
+          "name": "Get a single WhatsAppMessage activity",
+          "request": {
+            "name": "Get a single WhatsAppMessage activity",
+            "description": {},
+            "url": {
+              "path": [
+                "activity",
+                "whatsapp_message",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d6cf0fe-1360-4948-8abb-1a5fbb807adc",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "whatsapp_message",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"activity_at\": \"1950-04-23T21:18:36.905Z\",\n  \"contact_id\": \"string\",\n  \"created_by\": \"string\",\n  \"date_created\": \"2003-02-25T22:19:44.151Z\",\n  \"date_updated\": \"1997-03-14T10:03:05.242Z\",\n  \"direction\": \"incoming\",\n  \"external_whatsapp_message_id\": \"string\",\n  \"id\": \"string\",\n  \"integration_link\": \"string\",\n  \"integration_name\": \"string\",\n  \"lead_id\": \"string\",\n  \"local_phone\": \"string\",\n  \"local_phone_formatted\": \"string\",\n  \"message_html\": \"string\",\n  \"message_markdown\": \"string\",\n  \"organization_id\": \"string\",\n  \"remote_phone\": \"string\",\n  \"remote_phone_formatted\": \"string\",\n  \"response_to_id\": \"string\",\n  \"source\": \"email\",\n  \"text\": \"string\",\n  \"updated_by\": \"string\",\n  \"user_id\": \"string\",\n  \"users\": [\n    \"string\",\n    \"string\"\n  ],\n  \"attachments\": [\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"size\": 3840,\n      \"url\": \"string\",\n      \"thumbnail_url\": \"string\"\n    },\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"size\": 8139,\n      \"url\": \"string\",\n      \"thumbnail_url\": \"string\"\n    }\n  ],\n  \"created_by_name\": \"string\",\n  \"sequence_id\": \"string\",\n  \"sequence_name\": \"string\",\n  \"sequence_subscription_id\": \"string\",\n  \"updated_by_name\": \"string\",\n  \"user_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4893ace0-5d80-4828-bce5-27d11c8c40ec",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "whatsapp_message",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "efa7dafa-1dd4-401d-90e1-1bb5b093a959",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "whatsapp_message",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b816cd1-a648-4bd2-8470-b3e7bd12152f",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "whatsapp_message",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7fcc4d2b-8a9f-4a55-b39f-dd41c3e9ca82",
+          "name": "Update a WhatsAppMessage activity",
+          "request": {
+            "name": "Update a WhatsAppMessage activity",
+            "description": {},
+            "url": {
+              "path": [
+                "activity",
+                "whatsapp_message",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"activity_at\": \"<dateTime>\",\n  \"attachments\": [\n    {\n      \"content_type\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"content_type\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"contact_id\": \"<string>\",\n  \"direction\": \"<string>\",\n  \"integration_link\": \"<string,null-uri>\",\n  \"local_phone\": \"<string>\",\n  \"message_markdown\": \"<string>\",\n  \"remote_phone\": \"<string>\",\n  \"response_to_id\": \"<string,null>\",\n  \"user_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5af6c923-003d-41fa-8a2b-bd49b404c180",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "whatsapp_message",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<dateTime>\",\n  \"attachments\": [\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"contact_id\": \"<string>\",\n  \"direction\": \"outgoing\",\n  \"integration_link\": \"<string,null-uri>\",\n  \"local_phone\": \"<string>\",\n  \"message_markdown\": \"<string>\",\n  \"remote_phone\": \"<string>\",\n  \"response_to_id\": \"<string,null>\",\n  \"user_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"activity_at\": \"1950-04-23T21:18:36.905Z\",\n  \"contact_id\": \"string\",\n  \"created_by\": \"string\",\n  \"date_created\": \"2003-02-25T22:19:44.151Z\",\n  \"date_updated\": \"1997-03-14T10:03:05.242Z\",\n  \"direction\": \"incoming\",\n  \"external_whatsapp_message_id\": \"string\",\n  \"id\": \"string\",\n  \"integration_link\": \"string\",\n  \"integration_name\": \"string\",\n  \"lead_id\": \"string\",\n  \"local_phone\": \"string\",\n  \"local_phone_formatted\": \"string\",\n  \"message_html\": \"string\",\n  \"message_markdown\": \"string\",\n  \"organization_id\": \"string\",\n  \"remote_phone\": \"string\",\n  \"remote_phone_formatted\": \"string\",\n  \"response_to_id\": \"string\",\n  \"source\": \"email\",\n  \"text\": \"string\",\n  \"updated_by\": \"string\",\n  \"user_id\": \"string\",\n  \"users\": [\n    \"string\",\n    \"string\"\n  ],\n  \"attachments\": [\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"size\": 3840,\n      \"url\": \"string\",\n      \"thumbnail_url\": \"string\"\n    },\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"size\": 8139,\n      \"url\": \"string\",\n      \"thumbnail_url\": \"string\"\n    }\n  ],\n  \"created_by_name\": \"string\",\n  \"sequence_id\": \"string\",\n  \"sequence_name\": \"string\",\n  \"sequence_subscription_id\": \"string\",\n  \"updated_by_name\": \"string\",\n  \"user_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "36fc7778-3fa2-4e97-8b28-84d8419a199c",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "whatsapp_message",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<dateTime>\",\n  \"attachments\": [\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"contact_id\": \"<string>\",\n  \"direction\": \"outgoing\",\n  \"integration_link\": \"<string,null-uri>\",\n  \"local_phone\": \"<string>\",\n  \"message_markdown\": \"<string>\",\n  \"remote_phone\": \"<string>\",\n  \"response_to_id\": \"<string,null>\",\n  \"user_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f708518-5bf3-4174-93cc-ed2da4f55199",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "whatsapp_message",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<dateTime>\",\n  \"attachments\": [\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"contact_id\": \"<string>\",\n  \"direction\": \"outgoing\",\n  \"integration_link\": \"<string,null-uri>\",\n  \"local_phone\": \"<string>\",\n  \"message_markdown\": \"<string>\",\n  \"remote_phone\": \"<string>\",\n  \"response_to_id\": \"<string,null>\",\n  \"user_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d2a4acc5-2b83-429b-8c87-b0d18f2bb474",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "whatsapp_message",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<dateTime>\",\n  \"attachments\": [\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"contact_id\": \"<string>\",\n  \"direction\": \"outgoing\",\n  \"integration_link\": \"<string,null-uri>\",\n  \"local_phone\": \"<string>\",\n  \"message_markdown\": \"<string>\",\n  \"remote_phone\": \"<string>\",\n  \"response_to_id\": \"<string,null>\",\n  \"user_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b8c3896-2943-4169-a15b-1ed611b78ee3",
+          "name": "Delete a WhatsAppMessage activity",
+          "request": {
+            "name": "Delete a WhatsAppMessage activity",
+            "description": {},
+            "url": {
+              "path": [
+                "activity",
+                "whatsapp_message",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f5c12875-a464-4e57-8651-86d5ab308fbe",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "whatsapp_message",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2ab63ba-4a3e-4ad0-9984-63ab4538c46e",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "whatsapp_message",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e8f62ea-749b-432b-9710-924fc594afed",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "whatsapp_message",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2071abf4-b7de-403c-ae93-8025a9fd4bf5",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "whatsapp_message",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.close.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d3fe393b-49a4-4abf-bb49-21d9c35c62f8",
+    "name": "API Endpoints subpackage_activities subpackage_activitiesWhatsappMessages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

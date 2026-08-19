@@ -1,0 +1,228 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints subpackage_activities subpackage_activitiesSms API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_activitiesSms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or filter all SMS activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/activity/sms/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "_limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return."
+              },
+              {
+                "name": "_skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip before returning, for pagination."
+              },
+              {
+                "name": "id__in",
+                "value": "",
+                "type": "query",
+                "description": "Filter by activity IDs (comma-separated)"
+              },
+              {
+                "name": "lead_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by lead IDs (comma-separated)"
+              },
+              {
+                "name": "contact_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by contact IDs (comma-separated)"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by user IDs (comma-separated)"
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by activity type, e.g. Call (comma-separated)"
+              },
+              {
+                "name": "date_created__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "activity_at__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "activity_at__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "activity_at__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "activity_at__lt",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a list of matching SMS activities.\n\nMMS messages are considered SMS messages with attachments. Attachments have identical fields to email attachments (`url`, `filename`, `size` and `content_type`), a `media_id` uniquely identifying an attachment, and if Close was able to generate a thumbnail, a `thumbnail_url` too.\n\nAccessing `url` or `thumbnail_url` requires an authenticated session and leads to a temporarily signed S3 URL."
+        },
+        {
+          "info": {
+            "name": "Create an SMS activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/activity/sms/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "send_to_inbox",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "*status* must be one of the following:\n\n - `inbox` to log an already received SMS.\n - `draft` to create a draft SMS.\n - `scheduled` to send an SMS at a scheduled date and time, which must be specified in the `date_scheduled` field.\n - `outbox` to actually **send** an SMS. To delay SMS sending by a few seconds (to allow undo), specify `send_in` in seconds (must be less than 60).\n - `sent` to log an already sent SMS.\n\nOnly drafts can be modified, and their status can be changed to `scheduled` (to "
+        },
+        {
+          "info": {
+            "name": "Get a single SMS activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/activity/sms/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a single SMS activity"
+        },
+        {
+          "info": {
+            "name": "Update an SMS activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.close.com/api/v1/activity/sms/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This can be used to modify a draft or send it once the draft is complete.\n\nTo send an SMS immediately, you can update its `status` to `outbox`. To send it at a later time, change the `status` to `scheduled` and provide the desired date & time in the `date_scheduled` field."
+        },
+        {
+          "info": {
+            "name": "Delete an SMS activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.close.com/api/v1/activity/sms/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an SMS activity"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

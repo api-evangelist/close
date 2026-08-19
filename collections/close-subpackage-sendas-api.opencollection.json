@@ -1,0 +1,166 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints subpackage_activities subpackage_sendAs API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_sendAs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Send As Associations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/send_as/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "allowed_user_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "allowing_user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "A user only has access to associations they are involved in. This means that when using this endpoint, `allowing_user_id` or `allowed_user_id` must be equal to your user ID. If neither filter is provided, `allowing_user_id` is assumed by default."
+        },
+        {
+          "info": {
+            "name": "Create a Send As Association",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/send_as/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a send-as permission. The `allowing_user_id` must be equal to your own user ID."
+        },
+        {
+          "info": {
+            "name": "Delete a Send As Association by allowed user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.close.com/api/v1/send_as/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "allowed_user_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "allowing_user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "The `allowing_user_id` must be equal to your user ID.\n\nSupply both the `allowing_user_id` and the `allowed_user_id` to delete an association by those users."
+        },
+        {
+          "info": {
+            "name": "Edit Send As Associations in bulk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/send_as/bulk/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "You can allow and disallow many other users to send as you in a single command by supplying the user IDs you want to allow and disallow.\n\nOnce completed, this endpoint returns all existing associations where your user is the allowing user."
+        },
+        {
+          "info": {
+            "name": "Retrieve a single Send As Association",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/send_as/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a single Send As Association"
+        },
+        {
+          "info": {
+            "name": "Delete a Send As Association by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.close.com/api/v1/send_as/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Send As Association by ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

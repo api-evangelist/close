@@ -1,0 +1,294 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints subpackage_activities subpackage_reporting API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_reporting",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get an activity report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/report/activity/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The activity report returns the organization's metrics per time period (**overview** report) or user (**comparison** report).\n\nEvery report accepts the following parameters:\n\n* `datetime_range`: a time range to fetch data for. Either this field or `relative_range` needs to be specified.\n* `relative_range`: a relative time range to fetch data for. The allowed values are: `today`, `this-week`, `this-month`, `this-quarter`, `this-year`, `yesterday`, `last-week`, `last-month`, `last-quarter`, `last-"
+        },
+        {
+          "info": {
+            "name": "List the predefined metrics used in activity reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/report/activity/metrics/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "List available metrics that can be used in activity reports."
+        },
+        {
+          "info": {
+            "name": "Get custom report (Explorer)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/report/custom/:org_id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "org_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "x",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "y",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group_by",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "transform_y",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "This endpoint returns data that allows graphing of arbitrary metrics and is what powers \"Explorer\" in the UI.\n\n - `query` is an optional search query filter. When reporting on leads, any regular lead search query may be used. When reporting on activities or opportunities, only properties of the chosen object type may be used. For example, `direction:incoming` may be used if `x` starts with `email.`. Defaults to `*`, which includes all objects.\n - `y` is made up of the object type and field which"
+        },
+        {
+          "info": {
+            "name": "Get a funnel report (stages)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/report/funnel/opportunity/stages/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The opportunity funnel \"stages\" report returns the pipeline funnel's metrics for the selected opportunities, aggregated (JSON format only) and per-user (JSON and CSV formats).\n\nEvery report accepts the following parameters:\n\n* `pipeline`: ID of the pipeline defining the funnel statuses.\n* `type`: the type of the report. The available values are `created-cohort` and `active-stage-cohort`.\n* `report_relative_range`: a relative time range to fetch data for. The allowed values are: `today`, `this-we"
+        },
+        {
+          "info": {
+            "name": "Get a funnel report (totals)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/report/funnel/opportunity/totals/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The opportunity funnel \"totals\" report returns the pipeline funnel's metrics for the selected opportunities, aggregated (JSON format only) and per-user (JSON and CSV formats).\n\nEvery report accepts the following parameters:\n\n* `pipeline`: ID of the pipeline defining the funnel statuses.\n* `type`: the type of the report. The available values are `created-cohort` and `active-stage-cohort`.\n* `report_relative_range`: a relative time range to fetch data for. The allowed values are: `today`, `this-we"
+        },
+        {
+          "info": {
+            "name": "Get sent emails report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/report/sent_emails/:org_id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "org_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get sent emails report"
+        },
+        {
+          "info": {
+            "name": "Get lead status change report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/report/statuses/lead/:org_id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "org_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "smart_view_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a lead status change report.\n\nThe date range is optional. A report may be requested\nfor a specific time period or overall. You can specify\neither a `query` or `smart_view_id` (but not both) to\nfilter leads included in the report.\n\nThe following fields are returned (when requesting an\noverall report, some inapplicable fields will not be\nreturned):\n\n* `status_overview`: A list of all statuses with:\n    * `status_id`, `status_label`,\n      `status_is_deleted`: The ID and label of the\n      stat"
+        },
+        {
+          "info": {
+            "name": "Get opportunity status change report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/report/statuses/opportunity/:org_id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "org_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "date_start",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_end",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "smart_view_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get an opportunity status change report.\n\nThe date range is optional. A report may be requested\nfor a specific time period or overall. You can specify\neither a `query` or `smart_view_id` (but not both) to\nfilter opportunities included in the report. The\nreport may optionally be filtered by the opportunity\nuser.\n\nThe following fields are returned (when requesting an\noverall report, some inapplicable fields will not be\nreturned):\n\n* `status_overview`: A list of all statuses with:\n    * `status_id`"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

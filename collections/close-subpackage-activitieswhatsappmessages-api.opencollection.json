@@ -1,0 +1,233 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints subpackage_activities subpackage_activitiesWhatsappMessages API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_activitiesWhatsappMessages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or filter all WhatsAppMessage activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/activity/whatsapp_message/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "_limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return."
+              },
+              {
+                "name": "_skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip before returning, for pagination."
+              },
+              {
+                "name": "id__in",
+                "value": "",
+                "type": "query",
+                "description": "Filter by activity IDs (comma-separated)"
+              },
+              {
+                "name": "lead_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by lead IDs (comma-separated)"
+              },
+              {
+                "name": "contact_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by contact IDs (comma-separated)"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by user IDs (comma-separated)"
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by activity type, e.g. Call (comma-separated)"
+              },
+              {
+                "name": "date_created__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "activity_at__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "activity_at__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "activity_at__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "activity_at__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "external_whatsapp_message_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Filter by `external_whatsapp_message_id` to find messages to update or delete based on changes in WhatsApp."
+        },
+        {
+          "info": {
+            "name": "Create a WhatsAppMessage activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/activity/whatsapp_message/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "send_to_inbox",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "`external_whatsapp_message_id` must be the ID of the message inside WhatsApp. You can filter by this field to find messages in Close to update or delete based on updates or deletions in WhatsApp.\n\n`message_markdown` must be the body of the message in the WhatsApp Markdown format. The `message_html` read-only field will return the HTML representation of this message.\n\nTo include an attachment, you must first upload the file to Close using the [Files API](https://developer.close.com/api/resources/"
+        },
+        {
+          "info": {
+            "name": "Get a single WhatsAppMessage activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/activity/whatsapp_message/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a single WhatsAppMessage activity"
+        },
+        {
+          "info": {
+            "name": "Update a WhatsAppMessage activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.close.com/api/v1/activity/whatsapp_message/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a WhatsAppMessage activity"
+        },
+        {
+          "info": {
+            "name": "Delete a WhatsAppMessage activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.close.com/api/v1/activity/whatsapp_message/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a WhatsAppMessage activity"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,261 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/_original/close-api-openapi.json
+docs: https://developer.close.com/api/overview
+description: >-
+  Entity-relationship graph for the Close CRM data model, derived from the 172
+  component schemas and the id-reference fields in Close's published OpenAPI,
+  and cross-checked against the resource reference. Close's core concept is the
+  Lead — a company, not a person — and almost every other object hangs off it
+  either directly (lead_id) or through a Contact.
+root_entity: lead
+id_prefixes:
+  note: >-
+    Close uses a prefix_base62 id scheme. Prefixes below were read from example
+    ids in the OpenAPI and the webhook/event documentation; they are stable and
+    are how a polymorphic tool such as the MCP `fetch` tool routes by type.
+  prefixes:
+    lead: lead_
+    contact: cont_
+    opportunity: oppo_
+    task: task_
+    user: user_
+    organization: orga_
+    membership: memb_
+    event: ev_
+    lead_status: stat_
+    opportunity_status: stat_
+    smart_view: save_
+    search_share: share_
+    webhook_subscription: whsub_
+    form_field_definition: formfld_
+    request: req_
+entities:
+  - name: lead
+    label: Lead
+    description: A company or organization. The primary object in Close.
+    schemas: [Lead]
+    operations: [leads_list, leads_create, leads_get, leads_update, leads_delete, leads_merge]
+    docs: https://developer.close.com/api/resources/leads
+  - name: contact
+    label: Contact
+    description: An individual person attached to a Lead.
+    schemas: [Contact, ContactEmail, ContactPhone, ContactUrl]
+    operations: [contacts_list, contacts_create, contacts_get, contacts_update, contacts_delete]
+  - name: opportunity
+    label: Opportunity
+    description: A potential deal on a Lead, moved through an opportunity status in a pipeline.
+    schemas: [Opportunity, CreateOpportunity]
+    operations: [opportunities_list, opportunities_create, opportunities_get, opportunities_update, opportunities_delete]
+  - name: task
+    label: Task
+    description: A dated action item assigned to a user, subtyped (lead, outbound_call, ...).
+    schemas: [CreateTask, CreateLeadTask, CreateCallTask]
+    operations: [tasks_list, tasks_create, tasks_get, tasks_update, tasks_delete, tasks_bulk_update]
+  - name: activity
+    label: Activity
+    description: >-
+      Abstract parent of every interaction logged on a Lead. Fifteen concrete
+      subtypes, each with its own path under /activity/.
+    schemas: [ActivityBase]
+    subtypes:
+      - {name: call, schema: CallActivity, path: /activity/call/}
+      - {name: email, schema: EmailActivity, path: /activity/email/}
+      - {name: email_thread, schema: EmailThreadActivity, path: /activity/emailthread/}
+      - {name: sms, schema: SMSActivity, path: /activity/sms/}
+      - {name: whatsapp_message, schema: WhatsAppMessageActivity, path: /activity/whatsapp_message/}
+      - {name: note, schema: NoteActivity, path: /activity/note/}
+      - {name: meeting, schema: MeetingActivity, path: /activity/meeting/}
+      - {name: custom_activity, schema: CustomActivity, path: /activity/custom/}
+      - {name: created, schema: CreatedActivity, path: /activity/created/}
+      - {name: form_submission, schema: FormSubmissionActivity, path: /activity/form_submission/}
+      - {name: import_update, schema: ImportUpdateActivity, path: /activity/import_update/}
+      - {name: lead_merge, path: /activity/lead_merge/}
+      - {name: lead_status_change, path: /activity/status_change/lead/}
+      - {name: opportunity_status_change, path: /activity/status_change/opportunity/}
+      - {name: task_completed, path: /activity/task_completed/}
+  - name: organization
+    label: Organization
+    description: The tenant boundary. Every object carries organization_id.
+    operations: [organizations_get, organizations_update]
+  - name: user
+    label: User
+    operations: [users_list, users_get, users_get_me, users_list_availabilities]
+  - name: membership
+    label: Membership
+    description: Joins a User to an Organization with a Role.
+    operations: [memberships_create, memberships_update, memberships_delete, memberships_bulk_update]
+  - name: role
+    label: Role
+    operations: [roles_list, roles_create, roles_get, roles_update, roles_delete]
+  - name: group
+    label: Group
+    description: A named collection of Users.
+    operations: [groups_list, groups_create, groups_get, groups_update, groups_delete, groups_add_member, groups_remove_member]
+  - name: pipeline
+    label: Pipeline
+    description: An ordered group of opportunity statuses.
+    operations: [pipelines_list, pipelines_create, pipelines_get, pipelines_update, pipelines_delete]
+  - name: opportunity_status
+    label: Opportunity Status
+    operations: [opportunity_statuses_list, opportunity_statuses_create, opportunity_statuses_get, opportunity_statuses_update, opportunity_statuses_delete]
+  - name: lead_status
+    label: Lead Status
+    operations: [lead_statuses_list, lead_statuses_create, lead_statuses_get, lead_statuses_update, lead_statuses_delete]
+  - name: custom_field
+    label: Custom Field
+    description: >-
+      Six object-scoped families (lead, contact, opportunity, activity,
+      custom_object) plus a shared family that can be associated with multiple
+      object types.
+    operations: [custom_fields.lead_list, custom_fields.contact_list, custom_fields.opportunity_list, custom_fields.activity_list, custom_fields.custom_object_list, custom_fields.shared_list, custom_fields.shared_create_association]
+  - name: custom_object_type
+    label: Custom Object Type
+    operations: [custom_object_types_list, custom_object_types_create, custom_object_types_get, custom_object_types_update, custom_object_types_delete]
+  - name: custom_object
+    label: Custom Object
+    operations: [custom_objects_list, custom_objects_create, custom_objects_get, custom_objects_update, custom_objects_delete]
+  - name: custom_activity_type
+    label: Custom Activity Type
+    operations: [custom_activity_types_list, custom_activity_types_create, custom_activity_types_get, custom_activity_types_update, custom_activity_types_delete]
+  - name: sequence
+    label: Sequence (Workflow)
+    operations: [sequences_list, sequences_create, sequences_get, sequences_update, sequences_delete]
+  - name: sequence_subscription
+    label: Sequence Subscription
+    operations: [sequences_list_subscriptions, sequences_create_subscription, sequences_get_subscription, sequences_update_subscription, sequences_delete_subscription]
+  - name: email_template
+    label: Email Template
+    operations: [email_templates_list, email_templates_create, email_templates_get, email_templates_update, email_templates_delete, email_templates_render]
+  - name: sms_template
+    label: SMS Template
+    operations: [sms_templates_list, sms_templates_create, sms_templates_get, sms_templates_update, sms_templates_delete]
+  - name: smart_view
+    label: Smart View (saved_search)
+    operations: [smart_views_list, smart_views_create, smart_views_get, smart_views_update, smart_views_delete]
+  - name: phone_number
+    label: Phone Number
+    operations: [phone_numbers_list, phone_numbers_create, phone_numbers_get, phone_numbers_update, phone_numbers_delete]
+  - name: blocked_phone_number
+    label: Blocked Phone Number
+    operations: [blocked_phone_numbers_list, blocked_phone_numbers_create, blocked_phone_numbers_get, blocked_phone_numbers_update, blocked_phone_numbers_delete]
+  - name: outcome
+    label: Outcome
+    operations: [outcomes_list, outcomes_create, outcomes_get, outcomes_update, outcomes_delete]
+  - name: playbook
+    label: Playbook
+    operations: [playbooks_list, playbooks_create, playbooks_get, playbooks_update, playbooks_delete, playbooks_archive, playbooks_unarchive]
+  - name: form
+    label: Form
+    read_only: true
+    schemas: [Form, FormFieldDefinition, FormFieldChoice]
+    operations: [forms_list, forms_fetch]
+  - name: comment
+    label: Comment
+    operations: [comments_list, comments_create, comments_get, comments_update, comments_delete]
+  - name: comment_thread
+    label: Comment Thread
+    operations: [comments_list_threads, comments_get_thread]
+  - name: scheduling_link
+    label: Scheduling Link
+    operations: [scheduling_links_list, scheduling_links_create, scheduling_links_get, scheduling_links_update, scheduling_links_delete, scheduling_links_list_shared, scheduling_links_create_shared]
+  - name: connected_account
+    label: Connected Account
+    operations: [connected_accounts_list, connected_accounts_get]
+  - name: send_as
+    label: Send As Association
+    operations: [send_as_list, send_as_create, send_as_get, send_as_delete, send_as_bulk_create]
+  - name: integration_link
+    label: Integration Link
+    operations: [integration_links_list, integration_links_create, integration_links_get, integration_links_update, integration_links_delete]
+  - name: webhook_subscription
+    label: Webhook Subscription
+    operations: [webhooks_list, webhooks_create, webhooks_get, webhooks_update, webhooks_delete]
+  - name: event
+    label: Event
+    read_only: true
+    retention_days: 30
+    operations: [events_list, events_get]
+  - name: export
+    label: Export
+    operations: [exports_list, exports_create_lead, exports_create_opportunity, exports_get]
+  - name: bulk_action
+    label: Bulk Action
+    variants: [delete, edit, email, sequence_subscription]
+  - name: dialer
+    label: Dialer session
+    read_only: true
+    operations: [dialers_list, dialers_get]
+  - name: unsubscribed_email
+    label: Unsubscribed Email
+    operations: [unsubscribed_emails_list, unsubscribed_emails_create, unsubscribed_emails_delete]
+relationships:
+  - {from: organization, to: lead, kind: has_many, via: organization_id}
+  - {from: organization, to: membership, kind: has_many, via: organization_id}
+  - {from: organization, to: pipeline, kind: has_many, via: organization_id}
+  - {from: lead, to: contact, kind: has_many, via: lead_id}
+  - {from: lead, to: opportunity, kind: has_many, via: lead_id}
+  - {from: lead, to: task, kind: has_many, via: lead_id}
+  - {from: lead, to: activity, kind: has_many, via: lead_id}
+  - {from: lead, to: custom_object, kind: has_many, via: lead_id}
+  - {from: lead, to: lead_status, kind: belongs_to, via: status_id}
+  - {from: lead, to: organization, kind: belongs_to, via: organization_id}
+  - {from: contact, to: lead, kind: belongs_to, via: lead_id}
+  - {from: contact, to: sequence_subscription, kind: has_many, via: contact_id}
+  - {from: opportunity, to: lead, kind: belongs_to, via: lead_id}
+  - {from: opportunity, to: contact, kind: belongs_to, via: contact_id}
+  - {from: opportunity, to: opportunity_status, kind: belongs_to, via: status_id}
+  - {from: opportunity, to: pipeline, kind: belongs_to, via: pipeline_id}
+  - {from: opportunity, to: user, kind: belongs_to, via: user_id, role: owner}
+  - {from: pipeline, to: opportunity_status, kind: has_many, via: pipeline_id}
+  - {from: task, to: lead, kind: belongs_to, via: lead_id}
+  - {from: task, to: contact, kind: belongs_to, via: contact_id}
+  - {from: task, to: user, kind: belongs_to, via: assigned_to}
+  - {from: activity, to: lead, kind: belongs_to, via: lead_id}
+  - {from: activity, to: contact, kind: belongs_to, via: contact_id}
+  - {from: activity, to: user, kind: belongs_to, via: user_id}
+  - {from: activity, to: outcome, kind: belongs_to, via: outcome_id, applies_to: [call, meeting]}
+  - {from: activity, to: playbook, kind: belongs_to, via: playbook_id, applies_to: [call, meeting]}
+  - {from: email_activity, to: email_thread, kind: belongs_to, via: thread_id}
+  - {from: email_activity, to: email_activity, kind: belongs_to, via: in_reply_to_id, note: self-reference}
+  - {from: email_activity, to: email_template, kind: belongs_to, via: template_id}
+  - {from: email_activity, to: connected_account, kind: belongs_to, via: email_account_id}
+  - {from: email_activity, to: send_as, kind: belongs_to, via: send_as_id}
+  - {from: custom_activity, to: custom_activity_type, kind: belongs_to, via: custom_activity_type_id}
+  - {from: custom_object, to: custom_object_type, kind: belongs_to, via: custom_object_type_id}
+  - {from: custom_object_type, to: custom_field, kind: has_many, via: custom_field_ids}
+  - {from: sequence, to: sequence_subscription, kind: has_many, via: sequence_id}
+  - {from: sequence, to: sequence, kind: belongs_to, via: followup_sequence_id, note: self-reference}
+  - {from: sequence_subscription, to: contact, kind: belongs_to, via: contact_id}
+  - {from: sequence_subscription, to: sequence, kind: belongs_to, via: sequence_id}
+  - {from: membership, to: user, kind: belongs_to, via: user_id}
+  - {from: membership, to: role, kind: belongs_to, via: role_id}
+  - {from: membership, to: organization, kind: belongs_to, via: organization_id}
+  - {from: group, to: user, kind: has_many, via: members}
+  - {from: sms_activity, to: phone_number, kind: belongs_to, via: from_phone_number_id}
+  - {from: call_activity, to: phone_number, kind: belongs_to, via: from_phone_number_id}
+  - {from: comment, to: comment_thread, kind: belongs_to, via: thread_id}
+  - {from: comment_thread, to: any, kind: belongs_to, via: object_id, note: 'polymorphic: note, call, opportunity, task, custom object'}
+  - {from: event, to: any, kind: references, via: object_id, note: 'polymorphic over object_type'}
+  - {from: form_submission_activity, to: form, kind: belongs_to, via: form_id}
+  - {from: form, to: form_field_definition, kind: has_many, via: 'fields (formfld_ ids)'}
+  - {from: call_task, to: voice_agent, kind: belongs_to, via: agent_config_id, note: 'MCP-only surface; agent_config_id appears in schemas but has no REST voice-agent resource'}
+polymorphism:
+  - field: object_id
+    used_by: [comment_thread, event]
+    resolution: paired object_type field, or the id prefix
+  - field: custom_field association
+    used_by: [custom_fields.shared]
+    resolution: association endpoint keyed by object_type
+counts:
+  schemas: 172
+  operations: 300
+  entities_modelled: 39
+  relationships_modelled: 50
+gaps:
+  - >-
+    agent_config_id (voice agents / Chloe) appears in five schemas but no REST
+    resource exposes voice agents; the entity is reachable only over MCP.
+  - >-
+    Advanced Filtering, which backs lead and contact search, is documented but
+    absent from the OpenAPI, so its query model is not represented here.

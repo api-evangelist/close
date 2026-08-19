@@ -1,0 +1,998 @@
+generated: '2026-08-13'
+method: derived
+source: mcp/close-mcp.yml + openapi/_original/close-api-openapi.json
+description: Binds each of the 107 tools Close publishes for its hosted MCP server to the operationId(s)
+  in the Close OpenAPI that back it, so an agent can recover a real input contract for a tool whose live
+  inputSchema is OAuth-gated. Mappings were made by name and documented semantics against the published
+  tool reference; the live tools/list is auth-gated (HTTP 401), so no schema was copied and none was invented.
+surfaces:
+  openapi:
+    file: openapi/_original/close-api-openapi.json
+    url: https://api.close.com/api/openapi.json
+    operations: 300
+    gated: false
+    note: Close labels this spec experimental and says it does not carry 100% request/response schema
+      coverage.
+  mcp:
+    url: https://mcp.close.com/mcp
+    transport: HTTP Streamable
+    tools: 107
+    gated: true
+    note: tools/list returns 401 without an OAuth token or Close-API-Key header.
+  graphql: null
+  advanced_filtering:
+    url: https://developer.close.com/api/resources/advanced-filtering
+    in_openapi: false
+    note: Documented REST surface that is absent from the published OpenAPI; it backs the MCP search and
+      paginate_search tools.
+crosswalk:
+- tool: activity_search
+  category: mcp.read
+  rest:
+  - activities_list
+  binding: rest
+  confidence: high
+- tool: fetch
+  category: mcp.read
+  rest:
+  - leads_get
+  - contacts_get
+  binding: rest
+  confidence: medium
+  note: Polymorphic by ID prefix; the docs say only leads and contacts are supported.
+- tool: fetch_call
+  category: mcp.read
+  rest:
+  - activities.calls_get
+  binding: rest
+  confidence: high
+  note: Adds a transcript projection the REST call object exposes as fields.
+- tool: fetch_call_task
+  category: mcp.read
+  rest:
+  - tasks_get
+  binding: rest
+  confidence: medium
+  note: Call tasks are Task objects with _type outgoing_call.
+- tool: fetch_comment
+  category: mcp.read
+  rest:
+  - comments_get
+  binding: rest
+  confidence: high
+- tool: fetch_contact
+  category: mcp.read
+  rest:
+  - contacts_get
+  binding: rest
+  confidence: high
+- tool: fetch_custom_activity_instance
+  category: mcp.read
+  rest:
+  - activities.custom_activities_get
+  binding: rest
+  confidence: high
+- tool: fetch_custom_object_instance
+  category: mcp.read
+  rest:
+  - custom_objects_get
+  binding: rest
+  confidence: high
+- tool: fetch_custom_object_type
+  category: mcp.read
+  rest:
+  - custom_object_types_get
+  binding: rest
+  confidence: high
+- tool: fetch_email_template
+  category: mcp.read
+  rest:
+  - email_templates_get
+  binding: rest
+  confidence: high
+- tool: fetch_lead
+  category: mcp.read
+  rest:
+  - leads_get
+  binding: rest
+  confidence: high
+- tool: fetch_lead_smart_view
+  category: mcp.read
+  rest:
+  - smart_views_get
+  binding: rest
+  confidence: high
+  note: Smart Views are saved_search objects in REST.
+- tool: fetch_lead_status
+  category: mcp.read
+  rest:
+  - lead_statuses_get
+  binding: rest
+  confidence: high
+- tool: fetch_meeting_transcript
+  category: mcp.read
+  rest:
+  - activities.meetings_get
+  binding: rest
+  confidence: medium
+  note: Transcript/summary fields hang off the Meeting activity; no dedicated REST transcript operation.
+- tool: fetch_note
+  category: mcp.read
+  rest:
+  - activities.notes_get
+  binding: rest
+  confidence: high
+- tool: fetch_opportunity
+  category: mcp.read
+  rest:
+  - opportunities_get
+  binding: rest
+  confidence: high
+- tool: fetch_opportunity_status
+  category: mcp.read
+  rest:
+  - opportunity_statuses_get
+  binding: rest
+  confidence: high
+- tool: fetch_pipeline_and_opportunity_statuses
+  category: mcp.read
+  rest:
+  - pipelines_get
+  - opportunity_statuses_list
+  binding: rest
+  confidence: medium
+  note: 'Composite: one tool call fans out to a pipeline read plus its statuses.'
+- tool: fetch_sms_template
+  category: mcp.read
+  rest:
+  - sms_templates_get
+  binding: rest
+  confidence: high
+- tool: fetch_task
+  category: mcp.read
+  rest:
+  - tasks_get
+  binding: rest
+  confidence: high
+- tool: find_call_outcomes
+  category: mcp.read
+  rest:
+  - outcomes_list
+  binding: rest
+  confidence: medium
+  note: Server-side filtered to outcomes whose applies_to includes calls.
+- tool: find_call_tasks
+  category: mcp.read
+  rest:
+  - tasks_list
+  binding: rest
+  confidence: medium
+  note: Filtered to call-type tasks; adds voice-agent assignee filtering REST does not expose.
+- tool: find_contact_custom_fields
+  category: mcp.read
+  rest:
+  - custom_fields.contact_list
+  - custom_fields.shared_list
+  binding: rest
+  confidence: medium
+  note: Merges contact-specific and shared custom fields into one list.
+- tool: find_custom_activities
+  category: mcp.read
+  rest:
+  - custom_activity_types_list
+  binding: rest
+  confidence: high
+- tool: find_custom_activity_instances
+  category: mcp.read
+  rest:
+  - activities.custom_activities_list
+  binding: rest
+  confidence: high
+- tool: find_custom_object_instances
+  category: mcp.read
+  rest:
+  - custom_objects_list
+  binding: rest
+  confidence: high
+- tool: find_custom_object_types
+  category: mcp.read
+  rest:
+  - custom_object_types_list
+  binding: rest
+  confidence: high
+- tool: find_email_templates
+  category: mcp.read
+  rest:
+  - email_templates_list
+  binding: rest
+  confidence: high
+- tool: find_forms
+  category: mcp.read
+  rest:
+  - forms_list
+  binding: rest
+  confidence: high
+- tool: find_groups
+  category: mcp.read
+  rest:
+  - groups_list
+  binding: rest
+  confidence: high
+- tool: find_lead_custom_fields
+  category: mcp.read
+  rest:
+  - custom_fields.lead_list
+  - custom_fields.shared_list
+  binding: rest
+  confidence: medium
+  note: Merges lead-specific and shared custom fields.
+- tool: find_lead_smart_views
+  category: mcp.read
+  rest:
+  - smart_views_list
+  binding: rest
+  confidence: high
+- tool: find_lead_statuses
+  category: mcp.read
+  rest:
+  - lead_statuses_list
+  binding: rest
+  confidence: high
+- tool: find_meeting_outcomes
+  category: mcp.read
+  rest:
+  - outcomes_list
+  binding: rest
+  confidence: medium
+  note: Server-side filtered to outcomes applicable to meetings.
+- tool: find_notes
+  category: mcp.read
+  rest:
+  - activities.notes_list
+  binding: rest
+  confidence: high
+- tool: find_opportunities
+  category: mcp.read
+  rest:
+  - opportunities_list
+  binding: rest
+  confidence: high
+- tool: find_opportunity_custom_fields
+  category: mcp.read
+  rest:
+  - custom_fields.opportunity_list
+  - custom_fields.shared_list
+  binding: rest
+  confidence: medium
+  note: Merges opportunity-specific and shared custom fields.
+- tool: find_pipelines_and_opportunity_statuses
+  category: mcp.read
+  rest:
+  - pipelines_list
+  binding: rest
+  confidence: high
+  note: Pipeline objects embed their opportunity statuses.
+- tool: find_scheduling_links
+  category: mcp.read
+  rest:
+  - scheduling_links_list
+  - scheduling_links_list_shared
+  binding: rest
+  confidence: medium
+  note: Merges personal and shared scheduling links.
+- tool: find_sms_templates
+  category: mcp.read
+  rest:
+  - sms_templates_list
+  binding: rest
+  confidence: high
+- tool: find_tasks
+  category: mcp.read
+  rest:
+  - tasks_list
+  binding: rest
+  confidence: high
+- tool: find_workflows
+  category: mcp.read
+  rest:
+  - sequences_list
+  binding: rest
+  confidence: medium
+  note: Close calls them Workflows in the product and Sequences in the REST API.
+- tool: lead_search
+  category: mcp.read
+  rest:
+  - leads_list
+  binding: rest
+  confidence: high
+  note: Wraps the lead list endpoint with query/status/smart-view filters.
+- tool: org_info
+  category: mcp.read
+  rest:
+  - organizations_get
+  - users_get_me
+  binding: rest
+  confidence: medium
+  note: 'Composite: organization detail plus the calling user identity.'
+- tool: org_users
+  category: mcp.read
+  rest:
+  - users_list
+  binding: rest
+  confidence: high
+- tool: create_address
+  category: mcp.write_safe
+  rest:
+  - leads_update
+  binding: rest
+  confidence: medium
+  note: Addresses are a nested field on the Lead object, not a REST resource.
+- tool: create_comment
+  category: mcp.write_safe
+  rest:
+  - comments_create
+  binding: rest
+  confidence: high
+- tool: create_contact
+  category: mcp.write_safe
+  rest:
+  - contacts_create
+  binding: rest
+  confidence: high
+- tool: create_custom_activity_instance
+  category: mcp.write_safe
+  rest:
+  - activities.custom_activities_create
+  binding: rest
+  confidence: high
+- tool: create_custom_object_instance
+  category: mcp.write_safe
+  rest:
+  - custom_objects_create
+  binding: rest
+  confidence: high
+- tool: create_draft_email
+  category: mcp.write_safe
+  rest:
+  - activities.emails_create
+  binding: rest
+  confidence: high
+  note: Creates an Email activity with status draft; never sends.
+- tool: create_email_template
+  category: mcp.write_safe
+  rest:
+  - email_templates_create
+  binding: rest
+  confidence: high
+- tool: create_lead
+  category: mcp.write_safe
+  rest:
+  - leads_create
+  binding: rest
+  confidence: high
+- tool: create_lead_status
+  category: mcp.write_safe
+  rest:
+  - lead_statuses_create
+  binding: rest
+  confidence: high
+- tool: create_note
+  category: mcp.write_safe
+  rest:
+  - activities.notes_create
+  binding: rest
+  confidence: high
+- tool: create_opportunity
+  category: mcp.write_safe
+  rest:
+  - opportunities_create
+  binding: rest
+  confidence: high
+- tool: create_opportunity_status_tool
+  category: mcp.write_safe
+  rest:
+  - opportunity_statuses_create
+  binding: rest
+  confidence: high
+- tool: create_pipeline
+  category: mcp.write_safe
+  rest:
+  - pipelines_create
+  binding: rest
+  confidence: high
+- tool: create_sms_template
+  category: mcp.write_safe
+  rest:
+  - sms_templates_create
+  binding: rest
+  confidence: high
+- tool: create_task
+  category: mcp.write_safe
+  rest:
+  - tasks_create
+  binding: rest
+  confidence: high
+- tool: create_workflow
+  category: mcp.write_safe
+  rest:
+  - sequences_create
+  binding: rest
+  confidence: medium
+  note: Workflow == Sequence. Created in Draft status.
+- tool: create_call_task
+  category: mcp.write_destructive
+  rest:
+  - tasks_create
+  binding: rest
+  confidence: medium
+  note: Creates a task of the outbound-call subtype; can target a voice agent, which REST cannot.
+- tool: delete_address
+  category: mcp.write_destructive
+  rest:
+  - leads_update
+  binding: rest
+  confidence: medium
+  note: Address removal is a Lead update, not a DELETE.
+- tool: delete_call_task
+  category: mcp.write_destructive
+  rest:
+  - tasks_delete
+  binding: rest
+  confidence: medium
+- tool: delete_contact
+  category: mcp.write_destructive
+  rest:
+  - contacts_delete
+  binding: rest
+  confidence: high
+- tool: delete_custom_activity_instance
+  category: mcp.write_destructive
+  rest:
+  - activities.custom_activities_delete
+  binding: rest
+  confidence: high
+- tool: delete_custom_object_instance
+  category: mcp.write_destructive
+  rest:
+  - custom_objects_delete
+  binding: rest
+  confidence: high
+- tool: delete_email_template
+  category: mcp.write_destructive
+  rest:
+  - email_templates_delete
+  binding: rest
+  confidence: high
+- tool: delete_lead
+  category: mcp.write_destructive
+  rest:
+  - leads_delete
+  binding: rest
+  confidence: high
+- tool: delete_lead_smart_view
+  category: mcp.write_destructive
+  rest:
+  - smart_views_delete
+  binding: rest
+  confidence: high
+- tool: delete_lead_status
+  category: mcp.write_destructive
+  rest:
+  - lead_statuses_delete
+  binding: rest
+  confidence: high
+- tool: delete_note
+  category: mcp.write_destructive
+  rest:
+  - activities.notes_delete
+  binding: rest
+  confidence: high
+- tool: delete_opportunity
+  category: mcp.write_destructive
+  rest:
+  - opportunities_delete
+  binding: rest
+  confidence: high
+- tool: delete_opportunity_status_tool
+  category: mcp.write_destructive
+  rest:
+  - opportunity_statuses_delete
+  binding: rest
+  confidence: high
+- tool: delete_pipeline
+  category: mcp.write_destructive
+  rest:
+  - pipelines_delete
+  binding: rest
+  confidence: high
+- tool: delete_sms_template
+  category: mcp.write_destructive
+  rest:
+  - sms_templates_delete
+  binding: rest
+  confidence: high
+- tool: delete_task
+  category: mcp.write_destructive
+  rest:
+  - tasks_delete
+  binding: rest
+  confidence: high
+- tool: enrich_field
+  category: mcp.write_destructive
+  rest:
+  - field_enrichment_create
+  binding: rest
+  confidence: high
+- tool: update_call_task
+  category: mcp.write_destructive
+  rest:
+  - tasks_update
+  binding: rest
+  confidence: medium
+- tool: update_contact
+  category: mcp.write_destructive
+  rest:
+  - contacts_update
+  binding: rest
+  confidence: high
+- tool: update_custom_activity_instance
+  category: mcp.write_destructive
+  rest:
+  - activities.custom_activities_update
+  binding: rest
+  confidence: high
+- tool: update_custom_object_instance
+  category: mcp.write_destructive
+  rest:
+  - custom_objects_update
+  binding: rest
+  confidence: high
+- tool: update_draft_email
+  category: mcp.write_destructive
+  rest:
+  - activities.emails_update
+  binding: rest
+  confidence: high
+  note: Rejects sent or scheduled emails.
+- tool: update_email_template
+  category: mcp.write_destructive
+  rest:
+  - email_templates_update
+  binding: rest
+  confidence: high
+- tool: update_lead
+  category: mcp.write_destructive
+  rest:
+  - leads_update
+  binding: rest
+  confidence: high
+- tool: update_lead_smart_view
+  category: mcp.write_destructive
+  rest:
+  - smart_views_update
+  binding: rest
+  confidence: high
+- tool: update_lead_status
+  category: mcp.write_destructive
+  rest:
+  - lead_statuses_update
+  binding: rest
+  confidence: high
+- tool: update_note
+  category: mcp.write_destructive
+  rest:
+  - activities.notes_update
+  binding: rest
+  confidence: high
+- tool: update_opportunity
+  category: mcp.write_destructive
+  rest:
+  - opportunities_update
+  binding: rest
+  confidence: high
+- tool: update_opportunity_status_tool
+  category: mcp.write_destructive
+  rest:
+  - opportunity_statuses_update
+  binding: rest
+  confidence: high
+- tool: update_pipeline
+  category: mcp.write_destructive
+  rest:
+  - pipelines_update
+  binding: rest
+  confidence: high
+- tool: update_sms_template
+  category: mcp.write_destructive
+  rest:
+  - sms_templates_update
+  binding: rest
+  confidence: high
+- tool: update_task
+  category: mcp.write_destructive
+  rest:
+  - tasks_update
+  binding: rest
+  confidence: high
+mcp_only:
+- tool: aggregation
+  category: mcp.read
+  reason: Server-side aggregation engine over Close objects. The REST reporting endpoints return fixed
+    predefined reports; there is no general-purpose aggregation operation.
+- tool: close_product_knowledge_search
+  category: mcp.read
+  reason: Retrieval over Close product documentation and the knowledge base. Not a CRM data operation
+    and has no REST surface.
+- tool: customized_builtin_labels
+  category: mcp.read
+  reason: Returns renamed built-in object labels for the org. No REST operation exposes this.
+- tool: find_agent_configs
+  category: mcp.read
+  reason: Voice agent (Chloe) inventory. The AI-caller surface is MCP-only; no voice-agent resource exists
+    in the REST API.
+- tool: find_voice_agents
+  category: mcp.read
+  reason: Voice agent (Chloe) inventory. MCP-only, same as find_agent_configs.
+- tool: get_fields
+  category: mcp.read
+  reason: Companion to the aggregation tool that enumerates aggregatable fields. No REST equivalent.
+- tool: get_voice_agent_overview_report
+  category: mcp.read
+  reason: Cross-agent voice funnel rollup. MCP-only; the REST reporting endpoints do not cover voice agents.
+- tool: get_voice_agent_performance_report
+  category: mcp.read
+  reason: Per-agent voice performance metrics. MCP-only.
+- tool: get_voice_agents
+  category: mcp.read
+  reason: Detailed voice agent configuration including objective, instructions and enabled skills. MCP-only.
+- tool: paginate_search
+  category: mcp.read
+  reason: Cursor pagination over a search_id or smart_view_id returned by the search tools. Backed by
+    Advanced Filtering, absent from the OpenAPI.
+- tool: propose_voice_agent_update
+  category: mcp.read
+  reason: Turns natural-language feedback into a reviewable voice-agent config proposal. Inherently agent-shaped;
+    no REST analogue.
+- tool: search
+  category: mcp.read
+  reason: Natural-language search over leads and contacts. Backed by the Advanced Filtering API, which
+    is documented but is not present in the published OpenAPI.
+- tool: apply_voice_agent_update
+  category: mcp.write_destructive
+  reason: Persists a previously proposed voice-agent config change. MCP-only.
+- tool: schedule_voice_agent_call
+  category: mcp.write_destructive
+  reason: Queues an outbound AI call by assigning a call task to a voice agent. The REST task API cannot
+    assign to a voice agent.
+rest_only:
+- capability: activities.calls
+  operations:
+  - activities.calls_create
+  - activities.calls_delete
+  - activities.calls_list
+  - activities.calls_update
+- capability: activities.creations
+  operations:
+  - activities.creations_get
+  - activities.creations_list
+- capability: activities.email_threads
+  operations:
+  - activities.email_threads_delete
+  - activities.email_threads_get
+  - activities.email_threads_list
+- capability: activities.emails
+  operations:
+  - activities.emails_delete
+  - activities.emails_get
+  - activities.emails_list
+- capability: activities.form_submissions
+  operations:
+  - activities.form_submissions_delete
+  - activities.form_submissions_get
+  - activities.form_submissions_list
+- capability: activities.import_updates
+  operations:
+  - activities.import_updates_delete
+  - activities.import_updates_get
+  - activities.import_updates_list
+- capability: activities.lead_merges
+  operations:
+  - activities.lead_merges_get
+  - activities.lead_merges_list
+- capability: activities.lead_status_changes
+  operations:
+  - activities.lead_status_changes_create
+  - activities.lead_status_changes_delete
+  - activities.lead_status_changes_get
+  - activities.lead_status_changes_list
+- capability: activities.meetings
+  operations:
+  - activities.meetings_create_integration
+  - activities.meetings_delete
+  - activities.meetings_list
+  - activities.meetings_update
+- capability: activities.opportunity_status_changes
+  operations:
+  - activities.opportunity_status_changes_create
+  - activities.opportunity_status_changes_delete
+  - activities.opportunity_status_changes_get
+  - activities.opportunity_status_changes_list
+- capability: activities.sms
+  operations:
+  - activities.sms_create
+  - activities.sms_delete
+  - activities.sms_get
+  - activities.sms_list
+  - activities.sms_update
+- capability: activities.task_completions
+  operations:
+  - activities.task_completions_delete
+  - activities.task_completions_get
+  - activities.task_completions_list
+- capability: activities.whatsapp_messages
+  operations:
+  - activities.whatsapp_messages_create
+  - activities.whatsapp_messages_delete
+  - activities.whatsapp_messages_get
+  - activities.whatsapp_messages_list
+  - activities.whatsapp_messages_update
+- capability: blocked_phone_numbers
+  operations:
+  - blocked_phone_numbers_create
+  - blocked_phone_numbers_delete
+  - blocked_phone_numbers_get
+  - blocked_phone_numbers_get_settings
+  - blocked_phone_numbers_list
+  - blocked_phone_numbers_update
+  - blocked_phone_numbers_update_settings
+- capability: bulk_actions.delete
+  operations:
+  - bulk_actions.delete_create
+  - bulk_actions.delete_get
+  - bulk_actions.delete_list
+- capability: bulk_actions.edit
+  operations:
+  - bulk_actions.edit_create
+  - bulk_actions.edit_get
+  - bulk_actions.edit_list
+- capability: bulk_actions.email
+  operations:
+  - bulk_actions.email_create
+  - bulk_actions.email_get
+  - bulk_actions.email_list
+- capability: bulk_actions.sequence_subscriptions
+  operations:
+  - bulk_actions.sequence_subscriptions_create
+  - bulk_actions.sequence_subscriptions_get
+  - bulk_actions.sequence_subscriptions_list
+- capability: comments
+  operations:
+  - comments_delete
+  - comments_get_thread
+  - comments_list
+  - comments_list_threads
+  - comments_update
+- capability: connected_accounts
+  operations:
+  - connected_accounts_get
+  - connected_accounts_list
+- capability: contacts
+  operations:
+  - contacts_list
+- capability: custom_activity_types
+  operations:
+  - custom_activity_types_create
+  - custom_activity_types_delete
+  - custom_activity_types_get
+  - custom_activity_types_update
+- capability: custom_field_schemas
+  operations:
+  - custom_field_schemas_get
+  - custom_field_schemas_update
+- capability: custom_fields.activity
+  operations:
+  - custom_fields.activity_create
+  - custom_fields.activity_delete
+  - custom_fields.activity_get
+  - custom_fields.activity_list
+  - custom_fields.activity_update
+- capability: custom_fields.contact
+  operations:
+  - custom_fields.contact_create
+  - custom_fields.contact_delete
+  - custom_fields.contact_get
+  - custom_fields.contact_update
+- capability: custom_fields.custom_object
+  operations:
+  - custom_fields.custom_object_create
+  - custom_fields.custom_object_delete
+  - custom_fields.custom_object_get
+  - custom_fields.custom_object_list
+  - custom_fields.custom_object_update
+- capability: custom_fields.lead
+  operations:
+  - custom_fields.lead_create
+  - custom_fields.lead_delete
+  - custom_fields.lead_get
+  - custom_fields.lead_update
+- capability: custom_fields.opportunity
+  operations:
+  - custom_fields.opportunity_create
+  - custom_fields.opportunity_delete
+  - custom_fields.opportunity_get
+  - custom_fields.opportunity_update
+- capability: custom_fields.shared
+  operations:
+  - custom_fields.shared_create
+  - custom_fields.shared_create_association
+  - custom_fields.shared_delete
+  - custom_fields.shared_delete_association
+  - custom_fields.shared_get
+  - custom_fields.shared_get_association
+  - custom_fields.shared_update
+  - custom_fields.shared_update_association
+- capability: custom_object_types
+  operations:
+  - custom_object_types_create
+  - custom_object_types_delete
+  - custom_object_types_update
+- capability: dialers
+  operations:
+  - dialers_get
+  - dialers_list
+- capability: email_templates
+  operations:
+  - email_templates_render
+- capability: events
+  operations:
+  - events_get
+  - events_list
+- capability: exports
+  operations:
+  - exports_create_lead
+  - exports_create_opportunity
+  - exports_get
+  - exports_get_lead
+  - exports_get_opportunity
+  - exports_list
+  - exports_list_lead
+  - exports_list_opportunity
+- capability: files
+  operations:
+  - files_create
+- capability: forms
+  operations:
+  - forms_fetch
+- capability: groups
+  operations:
+  - groups_add_member
+  - groups_create
+  - groups_delete
+  - groups_get
+  - groups_remove_member
+  - groups_update
+- capability: integration_links
+  operations:
+  - integration_links_create
+  - integration_links_delete
+  - integration_links_get
+  - integration_links_list
+  - integration_links_update
+- capability: leads
+  operations:
+  - leads_merge
+- capability: memberships
+  operations:
+  - memberships_bulk_update
+  - memberships_create
+  - memberships_delete
+  - memberships_get_pinned_views
+  - memberships_update
+  - memberships_update_pinned_views
+- capability: organizations
+  operations:
+  - organizations_update
+- capability: outcomes
+  operations:
+  - outcomes_create
+  - outcomes_delete
+  - outcomes_get
+  - outcomes_update
+- capability: phone_numbers
+  operations:
+  - phone_numbers_create
+  - phone_numbers_delete
+  - phone_numbers_get
+  - phone_numbers_list
+  - phone_numbers_update
+- capability: playbooks
+  operations:
+  - playbooks_archive
+  - playbooks_create
+  - playbooks_delete
+  - playbooks_get
+  - playbooks_list
+  - playbooks_unarchive
+  - playbooks_update
+- capability: reporting
+  operations:
+  - reporting_get_activity
+  - reporting_get_custom
+  - reporting_get_funnel_stages
+  - reporting_get_funnel_totals
+  - reporting_get_lead_statuses
+  - reporting_get_opportunity_statuses
+  - reporting_get_sent_emails
+  - reporting_list_activity_metrics
+- capability: roles
+  operations:
+  - roles_create
+  - roles_delete
+  - roles_get
+  - roles_list
+  - roles_update
+- capability: scheduling_links
+  operations:
+  - scheduling_links_create
+  - scheduling_links_create_integration
+  - scheduling_links_create_shared
+  - scheduling_links_create_shared_association
+  - scheduling_links_delete
+  - scheduling_links_delete_integration
+  - scheduling_links_delete_shared
+  - scheduling_links_delete_shared_association
+  - scheduling_links_get
+  - scheduling_links_get_shared
+  - scheduling_links_update
+  - scheduling_links_update_shared
+- capability: send_as
+  operations:
+  - send_as_bulk_create
+  - send_as_create
+  - send_as_delete
+  - send_as_delete_by_user
+  - send_as_get
+  - send_as_list
+- capability: sequences
+  operations:
+  - sequences_create_subscription
+  - sequences_delete
+  - sequences_delete_subscription
+  - sequences_get
+  - sequences_get_subscription
+  - sequences_list_subscriptions
+  - sequences_update
+  - sequences_update_subscription
+- capability: smart_views
+  operations:
+  - smart_views_create
+- capability: tasks
+  operations:
+  - tasks_bulk_update
+- capability: unsubscribed_emails
+  operations:
+  - unsubscribed_emails_create
+  - unsubscribed_emails_delete
+  - unsubscribed_emails_list
+- capability: users
+  operations:
+  - users_get
+  - users_list_availabilities
+- capability: webhooks
+  operations:
+  - webhooks_create
+  - webhooks_delete
+  - webhooks_get
+  - webhooks_list
+  - webhooks_update
+coverage:
+  tools_named: 107
+  tools_bound: 93
+  tools_mcp_only: 14
+  rest_operations_total: 300
+  rest_operations_with_a_tool: 88
+  rest_operations_without_a_tool: 212
+  note: 'The MCP surface is far narrower than REST and is not a subset either: the entire voice-agent
+    (Chloe) product, natural-language search and the aggregation engine are reachable only through MCP,
+    while telephony, exports, bulk actions, reporting, webhooks, memberships, roles and connected accounts
+    are reachable only through REST.'

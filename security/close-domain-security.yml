@@ -1,28 +1,28 @@
-generated: '2026-07-11'
+generated: '2026-08-13'
 method: probed
 source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
 hosts:
 - host: www.close.com
   https: true
   tls_version: TLSv1.3
-  cert_expires: Aug 24 19:17:39 2026 GMT
+  cert_expires: Oct 22 22:42:33 2026 GMT
   hsts: false
 - host: api.close.com
   https: true
   tls_version: TLSv1.3
-  cert_expires: Aug 25 11:21:57 2026 GMT
+  cert_expires: Oct 24 10:24:54 2026 GMT
   hsts: true
   hsts_max_age: 31556926
 domains:
 - domain: close.com
   dnssec: false
   caa:
-  - 0 issuewild "pki.goog"
-  - 0 issuewild "sectigo.com"
-  - 0 iodef "mailto:security@close.com"
-  - 0 issue "amazon.com"
-  - 0 issue "amazonaws.com"
-  - 0 issue "amazontrust.com"
+  - 0 issue "comodoca.com"
+  - 0 issue "digicert.com"
+  - 0 issue "letsencrypt.org"
+  - 0 issue "pki.goog"
+  - 0 issue "sectigo.com"
+  - 0 issuewild "amazon.com"
   spf: true
   dmarc: true
   dmarc_policy: quarantine

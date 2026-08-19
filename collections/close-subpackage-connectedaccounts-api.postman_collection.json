@@ -1,0 +1,1605 @@
+{
+  "item": [
+    {
+      "id": "9696dc43-6eb8-42e1-a845-f4b4ac11e3df",
+      "name": "subpackage_connectedAccounts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ff53d2cb-31b3-4d65-92aa-dc5b593a15ea",
+          "name": "List connected accounts",
+          "request": {
+            "name": "List connected accounts",
+            "description": {
+              "content": "You can filter down to a specific user by passing the `?user_id` query parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "connected_account",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "_type"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "available_calendars"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "available_features"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "calendar_receive_status"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "calendly"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "date_created"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "default_identity"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "email"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "email_receive_status"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "enabled_features"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "has_meeting_creation_scopes"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "id"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "identities"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "imap"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "is_imap_archive_sync_enabled"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "latest_receive_error"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "latest_send_error"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "lead_suggestions_updated_at"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "organization_id"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "receive_status"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "send_status"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "smtp"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "sync_all_calendars"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "synced_calendars"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "user_id"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "zoom_account_plan"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string,null>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "37d0c920-b1c6-4623-b901-fb694d8ebd86",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connected_account",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "_type"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "available_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "available_features"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "calendar_receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "calendly"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "date_created"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "default_identity"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "email"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "email_receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "enabled_features"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "has_meeting_creation_scopes"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "identities"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "imap"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "is_imap_archive_sync_enabled"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "latest_receive_error"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "latest_send_error"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "lead_suggestions_updated_at"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "organization_id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "send_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "smtp"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "sync_all_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "synced_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "user_id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "zoom_account_plan"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39ef6667-3478-423d-9441-f81288ace4a3",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connected_account",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "_type"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "available_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "available_features"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "calendar_receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "calendly"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "date_created"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "default_identity"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "email"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "email_receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "enabled_features"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "has_meeting_creation_scopes"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "identities"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "imap"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "is_imap_archive_sync_enabled"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "latest_receive_error"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "latest_send_error"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "lead_suggestions_updated_at"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "organization_id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "send_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "smtp"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "sync_all_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "synced_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "user_id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "zoom_account_plan"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f05481b-6f80-4b56-8dfa-d2a74946ad62",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connected_account",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "_type"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "available_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "available_features"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "calendar_receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "calendly"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "date_created"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "default_identity"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "email"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "email_receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "enabled_features"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "has_meeting_creation_scopes"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "identities"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "imap"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "is_imap_archive_sync_enabled"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "latest_receive_error"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "latest_send_error"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "lead_suggestions_updated_at"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "organization_id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "send_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "smtp"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "sync_all_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "synced_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "user_id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "zoom_account_plan"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "351cef42-67d9-4407-ab3f-b2a9e9f3cf07",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connected_account",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "_type"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "available_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "available_features"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "calendar_receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "calendly"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "date_created"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "default_identity"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "email"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "email_receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "enabled_features"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "has_meeting_creation_scopes"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "identities"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "imap"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "is_imap_archive_sync_enabled"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "latest_receive_error"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "latest_send_error"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "lead_suggestions_updated_at"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "organization_id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "send_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "smtp"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "sync_all_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "synced_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "user_id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "zoom_account_plan"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c829c10-b65d-4021-908b-e21b44f89095",
+          "name": "Fetch a single connected account",
+          "request": {
+            "name": "Fetch a single connected account",
+            "description": {},
+            "url": {
+              "path": [
+                "connected_account",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "_type"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "available_calendars"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "available_features"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "calendar_receive_status"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "calendly"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "date_created"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "default_identity"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "email"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "email_receive_status"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "enabled_features"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "has_meeting_creation_scopes"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "id"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "identities"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "imap"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "is_imap_archive_sync_enabled"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "latest_receive_error"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "latest_send_error"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "lead_suggestions_updated_at"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "organization_id"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "receive_status"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "send_status"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "smtp"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "sync_all_calendars"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "synced_calendars"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "user_id"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "zoom_account_plan"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "80986a6a-6a88-4413-9c48-ea2ce15c5950",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connected_account",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "_type"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "available_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "available_features"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "calendar_receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "calendly"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "date_created"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "default_identity"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "email"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "email_receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "enabled_features"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "has_meeting_creation_scopes"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "identities"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "imap"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "is_imap_archive_sync_enabled"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "latest_receive_error"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "latest_send_error"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "lead_suggestions_updated_at"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "organization_id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "send_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "smtp"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "sync_all_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "synced_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "user_id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "zoom_account_plan"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1a76e892-13f4-4f51-9972-5607adff3465",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connected_account",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "_type"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "available_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "available_features"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "calendar_receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "calendly"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "date_created"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "default_identity"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "email"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "email_receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "enabled_features"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "has_meeting_creation_scopes"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "identities"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "imap"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "is_imap_archive_sync_enabled"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "latest_receive_error"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "latest_send_error"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "lead_suggestions_updated_at"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "organization_id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "send_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "smtp"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "sync_all_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "synced_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "user_id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "zoom_account_plan"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "40a80374-472d-4aaa-b130-2f54b5c8599e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connected_account",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "_type"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "available_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "available_features"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "calendar_receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "calendly"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "date_created"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "default_identity"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "email"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "email_receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "enabled_features"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "has_meeting_creation_scopes"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "identities"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "imap"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "is_imap_archive_sync_enabled"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "latest_receive_error"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "latest_send_error"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "lead_suggestions_updated_at"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "organization_id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "send_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "smtp"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "sync_all_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "synced_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "user_id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "zoom_account_plan"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1133ad4d-7d4c-407d-a61e-4ae1203773eb",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "connected_account",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "_type"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "available_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "available_features"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "calendar_receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "calendly"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "date_created"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "default_identity"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "email"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "email_receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "enabled_features"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "has_meeting_creation_scopes"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "identities"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "imap"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "is_imap_archive_sync_enabled"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "latest_receive_error"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "latest_send_error"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "lead_suggestions_updated_at"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "organization_id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "receive_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "send_status"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "smtp"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "sync_all_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "synced_calendars"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "user_id"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "zoom_account_plan"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.close.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7d588952-28fa-44ad-9f07-aee747da6173",
+    "name": "API Endpoints subpackage_activities subpackage_connectedAccounts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

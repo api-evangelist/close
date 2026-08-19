@@ -1,0 +1,106 @@
+generated: '2026-08-13'
+method: searched
+source: https://developer.close.com/api/overview/api-clients.md
+docs: https://developer.close.com/api/overview/api-clients
+note: >-
+  Close maintains two first-party API clients (Python and Node.js) and links a
+  community list of wrappers from its API Clients page. Versions and publish
+  dates below were read from the registry metadata endpoints on 2026-08-13.
+  Both official SDKs are materially stale relative to the API: the Python client
+  last published 2023-07-25 and the Node client 2019-11-11, while the API shipped
+  Forms, Playbooks, Blocked Phone Numbers, Field Enrichment and an OpenAPI spec
+  in 2025-2026. Close's own docs describe the API as "usable in any programming
+  language" and point developers at community wrappers.
+packages:
+  - language: python
+    registry: pypi
+    name: closeio
+    url: https://pypi.org/project/closeio/
+    repository: https://github.com/closeio/closeio-api
+    install: pip install closeio
+    official: true
+    version: '2.1'
+    published: '2023-07-25'
+    note: >-
+      Author "Close Team"; the docs call it "Close's Python Wrapper (Officially
+      maintained by Close)". Repo still receives commits (pushed 2026-06-11) but
+      no new release has been cut to PyPI since 2023.
+  - language: javascript
+    registry: npm
+    name: close.io
+    url: https://www.npmjs.com/package/close.io
+    repository: https://github.com/closeio/closeio-node
+    install: npm install close.io
+    official: true
+    version: 1.3.0
+    published: '2019-11-11'
+    note: >-
+      Published under the legacy "close.io" package name (the company renamed to
+      Close). The docs link it as "Close's Node.js Wrapper". No release in seven
+      years.
+  - language: ruby
+    registry: rubygems
+    name: closeio
+    url: https://rubygems.org/gems/closeio
+    repository: https://github.com/taylorbrooks/closeio
+    install: gem install closeio
+    official: false
+    version: 3.19.0
+    published: '2025-06-12'
+    note: >-
+      Community gem by Taylor Brooks, linked from Close's API Clients page. It is
+      the most actively maintained client library for the Close API in any
+      language.
+  - language: php
+    registry: packagist
+    name: loopline-systems/closeio-api-wrapper
+    url: https://packagist.org/packages/loopline-systems/closeio-api-wrapper
+    repository: https://github.com/loopline-systems/closeio-api-wrapper
+    install: composer require loopline-systems/closeio-api-wrapper
+    official: false
+    version: v0.7.1
+    published: '2018-08-17'
+  - language: elixir
+    registry: hex
+    name: closex
+    url: https://github.com/nested-tech/closex
+    repository: https://github.com/nested-tech/closex
+    official: false
+    version: null
+    note: >-
+      Listed on Close's API Clients page. No Hex.pm package resolved for this
+      name on 2026-08-13; distribution appears to be source-only from GitHub, so
+      there is no registry metadata endpoint to read a version from.
+  - language: go
+    registry: github
+    name: veyo-care/closeio-golang-client
+    url: https://github.com/veyo-care/closeio-golang-client
+    repository: https://github.com/veyo-care/closeio-golang-client
+    install: go get github.com/veyo-care/closeio-golang-client
+    official: false
+    version: null
+    note: >-
+      Listed on Close's API Clients page. Unversioned Go module distributed
+      straight from GitHub with no semver tags resolvable via proxy.golang.org,
+      so a consumer cannot pin a version either.
+  - language: csharp
+    registry: github
+    name: MoreThanRewards/CloseIoDotNet
+    url: https://github.com/MoreThanRewards/CloseIoDotNet
+    repository: https://github.com/MoreThanRewards/CloseIoDotNet
+    official: false
+    version: null
+    note: >-
+      Listed on Close's API Clients page. No package found on nuget.org for this
+      library on 2026-08-13; source-only distribution.
+related:
+  - name: close-api-scripts
+    url: https://github.com/closeio/close-api-scripts
+    official: true
+    kind: examples
+    note: First-party example scripts using the Close API (not a packaged client).
+summary:
+  official_count: 2
+  community_count: 5
+  languages: [python, javascript, ruby, php, elixir, go, csharp]
+  newest_official_release: '2023-07-25'

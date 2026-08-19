@@ -1,0 +1,2491 @@
+{
+  "item": [
+    {
+      "id": "cdd8dd54-5af1-4d59-b195-c63e0b8c3ba9",
+      "name": "subpackage_reporting",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "50a110d6-ce60-48a4-9db0-f2b62d219097",
+          "name": "Get an activity report",
+          "request": {
+            "name": "Get an activity report",
+            "description": {
+              "content": "The activity report returns the organization's metrics per time period (**overview** report) or user (**comparison** report).\n\nEvery report accepts the following parameters:\n\n* `datetime_range`: a time range to fetch data for. Either this field or `relative_range` needs to be specified.\n* `relative_range`: a relative time range to fetch data for. The allowed values are: `today`, `this-week`, `this-month`, `this-quarter`, `this-year`, `yesterday`, `last-week`, `last-month`, `last-quarter`, `last-year`, and `all-time`. Either this field or `datetime_range` needs to be specified.\n* `query`: a query to apply to the report to filter out data.\n  The value of the field is a dictionary with the key `type` and any type-specific keys. For now only the type `saved_search` is allowed which takes the extra key `saved_search_id` to specify the ID of a saved search. This parameter is *optional*.\n* `users`: a list of user IDs to limit the report results to. This parameter is *optional*.\n* `type`: the type of the report. The available values are `overview` and `comparison`.\n  This parameter is *mandatory*.\n* `metrics`: a list of metrics (see [above](#list-the-predefined-metrics-used-in-activity-reports)) to fetch for the report. This parameter is *mandatory*.\n\nThe report can be requested either in a JSON format or in a CSV file. The format can be specified with the `accept` header.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "report",
+                "activity",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6104ce32-bd00-43c5-a26c-b426ed4b14bf",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "activity",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6171fe39-2bc8-41ae-a88e-a4566abc5bd5",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "activity",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6389e72c-410c-478f-aaee-129979583e92",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "activity",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2cf1bf66-ce86-4865-a1f6-9c83afa2fa05",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "activity",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "618e58b8-086d-48ee-b837-7c8dc0e4bc4d",
+          "name": "List the predefined metrics used in activity reports",
+          "request": {
+            "name": "List the predefined metrics used in activity reports",
+            "description": {
+              "content": "List available metrics that can be used in activity reports.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "report",
+                "activity",
+                "metrics",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "10a727bd-60d8-4d6d-b04e-2701db42550e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "activity",
+                    "metrics",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd244e03-8d89-457c-b073-bacbfa9ddacc",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "activity",
+                    "metrics",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "99d73fcf-0dc2-405a-8325-d09932415fa5",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "activity",
+                    "metrics",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff5b1f23-0be4-4dd7-86df-890f55254468",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "activity",
+                    "metrics",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb40da6f-6ef5-4b4d-9bc0-2c307000bd7b",
+          "name": "Get custom report (Explorer)",
+          "request": {
+            "name": "Get custom report (Explorer)",
+            "description": {
+              "content": "This endpoint returns data that allows graphing of arbitrary metrics and is what powers \"Explorer\" in the UI.\n\n - `query` is an optional search query filter. When reporting on leads, any regular lead search query may be used. When reporting on activities or opportunities, only properties of the chosen object type may be used. For example, `direction:incoming` may be used if `x` starts with `email.`. Defaults to `*`, which includes all objects.\n - `y` is made up of the object type and field which is reported on the Y axis. For example the value `lead.count` (used by default) may be used to graph the number of leads, or a numeric field may be used. Examples: `call.duration` (for call length), `opportunity.value` (for value of opportunities).\n - `x` is the field which is reported on the X axis, for example \"lead.custom.MRR\" or \"opportunity.date_created\".\n - `interval`: Graph interval, i.e. the precision of the X axis. For time based graphs (`x` is a date field), one of `auto`, `hour`, `day`, `week`, `month`, `quarter`, `year` (defaults to `auto`, which is chosen based on `start` and `end`). For graphs with a numeric X axis, an integer number can be specified to indicate the histogram interval (`auto` by default).\n - `group_by`: Optional field name by which the report will be grouped. When grouping, a separate series will be returned for each group. By default no grouping is applied.\n - `transform_y`: Transformation function that gets applied to the `y` parameter. One of `sum` (default), `avg`, `min`, or `max`. Does not apply for `.count` `y` values if `x` is of the same object type.\n - `start`: Date or integer of the start of the X axis range. For dates, defaults to the date of creation of your organization.\n - `end`: Date or integer of the end of the X axis range. For dates, defaults to now.\n\n To get a full list of fields that can be used, do a GET to `/report/custom/fields/`. Only the `number` data type can be used for the `y` parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "report",
+                "custom",
+                ":org_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "x",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "y",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "group_by",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "transform_y",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "interval",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "end",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "13b4ccd8-298c-41b6-9f3a-8f7628024538",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "custom",
+                    ":org_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "x",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "y",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "group_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "transform_y",
+                      "value": "min"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "03275a89-c9a6-486d-bb4b-9de0bff16803",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "custom",
+                    ":org_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "x",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "y",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "group_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "transform_y",
+                      "value": "min"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6a929871-e31c-408c-9977-a38f157bfe33",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "custom",
+                    ":org_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "x",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "y",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "group_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "transform_y",
+                      "value": "min"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3014c895-a0dd-4848-921b-af64a5e70956",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "custom",
+                    ":org_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "x",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "y",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "group_by",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "transform_y",
+                      "value": "min"
+                    },
+                    {
+                      "key": "interval",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "end",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3fe72f2c-799a-499a-9f41-1c3403764038",
+          "name": "Get a funnel report (stages)",
+          "request": {
+            "name": "Get a funnel report (stages)",
+            "description": {
+              "content": "The opportunity funnel \"stages\" report returns the pipeline funnel's metrics for the selected opportunities, aggregated (JSON format only) and per-user (JSON and CSV formats).\n\nEvery report accepts the following parameters:\n\n* `pipeline`: ID of the pipeline defining the funnel statuses.\n* `type`: the type of the report. The available values are `created-cohort` and `active-stage-cohort`.\n* `report_relative_range`: a relative time range to fetch data for. The allowed values are: `today`, `this-week`, `this-month`, `this-quarter`, `this-year`, `yesterday`, `last-week`, `last-month`, `last-quarter`, `last-year`, and `all-time`.\n* `report_datetime_range`: a time range to fetch data for.\n* `cohort_relative_range`: a relative time range defining the cohort of created opportunities to fetch data for, by date of creation of those opportunities. The allowed values are: `today`, `this-week`, `this-month`, `this-quarter`, `this-year`, `yesterday`, `last-week`, `last-month`, `last-quarter`, `last-year`, and `all-time`. Either this field or `cohort_datetime_range` needs to be specified for `created-cohort` reports. Its value will be ignored for `active-stage-cohort` reports.\n* `cohort_datetime_range`: a time range defining the cohort of created opportunities to fetch data for, by date of creation of those opportunities. Either this field or `cohort_relative_range` needs to be specified for `created-cohort` reports. Its value will be ignored for `active-stage-cohort` reports.\n* `compared_relative_range`: a relative time range to fetch comparison data for. Only allowed in combination with `report_relative_range` (for `active-stage-cohort` reports) or `cohort_relative_range` (for `created-cohort` reports). The allowed values are: `today`, `this-week`, `this-month`, `this-quarter`, `this-year`, `yesterday`, `last-week`, `last-month`, `last-quarter`, `last-year`, and `all-time`.\n* `compared_datetime_range`: a relative time range to fetch comparison data for. Only allowed in combination with `report_datetime_range` (for `active-stage-cohort` reports) or `cohort_datetime_range` (for `created-cohort` reports). The allowed values are: `same-days-last-week`, `same-days-last-month`, `same-days-last-quarter`, `same-days-last-year`.\n* `compared_custom_range`: a time range to fetch comparison data for.\n* `query`: a query to apply to the report to filter out data.\n  The value of the field is a dictionary with the key `type` and any type-specific keys. For now only the type `saved_search` is allowed which takes the extra key `saved_search_id` to specify the ID of a saved search. This parameter is *optional*.\n* `users`: a list of user IDs or group IDs to limit the report results to. When it's empty, the report will include all the available users. This parameter is *optional*.\n\nThe report can be requested either in JSON format or in CSV format. The format can be specified with the `accept` header.\n\nIn JSON format, it includes aggregated and per-user data. When requested in CSV format, it includes only per-user data.\n\nWhen `compared_datetime_range`, `compared_relative_range`, or `compared_custom_range` are used, the report returned is the compared one, not the base one.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "report",
+                "funnel",
+                "opportunity",
+                "stages",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cb7ba7e0-e8c8-4380-9825-a110fe5fbb8a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "funnel",
+                    "opportunity",
+                    "stages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8a28a9d6-34f7-4ac3-8663-00d1f25ce3a3",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "funnel",
+                    "opportunity",
+                    "stages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "754b283e-4ce9-49ac-ad62-42710f00a81f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "funnel",
+                    "opportunity",
+                    "stages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f26bfc6-2d7e-4e99-88ed-670a9bb29be7",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "funnel",
+                    "opportunity",
+                    "stages",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "71d35d27-b921-432c-b0e4-550159065b06",
+          "name": "Get a funnel report (totals)",
+          "request": {
+            "name": "Get a funnel report (totals)",
+            "description": {
+              "content": "The opportunity funnel \"totals\" report returns the pipeline funnel's metrics for the selected opportunities, aggregated (JSON format only) and per-user (JSON and CSV formats).\n\nEvery report accepts the following parameters:\n\n* `pipeline`: ID of the pipeline defining the funnel statuses.\n* `type`: the type of the report. The available values are `created-cohort` and `active-stage-cohort`.\n* `report_relative_range`: a relative time range to fetch data for. The allowed values are: `today`, `this-week`, `this-month`, `this-quarter`, `this-year`, `yesterday`, `last-week`, `last-month`, `last-quarter`, `last-year`, and `all-time`.\n* `report_datetime_range`: a time range to fetch data for.\n* `cohort_relative_range`: a relative time range defining the cohort of created opportunities to fetch data for, by date of creation of those opportunities. The allowed values are: `today`, `this-week`, `this-month`, `this-quarter`, `this-year`, `yesterday`, `last-week`, `last-month`, `last-quarter`, `last-year`, and `all-time`. Either this field or `cohort_datetime_range` needs to be specified for `created-cohort` reports. Its value will be ignored for `active-stage-cohort` reports.\n* `cohort_datetime_range`: a time range defining the cohort of created opportunities to fetch data for, by date of creation of those opportunities. Either this field or `cohort_relative_range` needs to be specified for `created-cohort` reports. Its value will be ignored for `active-stage-cohort` reports.\n* `compared_relative_range`: a relative time range to fetch comparison data for. Only allowed in combination with `report_relative_range` (for `active-stage-cohort` reports) or `cohort_relative_range` (for `created-cohort` reports). The allowed values are: `today`, `this-week`, `this-month`, `this-quarter`, `this-year`, `yesterday`, `last-week`, `last-month`, `last-quarter`, `last-year`, and `all-time`.\n* `compared_datetime_range`: a relative time range to fetch comparison data for. Only allowed in combination with `report_datetime_range` (for `active-stage-cohort` reports) or `cohort_datetime_range` (for `created-cohort` reports). The allowed values are: `same-days-last-week`, `same-days-last-month`, `same-days-last-quarter`, `same-days-last-year`.\n* `compared_custom_range`: a time range to fetch comparison data for.\n* `query`: a query to apply to the report to filter out data.\n  The value of the field is a dictionary with the key `type` and any type-specific keys. For now only the type `saved_search` is allowed which takes the extra key `saved_search_id` to specify the ID of a saved search. This parameter is *optional*.\n* `users`: a list of user IDs or group IDs to limit the report results to. When it's empty, the report will include all the available users. This parameter is *optional*.\n\nThe report can be requested either in JSON format or in CSV format. The format can be specified with the `accept` header.\n\nIn JSON format, it includes aggregated and per-user data. When requested in CSV format, it includes only per-user data.\n\nWhen `compared_datetime_range`, `compared_relative_range`, or `compared_custom_range` are used, the report returned is the compared one, not the base one.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "report",
+                "funnel",
+                "opportunity",
+                "totals",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7a9feb82-e7a6-436e-8a5e-37fc8797d858",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "funnel",
+                    "opportunity",
+                    "totals",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2a1781e3-3346-4ac3-bacb-a90fe0ff5271",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "funnel",
+                    "opportunity",
+                    "totals",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1bcd4f13-6ea5-4cad-bf4c-01a9c96e27e3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "funnel",
+                    "opportunity",
+                    "totals",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b921cf5b-c9e5-474d-901e-b7083d54abce",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "funnel",
+                    "opportunity",
+                    "totals",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "49fc0492-6acc-414d-8303-e23bb5a3d647",
+          "name": "Get sent emails report",
+          "request": {
+            "name": "Get sent emails report",
+            "description": {},
+            "url": {
+              "path": [
+                "report",
+                "sent_emails",
+                ":org_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aa1ac072-b5b2-4122-8b6d-f2b8c602f1dd",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "sent_emails",
+                    ":org_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11e6ba8c-0d3c-473e-a1db-9214a804efa6",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "sent_emails",
+                    ":org_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d590619-b272-43cf-bf85-2043beac7e42",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "sent_emails",
+                    ":org_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4737ea8e-43a5-47f7-bb35-66a28f26e8e8",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "sent_emails",
+                    ":org_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5d52a770-d0fa-4bc8-ac5f-57933a4c5735",
+          "name": "Get lead status change report",
+          "request": {
+            "name": "Get lead status change report",
+            "description": {
+              "content": "Get a lead status change report.\n\nThe date range is optional. A report may be requested\nfor a specific time period or overall. You can specify\neither a `query` or `smart_view_id` (but not both) to\nfilter leads included in the report.\n\nThe following fields are returned (when requesting an\noverall report, some inapplicable fields will not be\nreturned):\n\n* `status_overview`: A list of all statuses with:\n    * `status_id`, `status_label`,\n      `status_is_deleted`: The ID and label of the\n      status, and whether it was deleted.\n    * `started`: Number of leads in this status at\n      the start of the period.\n    * `ended`: Number in this status at the end.\n    * `change`: Net change during the period\n      (`ended` minus `started`).\n    * `change_percent`: Net change in percent.\n    * `gained`: Number that were not in this status\n      at the beginning but were at the end.\n    * `lost`: Number that were in this status at the\n      beginning but were not at the end.\n    * `entered`: Number that entered this status at\n      some point during the period.\n    * `left`: Number that left this status at some\n      point during the period.\n    * `_queries`: A dictionary containing search\n      queries for the different states (`started`,\n      `ended`, `gained`, `lost`, `entered`, `left`).\n    * `_leads_page_urls`: A dictionary containing\n      paths to the lead search UI page.\n* `status_transitions`: A list of all status\n  transitions (aggregated by start/end status) for\n  the given period with:\n    * `from_status_id`, `from_status_label`,\n      `from_status_is_deleted`: Starting status\n      (null for created leads).\n    * `to_status_id`, `to_status_label`,\n      `to_status_is_deleted`: Ending status.\n    * `count`: The number that transitioned.\n    * `_query`: The search query for those records.\n    * `_leads_page_url`: Path to the search UI page.\n* `status_transitions_summary`: Status transitions\n  summarized for the period. E.g. a lead that went\n  A→B→C is counted as A→C.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "report",
+                "statuses",
+                "lead",
+                ":org_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "smart_view_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d5f52b41-ab27-4e12-b1e2-bc7a47ac6dd6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "statuses",
+                    "lead",
+                    ":org_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "smart_view_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c10e5061-9102-4b89-a8ac-9d2468e55e7b",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "statuses",
+                    "lead",
+                    ":org_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "smart_view_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39f7b368-94b8-47b4-9770-2a19d8a24fbc",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "statuses",
+                    "lead",
+                    ":org_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "smart_view_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18abee09-54f2-4c24-b884-a8a0e78b845f",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "statuses",
+                    "lead",
+                    ":org_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "smart_view_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4233a07-355e-4816-80c0-4697dca1e551",
+          "name": "Get opportunity status change report",
+          "request": {
+            "name": "Get opportunity status change report",
+            "description": {
+              "content": "Get an opportunity status change report.\n\nThe date range is optional. A report may be requested\nfor a specific time period or overall. You can specify\neither a `query` or `smart_view_id` (but not both) to\nfilter opportunities included in the report. The\nreport may optionally be filtered by the opportunity\nuser.\n\nThe following fields are returned (when requesting an\noverall report, some inapplicable fields will not be\nreturned):\n\n* `status_overview`: A list of all statuses with:\n    * `status_id`, `status_label`,\n      `status_is_deleted`: The ID and label of the\n      status, and whether it was deleted.\n    * `started`: Number of opportunities in this\n      status at the start of the period.\n    * `ended`: Number in this status at the end.\n    * `change`: Net change during the period\n      (`ended` minus `started`).\n    * `change_percent`: Net change in percent.\n    * `gained`: Number that were not in this status\n      at the beginning but were at the end.\n    * `lost`: Number that were in this status at the\n      beginning but were not at the end.\n    * `entered`: Number that entered this status at\n      some point during the period.\n    * `left`: Number that left this status at some\n      point during the period.\n    * `_queries`: A dictionary containing search\n      queries for the different states (`started`,\n      `ended`, `gained`, `lost`, `entered`, `left`).\n      Search queries are wrapped in a nested\n      `opportunity(...)` clause. To pass the query\n      to the opportunities API endpoint, use only\n      the query within the parentheses.\n    * `_leads_page_urls`: A dictionary containing\n      paths to the lead search UI page.\n    * `_opportunities_page_urls`: A dictionary\n      containing paths to the opportunity UI page.\n* `status_transitions`: A list of all status\n  transitions (aggregated by start/end status) for\n  the given period with:\n    * `from_status_id`, `from_status_label`,\n      `from_status_is_deleted`: Starting status\n      (null for created opportunities).\n    * `to_status_id`, `to_status_label`,\n      `to_status_is_deleted`: Ending status.\n    * `count`: The number that transitioned.\n    * `_query`: The search query for those records.\n    * `_leads_page_url`: Path to the search UI page.\n    * `_opportunities_page_url`: Path to the\n      opportunity UI page.\n* `status_transitions_summary`: Status transitions\n  summarized for the period. E.g. an opportunity\n  that went A→B→C is counted as A→C.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "report",
+                "statuses",
+                "opportunity",
+                ":org_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "date_start",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_end",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "smart_view_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b3b912f0-d2ad-44ed-b324-de4f0aece06a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "statuses",
+                    "opportunity",
+                    ":org_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "smart_view_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "289973b4-c0e1-46b2-b87d-03c900a9f7a7",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "statuses",
+                    "opportunity",
+                    ":org_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "smart_view_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17ab460f-1bd0-411f-b847-a703c92db08a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "statuses",
+                    "opportunity",
+                    ":org_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "smart_view_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66324564-7553-427a-90e4-b53468b96fa1",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "report",
+                    "statuses",
+                    "opportunity",
+                    ":org_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "date_start",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_end",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "smart_view_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.close.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ccc8af24-0e71-4a30-bbaa-9ee71e7ede8a",
+    "name": "API Endpoints subpackage_activities subpackage_reporting API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

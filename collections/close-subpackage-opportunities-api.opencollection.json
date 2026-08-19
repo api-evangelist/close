@@ -1,0 +1,333 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints subpackage_activities subpackage_opportunities API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_opportunities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or filter opportunities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/opportunity/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "_limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return."
+              },
+              {
+                "name": "_skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip before returning, for pagination."
+              },
+              {
+                "name": "_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response."
+              },
+              {
+                "name": "lead_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_id__in",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status_id__in",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status_type__in",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status_label",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status_label__in",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status__in",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_won",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_won__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_won__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_won__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_won__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_updated",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_updated__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_updated__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_updated__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_updated__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "value_period",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "value_period__in",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lead_query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lead_saved_search_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "is_stalled",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_order_by",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_group_by",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "* All opportunity list responses contain the following aggregate values about all the matching objects (regardless of pagination / limits):\n    * `total_results`: the total number of objects,\n    * `count_by_value_period`: a dictionary containing the number of opportunities by value period, e.g. `{ 'one_time': 2, 'annual': 1, 'monthly': 1 }`,\n    * `total_value_one_time`: the sum of the values of all one time opportunities,\n    * `total_value_monthly`: the sum of the values of all monthly opport"
+        },
+        {
+          "info": {
+            "name": "Create an opportunity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/opportunity/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "**lead_id** (optional): Opportunities belong to exactly one Lead. If you do not provide a `lead_id` then a new lead will be created (appearing as \"Untitled\" in the UI).\n\n**custom.FIELD_ID** (optional): Set custom fields by setting `custom.FIELD_ID` to the field value, where FIELD_ID is the ID of the custom field, e.g.:\n\n```json\n{ \"custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c\": \"value\", \"custom.cf_8wtBWsdRU2Fur7GDnEeXQ7ra2Vu7R4hG1SNYdiEhh0F\": \"other value\" }\n```\n\nIf a custom field has `a"
+        },
+        {
+          "info": {
+            "name": "Retrieve an opportunity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/opportunity/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response."
+              }
+            ]
+          },
+          "docs": "Retrieve an opportunity"
+        },
+        {
+          "info": {
+            "name": "Update an opportunity",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.close.com/api/v1/opportunity/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "*status_id*\n\n- See description for `status_id` in `POST /opportunity/` above.\n- Setting the `status_id` to a status with a type of `won` will automatically set the `date_won` field if it is not already set or provided in the request. Reverting it from a `won` status to an `active` or `lost` will not automatically change `date_won`.\n\n*date_won* (optional):\n\n- If not set on the resource or in the request, the `date_won` will be set automatically to today's date when setting `status_id` to a status"
+        },
+        {
+          "info": {
+            "name": "Delete an opportunity",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.close.com/api/v1/opportunity/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an opportunity"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

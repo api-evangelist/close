@@ -1,0 +1,1754 @@
+{
+  "item": [
+    {
+      "id": "56b553fd-1cf3-45f5-9557-8fddb0e39cb0",
+      "name": "subpackage_activitiesEmails",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ed996f05-b643-4f7e-8953-d70c189b8341",
+          "name": "List or filter all Email activities",
+          "request": {
+            "name": "List or filter all Email activities",
+            "description": {
+              "content": "You'll get one object per email message.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activity",
+                "email",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_limit",
+                  "value": "100",
+                  "description": "Number of results to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "_skip",
+                  "value": "0",
+                  "description": "Number of results to skip before returning, for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "id__in",
+                  "value": "<string>",
+                  "description": "Filter by activity IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "id__in",
+                  "value": "<string>",
+                  "description": "Filter by activity IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "lead_id",
+                  "value": "<string>",
+                  "description": "Filter by lead IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "lead_id",
+                  "value": "<string>",
+                  "description": "Filter by lead IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "contact_id",
+                  "value": "<string>",
+                  "description": "Filter by contact IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "contact_id",
+                  "value": "<string>",
+                  "description": "Filter by contact IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "Filter by user IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "Filter by user IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "organization_id",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_type",
+                  "value": "<string>",
+                  "description": "Filter by activity type, e.g. Call (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "_type",
+                  "value": "<string>",
+                  "description": "Filter by activity type, e.g. Call (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__gte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__lte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__gt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__lt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__gte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__lte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__gt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__lt",
+                  "value": "<dateTime>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f0cb3ffa-8744-4528-8798-191de46d2381",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "email",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"_type\": \"string\",\n      \"activity_at\": \"1985-11-18T15:33:29.412Z\",\n      \"bcc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"body_html\": \"string\",\n      \"body_text\": \"string\",\n      \"bulk_email_action_id\": \"string\",\n      \"cc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"contact_id\": \"string\",\n      \"created_by\": \"string\",\n      \"date_created\": \"2007-04-05T05:06:10.295Z\",\n      \"date_scheduled\": \"2018-04-26T22:42:00.991Z\",\n      \"date_sent\": \"1949-08-05T19:47:55.949Z\",\n      \"date_updated\": \"1986-08-24T15:51:36.827Z\",\n      \"direction\": \"incoming\",\n      \"followup_sequence_add_cc_bcc\": false,\n      \"followup_sequence_delay\": 1345,\n      \"has_reply\": true,\n      \"id\": \"string\",\n      \"in_reply_to_id\": \"string\",\n      \"lead_id\": \"string\",\n      \"message_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"need_smtp_credentials\": false,\n      \"opens_summary\": \"string\",\n      \"organization_id\": \"string\",\n      \"references\": [\n        \"string\",\n        \"string\"\n      ],\n      \"send_as_id\": \"string\",\n      \"sender\": \"string\",\n      \"status\": \"inbox\",\n      \"subject\": \"string\",\n      \"template_id\": \"string\",\n      \"thread_id\": \"string\",\n      \"to\": [\n        \"string\",\n        \"string\"\n      ],\n      \"updated_by\": \"string\",\n      \"user_id\": \"string\",\n      \"users\": [\n        \"string\",\n        \"string\"\n      ],\n      \"agent_action_reason\": \"string\",\n      \"agent_config_id\": \"string\",\n      \"attachments\": [\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 5090,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        },\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 6007,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        }\n      ],\n      \"body_preview\": \"string\",\n      \"created_by_name\": \"string\",\n      \"email_account_id\": \"string\",\n      \"envelope\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      \"followup_sequence_id\": \"string\",\n      \"opens\": [\n        {\n          \"key_0\": \"string\"\n        },\n        {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        }\n      ],\n      \"send_attempts\": [\n        {\n          \"key_0\": \"string\"\n        },\n        {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        }\n      ],\n      \"sequence_id\": \"string\",\n      \"sequence_name\": \"string\",\n      \"sequence_subscription_id\": \"string\",\n      \"template_name\": \"string\",\n      \"updated_by_name\": \"string\",\n      \"user_name\": \"string\"\n    },\n    {\n      \"_type\": \"string\",\n      \"activity_at\": \"1977-10-11T08:03:54.417Z\",\n      \"bcc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"body_html\": \"string\",\n      \"body_text\": \"string\",\n      \"bulk_email_action_id\": \"string\",\n      \"cc\": [\n        \"string\",\n        \"string\"\n      ],\n      \"contact_id\": \"string\",\n      \"created_by\": \"string\",\n      \"date_created\": \"2003-05-03T18:58:24.677Z\",\n      \"date_scheduled\": \"2004-10-22T13:18:53.297Z\",\n      \"date_sent\": \"1969-11-24T11:01:31.719Z\",\n      \"date_updated\": \"1972-11-26T08:13:16.339Z\",\n      \"direction\": \"incoming\",\n      \"followup_sequence_add_cc_bcc\": true,\n      \"followup_sequence_delay\": 7689,\n      \"has_reply\": false,\n      \"id\": \"string\",\n      \"in_reply_to_id\": \"string\",\n      \"lead_id\": \"string\",\n      \"message_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"need_smtp_credentials\": false,\n      \"opens_summary\": \"string\",\n      \"organization_id\": \"string\",\n      \"references\": [\n        \"string\",\n        \"string\"\n      ],\n      \"send_as_id\": \"string\",\n      \"sender\": \"string\",\n      \"status\": \"sent\",\n      \"subject\": \"string\",\n      \"template_id\": \"string\",\n      \"thread_id\": \"string\",\n      \"to\": [\n        \"string\",\n        \"string\"\n      ],\n      \"updated_by\": \"string\",\n      \"user_id\": \"string\",\n      \"users\": [\n        \"string\",\n        \"string\"\n      ],\n      \"agent_action_reason\": \"string\",\n      \"agent_config_id\": \"string\",\n      \"attachments\": [\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 9090,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        },\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 382,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        }\n      ],\n      \"body_preview\": \"string\",\n      \"created_by_name\": \"string\",\n      \"email_account_id\": \"string\",\n      \"envelope\": {\n        \"key_0\": {}\n      },\n      \"followup_sequence_id\": \"string\",\n      \"opens\": [\n        {\n          \"key_0\": \"string\"\n        },\n        {\n          \"key_0\": \"string\"\n        }\n      ],\n      \"send_attempts\": [\n        {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": \"string\"\n        }\n      ],\n      \"sequence_id\": \"string\",\n      \"sequence_name\": \"string\",\n      \"sequence_subscription_id\": \"string\",\n      \"template_name\": \"string\",\n      \"updated_by_name\": \"string\",\n      \"user_name\": \"string\"\n    }\n  ],\n  \"has_more\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "02c809f5-023b-4443-a9d6-990c5cc190da",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "email",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "df687267-f01d-477f-a63b-2287760f82cd",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "email",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be6fa1e9-08cb-4048-92a3-d3db6b72019c",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "email",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "1996-10-05T10:11:06.965Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1b0413c4-8a13-43b2-a949-7342b247bf6d",
+          "name": "Create an Email activity",
+          "request": {
+            "name": "Create an Email activity",
+            "description": {
+              "content": "*status* must be one of the following:\n\n - `inbox` to log an already received email.\n - `draft` to create a draft email.\n - `scheduled` to send an email at a scheduled date and time, which must be specified in the `date_scheduled` field.\n - `outbox` to actually **send** an email. To delay email sending by a few seconds (to allow undo), specify `send_in` in seconds (must be less than 60).\n - `sent` to log an already sent email.\n\nOnly drafts can be modified, and their status can be changed to `scheduled` (to send later) or `outbox` (to send immediately). Scheduled emails, or emails in outbox that weren't sent yet can be canceled by setting the status back to `draft`.\n\nFor scheduled, outbox, or sent emails, a `followup_date` may be posted, which will have Close create an email followup task if no response was received.\n\nWe'll render an Email Template server-side if you include a `template_id` _without_ including `body_text` or `body_html` in your POST.\n\nTo specify both a sender name and a sender email address when posting an email, you can use the `sender` field with the format `\"sender\": \"\"John Smith\" <emailaddress@example.com>\"`\n\nThe `sender` field is **required** for emails with status `inbox`, `scheduled`, `outbox`, or `error`. It may be omitted for `draft` (since the sender can be specified later before sending) and `sent` (where it defaults to the email address of the `user` associated with the email or the owner of the API key).\n\nTo include an attachment, you must first upload the file to Close using the [Files API](https://developer.close.com/api/resources/files). Then, add an object to the `attachments` array with the following fields: `url`, `filename`, `content_type`, and `size`. The `url` should be the URL provided in the `download.url` field of the response from the [Files API](https://developer.close.com/api/resources/files). It must begin `https://app.close.com/go/file/`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activity",
+                "email",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lead_id\": \"<string>\",\n  \"status\": \"<string>\",\n  \"account_id\": \"<string,null>\",\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"filename\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"url\": \"<uri>\",\n      \"content_id\": \"<string,null>\",\n      \"content_type\": \"<string,null>\",\n      \"inline_only\": \"<boolean>\"\n    },\n    {\n      \"filename\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"url\": \"<uri>\",\n      \"content_id\": \"<string,null>\",\n      \"content_type\": \"<string,null>\",\n      \"inline_only\": \"<boolean>\"\n    }\n  ],\n  \"bcc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"body_html\": \"<string,null>\",\n  \"body_text\": \"<string,null>\",\n  \"cc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"created_by_id\": \"<string,null>\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"followup_date\": \"<string,null-date-time>\",\n  \"followup_sequence_add_cc_bcc\": \"<boolean,null>\",\n  \"followup_sequence_delay\": \"<integer,null>\",\n  \"followup_sequence_id\": \"<string,null>\",\n  \"in_reply_to_id\": \"<string,null>\",\n  \"opens\": [\n    {\n      \"opened_at\": \"<dateTime>\"\n    },\n    {\n      \"opened_at\": \"<dateTime>\"\n    }\n  ],\n  \"organization_id\": \"<string,null>\",\n  \"sender\": \"<string,null-email>\",\n  \"subject\": \"<string,null>\",\n  \"template_id\": \"<string,null>\",\n  \"to\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_id\": \"<string,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "05bf8fb1-e8ca-4fe5-89a3-2f087e781d4a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "email",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lead_id\": \"<string>\",\n  \"status\": \"scheduled\",\n  \"account_id\": \"<string,null>\",\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"filename\": \"string\",\n      \"size\": 4359,\n      \"url\": \"https://qnPcItwHoLlHYCqKIJKiUJMKMIZVjtxk.vlhaLVKH6O4UACB8rb7DYAZAhvXrh29IoSQ,M,\",\n      \"content_id\": \"string\",\n      \"content_type\": \"string\",\n      \"inline_only\": false\n    },\n    {\n      \"filename\": \"string\",\n      \"size\": 8078,\n      \"url\": \"http://IcPSkZrA.qta2RQNUYy21TNF3YJNthU,IAQbBE3lzR4lZ5\",\n      \"content_id\": \"string\",\n      \"content_type\": \"string\",\n      \"inline_only\": true\n    }\n  ],\n  \"bcc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"body_html\": \"<string,null>\",\n  \"body_text\": \"<string,null>\",\n  \"cc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"created_by_id\": \"<string,null>\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"followup_date\": \"<string,null-date-time>\",\n  \"followup_sequence_add_cc_bcc\": \"<boolean,null>\",\n  \"followup_sequence_delay\": \"<integer,null>\",\n  \"followup_sequence_id\": \"<string,null>\",\n  \"in_reply_to_id\": \"<string,null>\",\n  \"opens\": [\n    {\n      \"opened_at\": \"2008-03-18T00:01:09.078Z\"\n    },\n    {\n      \"opened_at\": \"2005-04-17T02:43:25.259Z\"\n    }\n  ],\n  \"organization_id\": \"<string,null>\",\n  \"sender\": \"<string,null-email>\",\n  \"subject\": \"<string,null>\",\n  \"template_id\": \"<string,null>\",\n  \"to\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"activity_at\": \"2005-07-23T09:09:38.358Z\",\n  \"bcc\": [\n    \"string\",\n    \"string\"\n  ],\n  \"body_html\": \"string\",\n  \"body_text\": \"string\",\n  \"bulk_email_action_id\": \"string\",\n  \"cc\": [\n    \"string\",\n    \"string\"\n  ],\n  \"contact_id\": \"string\",\n  \"created_by\": \"string\",\n  \"date_created\": \"1992-01-05T10:35:36.493Z\",\n  \"date_scheduled\": \"1973-09-15T08:28:49.369Z\",\n  \"date_sent\": \"2023-08-17T09:26:25.409Z\",\n  \"date_updated\": \"1983-02-06T07:27:24.292Z\",\n  \"direction\": \"outgoing\",\n  \"followup_sequence_add_cc_bcc\": true,\n  \"followup_sequence_delay\": 5552,\n  \"has_reply\": false,\n  \"id\": \"string\",\n  \"in_reply_to_id\": \"string\",\n  \"lead_id\": \"string\",\n  \"message_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"need_smtp_credentials\": false,\n  \"opens_summary\": \"string\",\n  \"organization_id\": \"string\",\n  \"references\": [\n    \"string\",\n    \"string\"\n  ],\n  \"send_as_id\": \"string\",\n  \"sender\": \"string\",\n  \"status\": \"sent\",\n  \"subject\": \"string\",\n  \"template_id\": \"string\",\n  \"thread_id\": \"string\",\n  \"to\": [\n    \"string\",\n    \"string\"\n  ],\n  \"updated_by\": \"string\",\n  \"user_id\": \"string\",\n  \"users\": [\n    \"string\",\n    \"string\"\n  ],\n  \"agent_action_reason\": \"string\",\n  \"agent_config_id\": \"string\",\n  \"attachments\": [\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"size\": 8719,\n      \"url\": \"string\",\n      \"thumbnail_url\": \"string\"\n    },\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"size\": 7926,\n      \"url\": \"string\",\n      \"thumbnail_url\": \"string\"\n    }\n  ],\n  \"body_preview\": \"string\",\n  \"created_by_name\": \"string\",\n  \"email_account_id\": \"string\",\n  \"envelope\": {\n    \"key_0\": {}\n  },\n  \"followup_sequence_id\": \"string\",\n  \"opens\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    {\n      \"key_0\": \"string\"\n    }\n  ],\n  \"send_attempts\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\",\n      \"key_3\": \"string\"\n    }\n  ],\n  \"sequence_id\": \"string\",\n  \"sequence_name\": \"string\",\n  \"sequence_subscription_id\": \"string\",\n  \"template_name\": \"string\",\n  \"updated_by_name\": \"string\",\n  \"user_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c4c79be-b3c6-4017-92f4-f503851584e3",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "email",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lead_id\": \"<string>\",\n  \"status\": \"scheduled\",\n  \"account_id\": \"<string,null>\",\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"filename\": \"string\",\n      \"size\": 4359,\n      \"url\": \"https://qnPcItwHoLlHYCqKIJKiUJMKMIZVjtxk.vlhaLVKH6O4UACB8rb7DYAZAhvXrh29IoSQ,M,\",\n      \"content_id\": \"string\",\n      \"content_type\": \"string\",\n      \"inline_only\": false\n    },\n    {\n      \"filename\": \"string\",\n      \"size\": 8078,\n      \"url\": \"http://IcPSkZrA.qta2RQNUYy21TNF3YJNthU,IAQbBE3lzR4lZ5\",\n      \"content_id\": \"string\",\n      \"content_type\": \"string\",\n      \"inline_only\": true\n    }\n  ],\n  \"bcc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"body_html\": \"<string,null>\",\n  \"body_text\": \"<string,null>\",\n  \"cc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"created_by_id\": \"<string,null>\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"followup_date\": \"<string,null-date-time>\",\n  \"followup_sequence_add_cc_bcc\": \"<boolean,null>\",\n  \"followup_sequence_delay\": \"<integer,null>\",\n  \"followup_sequence_id\": \"<string,null>\",\n  \"in_reply_to_id\": \"<string,null>\",\n  \"opens\": [\n    {\n      \"opened_at\": \"2008-03-18T00:01:09.078Z\"\n    },\n    {\n      \"opened_at\": \"2005-04-17T02:43:25.259Z\"\n    }\n  ],\n  \"organization_id\": \"<string,null>\",\n  \"sender\": \"<string,null-email>\",\n  \"subject\": \"<string,null>\",\n  \"template_id\": \"<string,null>\",\n  \"to\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6adc6228-176a-4e4c-95fb-85a70025adae",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "email",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lead_id\": \"<string>\",\n  \"status\": \"scheduled\",\n  \"account_id\": \"<string,null>\",\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"filename\": \"string\",\n      \"size\": 4359,\n      \"url\": \"https://qnPcItwHoLlHYCqKIJKiUJMKMIZVjtxk.vlhaLVKH6O4UACB8rb7DYAZAhvXrh29IoSQ,M,\",\n      \"content_id\": \"string\",\n      \"content_type\": \"string\",\n      \"inline_only\": false\n    },\n    {\n      \"filename\": \"string\",\n      \"size\": 8078,\n      \"url\": \"http://IcPSkZrA.qta2RQNUYy21TNF3YJNthU,IAQbBE3lzR4lZ5\",\n      \"content_id\": \"string\",\n      \"content_type\": \"string\",\n      \"inline_only\": true\n    }\n  ],\n  \"bcc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"body_html\": \"<string,null>\",\n  \"body_text\": \"<string,null>\",\n  \"cc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"created_by_id\": \"<string,null>\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"followup_date\": \"<string,null-date-time>\",\n  \"followup_sequence_add_cc_bcc\": \"<boolean,null>\",\n  \"followup_sequence_delay\": \"<integer,null>\",\n  \"followup_sequence_id\": \"<string,null>\",\n  \"in_reply_to_id\": \"<string,null>\",\n  \"opens\": [\n    {\n      \"opened_at\": \"2008-03-18T00:01:09.078Z\"\n    },\n    {\n      \"opened_at\": \"2005-04-17T02:43:25.259Z\"\n    }\n  ],\n  \"organization_id\": \"<string,null>\",\n  \"sender\": \"<string,null-email>\",\n  \"subject\": \"<string,null>\",\n  \"template_id\": \"<string,null>\",\n  \"to\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "875f3cab-bf00-4abd-bf70-e63c585f170e",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "email",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"lead_id\": \"<string>\",\n  \"status\": \"scheduled\",\n  \"account_id\": \"<string,null>\",\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"filename\": \"string\",\n      \"size\": 4359,\n      \"url\": \"https://qnPcItwHoLlHYCqKIJKiUJMKMIZVjtxk.vlhaLVKH6O4UACB8rb7DYAZAhvXrh29IoSQ,M,\",\n      \"content_id\": \"string\",\n      \"content_type\": \"string\",\n      \"inline_only\": false\n    },\n    {\n      \"filename\": \"string\",\n      \"size\": 8078,\n      \"url\": \"http://IcPSkZrA.qta2RQNUYy21TNF3YJNthU,IAQbBE3lzR4lZ5\",\n      \"content_id\": \"string\",\n      \"content_type\": \"string\",\n      \"inline_only\": true\n    }\n  ],\n  \"bcc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"body_html\": \"<string,null>\",\n  \"body_text\": \"<string,null>\",\n  \"cc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"created_by_id\": \"<string,null>\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"followup_date\": \"<string,null-date-time>\",\n  \"followup_sequence_add_cc_bcc\": \"<boolean,null>\",\n  \"followup_sequence_delay\": \"<integer,null>\",\n  \"followup_sequence_id\": \"<string,null>\",\n  \"in_reply_to_id\": \"<string,null>\",\n  \"opens\": [\n    {\n      \"opened_at\": \"2008-03-18T00:01:09.078Z\"\n    },\n    {\n      \"opened_at\": \"2005-04-17T02:43:25.259Z\"\n    }\n  ],\n  \"organization_id\": \"<string,null>\",\n  \"sender\": \"<string,null-email>\",\n  \"subject\": \"<string,null>\",\n  \"template_id\": \"<string,null>\",\n  \"to\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "85465283-3388-4bf6-917e-888b6cd014cc",
+          "name": "Get a single Email activity",
+          "request": {
+            "name": "Get a single Email activity",
+            "description": {},
+            "url": {
+              "path": [
+                "activity",
+                "email",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9be316cb-6d26-430b-b92c-23469053f9a6",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "email",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"activity_at\": \"2005-07-23T09:09:38.358Z\",\n  \"bcc\": [\n    \"string\",\n    \"string\"\n  ],\n  \"body_html\": \"string\",\n  \"body_text\": \"string\",\n  \"bulk_email_action_id\": \"string\",\n  \"cc\": [\n    \"string\",\n    \"string\"\n  ],\n  \"contact_id\": \"string\",\n  \"created_by\": \"string\",\n  \"date_created\": \"1992-01-05T10:35:36.493Z\",\n  \"date_scheduled\": \"1973-09-15T08:28:49.369Z\",\n  \"date_sent\": \"2023-08-17T09:26:25.409Z\",\n  \"date_updated\": \"1983-02-06T07:27:24.292Z\",\n  \"direction\": \"outgoing\",\n  \"followup_sequence_add_cc_bcc\": true,\n  \"followup_sequence_delay\": 5552,\n  \"has_reply\": false,\n  \"id\": \"string\",\n  \"in_reply_to_id\": \"string\",\n  \"lead_id\": \"string\",\n  \"message_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"need_smtp_credentials\": false,\n  \"opens_summary\": \"string\",\n  \"organization_id\": \"string\",\n  \"references\": [\n    \"string\",\n    \"string\"\n  ],\n  \"send_as_id\": \"string\",\n  \"sender\": \"string\",\n  \"status\": \"sent\",\n  \"subject\": \"string\",\n  \"template_id\": \"string\",\n  \"thread_id\": \"string\",\n  \"to\": [\n    \"string\",\n    \"string\"\n  ],\n  \"updated_by\": \"string\",\n  \"user_id\": \"string\",\n  \"users\": [\n    \"string\",\n    \"string\"\n  ],\n  \"agent_action_reason\": \"string\",\n  \"agent_config_id\": \"string\",\n  \"attachments\": [\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"size\": 8719,\n      \"url\": \"string\",\n      \"thumbnail_url\": \"string\"\n    },\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"size\": 7926,\n      \"url\": \"string\",\n      \"thumbnail_url\": \"string\"\n    }\n  ],\n  \"body_preview\": \"string\",\n  \"created_by_name\": \"string\",\n  \"email_account_id\": \"string\",\n  \"envelope\": {\n    \"key_0\": {}\n  },\n  \"followup_sequence_id\": \"string\",\n  \"opens\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    {\n      \"key_0\": \"string\"\n    }\n  ],\n  \"send_attempts\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\",\n      \"key_3\": \"string\"\n    }\n  ],\n  \"sequence_id\": \"string\",\n  \"sequence_name\": \"string\",\n  \"sequence_subscription_id\": \"string\",\n  \"template_name\": \"string\",\n  \"updated_by_name\": \"string\",\n  \"user_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "677034c5-604d-4ad9-9a71-7c55a0fab9ac",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "email",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb97e1a5-20f6-4d48-9f3e-307738ca1d32",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "email",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6f20d93a-f1c5-4994-bedb-97e48a1c8ed4",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "email",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d06446f7-db90-450e-b0bb-ab8f45fc6105",
+          "name": "Update an Email activity",
+          "request": {
+            "name": "Update an Email activity",
+            "description": {
+              "content": "This can be used to modify a draft or send it once the draft is complete.\n\nWhen changing a draft's status to `scheduled` or `outbox`, the `sender` field is required if not already set on the email.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activity",
+                "email",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"account_id\": \"<string,null>\",\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"filename\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"url\": \"<uri>\",\n      \"content_id\": \"<string,null>\",\n      \"content_type\": \"<string,null>\",\n      \"inline_only\": \"<boolean>\"\n    },\n    {\n      \"filename\": \"<string>\",\n      \"size\": \"<integer>\",\n      \"url\": \"<uri>\",\n      \"content_id\": \"<string,null>\",\n      \"content_type\": \"<string,null>\",\n      \"inline_only\": \"<boolean>\"\n    }\n  ],\n  \"bcc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"body_html\": \"<string,null>\",\n  \"body_text\": \"<string,null>\",\n  \"cc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"followup_date\": \"<string,null-date-time>\",\n  \"followup_sequence_add_cc_bcc\": \"<boolean,null>\",\n  \"followup_sequence_delay\": \"<integer,null>\",\n  \"followup_sequence_id\": \"<string,null>\",\n  \"in_reply_to_id\": \"<string,null>\",\n  \"opens\": [\n    {\n      \"opened_at\": \"<dateTime>\"\n    },\n    {\n      \"opened_at\": \"<dateTime>\"\n    }\n  ],\n  \"sender\": \"<string,null-email>\",\n  \"status\": \"<string>\",\n  \"subject\": \"<string,null>\",\n  \"template_id\": \"<string,null>\",\n  \"to\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_id\": \"<string,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8df6b48a-5e37-4386-a3fb-3b98bc93556c",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "email",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account_id\": \"<string,null>\",\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"filename\": \"string\",\n      \"size\": 6803,\n      \"url\": \"https://ULhPwtMQWGIhYMDiTwiVWvjHE.akB+pvheD0gZLRhaTkRNiMAI+oSbcMiBzI4C9hSTNAhCeFS3EVj,TfBwwadUL2wjD6\",\n      \"content_id\": \"string\",\n      \"content_type\": \"string\",\n      \"inline_only\": false\n    },\n    {\n      \"filename\": \"string\",\n      \"size\": 321,\n      \"url\": \"http://bBOcVOuzyakLHJFZi.lhpqQDO14YFGYcB6fc7R92kO8fjanvE4k0LnO-t.c5VCuMSpc-wUVMR8ORwGMK5.qkzZHBam1BsEo-u\",\n      \"content_id\": \"string\",\n      \"content_type\": \"string\",\n      \"inline_only\": false\n    }\n  ],\n  \"bcc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"body_html\": \"<string,null>\",\n  \"body_text\": \"<string,null>\",\n  \"cc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"followup_date\": \"<string,null-date-time>\",\n  \"followup_sequence_add_cc_bcc\": \"<boolean,null>\",\n  \"followup_sequence_delay\": \"<integer,null>\",\n  \"followup_sequence_id\": \"<string,null>\",\n  \"in_reply_to_id\": \"<string,null>\",\n  \"opens\": [\n    {\n      \"opened_at\": \"1980-04-20T00:15:58.519Z\"\n    },\n    {\n      \"opened_at\": \"1969-09-08T00:58:08.370Z\"\n    }\n  ],\n  \"sender\": \"<string,null-email>\",\n  \"status\": \"sent\",\n  \"subject\": \"<string,null>\",\n  \"template_id\": \"<string,null>\",\n  \"to\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"activity_at\": \"2005-07-23T09:09:38.358Z\",\n  \"bcc\": [\n    \"string\",\n    \"string\"\n  ],\n  \"body_html\": \"string\",\n  \"body_text\": \"string\",\n  \"bulk_email_action_id\": \"string\",\n  \"cc\": [\n    \"string\",\n    \"string\"\n  ],\n  \"contact_id\": \"string\",\n  \"created_by\": \"string\",\n  \"date_created\": \"1992-01-05T10:35:36.493Z\",\n  \"date_scheduled\": \"1973-09-15T08:28:49.369Z\",\n  \"date_sent\": \"2023-08-17T09:26:25.409Z\",\n  \"date_updated\": \"1983-02-06T07:27:24.292Z\",\n  \"direction\": \"outgoing\",\n  \"followup_sequence_add_cc_bcc\": true,\n  \"followup_sequence_delay\": 5552,\n  \"has_reply\": false,\n  \"id\": \"string\",\n  \"in_reply_to_id\": \"string\",\n  \"lead_id\": \"string\",\n  \"message_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"need_smtp_credentials\": false,\n  \"opens_summary\": \"string\",\n  \"organization_id\": \"string\",\n  \"references\": [\n    \"string\",\n    \"string\"\n  ],\n  \"send_as_id\": \"string\",\n  \"sender\": \"string\",\n  \"status\": \"sent\",\n  \"subject\": \"string\",\n  \"template_id\": \"string\",\n  \"thread_id\": \"string\",\n  \"to\": [\n    \"string\",\n    \"string\"\n  ],\n  \"updated_by\": \"string\",\n  \"user_id\": \"string\",\n  \"users\": [\n    \"string\",\n    \"string\"\n  ],\n  \"agent_action_reason\": \"string\",\n  \"agent_config_id\": \"string\",\n  \"attachments\": [\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"size\": 8719,\n      \"url\": \"string\",\n      \"thumbnail_url\": \"string\"\n    },\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"size\": 7926,\n      \"url\": \"string\",\n      \"thumbnail_url\": \"string\"\n    }\n  ],\n  \"body_preview\": \"string\",\n  \"created_by_name\": \"string\",\n  \"email_account_id\": \"string\",\n  \"envelope\": {\n    \"key_0\": {}\n  },\n  \"followup_sequence_id\": \"string\",\n  \"opens\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    {\n      \"key_0\": \"string\"\n    }\n  ],\n  \"send_attempts\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\",\n      \"key_3\": \"string\"\n    }\n  ],\n  \"sequence_id\": \"string\",\n  \"sequence_name\": \"string\",\n  \"sequence_subscription_id\": \"string\",\n  \"template_name\": \"string\",\n  \"updated_by_name\": \"string\",\n  \"user_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ee1fdbe-7359-4157-8a90-66df6c1d0de4",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "email",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account_id\": \"<string,null>\",\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"filename\": \"string\",\n      \"size\": 6803,\n      \"url\": \"https://ULhPwtMQWGIhYMDiTwiVWvjHE.akB+pvheD0gZLRhaTkRNiMAI+oSbcMiBzI4C9hSTNAhCeFS3EVj,TfBwwadUL2wjD6\",\n      \"content_id\": \"string\",\n      \"content_type\": \"string\",\n      \"inline_only\": false\n    },\n    {\n      \"filename\": \"string\",\n      \"size\": 321,\n      \"url\": \"http://bBOcVOuzyakLHJFZi.lhpqQDO14YFGYcB6fc7R92kO8fjanvE4k0LnO-t.c5VCuMSpc-wUVMR8ORwGMK5.qkzZHBam1BsEo-u\",\n      \"content_id\": \"string\",\n      \"content_type\": \"string\",\n      \"inline_only\": false\n    }\n  ],\n  \"bcc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"body_html\": \"<string,null>\",\n  \"body_text\": \"<string,null>\",\n  \"cc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"followup_date\": \"<string,null-date-time>\",\n  \"followup_sequence_add_cc_bcc\": \"<boolean,null>\",\n  \"followup_sequence_delay\": \"<integer,null>\",\n  \"followup_sequence_id\": \"<string,null>\",\n  \"in_reply_to_id\": \"<string,null>\",\n  \"opens\": [\n    {\n      \"opened_at\": \"1980-04-20T00:15:58.519Z\"\n    },\n    {\n      \"opened_at\": \"1969-09-08T00:58:08.370Z\"\n    }\n  ],\n  \"sender\": \"<string,null-email>\",\n  \"status\": \"sent\",\n  \"subject\": \"<string,null>\",\n  \"template_id\": \"<string,null>\",\n  \"to\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f33995fd-5d45-4f79-b048-03e9b26647df",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "email",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account_id\": \"<string,null>\",\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"filename\": \"string\",\n      \"size\": 6803,\n      \"url\": \"https://ULhPwtMQWGIhYMDiTwiVWvjHE.akB+pvheD0gZLRhaTkRNiMAI+oSbcMiBzI4C9hSTNAhCeFS3EVj,TfBwwadUL2wjD6\",\n      \"content_id\": \"string\",\n      \"content_type\": \"string\",\n      \"inline_only\": false\n    },\n    {\n      \"filename\": \"string\",\n      \"size\": 321,\n      \"url\": \"http://bBOcVOuzyakLHJFZi.lhpqQDO14YFGYcB6fc7R92kO8fjanvE4k0LnO-t.c5VCuMSpc-wUVMR8ORwGMK5.qkzZHBam1BsEo-u\",\n      \"content_id\": \"string\",\n      \"content_type\": \"string\",\n      \"inline_only\": false\n    }\n  ],\n  \"bcc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"body_html\": \"<string,null>\",\n  \"body_text\": \"<string,null>\",\n  \"cc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"followup_date\": \"<string,null-date-time>\",\n  \"followup_sequence_add_cc_bcc\": \"<boolean,null>\",\n  \"followup_sequence_delay\": \"<integer,null>\",\n  \"followup_sequence_id\": \"<string,null>\",\n  \"in_reply_to_id\": \"<string,null>\",\n  \"opens\": [\n    {\n      \"opened_at\": \"1980-04-20T00:15:58.519Z\"\n    },\n    {\n      \"opened_at\": \"1969-09-08T00:58:08.370Z\"\n    }\n  ],\n  \"sender\": \"<string,null-email>\",\n  \"status\": \"sent\",\n  \"subject\": \"<string,null>\",\n  \"template_id\": \"<string,null>\",\n  \"to\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4858d07-870f-4ab4-82af-daa312984958",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "email",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"account_id\": \"<string,null>\",\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"filename\": \"string\",\n      \"size\": 6803,\n      \"url\": \"https://ULhPwtMQWGIhYMDiTwiVWvjHE.akB+pvheD0gZLRhaTkRNiMAI+oSbcMiBzI4C9hSTNAhCeFS3EVj,TfBwwadUL2wjD6\",\n      \"content_id\": \"string\",\n      \"content_type\": \"string\",\n      \"inline_only\": false\n    },\n    {\n      \"filename\": \"string\",\n      \"size\": 321,\n      \"url\": \"http://bBOcVOuzyakLHJFZi.lhpqQDO14YFGYcB6fc7R92kO8fjanvE4k0LnO-t.c5VCuMSpc-wUVMR8ORwGMK5.qkzZHBam1BsEo-u\",\n      \"content_id\": \"string\",\n      \"content_type\": \"string\",\n      \"inline_only\": false\n    }\n  ],\n  \"bcc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"body_html\": \"<string,null>\",\n  \"body_text\": \"<string,null>\",\n  \"cc\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"followup_date\": \"<string,null-date-time>\",\n  \"followup_sequence_add_cc_bcc\": \"<boolean,null>\",\n  \"followup_sequence_delay\": \"<integer,null>\",\n  \"followup_sequence_id\": \"<string,null>\",\n  \"in_reply_to_id\": \"<string,null>\",\n  \"opens\": [\n    {\n      \"opened_at\": \"1980-04-20T00:15:58.519Z\"\n    },\n    {\n      \"opened_at\": \"1969-09-08T00:58:08.370Z\"\n    }\n  ],\n  \"sender\": \"<string,null-email>\",\n  \"status\": \"sent\",\n  \"subject\": \"<string,null>\",\n  \"template_id\": \"<string,null>\",\n  \"to\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3fdb48b3-9a13-4eee-85cd-b600b3069713",
+          "name": "Delete an Email activity",
+          "request": {
+            "name": "Delete an Email activity",
+            "description": {},
+            "url": {
+              "path": [
+                "activity",
+                "email",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5c8c5723-b5c9-4a3b-ab32-37b972511770",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "email",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "373191f6-dafa-405e-9b2d-2f25d8b6bdde",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "email",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83edffb5-939c-4c21-857c-33370a77d339",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "email",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f9bf643f-3ce3-4625-85f9-a0f2d9040d0b",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "email",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.close.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9f1c9a61-de7b-469b-a637-19b0feafb84f",
+    "name": "API Endpoints subpackage_activities subpackage_activitiesEmails API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,491 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints subpackage_activities subpackage_tasks API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_tasks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List or filter tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/task/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "_limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return."
+              },
+              {
+                "name": "_skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip before returning, for pagination."
+              },
+              {
+                "name": "assigned_to",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__in",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "is_complete",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lead_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_order_by",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_type__in",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "view",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "due_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "due_date__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "due_date__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "due_date__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "due_date__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_updated__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_updated__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_updated__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_updated__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response."
+              }
+            ]
+          },
+          "docs": "The `view` parameter can be used to conveniently access the different task views. It accepts one of the following values:\n\n* `inbox`: Shows incomplete tasks up to the end of the user's day only (taking the time zone into account).\n* `future`: Shows incomplete tasks starting from the user's tomorrow only (taking the time zone into account).\n* `archive`: Shows complete tasks only.\n\nNote that a `view` value of `inbox` or `future` will override any `date__lt` or `date__gte` parameters included in th"
+        },
+        {
+          "info": {
+            "name": "Create a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/task/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Provide the type of task to be created in the `_type` field. Currently only tasks of type `lead` and `outgoing_call` can be created."
+        },
+        {
+          "info": {
+            "name": "Bulk-update tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.close.com/api/v1/task/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "assigned_to",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id__in",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "is_complete",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lead_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_order_by",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "organization_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_type__in",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "view",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "due_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "due_date__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "due_date__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "due_date__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "due_date__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_created__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_updated__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_updated__lte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_updated__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_updated__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Any of the filters of the GET endpoint may be used. For example, to update multiple tasks with given IDs A, B and C, `id__in=A,B,C` would be passed.\n\nOnly the `assigned_to`, `date` and `is_complete` fields may be updated."
+        },
+        {
+          "info": {
+            "name": "Fetch a task's details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/task/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response."
+              }
+            ]
+          },
+          "docs": "Fetch a task's details"
+        },
+        {
+          "info": {
+            "name": "Update a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.close.com/api/v1/task/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The `assigned_to`, `date` (either a date or a date-time), and `is_complete` fields may be updated on all tasks. If the task type is `lead`, the `text` field may also be modified."
+        },
+        {
+          "info": {
+            "name": "Delete a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.close.com/api/v1/task/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a task"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

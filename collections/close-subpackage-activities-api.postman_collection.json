@@ -1,0 +1,821 @@
+{
+  "item": [
+    {
+      "id": "c9ee300a-3ec2-4e93-a986-a5e44937d8e2",
+      "name": "subpackage_activities",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d0933a37-e612-4c9b-acdc-7f4fe8562a1f",
+          "name": "List or filter all activity types",
+          "request": {
+            "name": "List or filter all activity types",
+            "description": {
+              "content": "To list only a specific activity type (e.g., only `Call` or `LeadStatusChange`), use the other resources listed separately. When querying activities for a single lead (using the `lead_id` parameter), you can ask for multiple activity types using `_type__in`.\n\nWhen listing [Custom Activities](https://developer.close.com/api/resources/activities/custom-activities), `_type` and `_type__in` can include Custom Activity Type ids (e.g. `actitype_1h5m6uHM9BZOpwVhyRJb4Y`) to filter by a specific custom activity type or `Custom` to list custom activities of any type.\n\nThe following filtering parameters can only be used for listing activities on a single lead (using the `lead_id` parameter): `user_id`, `user_id__in`, `contact_id`, `contact_id__in`, `_type`, `_type__in`.\n\nAll activities have two sortable datetime fields: `date_created` and `activity_at`. `date_created` denotes when an activity was created or synced into Close and `activity_at` denotes when that activity actually occurred. For example, on outgoing Email activities, `date_created` is equal to when the email was first created in Close, and `activity_at` is equal to when the email was actually sent. For Meeting activities, `activity_at` is equal to the scheduled time of the meeting. On custom activities, users are able to update the `activity_at` field at any time.\n\nSorting by `-activity_at` can only be used when listing activities on a single lead using the `lead_id` parameter. In addition, you can only use the date-based filters of the field you're currently sorting on. This means that if you want to use `activity_at__lt` and `activity_at__gt` as filters, you need to include `_order_by=-activity_at` in your request.\n\n`thread_emails` parameter:\n\n - (Default) when this parameter is not present, `Email` objects will be returned for each email message.\n - A value of `true` will return `EmailThread` objects representing email conversations. Stripped-down version of `Email` objects will also be returned.\n - A value of `only` will return `EmailThread` objects representing email conversations. `Email` objects will not be returned.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activity",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_limit",
+                  "value": "100",
+                  "description": "Number of results to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "_skip",
+                  "value": "0",
+                  "description": "Number of results to skip before returning, for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "id__in",
+                  "value": "<string>",
+                  "description": "Filter by activity IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "id__in",
+                  "value": "<string>",
+                  "description": "Filter by activity IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "lead_id",
+                  "value": "<string>",
+                  "description": "Filter by lead IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "lead_id",
+                  "value": "<string>",
+                  "description": "Filter by lead IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "contact_id",
+                  "value": "<string>",
+                  "description": "Filter by contact IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "contact_id",
+                  "value": "<string>",
+                  "description": "Filter by contact IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "Filter by user IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "Filter by user IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "organization_id",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_type",
+                  "value": "<string>",
+                  "description": "Filter by activity type, e.g. Call (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "_type",
+                  "value": "<string>",
+                  "description": "Filter by activity type, e.g. Call (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__gte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__lte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__gt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__lt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__gte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__lte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__gt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__lt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lead_id__in",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id__in",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "contact_id__in",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_type__in",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "_order_by",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fdc29c0a-4ea0-4ab9-bb70-4bd57ac34a13",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "lead_id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_order_by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d881c691-c08a-452c-978b-47afd4bea74c",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "lead_id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_order_by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d48ece0b-e1df-41f7-915f-18cd51b0eee6",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "lead_id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_order_by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b32298c8-b37c-4bf5-ab78-7e10af92ce5e",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "2023-05-26T22:14:01.673Z"
+                    },
+                    {
+                      "key": "lead_id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_order_by",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.close.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3bacf6e3-1ac0-4956-8379-7c62acfd27cd",
+    "name": "API Endpoints subpackage_activities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

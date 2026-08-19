@@ -1,0 +1,89 @@
+generated: '2026-08-13'
+method: searched
+source: https://api.close.com/api/openapi.json
+docs: https://developer.close.com/api/overview/oauth-authentication
+description: >-
+  Close operates two distinct OAuth scope vocabularies against one authorization
+  server. The REST API grants a single coarse scope (all.full_access) plus
+  offline_access — there is no per-resource or read/write split. The MCP server
+  at mcp.close.com is the finer-grained surface, with three cumulative tiers that
+  gate which of the 107 tools an agent can see. That asymmetry is the finding: an
+  agent connecting over MCP can be given read-only access; the same agent going
+  through the REST API cannot.
+authorization_server:
+  issuer: https://api.close.com
+  metadata: https://api.close.com/.well-known/oauth-authorization-server
+  metadata_file: well-known/close-oauth-authorization-server.json
+  authorization_endpoint: https://app.close.com/oauth2/authorize/
+  token_endpoint: https://api.close.com/oauth2/token/
+  revocation_endpoint: https://api.close.com/oauth2/revoke/
+  registration_endpoint: https://api.close.com/oauth2/register/
+  dynamic_client_registration: true
+  grant_types_supported: [authorization_code, refresh_token]
+  response_types_supported: [code]
+  code_challenge_methods_supported: [S256]
+  token_endpoint_auth_methods_supported: [none, client_secret_basic, client_secret_post]
+schemes:
+  - name: OAuth2
+    source: openapi/_original/close-api-openapi.json
+    flows:
+      - flow: authorizationCode
+        authorizationUrl: https://app.close.com/oauth2/authorize/
+        tokenUrl: https://api.close.com/oauth2/token/
+scopes:
+  - scope: all.full_access
+    description: Full access to all resources.
+    surface: rest
+    flows: [authorizationCode]
+    sources: [openapi/_original/close-api-openapi.json]
+    note: >-
+      The only resource scope the REST API declares. There is no read-only REST
+      scope; a marketplace app that only needs to read leads still receives full
+      read/write/delete access to the whole organization.
+  - scope: offline_access
+    description: Request a refresh token.
+    surface: both
+    flows: [authorizationCode]
+    sources:
+      - openapi/_original/close-api-openapi.json
+      - https://mcp.close.com/.well-known/oauth-protected-resource
+  - scope: mcp.read
+    description: Read-only MCP access — search, fetch and reporting tools only (57 tools).
+    surface: mcp
+    sources: [https://mcp.close.com/.well-known/oauth-protected-resource]
+    docs: https://developer.close.com/mcp/tools
+  - scope: mcp.write_safe
+    description: >-
+      Everything in mcp.read plus create/update tools that add data (16
+      additional tools; 73 cumulative).
+    surface: mcp
+    sources: [https://mcp.close.com/.well-known/oauth-protected-resource]
+    docs: https://developer.close.com/mcp/tools
+  - scope: mcp.write_destructive
+    description: >-
+      Everything above plus update, delete and irreversible tools including
+      delete_lead, delete_contact, enrich_field and schedule_voice_agent_call
+      (34 additional tools; 107 cumulative).
+    surface: mcp
+    sources: [https://mcp.close.com/.well-known/oauth-protected-resource]
+    docs: https://developer.close.com/mcp/tools
+protected_resources:
+  - resource: https://mcp.close.com/
+    metadata: https://mcp.close.com/.well-known/oauth-protected-resource
+    metadata_file: well-known/close-mcp-oauth-protected-resource.json
+    spec: RFC 9728
+    authorization_servers: [https://api.close.com/]
+    bearer_methods_supported: [header]
+non_oauth_scope_header:
+  header: Close-Scope
+  applies_to: MCP server when authenticating with a Close-API-Key instead of OAuth
+  values: [mcp.read, mcp.write_safe, mcp.write_destructive]
+  docs: https://developer.close.com/mcp
+  note: >-
+    With API-key auth the MCP scope is asserted by the client in a request
+    header rather than granted by the authorization server. An agent chooses its
+    own privilege level; nothing server-side binds the key to a tier.
+x-evidence:
+  - {url: 'https://api.close.com/api/openapi.json', http_status: 200, fetched: '2026-08-13'}
+  - {url: 'https://api.close.com/.well-known/oauth-authorization-server', http_status: 200, fetched: '2026-08-13'}
+  - {url: 'https://mcp.close.com/.well-known/oauth-protected-resource', http_status: 200, fetched: '2026-08-13'}

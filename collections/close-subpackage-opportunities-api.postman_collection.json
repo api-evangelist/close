@@ -1,0 +1,2104 @@
+{
+  "item": [
+    {
+      "id": "f62aad6c-11fe-45f1-a78b-5421a1a31d50",
+      "name": "subpackage_opportunities",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "12b0f1c6-193e-4e0e-bbe6-34915d443de4",
+          "name": "List or filter opportunities",
+          "request": {
+            "name": "List or filter opportunities",
+            "description": {
+              "content": "* All opportunity list responses contain the following aggregate values about all the matching objects (regardless of pagination / limits):\n    * `total_results`: the total number of objects,\n    * `count_by_value_period`: a dictionary containing the number of opportunities by value period, e.g. `{ 'one_time': 2, 'annual': 1, 'monthly': 1 }`,\n    * `total_value_one_time`: the sum of the values of all one time opportunities,\n    * `total_value_monthly`: the sum of the values of all monthly opportunities,\n    * `total_value_annual`: the sum of the values of all annual opportunities,\n    * `total_value_annualized`: the sum of the values of all opportunities where monthly opportunity values are multiplied by 12,\n    * `expected_value_one_time`: the sum of the values of all one time opportunities multiplied by their confidence,\n    * `expected_value_monthly`: the sum of the values of all monthly opportunities multiplied by their confidence,\n    * `expected_value_annual`: the sum of the values of all annual opportunities multiplied by their confidence,\n    * `expected_value_annualized`: the sum of the values of all opportunities multiplied by their confidence where monthly opportunity values are multiplied by 12,\n* `query` is an optional search query filter. Only opportunity properties may be used in the filter. For example, `note:important` will only show opportunities which contain the text `important` in their note. Or, `status_change(old_status:active new_status:won date:yesterday)` will only show opportunities that transitioned from status `active` to status `won` on the previous day.\n* `_order_by` allows: `date_won`, `date_updated`, `date_created`, `confidence`, `user_name`, `value`, `annualized_value`, `annualized_expected_value` (each of them allows descending order by prepending a minus, e.g. `_order_by=-date_won`).\n* `value_period` allows: `one_time`, `monthly`, `annual`.\n* Multiple values for `user_id`, `status_id`, `status_label`, `status_type` and `value_period` can be specified using the *in* operator, e.g. `status_type__in=active,won`.\n* `_group_by` allows: `user_id`, `date_won__week`, `date_won__month`, `date_won__quarter` `date_won__year` to group results by the given criteria.\n\n    When grouping results, the `data` array contains a list of groups instead of objects. A group consists of the following fields:\n    * `key` containing a unique group key,\n    * `objects` containing the list of objects for the given group,\n    * `total_results` containing the number of total objects for the given group,\n    * all aggregate values for the given group,\n    * if grouping by year: `year`, containing the year for the given group,\n    * if grouping by month: `year` and `month`, containing the year and month (1-12) for the given group,\n    * if grouping by quarter: `year` and `quarter`, containing the year and quarter (1-4) for the given group,\n    * if grouping by week: `weekyear` and `week`, containing the ISO week year and ISO week number for the given group,\n    * if grouping by user: `user_id` and `user_name`, containing the user ID and full name of the user for the given group.\n\n    Note that pagination still applies to objects and not groups. The last or first group may be cut off during pagination, therefore `total_results` may not match the length of `objects`. When paginating, the `key` value may be used to combine groups across multiple pages. Sorting using `_order_by` may be applied and sorts the items within each of the groups. Group order can be reversed by prepending a minus. For example,  `_group_by=-date_won__week` will show the most recent weeks first. When grouping by `user_id`, results are ordered by the user's full name.\n* `lead_saved_search_id` is an optional lead Smart View filter.\n* (deprecated) `lead_query` is an optional lead search text-based query filter. This parameter is now deprecated in favor of using the `lead_saved_search_id` Smart View ID parameter.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "opportunity",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_limit",
+                  "value": "100",
+                  "description": "Number of results to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "_skip",
+                  "value": "0",
+                  "description": "Number of results to skip before returning, for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "lead_id",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "organization_id",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id__in",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status_id",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status_id__in",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status_type",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status_type__in",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status_label",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status_label__in",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status__in",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_won",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_won__gte",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_won__gt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_won__lte",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_won__lt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__gte",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__gt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__lte",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__lt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_updated",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_updated__gte",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_updated__gt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_updated__lte",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_updated__lt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "value_period",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "value_period__in",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lead_query",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lead_saved_search_id",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_stalled",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_order_by",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_group_by",
+                  "value": "<string,null>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "06d99340-c98b-4dea-be5f-7a083d87f110",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunity",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "user_id__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_id__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_type",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_type__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_label",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_label__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_won",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_won__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_won__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_won__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_won__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "value_period",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "value_period__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "lead_query",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "lead_saved_search_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "is_stalled",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_order_by",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_group_by",
+                      "value": "<string,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"annualized_expected_value\": 5359,\n      \"annualized_value\": 6074,\n      \"confidence\": 3658,\n      \"contact_id\": \"string\",\n      \"created_by\": \"string\",\n      \"date_created\": \"1961-10-23T08:22:28.263Z\",\n      \"date_lost\": \"2004-05-23T04:25:58.111Z\",\n      \"date_updated\": \"1962-01-11T13:57:35.255Z\",\n      \"date_won\": \"1987-02-24\",\n      \"expected_value\": 7666,\n      \"id\": \"string\",\n      \"lead_id\": \"string\",\n      \"note\": \"string\",\n      \"organization_id\": \"string\",\n      \"status_id\": \"string\",\n      \"updated_by\": \"string\",\n      \"user_id\": \"string\",\n      \"value\": 6578,\n      \"value_period\": \"annual\",\n      \"attachments\": [\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 9295,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        },\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 3326,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        }\n      ],\n      \"comment_summary\": {\n        \"comment_count\": 2109,\n        \"thread_id\": \"string\"\n      },\n      \"contact_name\": \"string\",\n      \"created_by_name\": \"string\",\n      \"integration_links\": [\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"is_stalled\": false,\n      \"lead_name\": \"string\",\n      \"lead_primary_email\": {\n        \"email\": \"string\",\n        \"is_unsubscribed\": false,\n        \"type\": \"string\"\n      },\n      \"lead_primary_phone\": [\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": false,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": true,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"pipeline_id\": \"string\",\n      \"pipeline_name\": \"string\",\n      \"stall_status\": {\n        \"communication_issue\": \"no_communication_attempts\",\n        \"next_action\": {\n          \"action\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"justification\": \"string\"\n        }\n      },\n      \"status_display_name\": \"string\",\n      \"status_label\": \"string\",\n      \"status_type\": \"lost\",\n      \"suggested_action\": {\n        \"action\": \"follow_up_call\",\n        \"details\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"justification\": \"string\"\n      },\n      \"updated_by_name\": \"string\",\n      \"user_name\": \"string\",\n      \"value_currency\": \"string\",\n      \"value_formatted\": \"string\"\n    },\n    {\n      \"annualized_expected_value\": 1804,\n      \"annualized_value\": 4830,\n      \"confidence\": 5744,\n      \"contact_id\": \"string\",\n      \"created_by\": \"string\",\n      \"date_created\": \"1952-01-08T09:37:36.959Z\",\n      \"date_lost\": \"1950-08-18T17:27:45.179Z\",\n      \"date_updated\": \"2025-06-11T09:21:53.740Z\",\n      \"date_won\": \"1954-03-23\",\n      \"expected_value\": 9317,\n      \"id\": \"string\",\n      \"lead_id\": \"string\",\n      \"note\": \"string\",\n      \"organization_id\": \"string\",\n      \"status_id\": \"string\",\n      \"updated_by\": \"string\",\n      \"user_id\": \"string\",\n      \"value\": 4327,\n      \"value_period\": \"one_time\",\n      \"attachments\": [\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 3328,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        },\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 8879,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        }\n      ],\n      \"comment_summary\": {\n        \"comment_count\": 9765,\n        \"thread_id\": \"string\"\n      },\n      \"contact_name\": \"string\",\n      \"created_by_name\": \"string\",\n      \"integration_links\": [\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"is_stalled\": true,\n      \"lead_name\": \"string\",\n      \"lead_primary_email\": {\n        \"email\": \"string\",\n        \"is_unsubscribed\": false,\n        \"type\": \"string\"\n      },\n      \"lead_primary_phone\": [\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": true,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": true,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"pipeline_id\": \"string\",\n      \"pipeline_name\": \"string\",\n      \"stall_status\": {\n        \"communication_issue\": \"cant_get_in_touch\",\n        \"next_action\": {\n          \"action\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"justification\": \"string\"\n        }\n      },\n      \"status_display_name\": \"string\",\n      \"status_label\": \"string\",\n      \"status_type\": \"won\",\n      \"suggested_action\": {\n        \"action\": \"adjust_close_date\",\n        \"details\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"justification\": \"string\"\n      },\n      \"updated_by_name\": \"string\",\n      \"user_name\": \"string\",\n      \"value_currency\": \"string\",\n      \"value_formatted\": \"string\"\n    }\n  ],\n  \"has_more\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "938f2e44-690b-4fc1-8bc5-684a0aeab1b5",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunity",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "user_id__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_id__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_type",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_type__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_label",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_label__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_won",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_won__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_won__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_won__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_won__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "value_period",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "value_period__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "lead_query",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "lead_saved_search_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "is_stalled",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_order_by",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_group_by",
+                      "value": "<string,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20ffd689-8627-4d10-9c38-0ff4f58f99e1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunity",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "user_id__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_id__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_type",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_type__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_label",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_label__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_won",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_won__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_won__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_won__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_won__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "value_period",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "value_period__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "lead_query",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "lead_saved_search_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "is_stalled",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_order_by",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_group_by",
+                      "value": "<string,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6269be49-c36b-4503-8bd1-aaedc778113f",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunity",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "user_id__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_id__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_type",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_type__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_label",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status_label__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "status__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_won",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_won__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_won__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_won__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_won__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "value_period",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "value_period__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "query",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "lead_query",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "lead_saved_search_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "is_stalled",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_order_by",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_group_by",
+                      "value": "<string,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b4621a7-9d0b-4ea3-b6be-3582b662d2ad",
+          "name": "Create an opportunity",
+          "request": {
+            "name": "Create an opportunity",
+            "description": {
+              "content": "**lead_id** (optional): Opportunities belong to exactly one Lead. If you do not provide a `lead_id` then a new lead will be created (appearing as \"Untitled\" in the UI).\n\n**custom.FIELD_ID** (optional): Set custom fields by setting `custom.FIELD_ID` to the field value, where FIELD_ID is the ID of the custom field, e.g.:\n\n```json\n{ \"custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c\": \"value\", \"custom.cf_8wtBWsdRU2Fur7GDnEeXQ7ra2Vu7R4hG1SNYdiEhh0F\": \"other value\" }\n```\n\nIf a custom field has `accepts_multiple_values: true`, the entire value will be replaced. For example, given an Opportunity has a Custom Choice Field with value `[\"A\", \"B\"]`, adding choice `\"C\"` would mean setting the value to `[\"A\", \"B\", \"C\"]`.\n\nNote that using the `custom` field dict or the `custom.FIELD_NAME` syntax (instead of custom field IDs) is deprecated and will be removed from the API. See [Custom Fields](https://developer.close.com/api/resources/custom-fields) for more details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "opportunity",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"attachments\": [\n    {\n      \"filename\": \"<string>\",\n      \"url\": \"<string>\",\n      \"content_type\": \"\"\n    },\n    {\n      \"filename\": \"<string>\",\n      \"url\": \"<string>\",\n      \"content_type\": \"\"\n    }\n  ],\n  \"confidence\": \"<integer,null>\",\n  \"contact_id\": \"<string,null>\",\n  \"created_by\": \"<string,null>\",\n  \"custom_fields\": {\n    \"key_0\": {}\n  },\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_won\": \"<string,null-date-time>\",\n  \"lead_id\": \"<string,null>\",\n  \"note\": \"<string,null>\",\n  \"pipeline_id\": \"<string,null>\",\n  \"status_id\": \"<string,null>\",\n  \"user_id\": \"<string,null>\",\n  \"value\": \"<integer,null>\",\n  \"value_period\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3c44c320-788e-405b-96fa-483bcfff5d78",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunity",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"attachments\": [\n    {\n      \"filename\": \"string\",\n      \"url\": \"string\",\n      \"content_type\": \"\"\n    },\n    {\n      \"filename\": \"string\",\n      \"url\": \"string\",\n      \"content_type\": \"\"\n    }\n  ],\n  \"confidence\": \"<integer,null>\",\n  \"contact_id\": \"<string,null>\",\n  \"created_by\": \"<string,null>\",\n  \"custom_fields\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_won\": \"<string,null-date-time>\",\n  \"lead_id\": \"<string,null>\",\n  \"note\": \"<string,null>\",\n  \"pipeline_id\": \"<string,null>\",\n  \"status_id\": \"<string,null>\",\n  \"user_id\": \"<string,null>\",\n  \"value\": \"<integer,null>\",\n  \"value_period\": \"annual\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"annualized_expected_value\": 7977,\n  \"annualized_value\": 2876,\n  \"confidence\": 6768,\n  \"contact_id\": \"string\",\n  \"created_by\": \"string\",\n  \"date_created\": \"1960-02-17T07:35:44.668Z\",\n  \"date_lost\": \"2012-03-27T06:11:12.695Z\",\n  \"date_updated\": \"1948-05-05T12:29:17.522Z\",\n  \"date_won\": \"1947-10-23\",\n  \"expected_value\": 4628,\n  \"id\": \"string\",\n  \"lead_id\": \"string\",\n  \"note\": \"string\",\n  \"organization_id\": \"string\",\n  \"status_id\": \"string\",\n  \"updated_by\": \"string\",\n  \"user_id\": \"string\",\n  \"value\": 5070,\n  \"value_period\": \"one_time\",\n  \"attachments\": [\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"size\": 3109,\n      \"url\": \"string\",\n      \"thumbnail_url\": \"string\"\n    },\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"size\": 5815,\n      \"url\": \"string\",\n      \"thumbnail_url\": \"string\"\n    }\n  ],\n  \"comment_summary\": {\n    \"comment_count\": 3408,\n    \"thread_id\": \"string\"\n  },\n  \"contact_name\": \"string\",\n  \"created_by_name\": \"string\",\n  \"integration_links\": [\n    {\n      \"name\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"is_stalled\": false,\n  \"lead_name\": \"string\",\n  \"lead_primary_email\": {\n    \"email\": \"string\",\n    \"is_unsubscribed\": false,\n    \"type\": \"string\"\n  },\n  \"lead_primary_phone\": [\n    {\n      \"phone\": \"string\",\n      \"type\": \"string\",\n      \"country\": \"string\",\n      \"outbound_sms_blocked\": false,\n      \"phone_formatted\": \"string\",\n      \"tz_ids\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"phone\": \"string\",\n      \"type\": \"string\",\n      \"country\": \"string\",\n      \"outbound_sms_blocked\": true,\n      \"phone_formatted\": \"string\",\n      \"tz_ids\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"pipeline_id\": \"string\",\n  \"pipeline_name\": \"string\",\n  \"stall_status\": {\n    \"communication_issue\": \"no_issue\",\n    \"next_action\": {\n      \"action\": \"ask_someone_else_to_reach_out\",\n      \"justification\": \"string\"\n    }\n  },\n  \"status_display_name\": \"string\",\n  \"status_label\": \"string\",\n  \"status_type\": \"active\",\n  \"suggested_action\": {\n    \"action\": \"follow_up_email\",\n    \"details\": {\n      \"status_id\": \"string\"\n    },\n    \"justification\": \"string\"\n  },\n  \"updated_by_name\": \"string\",\n  \"user_name\": \"string\",\n  \"value_currency\": \"string\",\n  \"value_formatted\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "866606fa-e1ed-4451-b223-ac125c903509",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunity",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"attachments\": [\n    {\n      \"filename\": \"string\",\n      \"url\": \"string\",\n      \"content_type\": \"\"\n    },\n    {\n      \"filename\": \"string\",\n      \"url\": \"string\",\n      \"content_type\": \"\"\n    }\n  ],\n  \"confidence\": \"<integer,null>\",\n  \"contact_id\": \"<string,null>\",\n  \"created_by\": \"<string,null>\",\n  \"custom_fields\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_won\": \"<string,null-date-time>\",\n  \"lead_id\": \"<string,null>\",\n  \"note\": \"<string,null>\",\n  \"pipeline_id\": \"<string,null>\",\n  \"status_id\": \"<string,null>\",\n  \"user_id\": \"<string,null>\",\n  \"value\": \"<integer,null>\",\n  \"value_period\": \"annual\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b14100a-4ba1-4989-b36a-5ead662ca423",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunity",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"attachments\": [\n    {\n      \"filename\": \"string\",\n      \"url\": \"string\",\n      \"content_type\": \"\"\n    },\n    {\n      \"filename\": \"string\",\n      \"url\": \"string\",\n      \"content_type\": \"\"\n    }\n  ],\n  \"confidence\": \"<integer,null>\",\n  \"contact_id\": \"<string,null>\",\n  \"created_by\": \"<string,null>\",\n  \"custom_fields\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_won\": \"<string,null-date-time>\",\n  \"lead_id\": \"<string,null>\",\n  \"note\": \"<string,null>\",\n  \"pipeline_id\": \"<string,null>\",\n  \"status_id\": \"<string,null>\",\n  \"user_id\": \"<string,null>\",\n  \"value\": \"<integer,null>\",\n  \"value_period\": \"annual\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0e96bd0f-22a9-4750-8218-f512d9af684b",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunity",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"attachments\": [\n    {\n      \"filename\": \"string\",\n      \"url\": \"string\",\n      \"content_type\": \"\"\n    },\n    {\n      \"filename\": \"string\",\n      \"url\": \"string\",\n      \"content_type\": \"\"\n    }\n  ],\n  \"confidence\": \"<integer,null>\",\n  \"contact_id\": \"<string,null>\",\n  \"created_by\": \"<string,null>\",\n  \"custom_fields\": {\n    \"key_0\": {},\n    \"key_1\": {},\n    \"key_2\": {}\n  },\n  \"date_created\": \"<string,null-date-time>\",\n  \"date_won\": \"<string,null-date-time>\",\n  \"lead_id\": \"<string,null>\",\n  \"note\": \"<string,null>\",\n  \"pipeline_id\": \"<string,null>\",\n  \"status_id\": \"<string,null>\",\n  \"user_id\": \"<string,null>\",\n  \"value\": \"<integer,null>\",\n  \"value_period\": \"annual\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "698831a0-56d3-4d8b-8a75-c01cad8ac976",
+          "name": "Retrieve an opportunity",
+          "request": {
+            "name": "Retrieve an opportunity",
+            "description": {},
+            "url": {
+              "path": [
+                "opportunity",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f241c972-e7be-4522-a987-884d7ef1f2ba",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunity",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"annualized_expected_value\": 7977,\n  \"annualized_value\": 2876,\n  \"confidence\": 6768,\n  \"contact_id\": \"string\",\n  \"created_by\": \"string\",\n  \"date_created\": \"1960-02-17T07:35:44.668Z\",\n  \"date_lost\": \"2012-03-27T06:11:12.695Z\",\n  \"date_updated\": \"1948-05-05T12:29:17.522Z\",\n  \"date_won\": \"1947-10-23\",\n  \"expected_value\": 4628,\n  \"id\": \"string\",\n  \"lead_id\": \"string\",\n  \"note\": \"string\",\n  \"organization_id\": \"string\",\n  \"status_id\": \"string\",\n  \"updated_by\": \"string\",\n  \"user_id\": \"string\",\n  \"value\": 5070,\n  \"value_period\": \"one_time\",\n  \"attachments\": [\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"size\": 3109,\n      \"url\": \"string\",\n      \"thumbnail_url\": \"string\"\n    },\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"size\": 5815,\n      \"url\": \"string\",\n      \"thumbnail_url\": \"string\"\n    }\n  ],\n  \"comment_summary\": {\n    \"comment_count\": 3408,\n    \"thread_id\": \"string\"\n  },\n  \"contact_name\": \"string\",\n  \"created_by_name\": \"string\",\n  \"integration_links\": [\n    {\n      \"name\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"is_stalled\": false,\n  \"lead_name\": \"string\",\n  \"lead_primary_email\": {\n    \"email\": \"string\",\n    \"is_unsubscribed\": false,\n    \"type\": \"string\"\n  },\n  \"lead_primary_phone\": [\n    {\n      \"phone\": \"string\",\n      \"type\": \"string\",\n      \"country\": \"string\",\n      \"outbound_sms_blocked\": false,\n      \"phone_formatted\": \"string\",\n      \"tz_ids\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"phone\": \"string\",\n      \"type\": \"string\",\n      \"country\": \"string\",\n      \"outbound_sms_blocked\": true,\n      \"phone_formatted\": \"string\",\n      \"tz_ids\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"pipeline_id\": \"string\",\n  \"pipeline_name\": \"string\",\n  \"stall_status\": {\n    \"communication_issue\": \"no_issue\",\n    \"next_action\": {\n      \"action\": \"ask_someone_else_to_reach_out\",\n      \"justification\": \"string\"\n    }\n  },\n  \"status_display_name\": \"string\",\n  \"status_label\": \"string\",\n  \"status_type\": \"active\",\n  \"suggested_action\": {\n    \"action\": \"follow_up_email\",\n    \"details\": {\n      \"status_id\": \"string\"\n    },\n    \"justification\": \"string\"\n  },\n  \"updated_by_name\": \"string\",\n  \"user_name\": \"string\",\n  \"value_currency\": \"string\",\n  \"value_formatted\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d343eaa-874d-48ae-908f-0ff83ea8755f",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunity",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "71c466a2-799e-4504-9a56-62b3b342bd73",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunity",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "80fc8ecc-ec8d-4b1b-a548-3aebfe076126",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunity",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea73e1ca-f61c-4e53-87aa-0caebb357244",
+          "name": "Update an opportunity",
+          "request": {
+            "name": "Update an opportunity",
+            "description": {
+              "content": "*status_id*\n\n- See description for `status_id` in `POST /opportunity/` above.\n- Setting the `status_id` to a status with a type of `won` will automatically set the `date_won` field if it is not already set or provided in the request. Reverting it from a `won` status to an `active` or `lost` will not automatically change `date_won`.\n\n*date_won* (optional):\n\n- If not set on the resource or in the request, the `date_won` will be set automatically to today's date when setting `status_id` to a status with type `won`. The `x-tz-offset` header, used to pass your timezone's UTC offset, will be taken into account.\n\n*custom.FIELD_ID* (optional)\n\n- See description for `custom.FIELD_ID` in `POST /opportunity/` above.\n- Additionally, you can unset a single field by using `{ \"custom.FIELD_ID\": null }`, e.g.:\n```\n{ \"custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c\": null }\n```\nIf you're trying to update a custom field and that custom field accepts multiple values, you can also specify `.add` or `.remove` as part of the field key to add/remove a single value to/from a list of values, e.g.:\n```\n{ \"custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c.add\": \"Wednesday\" }\n```",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "opportunity",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e5ecdc85-0752-4bce-a6be-b2d4232ecc1d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunity",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"annualized_expected_value\": 7977,\n  \"annualized_value\": 2876,\n  \"confidence\": 6768,\n  \"contact_id\": \"string\",\n  \"created_by\": \"string\",\n  \"date_created\": \"1960-02-17T07:35:44.668Z\",\n  \"date_lost\": \"2012-03-27T06:11:12.695Z\",\n  \"date_updated\": \"1948-05-05T12:29:17.522Z\",\n  \"date_won\": \"1947-10-23\",\n  \"expected_value\": 4628,\n  \"id\": \"string\",\n  \"lead_id\": \"string\",\n  \"note\": \"string\",\n  \"organization_id\": \"string\",\n  \"status_id\": \"string\",\n  \"updated_by\": \"string\",\n  \"user_id\": \"string\",\n  \"value\": 5070,\n  \"value_period\": \"one_time\",\n  \"attachments\": [\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"size\": 3109,\n      \"url\": \"string\",\n      \"thumbnail_url\": \"string\"\n    },\n    {\n      \"content_type\": \"string\",\n      \"filename\": \"string\",\n      \"size\": 5815,\n      \"url\": \"string\",\n      \"thumbnail_url\": \"string\"\n    }\n  ],\n  \"comment_summary\": {\n    \"comment_count\": 3408,\n    \"thread_id\": \"string\"\n  },\n  \"contact_name\": \"string\",\n  \"created_by_name\": \"string\",\n  \"integration_links\": [\n    {\n      \"name\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"is_stalled\": false,\n  \"lead_name\": \"string\",\n  \"lead_primary_email\": {\n    \"email\": \"string\",\n    \"is_unsubscribed\": false,\n    \"type\": \"string\"\n  },\n  \"lead_primary_phone\": [\n    {\n      \"phone\": \"string\",\n      \"type\": \"string\",\n      \"country\": \"string\",\n      \"outbound_sms_blocked\": false,\n      \"phone_formatted\": \"string\",\n      \"tz_ids\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"phone\": \"string\",\n      \"type\": \"string\",\n      \"country\": \"string\",\n      \"outbound_sms_blocked\": true,\n      \"phone_formatted\": \"string\",\n      \"tz_ids\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"pipeline_id\": \"string\",\n  \"pipeline_name\": \"string\",\n  \"stall_status\": {\n    \"communication_issue\": \"no_issue\",\n    \"next_action\": {\n      \"action\": \"ask_someone_else_to_reach_out\",\n      \"justification\": \"string\"\n    }\n  },\n  \"status_display_name\": \"string\",\n  \"status_label\": \"string\",\n  \"status_type\": \"active\",\n  \"suggested_action\": {\n    \"action\": \"follow_up_email\",\n    \"details\": {\n      \"status_id\": \"string\"\n    },\n    \"justification\": \"string\"\n  },\n  \"updated_by_name\": \"string\",\n  \"user_name\": \"string\",\n  \"value_currency\": \"string\",\n  \"value_formatted\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "321acfac-5ded-4d7f-bf1e-d548948b5854",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunity",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4006b721-a828-4cb5-a727-e34c373a4750",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunity",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5a22013-3890-422d-978b-6b895fa50202",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunity",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "03c788ba-0a3f-4e02-bbbc-0c04625ceb17",
+          "name": "Delete an opportunity",
+          "request": {
+            "name": "Delete an opportunity",
+            "description": {},
+            "url": {
+              "path": [
+                "opportunity",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a7acd31c-c174-46bc-8f65-5388d4757982",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunity",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fcff7483-3719-4288-af61-dcc7607c4b07",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunity",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cc836111-75ed-4ae2-b930-39ab58464930",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunity",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b10e5b85-8b0a-4d5f-9290-9bb1127b618e",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "opportunity",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.close.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e59042db-5c9a-4a23-9aeb-5ba15ed1cd05",
+    "name": "API Endpoints subpackage_activities subpackage_opportunities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

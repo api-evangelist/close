@@ -1,0 +1,2917 @@
+{
+  "item": [
+    {
+      "id": "2eca4712-5d99-45a6-9028-725617c292ec",
+      "name": "subpackage_tasks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "594d929b-f2d4-440e-b4e6-75761d6e80f4",
+          "name": "List or filter tasks",
+          "request": {
+            "name": "List or filter tasks",
+            "description": {
+              "content": "The `view` parameter can be used to conveniently access the different task views. It accepts one of the following values:\n\n* `inbox`: Shows incomplete tasks up to the end of the user's day only (taking the time zone into account).\n* `future`: Shows incomplete tasks starting from the user's tomorrow only (taking the time zone into account).\n* `archive`: Shows complete tasks only.\n\nNote that a `view` value of `inbox` or `future` will override any `date__lt` or `date__gte` parameters included in the same request.\n\nThe `_order_by` field allows ordering by `date` or `date_created` (descending order by prepending a minus, e.g. `_order_by=-date`).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "task",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_limit",
+                  "value": "100",
+                  "description": "Number of results to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "_skip",
+                  "value": "0",
+                  "description": "Number of results to skip before returning, for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "assigned_to",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id__in",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_complete",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lead_id",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_order_by",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "organization_id",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_type",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_type__in",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "view",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date__lt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date__lte",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date__gt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date__gte",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "due_date",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "due_date__lt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "due_date__lte",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "due_date__gt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "due_date__gte",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__lt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__lte",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__gt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__gte",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_updated__lt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_updated__lte",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_updated__gt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_updated__gte",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c282f635-4a82-4a07-97ca-b8ee5425c800",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "assigned_to",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "is_complete",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_order_by",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "view",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4b6e5e9e-d8ee-427e-93eb-f3157a36e4e9",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "assigned_to",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "is_complete",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_order_by",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "view",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1850c58f-228a-4bab-a363-472f3b29f4ad",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "assigned_to",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "is_complete",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_order_by",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "view",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5aa25770-3ce3-450c-b1cf-c4e59b431d02",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "assigned_to",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "is_complete",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_order_by",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "view",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8cd5a0e4-c6bd-43e3-85cc-b1e7d6dc0a34",
+          "name": "Create a task",
+          "request": {
+            "name": "Create a task",
+            "description": {
+              "content": "Provide the type of task to be created in the `_type` field. Currently only tasks of type `lead` and `outgoing_call` can be created.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "task",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7d2f1e8c-b04f-4aea-9f67-265c80f4c288",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4aad1d84-0eb9-49d8-ad45-69a99ccfb9f8",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1d4da46-6fac-49f7-afb4-56e981b64794",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c3b71a07-7900-4467-b75f-e71f882d3568",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89a6976f-a795-418d-9fc2-5efe942b4dbd",
+          "name": "Bulk-update tasks",
+          "request": {
+            "name": "Bulk-update tasks",
+            "description": {
+              "content": "Any of the filters of the GET endpoint may be used. For example, to update multiple tasks with given IDs A, B and C, `id__in=A,B,C` would be passed.\n\nOnly the `assigned_to`, `date` and `is_complete` fields may be updated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "task",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "assigned_to",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id__in",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_complete",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "lead_id",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_order_by",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "organization_id",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_type",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_type__in",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "view",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date__lt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date__lte",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date__gt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date__gte",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "due_date",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "due_date__lt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "due_date__lte",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "due_date__gt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "due_date__gte",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__lt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__lte",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__gt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__gte",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_updated__lt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_updated__lte",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_updated__gt",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_updated__gte",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assigned_to\": \"<string>\",\n  \"date\": \"<dateTime>\",\n  \"is_complete\": \"<boolean>\",\n  \"organization_id\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"resolution\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f698f687-2a74-4ad1-b083-c7a823fda8f1",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assigned_to",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "is_complete",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_order_by",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "view",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assigned_to\": \"<string>\",\n  \"date\": \"1962-03-23T03:00:24.789Z\",\n  \"is_complete\": \"<boolean>\",\n  \"organization_id\": \"<string>\",\n  \"priority\": \"medium\",\n  \"resolution\": \"skipped\",\n  \"text\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0921d02c-b9a9-46b1-895d-4146aac3b33c",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assigned_to",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "is_complete",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_order_by",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "view",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assigned_to\": \"<string>\",\n  \"date\": \"1962-03-23T03:00:24.789Z\",\n  \"is_complete\": \"<boolean>\",\n  \"organization_id\": \"<string>\",\n  \"priority\": \"medium\",\n  \"resolution\": \"skipped\",\n  \"text\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9e54cb7-29b4-4730-9b8c-e0a8b570a4a8",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assigned_to",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "is_complete",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_order_by",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "view",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assigned_to\": \"<string>\",\n  \"date\": \"1962-03-23T03:00:24.789Z\",\n  \"is_complete\": \"<boolean>\",\n  \"organization_id\": \"<string>\",\n  \"priority\": \"medium\",\n  \"resolution\": \"skipped\",\n  \"text\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f53ff8d9-ac41-4c1e-96e9-3b03514ca056",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assigned_to",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "format",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "is_complete",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_order_by",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type__in",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "view",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "due_date__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__lte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gt",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "date_updated__gte",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assigned_to\": \"<string>\",\n  \"date\": \"1962-03-23T03:00:24.789Z\",\n  \"is_complete\": \"<boolean>\",\n  \"organization_id\": \"<string>\",\n  \"priority\": \"medium\",\n  \"resolution\": \"skipped\",\n  \"text\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9c770113-eee3-4021-9abd-4b2f0314dd97",
+          "name": "Fetch a task's details",
+          "request": {
+            "name": "Fetch a task's details",
+            "description": {},
+            "url": {
+              "path": [
+                "task",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "80744ee7-3164-40de-8c96-f69cd7113018",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "56c0f64d-c820-4a7a-b926-79abef0d4e0a",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07a02d6a-fdb7-4b42-bc21-fc619ed932b4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d15b791b-855a-4567-ac0d-13cc0ce2c3d7",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bcf65661-3138-46ef-9ebc-4ddfaa237430",
+          "name": "Update a task",
+          "request": {
+            "name": "Update a task",
+            "description": {
+              "content": "The `assigned_to`, `date` (either a date or a date-time), and `is_complete` fields may be updated on all tasks. If the task type is `lead`, the `text` field may also be modified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "task",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"agent_config_id\": \"<string,null>\",\n  \"assigned_to\": \"<string>\",\n  \"contact_id\": \"<string,null>\",\n  \"created_by\": \"<string>\",\n  \"date\": \"<dateTime>\",\n  \"due_date\": \"<dateTime>\",\n  \"is_complete\": \"<boolean>\",\n  \"is_dateless\": \"<boolean>\",\n  \"lead_id\": \"<string>\",\n  \"organization_id\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"resolution\": \"<string>\",\n  \"text\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2413a90d-f75a-48a0-9721-4b965a1b2918",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agent_config_id\": \"<string,null>\",\n  \"assigned_to\": \"<string>\",\n  \"contact_id\": \"<string,null>\",\n  \"created_by\": \"<string>\",\n  \"date\": \"1980-12-06T12:48:59.674Z\",\n  \"due_date\": \"1955-12-12T14:23:55.420Z\",\n  \"is_complete\": \"<boolean>\",\n  \"is_dateless\": \"<boolean>\",\n  \"lead_id\": \"<string>\",\n  \"organization_id\": \"<string>\",\n  \"priority\": \"high\",\n  \"resolution\": \"abandoned\",\n  \"text\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5886e3e0-b0a9-4fcc-b369-384e42f5a1cd",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agent_config_id\": \"<string,null>\",\n  \"assigned_to\": \"<string>\",\n  \"contact_id\": \"<string,null>\",\n  \"created_by\": \"<string>\",\n  \"date\": \"1980-12-06T12:48:59.674Z\",\n  \"due_date\": \"1955-12-12T14:23:55.420Z\",\n  \"is_complete\": \"<boolean>\",\n  \"is_dateless\": \"<boolean>\",\n  \"lead_id\": \"<string>\",\n  \"organization_id\": \"<string>\",\n  \"priority\": \"high\",\n  \"resolution\": \"abandoned\",\n  \"text\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3ba633aa-6c37-404f-a84b-c2b4b4722509",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agent_config_id\": \"<string,null>\",\n  \"assigned_to\": \"<string>\",\n  \"contact_id\": \"<string,null>\",\n  \"created_by\": \"<string>\",\n  \"date\": \"1980-12-06T12:48:59.674Z\",\n  \"due_date\": \"1955-12-12T14:23:55.420Z\",\n  \"is_complete\": \"<boolean>\",\n  \"is_dateless\": \"<boolean>\",\n  \"lead_id\": \"<string>\",\n  \"organization_id\": \"<string>\",\n  \"priority\": \"high\",\n  \"resolution\": \"abandoned\",\n  \"text\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf9998f0-d344-49db-bc44-e8c8bf49580e",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"agent_config_id\": \"<string,null>\",\n  \"assigned_to\": \"<string>\",\n  \"contact_id\": \"<string,null>\",\n  \"created_by\": \"<string>\",\n  \"date\": \"1980-12-06T12:48:59.674Z\",\n  \"due_date\": \"1955-12-12T14:23:55.420Z\",\n  \"is_complete\": \"<boolean>\",\n  \"is_dateless\": \"<boolean>\",\n  \"lead_id\": \"<string>\",\n  \"organization_id\": \"<string>\",\n  \"priority\": \"high\",\n  \"resolution\": \"abandoned\",\n  \"text\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "716eaec8-9030-4678-8864-4e16e8243a1c",
+          "name": "Delete a task",
+          "request": {
+            "name": "Delete a task",
+            "description": {},
+            "url": {
+              "path": [
+                "task",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c82b779-8208-413a-90ee-b92088a7f6bc",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "efd58244-479e-4ab8-b84e-54d2fcbd000a",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20944e79-8353-468b-990f-839a5ee3a69d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "368eab82-2526-43dc-8f5b-f40585c9b4be",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "task",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.close.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "576880a3-5d00-49b6-bd38-a57364148605",
+    "name": "API Endpoints subpackage_activities subpackage_tasks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

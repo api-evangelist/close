@@ -1,0 +1,103 @@
+generated: '2026-08-13'
+method: derived
+source: openapi/_original/close-api-openapi.json
+docs: https://developer.close.com/api/overview/http-response-codes
+format: json
+rfc9457: false
+description: >-
+  Close publishes a status-code reference rather than an error-type registry.
+  There is no application/problem+json media type, no stable error `type` URI
+  and no documented error-code vocabulary, so this catalog is keyed on HTTP
+  status. The 400/401/403/404 rows are derived from the response objects
+  declared across the 300 operations in Close's OpenAPI; the 402/405/415 rows
+  come from Close's own HTTP Response Codes page and are not declared in the
+  spec. 429 comes from the rate-limit documentation and is likewise absent from
+  the spec.
+envelope:
+  note: >-
+    Generic failures return a JSON object with an "error" string, e.g.
+    {"error": "The requested URL was not found on the server..."} observed live
+    from api.close.com on 2026-08-13. Validation failures return field-level
+    structures. Close does not publish a formal error schema.
+problems:
+  - status: 400
+    title: Bad request
+    description: There was an issue with the request — check parameters and body.
+    declared_in_openapi: true
+    common_causes:
+      - '_limit exceeds the per-resource maximum'
+      - '_skip exceeds the per-resource deep-pagination ceiling'
+      - field validation failure on a create or update
+    remediation: Correct the parameters; do not retry unchanged.
+  - status: 401
+    title: Unauthorized
+    description: The request needs to be authenticated, or credentials are invalid.
+    declared_in_openapi: true
+    remediation: >-
+      Re-check HTTP Basic API-key auth (key as username, empty password, trailing
+      colon) or refresh the OAuth access token. Also returned by the MCP endpoint
+      with an RFC 9728 WWW-Authenticate challenge.
+  - status: 402
+    title: Plan limit reached
+    description: >-
+      The request could not be completed because a limit of the caller's current
+      plan was reached.
+    declared_in_openapi: false
+    source: https://developer.close.com/api/overview/http-response-codes
+    remediation: >-
+      Not retryable. Upgrade the plan or reduce usage — see
+      plans/close-plans-pricing.yml for the per-tier limits (leads, custom
+      fields, custom-activity instances).
+  - status: 403
+    title: Forbidden
+    description: The operation was not allowed for this user, role or organization.
+    declared_in_openapi: true
+    remediation: >-
+      Check the caller's role and permissions. Some operations are admin-only
+      (for example membership management, which Close additionally blocks for
+      API-key auth since the 2024-06-10 change).
+  - status: 404
+    title: Not found
+    description: The URL or object was not found.
+    declared_in_openapi: true
+    remediation: Verify the object id prefix and that the object exists in this organization.
+  - status: 405
+    title: Method not allowed
+    description: The HTTP method was not supported for this URL.
+    declared_in_openapi: false
+    source: https://developer.close.com/api/overview/http-response-codes
+    remediation: >-
+      Use x-http-method-override where a client cannot issue the required verb —
+      see conventions/close-conventions.yml.
+  - status: 415
+    title: Unsupported media type
+    description: The request used an unsupported format.
+    declared_in_openapi: false
+    source: https://developer.close.com/api/overview/http-response-codes
+    remediation: Send Content-Type application/json.
+  - status: 429
+    title: Too many requests
+    description: >-
+      A per-endpoint-group rate limit was exceeded, at either the API-key or the
+      organization level.
+    declared_in_openapi: false
+    source: https://developer.close.com/api/overview/rate-limits
+    signal_headers: [RateLimit, retry-after]
+    remediation: >-
+      Sleep for the rate_reset value (preferred over Retry-After per Close's own
+      guidance), then retry the same endpoint group. Backoff exponentially.
+gaps:
+  - >-
+    No 5xx responses are declared anywhere in the OpenAPI. Close documents no
+    server-error contract, so an agent has no published guidance on whether a
+    500/502/503 is retryable.
+  - >-
+    429 is absent from the spec even though it is the most operationally
+    important failure the API produces.
+  - >-
+    No error type URIs, no error codes, no error schema in components — errors
+    cannot be branched on programmatically beyond the HTTP status.
+coverage:
+  statuses_declared_in_spec: ['200', '201', '204', '400', '401', '403', '404']
+  statuses_documented_only: ['402', '405', '415', '429']
+  operations_scanned: 300

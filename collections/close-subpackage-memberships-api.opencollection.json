@@ -1,0 +1,140 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints subpackage_activities subpackage_memberships API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_memberships",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/membership/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ensures an active membership for the given email will be provisioned.\n\n- If the user already exists, they will be added to the requestor's organization.\n- If it doesn't exist, a new user will be provisioned.\n\n`role_id` can be one of `'admin'`, `'superuser'`, `'user'` or `'restricteduser'` for the corresponding predefined role, or an ID of a [Role](https://developer.close.com/api/resources/roles).\n\nThis request requires \"Manage Organization\" permissions.\n\nAPI access to this endpoint is supported "
+        },
+        {
+          "info": {
+            "name": "Bulk update memberships",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.close.com/api/v1/membership/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Any field that can be updated on a membership individually can also be used to bulk update multiple memberships. To issue a bulk update, pass their comma separated ids into `id__in` in `_params` as shown in the example below."
+        },
+        {
+          "info": {
+            "name": "Update a membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.close.com/api/v1/membership/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "You can update the field `role_id` and its value can be one of `'admin'`, `'superuser'`, `'user'` or `'restricteduser'` for the corresponding predefined role, or an ID of a [Role](https://developer.close.com/api/resources/roles).\n\nThe field `auto_record_calls` is used to manage whether or not calls are automatically recorded. The initial value for a membership is `'unset'`. It can be updated to `'disabled'`, or `'enabled'`."
+        },
+        {
+          "info": {
+            "name": "Get pinned views for a membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/membership/:id/pinned_views/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get the ordered list of pinned views for the given membership."
+        },
+        {
+          "info": {
+            "name": "Update pinned views for a membership",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.close.com/api/v1/membership/:id/pinned_views/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set the pinned views for the given membership. Provide an ordered list that will overwrite the entire current list."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

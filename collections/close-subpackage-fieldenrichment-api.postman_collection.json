@@ -1,0 +1,281 @@
+{
+  "item": [
+    {
+      "id": "bb7be9a9-114e-43b0-baee-d6f35a9605b3",
+      "name": "subpackage_fieldEnrichment",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6b139db6-fe82-4754-93d8-4423d801b80f",
+          "name": "Enrich a specific field on a lead or contact using AI",
+          "request": {
+            "name": "Enrich a specific field on a lead or contact using AI",
+            "description": {
+              "content": "This endpoint uses AI to enrich (populate or enhance) a specific field on a lead or contact. The enrichment process analyzes existing data and external sources to provide intelligent field values.\n\n**Parameters:**\n- `organization_id` (required): The organization ID\n- `object_type` (required): Either \"lead\" or \"contact\"\n- `object_id` (required): The ID of the lead or contact to enrich\n- `field_id` (required): The ID of the custom field to enrich\n- `set_new_value` (optional): Whether to update the field with the enriched value (default: true)\n- `overwrite_existing_value` (optional): Whether to overwrite existing field values (default: false)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "enrich_field",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"field_id\": \"<string>\",\n  \"object_id\": \"<string>\",\n  \"object_type\": \"<string>\",\n  \"organization_id\": \"<string>\",\n  \"overwrite_existing_value\": false,\n  \"set_new_value\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eedd0813-5835-4910-bd25-25940d5308f0",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "enrich_field",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"field_id\": \"<string>\",\n  \"object_id\": \"<string>\",\n  \"object_type\": \"lead\",\n  \"organization_id\": \"<string>\",\n  \"overwrite_existing_value\": false,\n  \"set_new_value\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e6309b25-857a-4411-b093-b88cc8cc502e",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "enrich_field",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"field_id\": \"<string>\",\n  \"object_id\": \"<string>\",\n  \"object_type\": \"lead\",\n  \"organization_id\": \"<string>\",\n  \"overwrite_existing_value\": false,\n  \"set_new_value\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eca8de72-4fd1-4d4b-a710-925c90bbe217",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "enrich_field",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"field_id\": \"<string>\",\n  \"object_id\": \"<string>\",\n  \"object_type\": \"lead\",\n  \"organization_id\": \"<string>\",\n  \"overwrite_existing_value\": false,\n  \"set_new_value\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "908df93d-7d9a-49af-9021-1f682fd87a10",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "enrich_field",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"field_id\": \"<string>\",\n  \"object_id\": \"<string>\",\n  \"object_type\": \"lead\",\n  \"organization_id\": \"<string>\",\n  \"overwrite_existing_value\": false,\n  \"set_new_value\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.close.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "af39f18c-694a-45a8-936a-85a49766aca4",
+    "name": "API Endpoints subpackage_activities subpackage_fieldEnrichment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

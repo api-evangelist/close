@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints subpackage_activities subpackage_bulkActionsSequenceSubscriptions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_bulkActionsSequenceSubscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List bulk sequence subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/bulk_action/sequence_subscription/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "_limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return."
+              },
+              {
+                "name": "_skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip before returning, for pagination."
+              },
+              {
+                "name": "_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response."
+              }
+            ]
+          },
+          "docs": "List bulk sequence subscriptions"
+        },
+        {
+          "info": {
+            "name": "Initiate a new bulk sequence subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/bulk_action/sequence_subscription/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "`action_type` must be one of:\n\n- `subscribe` to create a new sequence subscription for contacts that have never received the given sequence.\n- `resume` to resume any paused sequence subscriptions for the given sequence or all sequences if `sequence_id` is not provided.\n- `resume_finished` to resume any finished sequence subscriptions for the given sequence or all sequences if `sequence_id` is not provided.\n- `pause` to pause any active sequence subscriptions for the given sequence or all sequenc"
+        },
+        {
+          "info": {
+            "name": "Fetch a single bulk sequence subscription object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/bulk_action/sequence_subscription/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response."
+              }
+            ]
+          },
+          "docs": "Fetch a single bulk sequence subscription object"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

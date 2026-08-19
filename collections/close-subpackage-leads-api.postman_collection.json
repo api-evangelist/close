@@ -1,0 +1,1620 @@
+{
+  "item": [
+    {
+      "id": "100bec41-487e-419c-9475-96eb146e40c1",
+      "name": "subpackage_leads",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9f1f962e-8d79-4da4-a10e-b4b0c06a73dc",
+          "name": "List Leads",
+          "request": {
+            "name": "List Leads",
+            "description": {},
+            "url": {
+              "path": [
+                "lead",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_limit",
+                  "value": "100",
+                  "description": "Number of results to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "_skip",
+                  "value": "0",
+                  "description": "Number of results to skip before returning, for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9ecd2f2d-b149-4279-b137-79933f4ce03a",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"contact_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"created_by\": \"string\",\n      \"date_created\": \"1951-04-29T12:32:19.952Z\",\n      \"date_updated\": \"2022-04-24T16:51:53.327Z\",\n      \"description\": \"string\",\n      \"html_url\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"organization_id\": \"string\",\n      \"status_id\": \"string\",\n      \"updated_by\": \"string\",\n      \"url\": \"string\",\n      \"addresses\": [\n        {\n          \"address_1\": \"string\",\n          \"address_2\": \"string\",\n          \"city\": \"string\",\n          \"country\": \"string\",\n          \"label\": \"string\",\n          \"state\": \"string\",\n          \"zipcode\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"address_1\": \"string\",\n          \"address_2\": \"string\",\n          \"city\": \"string\",\n          \"country\": \"string\",\n          \"label\": \"string\",\n          \"state\": \"string\",\n          \"zipcode\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"contacts\": [\n        {\n          \"created_by\": \"string\",\n          \"date_created\": \"1975-01-28T07:36:57.414Z\",\n          \"date_updated\": \"1984-06-12T11:19:05.154Z\",\n          \"display_name\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"organization_id\": \"string\",\n          \"title\": \"string\",\n          \"updated_by\": \"string\",\n          \"emails\": [\n            {\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_unsubscribed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_unsubscribed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"integration_links\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"lead_id\": \"string\",\n          \"lead_suggestions_operation_id\": \"string\",\n          \"phones\": [\n            {\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"outbound_sms_blocked\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone_formatted\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tz_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"outbound_sms_blocked\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone_formatted\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tz_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"recent_calls\": [\n            {\n              \"dialer_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"duration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"finish_timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"dialer_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"duration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"finish_timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"subscriptions\": [\n            {\n              \"contact_email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"initial_email_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"start_date\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_status_reason\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"contact_email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"initial_email_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"start_date\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_status_reason\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"timezone\": \"string\",\n          \"timezone_source\": \"string\",\n          \"urls\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"created_by\": \"string\",\n          \"date_created\": \"1998-07-12T23:31:21.310Z\",\n          \"date_updated\": \"2022-01-04T15:00:03.142Z\",\n          \"display_name\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"organization_id\": \"string\",\n          \"title\": \"string\",\n          \"updated_by\": \"string\",\n          \"emails\": [\n            {\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_unsubscribed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_unsubscribed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"integration_links\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"lead_id\": \"string\",\n          \"lead_suggestions_operation_id\": \"string\",\n          \"phones\": [\n            {\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"outbound_sms_blocked\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone_formatted\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tz_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"outbound_sms_blocked\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone_formatted\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tz_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"recent_calls\": [\n            {\n              \"dialer_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"duration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"finish_timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"dialer_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"duration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"finish_timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"subscriptions\": [\n            {\n              \"contact_email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"initial_email_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"start_date\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_status_reason\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"contact_email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"initial_email_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"start_date\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_status_reason\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"timezone\": \"string\",\n          \"timezone_source\": \"string\",\n          \"urls\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"contacts_summary\": \"string\",\n      \"created_by_name\": \"string\",\n      \"display_name\": \"string\",\n      \"integration_links\": [\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"localtime\": \"2001-04-06T13:55:18.074Z\",\n      \"opportunities\": [\n        {\n          \"annualized_expected_value\": 8296,\n          \"annualized_value\": 7309,\n          \"confidence\": 184,\n          \"contact_id\": \"string\",\n          \"created_by\": \"string\",\n          \"date_created\": \"1951-10-26T17:04:24.331Z\",\n          \"date_lost\": \"2019-01-25T09:09:16.483Z\",\n          \"date_updated\": \"1966-12-24T02:41:11.110Z\",\n          \"date_won\": \"2023-01-25\",\n          \"expected_value\": 1287,\n          \"id\": \"string\",\n          \"lead_id\": \"string\",\n          \"note\": \"string\",\n          \"organization_id\": \"string\",\n          \"status_id\": \"string\",\n          \"updated_by\": \"string\",\n          \"user_id\": \"string\",\n          \"value\": 1372,\n          \"value_period\": \"annual\",\n          \"attachments\": [\n            {\n              \"content_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"filename\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"thumbnail_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"content_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"filename\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"thumbnail_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"comment_summary\": {\n            \"comment_count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"thread_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"contact_name\": \"string\",\n          \"created_by_name\": \"string\",\n          \"integration_links\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"is_stalled\": true,\n          \"lead_name\": \"string\",\n          \"lead_primary_email\": {\n            \"email\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_unsubscribed\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"lead_primary_phone\": [\n            {\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"outbound_sms_blocked\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone_formatted\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tz_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"outbound_sms_blocked\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone_formatted\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tz_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"pipeline_id\": \"string\",\n          \"pipeline_name\": \"string\",\n          \"stall_status\": {\n            \"communication_issue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"next_action\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"status_display_name\": \"string\",\n          \"status_label\": \"string\",\n          \"status_type\": \"active\",\n          \"suggested_action\": {\n            \"action\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"justification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"updated_by_name\": \"string\",\n          \"user_name\": \"string\",\n          \"value_currency\": \"string\",\n          \"value_formatted\": \"string\"\n        },\n        {\n          \"annualized_expected_value\": 6083,\n          \"annualized_value\": 92,\n          \"confidence\": 144,\n          \"contact_id\": \"string\",\n          \"created_by\": \"string\",\n          \"date_created\": \"1948-10-16T19:11:50.001Z\",\n          \"date_lost\": \"1948-12-13T02:54:39.610Z\",\n          \"date_updated\": \"1956-12-24T06:59:53.475Z\",\n          \"date_won\": \"1956-03-14\",\n          \"expected_value\": 9232,\n          \"id\": \"string\",\n          \"lead_id\": \"string\",\n          \"note\": \"string\",\n          \"organization_id\": \"string\",\n          \"status_id\": \"string\",\n          \"updated_by\": \"string\",\n          \"user_id\": \"string\",\n          \"value\": 8973,\n          \"value_period\": \"annual\",\n          \"attachments\": [\n            {\n              \"content_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"filename\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"thumbnail_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"content_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"filename\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"thumbnail_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"comment_summary\": {\n            \"comment_count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"thread_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"contact_name\": \"string\",\n          \"created_by_name\": \"string\",\n          \"integration_links\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"is_stalled\": false,\n          \"lead_name\": \"string\",\n          \"lead_primary_email\": {\n            \"email\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_unsubscribed\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"lead_primary_phone\": [\n            {\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"outbound_sms_blocked\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone_formatted\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tz_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"outbound_sms_blocked\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone_formatted\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tz_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"pipeline_id\": \"string\",\n          \"pipeline_name\": \"string\",\n          \"stall_status\": {\n            \"communication_issue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"next_action\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"status_display_name\": \"string\",\n          \"status_label\": \"string\",\n          \"status_type\": \"lost\",\n          \"suggested_action\": {\n            \"action\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"justification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"updated_by_name\": \"string\",\n          \"user_name\": \"string\",\n          \"value_currency\": \"string\",\n          \"value_formatted\": \"string\"\n        }\n      ],\n      \"primary_address_summary\": \"string\",\n      \"primary_email\": {\n        \"email\": \"string\",\n        \"is_unsubscribed\": true,\n        \"type\": \"string\"\n      },\n      \"primary_phone\": {\n        \"phone\": \"string\",\n        \"type\": \"string\",\n        \"country\": \"string\",\n        \"outbound_sms_blocked\": false,\n        \"phone_formatted\": \"string\",\n        \"tz_ids\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"recent_calls\": [\n        {\n          \"key_0\": {}\n        },\n        {\n          \"key_0\": {},\n          \"key_1\": {}\n        }\n      ],\n      \"source\": \"string\",\n      \"status_label\": \"string\",\n      \"summaries\": [\n        {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {}\n        },\n        {\n          \"key_0\": {}\n        }\n      ],\n      \"tasks\": [\n        {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {}\n        }\n      ],\n      \"updated_by_name\": \"string\"\n    },\n    {\n      \"contact_ids\": [\n        \"string\",\n        \"string\"\n      ],\n      \"created_by\": \"string\",\n      \"date_created\": \"1979-09-23T08:29:38.714Z\",\n      \"date_updated\": \"1958-03-20T18:40:56.800Z\",\n      \"description\": \"string\",\n      \"html_url\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"organization_id\": \"string\",\n      \"status_id\": \"string\",\n      \"updated_by\": \"string\",\n      \"url\": \"string\",\n      \"addresses\": [\n        {\n          \"address_1\": \"string\",\n          \"address_2\": \"string\",\n          \"city\": \"string\",\n          \"country\": \"string\",\n          \"label\": \"string\",\n          \"state\": \"string\",\n          \"zipcode\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"address_1\": \"string\",\n          \"address_2\": \"string\",\n          \"city\": \"string\",\n          \"country\": \"string\",\n          \"label\": \"string\",\n          \"state\": \"string\",\n          \"zipcode\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"contacts\": [\n        {\n          \"created_by\": \"string\",\n          \"date_created\": \"1994-02-01T18:24:31.492Z\",\n          \"date_updated\": \"1983-04-14T21:51:22.168Z\",\n          \"display_name\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"organization_id\": \"string\",\n          \"title\": \"string\",\n          \"updated_by\": \"string\",\n          \"emails\": [\n            {\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_unsubscribed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_unsubscribed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"integration_links\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"lead_id\": \"string\",\n          \"lead_suggestions_operation_id\": \"string\",\n          \"phones\": [\n            {\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"outbound_sms_blocked\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone_formatted\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tz_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"outbound_sms_blocked\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone_formatted\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tz_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"recent_calls\": [\n            {\n              \"dialer_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"duration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"finish_timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"dialer_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"duration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"finish_timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"subscriptions\": [\n            {\n              \"contact_email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"initial_email_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"start_date\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_status_reason\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"contact_email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"initial_email_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"start_date\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_status_reason\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"timezone\": \"string\",\n          \"timezone_source\": \"string\",\n          \"urls\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"created_by\": \"string\",\n          \"date_created\": \"2003-05-04T10:01:06.936Z\",\n          \"date_updated\": \"1992-06-07T03:29:55.977Z\",\n          \"display_name\": \"string\",\n          \"id\": \"string\",\n          \"name\": \"string\",\n          \"organization_id\": \"string\",\n          \"title\": \"string\",\n          \"updated_by\": \"string\",\n          \"emails\": [\n            {\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_unsubscribed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_unsubscribed\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"integration_links\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"lead_id\": \"string\",\n          \"lead_suggestions_operation_id\": \"string\",\n          \"phones\": [\n            {\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"outbound_sms_blocked\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone_formatted\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tz_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"outbound_sms_blocked\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone_formatted\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tz_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"recent_calls\": [\n            {\n              \"dialer_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"duration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"finish_timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"dialer_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"duration\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"finish_timestamp\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"subscriptions\": [\n            {\n              \"contact_email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"initial_email_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"start_date\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_status_reason\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"contact_email\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"initial_email_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sequence_status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"start_date\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_status\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"subscription_status_reason\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"timezone\": \"string\",\n          \"timezone_source\": \"string\",\n          \"urls\": [\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"contacts_summary\": \"string\",\n      \"created_by_name\": \"string\",\n      \"display_name\": \"string\",\n      \"integration_links\": [\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"localtime\": \"2001-03-24T14:12:08.063Z\",\n      \"opportunities\": [\n        {\n          \"annualized_expected_value\": 6857,\n          \"annualized_value\": 2514,\n          \"confidence\": 7856,\n          \"contact_id\": \"string\",\n          \"created_by\": \"string\",\n          \"date_created\": \"2008-12-21T10:18:24.321Z\",\n          \"date_lost\": \"2013-11-02T10:41:27.503Z\",\n          \"date_updated\": \"2014-01-08T03:19:04.041Z\",\n          \"date_won\": \"2022-03-27\",\n          \"expected_value\": 8156,\n          \"id\": \"string\",\n          \"lead_id\": \"string\",\n          \"note\": \"string\",\n          \"organization_id\": \"string\",\n          \"status_id\": \"string\",\n          \"updated_by\": \"string\",\n          \"user_id\": \"string\",\n          \"value\": 9701,\n          \"value_period\": \"monthly\",\n          \"attachments\": [\n            {\n              \"content_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"filename\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"thumbnail_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"content_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"filename\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"thumbnail_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"comment_summary\": {\n            \"comment_count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"thread_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"contact_name\": \"string\",\n          \"created_by_name\": \"string\",\n          \"integration_links\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"is_stalled\": false,\n          \"lead_name\": \"string\",\n          \"lead_primary_email\": {\n            \"email\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_unsubscribed\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"lead_primary_phone\": [\n            {\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"outbound_sms_blocked\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone_formatted\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tz_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"outbound_sms_blocked\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone_formatted\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tz_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"pipeline_id\": \"string\",\n          \"pipeline_name\": \"string\",\n          \"stall_status\": {\n            \"communication_issue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"next_action\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"status_display_name\": \"string\",\n          \"status_label\": \"string\",\n          \"status_type\": \"active\",\n          \"suggested_action\": {\n            \"action\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"justification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"updated_by_name\": \"string\",\n          \"user_name\": \"string\",\n          \"value_currency\": \"string\",\n          \"value_formatted\": \"string\"\n        },\n        {\n          \"annualized_expected_value\": 4251,\n          \"annualized_value\": 8030,\n          \"confidence\": 8370,\n          \"contact_id\": \"string\",\n          \"created_by\": \"string\",\n          \"date_created\": \"2025-03-12T04:51:09.912Z\",\n          \"date_lost\": \"1953-04-08T12:28:46.777Z\",\n          \"date_updated\": \"1962-11-27T06:40:06.797Z\",\n          \"date_won\": \"1968-10-04\",\n          \"expected_value\": 3219,\n          \"id\": \"string\",\n          \"lead_id\": \"string\",\n          \"note\": \"string\",\n          \"organization_id\": \"string\",\n          \"status_id\": \"string\",\n          \"updated_by\": \"string\",\n          \"user_id\": \"string\",\n          \"value\": 4502,\n          \"value_period\": \"one_time\",\n          \"attachments\": [\n            {\n              \"content_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"filename\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"thumbnail_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"content_type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"filename\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"size\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"thumbnail_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"comment_summary\": {\n            \"comment_count\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"thread_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"contact_name\": \"string\",\n          \"created_by_name\": \"string\",\n          \"integration_links\": [\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"is_stalled\": true,\n          \"lead_name\": \"string\",\n          \"lead_primary_email\": {\n            \"email\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"is_unsubscribed\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"lead_primary_phone\": [\n            {\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"outbound_sms_blocked\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone_formatted\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tz_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"phone\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"country\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"outbound_sms_blocked\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"phone_formatted\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"tz_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"pipeline_id\": \"string\",\n          \"pipeline_name\": \"string\",\n          \"stall_status\": {\n            \"communication_issue\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"next_action\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"status_display_name\": \"string\",\n          \"status_label\": \"string\",\n          \"status_type\": \"active\",\n          \"suggested_action\": {\n            \"action\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"details\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"justification\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"updated_by_name\": \"string\",\n          \"user_name\": \"string\",\n          \"value_currency\": \"string\",\n          \"value_formatted\": \"string\"\n        }\n      ],\n      \"primary_address_summary\": \"string\",\n      \"primary_email\": {\n        \"email\": \"string\",\n        \"is_unsubscribed\": false,\n        \"type\": \"string\"\n      },\n      \"primary_phone\": {\n        \"phone\": \"string\",\n        \"type\": \"string\",\n        \"country\": \"string\",\n        \"outbound_sms_blocked\": true,\n        \"phone_formatted\": \"string\",\n        \"tz_ids\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"recent_calls\": [\n        {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        {\n          \"key_0\": {}\n        }\n      ],\n      \"source\": \"string\",\n      \"status_label\": \"string\",\n      \"summaries\": [\n        {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {}\n        },\n        {\n          \"key_0\": {}\n        }\n      ],\n      \"tasks\": [\n        {\n          \"key_0\": {},\n          \"key_1\": {},\n          \"key_2\": {},\n          \"key_3\": {}\n        },\n        {\n          \"key_0\": {}\n        }\n      ],\n      \"updated_by_name\": \"string\"\n    }\n  ],\n  \"has_more\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ace32b5-c35d-47bb-9e16-f7303e41c81b",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "66fb5d57-0d17-4264-a0ae-2f8618aa83f0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00ec7272-9704-4e09-bcee-e82ea751dc95",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e873b8de-b47f-4f60-9ed8-8b104074a999",
+          "name": "Create a new lead",
+          "request": {
+            "name": "Create a new lead",
+            "description": {
+              "content": "Contacts, addresses, and custom fields can all be nested in the lead. Activities, tasks, and opportunities must be posted separately.\n\n**status / status_id** (optional): Post either `status` or `status_id` (but not both). If neither is provided, the organization's default (first) status will be used. Using `status_id` is recommended so that users can rename statuses in the UI without breaking your implementation.\n\n**custom.FIELD_ID** (optional): Set custom fields by setting `custom.FIELD_ID` to the field value, where FIELD_ID is the ID of the custom field, e.g.:\n\n```json\n{ \"custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c\": \"value\", \"custom.cf_8wtBWsdRU2Fur7GDnEeXQ7ra2Vu7R4hG1SNYdiEhh0F\": \"other value\" }\n```\n\nIf a custom field has `accepts_multiple_values: true`, the entire value will be replaced. For example, given a Lead has a Custom Choice Field with value `[\"A\", \"B\"]`, adding choice `\"C\"` would mean setting the value to `[\"A\", \"B\", \"C\"]`.\n\nNote that using the `custom` field dict or the `custom.FIELD_NAME` syntax (instead of custom field IDs) is deprecated and will be removed from the API. See [Custom Fields](https://developer.close.com/api/resources/custom-fields) for more details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lead",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "91dbdf42-e38e-4710-bd72-2c802e49a6ea",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contact_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"created_by\": \"string\",\n  \"date_created\": \"1969-12-28T04:00:08.320Z\",\n  \"date_updated\": \"1965-01-08T20:45:33.751Z\",\n  \"description\": \"string\",\n  \"html_url\": \"string\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"organization_id\": \"string\",\n  \"status_id\": \"string\",\n  \"updated_by\": \"string\",\n  \"url\": \"string\",\n  \"addresses\": [\n    {\n      \"address_1\": \"string\",\n      \"address_2\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"label\": \"string\",\n      \"state\": \"string\",\n      \"zipcode\": \"string\",\n      \"tz_ids\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"address_1\": \"string\",\n      \"address_2\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"label\": \"string\",\n      \"state\": \"string\",\n      \"zipcode\": \"string\",\n      \"tz_ids\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"contacts\": [\n    {\n      \"created_by\": \"string\",\n      \"date_created\": \"1987-11-12T07:55:52.122Z\",\n      \"date_updated\": \"2013-03-07T15:04:14.080Z\",\n      \"display_name\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"organization_id\": \"string\",\n      \"title\": \"string\",\n      \"updated_by\": \"string\",\n      \"emails\": [\n        {\n          \"email\": \"string\",\n          \"is_unsubscribed\": true,\n          \"type\": \"string\"\n        },\n        {\n          \"email\": \"string\",\n          \"is_unsubscribed\": false,\n          \"type\": \"string\"\n        }\n      ],\n      \"integration_links\": [\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"lead_id\": \"string\",\n      \"lead_suggestions_operation_id\": \"string\",\n      \"phones\": [\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": false,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": true,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"recent_calls\": [\n        {\n          \"dialer_id\": \"string\",\n          \"duration\": 7005,\n          \"finish_timestamp\": \"1960-10-04T17:30:04.352Z\",\n          \"id\": \"string\",\n          \"status\": \"completed\"\n        },\n        {\n          \"dialer_id\": \"string\",\n          \"duration\": 6470,\n          \"finish_timestamp\": \"1976-02-08T03:40:29.166Z\",\n          \"id\": \"string\",\n          \"status\": \"no-answer\"\n        }\n      ],\n      \"subscriptions\": [\n        {\n          \"contact_email\": \"string\",\n          \"date_created\": \"1963-11-14T18:19:03.298Z\",\n          \"initial_email_id\": \"string\",\n          \"sequence_id\": \"string\",\n          \"sequence_name\": \"string\",\n          \"sequence_status\": \"draft\",\n          \"start_date\": \"2023-06-19T01:05:26.983Z\",\n          \"subscription_id\": \"string\",\n          \"subscription_status\": \"finished\",\n          \"subscription_status_reason\": \"sending-throttled-too-long\"\n        },\n        {\n          \"contact_email\": \"string\",\n          \"date_created\": \"1965-03-02T13:46:17.425Z\",\n          \"initial_email_id\": \"string\",\n          \"sequence_id\": \"string\",\n          \"sequence_name\": \"string\",\n          \"sequence_status\": \"draft\",\n          \"start_date\": \"1947-06-06T21:32:36.577Z\",\n          \"subscription_id\": \"string\",\n          \"subscription_status\": \"finished\",\n          \"subscription_status_reason\": \"no-user-phone\"\n        }\n      ],\n      \"timezone\": \"string\",\n      \"timezone_source\": \"string\",\n      \"urls\": [\n        {\n          \"type\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"type\": \"string\",\n          \"url\": \"string\"\n        }\n      ]\n    },\n    {\n      \"created_by\": \"string\",\n      \"date_created\": \"1953-03-18T13:54:29.912Z\",\n      \"date_updated\": \"2004-01-03T14:52:19.162Z\",\n      \"display_name\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"organization_id\": \"string\",\n      \"title\": \"string\",\n      \"updated_by\": \"string\",\n      \"emails\": [\n        {\n          \"email\": \"string\",\n          \"is_unsubscribed\": false,\n          \"type\": \"string\"\n        },\n        {\n          \"email\": \"string\",\n          \"is_unsubscribed\": true,\n          \"type\": \"string\"\n        }\n      ],\n      \"integration_links\": [\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"lead_id\": \"string\",\n      \"lead_suggestions_operation_id\": \"string\",\n      \"phones\": [\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": true,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": true,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"recent_calls\": [\n        {\n          \"dialer_id\": \"string\",\n          \"duration\": 9697,\n          \"finish_timestamp\": \"2018-06-23T05:07:52.759Z\",\n          \"id\": \"string\",\n          \"status\": \"cancel\"\n        },\n        {\n          \"dialer_id\": \"string\",\n          \"duration\": 1737,\n          \"finish_timestamp\": \"1974-12-30T10:19:54.495Z\",\n          \"id\": \"string\",\n          \"status\": \"cancel\"\n        }\n      ],\n      \"subscriptions\": [\n        {\n          \"contact_email\": \"string\",\n          \"date_created\": \"2016-01-17T03:53:47.270Z\",\n          \"initial_email_id\": \"string\",\n          \"sequence_id\": \"string\",\n          \"sequence_name\": \"string\",\n          \"sequence_status\": \"draft\",\n          \"start_date\": \"1999-11-20T23:07:09.352Z\",\n          \"subscription_id\": \"string\",\n          \"subscription_status\": \"error\",\n          \"subscription_status_reason\": \"meeting-booked\"\n        },\n        {\n          \"contact_email\": \"string\",\n          \"date_created\": \"1973-03-17T18:30:28.466Z\",\n          \"initial_email_id\": \"string\",\n          \"sequence_id\": \"string\",\n          \"sequence_name\": \"string\",\n          \"sequence_status\": \"draft\",\n          \"start_date\": \"1977-06-27T17:05:03.232Z\",\n          \"subscription_id\": \"string\",\n          \"subscription_status\": \"finished\",\n          \"subscription_status_reason\": \"reply-received\"\n        }\n      ],\n      \"timezone\": \"string\",\n      \"timezone_source\": \"string\",\n      \"urls\": [\n        {\n          \"type\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"type\": \"string\",\n          \"url\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"contacts_summary\": \"string\",\n  \"created_by_name\": \"string\",\n  \"display_name\": \"string\",\n  \"integration_links\": [\n    {\n      \"name\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"localtime\": \"1948-10-31T08:09:24.634Z\",\n  \"opportunities\": [\n    {\n      \"annualized_expected_value\": 9317,\n      \"annualized_value\": 2088,\n      \"confidence\": 3321,\n      \"contact_id\": \"string\",\n      \"created_by\": \"string\",\n      \"date_created\": \"1966-08-08T00:37:10.557Z\",\n      \"date_lost\": \"1972-12-17T11:49:30.835Z\",\n      \"date_updated\": \"1969-07-25T10:04:58.534Z\",\n      \"date_won\": \"2024-10-30\",\n      \"expected_value\": 9390,\n      \"id\": \"string\",\n      \"lead_id\": \"string\",\n      \"note\": \"string\",\n      \"organization_id\": \"string\",\n      \"status_id\": \"string\",\n      \"updated_by\": \"string\",\n      \"user_id\": \"string\",\n      \"value\": 1303,\n      \"value_period\": \"one_time\",\n      \"attachments\": [\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 788,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        },\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 1455,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        }\n      ],\n      \"comment_summary\": {\n        \"comment_count\": 9313,\n        \"thread_id\": \"string\"\n      },\n      \"contact_name\": \"string\",\n      \"created_by_name\": \"string\",\n      \"integration_links\": [\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"is_stalled\": true,\n      \"lead_name\": \"string\",\n      \"lead_primary_email\": {\n        \"email\": \"string\",\n        \"is_unsubscribed\": false,\n        \"type\": \"string\"\n      },\n      \"lead_primary_phone\": [\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": true,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": false,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"pipeline_id\": \"string\",\n      \"pipeline_name\": \"string\",\n      \"stall_status\": {\n        \"communication_issue\": \"cant_get_in_touch\",\n        \"next_action\": {\n          \"action\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"justification\": \"string\"\n        }\n      },\n      \"status_display_name\": \"string\",\n      \"status_label\": \"string\",\n      \"status_type\": \"lost\",\n      \"suggested_action\": {\n        \"action\": \"follow_up_call\",\n        \"details\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"justification\": \"string\"\n      },\n      \"updated_by_name\": \"string\",\n      \"user_name\": \"string\",\n      \"value_currency\": \"string\",\n      \"value_formatted\": \"string\"\n    },\n    {\n      \"annualized_expected_value\": 916,\n      \"annualized_value\": 6275,\n      \"confidence\": 373,\n      \"contact_id\": \"string\",\n      \"created_by\": \"string\",\n      \"date_created\": \"2024-06-28T23:18:54.983Z\",\n      \"date_lost\": \"2000-10-19T01:07:55.249Z\",\n      \"date_updated\": \"2018-10-30T07:52:47.644Z\",\n      \"date_won\": \"1979-09-05\",\n      \"expected_value\": 1835,\n      \"id\": \"string\",\n      \"lead_id\": \"string\",\n      \"note\": \"string\",\n      \"organization_id\": \"string\",\n      \"status_id\": \"string\",\n      \"updated_by\": \"string\",\n      \"user_id\": \"string\",\n      \"value\": 5143,\n      \"value_period\": \"one_time\",\n      \"attachments\": [\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 1245,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        },\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 6353,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        }\n      ],\n      \"comment_summary\": {\n        \"comment_count\": 7703,\n        \"thread_id\": \"string\"\n      },\n      \"contact_name\": \"string\",\n      \"created_by_name\": \"string\",\n      \"integration_links\": [\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"is_stalled\": false,\n      \"lead_name\": \"string\",\n      \"lead_primary_email\": {\n        \"email\": \"string\",\n        \"is_unsubscribed\": true,\n        \"type\": \"string\"\n      },\n      \"lead_primary_phone\": [\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": true,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": false,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"pipeline_id\": \"string\",\n      \"pipeline_name\": \"string\",\n      \"stall_status\": {\n        \"communication_issue\": \"no_issue\",\n        \"next_action\": {\n          \"action\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"justification\": \"string\"\n        }\n      },\n      \"status_display_name\": \"string\",\n      \"status_label\": \"string\",\n      \"status_type\": \"active\",\n      \"suggested_action\": {\n        \"action\": \"change_status\",\n        \"details\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"justification\": \"string\"\n      },\n      \"updated_by_name\": \"string\",\n      \"user_name\": \"string\",\n      \"value_currency\": \"string\",\n      \"value_formatted\": \"string\"\n    }\n  ],\n  \"primary_address_summary\": \"string\",\n  \"primary_email\": {\n    \"email\": \"string\",\n    \"is_unsubscribed\": true,\n    \"type\": \"string\"\n  },\n  \"primary_phone\": {\n    \"phone\": \"string\",\n    \"type\": \"string\",\n    \"country\": \"string\",\n    \"outbound_sms_blocked\": false,\n    \"phone_formatted\": \"string\",\n    \"tz_ids\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"recent_calls\": [\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  ],\n  \"source\": \"string\",\n  \"status_label\": \"string\",\n  \"summaries\": [\n    {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  ],\n  \"tasks\": [\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    {\n      \"key_0\": {}\n    }\n  ],\n  \"updated_by_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c36b02c-7e18-4579-8bf5-cc9a8aab1a59",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0311a8ff-102e-444f-a22d-b9d35513b631",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc8cc5fd-11b3-4c12-ad5d-e8f9cc4f63fe",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0d62249f-d82b-4809-b889-760bbddd34d8",
+          "name": "Merge two leads",
+          "request": {
+            "name": "Merge two leads",
+            "description": {
+              "content": "For details and definitions of 'source' and 'destination', see the Merge Leads feature in the UI.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lead",
+                "merge",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f5e7c403-8e02-4120-986b-7bbc8959acb1",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    "merge",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07a6c56d-58eb-4e4e-9732-b4e08b25f84c",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    "merge",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2140e9fb-5e94-4fc9-b519-56faa99acc11",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    "merge",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5415c0c-fe40-455b-88b6-ced5e169853e",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    "merge",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "13a459ab-a9d3-41ac-9b3a-0fa076d5e134",
+          "name": "Get a single Lead",
+          "request": {
+            "name": "Get a single Lead",
+            "description": {},
+            "url": {
+              "path": [
+                "lead",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d38a9c33-4a73-4f92-9c10-88a75d592877",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contact_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"created_by\": \"string\",\n  \"date_created\": \"1969-12-28T04:00:08.320Z\",\n  \"date_updated\": \"1965-01-08T20:45:33.751Z\",\n  \"description\": \"string\",\n  \"html_url\": \"string\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"organization_id\": \"string\",\n  \"status_id\": \"string\",\n  \"updated_by\": \"string\",\n  \"url\": \"string\",\n  \"addresses\": [\n    {\n      \"address_1\": \"string\",\n      \"address_2\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"label\": \"string\",\n      \"state\": \"string\",\n      \"zipcode\": \"string\",\n      \"tz_ids\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"address_1\": \"string\",\n      \"address_2\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"label\": \"string\",\n      \"state\": \"string\",\n      \"zipcode\": \"string\",\n      \"tz_ids\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"contacts\": [\n    {\n      \"created_by\": \"string\",\n      \"date_created\": \"1987-11-12T07:55:52.122Z\",\n      \"date_updated\": \"2013-03-07T15:04:14.080Z\",\n      \"display_name\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"organization_id\": \"string\",\n      \"title\": \"string\",\n      \"updated_by\": \"string\",\n      \"emails\": [\n        {\n          \"email\": \"string\",\n          \"is_unsubscribed\": true,\n          \"type\": \"string\"\n        },\n        {\n          \"email\": \"string\",\n          \"is_unsubscribed\": false,\n          \"type\": \"string\"\n        }\n      ],\n      \"integration_links\": [\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"lead_id\": \"string\",\n      \"lead_suggestions_operation_id\": \"string\",\n      \"phones\": [\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": false,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": true,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"recent_calls\": [\n        {\n          \"dialer_id\": \"string\",\n          \"duration\": 7005,\n          \"finish_timestamp\": \"1960-10-04T17:30:04.352Z\",\n          \"id\": \"string\",\n          \"status\": \"completed\"\n        },\n        {\n          \"dialer_id\": \"string\",\n          \"duration\": 6470,\n          \"finish_timestamp\": \"1976-02-08T03:40:29.166Z\",\n          \"id\": \"string\",\n          \"status\": \"no-answer\"\n        }\n      ],\n      \"subscriptions\": [\n        {\n          \"contact_email\": \"string\",\n          \"date_created\": \"1963-11-14T18:19:03.298Z\",\n          \"initial_email_id\": \"string\",\n          \"sequence_id\": \"string\",\n          \"sequence_name\": \"string\",\n          \"sequence_status\": \"draft\",\n          \"start_date\": \"2023-06-19T01:05:26.983Z\",\n          \"subscription_id\": \"string\",\n          \"subscription_status\": \"finished\",\n          \"subscription_status_reason\": \"sending-throttled-too-long\"\n        },\n        {\n          \"contact_email\": \"string\",\n          \"date_created\": \"1965-03-02T13:46:17.425Z\",\n          \"initial_email_id\": \"string\",\n          \"sequence_id\": \"string\",\n          \"sequence_name\": \"string\",\n          \"sequence_status\": \"draft\",\n          \"start_date\": \"1947-06-06T21:32:36.577Z\",\n          \"subscription_id\": \"string\",\n          \"subscription_status\": \"finished\",\n          \"subscription_status_reason\": \"no-user-phone\"\n        }\n      ],\n      \"timezone\": \"string\",\n      \"timezone_source\": \"string\",\n      \"urls\": [\n        {\n          \"type\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"type\": \"string\",\n          \"url\": \"string\"\n        }\n      ]\n    },\n    {\n      \"created_by\": \"string\",\n      \"date_created\": \"1953-03-18T13:54:29.912Z\",\n      \"date_updated\": \"2004-01-03T14:52:19.162Z\",\n      \"display_name\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"organization_id\": \"string\",\n      \"title\": \"string\",\n      \"updated_by\": \"string\",\n      \"emails\": [\n        {\n          \"email\": \"string\",\n          \"is_unsubscribed\": false,\n          \"type\": \"string\"\n        },\n        {\n          \"email\": \"string\",\n          \"is_unsubscribed\": true,\n          \"type\": \"string\"\n        }\n      ],\n      \"integration_links\": [\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"lead_id\": \"string\",\n      \"lead_suggestions_operation_id\": \"string\",\n      \"phones\": [\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": true,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": true,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"recent_calls\": [\n        {\n          \"dialer_id\": \"string\",\n          \"duration\": 9697,\n          \"finish_timestamp\": \"2018-06-23T05:07:52.759Z\",\n          \"id\": \"string\",\n          \"status\": \"cancel\"\n        },\n        {\n          \"dialer_id\": \"string\",\n          \"duration\": 1737,\n          \"finish_timestamp\": \"1974-12-30T10:19:54.495Z\",\n          \"id\": \"string\",\n          \"status\": \"cancel\"\n        }\n      ],\n      \"subscriptions\": [\n        {\n          \"contact_email\": \"string\",\n          \"date_created\": \"2016-01-17T03:53:47.270Z\",\n          \"initial_email_id\": \"string\",\n          \"sequence_id\": \"string\",\n          \"sequence_name\": \"string\",\n          \"sequence_status\": \"draft\",\n          \"start_date\": \"1999-11-20T23:07:09.352Z\",\n          \"subscription_id\": \"string\",\n          \"subscription_status\": \"error\",\n          \"subscription_status_reason\": \"meeting-booked\"\n        },\n        {\n          \"contact_email\": \"string\",\n          \"date_created\": \"1973-03-17T18:30:28.466Z\",\n          \"initial_email_id\": \"string\",\n          \"sequence_id\": \"string\",\n          \"sequence_name\": \"string\",\n          \"sequence_status\": \"draft\",\n          \"start_date\": \"1977-06-27T17:05:03.232Z\",\n          \"subscription_id\": \"string\",\n          \"subscription_status\": \"finished\",\n          \"subscription_status_reason\": \"reply-received\"\n        }\n      ],\n      \"timezone\": \"string\",\n      \"timezone_source\": \"string\",\n      \"urls\": [\n        {\n          \"type\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"type\": \"string\",\n          \"url\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"contacts_summary\": \"string\",\n  \"created_by_name\": \"string\",\n  \"display_name\": \"string\",\n  \"integration_links\": [\n    {\n      \"name\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"localtime\": \"1948-10-31T08:09:24.634Z\",\n  \"opportunities\": [\n    {\n      \"annualized_expected_value\": 9317,\n      \"annualized_value\": 2088,\n      \"confidence\": 3321,\n      \"contact_id\": \"string\",\n      \"created_by\": \"string\",\n      \"date_created\": \"1966-08-08T00:37:10.557Z\",\n      \"date_lost\": \"1972-12-17T11:49:30.835Z\",\n      \"date_updated\": \"1969-07-25T10:04:58.534Z\",\n      \"date_won\": \"2024-10-30\",\n      \"expected_value\": 9390,\n      \"id\": \"string\",\n      \"lead_id\": \"string\",\n      \"note\": \"string\",\n      \"organization_id\": \"string\",\n      \"status_id\": \"string\",\n      \"updated_by\": \"string\",\n      \"user_id\": \"string\",\n      \"value\": 1303,\n      \"value_period\": \"one_time\",\n      \"attachments\": [\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 788,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        },\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 1455,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        }\n      ],\n      \"comment_summary\": {\n        \"comment_count\": 9313,\n        \"thread_id\": \"string\"\n      },\n      \"contact_name\": \"string\",\n      \"created_by_name\": \"string\",\n      \"integration_links\": [\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"is_stalled\": true,\n      \"lead_name\": \"string\",\n      \"lead_primary_email\": {\n        \"email\": \"string\",\n        \"is_unsubscribed\": false,\n        \"type\": \"string\"\n      },\n      \"lead_primary_phone\": [\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": true,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": false,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"pipeline_id\": \"string\",\n      \"pipeline_name\": \"string\",\n      \"stall_status\": {\n        \"communication_issue\": \"cant_get_in_touch\",\n        \"next_action\": {\n          \"action\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"justification\": \"string\"\n        }\n      },\n      \"status_display_name\": \"string\",\n      \"status_label\": \"string\",\n      \"status_type\": \"lost\",\n      \"suggested_action\": {\n        \"action\": \"follow_up_call\",\n        \"details\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"justification\": \"string\"\n      },\n      \"updated_by_name\": \"string\",\n      \"user_name\": \"string\",\n      \"value_currency\": \"string\",\n      \"value_formatted\": \"string\"\n    },\n    {\n      \"annualized_expected_value\": 916,\n      \"annualized_value\": 6275,\n      \"confidence\": 373,\n      \"contact_id\": \"string\",\n      \"created_by\": \"string\",\n      \"date_created\": \"2024-06-28T23:18:54.983Z\",\n      \"date_lost\": \"2000-10-19T01:07:55.249Z\",\n      \"date_updated\": \"2018-10-30T07:52:47.644Z\",\n      \"date_won\": \"1979-09-05\",\n      \"expected_value\": 1835,\n      \"id\": \"string\",\n      \"lead_id\": \"string\",\n      \"note\": \"string\",\n      \"organization_id\": \"string\",\n      \"status_id\": \"string\",\n      \"updated_by\": \"string\",\n      \"user_id\": \"string\",\n      \"value\": 5143,\n      \"value_period\": \"one_time\",\n      \"attachments\": [\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 1245,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        },\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 6353,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        }\n      ],\n      \"comment_summary\": {\n        \"comment_count\": 7703,\n        \"thread_id\": \"string\"\n      },\n      \"contact_name\": \"string\",\n      \"created_by_name\": \"string\",\n      \"integration_links\": [\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"is_stalled\": false,\n      \"lead_name\": \"string\",\n      \"lead_primary_email\": {\n        \"email\": \"string\",\n        \"is_unsubscribed\": true,\n        \"type\": \"string\"\n      },\n      \"lead_primary_phone\": [\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": true,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": false,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"pipeline_id\": \"string\",\n      \"pipeline_name\": \"string\",\n      \"stall_status\": {\n        \"communication_issue\": \"no_issue\",\n        \"next_action\": {\n          \"action\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"justification\": \"string\"\n        }\n      },\n      \"status_display_name\": \"string\",\n      \"status_label\": \"string\",\n      \"status_type\": \"active\",\n      \"suggested_action\": {\n        \"action\": \"change_status\",\n        \"details\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"justification\": \"string\"\n      },\n      \"updated_by_name\": \"string\",\n      \"user_name\": \"string\",\n      \"value_currency\": \"string\",\n      \"value_formatted\": \"string\"\n    }\n  ],\n  \"primary_address_summary\": \"string\",\n  \"primary_email\": {\n    \"email\": \"string\",\n    \"is_unsubscribed\": true,\n    \"type\": \"string\"\n  },\n  \"primary_phone\": {\n    \"phone\": \"string\",\n    \"type\": \"string\",\n    \"country\": \"string\",\n    \"outbound_sms_blocked\": false,\n    \"phone_formatted\": \"string\",\n    \"tz_ids\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"recent_calls\": [\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  ],\n  \"source\": \"string\",\n  \"status_label\": \"string\",\n  \"summaries\": [\n    {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  ],\n  \"tasks\": [\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    {\n      \"key_0\": {}\n    }\n  ],\n  \"updated_by_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be80b2a3-d8c2-4d9a-9bda-55781b2a818b",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b3588d8d-dd7e-4d4e-a0fd-ba81f226b86a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fa4108ef-a339-420e-8631-a47c14f356f5",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1689158b-41f9-4de0-9a5b-2910a55c5653",
+          "name": "Update an existing lead",
+          "request": {
+            "name": "Update an existing lead",
+            "description": {
+              "content": "Supports non-destructive patches. Nested `contacts` cannot be updated through this endpoint -- use the Contacts API instead.\n\n**status**: See `status` and `status_id` guidance on the create endpoint.\n\n**custom.FIELD_ID** (optional): See `custom.FIELD_ID` guidance on the create endpoint. You can also unset a single field, e.g.:\n\n```json\n{ \"custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c\": null }\n```\n\nIf the custom field accepts multiple values, you can specify `.add` or `.remove` as part of the field key to add/remove a single value to/from a list of values, e.g.:\n\n```json\n{ \"custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c.add\": \"Wednesday\" }\n```\n\nadds \"Wednesday\" to the list of values which already exist on the given lead.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lead",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "df2312dd-c276-4e01-9d75-35ee1ef7a35e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contact_ids\": [\n    \"string\",\n    \"string\"\n  ],\n  \"created_by\": \"string\",\n  \"date_created\": \"1969-12-28T04:00:08.320Z\",\n  \"date_updated\": \"1965-01-08T20:45:33.751Z\",\n  \"description\": \"string\",\n  \"html_url\": \"string\",\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"organization_id\": \"string\",\n  \"status_id\": \"string\",\n  \"updated_by\": \"string\",\n  \"url\": \"string\",\n  \"addresses\": [\n    {\n      \"address_1\": \"string\",\n      \"address_2\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"label\": \"string\",\n      \"state\": \"string\",\n      \"zipcode\": \"string\",\n      \"tz_ids\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"address_1\": \"string\",\n      \"address_2\": \"string\",\n      \"city\": \"string\",\n      \"country\": \"string\",\n      \"label\": \"string\",\n      \"state\": \"string\",\n      \"zipcode\": \"string\",\n      \"tz_ids\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"contacts\": [\n    {\n      \"created_by\": \"string\",\n      \"date_created\": \"1987-11-12T07:55:52.122Z\",\n      \"date_updated\": \"2013-03-07T15:04:14.080Z\",\n      \"display_name\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"organization_id\": \"string\",\n      \"title\": \"string\",\n      \"updated_by\": \"string\",\n      \"emails\": [\n        {\n          \"email\": \"string\",\n          \"is_unsubscribed\": true,\n          \"type\": \"string\"\n        },\n        {\n          \"email\": \"string\",\n          \"is_unsubscribed\": false,\n          \"type\": \"string\"\n        }\n      ],\n      \"integration_links\": [\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"lead_id\": \"string\",\n      \"lead_suggestions_operation_id\": \"string\",\n      \"phones\": [\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": false,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": true,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"recent_calls\": [\n        {\n          \"dialer_id\": \"string\",\n          \"duration\": 7005,\n          \"finish_timestamp\": \"1960-10-04T17:30:04.352Z\",\n          \"id\": \"string\",\n          \"status\": \"completed\"\n        },\n        {\n          \"dialer_id\": \"string\",\n          \"duration\": 6470,\n          \"finish_timestamp\": \"1976-02-08T03:40:29.166Z\",\n          \"id\": \"string\",\n          \"status\": \"no-answer\"\n        }\n      ],\n      \"subscriptions\": [\n        {\n          \"contact_email\": \"string\",\n          \"date_created\": \"1963-11-14T18:19:03.298Z\",\n          \"initial_email_id\": \"string\",\n          \"sequence_id\": \"string\",\n          \"sequence_name\": \"string\",\n          \"sequence_status\": \"draft\",\n          \"start_date\": \"2023-06-19T01:05:26.983Z\",\n          \"subscription_id\": \"string\",\n          \"subscription_status\": \"finished\",\n          \"subscription_status_reason\": \"sending-throttled-too-long\"\n        },\n        {\n          \"contact_email\": \"string\",\n          \"date_created\": \"1965-03-02T13:46:17.425Z\",\n          \"initial_email_id\": \"string\",\n          \"sequence_id\": \"string\",\n          \"sequence_name\": \"string\",\n          \"sequence_status\": \"draft\",\n          \"start_date\": \"1947-06-06T21:32:36.577Z\",\n          \"subscription_id\": \"string\",\n          \"subscription_status\": \"finished\",\n          \"subscription_status_reason\": \"no-user-phone\"\n        }\n      ],\n      \"timezone\": \"string\",\n      \"timezone_source\": \"string\",\n      \"urls\": [\n        {\n          \"type\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"type\": \"string\",\n          \"url\": \"string\"\n        }\n      ]\n    },\n    {\n      \"created_by\": \"string\",\n      \"date_created\": \"1953-03-18T13:54:29.912Z\",\n      \"date_updated\": \"2004-01-03T14:52:19.162Z\",\n      \"display_name\": \"string\",\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"organization_id\": \"string\",\n      \"title\": \"string\",\n      \"updated_by\": \"string\",\n      \"emails\": [\n        {\n          \"email\": \"string\",\n          \"is_unsubscribed\": false,\n          \"type\": \"string\"\n        },\n        {\n          \"email\": \"string\",\n          \"is_unsubscribed\": true,\n          \"type\": \"string\"\n        }\n      ],\n      \"integration_links\": [\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"lead_id\": \"string\",\n      \"lead_suggestions_operation_id\": \"string\",\n      \"phones\": [\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": true,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": true,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"recent_calls\": [\n        {\n          \"dialer_id\": \"string\",\n          \"duration\": 9697,\n          \"finish_timestamp\": \"2018-06-23T05:07:52.759Z\",\n          \"id\": \"string\",\n          \"status\": \"cancel\"\n        },\n        {\n          \"dialer_id\": \"string\",\n          \"duration\": 1737,\n          \"finish_timestamp\": \"1974-12-30T10:19:54.495Z\",\n          \"id\": \"string\",\n          \"status\": \"cancel\"\n        }\n      ],\n      \"subscriptions\": [\n        {\n          \"contact_email\": \"string\",\n          \"date_created\": \"2016-01-17T03:53:47.270Z\",\n          \"initial_email_id\": \"string\",\n          \"sequence_id\": \"string\",\n          \"sequence_name\": \"string\",\n          \"sequence_status\": \"draft\",\n          \"start_date\": \"1999-11-20T23:07:09.352Z\",\n          \"subscription_id\": \"string\",\n          \"subscription_status\": \"error\",\n          \"subscription_status_reason\": \"meeting-booked\"\n        },\n        {\n          \"contact_email\": \"string\",\n          \"date_created\": \"1973-03-17T18:30:28.466Z\",\n          \"initial_email_id\": \"string\",\n          \"sequence_id\": \"string\",\n          \"sequence_name\": \"string\",\n          \"sequence_status\": \"draft\",\n          \"start_date\": \"1977-06-27T17:05:03.232Z\",\n          \"subscription_id\": \"string\",\n          \"subscription_status\": \"finished\",\n          \"subscription_status_reason\": \"reply-received\"\n        }\n      ],\n      \"timezone\": \"string\",\n      \"timezone_source\": \"string\",\n      \"urls\": [\n        {\n          \"type\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"type\": \"string\",\n          \"url\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"contacts_summary\": \"string\",\n  \"created_by_name\": \"string\",\n  \"display_name\": \"string\",\n  \"integration_links\": [\n    {\n      \"name\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"localtime\": \"1948-10-31T08:09:24.634Z\",\n  \"opportunities\": [\n    {\n      \"annualized_expected_value\": 9317,\n      \"annualized_value\": 2088,\n      \"confidence\": 3321,\n      \"contact_id\": \"string\",\n      \"created_by\": \"string\",\n      \"date_created\": \"1966-08-08T00:37:10.557Z\",\n      \"date_lost\": \"1972-12-17T11:49:30.835Z\",\n      \"date_updated\": \"1969-07-25T10:04:58.534Z\",\n      \"date_won\": \"2024-10-30\",\n      \"expected_value\": 9390,\n      \"id\": \"string\",\n      \"lead_id\": \"string\",\n      \"note\": \"string\",\n      \"organization_id\": \"string\",\n      \"status_id\": \"string\",\n      \"updated_by\": \"string\",\n      \"user_id\": \"string\",\n      \"value\": 1303,\n      \"value_period\": \"one_time\",\n      \"attachments\": [\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 788,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        },\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 1455,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        }\n      ],\n      \"comment_summary\": {\n        \"comment_count\": 9313,\n        \"thread_id\": \"string\"\n      },\n      \"contact_name\": \"string\",\n      \"created_by_name\": \"string\",\n      \"integration_links\": [\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"is_stalled\": true,\n      \"lead_name\": \"string\",\n      \"lead_primary_email\": {\n        \"email\": \"string\",\n        \"is_unsubscribed\": false,\n        \"type\": \"string\"\n      },\n      \"lead_primary_phone\": [\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": true,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": false,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"pipeline_id\": \"string\",\n      \"pipeline_name\": \"string\",\n      \"stall_status\": {\n        \"communication_issue\": \"cant_get_in_touch\",\n        \"next_action\": {\n          \"action\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"justification\": \"string\"\n        }\n      },\n      \"status_display_name\": \"string\",\n      \"status_label\": \"string\",\n      \"status_type\": \"lost\",\n      \"suggested_action\": {\n        \"action\": \"follow_up_call\",\n        \"details\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"justification\": \"string\"\n      },\n      \"updated_by_name\": \"string\",\n      \"user_name\": \"string\",\n      \"value_currency\": \"string\",\n      \"value_formatted\": \"string\"\n    },\n    {\n      \"annualized_expected_value\": 916,\n      \"annualized_value\": 6275,\n      \"confidence\": 373,\n      \"contact_id\": \"string\",\n      \"created_by\": \"string\",\n      \"date_created\": \"2024-06-28T23:18:54.983Z\",\n      \"date_lost\": \"2000-10-19T01:07:55.249Z\",\n      \"date_updated\": \"2018-10-30T07:52:47.644Z\",\n      \"date_won\": \"1979-09-05\",\n      \"expected_value\": 1835,\n      \"id\": \"string\",\n      \"lead_id\": \"string\",\n      \"note\": \"string\",\n      \"organization_id\": \"string\",\n      \"status_id\": \"string\",\n      \"updated_by\": \"string\",\n      \"user_id\": \"string\",\n      \"value\": 5143,\n      \"value_period\": \"one_time\",\n      \"attachments\": [\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 1245,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        },\n        {\n          \"content_type\": \"string\",\n          \"filename\": \"string\",\n          \"size\": 6353,\n          \"url\": \"string\",\n          \"thumbnail_url\": \"string\"\n        }\n      ],\n      \"comment_summary\": {\n        \"comment_count\": 7703,\n        \"thread_id\": \"string\"\n      },\n      \"contact_name\": \"string\",\n      \"created_by_name\": \"string\",\n      \"integration_links\": [\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"url\": \"string\"\n        }\n      ],\n      \"is_stalled\": false,\n      \"lead_name\": \"string\",\n      \"lead_primary_email\": {\n        \"email\": \"string\",\n        \"is_unsubscribed\": true,\n        \"type\": \"string\"\n      },\n      \"lead_primary_phone\": [\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": true,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"phone\": \"string\",\n          \"type\": \"string\",\n          \"country\": \"string\",\n          \"outbound_sms_blocked\": false,\n          \"phone_formatted\": \"string\",\n          \"tz_ids\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"pipeline_id\": \"string\",\n      \"pipeline_name\": \"string\",\n      \"stall_status\": {\n        \"communication_issue\": \"no_issue\",\n        \"next_action\": {\n          \"action\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"justification\": \"string\"\n        }\n      },\n      \"status_display_name\": \"string\",\n      \"status_label\": \"string\",\n      \"status_type\": \"active\",\n      \"suggested_action\": {\n        \"action\": \"change_status\",\n        \"details\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"justification\": \"string\"\n      },\n      \"updated_by_name\": \"string\",\n      \"user_name\": \"string\",\n      \"value_currency\": \"string\",\n      \"value_formatted\": \"string\"\n    }\n  ],\n  \"primary_address_summary\": \"string\",\n  \"primary_email\": {\n    \"email\": \"string\",\n    \"is_unsubscribed\": true,\n    \"type\": \"string\"\n  },\n  \"primary_phone\": {\n    \"phone\": \"string\",\n    \"type\": \"string\",\n    \"country\": \"string\",\n    \"outbound_sms_blocked\": false,\n    \"phone_formatted\": \"string\",\n    \"tz_ids\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"recent_calls\": [\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  ],\n  \"source\": \"string\",\n  \"status_label\": \"string\",\n  \"summaries\": [\n    {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  ],\n  \"tasks\": [\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    {\n      \"key_0\": {}\n    }\n  ],\n  \"updated_by_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75468012-5a07-4056-be53-c1e8fb953789",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "19574abf-db00-4369-8eeb-442d379db0e8",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b351dc30-94de-402f-9994-bd1424d4318f",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29ed86b8-a932-44ac-aa72-e2d6caa3c973",
+          "name": "Delete a lead",
+          "request": {
+            "name": "Delete a lead",
+            "description": {},
+            "url": {
+              "path": [
+                "lead",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ec197b8f-e537-4827-9efc-a38c71604844",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "18d682ff-56e7-44ac-8dfc-b33f76b6a6ef",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e59cb1d2-4f05-4431-89ff-97142845f314",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3f58c015-f0a8-4647-a1a6-7b78db58ec20",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lead",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.close.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "70300a3c-f46b-4950-88ea-239f0b1ba54f",
+    "name": "API Endpoints subpackage_activities subpackage_leads API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

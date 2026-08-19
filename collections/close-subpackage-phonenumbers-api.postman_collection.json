@@ -1,0 +1,1442 @@
+{
+  "item": [
+    {
+      "id": "11be9788-3d72-4a00-b892-8aab30e3bcd4",
+      "name": "subpackage_phoneNumbers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ddf28a56-29ce-4e15-a35c-9fa76138f8df",
+          "name": "List or search for phone numbers",
+          "request": {
+            "name": "List or search for phone numbers",
+            "description": {},
+            "url": {
+              "path": [
+                "phone_number",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_limit",
+                  "value": "100",
+                  "description": "Number of results to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "_skip",
+                  "value": "0",
+                  "description": "Number of results to skip before returning, for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "number",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_group_number",
+                  "value": "<boolean,null>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6851553d-f68b-4ca7-a6ab-f3137a70783d",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone_number",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "number",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "is_group_number",
+                      "value": "<boolean,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"address_id\": \"string\",\n      \"bundle_id\": \"string\",\n      \"carrier\": \"twilio\",\n      \"carrier_type\": \"tollfree\",\n      \"country\": \"string\",\n      \"date_created\": \"1976-12-31T02:42:24.823Z\",\n      \"date_updated\": \"2007-05-31T10:46:15.038Z\",\n      \"id\": \"string\",\n      \"is_group_number\": false,\n      \"is_premium\": false,\n      \"is_verified\": true,\n      \"label\": \"string\",\n      \"last_billed_price\": 4526.993153309751,\n      \"mms_enabled\": false,\n      \"next_billing_on\": \"2011-05-14T10:50:10.029Z\",\n      \"number\": \"string\",\n      \"number_formatted\": \"string\",\n      \"organization_id\": \"string\",\n      \"sms_enabled\": true,\n      \"supports_mms_to_countries\": [\n        \"string\",\n        \"string\"\n      ],\n      \"supports_sms_to_countries\": [\n        \"string\",\n        \"string\"\n      ],\n      \"type\": \"external\",\n      \"user_id\": \"string\",\n      \"forward_to\": \"string\",\n      \"forward_to_enabled\": false,\n      \"forward_to_formatted\": \"string\",\n      \"participants\": [\n        \"string\",\n        \"string\"\n      ],\n      \"phone_numbers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"phone_numbers_formatted\": [\n        \"string\",\n        \"string\"\n      ],\n      \"press_1_to_accept\": true,\n      \"voicemail_greeting_url\": \"string\",\n      \"was_ported\": true\n    },\n    {\n      \"address_id\": \"string\",\n      \"bundle_id\": \"string\",\n      \"carrier\": \"twilio\",\n      \"carrier_type\": \"local\",\n      \"country\": \"string\",\n      \"date_created\": \"1950-08-18T05:06:50.288Z\",\n      \"date_updated\": \"1982-09-27T07:15:35.846Z\",\n      \"id\": \"string\",\n      \"is_group_number\": true,\n      \"is_premium\": true,\n      \"is_verified\": false,\n      \"label\": \"string\",\n      \"last_billed_price\": 5828.593839336134,\n      \"mms_enabled\": true,\n      \"next_billing_on\": \"1954-02-07T13:03:00.856Z\",\n      \"number\": \"string\",\n      \"number_formatted\": \"string\",\n      \"organization_id\": \"string\",\n      \"sms_enabled\": true,\n      \"supports_mms_to_countries\": [\n        \"string\",\n        \"string\"\n      ],\n      \"supports_sms_to_countries\": [\n        \"string\",\n        \"string\"\n      ],\n      \"type\": \"virtual\",\n      \"user_id\": \"string\",\n      \"forward_to\": \"string\",\n      \"forward_to_enabled\": false,\n      \"forward_to_formatted\": \"string\",\n      \"participants\": [\n        \"string\",\n        \"string\"\n      ],\n      \"phone_numbers\": [\n        \"string\",\n        \"string\"\n      ],\n      \"phone_numbers_formatted\": [\n        \"string\",\n        \"string\"\n      ],\n      \"press_1_to_accept\": true,\n      \"voicemail_greeting_url\": \"string\",\n      \"was_ported\": true\n    }\n  ],\n  \"has_more\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bee487f0-da6c-4264-9cfd-0748e7e3ea46",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone_number",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "number",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "is_group_number",
+                      "value": "<boolean,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1190fd73-834d-4a88-bd51-73ffb0564dd2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone_number",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "number",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "is_group_number",
+                      "value": "<boolean,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "337c91d3-d298-4be6-a257-602ccea35350",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone_number",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "number",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "is_group_number",
+                      "value": "<boolean,null>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fa375f12-a468-4a7b-93b0-b6fda8d7a819",
+          "name": "Request an internal phone number",
+          "request": {
+            "name": "Request an internal phone number",
+            "description": {
+              "content": "Renting a phone number incurs a cost. You need the \"Manage Group Phone Numbers\" permission to rent group numbers.\n\nIf a number was rented, a 201 response is returned with the new number. If no number was rented (4xx response code), the response contains a `status` field which may contain one of the values below. New statuses may be added in the future.\n\n* `has-voice-only`: This country/prefix combination only has non-SMS-capable\n  numbers. You can attempt renting the number by passing `with_sms` as `false`.\n* `needs-more-info`: More information (such as proof of address) is needed to\n  rent this number. This number can only be rented by contacting Close support.\n* `billing-error`: An error related to billing has occurred. For example, the\n  telephony budget has been reached, or there are not enough funds and recharging failed.\n* `error`: An error has occurred while renting this number. A human-readable\n  message is returned in the `error` field.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "phone_number",
+                "request",
+                "internal",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"country\": \"<string>\",\n  \"sharing\": \"<string>\",\n  \"bundle_id\": \"<string,null>\",\n  \"carrier_type\": \"<string>\",\n  \"prefix\": \"\",\n  \"with_mms\": \"<boolean,null>\",\n  \"with_sms\": \"<boolean,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "924268e2-2568-42a0-aeb3-0ff006829584",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone_number",
+                    "request",
+                    "internal",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"country\": \"<string>\",\n  \"sharing\": \"group\",\n  \"bundle_id\": \"<string,null>\",\n  \"carrier_type\": \"local\",\n  \"prefix\": \"\",\n  \"with_mms\": \"<boolean,null>\",\n  \"with_sms\": \"<boolean,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0b5d2ac-4874-488a-a3f0-6c37cbed1eae",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone_number",
+                    "request",
+                    "internal",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"country\": \"<string>\",\n  \"sharing\": \"group\",\n  \"bundle_id\": \"<string,null>\",\n  \"carrier_type\": \"local\",\n  \"prefix\": \"\",\n  \"with_mms\": \"<boolean,null>\",\n  \"with_sms\": \"<boolean,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24bb1360-be02-447d-8d66-f53555798220",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone_number",
+                    "request",
+                    "internal",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"country\": \"<string>\",\n  \"sharing\": \"group\",\n  \"bundle_id\": \"<string,null>\",\n  \"carrier_type\": \"local\",\n  \"prefix\": \"\",\n  \"with_mms\": \"<boolean,null>\",\n  \"with_sms\": \"<boolean,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12c85aee-0e56-48d8-9f84-75967fd6c37d",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone_number",
+                    "request",
+                    "internal",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"country\": \"<string>\",\n  \"sharing\": \"group\",\n  \"bundle_id\": \"<string,null>\",\n  \"carrier_type\": \"local\",\n  \"prefix\": \"\",\n  \"with_mms\": \"<boolean,null>\",\n  \"with_sms\": \"<boolean,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea43b2a9-1239-4bbe-82a0-8dd6bfa33467",
+          "name": "Retrieve a single phone number",
+          "request": {
+            "name": "Retrieve a single phone number",
+            "description": {},
+            "url": {
+              "path": [
+                "phone_number",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "51942498-ecae-4232-bd0f-fc995f97672f",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone_number",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"address_id\": \"string\",\n  \"bundle_id\": \"string\",\n  \"carrier\": \"twilio\",\n  \"carrier_type\": \"local\",\n  \"country\": \"string\",\n  \"date_created\": \"1965-07-29T17:22:58.129Z\",\n  \"date_updated\": \"1951-06-12T00:26:36.586Z\",\n  \"id\": \"string\",\n  \"is_group_number\": false,\n  \"is_premium\": true,\n  \"is_verified\": true,\n  \"label\": \"string\",\n  \"last_billed_price\": 2051.740789464672,\n  \"mms_enabled\": false,\n  \"next_billing_on\": \"2009-08-27T06:16:17.902Z\",\n  \"number\": \"string\",\n  \"number_formatted\": \"string\",\n  \"organization_id\": \"string\",\n  \"sms_enabled\": false,\n  \"supports_mms_to_countries\": [\n    \"string\",\n    \"string\"\n  ],\n  \"supports_sms_to_countries\": [\n    \"string\",\n    \"string\"\n  ],\n  \"type\": \"virtual\",\n  \"user_id\": \"string\",\n  \"forward_to\": \"string\",\n  \"forward_to_enabled\": false,\n  \"forward_to_formatted\": \"string\",\n  \"participants\": [\n    \"string\",\n    \"string\"\n  ],\n  \"phone_numbers\": [\n    \"string\",\n    \"string\"\n  ],\n  \"phone_numbers_formatted\": [\n    \"string\",\n    \"string\"\n  ],\n  \"press_1_to_accept\": false,\n  \"voicemail_greeting_url\": \"string\",\n  \"was_ported\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4eb45283-c700-42d8-a2b5-1fb0372b1100",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone_number",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "985ff183-75c9-4823-b8ac-f17327935c71",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone_number",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e96423fc-1b1b-46c5-ac75-6ecd6a1b9972",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone_number",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_fields",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fad5e2a2-8b70-4933-9673-fef192d41d75",
+          "name": "Update a phone number",
+          "request": {
+            "name": "Update a phone number",
+            "description": {
+              "content": "You need the \"Manage Group Phone Numbers\" permission to update a group number. You can only update your own personal numbers.\n\nYou can:\n\n- Change a `label` of your number.\n- Set up call forwarding via `forward_to` and `forward_to_enabled`.\n- Set up a voicemail greeting by including a URL of an mp3 recording in `voicemail_greeting_url`. We require the URL to be secure (i.e. starting with https://).\n- Modify which team members are part of a group number via `participants`. This should be a list of user IDs.\n- Modify which external phone numbers are part of a group number via `phone_numbers`. This should be a list of phone numbers in E.164 international format, e.g. \"+16503334444\".",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "phone_number",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"forward_to\": \"<string>\",\n  \"forward_to_enabled\": \"<boolean>\",\n  \"label\": \"<string>\",\n  \"participants\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"phone_numbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"press_1_to_accept\": \"<boolean>\",\n  \"voicemail_greeting_url\": \"<string,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3bb88587-6763-487a-bc89-815b71160c1e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone_number",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"forward_to\": \"<string>\",\n  \"forward_to_enabled\": \"<boolean>\",\n  \"label\": \"<string>\",\n  \"participants\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"phone_numbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"press_1_to_accept\": \"<boolean>\",\n  \"voicemail_greeting_url\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"address_id\": \"string\",\n  \"bundle_id\": \"string\",\n  \"carrier\": \"twilio\",\n  \"carrier_type\": \"local\",\n  \"country\": \"string\",\n  \"date_created\": \"1965-07-29T17:22:58.129Z\",\n  \"date_updated\": \"1951-06-12T00:26:36.586Z\",\n  \"id\": \"string\",\n  \"is_group_number\": false,\n  \"is_premium\": true,\n  \"is_verified\": true,\n  \"label\": \"string\",\n  \"last_billed_price\": 2051.740789464672,\n  \"mms_enabled\": false,\n  \"next_billing_on\": \"2009-08-27T06:16:17.902Z\",\n  \"number\": \"string\",\n  \"number_formatted\": \"string\",\n  \"organization_id\": \"string\",\n  \"sms_enabled\": false,\n  \"supports_mms_to_countries\": [\n    \"string\",\n    \"string\"\n  ],\n  \"supports_sms_to_countries\": [\n    \"string\",\n    \"string\"\n  ],\n  \"type\": \"virtual\",\n  \"user_id\": \"string\",\n  \"forward_to\": \"string\",\n  \"forward_to_enabled\": false,\n  \"forward_to_formatted\": \"string\",\n  \"participants\": [\n    \"string\",\n    \"string\"\n  ],\n  \"phone_numbers\": [\n    \"string\",\n    \"string\"\n  ],\n  \"phone_numbers_formatted\": [\n    \"string\",\n    \"string\"\n  ],\n  \"press_1_to_accept\": false,\n  \"voicemail_greeting_url\": \"string\",\n  \"was_ported\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d917f0aa-7577-4efc-a148-196d3151d8ac",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone_number",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"forward_to\": \"<string>\",\n  \"forward_to_enabled\": \"<boolean>\",\n  \"label\": \"<string>\",\n  \"participants\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"phone_numbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"press_1_to_accept\": \"<boolean>\",\n  \"voicemail_greeting_url\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "220603b3-9cc4-4252-a74e-832f911ab049",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone_number",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"forward_to\": \"<string>\",\n  \"forward_to_enabled\": \"<boolean>\",\n  \"label\": \"<string>\",\n  \"participants\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"phone_numbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"press_1_to_accept\": \"<boolean>\",\n  \"voicemail_greeting_url\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4fc62df1-3d3e-40d8-9fdf-dbe0576a47f9",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone_number",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"forward_to\": \"<string>\",\n  \"forward_to_enabled\": \"<boolean>\",\n  \"label\": \"<string>\",\n  \"participants\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"phone_numbers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"press_1_to_accept\": \"<boolean>\",\n  \"voicemail_greeting_url\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0fa0ce20-b0df-41fa-85a5-7cd573d0d92d",
+          "name": "Delete a phone number",
+          "request": {
+            "name": "Delete a phone number",
+            "description": {
+              "content": "You need the \"Manage Group Phone Numbers\" permission to delete a group number. You can only delete your own personal numbers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "phone_number",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "82aa11e4-82ce-4772-99ec-5657f35e5ada",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone_number",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d98c12b-b45a-4b7c-9059-56d2668f0081",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone_number",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c6ce9be7-8092-4e11-85e9-70c33950267b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone_number",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b907a72-8de8-4ab6-ba47-03d53c7145a2",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "phone_number",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.close.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "755fc7e2-7e00-46b5-a88e-c1929af22df2",
+    "name": "API Endpoints subpackage_activities subpackage_phoneNumbers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

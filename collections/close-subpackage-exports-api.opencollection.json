@@ -1,0 +1,127 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints subpackage_activities subpackage_exports API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_exports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all the exports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/export/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "_limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return."
+              },
+              {
+                "name": "_skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip before returning, for pagination."
+              },
+              {
+                "name": "_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response."
+              }
+            ]
+          },
+          "docs": "List all the exports"
+        },
+        {
+          "info": {
+            "name": "Export leads based on a search query",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/export/lead/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "You will receive a link to the generated file via email once the export is done.\n\nThe exported file is GZIP compressed to make your download and our upload faster. The `content-encoding` HTTP header will be set to `gzip` and the `content-type` HTTP header will be set to `text/csv` for CSV exports or `application/json` for JSON exports.\n\nParameters:\n  - `s_query/results_limit/sort` (optional) - The [Advanced Filtering API](https://developer.close.com/api/resources/advanced-filtering) parameters u"
+        },
+        {
+          "info": {
+            "name": "Export opportunities, based on opportunity filters",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/export/opportunity/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Parameters:\n  - `params` (optional) - A dictionary of filters, which would be used for the `/opportunity/` endpoint.\n  - `format` - Format of the exported file. The choices are: `csv`, `json`\n  - `date_format` (optional) - Controls the format of date objects. Note: this only works with the `csv` format.\n    - `original` (default) - A date format that includes microseconds and timezone information.\n        - Date: `[YYYY]-[MM]-[DD]`\n        - Date w/ time: `[YYYY]-[MM]-[DD] [hh]:[mm]:[ss.sssss]±["
+        },
+        {
+          "info": {
+            "name": "Get a single Export",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/export/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "_fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response."
+              }
+            ]
+          },
+          "docs": "You can get a single export to do things like check its `status` or get a `download_url`\n\n - `status` can have one of these values: `created`, `started`, `in_progress`, `done`, `error`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

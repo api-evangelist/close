@@ -1,0 +1,83 @@
+generated: '2026-08-13'
+method: searched
+source: live probes of every Close host in apis.yml + OpenAPI servers[]
+description: >-
+  Close serves RFC 8414 OAuth 2.0 Authorization Server Metadata from the API host
+  (api.close.com) and RFC 9728 OAuth 2.0 Protected Resource Metadata from the MCP
+  host (mcp.close.com). No security.txt, OpenID Connect discovery, api-catalog,
+  ai-plugin.json or A2A agent card is served on any host. Close does publish a
+  machine-readable AI-usage signal in robots.txt (Content-Signal).
+hosts:
+  - host: https://api.close.com
+    documents:
+      - path: /.well-known/oauth-authorization-server
+        spec: RFC 8414
+        status: 200
+        content_type: application/json
+        file: close-oauth-authorization-server.json
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-protected-resource
+        status: 404
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+  - host: https://mcp.close.com
+    documents:
+      - path: /.well-known/oauth-protected-resource
+        spec: RFC 9728
+        status: 200
+        content_type: application/json
+        file: close-mcp-oauth-protected-resource.json
+        note: >-
+          Advertises resource https://mcp.close.com/, authorization server
+          https://api.close.com/, and scopes mcp.read, mcp.write_safe,
+          mcp.write_destructive, offline_access.
+      - path: /.well-known/oauth-protected-resource/mcp
+        spec: RFC 9728
+        status: 200
+        note: same document, served under the resource path variant
+      - path: /.well-known/oauth-authorization-server
+        spec: RFC 8414
+        status: 200
+        note: same document as api.close.com
+      - path: /.well-known/agent-card.json
+        status: 404
+      - path: /.well-known/agent.json
+        status: 404
+      - path: /.well-known/security.txt
+        status: 404
+  - host: https://www.close.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+        note: 'returns an HTML body: "Invalid .well-known request"'
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /.well-known/agent-card.json
+        status: 404
+  - host: https://developer.close.com
+    documents:
+      - path: /.well-known/agent-card.json
+        status: 404
+        note: docs SPA returns an HTML 404 shell; not a document
+other_signals:
+  - path: /robots.txt
+    host: https://close.com
+    status: 200
+    file: close-robots.txt
+    signal: Content-Signal
+    value: 'ai-train=no, search=yes'
+    note: >-
+      Close publishes a Content Signals directive in robots.txt declining AI
+      training while permitting search indexing. This is a real, provider-served
+      machine-readable AI-usage preference, but it is not a /.well-known/ document.
+security_txt: false
+agent_card: false

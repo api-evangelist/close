@@ -1,0 +1,155 @@
+generated: '2026-08-13'
+method: searched
+source: https://developer.close.com/api/resources/webhooks
+spec_type: none
+asyncapi_published: false
+asyncapi_note: >-
+  Close publishes no AsyncAPI document. Probed /asyncapi.yaml and /asyncapi.json
+  on api.close.com and developer.close.com, and searched the github.com/closeio
+  org and the docs index — nothing. The event surface below is transcribed from
+  Close's own webhook and event-log reference; it is a webhook catalog, not a
+  fabricated AsyncAPI.
+description: >-
+  Close's event surface is a webhook subscription system layered on a queryable
+  30-day event log. Every webhook delivery is a POST of one event-log entry.
+  Subscriptions filter on object type + action, and optionally on a JSON filter
+  expression.
+docs:
+  webhooks: https://developer.close.com/api/resources/webhooks
+  filters: https://developer.close.com/api/resources/webhooks/webhook-filters
+  event_log: https://developer.close.com/api/resources/events
+  event_types: https://developer.close.com/api/resources/events/list-of-event-types
+transport:
+  protocol: https
+  method: POST
+  direction: outbound
+  content_type: application/json
+  ssl_verification:
+    default: true
+    overridable: true
+    field: verify_ssl
+security:
+  signing:
+    algorithm: HMAC-SHA256
+    headers: [close-sig-hash, close-sig-timestamp]
+    signed_material: close-sig-timestamp concatenated with the raw payload
+    key_delivery: >-
+      The signature_key is returned in the POST response when the subscription
+      is created — it is shown once, at creation.
+    verification_example_published: true
+delivery:
+  retry: exponential backoff up to every 20 minutes
+  retry_window_hours: 72
+  ordering_guaranteed: false
+  ordering_note: >-
+    Explicitly not guaranteed, because of event consolidation, delivery
+    parallelism and retries. Consumers must dedupe and order on the event id and
+    date_created themselves.
+  auto_pause_conditions:
+    - Queue reaches 100,000 backlogged events (admin warning emails at 80,000).
+    - All delivery fails for 3 consecutive days.
+  resume: Paused subscriptions must be reactivated manually via the API.
+  replay: >-
+    No replay endpoint. Missed events are recovered by querying the event log,
+    which retains 30 days.
+  guidance: Queue deliveries locally and process asynchronously so the queue never backs up.
+limits:
+  subscriptions_per_organization: 40
+  elevated_limit: 500
+  elevated_platforms: [Zapier, Backendless, Integrately, 'Customer.io Journeys Track API']
+payload:
+  envelope_fields: [event, subscription_id]
+  event_fields:
+    - id
+    - object_type
+    - object_id
+    - action
+    - date_created
+    - date_updated
+    - organization_id
+    - user_id
+    - lead_id
+    - data
+    - previous_data
+    - changed_fields
+    - meta
+    - request_id
+  note: >-
+    previous_data plus changed_fields make Close webhooks a true change-data
+    feed, not just a notification — a consumer can diff without re-reading.
+actions:
+  - created
+  - updated
+  - deleted
+  - merged
+  - completed
+  - sent
+  - answered
+  - scheduled
+  - canceled
+  - started
+  - paused
+  - activated
+  - deactivated
+  - reverting
+  - reverted
+object_types:
+  - {type: lead, label: Lead}
+  - {type: contact, label: Contact}
+  - {type: opportunity, label: Opportunity}
+  - {type: activity.email, label: Email}
+  - {type: activity.email_thread, label: Email thread}
+  - {type: activity.call, label: Call}
+  - {type: activity.sms, label: SMS}
+  - {type: activity.whatsapp_message, label: WhatsApp Message}
+  - {type: activity.note, label: Note}
+  - {type: activity.meeting, label: Meeting}
+  - {type: activity.form_submission, label: Form Submission}
+  - {type: activity.custom_activity, label: Custom Activity}
+  - {type: activity.lead_status_change, label: Lead status change}
+  - {type: activity.opportunity_status_change, label: Opportunity status change}
+  - {type: activity.task_completed, label: Task completed}
+  - {type: activity.lead_merge, label: LeadMerge}
+  - {type: 'task.SUBTYPE', label: Tasks, note: 'subtyped, e.g. task.lead, task.outbound_call'}
+  - {type: unsubscribed_email, label: Unsubscribed Email}
+  - {type: import, label: Import}
+  - {type: custom_fields.lead, label: Lead Custom fields}
+  - {type: custom_fields.contact, label: Contact Custom fields}
+  - {type: custom_fields.opportunity, label: Opportunity Custom fields}
+  - {type: custom_fields.activity, label: Activity Custom fields}
+  - {type: custom_fields.custom_object, label: Custom Object Custom fields}
+  - {type: custom_fields.shared, label: Shared Custom fields}
+  - {type: custom_activity_type, label: Custom Activity Type}
+  - {type: custom_object_type, label: Custom Object Type}
+  - {type: custom_object, label: Custom Object}
+  - {type: membership, label: Membership}
+  - {type: group, label: Group}
+  - {type: saved_search, label: Saved search}
+  - {type: phone_number, label: Phone Number}
+  - {type: email_template, label: Email template}
+  - {type: sms_template, label: SMS template}
+  - {type: sequence, label: Sequence}
+  - {type: sequence_subscription, label: Sequence Subscription}
+  - {type: comment, label: Comment}
+  - {type: comment_thread, label: Comment thread}
+object_type_count: 38
+management_api:
+  base: https://api.close.com/api/v1/webhook/
+  operations:
+    - webhooks_list
+    - webhooks_create
+    - webhooks_get
+    - webhooks_update
+    - webhooks_delete
+  spec: openapi/_original/close-api-openapi.json
+  permissions: >-
+    Admins manage subscriptions org-wide; non-admins can only modify their own.
+    Full event data is delivered regardless of the subscriber's role.
+event_log:
+  operations: [events_list, events_get]
+  retention_days: 30
+  pagination: cursor (_cursor + _limit)
+gaps:
+  - No AsyncAPI or CloudEvents document — the event catalog exists only as prose.
+  - 'No per-event payload schemas in the OpenAPI: the top-level webhooks object is empty in the spec.'
+  - No delivery replay endpoint; recovery depends on the 30-day event log.

@@ -1,0 +1,1780 @@
+{
+  "item": [
+    {
+      "id": "814292d8-48ee-42cc-ad95-769e54433424",
+      "name": "subpackage_activitiesSms",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3e712dc6-73cf-4cae-94ee-0a3d489a9295",
+          "name": "List or filter all SMS activities",
+          "request": {
+            "name": "List or filter all SMS activities",
+            "description": {
+              "content": "Get a list of matching SMS activities.\n\nMMS messages are considered SMS messages with attachments. Attachments have identical fields to email attachments (`url`, `filename`, `size` and `content_type`), a `media_id` uniquely identifying an attachment, and if Close was able to generate a thumbnail, a `thumbnail_url` too.\n\nAccessing `url` or `thumbnail_url` requires an authenticated session and leads to a temporarily signed S3 URL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activity",
+                "sms",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "_limit",
+                  "value": "100",
+                  "description": "Number of results to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "_skip",
+                  "value": "0",
+                  "description": "Number of results to skip before returning, for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "id__in",
+                  "value": "<string>",
+                  "description": "Filter by activity IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "id__in",
+                  "value": "<string>",
+                  "description": "Filter by activity IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "lead_id",
+                  "value": "<string>",
+                  "description": "Filter by lead IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "lead_id",
+                  "value": "<string>",
+                  "description": "Filter by lead IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "contact_id",
+                  "value": "<string>",
+                  "description": "Filter by contact IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "contact_id",
+                  "value": "<string>",
+                  "description": "Filter by contact IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "Filter by user IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "Filter by user IDs (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "organization_id",
+                  "value": "<string,null>"
+                },
+                {
+                  "disabled": false,
+                  "key": "_type",
+                  "value": "<string>",
+                  "description": "Filter by activity type, e.g. Call (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "_type",
+                  "value": "<string>",
+                  "description": "Filter by activity type, e.g. Call (comma-separated)"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__gte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__lte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__gt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "date_created__lt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__gte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__lte",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__gt",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "activity_at__lt",
+                  "value": "<dateTime>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a3619937-2c00-4130-898d-85777477ad80",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "sms",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"_type\": \"string\",\n      \"activity_at\": \"1966-04-13T23:22:57.070Z\",\n      \"contact_id\": \"string\",\n      \"cost\": \"string\",\n      \"created_by\": \"string\",\n      \"date_created\": \"2026-06-04T16:14:54.715Z\",\n      \"date_scheduled\": \"1950-02-14T02:32:24.875Z\",\n      \"date_sent\": \"2024-04-27T00:40:23.144Z\",\n      \"date_updated\": \"1960-07-08T14:45:32.746Z\",\n      \"direction\": \"outbound\",\n      \"error_message\": \"string\",\n      \"id\": \"string\",\n      \"lead_id\": \"string\",\n      \"local_country_iso\": \"string\",\n      \"local_phone\": \"string\",\n      \"local_phone_formatted\": \"string\",\n      \"organization_id\": \"string\",\n      \"remote_country_iso\": \"string\",\n      \"remote_phone\": \"string\",\n      \"remote_phone_formatted\": \"string\",\n      \"source\": \"Close.io\",\n      \"status\": \"scheduled\",\n      \"template_id\": \"string\",\n      \"text\": \"string\",\n      \"updated_by\": \"string\",\n      \"user_id\": \"string\",\n      \"users\": [\n        \"string\",\n        \"string\"\n      ],\n      \"agent_action_reason\": \"string\",\n      \"agent_config_id\": \"string\",\n      \"created_by_name\": \"string\",\n      \"sequence_id\": \"string\",\n      \"sequence_name\": \"string\",\n      \"sequence_subscription_id\": \"string\",\n      \"updated_by_name\": \"string\",\n      \"user_name\": \"string\"\n    },\n    {\n      \"_type\": \"string\",\n      \"activity_at\": \"1962-09-04T17:57:49.072Z\",\n      \"contact_id\": \"string\",\n      \"cost\": \"string\",\n      \"created_by\": \"string\",\n      \"date_created\": \"1959-11-18T06:54:15.532Z\",\n      \"date_scheduled\": \"2004-10-07T20:07:05.589Z\",\n      \"date_sent\": \"2003-08-20T12:26:26.656Z\",\n      \"date_updated\": \"1958-09-10T09:35:31.311Z\",\n      \"direction\": \"outbound\",\n      \"error_message\": \"string\",\n      \"id\": \"string\",\n      \"lead_id\": \"string\",\n      \"local_country_iso\": \"string\",\n      \"local_phone\": \"string\",\n      \"local_phone_formatted\": \"string\",\n      \"organization_id\": \"string\",\n      \"remote_country_iso\": \"string\",\n      \"remote_phone\": \"string\",\n      \"remote_phone_formatted\": \"string\",\n      \"source\": \"Close.io\",\n      \"status\": \"error\",\n      \"template_id\": \"string\",\n      \"text\": \"string\",\n      \"updated_by\": \"string\",\n      \"user_id\": \"string\",\n      \"users\": [\n        \"string\",\n        \"string\"\n      ],\n      \"agent_action_reason\": \"string\",\n      \"agent_config_id\": \"string\",\n      \"created_by_name\": \"string\",\n      \"sequence_id\": \"string\",\n      \"sequence_name\": \"string\",\n      \"sequence_subscription_id\": \"string\",\n      \"updated_by_name\": \"string\",\n      \"user_name\": \"string\"\n    }\n  ],\n  \"has_more\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fdbddbd7-142c-489d-b4d4-9fcb7c280dc2",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "sms",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "afa809f7-f228-4ffa-a702-cd76bb85d91a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "sms",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "30742ace-c499-4c53-bcb7-b0b43317875d",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "sms",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "_limit",
+                      "value": "100"
+                    },
+                    {
+                      "key": "_skip",
+                      "value": "0"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id__in",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lead_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "contact_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "organization_id",
+                      "value": "<string,null>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "_type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "date_created__gte",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "date_created__lte",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "date_created__gt",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "date_created__lt",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "activity_at__gte",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "activity_at__lte",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "activity_at__gt",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    },
+                    {
+                      "key": "activity_at__lt",
+                      "value": "1972-03-21T04:39:36.374Z"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61e80e1a-3116-425c-a345-76578881620d",
+          "name": "Create an SMS activity",
+          "request": {
+            "name": "Create an SMS activity",
+            "description": {
+              "content": "*status* must be one of the following:\n\n - `inbox` to log an already received SMS.\n - `draft` to create a draft SMS.\n - `scheduled` to send an SMS at a scheduled date and time, which must be specified in the `date_scheduled` field.\n - `outbox` to actually **send** an SMS. To delay SMS sending by a few seconds (to allow undo), specify `send_in` in seconds (must be less than 60).\n - `sent` to log an already sent SMS.\n\nOnly drafts can be modified, and their status can be changed to `scheduled` (to send later) or `outbox` (to send immediately). Scheduled SMS, or SMS in outbox that weren't sent yet can be canceled by setting the status back to `draft`.\n\nYou have to provide a `local_phone` that will be used to send the SMS. The number you choose has to be associated with a Phone Number of type `internal`. See the [Phone Numbers](https://developer.close.com/api/resources/phone-numbers) paragraph for more details.\n\nA `template_id` referencing an SMS Template may be provided instead of `text` to automatically render that template and use the content as `text`.\n\nWhen `direction` is not provided, but `status=\"inbox\"`, `direction` will default to \"inbound\". Otherwise, `direction` defaults to \"outbound\".\n\nWhen creating a new SMS with the status set to `inbox`, you can pass the query parameter `send_to_inbox` with the value of `true`  to create a corresponding Inbox Notification for the SMS.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activity",
+                "sms",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "send_to_inbox",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"content_type\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"content_type\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"created_by_id\": \"<string,null>\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"direction\": \"<string>\",\n  \"lead_id\": \"<string,null>\",\n  \"local_phone\": \"<string,null>\",\n  \"organization_id\": \"<string,null>\",\n  \"remote_phone\": \"<string,null>\",\n  \"source\": \"<string>\",\n  \"template_id\": \"<string,null>\",\n  \"text\": \"<string,null>\",\n  \"user_id\": \"<string,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "364c90bc-1ada-45fd-b67c-11a365d34f2e",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "sms",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "send_to_inbox",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"sent\",\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"content_type\": \"image/jpeg\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"content_type\": \"audio/webm\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"created_by_id\": \"<string,null>\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"direction\": \"outbound\",\n  \"lead_id\": \"<string,null>\",\n  \"local_phone\": \"<string,null>\",\n  \"organization_id\": \"<string,null>\",\n  \"remote_phone\": \"<string,null>\",\n  \"source\": \"External\",\n  \"template_id\": \"<string,null>\",\n  \"text\": \"<string,null>\",\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"activity_at\": \"1992-11-27T21:46:54.804Z\",\n  \"contact_id\": \"string\",\n  \"cost\": \"string\",\n  \"created_by\": \"string\",\n  \"date_created\": \"1969-10-17T01:09:44.196Z\",\n  \"date_scheduled\": \"1978-01-30T01:16:30.670Z\",\n  \"date_sent\": \"1960-10-17T14:25:00.007Z\",\n  \"date_updated\": \"2022-05-25T19:04:18.151Z\",\n  \"direction\": \"inbound\",\n  \"error_message\": \"string\",\n  \"id\": \"string\",\n  \"lead_id\": \"string\",\n  \"local_country_iso\": \"string\",\n  \"local_phone\": \"string\",\n  \"local_phone_formatted\": \"string\",\n  \"organization_id\": \"string\",\n  \"remote_country_iso\": \"string\",\n  \"remote_phone\": \"string\",\n  \"remote_phone_formatted\": \"string\",\n  \"source\": \"Close.io\",\n  \"status\": \"inbox\",\n  \"template_id\": \"string\",\n  \"text\": \"string\",\n  \"updated_by\": \"string\",\n  \"user_id\": \"string\",\n  \"users\": [\n    \"string\",\n    \"string\"\n  ],\n  \"agent_action_reason\": \"string\",\n  \"agent_config_id\": \"string\",\n  \"created_by_name\": \"string\",\n  \"sequence_id\": \"string\",\n  \"sequence_name\": \"string\",\n  \"sequence_subscription_id\": \"string\",\n  \"updated_by_name\": \"string\",\n  \"user_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fcf4ce30-5c62-4317-8de8-af1a4f79dc90",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "sms",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "send_to_inbox",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"sent\",\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"content_type\": \"image/jpeg\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"content_type\": \"audio/webm\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"created_by_id\": \"<string,null>\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"direction\": \"outbound\",\n  \"lead_id\": \"<string,null>\",\n  \"local_phone\": \"<string,null>\",\n  \"organization_id\": \"<string,null>\",\n  \"remote_phone\": \"<string,null>\",\n  \"source\": \"External\",\n  \"template_id\": \"<string,null>\",\n  \"text\": \"<string,null>\",\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0ed5b6a-e7ac-4189-84e8-2cf248eb96f8",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "sms",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "send_to_inbox",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"sent\",\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"content_type\": \"image/jpeg\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"content_type\": \"audio/webm\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"created_by_id\": \"<string,null>\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"direction\": \"outbound\",\n  \"lead_id\": \"<string,null>\",\n  \"local_phone\": \"<string,null>\",\n  \"organization_id\": \"<string,null>\",\n  \"remote_phone\": \"<string,null>\",\n  \"source\": \"External\",\n  \"template_id\": \"<string,null>\",\n  \"text\": \"<string,null>\",\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bc574b71-03b8-48de-a07e-6910b7f6a588",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "sms",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "send_to_inbox",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"sent\",\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"content_type\": \"image/jpeg\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"content_type\": \"audio/webm\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"created_by_id\": \"<string,null>\",\n  \"date_created\": \"<string,null-date-time>\",\n  \"direction\": \"outbound\",\n  \"lead_id\": \"<string,null>\",\n  \"local_phone\": \"<string,null>\",\n  \"organization_id\": \"<string,null>\",\n  \"remote_phone\": \"<string,null>\",\n  \"source\": \"External\",\n  \"template_id\": \"<string,null>\",\n  \"text\": \"<string,null>\",\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "14a9a31c-a352-44da-bcae-76dcbcf2c883",
+          "name": "Get a single SMS activity",
+          "request": {
+            "name": "Get a single SMS activity",
+            "description": {},
+            "url": {
+              "path": [
+                "activity",
+                "sms",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "01576842-5e2f-4081-8387-a7a041efe45b",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "sms",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"activity_at\": \"1992-11-27T21:46:54.804Z\",\n  \"contact_id\": \"string\",\n  \"cost\": \"string\",\n  \"created_by\": \"string\",\n  \"date_created\": \"1969-10-17T01:09:44.196Z\",\n  \"date_scheduled\": \"1978-01-30T01:16:30.670Z\",\n  \"date_sent\": \"1960-10-17T14:25:00.007Z\",\n  \"date_updated\": \"2022-05-25T19:04:18.151Z\",\n  \"direction\": \"inbound\",\n  \"error_message\": \"string\",\n  \"id\": \"string\",\n  \"lead_id\": \"string\",\n  \"local_country_iso\": \"string\",\n  \"local_phone\": \"string\",\n  \"local_phone_formatted\": \"string\",\n  \"organization_id\": \"string\",\n  \"remote_country_iso\": \"string\",\n  \"remote_phone\": \"string\",\n  \"remote_phone_formatted\": \"string\",\n  \"source\": \"Close.io\",\n  \"status\": \"inbox\",\n  \"template_id\": \"string\",\n  \"text\": \"string\",\n  \"updated_by\": \"string\",\n  \"user_id\": \"string\",\n  \"users\": [\n    \"string\",\n    \"string\"\n  ],\n  \"agent_action_reason\": \"string\",\n  \"agent_config_id\": \"string\",\n  \"created_by_name\": \"string\",\n  \"sequence_id\": \"string\",\n  \"sequence_name\": \"string\",\n  \"sequence_subscription_id\": \"string\",\n  \"updated_by_name\": \"string\",\n  \"user_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f7c856f-b424-49b3-a0f9-f1505d8a0429",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "sms",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "10252f3c-ad8c-4743-acb4-9297cd53d6b9",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "sms",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9193f761-8c44-461d-9ef3-bcfe5df61c73",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "sms",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc482789-9d8a-4eda-ac0e-0b7826c9e6ea",
+          "name": "Update an SMS activity",
+          "request": {
+            "name": "Update an SMS activity",
+            "description": {
+              "content": "This can be used to modify a draft or send it once the draft is complete.\n\nTo send an SMS immediately, you can update its `status` to `outbox`. To send it at a later time, change the `status` to `scheduled` and provide the desired date & time in the `date_scheduled` field.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "activity",
+                "sms",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"content_type\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"content_type\": \"<string>\",\n      \"filename\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"lead_id\": \"<string,null>\",\n  \"local_phone\": \"<string,null>\",\n  \"remote_phone\": \"<string,null>\",\n  \"status\": \"<string>\",\n  \"template_id\": \"<string,null>\",\n  \"text\": \"<string,null>\",\n  \"user_id\": \"<string,null>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5f7b2502-52ea-4787-aaa7-98bfae5e8a06",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "sms",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"content_type\": \"text/rtf\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"content_type\": \"video/3gpp-tt\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"lead_id\": \"<string,null>\",\n  \"local_phone\": \"<string,null>\",\n  \"remote_phone\": \"<string,null>\",\n  \"status\": \"inbox\",\n  \"template_id\": \"<string,null>\",\n  \"text\": \"<string,null>\",\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_type\": \"string\",\n  \"activity_at\": \"1992-11-27T21:46:54.804Z\",\n  \"contact_id\": \"string\",\n  \"cost\": \"string\",\n  \"created_by\": \"string\",\n  \"date_created\": \"1969-10-17T01:09:44.196Z\",\n  \"date_scheduled\": \"1978-01-30T01:16:30.670Z\",\n  \"date_sent\": \"1960-10-17T14:25:00.007Z\",\n  \"date_updated\": \"2022-05-25T19:04:18.151Z\",\n  \"direction\": \"inbound\",\n  \"error_message\": \"string\",\n  \"id\": \"string\",\n  \"lead_id\": \"string\",\n  \"local_country_iso\": \"string\",\n  \"local_phone\": \"string\",\n  \"local_phone_formatted\": \"string\",\n  \"organization_id\": \"string\",\n  \"remote_country_iso\": \"string\",\n  \"remote_phone\": \"string\",\n  \"remote_phone_formatted\": \"string\",\n  \"source\": \"Close.io\",\n  \"status\": \"inbox\",\n  \"template_id\": \"string\",\n  \"text\": \"string\",\n  \"updated_by\": \"string\",\n  \"user_id\": \"string\",\n  \"users\": [\n    \"string\",\n    \"string\"\n  ],\n  \"agent_action_reason\": \"string\",\n  \"agent_config_id\": \"string\",\n  \"created_by_name\": \"string\",\n  \"sequence_id\": \"string\",\n  \"sequence_name\": \"string\",\n  \"sequence_subscription_id\": \"string\",\n  \"updated_by_name\": \"string\",\n  \"user_name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32f6efc8-7591-493d-96a5-0460ec67bb3e",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "sms",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"content_type\": \"text/rtf\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"content_type\": \"video/3gpp-tt\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"lead_id\": \"<string,null>\",\n  \"local_phone\": \"<string,null>\",\n  \"remote_phone\": \"<string,null>\",\n  \"status\": \"inbox\",\n  \"template_id\": \"<string,null>\",\n  \"text\": \"<string,null>\",\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "67da0f25-b01c-4d7a-9939-43680f111469",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "sms",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"content_type\": \"text/rtf\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"content_type\": \"video/3gpp-tt\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"lead_id\": \"<string,null>\",\n  \"local_phone\": \"<string,null>\",\n  \"remote_phone\": \"<string,null>\",\n  \"status\": \"inbox\",\n  \"template_id\": \"<string,null>\",\n  \"text\": \"<string,null>\",\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c796e0f4-ec56-4373-8cdb-7a2d08058432",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "sms",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"activity_at\": \"<string,null-date-time>\",\n  \"attachments\": [\n    {\n      \"content_type\": \"text/rtf\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"content_type\": \"video/3gpp-tt\",\n      \"filename\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"contact_id\": \"<string,null>\",\n  \"lead_id\": \"<string,null>\",\n  \"local_phone\": \"<string,null>\",\n  \"remote_phone\": \"<string,null>\",\n  \"status\": \"inbox\",\n  \"template_id\": \"<string,null>\",\n  \"text\": \"<string,null>\",\n  \"user_id\": \"<string,null>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0462b02a-c76f-4440-b21c-fdcd78d0554c",
+          "name": "Delete an SMS activity",
+          "request": {
+            "name": "Delete an SMS activity",
+            "description": {},
+            "url": {
+              "path": [
+                "activity",
+                "sms",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c4dbd6c6-3488-47ed-9d1d-928808bf8e74",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "sms",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "092bfedc-19c4-41ea-a4a1-ae7f7de6fd9a",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "sms",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c5d36f9-c03c-4068-9873-c45fc0d0910b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "sms",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "64ac4bc4-6d16-4308-ae52-9f1f7412f639",
+              "name": "Not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "activity",
+                    "sms",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "description": "(Required) Use your API key as the username and leave the password empty.",
+                    "key": "Authorization",
+                    "value": "string"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.close.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a6eaf496-0ad3-458d-abf7-f122086a9d92",
+    "name": "API Endpoints subpackage_activities subpackage_activitiesSms API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

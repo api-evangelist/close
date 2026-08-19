@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints subpackage_activities subpackage_fieldEnrichment API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_fieldEnrichment",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Enrich a specific field on a lead or contact using AI",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/enrich_field/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint uses AI to enrich (populate or enhance) a specific field on a lead or contact. The enrichment process analyzes existing data and external sources to provide intelligent field values.\n\n**Parameters:**\n- `organization_id` (required): The organization ID\n- `object_type` (required): Either \"lead\" or \"contact\"\n- `object_id` (required): The ID of the lead or contact to enrich\n- `field_id` (required): The ID of the custom field to enrich\n- `set_new_value` (optional): Whether to update the"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

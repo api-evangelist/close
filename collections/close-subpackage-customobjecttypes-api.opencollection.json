@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints subpackage_activities subpackage_customObjectTypes API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_customObjectTypes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Custom Object Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/custom_object_type/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "The response will include all Custom Object Types, including Custom Field metadata for your organization.\n\nEach Custom Object Type has two lists of Custom Fields. The `fields` property contains the list of fields that belong to the Custom Object Type. The `back_reference_fields` property contains the list of any objects (Leads, Contacts, Opportunities, Custom Activities, Custom Objects) that reference the Custom Object Type."
+        },
+        {
+          "info": {
+            "name": "Create new Custom Object Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.close.com/api/v1/custom_object_type/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The type must be created before Custom Fields can be added.\n\nThe following fields are required:\n  - `name`: The name of the Custom Object Type\n  - `name_plural`: A pluralized version of the name, for some UI display.\n\nThe following fields are optional:\n  - `description`: A longer description of the Custom Object Type.\n  - `api_create_only`: If `true`, instances can only be created by API clients. Defaults to `false`.\n  - `editable_with_roles`: Only users with the given roles can edit instances o"
+        },
+        {
+          "info": {
+            "name": "Retrieve a single Custom Object Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/custom_object_type/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a single custom object type by ID. The response contains the Custom Object Type including most Custom Field metadata."
+        },
+        {
+          "info": {
+            "name": "Update existing Custom Object Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.close.com/api/v1/custom_object_type/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The type's `name`, `name_plural`, `description`, `api_create_only` and `editable_with_roles` properties may be updated here. These properties will be updated immediately in the Custom Object API. You cannot add, modify, remove or reorder fields from a Custom Object Type using this resource. See [Custom Object Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object) and [Custom Field Schema API](https://developer.close.com/api/resources/custom-fields/cus"
+        },
+        {
+          "info": {
+            "name": "Delete a Custom Object Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.close.com/api/v1/custom_object_type/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a Custom Object Type"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

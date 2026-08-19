@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "API Endpoints subpackage_activities subpackage_events API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "subpackage_events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve a list of events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/event/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "_limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return."
+              },
+              {
+                "name": "_skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip before returning, for pagination."
+              },
+              {
+                "name": "object_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lead_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "action",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_updated__gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_updated__gte",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_updated__lt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "date_updated__lte",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "The list of available object types and actions is available [here](https://developer.close.com/api/resources/events/list-of-event-types). The event log can be filtered by the following parameters:\n\n- `date_updated`: The date/time of when the event was last updated, in ISO format. Can be filtered by range (`date_updated__gte=X&date_updated__lte=Y`). Note: For pagination, it is recommended to use cursors instead of this filter (see below).\n- `object_type`: If specified, only events for objects of "
+        },
+        {
+          "info": {
+            "name": "Retrieve a single event by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.close.com/api/v1/event/:id/",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "The response contains a dictionary with a single event, using the format outlined in “Event format”."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
