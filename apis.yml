@@ -31,6 +31,19 @@ tags:
   - Pipeline Management
   - AI Agents
   - MCP
+  - Webhook
+  - Software-as-a-Service
+tags_raw:
+  - CRM
+  - Sales Engagement
+  - Inside Sales
+  - Calling
+  - SMS
+  - WhatsApp
+  - Sales Automation
+  - Pipeline Management
+  - AI Agents
+  - MCP
   - Webhooks
   - SaaS
 created: '2026-05-08'
@@ -42,7 +55,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   name: Close subpackage_activities API
   description: The subpackage_activities API from Close — 1 operation(s) for subpackage_activities.
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_activities
   properties:
   - type: OpenAPI
@@ -1421,7 +1435,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/comments
   name: Close subpackage_comments API
   description: The subpackage_comments API from Close — 4 operation(s) for subpackage_comments.
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_comments
   properties:
   - type: OpenAPI
@@ -1558,7 +1573,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/contacts
   name: Close subpackage_contacts API
   description: The subpackage_contacts API from Close — 2 operation(s) for subpackage_contacts.
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_contacts
   properties:
   - type: OpenAPI
@@ -2316,7 +2332,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/dialers
   name: Close subpackage_dialers API
   description: The subpackage_dialers API from Close — 2 operation(s) for subpackage_dialers.
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_dialers
   properties:
   - type: OpenAPI
@@ -2453,7 +2470,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/events
   name: Close subpackage_events API
   description: The subpackage_events API from Close — 2 operation(s) for subpackage_events.
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_events
   properties:
   - type: OpenAPI
@@ -2521,7 +2539,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/exports
   name: Close subpackage_exports API
   description: The subpackage_exports API from Close — 4 operation(s) for subpackage_exports.
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_exports
   properties:
   - type: OpenAPI
@@ -2658,7 +2677,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/files
   name: Close subpackage_files API
   description: The subpackage_files API from Close — 1 operation(s) for subpackage_files.
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_files
   properties:
   - type: OpenAPI
@@ -2726,7 +2746,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/groups
   name: Close subpackage_groups API
   description: The subpackage_groups API from Close — 4 operation(s) for subpackage_groups.
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_groups
   properties:
   - type: OpenAPI
@@ -2863,7 +2884,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/leads
   name: Close subpackage_leads API
   description: The subpackage_leads API from Close — 3 operation(s) for subpackage_leads.
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_leads
   properties:
   - type: OpenAPI
@@ -2999,7 +3021,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/memberships
   name: Close subpackage_memberships API
   description: The subpackage_memberships API from Close — 3 operation(s) for subpackage_memberships.
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_memberships
   properties:
   - type: OpenAPI
@@ -3068,7 +3091,8 @@ apis:
   name: Close subpackage_opportunities API
   description: >-
     The subpackage_opportunities API from Close — 2 operation(s) for subpackage_opportunities.
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_opportunities
   properties:
   - type: OpenAPI
@@ -3206,7 +3230,8 @@ apis:
   name: Close subpackage_organizations API
   description: >-
     The subpackage_organizations API from Close — 1 operation(s) for subpackage_organizations.
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_organizations
   properties:
   - type: OpenAPI
@@ -3274,7 +3299,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/outcomes
   name: Close subpackage_outcomes API
   description: The subpackage_outcomes API from Close — 2 operation(s) for subpackage_outcomes.
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_outcomes
   properties:
   - type: OpenAPI
@@ -3410,7 +3436,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/pipelines
   name: Close subpackage_pipelines API
   description: The subpackage_pipelines API from Close — 2 operation(s) for subpackage_pipelines.
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_pipelines
   properties:
   - type: OpenAPI
@@ -3478,7 +3505,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/playbooks
   name: Close subpackage_playbooks API
   description: The subpackage_playbooks API from Close — 4 operation(s) for subpackage_playbooks.
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_playbooks
   properties:
   - type: OpenAPI
@@ -3546,7 +3574,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/reporting
   name: Close subpackage_reporting API
   description: The subpackage_reporting API from Close — 8 operation(s) for subpackage_reporting.
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_reporting
   properties:
   - type: OpenAPI
@@ -3614,7 +3643,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/roles
   name: Close subpackage_roles API
   description: The subpackage_roles API from Close — 2 operation(s) for subpackage_roles.
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_roles
   properties:
   - type: OpenAPI
@@ -3819,7 +3849,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/sequences
   name: Close subpackage_sequences API
   description: The subpackage_sequences API from Close — 4 operation(s) for subpackage_sequences.
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_sequences
   properties:
   - type: OpenAPI
@@ -4023,7 +4054,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/tasks
   name: Close subpackage_tasks API
   description: The subpackage_tasks API from Close — 2 operation(s) for subpackage_tasks.
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_tasks
   properties:
   - type: OpenAPI
@@ -4160,7 +4192,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/users
   name: Close subpackage_users API
   description: The subpackage_users API from Close — 4 operation(s) for subpackage_users.
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_users
   properties:
   - type: OpenAPI
@@ -4228,7 +4261,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/webhooks
   name: Close subpackage_webhooks API
   description: The subpackage_webhooks API from Close — 2 operation(s) for subpackage_webhooks.
-  tags:
+  tags: []
+  tags_raw:
   - subpackage_webhooks
   properties:
   - type: OpenAPI
