@@ -3,7 +3,7 @@ provider: Close
 generated_by: planning/capability-mapping/scripts/classify_capabilities.py
 model: claude-opus-5
 frame:
-- Software & Technology
+- Telecommunications
 min_confidence: 0.7
 capability_model:
   source: https://github.com/vincentmakes/turbo-ea-capabilities
@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 14
+edge_count: 19
 edges:
 - tag: subpackage_opportunities
   spec_file: close-subpackage-opportunities-api-openapi.yml
@@ -19,130 +19,176 @@ edges:
   capability_id_l1: BC-410
   capability_name: Opportunity & Pipeline Management
   confidence: 0.95
-  evidence: GET /opportunity/ "List or filter opportunities"; POST /opportunity/ "Create an opportunity";
-    schemas OpportunityStatusType, StalledOpportunityActionItems
-  reason: Operations plainly manage the sales opportunity/deal lifecycle including status and stalled-deal
-    follow-up actions — Opportunity & Pipeline Management.
+  evidence: GET /opportunity/ — List or filter opportunities; schemas CreateOpportunity, OpportunityStatusType,
+    OpportunityValuePeriod
+  reason: Operations manage sales opportunities and their status/value — plainly Opportunity & Pipeline
+    Management.
+- tag: opportunities
+  spec_file: close-opportunities-api-openapi.yml
+  capability_id: BC-410.30
+  capability_id_l1: BC-410
+  capability_name: Opportunity & Pipeline Management
+  confidence: 0.93
+  evidence: POST /opportunity/ "Create an opportunity"; schemas CreateOpportunity, OpportunityStatusType,
+    OpportunityValuePeriod
+  reason: Direct management of sales opportunities including status and value — the deal/pipeline lifecycle.
+- tag: subpackage_leads
+  spec_file: close-subpackage-leads-api-openapi.yml
+  capability_id: BC-410.30
+  capability_id_l1: BC-410
+  capability_name: Opportunity & Pipeline Management
+  confidence: 0.9
+  evidence: GET /lead/ list Leads; POST /lead/ create a new lead; schemas Lead, Opportunity, OpportunityStatusType
+  reason: Direct CRUD and merge over sales leads with embedded opportunity data — the lead-to-opportunity
+    lifecycle, i.e. Opportunity & Pipeline Management.
+- tag: leads
+  spec_file: close-leads-api-openapi.yml
+  capability_id: BC-410.30
+  capability_id_l1: BC-410
+  capability_name: Opportunity & Pipeline Management
+  confidence: 0.88
+  evidence: POST /lead/ "Create a new lead"; schemas Lead, Opportunity, OpportunityStatusType
+  reason: CRUD and merge over sales leads with attached opportunities — squarely lead/opportunity/deal
+    lifecycle in an inside-sales CRM.
+- tag: activities.opportunity_status_changes
+  spec_file: close-activities-opportunity-status-changes-api-openapi.yml
+  capability_id: BC-410.30
+  capability_id_l1: BC-410
+  capability_name: Opportunity & Pipeline Management
+  confidence: 0.85
+  evidence: POST /activity/status_change/opportunity/ 'Create a new OpportunityStatusChange activity';
+    schemas OpportunityStatusType, OpportunityValuePeriod
+  reason: Records movement of opportunities between statuses with value periods — plainly deal/pipeline
+    lifecycle management.
+- tag: pipelines
+  spec_file: close-pipelines-api-openapi.yml
+  capability_id: BC-410.30
+  capability_id_l1: BC-410
+  capability_name: Opportunity & Pipeline Management
+  confidence: 0.85
+  evidence: GET /pipeline/ pipelines_list  List Pipelines for your organization; Create a Pipeline
+  reason: Sales pipeline definitions in a CRM — pipelines structure opportunity stages, mapping to Opportunity
+    & Pipeline Management.
 - tag: subpackage_activitiesOpportunityStatusChanges
   spec_file: close-subpackage-activitiesopportunitystatuschanges-api-openapi.yml
   capability_id: BC-410.30
   capability_id_l1: BC-410
   capability_name: Opportunity & Pipeline Management
   confidence: 0.85
-  evidence: POST /activity/status_change/opportunity/  create  Create a new OpportunityStatusChange activity
-  reason: Records opportunity stage/status transitions, which is directly deal and pipeline lifecycle
-    management.
-- tag: subpackage_leads
-  spec_file: close-subpackage-leads-api-openapi.yml
-  capability_id: BC-410.30
-  capability_id_l1: BC-410
-  capability_name: Opportunity & Pipeline Management
-  confidence: 0.85
-  evidence: GET /lead/ "List Leads"; POST /lead/ "Create a new lead"; POST /lead/merge/ "Merge two leads";
-    schemas Lead, Opportunity, Contact
-  reason: CRUD and merge over CRM leads with embedded opportunity/contact structures — the lead-to-opportunity
-    lifecycle. Some overlap with Customer Data Management (merge/golden record), but the dominant reading
-    is lead/pipeline management.
+  evidence: POST /activity/status_change/opportunity/ create — 'Create a new OpportunityStatusChange activity'
+  reason: Opportunity stage/status transition records are squarely opportunity and pipeline lifecycle
+    management in a sales CRM.
 - tag: subpackage_pipelines
   spec_file: close-subpackage-pipelines-api-openapi.yml
   capability_id: BC-410.30
   capability_id_l1: BC-410
   capability_name: Opportunity & Pipeline Management
   confidence: 0.85
-  evidence: GET /pipeline/ list — 'List Pipelines for your organization'; 'Create a Pipeline'
-  reason: CRM sales pipelines (opportunity stage structures) are created and maintained here, which is
-    squarely opportunity/pipeline management within Sales Management.
-- tag: subpackage_webhooks
-  spec_file: close-subpackage-webhooks-api-openapi.yml
-  capability_id: BC-4270.80
-  capability_id_l1: BC-4270
-  capability_name: Webhook & Event Subscription Management
-  confidence: 0.85
-  evidence: POST /webhook/ create 'Create new Webhook subscription'; schemas CreateWebhook, WebhookSubscriptionEvent
-  reason: Operations are the full CRUD lifecycle of outbound webhook subscriptions exposed to integrators
-    of the Close SaaS platform, which is exactly Webhook & Event Subscription Management within the developer/API
-    ecosystem capability.
+  evidence: GET /pipeline/ — List Pipelines for your organization; POST /pipeline/ — Create a Pipeline
+  reason: Defines and maintains sales pipelines through which opportunities progress — Opportunity & Pipeline
+    Management.
+- tag: contacts
+  spec_file: close-contacts-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.8
+  evidence: '"Create a new contact", "Update an existing contact" with schemas Contact, ContactEmail,
+    ContactPhone, ContactUrl'
+  reason: CRUD stewardship of contact master records (emails, phones, URLs) in a CRM is customer data
+    management; slight ambiguity only over whether it sits under broader CRM lifecycle.
+- tag: reporting
+  spec_file: close-reporting-api-openapi.yml
+  capability_id: BC-410.70
+  capability_id_l1: BC-410
+  capability_name: Sales Performance Management
+  confidence: 0.8
+  evidence: POST /report/funnel/opportunity/stages/  Get a funnel report (stages); Get lead status change
+    report
+  reason: Sales activity and opportunity funnel analytics for the sales organisation — sales performance
+    analytics.
 - tag: subpackage_activitiesLeadStatusChanges
   spec_file: close-subpackage-activitiesleadstatuschanges-api-openapi.yml
   capability_id: BC-410.30
   capability_id_l1: BC-410
   capability_name: Opportunity & Pipeline Management
   confidence: 0.8
-  evidence: POST /activity/status_change/lead/  create  Create a new LeadStatusChange activity
-  reason: Records transitions of lead status, which is the lead stage progression in the lead-to-opportunity
-    lifecycle.
+  evidence: POST /activity/status_change/lead/ create — 'Create a new LeadStatusChange activity'
+  reason: Tracking transitions of lead status is directly lead/opportunity lifecycle management in a sales
+    CRM.
+- tag: opportunity_statuses
+  spec_file: close-opportunity-statuses-api-openapi.yml
+  capability_id: BC-410.30
+  capability_id_l1: BC-410
+  capability_name: Opportunity & Pipeline Management
+  confidence: 0.75
+  evidence: POST /status/opportunity/ "Create an opportunity status"
+  reason: Defines the stage/status set used for sales opportunities, i.e. pipeline stage configuration
+    within opportunity management.
 - tag: subpackage_contacts
   spec_file: close-subpackage-contacts-api-openapi.yml
   capability_id: BC-420.10
   capability_id_l1: BC-420
   capability_name: Customer Data Management
   confidence: 0.75
-  evidence: POST /contact/  create  Create a new contact; schemas Contact, ContactEmail, ContactPhone,
-    ContactUrl
-  reason: CRUD over contact master records with emails, phones and URLs in a CRM — customer/contact data
-    management.
-- tag: subpackage_activitiesCalls
-  spec_file: close-subpackage-activitiescalls-api-openapi.yml
-  capability_id: BC-410
-  capability_id_l1: BC-410
-  capability_name: Sales Management
-  confidence: 0.7
-  evidence: POST /activity/call/ create  Log an external Call activity; schema CallActivity, PhoneActivitySource
-  reason: Logging and retrieving sales call activities against leads/contacts in an inside-sales CRM —
-    sales execution activity tracking under Sales Management. No single L2 clearly fits (between pipeline
-    and sales operations), so L1 only.
-- tag: subpackage_activitiesEmails
-  spec_file: close-subpackage-activitiesemails-api-openapi.yml
-  capability_id: BC-410
-  capability_id_l1: BC-410
-  capability_name: Sales Management
-  confidence: 0.7
-  evidence: POST /activity/email/  create  Create an Email activity; schemas EmailActivity, CommunicationDirection
-  reason: Outbound/inbound sales email activity logging in an inside-sales CRM; Sales Management at L1,
-    sub-capability ambiguous.
-- tag: subpackage_activitiesMeetings
-  spec_file: close-subpackage-activitiesmeetings-api-openapi.yml
-  capability_id: BC-410
-  capability_id_l1: BC-410
-  capability_name: Sales Management
-  confidence: 0.7
-  evidence: GET /activity/meeting/  list  List or filter all Meeting activities; POST /activity/meeting/{id}/integration/
-    Create or update third-party Meeting integration
-  reason: Sales meeting activity records on the CRM timeline; Sales Management at L1, sub-capability ambiguous.
-- tag: subpackage_activitiesSms
-  spec_file: close-subpackage-activitiessms-api-openapi.yml
-  capability_id: BC-410
-  capability_id_l1: BC-410
-  capability_name: Sales Management
-  confidence: 0.7
-  evidence: POST /activity/sms/  create  Create an SMS activity; schemas PhoneActivityDirection, MessageStatus
-  reason: SMS outreach logged as sales activity in an inside-sales CRM; Sales Management at L1, sub-capability
-    not determinable.
+  evidence: POST /contact/ create Create a new contact; schemas Contact, ContactPhone, ContactEmail, ContactUrl
+  reason: Full CRUD over contact master records with phone, email and URL attributes in a CRM — this is
+    customer/contact data mastering, BC-420.10. Slight ambiguity only in whether it should sit at the
+    L1 CRM level.
 - tag: subpackage_opportunityStatuses
   spec_file: close-subpackage-opportunitystatuses-api-openapi.yml
   capability_id: BC-410.30
   capability_id_l1: BC-410
   capability_name: Opportunity & Pipeline Management
+  confidence: 0.75
+  evidence: POST /status/opportunity/ — Create an opportunity status
+  reason: Maintains the stage/status taxonomy applied to sales opportunities, supporting pipeline management.
+    Confidence tempered as this is configuration of pipeline reference data.
+- tag: activities.lead_status_changes
+  spec_file: close-activities-lead-status-changes-api-openapi.yml
+  capability_id: BC-410.30
+  capability_id_l1: BC-410
+  capability_name: Opportunity & Pipeline Management
   confidence: 0.7
-  evidence: POST /status/opportunity/ "Create an opportunity status"; PUT /status/opportunity/{id}/ "Rename
-    an opportunity status"
-  reason: Maintains the status/stage taxonomy applied to opportunities, i.e. configuration of the deal
-    pipeline stages. Configuration rather than deal execution, hence moderate confidence.
+  evidence: POST /activity/status_change/lead/ 'Create a new LeadStatusChange activity'; schema LeadStatusChangeActivity
+  reason: Tracks progression of leads through sales statuses — directly the lead/opportunity lifecycle
+    in a sales CRM.
+- tag: lead_statuses
+  spec_file: close-lead-statuses-api-openapi.yml
+  capability_id: BC-410.30
+  capability_id_l1: BC-410
+  capability_name: Opportunity & Pipeline Management
+  confidence: 0.7
+  evidence: POST /status/lead/ "Create a new status that can be applied to leads"
+  reason: Configuration of the status taxonomy that drives the lead lifecycle in a sales CRM; supports
+    lead/opportunity pipeline management, though it is configuration rather than the pipeline itself.
+- tag: roles
+  spec_file: close-roles-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: GET /role/ roles_list  List all the roles defined for your organization
+  reason: Role definitions govern user permissions within the CRM tenant — access management plumbing,
+    not a sales business capability.
+- tag: subpackage_leadStatuses
+  spec_file: close-subpackage-leadstatuses-api-openapi.yml
+  capability_id: BC-410.30
+  capability_id_l1: BC-410
+  capability_name: Opportunity & Pipeline Management
+  confidence: 0.7
+  evidence: POST /status/lead/ — Create a new status that can be applied to leads
+  reason: Configures the status values that drive lead progression in the CRM, which is reference data
+    for the lead/opportunity lifecycle. Mapped to Opportunity & Pipeline Management, with moderate confidence
+    because it is configuration of statuses rather than lead handling itself.
 - tag: subpackage_reporting
   spec_file: close-subpackage-reporting-api-openapi.yml
   capability_id: BC-410.70
   capability_id_l1: BC-410
   capability_name: Sales Performance Management
   confidence: 0.7
-  evidence: '''Get a funnel report (stages)'', ''Get lead status change report'', ''Get an activity report'''
-  reason: 'Reports are sales-specific: opportunity funnel, lead/opportunity status changes, rep activity
-    — i.e. sales analytics rather than generic BI.'
-- tag: subpackage_sequences
-  spec_file: close-subpackage-sequences-api-openapi.yml
-  capability_id: BC-410
-  capability_id_l1: BC-410
-  capability_name: Sales Management
-  confidence: 0.7
-  evidence: '''Create a Sequence'', ''Subscribe a Contact to a Sequence'', ''List Sequence Subscriptions'''
-  reason: Automated outreach cadences with contact subscriptions are core sales engagement; ambiguous
-    between pipeline/lead progression and sales operations tooling, so L1 only.
+  evidence: POST /report/funnel/opportunity/stages/ get-funnel-stages 'Get a funnel report (stages)';
+    GET /report/statuses/lead/{org_id}/ 'Get lead status change report'
+  reason: Operations produce sales activity, funnel and lead/opportunity status reports for a sales organisation
+    — sales analytics within Sales Performance Management. Some ambiguity with generic management reporting,
+    hence 0.7.
