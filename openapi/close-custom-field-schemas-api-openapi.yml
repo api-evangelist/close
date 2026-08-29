@@ -1,0 +1,160 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Custom Field Schemas API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: custom_field_schemas
+  externalDocs:
+    url: https://developer.close.com/api/resources/custom-fields/custom-field-schemas
+paths:
+  /custom_field_schema/{object_type}/:
+    get:
+      operationId: custom_field_schemas_get
+      tags:
+      - custom_field_schemas
+      summary: Retrieve a custom field schema
+      parameters:
+      - in: path
+        name: object_type
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                fields:
+                - accepts_multiple_values: false
+                  choices: null
+                  created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  date_created: '2014-11-07T05:06:09.422000+00:00'
+                  date_updated: '2014-11-10T20:56:16.784000+00:00'
+                  description: The number of users in the company
+                  editable_with_roles: []
+                  id: cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c
+                  name: '# of users'
+                  organization_id: orga_vfvFDAKGLybddKDJn8n7ElZZ3qyRF3QI8fJxTSAYr5X
+                  type: number
+                  updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                - accepts_multiple_values: false
+                  associations:
+                  - editable_with_roles: []
+                    object_type: lead
+                    required: false
+                  - editable_with_roles: []
+                    object_type: contact
+                    required: false
+                  - custom_activity_type_id: actitype_2FqdeKTAEfMTwD4SVWwXqX
+                    editable_with_roles: []
+                    object_type: custom_activity_type
+                    required: true
+                  created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                  date_created: '2021-04-10T17:36:09.235000+00:00'
+                  date_updated: '2021-04-10T17:36:09.235000+00:00'
+                  description: User responsible for this Lead/Contact/Activity.
+                  id: cf_aU54Bvr6Rw8UBHh7zRboL3PYhbOVJl3XvwgPm3jgaKq
+                  name: Owner
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  type: user
+                  updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                name: Lead
+                object_type: lead
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: custom_field_schemas_update
+      tags:
+      - custom_field_schemas
+      summary: Update a custom field schema
+      description: 'To reorder Custom Fields (and thus change the order in which they are displayed in the Close UI), you simply need to supply a `fields` list with `{"id": ...}` items corresponding to the IDs of the Custom Fields belonging to the given Schema. Note that any IDs that are omitted from the list with be automatically appended to the end of the list. If you want to remove some Fields from the Schema, then delete the Custom Field or – in case of Shared Custom Fields – disassociate the Field from the given object.'
+      parameters:
+      - in: path
+        name: object_type
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              fields:
+              - id: cf_aU54Bvr6Rw8UBHh7zRboL3PYhbOVJl3XvwgPm3jgaKq
+              - id: cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                fields:
+                - accepts_multiple_values: false
+                  associations:
+                  - editable_with_roles: []
+                    object_type: lead
+                    required: false
+                  - editable_with_roles: []
+                    object_type: contact
+                    required: false
+                  - custom_activity_type_id: actitype_2FqdeKTAEfMTwD4SVWwXqX
+                    editable_with_roles: []
+                    object_type: custom_activity_type
+                    required: true
+                  created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                  date_created: '2021-04-10T17:36:09.235000+00:00'
+                  date_updated: '2021-04-10T17:36:09.235000+00:00'
+                  description: User responsible for this Lead/Contact/Activity.
+                  id: cf_aU54Bvr6Rw8UBHh7zRboL3PYhbOVJl3XvwgPm3jgaKq
+                  name: Owner
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  type: user
+                  updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                - accepts_multiple_values: false
+                  choices: null
+                  created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  date_created: '2014-11-07T05:06:09.422000+00:00'
+                  date_updated: '2014-11-10T20:56:16.784000+00:00'
+                  description: The number of users in the company
+                  editable_with_roles: []
+                  id: cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c
+                  name: '# of users'
+                  organization_id: orga_vfvFDAKGLybddKDJn8n7ElZZ3qyRF3QI8fJxTSAYr5X
+                  type: number
+                  updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                name: Lead
+                object_type: lead
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

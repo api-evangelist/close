@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Endpoints subpackage_activities subpackage_tasks API
+  title: Endpoints Subpackage Tasks API
   version: 1.0.0
 servers:
 - url: https://api.close.com/api/v1
@@ -733,30 +733,12 @@ paths:
                 description: Any type
 components:
   schemas:
-    tasks_update_Response_200:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: tasks_update_Response_200
-    BulkUpdateNotificationsDate:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: BulkUpdateNotificationsDate
-    UpdateNotificationDueDate:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: UpdateNotificationDueDate
-    tasks_get_Response_200:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: tasks_get_Response_200
+    TaskPriority:
+      type: string
+      enum:
+      - high
+      - medium
+      title: TaskPriority
     UpdateNotification:
       type: object
       properties:
@@ -793,6 +775,63 @@ components:
         text:
           type: string
       title: UpdateNotification
+    UpdateNotificationDate:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: UpdateNotificationDate
+    NotificationResolution:
+      type: string
+      enum:
+      - abandoned
+      - skipped
+      title: NotificationResolution
+    UpdateNotificationDueDate:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: UpdateNotificationDueDate
+    BulkUpdateNotificationsDate:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: BulkUpdateNotificationsDate
+    tasks_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: tasks_delete_Response_200
+    tasks_update_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: tasks_update_Response_200
+    tasks_get_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: tasks_get_Response_200
+    tasks_bulkUpdate_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: tasks_bulkUpdate_Response_200
+    tasks_create_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: tasks_create_Response_200
+    tasks_list_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: tasks_list_Response_200
     BulkUpdateNotifications:
       type: object
       properties:
@@ -813,45 +852,6 @@ components:
         text:
           type: string
       title: BulkUpdateNotifications
-    tasks_create_Response_200:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: tasks_create_Response_200
-    UpdateNotificationDate:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: UpdateNotificationDate
-    TaskPriority:
-      type: string
-      enum:
-      - high
-      - medium
-      title: TaskPriority
-    tasks_list_Response_200:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: tasks_list_Response_200
-    tasks_delete_Response_200:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: tasks_delete_Response_200
-    tasks_bulkUpdate_Response_200:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: tasks_bulkUpdate_Response_200
-    NotificationResolution:
-      type: string
-      enum:
-      - abandoned
-      - skipped
-      title: NotificationResolution
   securitySchemes:
     ApiKeyAuth:
       type: http

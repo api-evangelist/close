@@ -1,0 +1,560 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Scheduling Links API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: scheduling_links
+  externalDocs:
+    url: https://developer.close.com/api/resources/scheduling-links
+paths:
+  /scheduling_link/:
+    get:
+      operationId: scheduling_links_list
+      tags:
+      - scheduling_links
+      summary: List User Scheduling Links
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - description: Description of Example Scheduling Link
+                  duration_in_minutes: null
+                  id: schlnk_2xfNHpU6cjThMuhioZ3GjX
+                  name: Example Scheduling Link
+                  oauth_client_id: null
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  source: MANUAL
+                  source_id: null
+                  source_type: null
+                  template_tag: null
+                  type: USER
+                  url: https://example.com/schedule
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                - description: Let's find a time to meet!
+                  duration_in_minutes: 60
+                  id: schlnk_2xfNHpU6cjThMuhioZ3GjX
+                  name: Chat with Us
+                  oauth_client_id: oa2client_5NvOjgHYKHkbBjv5Rmiyfp
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  source: THIRD_PARTY
+                  source_id: 74241bb7-3436-4228-9b76-392ef7a443ee
+                  source_type: Multi-Use
+                  template_tag: null
+                  type: USER
+                  url: https://your-app.example.com/link/example/
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                - description: null
+                  duration_in_minutes: 30
+                  id: schlnk_6R2iZqSRXk1ZPLXXqn83LB
+                  name: 30 Minute Meeting
+                  oauth_client_id: null
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  source: CALENDLY
+                  source_id: fe722374-9993-45f7-8c4c-c2004ec78940
+                  source_type: Solo
+                  template_tag: null
+                  type: USER
+                  url: https://calendly.com/username/30min
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                has_more: false
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: scheduling_links_create
+      tags:
+      - scheduling_links
+      summary: Create a User Scheduling Link
+      requestBody:
+        content:
+          application/json:
+            example:
+              description: Description of Example Scheduling Link
+              name: Example Scheduling Link
+              url: example.com/schedule
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              example:
+                description: Description of Example Scheduling Link
+                duration_in_minutes: null
+                id: schlnk_2xfNHpU6cjThMuhioZ3GjX
+                name: Example Scheduling Link
+                oauth_client_id: null
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                source: MANUAL
+                source_id: null
+                source_type: null
+                template_tag: null
+                type: USER
+                url: https://example.com/schedule
+                user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /scheduling_link/integration/:
+    post:
+      operationId: scheduling_links_create_integration
+      tags:
+      - scheduling_links
+      summary: Create or update a Scheduling Link via OAuth
+      description: 'Please note that only OAuth apps can perform this operation. Using API key will result in an error. See [Authentication with OAuth](https://developer.close.com/api/overview/oauth-authentication) for more information.
+
+
+        Create or update a user scheduling link, managed by your application. Uses the integration-provided `source_id` field to identify and merge duplicate resources created by the same OAuth Application. If a scheduling link created by your OAuth application with the specified `source_id` does not exist, a new one will be created. Otherwise, the scheduling link resource will be updated. Requires authentication via OAuth.'
+      requestBody:
+        content:
+          application/json:
+            example:
+              description: Let's find a time to meet!
+              duration_in_minutes: 60
+              name: Chat with Us
+              source_id: 74241bb7-3436-4228-9b76-392ef7a443ee
+              source_type: Multi-Use
+              url: https://your-app.example.com/link/example/
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                description: Let's find a time to meet!
+                duration_in_minutes: 60
+                id: schlnk_2xfNHpU6cjThMuhioZ3GjX
+                name: Chat with Us
+                oauth_client_id: oa2client_5NvOjgHYKHkbBjv5Rmiyfp
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                source: THIRD_PARTY
+                source_id: 74241bb7-3436-4228-9b76-392ef7a443ee
+                source_type: Multi-Use
+                template_tag: null
+                type: USER
+                url: https://your-app.example.com/link/example/
+                user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /scheduling_link/integration/{source_id}/:
+    delete:
+      operationId: scheduling_links_delete_integration
+      tags:
+      - scheduling_links
+      summary: Delete a User Scheduling Link via OAuth integration
+      description: 'Please note that only OAuth apps can perform this operation. Using API key will result in an error. See [Authentication with OAuth](https://developer.close.com/api/overview/oauth-authentication) for more information.
+
+
+        Uses the `source_id` field to identify and delete the specified User Scheduling Link created by your OAuth Application.'
+      parameters:
+      - in: path
+        name: source_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /scheduling_link/{id}/:
+    get:
+      operationId: scheduling_links_get
+      tags:
+      - scheduling_links
+      summary: Fetch a User Scheduling Link
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                description: Description of Example Scheduling Link
+                duration_in_minutes: null
+                id: schlnk_2xfNHpU6cjThMuhioZ3GjX
+                name: Example Scheduling Link
+                oauth_client_id: null
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                source: MANUAL
+                source_id: null
+                source_type: null
+                template_tag: null
+                type: USER
+                url: https://example.com/schedule
+                user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: scheduling_links_update
+      tags:
+      - scheduling_links
+      summary: Update a User Scheduling Link
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              description: Updated Scheduling Link description
+              name: Updated Scheduling Link name
+              url: example.com/updated
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                description: Updated Scheduling Link description
+                duration_in_minutes: null
+                id: schlnk_2xfNHpU6cjThMuhioZ3GjX
+                name: Updated Scheduling Link name
+                oauth_client_id: null
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                source: MANUAL
+                source_id: null
+                source_type: null
+                template_tag: null
+                type: USER
+                url: https://example.com/updated
+                user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: scheduling_links_delete
+      tags:
+      - scheduling_links
+      summary: Delete a User Scheduling Link
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /shared_scheduling_link/:
+    get:
+      operationId: scheduling_links_list_shared
+      tags:
+      - scheduling_links
+      summary: List Shared Scheduling Links
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - description: Shared Scheduling Link description
+                  duration_in_minutes: null
+                  id: schlnk_167Y0qg1idTVbr6wUoDUlO
+                  name: Another Shared Scheduling Link Name
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  source: MANUAL
+                  source_id: null
+                  source_type: null
+                  template_tag: another_shared_scheduling_link_name
+                  type: SHARED
+                  url: null
+                  user_id: null
+                - description: Shared Scheduling Link description
+                  duration_in_minutes: null
+                  id: schlnk_5KRTvFoioQKyQjDRFEDvp6
+                  name: Shared Scheduling Link name
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  source: MANUAL
+                  source_id: null
+                  source_type: null
+                  template_tag: scheduling_link_name
+                  type: SHARED
+                  url: null
+                  user_id: null
+                has_more: false
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: scheduling_links_create_shared
+      tags:
+      - scheduling_links
+      summary: Create a Shared Scheduling Link
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: Name
+              description: Description
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              example:
+                description: Description
+                duration_in_minutes: null
+                id: schlnk_3knjle4iOiymsYjiJHZraq
+                name: Name
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                source: MANUAL
+                source_id: null
+                source_type: null
+                template_tag: name
+                type: SHARED
+                url: null
+                user_id: null
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /shared_scheduling_link/{id}/:
+    get:
+      operationId: scheduling_links_get_shared
+      tags:
+      - scheduling_links
+      summary: Fetch a Shared Scheduling Link
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                description: Description
+                duration_in_minutes: null
+                id: schlnk_3knjle4iOiymsYjiJHZraq
+                name: Name
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                source: MANUAL
+                source_id: null
+                source_type: null
+                template_tag: name
+                type: SHARED
+                url: null
+                user_id: null
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: scheduling_links_update_shared
+      tags:
+      - scheduling_links
+      summary: Update a Shared Scheduling Link
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              description: new Shared Scheduling Link name
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                description: new Shared Scheduling Link name
+                duration_in_minutes: null
+                id: schlnk_6dCC3HFuQMD4PRbzCG9GyG
+                name: Shared Scheduling Link name
+                organization_id: orga_oBdWXGyTzf0eRhvDX3mZkCZ9gatoqndE8wkwZW9pQc5
+                source: MANUAL
+                source_id: null
+                source_type: null
+                template_tag: scheduling_link_name
+                type: SHARED
+                url: null
+                user_id: null
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: scheduling_links_delete_shared
+      tags:
+      - scheduling_links
+      summary: Delete a Shared Scheduling Link
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /shared_scheduling_link_association/:
+    post:
+      operationId: scheduling_links_create_shared_association
+      tags:
+      - scheduling_links
+      summary: Map a Shared Scheduling Link
+      description: 'Map a Shared Scheduling Link to either a User Scheduling Link or a URL.
+
+
+        See the examples below for both mapping options.'
+      requestBody:
+        content:
+          application/json:
+            examples:
+              mapToUserSchedulingLink:
+                description: Map a Shared Scheduling Link to a specific user's scheduling link.
+                summary: Map to User Scheduling Link
+                value:
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  shared_scheduling_link_id: schlnk_5VhB72iVnX3NAn3XJ0o9Ph
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  user_scheduling_link_id: schlnk_6m84x0gYn3eSSRJg8sfSQX
+              mapToUrl:
+                description: Map a Shared Scheduling Link to an external URL.
+                summary: Map to URL
+                value:
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  shared_scheduling_link_id: schlnk_5VhB72iVnX3NAn3XJ0o9Ph
+                  url: example.com
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              examples:
+                mapToUserSchedulingLink:
+                  description: Map a Shared Scheduling Link to a specific user's scheduling link.
+                  summary: Map to User Scheduling Link
+                  value:
+                    organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                    shared_scheduling_link_id: schlnk_5VhB72iVnX3NAn3XJ0o9Ph
+                    url: null
+                    user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                    user_scheduling_link_id: schlnk_6m84x0gYn3eSSRJg8sfSQX
+                mapToUrl:
+                  description: Map a Shared Scheduling Link to an external URL.
+                  summary: Map to URL
+                  value:
+                    organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                    shared_scheduling_link_id: schlnk_5VhB72iVnX3NAn3XJ0o9Ph
+                    url: https://example.com
+                    user_id: null
+                    user_scheduling_link_id: schlnk_6m84x0gYn3eSSRJg8sfSQX
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /shared_scheduling_link_association/unmap/:
+    post:
+      operationId: scheduling_links_delete_shared_association
+      tags:
+      - scheduling_links
+      summary: Unmap a Shared Scheduling Link
+      requestBody:
+        content:
+          application/json:
+            example:
+              organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+              shared_scheduling_link_id: schlnk_5VhB72iVnX3NAn3XJ0o9Ph
+              user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+        required: true
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

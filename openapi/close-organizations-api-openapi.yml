@@ -1,0 +1,269 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Organizations API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: organizations
+  externalDocs:
+    url: https://developer.close.com/api/resources/organizations
+paths:
+  /organization/{id}/:
+    get:
+      operationId: organizations_get
+      tags:
+      - organizations
+      summary: Get an organization's details
+      description: By default, `memberships` and `inactive_memberships` are populated with user data prefixed with `user_`. If you'd rather have a nested `user` field, use a query string like `?_expand=memberships__user,inactive_memberships__user`.
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: _expand
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                created_by: null
+                date_created: '2013-02-01T00:54:51.097000+00:00'
+                date_updated: '2013-02-20T04:38:01.961000+00:00'
+                id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                inactive_memberships: []
+                lead_statuses:
+                - id: stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                  label: Potential
+                - id: stat_2ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                  label: Bad Fit
+                - id: stat_3ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                  label: Qualified
+                memberships:
+                - auto_record_calls: unset
+                  id: memb_wLKueFux8M2u2jshQPichvA5V44hpECtoljWbJS1PeY
+                  permissions_granted:
+                  - bulk_edit
+                  - export
+                  role_id: role_y6eLquXvRUdmwqi61tsmgCJUU7uGfxaRbDuLoONZL9p
+                  track_email_opens: true
+                  user_email: phil+sample@close.com
+                  user_first_name: P
+                  user_full_name: John Doe
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  user_last_name: F
+                  user_phone: '16502822245'
+                - auto_record_calls: unset
+                  id: memb_hLHF3LsUI6N7twH1derRHiHEKeE843ttSYmsun4xkCn
+                  permissions_granted:
+                  - bulk_edit
+                  - export
+                  role_id: role_y6eLquXvRUdmwqi61tsmgCJUU7uGfxaRbDuLoONZL9p
+                  track_email_opens: true
+                  user_email: phil@close.com
+                  user_first_name: Phil
+                  user_full_name: Phil Freo
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  user_last_name: Freo
+                  user_phone: '16502822248'
+                - auto_record_calls: unset
+                  id: memb_I4Tx9tZwz5npqdGtd0baWtjjlpeFf45OBlkAAKcF3Gc
+                  permissions_granted:
+                  - bulk_edit
+                  - export
+                  role_id: role_y6eLquXvRUdmwqi61tsmgCJUU7uGfxaRbDuLoONZL9p
+                  track_email_opens: true
+                  user_email: anthony@close.com
+                  user_first_name: Anthony
+                  user_full_name: Anthony Nemitz
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  user_last_name: Nemitz
+                  user_phone: '16502822249'
+                name: Sample Data
+                pipelines:
+                - created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  date_created: '2019-11-04T11:04:13.014979'
+                  date_updated: '2019-11-13T14:12:13.051542'
+                  id: pipe_6gV01if4wo7r2YTVQDWP2j
+                  name: Sales
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  statuses:
+                  - id: stat_3PB2sedHBCjwuBImAEwgHOo858f2j41lpROkcl51Fzp
+                    label: Active
+                    type: active
+                  - id: stat_IOCtLYbAclJ8XAcb3yLUhQA3zlmjtXz8JMBLyXnNMF8
+                    label: Won
+                    type: won
+                  - id: stat_3mmBOyMmaG8yc4DmAPp9WmgbjhVctVLlnd9gmvWxBe2
+                    label: Lost
+                    type: lost
+                  updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                plan_type: lite
+                updated_by: null
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: organizations_update
+      tags:
+      - organizations
+      summary: Update an organization
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: _expand
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              currency: USD
+              lead_statuses:
+              - id: stat_8ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+              - id: stat_3ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+              - id: stat_2ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+              - id: stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+              name: New Name
+            schema:
+              $ref: '#/components/schemas/Organization'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                created_by: null
+                currency: USD
+                currency_symbol: $
+                date_created: '2013-02-01T00:54:51.097000+00:00'
+                date_updated: '2013-02-20T04:38:01.961000+00:00'
+                id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                lead_statuses:
+                - id: stat_8ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                  label: Not Serious
+                - id: stat_3ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                  label: Qualified
+                - id: stat_2ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                  label: Bad Fit
+                - id: stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                  label: Potential
+                memberships:
+                - auto_record_calls: unset
+                  id: memb_wLKueFux8M2u2jshQPichvA5V44hpECtoljWbJS1PeY
+                  permissions_granted:
+                  - bulk_edit
+                  - export
+                  role_id: role_y6eLquXvRUdmwqi61tsmgCJUU7uGfxaRbDuLoONZL9p
+                  track_email_opens: true
+                  user_email: phil+sample@close.com
+                  user_first_name: P
+                  user_full_name: John Doe
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  user_last_name: F
+                  user_phone: '16502822245'
+                name: New Name
+                pipelines:
+                - created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  date_created: '2019-11-04T11:04:13.014979'
+                  date_updated: '2019-11-13T14:12:13.051542'
+                  id: pipe_6gV01if4wo7r2YTVQDWP2j
+                  name: Sales
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  statuses:
+                  - id: stat_3PB2sedHBCjwuBImAEwgHOo858f2j41lpROkcl51Fzp
+                    label: Active
+                    type: active
+                  - id: stat_IOCtLYbAclJ8XAcb3yLUhQA3zlmjtXz8JMBLyXnNMF8
+                    label: Won
+                    type: won
+                  - id: stat_3mmBOyMmaG8yc4DmAPp9WmgbjhVctVLlnd9gmvWxBe2
+                    label: Lost
+                    type: lost
+                  updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                plan_type: lite
+                updated_by: null
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  schemas:
+    InlineLeadStatusPayload:
+      title: InlineLeadStatusPayload
+      description: Reference to an existing lead status by `id`.
+      type: object
+      properties:
+        id:
+          title: ID
+          description: ID of an existing lead status.
+          type: string
+        label:
+          title: Label
+          description: Label of the lead status.
+          type: string
+    Organization:
+      title: Organization
+      description: Editable organization settings.
+      type: object
+      properties:
+        currency:
+          title: Currency
+          description: Default currency as a three-letter [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code.
+          type: string
+        enable_unsubscribe_link:
+          title: Enable Unsubscribe Link
+          description: Enable the unsubscribe link by default in new email templates.
+          type: boolean
+        lead_statuses:
+          title: Lead Statuses
+          description: The organization's lead statuses. Provide the full list in the desired order to reorder them.
+          type: array
+          maxItems: 1000
+          items:
+            $ref: '#/components/schemas/InlineLeadStatusPayload'
+        name:
+          title: Name
+          description: The organization's name.
+          type: string
+          minLength: 1
+        require_unsubscribe_link:
+          title: Require Unsubscribe Link
+          description: Require an unsubscribe link in Bulk Emails and Workflows.
+          type: boolean
+      additionalProperties: false
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

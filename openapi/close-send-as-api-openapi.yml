@@ -1,0 +1,211 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Send As API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: send_as
+  externalDocs:
+    url: https://developer.close.com/api/resources/send-as
+paths:
+  /send_as/:
+    get:
+      operationId: send_as_list
+      tags:
+      - send_as
+      summary: List Send As Associations
+      description: A user only has access to associations they are involved in. This means that when using this endpoint, `allowing_user_id` or `allowed_user_id` must be equal to your user ID. If neither filter is provided, `allowing_user_id` is assumed by default.
+      parameters:
+      - in: query
+        name: allowed_user_id
+        required: false
+        schema:
+          title: Allowed User ID
+          type: string
+      - in: query
+        name: allowing_user_id
+        required: false
+        schema:
+          title: Allowing User ID
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - allowed_user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  allowing_user_id: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                  id: sdas_3KlXHOKx4afZ19TfpxMISa
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: send_as_create
+      tags:
+      - send_as
+      summary: Create a Send As Association
+      description: Create a send-as permission. The `allowing_user_id` must be equal to your own user ID.
+      requestBody:
+        content:
+          application/json:
+            example:
+              allowed_user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+              allowing_user_id: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              example:
+                allowed_user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                allowing_user_id: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                id: sdas_3KlXHOKx4afZ19TfpxMISa
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: send_as_delete_by_user
+      tags:
+      - send_as
+      summary: Delete a Send As Association by allowed user
+      description: 'The `allowing_user_id` must be equal to your user ID.
+
+
+        Supply both the `allowing_user_id` and the `allowed_user_id` to delete an association by those users.'
+      parameters:
+      - in: query
+        name: allowed_user_id
+        required: false
+        schema:
+          title: Allowed User ID
+          type: string
+      - in: query
+        name: allowing_user_id
+        required: false
+        schema:
+          title: Allowing User ID
+          type: string
+      responses:
+        '204':
+          description: No content
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /send_as/bulk/:
+    post:
+      operationId: send_as_bulk_create
+      tags:
+      - send_as
+      summary: Edit Send As Associations in bulk
+      description: 'You can allow and disallow many other users to send as you in a single command by supplying the user IDs you want to allow and disallow.
+
+
+        Once completed, this endpoint returns all existing associations where your user is the allowing user.'
+      requestBody:
+        content:
+          application/json:
+            example:
+              allowed_user_ids:
+              - user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+              disallowed_user_ids:
+              - user_SJMF1fEyZGdtl2RPzCm9zVQ7qhd33VajdGDREhbsxjF
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - allowed_user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  allowing_user_id: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                  id: sdas_3KlXHOKx4afZ19TfpxMISa
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /send_as/{id}/:
+    get:
+      operationId: send_as_get
+      tags:
+      - send_as
+      summary: Retrieve a single Send As Association
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                allowed_user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                allowing_user_id: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                id: sdas_3KlXHOKx4afZ19TfpxMISa
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: send_as_delete
+      tags:
+      - send_as
+      summary: Delete a Send As Association by ID
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

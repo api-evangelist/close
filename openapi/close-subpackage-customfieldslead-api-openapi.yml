@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Endpoints subpackage_activities subpackage_customFieldsLead API
+  title: Endpoints Subpackage Custom Fields Lead API
   version: 1.0.0
 servers:
 - url: https://api.close.com/api/v1
@@ -253,31 +253,31 @@ paths:
                 description: Any type
 components:
   schemas:
-    custom_fields.lead_delete_Response_200:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: custom_fields.lead_delete_Response_200
     custom_fields.lead_update_Response_200:
       type: object
       properties: {}
       description: Empty response body
       title: custom_fields.lead_update_Response_200
+    custom_fields.lead_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: custom_fields.lead_delete_Response_200
     custom_fields.lead_get_Response_200:
       type: object
       properties: {}
       description: Empty response body
       title: custom_fields.lead_get_Response_200
-    custom_fields.lead_list_Response_200:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: custom_fields.lead_list_Response_200
     custom_fields.lead_create_Response_200:
       type: object
       properties: {}
       description: Empty response body
       title: custom_fields.lead_create_Response_200
+    custom_fields.lead_list_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: custom_fields.lead_list_Response_200
   securitySchemes:
     ApiKeyAuth:
       type: http

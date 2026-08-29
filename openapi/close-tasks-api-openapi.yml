@@ -1,0 +1,1311 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Tasks API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: tasks
+  externalDocs:
+    url: https://developer.close.com/api/resources/tasks
+paths:
+  /task/:
+    get:
+      operationId: tasks_list
+      tags:
+      - tasks
+      summary: List or filter tasks
+      description: 'The `view` parameter can be used to conveniently access the different task views. It accepts one of the following values:
+
+
+        * `inbox`: Shows incomplete tasks up to the end of the user''s day only (taking the time zone into account).
+
+        * `future`: Shows incomplete tasks starting from the user''s tomorrow only (taking the time zone into account).
+
+        * `archive`: Shows complete tasks only.
+
+
+        Note that a `view` value of `inbox` or `future` will override any `date__lt` or `date__gte` parameters included in the same request.
+
+
+        The `_order_by` field allows ordering by `date` or `date_created` (descending order by prepending a minus, e.g. `_order_by=-date`).'
+      parameters:
+      - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/SkipParam'
+      - in: query
+        name: assigned_to
+        required: false
+        schema:
+          title: Assigned To
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: format
+        required: false
+        schema:
+          title: Format
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: id
+        required: false
+        schema:
+          title: ID
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: id__in
+        required: false
+        schema:
+          title: ID (In)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: is_complete
+        required: false
+        schema:
+          title: Is Complete
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: lead_id
+        required: false
+        schema:
+          title: Lead ID
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: _order_by
+        required: false
+        schema:
+          title: Order By
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - $ref: '#/components/parameters/ActivityFilters_OrganizationIdParam'
+      - in: query
+        name: _type
+        required: false
+        schema:
+          title: Type
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: _type__in
+        required: false
+        schema:
+          title: Type (In)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: view
+        required: false
+        schema:
+          title: View
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date
+        required: false
+        schema:
+          title: Date
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date__lt
+        required: false
+        schema:
+          title: Date (<)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date__lte
+        required: false
+        schema:
+          title: Date (<=)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date__gt
+        required: false
+        schema:
+          title: Date (>)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date__gte
+        required: false
+        schema:
+          title: Date (>=)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: due_date
+        required: false
+        schema:
+          title: Due Date
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: due_date__lt
+        required: false
+        schema:
+          title: Due Date (<)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: due_date__lte
+        required: false
+        schema:
+          title: Due Date (<=)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: due_date__gt
+        required: false
+        schema:
+          title: Due Date (>)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: due_date__gte
+        required: false
+        schema:
+          title: Due Date (>=)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date_created__lt
+        required: false
+        schema:
+          title: Date Created (<)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date_created__lte
+        required: false
+        schema:
+          title: Date Created (<=)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date_created__gt
+        required: false
+        schema:
+          title: Date Created (>)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date_created__gte
+        required: false
+        schema:
+          title: Date Created (>=)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date_updated__lt
+        required: false
+        schema:
+          title: Date Updated (<)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date_updated__lte
+        required: false
+        schema:
+          title: Date Updated (<=)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date_updated__gt
+        required: false
+        schema:
+          title: Date Updated (>)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date_updated__gte
+        required: false
+        schema:
+          title: Date Updated (>=)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - _type: lead
+                  assigned_to: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  assigned_to_name: John Doe
+                  contact_id: null
+                  contact_name: null
+                  created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  created_by_name: John Doe
+                  date: '2015-02-08T00:00:00+00:00'
+                  date_created: '2015-02-08T20:30:54.314000+00:00'
+                  date_updated: '2015-02-26T19:11:36.128000+00:00'
+                  id: task_aRUZXCm9lMb2LwipTPhfFoFbCsUnaoQh1ncQ7WLnjlI
+                  is_complete: false
+                  is_dateless: false
+                  lead_id: lead_5LmpOyrMQdJSUlbNGBSGfK5XzcioIm7aC94PSQamQJc
+                  lead_name: Close
+                  object_id: null
+                  object_type: null
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  text: Connect with Account Manager
+                  updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  updated_by_name: John Doe
+                  view: inbox
+                - _type: missed_call
+                  assigned_to: user_alksdjfWZ9sg3FHYQcUwV7tbwZRpe3sA215Ftv8OvbU
+                  assigned_to_name: Stefan Wojcik
+                  contact_id: cont_nWEklsdiC4z8u0b9QcNV92pWZODOyS5eUIYkvID0poZ
+                  contact_name: ''
+                  created_by: null
+                  created_by_name: null
+                  date: '2015-05-27T18:33:52.937000+00:00'
+                  date_created: '2015-05-27T18:33:52.937000+00:00'
+                  date_updated: '2015-05-27T18:35:28.120000+00:00'
+                  id: noti_034u5OZh3J759uE9kokI5r0xzhKE1tsfwcIwW5kXtWy
+                  is_complete: false
+                  lead_id: lead_098324SXepf2mAk33WOIOvJYlis9dvRKJJe0wt1AwFE
+                  lead_name: Lead Name
+                  local_phone: '+19193332031'
+                  object_id: acti_7ALcldIJ9faMty47UM8xqAr0AMLeGcCUTmK32FuURJO
+                  object_type: call
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  phone: '+16503334444'
+                  phone_formatted: +1 650-333-4444
+                  phone_number_description: California
+                  updated_by: null
+                  updated_by_name: null
+                  view: inbox
+                - _type: voicemail
+                  assigned_to: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  assigned_to_name: John Doe
+                  contact_id: null
+                  contact_name: null
+                  created_by: null
+                  created_by_name: null
+                  date: '2014-01-29T21:18:37.535000+00:00'
+                  date_created: '2015-02-26T19:24:39.847000+00:00'
+                  date_updated: '2015-02-26T19:24:39.849000+00:00'
+                  id: noti_7WlHZCMgokvfv3H4SfymZLvG29QTifbGK0zMbEbPNgO
+                  is_complete: false
+                  lead_id: null
+                  lead_name: null
+                  local_phone: '+16319099219'
+                  object_id: acti_ZnroXFGejb5JjYnluywM9wjKAGPwU3IpidvQZtW7WRp
+                  object_type: call
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  phone: '+16314238017'
+                  updated_by: null
+                  updated_by_name: null
+                  view: inbox
+                  voicemail_duration: 21
+                  voicemail_url: https://s3.amazonaws.com/plivocloud/aaa-bbb-ccc.mp3
+                - _type: incoming_email
+                  assigned_to: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  assigned_to_name: John Doe
+                  body_preview: Hi, does your company provide metrics for 12/2014?
+                  contact_id: cont_73beDdTK5JOR7TMd5ervPFCwJ2jbXCPLtBfVY0yeg9X
+                  contact_name: ''
+                  created_by: null
+                  created_by_name: null
+                  date: '2015-01-09T19:50:49+00:00'
+                  date_created: '2015-01-09T19:50:49+00:00'
+                  date_updated: '2015-02-26T19:24:38.643000+00:00'
+                  emails:
+                  - acti_LfXPSR1K9IMFZwEq0yjtmrhjI9tSBQ4u4lb2lF87dzs
+                  id: noti_xN0O5Owvrxn6k8BclFme7L46k3eUaPlGMN6Y5o3mkyS
+                  is_complete: false
+                  lead_id: lead_E271nhg2okT6QJ7btzKmZwmZOhWSXeOG21PCJshsP3N
+                  lead_name: Test Company
+                  object_id: acti_jV7yfal4zwkKNTv66rGrHFd1uFUqhyNHc1m812xzcCF
+                  object_type: emailthread
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  subject: December 2014 Metrics
+                  updated_by: null
+                  updated_by_name: null
+                  view: inbox
+                - _type: email_followup
+                  assigned_to: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  assigned_to_name: John Doe
+                  body_preview: Please respond if you're interested
+                  contact_id: cont_73beDdTK5JOR7TMd5ervPFCwJ2jbXCPLtBfVY0yeg9X
+                  contact_name: ''
+                  created_by: null
+                  created_by_name: null
+                  date: '2015-01-09T19:50:49+00:00'
+                  date_created: '2015-01-09T19:50:49+00:00'
+                  date_updated: '2015-02-26T19:24:38.643000+00:00'
+                  email_id: acti_nwretk1K9IMFZwEq0yjtmrhjI9tSBQ4u4lb2lbmnrqt
+                  id: noti_akhsweqrrxn6k8BclFme7L46k3eUaPlGMN6Y5o3mkyS
+                  is_complete: false
+                  lead_id: lead_E271nhg2okT6QJ7btzKmZwmZOhWSXeOG21PCJshsP3N
+                  lead_name: Test Company
+                  object_id: acti_nmsdgwqetlkKNTv66rGrHFd1uFUqhyNHc1m812xzbsq
+                  object_type: emailthread
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  subject: I have an offer for you
+                  updated_by: null
+                  updated_by_name: null
+                  view: inbox
+                - _type: answered_detached_call
+                  assigned_to: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  assigned_to_name: John Doe
+                  contact_id: null
+                  contact_name: null
+                  created_by: null
+                  created_by_name: null
+                  date: '2015-01-09T19:49:49+00:00'
+                  date_created: '2015-01-09T19:50:49+00:00'
+                  date_updated: '2015-02-26T19:24:38.643000+00:00'
+                  id: noti_xc42fe5JD4y2GkcVhXQcbrrQKXjG6XDk5kuzBC1yRk0
+                  is_complete: false
+                  lead_id: null
+                  lead_name: null
+                  object_id: acti_gtb5mn2YAO4up2Tv7XMjV5FLMif6JVebYxDOrqvnzas
+                  object_type: call
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  phone: '+16504298174'
+                  phone_formatted: +1 650-429-8174
+                  phone_number_description: California
+                  recording_url: https://s3.amazonaws.com/plivocloud/aaa-bbb-ccc.mp3
+                  updated_by: null
+                  updated_by_name: null
+                  view: inbox
+                - _type: opportunity_due
+                  assigned_to: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                  assigned_to_name: Stefan Wojcik
+                  contact_id: cont_elkeZ5eRDRgoPfVvqTtnN8L0Rdj8fyNlI043oqPxQ6Z
+                  contact_name: John Doe
+                  created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  created_by_name: Stefan Wojcik
+                  date: '2015-05-28T00:00:00+00:00'
+                  date_created: '2015-05-27T22:27:43.617000+00:00'
+                  date_updated: '2015-05-27T22:59:26.435000+00:00'
+                  id: noti_7VfBZIqaXYO3tgdflHcY14kDu2mu9qeF32OT6PdOSqH
+                  is_complete: false
+                  lead_id: lead_0yXstlx26nU5o3341BwO9oUbqHxwcvny8sYeWQo83gU
+                  lead_name: Test Inc.
+                  object_id: oppo_FOvMVC4D4OHvHyXjtoBytvS8QIKvqOjknPzzSyNei7e
+                  object_type: opportunity
+                  opportunity_note: tqm cvr
+                  opportunity_value: 130000
+                  opportunity_value_currency: USD
+                  opportunity_value_formatted: $1,300
+                  opportunity_value_period: one_time
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                  updated_by_name: Stefan Wojcik
+                  view: inbox
+                - _type: incoming_sms
+                  assigned_to: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                  assigned_to_name: Stefan Wojcik
+                  attachments:
+                  - content_type: image/png
+                    filename: media_1.png
+                    media_id: media_1GnAWzBfs0SOjTDcUnyyP9
+                    size: 15148
+                    thumbnail_url: https://app.close.com/go/sms/acti_y10nW8kPdfmMPLy2Ufce9KymKPDuTRGKTqjpSxl6jMe/media/media_7Ga8l93XLVvqNsgjPbBuUI/thumbnail/
+                    url: https://app.close.com/go/sms/acti_y10nW8kPdfmMPLy2Ufce9KymKPDuTRGKTqjpSxl6jMe/media/media_7Ga8l93XLVvqNsgjPbBuUI/
+                  contact_id: cont_TdzWUxuQbVMUiZbaF5ki5OFRdbGFXSD9kyw5CTPksIT
+                  contact_name: Steve Ballmer
+                  created_by: null
+                  created_by_name: null
+                  date: '2016-09-21'
+                  date_created: '2016-09-21T19:00:05.835000+00:00'
+                  date_updated: '2016-09-21T19:00:05.835000+00:00'
+                  id: noti_8cT0GaRs0Ol2d97MvlresffPHEpTAE5qi6EE6y5RrKw
+                  is_complete: false
+                  lead_id: lead_iuSXNk1x4KrPggPVwQS7ynmp8pGRIDieRYiCnuo4yFb
+                  lead_name: New Lead
+                  local_phone: '+16503334444'
+                  object_id: acti_y10nW8kPdfmMPLy2Ufce9KymKPDuTRGKTqjpSxl6jMe
+                  object_type: sms
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  remote_phone: '+18189347000'
+                  remote_phone_description: California
+                  remote_phone_formatted: +1 818-934-7000
+                  text: Developers developers developers developers!!!
+                  updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                  updated_by_name: Stefan Wojcik
+                  view: inbox
+                - _type: outgoing_call
+                  agent_config_id: null
+                  assigned_to: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  assigned_to_name: John Doe
+                  contact_id: cont_nWEklsdiC4z8u0b9QcNV92pWZODOyS5eUIYkvID0poZ
+                  contact_name: Bruce Wayne
+                  created_by: null
+                  created_by_name: null
+                  date: '2025-11-05T00:00:00+00:00'
+                  date_created: '2025-11-04T18:33:52.937000+00:00'
+                  date_updated: '2025-11-04T18:33:52.937000+00:00'
+                  deduplication_key: null
+                  id: noti_9cU1HbSt1Pm3e08NwmsftggQIFqUBF6rj7FF7z6SsLx
+                  is_complete: false
+                  is_primary_lead_notification: true
+                  lead_id: lead_5LmpOyrMQdJSUlbNGBSGfK5XzcioIm7aC94PSQamQJc
+                  lead_name: Wayne Enterprises
+                  object_id: null
+                  object_type: null
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  resolution: null
+                  sequence_id: seq_1BTljGuCooX0nbFoPihl07
+                  sequence_subscription_id: sub_wRlAku35U53xEV7PcNY3Qo
+                  step_id: step_5aH9sBVYNjNa0FrGGVdQzq
+                  text: Qualify this lead
+                  updated_by: null
+                  updated_by_name: null
+                  view: future
+                has_more: false
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: tasks_create
+      tags:
+      - tasks
+      summary: Create a task
+      description: Provide the type of task to be created in the `_type` field. Currently only tasks of type `lead` and `outgoing_call` can be created.
+      parameters:
+      - $ref: '#/components/parameters/FieldsParam'
+      requestBody:
+        content:
+          application/json:
+            examples:
+              lead_task:
+                summary: Create a lead task
+                value:
+                  _type: lead
+                  assigned_to: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  date: '2013-02-06'
+                  is_complete: false
+                  lead_id: lead_5LmpOyrMQdJSUlbNGBSGfK5XzcioIm7aC94PSQamQJc
+                  text: Connect with Account Manager
+              call_task:
+                summary: Create an outgoing-call task
+                value:
+                  _type: outgoing_call
+                  assigned_to: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  contact_id: cont_q4xdpIoJZCgMKY3sFBbGnRGhdgNbGN3yXfCmJSnkGai
+                  date: '2013-02-06'
+                  lead_id: lead_5LmpOyrMQdJSUlbNGBSGfK5XzcioIm7aC94PSQamQJc
+            schema:
+              $ref: '#/components/schemas/CreateTask'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                lead_task:
+                  summary: Create a lead task
+                  value:
+                    _type: lead
+                    assigned_to: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                    assigned_to_name: John Doe
+                    contact_id: null
+                    contact_name: null
+                    created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                    created_by_name: John Doe
+                    date: '2013-02-06'
+                    date_created: '2015-02-08T20:30:54.314000+00:00'
+                    date_updated: '2015-02-26T19:11:36.128000+00:00'
+                    id: task_aRUZXCm9lMb2LwipTPhfFoFbCsUnaoQh1ncQ7WLnjlI
+                    is_complete: false
+                    is_dateless: false
+                    lead_id: lead_5LmpOyrMQdJSUlbNGBSGfK5XzcioIm7aC94PSQamQJc
+                    lead_name: Close
+                    object_id: null
+                    object_type: null
+                    organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                    text: Connect with Account Manager
+                    updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                    updated_by_name: John Doe
+                call_task:
+                  summary: Create an outgoing-call task
+                  value:
+                    _type: outgoing_call
+                    assigned_to: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                    assigned_to_name: John Doe
+                    contact_id: cont_q4xdpIoJZCgMKY3sFBbGnRGhdgNbGN3yXfCmJSnkGai
+                    contact_name: Jane Smith
+                    created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                    created_by_name: John Doe
+                    date: '2013-02-06'
+                    date_created: '2015-02-08T20:31:12.000000+00:00'
+                    date_updated: '2015-02-08T20:31:12.000000+00:00'
+                    id: task_bXUZYDn0mNc3MxwiUQigGpGcDtVobpRi2odR8XMokZJ
+                    is_complete: false
+                    is_dateless: false
+                    lead_id: lead_5LmpOyrMQdJSUlbNGBSGfK5XzcioIm7aC94PSQamQJc
+                    lead_name: Close
+                    object_id: null
+                    object_type: null
+                    organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                    text: null
+                    updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                    updated_by_name: John Doe
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: tasks_bulk_update
+      tags:
+      - tasks
+      summary: Bulk-update tasks
+      description: 'Any of the filters of the GET endpoint may be used as query parameters or passed in the request body (see [Filter Parameters](https://developer.close.com/api/overview/filter-parameters)). For example:
+
+
+        ```json
+
+        {"_params": {"id__in": "task_A,task_B,task_C"}, "is_complete": true}
+
+        ```
+
+
+        Only the `assigned_to`, `date` and `is_complete` fields may be updated.'
+      parameters:
+      - in: query
+        name: assigned_to
+        required: false
+        schema:
+          title: Assigned To
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: format
+        required: false
+        schema:
+          title: Format
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: id
+        required: false
+        schema:
+          title: ID
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: id__in
+        required: false
+        schema:
+          title: ID (In)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: is_complete
+        required: false
+        schema:
+          title: Is Complete
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: lead_id
+        required: false
+        schema:
+          title: Lead ID
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: _order_by
+        required: false
+        schema:
+          title: Order By
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - $ref: '#/components/parameters/ActivityFilters_OrganizationIdParam'
+      - in: query
+        name: _type
+        required: false
+        schema:
+          title: Type
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: _type__in
+        required: false
+        schema:
+          title: Type (In)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: view
+        required: false
+        schema:
+          title: View
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date
+        required: false
+        schema:
+          title: Date
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date__lt
+        required: false
+        schema:
+          title: Date (<)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date__lte
+        required: false
+        schema:
+          title: Date (<=)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date__gt
+        required: false
+        schema:
+          title: Date (>)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date__gte
+        required: false
+        schema:
+          title: Date (>=)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: due_date
+        required: false
+        schema:
+          title: Due Date
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: due_date__lt
+        required: false
+        schema:
+          title: Due Date (<)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: due_date__lte
+        required: false
+        schema:
+          title: Due Date (<=)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: due_date__gt
+        required: false
+        schema:
+          title: Due Date (>)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: due_date__gte
+        required: false
+        schema:
+          title: Due Date (>=)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date_created__lt
+        required: false
+        schema:
+          title: Date Created (<)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date_created__lte
+        required: false
+        schema:
+          title: Date Created (<=)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date_created__gt
+        required: false
+        schema:
+          title: Date Created (>)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date_created__gte
+        required: false
+        schema:
+          title: Date Created (>=)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date_updated__lt
+        required: false
+        schema:
+          title: Date Updated (<)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date_updated__lte
+        required: false
+        schema:
+          title: Date Updated (<=)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date_updated__gt
+        required: false
+        schema:
+          title: Date Updated (>)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: date_updated__gte
+        required: false
+        schema:
+          title: Date Updated (>=)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - $ref: '#/components/parameters/FieldsParam'
+      requestBody:
+        content:
+          application/json:
+            example:
+              is_complete: true
+            schema:
+              $ref: '#/components/schemas/BulkUpdateNotifications'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                ok: true
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /task/{id}/:
+    get:
+      operationId: tasks_get
+      tags:
+      - tasks
+      summary: Fetch a task's details
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                _type: lead
+                assigned_to: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                assigned_to_name: John Doe
+                contact_id: null
+                contact_name: null
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                created_by_name: John Doe
+                date: '2015-02-08T00:00:00+00:00'
+                date_created: '2015-02-08T20:30:54.314000+00:00'
+                date_updated: '2015-02-26T19:11:36.128000+00:00'
+                id: task_aRUZXCm9lMb2LwipTPhfFoFbCsUnaoQh1ncQ7WLnjlI
+                is_complete: false
+                is_dateless: false
+                lead_id: lead_5LmpOyrMQdJSUlbNGBSGfK5XzcioIm7aC94PSQamQJc
+                lead_name: Close
+                object_id: null
+                object_type: null
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                text: Connect with Account Manager
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                updated_by_name: John Doe
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: tasks_update
+      tags:
+      - tasks
+      summary: Update a task
+      description: The `assigned_to`, `date` (either a date or a date-time), and `is_complete` fields may be updated on all tasks. If the task type is `lead`, the `text` field may also be modified.
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/FieldsParam'
+      requestBody:
+        content:
+          application/json:
+            example:
+              is_complete: false
+            schema:
+              $ref: '#/components/schemas/UpdateNotification'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                _type: lead
+                assigned_to: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                assigned_to_name: John Doe
+                contact_id: null
+                contact_name: null
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                created_by_name: John Doe
+                date: '2013-02-06'
+                date_created: '2015-02-08T20:30:54.314000+00:00'
+                date_updated: '2015-02-26T19:11:36.128000+00:00'
+                id: task_aRUZXCm9lMb2LwipTPhfFoFbCsUnaoQh1ncQ7WLnjlI
+                is_complete: true
+                is_dateless: false
+                lead_id: lead_5LmpOyrMQdJSUlbNGBSGfK5XzcioIm7aC94PSQamQJc
+                lead_name: Close
+                object_id: null
+                object_type: null
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                text: Connect with Account Manager
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                updated_by_name: John Doe
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: tasks_delete
+      tags:
+      - tasks
+      summary: Delete a task
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  schemas:
+    TaskPriority:
+      title: TaskPriority
+      type: string
+      enum:
+      - high
+      - medium
+    CreateLeadTask:
+      title: CreateLeadTask
+      type: object
+      properties:
+        _type:
+          title: Type
+          type: string
+          default: lead
+          const: lead
+        assigned_to:
+          title: Assigned To
+          anyOf:
+          - type: string
+          - type: 'null'
+        contact_id:
+          title: Contact ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        created_by:
+          title: Created By
+          type: string
+        date:
+          title: Date
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            format: date
+        date_created:
+          title: Date Created
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            format: date
+        disable_notification:
+          title: Disable Notification
+          type: boolean
+          default: false
+        due_date:
+          title: Due Date
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            format: date
+        is_complete:
+          title: Is Complete
+          type: boolean
+        is_dateless:
+          title: Is Dateless
+          type: boolean
+        lead_id:
+          title: Lead ID
+          type: string
+        organization_id:
+          title: Organization ID
+          type: string
+        priority:
+          title: Priority
+          $ref: '#/components/schemas/TaskPriority'
+        text:
+          title: Text
+          type: string
+      required:
+      - lead_id
+      - text
+    UpdateNotification:
+      title: UpdateNotification
+      type: object
+      properties:
+        agent_config_id:
+          title: Agent Config ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        assigned_to:
+          title: Assigned To
+          type: string
+        contact_id:
+          title: Contact ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        created_by:
+          title: Created By
+          type: string
+        date:
+          title: Date
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            format: date
+        due_date:
+          title: Due Date
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            format: date
+        is_complete:
+          title: Is Complete
+          type: boolean
+        is_dateless:
+          title: Is Dateless
+          type: boolean
+        lead_id:
+          title: Lead ID
+          type: string
+        organization_id:
+          title: Organization ID
+          type: string
+        priority:
+          $ref: '#/components/schemas/TaskPriority'
+        resolution:
+          anyOf:
+          - $ref: '#/components/schemas/NotificationResolution'
+          - type: 'null'
+        text:
+          title: Text
+          type: string
+      additionalProperties: false
+    NotificationResolution:
+      title: NotificationResolution
+      type: string
+      enum:
+      - abandoned
+      - skipped
+    CreateTask:
+      title: CreateTask
+      oneOf:
+      - $ref: '#/components/schemas/CreateLeadTask'
+      - $ref: '#/components/schemas/CreateCallTask'
+      discriminator:
+        mapping:
+          lead: '#/components/schemas/CreateLeadTask'
+          outgoing_call: '#/components/schemas/CreateCallTask'
+        propertyName: _type
+    CreateCallTask:
+      title: CreateCallTask
+      type: object
+      properties:
+        _type:
+          title: Type
+          type: string
+          default: outgoing_call
+          const: outgoing_call
+        agent_config_id:
+          title: Agent Config ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        assigned_to:
+          title: Assigned To
+          anyOf:
+          - type: string
+          - type: 'null'
+        contact_id:
+          title: Contact ID
+          type: string
+        created_by:
+          title: Created By
+          type: string
+        date:
+          title: Date
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            format: date
+        is_complete:
+          title: Is Complete
+          type: boolean
+        lead_id:
+          title: Lead ID
+          type: string
+        organization_id:
+          title: Organization ID
+          type: string
+        text:
+          title: Text
+          anyOf:
+          - type: string
+          - type: 'null'
+      required:
+      - contact_id
+      - lead_id
+    BulkUpdateNotifications:
+      title: BulkUpdateNotifications
+      type: object
+      properties:
+        assigned_to:
+          title: Assigned To
+          type: string
+        date:
+          title: Date
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            format: date
+        is_complete:
+          title: Is Complete
+          type: boolean
+        organization_id:
+          title: Organization ID
+          type: string
+        priority:
+          $ref: '#/components/schemas/TaskPriority'
+        resolution:
+          anyOf:
+          - $ref: '#/components/schemas/NotificationResolution'
+          - type: 'null'
+        text:
+          title: Text
+          type: string
+      additionalProperties: false
+  parameters:
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
+    ActivityFilters_OrganizationIdParam:
+      in: query
+      name: organization_id
+      required: false
+      schema:
+        title: Organization ID
+        default: null
+        anyOf:
+        - type: string
+        - type: 'null'
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

@@ -1,0 +1,364 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Webhooks API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: webhooks
+  externalDocs:
+    url: https://developer.close.com/api/resources/webhooks
+paths:
+  /webhook/:
+    get:
+      operationId: webhooks_list
+      tags:
+      - webhooks
+      summary: List Webhook subscriptions
+      description: List all webhook subscriptions for the organization.
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: webhooks_create
+      tags:
+      - webhooks
+      summary: Create new Webhook subscription
+      description: The subscription will send events to the specified URL.
+      requestBody:
+        content:
+          application/json:
+            examples:
+              basic:
+                summary: Basic webhook subscription
+                value:
+                  events:
+                  - action: created
+                    object_type: lead
+                  - action: updated
+                    object_type: lead
+                  - action: created
+                    object_type: activity.call
+                  - action: created
+                    object_type: activity.note
+                  - action: updated
+                    object_type: activity.note
+                  - action: created
+                    object_type: activity.form_submission
+                  url: https://test.example.com
+              withFilter:
+                summary: Webhook subscription with event filter
+                value:
+                  events:
+                  - action: created
+                    extra_filter:
+                      field: user_id
+                      filter:
+                        type: equals
+                        value: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                      type: field_accessor
+                    object_type: lead
+                  url: https://test.example.com
+            schema:
+              $ref: '#/components/schemas/CreateWebhook'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              examples:
+                basic:
+                  summary: Basic webhook subscription
+                  value:
+                    counters: {}
+                    created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                    date_created: '2018-12-06T19:15:09.590432'
+                    date_updated: '2018-12-06T19:15:09.590439'
+                    events:
+                    - action: created
+                      object_type: lead
+                    - action: updated
+                      object_type: lead
+                    - action: created
+                      object_type: activity.call
+                    - action: created
+                      object_type: activity.note
+                    - action: updated
+                      object_type: activity.note
+                    health_status: healthy
+                    id: whsub_6un6NQjYTaFdgtIZsTDXP6
+                    latest_error: null
+                    pause_reason: null
+                    recent_consecutive_fail_buckets_cnt: 0
+                    signature_key: 058bfb6a3d8cfdc4da7c3be5901b16ae11da982b46a25fb2cd7016e97a140a1c
+                    status: active
+                    updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                    url: https://test.example.com
+                    verify_ssl: true
+                withFilter:
+                  summary: Webhook subscription with event filter
+                  value:
+                    counters: {}
+                    created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                    date_created: '2018-12-06T19:15:09.590432'
+                    date_updated: '2018-12-06T19:15:09.590439'
+                    events:
+                    - action: created
+                      extra_filter:
+                        field: user_id
+                        filter:
+                          type: equals
+                          value: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                        type: field_accessor
+                      object_type: lead
+                    health_status: healthy
+                    id: whsub_6un6NQjYTaFdgtIZsTDXP6
+                    latest_error: null
+                    pause_reason: null
+                    recent_consecutive_fail_buckets_cnt: 0
+                    signature_key: 058bfb6a3d8cfdc4da7c3be5901b16ae11da982b46a25fb2cd7016e97a140a1c
+                    status: active
+                    updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                    url: https://test.example.com
+                    verify_ssl: true
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /webhook/{id}/:
+    get:
+      operationId: webhooks_get
+      tags:
+      - webhooks
+      summary: Retrieve a single Webhook subscription
+      description: The response contains the subscription details.
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                counters: {}
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                date_created: '2018-12-06T19:15:09.590432'
+                date_updated: '2018-12-06T19:15:09.590439'
+                events:
+                - action: created
+                  object_type: lead
+                - action: updated
+                  object_type: lead
+                - action: created
+                  object_type: activity.call
+                - action: created
+                  object_type: activity.note
+                - action: updated
+                  object_type: activity.note
+                health_status: healthy
+                id: whsub_6un6NQjYTaFdgtIZsTDXP6
+                latest_error: null
+                pause_reason: null
+                recent_consecutive_fail_buckets_cnt: 0
+                signature_key: 058bfb6a3d8cfdc4da7c3be5901b16ae11da982b46a25fb2cd7016e97a140a1c
+                status: active
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                url: https://test.example.com
+                verify_ssl: true
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: webhooks_update
+      tags:
+      - webhooks
+      summary: Update existing Webhook subscription
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              status: paused
+            schema:
+              $ref: '#/components/schemas/UpdateWebhook'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                counters: {}
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                date_created: '2018-12-06T19:15:09.590432'
+                date_updated: '2018-12-06T19:21:12.226090'
+                events:
+                - action: created
+                  object_type: lead
+                - action: updated
+                  object_type: lead
+                - action: created
+                  object_type: activity.call
+                - action: created
+                  object_type: activity.note
+                - action: updated
+                  object_type: activity.note
+                health_status: healthy
+                id: whsub_6un6NQjYTaFdgtIZsTDXP6
+                latest_error: null
+                pause_reason: api
+                recent_consecutive_fail_buckets_cnt: 0
+                signature_key: 058bfb6a3d8cfdc4da7c3be5901b16ae11da982b46a25fb2cd7016e97a140a1c
+                status: paused
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                url: https://test.example.com
+                verify_ssl: true
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: webhooks_delete
+      tags:
+      - webhooks
+      summary: Delete Webhook subscription
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  schemas:
+    WebhookStatus:
+      title: WebhookStatus
+      type: string
+      enum:
+      - active
+      - paused
+    UpdateWebhook:
+      title: UpdateWebhook
+      type: object
+      properties:
+        events:
+          title: Events
+          description: A list of events to subscribe to. Each event has an `object_type` and an `action` from values in the [event log](https://developer.close.com/api/resources/events/list-of-event-types). You can also use [Webhook Filters](https://developer.close.com/api/resources/webhooks/webhook-filters) while creating your subscription so that an event only fires to a Webhook when certain conditions are met.
+          default: null
+          anyOf:
+          - type: array
+            items:
+              $ref: '#/components/schemas/WebhookSubscriptionEvent'
+          - type: 'null'
+        status:
+          default: null
+          anyOf:
+          - $ref: '#/components/schemas/WebhookStatus'
+          - type: 'null'
+        url:
+          title: Url
+          description: Destination URL for the webhook subscription
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        verify_ssl:
+          title: Verify Ssl
+          description: Verify SSL certificate of destination webhook URL. Set to `false` to disable SSL certificate validation. We recommend using https to protect your data during delivery.
+          default: null
+          anyOf:
+          - type: boolean
+          - type: 'null'
+      additionalProperties: false
+    WebhookSubscriptionEvent:
+      title: WebhookSubscriptionEvent
+      type: object
+      properties:
+        action:
+          title: Action
+          type: string
+        extra_filter:
+          title: Extra Filter
+          default: null
+          anyOf:
+          - type: object
+            additionalProperties: true
+          - type: 'null'
+        object_type:
+          title: Object Type
+          type: string
+      required:
+      - action
+      - object_type
+    CreateWebhook:
+      title: CreateWebhook
+      type: object
+      properties:
+        events:
+          title: Events
+          description: A list of events to subscribe to. Each event has an `object_type` and an `action` from values in the [event log](https://developer.close.com/api/resources/events/list-of-event-types). You can also use [Webhook Filters](https://developer.close.com/api/resources/webhooks/webhook-filters) while creating your subscription so that an event only fires to a Webhook when certain conditions are met.
+          type: array
+          items:
+            $ref: '#/components/schemas/WebhookSubscriptionEvent'
+        url:
+          title: Url
+          description: Destination URL for the webhook subscription
+          type: string
+        verify_ssl:
+          title: Verify Ssl
+          description: Verify SSL certificate of destination webhook URL. Set to `false` to disable SSL certificate validation. We recommend using https to protect your data during delivery.
+          type: boolean
+          default: true
+      required:
+      - events
+      - url
+      additionalProperties: false
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

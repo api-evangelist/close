@@ -1,0 +1,374 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Bulk Actions.delete API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: bulk_actions.delete
+  externalDocs:
+    url: https://developer.close.com/api/resources/bulk-actions
+paths:
+  /bulk_action/delete/:
+    get:
+      operationId: bulk_actions.delete_list
+      tags:
+      - bulk_actions.delete
+      summary: List bulk deletes
+      parameters:
+      - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/SkipParam'
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - bulk_object_type: lead
+                  created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  date_created: '2015-03-16T00:19:50.141000+00:00'
+                  date_updated: '2015-03-16T00:20:09.442000+00:00'
+                  id: bulkdelete_asdVYCm54A0El829k39e7nIvlCSDDhVLuyb8aspGSET
+                  n_leads: 77
+                  n_leads_processed: 77
+                  n_objects: 77
+                  n_objects_processed: 77
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  query: lead_status:Potential
+                  results_limit: null
+                  s_query:
+                    queries:
+                    - object_type: lead
+                      type: object_type
+                    - condition:
+                        mode: full_words
+                        type: text
+                        value: ACME Inc.
+                      field:
+                        field_name: name
+                        object_type: lead
+                        type: regular_field
+                      type: field_condition
+                    type: and
+                  send_done_email: false
+                  sort: []
+                  status: done
+                  updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                has_more: false
+              schema:
+                type: object
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/BulkDeleteAction'
+                    type: array
+                  has_more:
+                    type: boolean
+                required:
+                - data
+                - has_more
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: bulk_actions.delete_create
+      tags:
+      - bulk_actions.delete
+      summary: Initiate a new bulk delete
+      description: 'Use `"send_done_email": false` if you don''t want to get a confirmation email after the bulk action is done.'
+      requestBody:
+        content:
+          application/json:
+            example:
+              results_limit: null
+              s_query:
+                queries:
+                - object_type: lead
+                  type: object_type
+                - condition:
+                    mode: full_words
+                    type: text
+                    value: ACME Inc.
+                  field:
+                    field_name: name
+                    object_type: lead
+                    type: regular_field
+                  type: field_condition
+                type: and
+              sort:
+              - direction: desc
+                field:
+                  field_name: date_created
+                  object_type: lead
+                  type: regular_field
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                bulk_object_type: lead
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                date_created: '2015-03-16T00:19:50.141000+00:00'
+                date_updated: '2015-03-16T00:20:09.442000+00:00'
+                id: bulkdelete_asdVYCm54A0El829k39e7nIvlCSDDhVLuyb8aspGSET
+                n_leads: null
+                n_leads_processed: 0
+                n_objects: null
+                n_objects_processed: 0
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                query: lead_status:Potential
+                results_limit: null
+                s_query:
+                  queries:
+                  - object_type: lead
+                    type: object_type
+                  - condition:
+                      mode: full_words
+                      type: text
+                      value: ACME Inc.
+                    field:
+                      field_name: name
+                      object_type: lead
+                      type: regular_field
+                    type: field_condition
+                  type: and
+                send_done_email: true
+                sort:
+                - direction: desc
+                  field:
+                    field_name: date_created
+                    object_type: lead
+                    type: regular_field
+                status: created
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+              schema:
+                $ref: '#/components/schemas/BulkDeleteAction'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /bulk_action/delete/{id}/:
+    get:
+      operationId: bulk_actions.delete_get
+      tags:
+      - bulk_actions.delete
+      summary: Fetch a single bulk delete object
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                bulk_object_type: lead
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                date_created: '2015-03-16T00:19:50.141000+00:00'
+                date_updated: '2015-03-16T00:20:09.442000+00:00'
+                id: bulkdelete_asdVYCm54A0El829k39e7nIvlCSDDhVLuyb8aspGSET
+                n_leads: 77
+                n_leads_processed: 77
+                n_objects: 77
+                n_objects_processed: 77
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                query: lead_status:Potential
+                results_limit: null
+                s_query:
+                  queries:
+                  - object_type: lead
+                    type: object_type
+                  - condition:
+                      mode: full_words
+                      type: text
+                      value: ACME Inc.
+                    field:
+                      field_name: name
+                      object_type: lead
+                      type: regular_field
+                    type: field_condition
+                  type: and
+                send_done_email: false
+                sort: []
+                status: done
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+              schema:
+                $ref: '#/components/schemas/BulkDeleteAction'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  schemas:
+    BulkActionStatus:
+      title: BulkActionStatus
+      type: string
+      enum:
+      - created
+      - loading
+      - processing
+      - done
+      - paused
+      - resuming
+      - error
+    BulkDeleteAction:
+      title: BulkDeleteAction
+      type: object
+      properties:
+        bulk_object_type:
+          $ref: '#/components/schemas/BulkActionObjectType'
+        created_by:
+          title: Created By
+          anyOf:
+          - type: string
+          - type: 'null'
+        date_created:
+          title: Date Created
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        date_updated:
+          title: Date Updated
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        id:
+          title: ID
+          type: string
+        n_leads:
+          title: N Leads
+          anyOf:
+          - type: integer
+          - type: 'null'
+        n_leads_processed:
+          title: N Leads Processed
+          type: integer
+        n_objects:
+          title: N Objects
+          anyOf:
+          - type: integer
+          - type: 'null'
+        n_objects_processed:
+          title: N Objects Processed
+          type: integer
+        organization_id:
+          title: Organization ID
+          type: string
+        query:
+          title: Query
+          anyOf:
+          - type: string
+          - type: 'null'
+        results_limit:
+          title: Results Limit
+          anyOf:
+          - type: integer
+          - type: 'null'
+        s_query:
+          title: S Query
+          type: object
+          additionalProperties: true
+        send_done_email:
+          title: Send Done Email
+          type: boolean
+        sort:
+          title: Sort
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        status:
+          anyOf:
+          - $ref: '#/components/schemas/BulkActionStatus'
+          - type: 'null'
+        updated_by:
+          title: Updated By
+          anyOf:
+          - type: string
+          - type: 'null'
+      required:
+      - bulk_object_type
+      - created_by
+      - date_created
+      - date_updated
+      - id
+      - n_leads
+      - n_leads_processed
+      - n_objects
+      - n_objects_processed
+      - organization_id
+      - query
+      - results_limit
+      - s_query
+      - send_done_email
+      - sort
+      - status
+      - updated_by
+    BulkActionObjectType:
+      title: BulkActionObjectType
+      type: string
+      enum:
+      - lead
+      - contact
+      - call
+      - custom_activity
+      - form_submission
+  parameters:
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

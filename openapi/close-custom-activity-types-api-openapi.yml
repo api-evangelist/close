@@ -1,0 +1,269 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Custom Activity Types API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: custom_activity_types
+  externalDocs:
+    url: https://developer.close.com/api/resources/custom-activity-types
+paths:
+  /custom_activity/:
+    get:
+      operationId: custom_activity_types_list
+      tags:
+      - custom_activity_types
+      summary: List Custom Activity Types
+      description: List all custom activity types defined in the organization. The response includes all Custom Activity Types, including their Custom Field metadata.
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - api_create_only: true
+                  created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                  date_created: '2020-07-09T15:36:16.795350'
+                  date_updated: '2020-07-09T15:36:16.795350'
+                  description: An API event only, with no fields.
+                  editable_with_roles: []
+                  fields: []
+                  id: actitype_33dpZWDiI0KoJsmQFCKbgi
+                  is_archived: false
+                  name: API Event
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                - api_create_only: false
+                  created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                  date_created: '2020-07-27T21:28:39.765523'
+                  date_updated: '2020-07-27T21:28:39.765523'
+                  description: Heppens when the lead signs up for the newsletter
+                  editable_with_roles: []
+                  fields:
+                  - accepts_multiple_values: false
+                    converting_to_type: null
+                    description: Email of the person who signed up for the newsletter
+                    editable_with_roles: []
+                    id: cf_UpyNBvr6Rw8UBHh7zRboL3PYhbOVJl3XvwgPm3jg64S
+                    name: Email Address
+                    required: true
+                    type: text
+                  - accepts_multiple_values: true
+                    converting_to_type: null
+                    description: null
+                    editable_with_roles: []
+                    id: cf_cSh3fWT3rEJ1BFSezme2YAG6bPrZV5wUWKKrW4iN19g
+                    name: Wants Marketing Materials
+                    required: false
+                    type: choices
+                  id: actitype_1h5m6uHM9BZOpwVhyRJb4Y
+                  is_archived: false
+                  name: Newsletter Signup
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: custom_activity_types_create
+      tags:
+      - custom_activity_types
+      summary: Create new Custom Activity Type
+      description: The type must be created before activity custom fields can be added.
+      requestBody:
+        content:
+          application/json:
+            example:
+              api_create_only: false
+              description: Lead requested a product demo.
+              editable_with_roles:
+              - admin
+              name: Demo Requested
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              example:
+                api_create_only: false
+                created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                date_created: '2020-08-07T15:18:33.797245'
+                date_updated: '2020-08-07T15:18:33.797245'
+                description: Lead requested a product demo.
+                editable_with_roles:
+                - admin
+                fields: []
+                id: actitype_4cvujO1jQQkVYGPCiMsqMW
+                is_archived: false
+                name: Demo Requested
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /custom_activity/{id}/:
+    get:
+      operationId: custom_activity_types_get
+      tags:
+      - custom_activity_types
+      summary: Retrieve a single Custom Activity Type
+      description: The response contains the Custom Activity Type including most Custom Field metadata.
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                api_create_only: false
+                created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                date_created: '2020-07-27T21:28:39.765523'
+                date_updated: '2020-07-27T21:28:39.765523'
+                description: Heppens when the lead signs up for the newsletter
+                editable_with_roles: []
+                fields:
+                - accepts_multiple_values: false
+                  converting_to_type: null
+                  description: Email of the person who signed up for the newsletter
+                  editable_with_roles: []
+                  id: cf_UpyNBvr6Rw8UBHh7zRboL3PYhbOVJl3XvwgPm3jg64S
+                  name: Email Address
+                  required: true
+                  type: text
+                - accepts_multiple_values: true
+                  converting_to_type: null
+                  description: null
+                  editable_with_roles: []
+                  id: cf_cSh3fWT3rEJ1BFSezme2YAG6bPrZV5wUWKKrW4iN19g
+                  name: Wants Marketing Materials
+                  required: false
+                  type: choices
+                id: actitype_1h5m6uHM9BZOpwVhyRJb4Y
+                is_archived: false
+                name: Newsletter Signup
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: custom_activity_types_update
+      tags:
+      - custom_activity_types
+      summary: Update existing Custom Activity Type
+      description: 'The type''s `name`, `description`, `api_create_only`, `editable_with_roles` and `is_archived` may be updated here. These properties will be updated immediately in the Custom Activity API.
+
+
+        Field order can be set here, but adding, modifying or removing fields from a Custom Activity Type must be done using the Custom Field API. The field order is a display property only, and does not affect the request and response for the Custom Activity API.'
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              fields:
+              - id: cf_cSh3fWT3rEJ1BFSezme2YAG6bPrZV5wUWKKrW4iN19g
+              - id: cf_UpyNBvr6Rw8UBHh7zRboL3PYhbOVJl3XvwgPm3jg64S
+              is_archived: true
+              name: Newsletter Signup
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                api_create_only: false
+                created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                date_created: '2020-07-27T21:28:39.765523'
+                date_updated: '2020-08-07T16:23:36.429990'
+                description: null
+                editable_with_roles: []
+                fields:
+                - accepts_multiple_values: true
+                  converting_to_type: null
+                  description: null
+                  editable_with_roles: []
+                  id: cf_cSh3fWT3rEJ1BFSezme2YAG6bPrZV5wUWKKrW4iN19g
+                  name: Wants Marketing Materials
+                  required: false
+                  type: choices
+                - accepts_multiple_values: false
+                  converting_to_type: null
+                  description: Email of the person who signed up for the newsletter
+                  editable_with_roles: []
+                  id: cf_UpyNBvr6Rw8UBHh7zRboL3PYhbOVJl3XvwgPm3jg64S
+                  name: Email Address
+                  required: true
+                  type: text
+                id: actitype_1h5m6uHM9BZOpwVhyRJb4Y
+                is_archived: true
+                name: Newsletter Signup
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: custom_activity_types_delete
+      tags:
+      - custom_activity_types
+      summary: Delete a Custom Activity Type
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

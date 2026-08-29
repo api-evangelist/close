@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Endpoints subpackage_activities subpackage_bulkActionsEdit API
+  title: Endpoints Subpackage Bulk Actions Edit API
   version: 1.0.0
 servers:
 - url: https://api.close.com/api/v1
@@ -159,36 +159,17 @@ paths:
                 description: Any type
 components:
   schemas:
-    bulk_actions.edit_list_Response_200:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/BulkEditAction'
-        has_more:
-          type: boolean
-      required:
-      - data
-      - has_more
-      title: bulk_actions.edit_list_Response_200
-    BulkEditActionType:
+    BulkActionStatus:
       type: string
       enum:
-      - set_custom_field
-      - clear_custom_field
-      - set_lead_status
-      - set_contact_custom_field
-      - clear_contact_custom_field
-      - set_activity_custom_field
-      - clear_activity_custom_field
-      - set_global_custom_field
-      - clear_global_custom_field
-      - set_opportunity_custom_field
-      - clear_opportunity_custom_field
-      - set_custom_object_custom_field
-      - clear_custom_object_custom_field
-      title: BulkEditActionType
+      - created
+      - loading
+      - processing
+      - done
+      - paused
+      - resuming
+      - error
+      title: BulkActionStatus
     BulkEditAction:
       type: object
       properties:
@@ -286,17 +267,36 @@ components:
       - type
       - updated_by
       title: BulkEditAction
-    BulkActionStatus:
+    BulkEditActionType:
       type: string
       enum:
-      - created
-      - loading
-      - processing
-      - done
-      - paused
-      - resuming
-      - error
-      title: BulkActionStatus
+      - set_custom_field
+      - clear_custom_field
+      - set_lead_status
+      - set_contact_custom_field
+      - clear_contact_custom_field
+      - set_activity_custom_field
+      - clear_activity_custom_field
+      - set_global_custom_field
+      - clear_global_custom_field
+      - set_opportunity_custom_field
+      - clear_opportunity_custom_field
+      - set_custom_object_custom_field
+      - clear_custom_object_custom_field
+      title: BulkEditActionType
+    bulk_actions.edit_list_Response_200:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/BulkEditAction'
+        has_more:
+          type: boolean
+      required:
+      - data
+      - has_more
+      title: bulk_actions.edit_list_Response_200
   securitySchemes:
     ApiKeyAuth:
       type: http

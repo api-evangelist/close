@@ -1,0 +1,806 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Activities.notes API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: activities.notes
+  externalDocs:
+    url: https://developer.close.com/api/resources/activities/notes
+paths:
+  /activity/note/:
+    get:
+      operationId: activities.notes_list
+      tags:
+      - activities.notes
+      summary: List or filter all Note activities
+      parameters:
+      - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/SkipParam'
+      - $ref: '#/components/parameters/ActivityFilters_IdInParam'
+      - $ref: '#/components/parameters/ActivityFilters_LeadIdParam'
+      - $ref: '#/components/parameters/ActivityFilters_ContactIdParam'
+      - $ref: '#/components/parameters/ActivityFilters_UserIdParam'
+      - $ref: '#/components/parameters/ActivityFilters_OrganizationIdParam'
+      - $ref: '#/components/parameters/ActivityFilters_TypeParam'
+      - $ref: '#/components/parameters/ActivityFilters_DateCreatedGteParam'
+      - $ref: '#/components/parameters/ActivityFilters_DateCreatedLteParam'
+      - $ref: '#/components/parameters/ActivityFilters_DateCreatedGtParam'
+      - $ref: '#/components/parameters/ActivityFilters_DateCreatedLtParam'
+      - $ref: '#/components/parameters/ActivityFilters_ActivityAtGteParam'
+      - $ref: '#/components/parameters/ActivityFilters_ActivityAtLteParam'
+      - $ref: '#/components/parameters/ActivityFilters_ActivityAtGtParam'
+      - $ref: '#/components/parameters/ActivityFilters_ActivityAtLtParam'
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - _type: Note
+                  activity_at: '2013-02-01T01:05:04.070000+00:00'
+                  attachments: []
+                  contact_id: null
+                  created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  created_by_name: Bruce Wayne
+                  date_created: '2013-02-01T01:05:04.070000+00:00'
+                  date_updated: '2013-02-01T01:06:35.668000+00:00'
+                  id: acti_XOyG7jURMfsLgKuYGqbQ4Qp7L5a16pQOcDfTgotqDak
+                  lead_id: lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h
+                  note: "Welcome to Close!\n\nGet started by:\n\n  1. Import your leads! Use our \"Bulk CSV Upload\" tool by clicking your name in the top right. Add leads manually by clicking \"New Lead\" in the lower left.\n  2. Invite your co-workers!\n  3. Setup two-way syncing of your emails by going to Settings -> Email Settings."
+                  note_html: <body><p>Welcome to Close!</p><p>Get started by:</p><ol><li>Import your leads! Use our "Bulk CSV Upload" tool by clicking your name in the top right. Add leads manually by clicking "New Lead" in the lower left.</li><li>Invite your co-workers!</li><li>Setup two-way syncing of your emails by going to Settings -> Email Settings.</li></ol></body>
+                  note_mentions: []
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  pinned: true
+                  pinned_at: '2025-08-19T14:14:34.383000+00:00'
+                  source: null
+                  title: Welcome to Close!
+                  updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  updated_by_name: Bruce Wayne
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  user_name: Bruce Wayne
+                  users: []
+                has_more: false
+              schema:
+                type: object
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/ActivityBase'
+                    type: array
+                  has_more:
+                    type: boolean
+                required:
+                - data
+                - has_more
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: activities.notes_create
+      tags:
+      - activities.notes
+      summary: Create a Note activity
+      description: 'To include an attachment, you must first upload the file to Close using the [Files API](https://developer.close.com/api/resources/files). Then, add an object to the `attachments` array with the following fields: `url`, `filename` and `content_type`. The `url` should be the URL provided in the `download.url` field of the response from the [Files API](https://developer.close.com/api/resources/files). It must begin `https://app.close.com/go/file/`.
+
+
+        A note can be pinned or unpinned by setting the `pinned` field to `true` or `false` when creating or updating a note.'
+      requestBody:
+        content:
+          application/json:
+            example:
+              attachments:
+              - content_type: image/gif
+                filename: picture.gif
+                url: https://app.close.com/go/file/temporary/user_MvDoAZA889UMrgsZbnXmHkJSomSi7qk2Iwc4JnGHTbo/3HV4BNwDyBLdfrPbFZF78s/picture.gif/
+              lead_id: lead_s6vHFTK1TSRoH6otXOexWDO9jM4xyb1kELHDoU7Fdsp
+              note_html: <body><p>this is a test note.</p></body>
+            schema:
+              $ref: '#/components/schemas/CreateNoteActivity'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                _type: Note
+                activity_at: '2013-02-20T06:39:57.266000+00:00'
+                attachments:
+                - content_type: image/gif
+                  filename: picture.gif
+                  size: 20673
+                  thumbnail_url: https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/activity.note/acti_kwWA3rOfy4BnaZ8QQk3RIIAz51dU9ayiluy1s961Oiw/3HV4BNwDyBLdfrPbFZF78s/picture.gif/thumbnail/
+                  url: https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/activity.note/acti_kwWA3rOfy4BnaZ8QQk3RIIAz51dU9ayiluy1s961Oiw/3HV4BNwDyBLdfrPbFZF78s/picture.gif/
+                contact_id: null
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                created_by_name: Bruce Wayne
+                date_created: '2013-02-20T06:39:57.266000+00:00'
+                date_updated: '2013-02-20T06:39:57.266000+00:00'
+                id: acti_kwWA3rOfy4BnaZ8QQk3RIIAz51dU9ayiluy1s961Oiw
+                lead_id: lead_s6vHFTK1TSRoH6otXOexWDO9jM4xyb1kELHDoU7Fdsp
+                note: this is a test note.
+                note_html: <body><p>this is a test note.</p></body>
+                note_mentions: []
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                pinned: false
+                pinned_at: null
+                source: api
+                title: null
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                updated_by_name: Bruce Wayne
+                user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                user_name: Bruce Wayne
+                users: []
+              schema:
+                $ref: '#/components/schemas/ActivityBase'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /activity/note/{id}/:
+    get:
+      operationId: activities.notes_get
+      tags:
+      - activities.notes
+      summary: Get a single Note activity
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                _type: Note
+                activity_at: '2013-02-01T01:05:04.070000+00:00'
+                attachments:
+                - content_type: image/gif
+                  filename: picture.gif
+                  size: 20673
+                  thumbnail_url: https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/activity.note/acti_XOyG7jURMfsLgKuYGqbQ4Qp7L5a16pQOcDfTgotqDak/3HV4BNwDyBLdfrPbFZF78s/picture.gif/thumbnail/
+                  url: https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/activity.note/acti_XOyG7jURMfsLgKuYGqbQ4Qp7L5a16pQOcDfTgotqDak/3HV4BNwDyBLdfrPbFZF78s/picture.gif/
+                contact_id: null
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                created_by_name: Bruce Wayne
+                date_created: '2013-02-01T01:05:04.070000+00:00'
+                date_updated: '2013-02-01T01:06:35.668000+00:00'
+                id: acti_XOyG7jURMfsLgKuYGqbQ4Qp7L5a16pQOcDfTgotqDak
+                lead_id: lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h
+                note: "Welcome to Close!\n\nGet started by:\n\n  1. Import your leads! Use our \"Bulk CSV Upload\" tool by clicking your name in the top right. Add leads manually by clicking \"New Lead\" in the lower left.\n  2. Invite your co-workers!\n  3. Setup two-way syncing of your emails by going to Settings -> Email Settings."
+                note_html: <body><p>Welcome to Close!</p><p>Get started by:</p><ol><li>Import your leads! Use our "Bulk CSV Upload" tool by clicking your name in the top right. Add leads manually by clicking "New Lead" in the lower left.</li><li>Invite your co-workers!</li><li>Setup two-way syncing of your emails by going to Settings -> Email Settings.</li></ol></body>
+                note_mentions: []
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                pinned: true
+                pinned_at: '2025-08-19T14:14:34.383000+00:00'
+                source: null
+                title: Welcome to Close!
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                updated_by_name: Bruce Wayne
+                user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                user_name: Bruce Wayne
+                users: []
+              schema:
+                $ref: '#/components/schemas/ActivityBase'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: activities.notes_update
+      tags:
+      - activities.notes
+      summary: Update a Note activity
+      description: '**`note_html` and `note`**: setting one overwrites the other. If both are provided, `note_html` takes precedence. `note_html` supports rich-text HTML; `note` is plaintext only.
+
+
+        A note can be pinned or unpinned by setting `pinned` to `true` or `false`.'
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              note_html: <body><p>this is an update to my existing note.</p></body>
+              pinned: true
+            schema:
+              $ref: '#/components/schemas/UpdateNoteActivity'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                _type: Note
+                activity_at: '2013-02-20T06:39:57.266000+00:00'
+                attachments: []
+                contact_id: null
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                created_by_name: Bruce Wayne
+                date_created: '2013-02-20T06:39:57.266000+00:00'
+                date_updated: '2013-02-20T06:41:59.846000+00:00'
+                id: acti_kwWA3rOfy4BnaZ8QQk3RIIAz51dU9ayiluy1s961Oiw
+                lead_id: lead_s6vHFTK1TSRoH6otXOexWDO9jM4xyb1kELHDoU7Fdsp
+                note: this is an update to my existing note.
+                note_html: <body><p>this is an update to my existing note.</p></body>
+                note_mentions: []
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                pinned: true
+                pinned_at: '2013-02-20T06:41:59.846000+00:00'
+                source: api
+                title: Welcome to Close!
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                updated_by_name: Bruce Wayne
+                user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                user_name: Bruce Wayne
+                users: []
+              schema:
+                $ref: '#/components/schemas/ActivityBase'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: activities.notes_delete
+      tags:
+      - activities.notes
+      summary: Delete a Note activity
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  parameters:
+    ActivityFilters_DateCreatedGteParam:
+      in: query
+      name: date_created__gte
+      required: false
+      schema:
+        title: Date Created (>=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_ActivityAtLteParam:
+      in: query
+      name: activity_at__lte
+      required: false
+      schema:
+        title: Activity At (<=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_TypeParam:
+      description: Filter by activity type, e.g. Call (comma-separated)
+      in: query
+      name: _type
+      required: false
+      schema:
+        title: Type
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    ActivityFilters_OrganizationIdParam:
+      in: query
+      name: organization_id
+      required: false
+      schema:
+        title: Organization ID
+        default: null
+        anyOf:
+        - type: string
+        - type: 'null'
+    ActivityFilters_LeadIdParam:
+      description: Filter by lead IDs (comma-separated)
+      in: query
+      name: lead_id
+      required: false
+      schema:
+        title: Lead ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    ActivityFilters_ActivityAtLtParam:
+      in: query
+      name: activity_at__lt
+      required: false
+      schema:
+        title: Activity At (<)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_ActivityAtGteParam:
+      in: query
+      name: activity_at__gte
+      required: false
+      schema:
+        title: Activity At (>=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_UserIdParam:
+      description: Filter by user IDs (comma-separated)
+      in: query
+      name: user_id
+      required: false
+      schema:
+        title: User ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    ActivityFilters_ContactIdParam:
+      description: Filter by contact IDs (comma-separated)
+      in: query
+      name: contact_id
+      required: false
+      schema:
+        title: Contact ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
+    ActivityFilters_IdInParam:
+      description: Filter by activity IDs (comma-separated)
+      in: query
+      name: id__in
+      required: false
+      schema:
+        title: ID In
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
+    ActivityFilters_DateCreatedLtParam:
+      in: query
+      name: date_created__lt
+      required: false
+      schema:
+        title: Date Created (<)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_ActivityAtGtParam:
+      in: query
+      name: activity_at__gt
+      required: false
+      schema:
+        title: Activity At (>)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_DateCreatedGtParam:
+      in: query
+      name: date_created__gt
+      required: false
+      schema:
+        title: Date Created (>)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_DateCreatedLteParam:
+      in: query
+      name: date_created__lte
+      required: false
+      schema:
+        title: Date Created (<=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+  schemas:
+    ActivityBase:
+      title: ActivityBase
+      type: object
+      properties:
+        _type:
+          title: Type
+          type: string
+        activity_at:
+          title: Activity At
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        attachments:
+          title: Attachments
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        comment_summary:
+          title: Comment Summary
+          anyOf:
+          - $ref: '#/components/schemas/CommentSummary'
+          - type: 'null'
+        contact_id:
+          title: Contact ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        created_by:
+          title: Created By
+          anyOf:
+          - type: string
+          - type: 'null'
+        created_by_name:
+          title: Created By Name
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        date_created:
+          title: Date Created
+          type: string
+          format: date-time
+        date_updated:
+          title: Date Updated
+          type: string
+          format: date-time
+        id:
+          title: ID
+          type: string
+        lead_id:
+          title: Lead ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        note:
+          title: Note
+          type: string
+        note_html:
+          title: Note Html
+          type: string
+        note_mentions:
+          title: Note Mentions
+          type: array
+          items:
+            type: string
+        organization_id:
+          title: Organization ID
+          type: string
+        pinned:
+          title: Pinned
+          type: boolean
+        pinned_at:
+          title: Pinned At
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        source:
+          anyOf:
+          - $ref: '#/components/schemas/CreationSource'
+          - type: 'null'
+        title:
+          title: Title
+          anyOf:
+          - type: string
+          - type: 'null'
+        updated_by:
+          title: Updated By
+          anyOf:
+          - type: string
+          - type: 'null'
+        updated_by_name:
+          title: Updated By Name
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        user_id:
+          title: User ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        user_name:
+          title: User Name
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        users:
+          title: Users
+          type: array
+          items:
+            type: string
+      required:
+      - _type
+      - activity_at
+      - attachments
+      - contact_id
+      - created_by
+      - date_created
+      - date_updated
+      - id
+      - lead_id
+      - note
+      - note_html
+      - note_mentions
+      - organization_id
+      - pinned
+      - pinned_at
+      - source
+      - title
+      - updated_by
+      - user_id
+      - users
+    CreationSource:
+      title: CreationSource
+      type: string
+      enum:
+      - ui
+      - api
+      - import
+      - clipper
+      - email
+      - suggestion
+      - segment-integration
+      - customerio-integration
+      - calendly-integration
+      - ai
+      - whatsapp
+      - webform
+    CommentSummary:
+      title: CommentSummary
+      type: object
+      properties:
+        comment_count:
+          title: Comment Count
+          type: integer
+        thread_id:
+          title: Thread ID
+          type: string
+      required:
+      - comment_count
+      - thread_id
+    CreateNoteActivity:
+      type: object
+      properties:
+        activity_at:
+          type:
+          - 'null'
+          - string
+          format: date-time
+        attachments:
+          type:
+          - array
+          - 'null'
+          maxItems: 1000
+          items:
+            type: object
+            properties:
+              content_type:
+                type:
+                - 'null'
+                - string
+              filename:
+                type: string
+              url:
+                type: string
+                format: uri
+            required:
+            - filename
+            - url
+        contact_id:
+          type:
+          - 'null'
+          - string
+        created_by:
+          type:
+          - 'null'
+          - string
+        date_created:
+          type:
+          - 'null'
+          - string
+          format: date-time
+        lead_id:
+          type: string
+        note:
+          type:
+          - 'null'
+          - string
+        note_html:
+          type:
+          - 'null'
+          - string
+        organization_id:
+          type:
+          - 'null'
+          - string
+        pinned:
+          type:
+          - boolean
+          - 'null'
+        title:
+          type:
+          - 'null'
+          - string
+        user_id:
+          type:
+          - 'null'
+          - string
+      required:
+      - lead_id
+      additionalProperties: false
+    UpdateNoteActivity:
+      type: object
+      properties:
+        activity_at:
+          type:
+          - 'null'
+          - string
+          format: date-time
+        attachments:
+          type:
+          - array
+          - 'null'
+          maxItems: 1000
+          items:
+            type: object
+            properties:
+              content_type:
+                type:
+                - 'null'
+                - string
+              filename:
+                type: string
+              url:
+                type: string
+                format: uri
+            required:
+            - filename
+            - url
+        contact_id:
+          type:
+          - 'null'
+          - string
+        note:
+          type:
+          - 'null'
+          - string
+        note_html:
+          type:
+          - 'null'
+          - string
+        pinned:
+          type:
+          - boolean
+          - 'null'
+        title:
+          type:
+          - 'null'
+          - string
+      additionalProperties: false
+    Attachment:
+      title: Attachment
+      type: object
+      properties:
+        content_type:
+          title: Content Type
+          anyOf:
+          - type: string
+          - type: 'null'
+        filename:
+          title: Filename
+          anyOf:
+          - type: string
+          - type: 'null'
+        size:
+          title: Size
+          anyOf:
+          - type: integer
+          - type: 'null'
+        thumbnail_url:
+          title: Thumbnail URL
+          anyOf:
+          - type: string
+          - type: 'null'
+        url:
+          title: URL
+          type: string
+      required:
+      - content_type
+      - filename
+      - size
+      - url
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

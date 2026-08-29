@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Endpoints subpackage_activities subpackage_activitiesTaskCompletions API
+  title: Endpoints Subpackage Activities Task Completions API
   version: 1.0.0
 servers:
 - url: https://api.close.com/api/v1
@@ -243,41 +243,6 @@ paths:
                 description: Any type
 components:
   schemas:
-    ActivityTaskCompletedGetParametersActivityAtGt:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityTaskCompletedGetParametersActivityAtGt
-    ActivityTaskCompletedGetParametersActivityAtGte:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityTaskCompletedGetParametersActivityAtGte
-    ActivityTaskCompletedGetParametersDateCreatedLte:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityTaskCompletedGetParametersDateCreatedLte
-    ActivityTaskCompletedGetParametersActivityAtLt:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityTaskCompletedGetParametersActivityAtLt
-    ActivityTaskCompletedGetParametersActivityAtLte:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityTaskCompletedGetParametersActivityAtLte
     ActivityTaskCompletedGetParametersDateCreatedGte:
       oneOf:
       - type: string
@@ -285,18 +250,13 @@ components:
       - type: string
         format: date
       title: ActivityTaskCompletedGetParametersDateCreatedGte
-    ActivityTaskCompletedGetParametersDateCreatedLt:
+    ActivityTaskCompletedGetParametersDateCreatedLte:
       oneOf:
       - type: string
         format: date-time
       - type: string
         format: date
-      title: ActivityTaskCompletedGetParametersDateCreatedLt
-    activities.task_completions_get_Response_200:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: activities.task_completions_get_Response_200
+      title: ActivityTaskCompletedGetParametersDateCreatedLte
     ActivityTaskCompletedGetParametersDateCreatedGt:
       oneOf:
       - type: string
@@ -309,11 +269,51 @@ components:
       properties: {}
       description: Empty response body
       title: activities.task_completions_delete_Response_200
+    ActivityTaskCompletedGetParametersActivityAtGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityTaskCompletedGetParametersActivityAtGt
     activities.task_completions_list_Response_200:
       type: object
       properties: {}
       description: Empty response body
       title: activities.task_completions_list_Response_200
+    ActivityTaskCompletedGetParametersDateCreatedLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityTaskCompletedGetParametersDateCreatedLt
+    ActivityTaskCompletedGetParametersActivityAtLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityTaskCompletedGetParametersActivityAtLt
+    activities.task_completions_get_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.task_completions_get_Response_200
+    ActivityTaskCompletedGetParametersActivityAtGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityTaskCompletedGetParametersActivityAtGte
+    ActivityTaskCompletedGetParametersActivityAtLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityTaskCompletedGetParametersActivityAtLte
   securitySchemes:
     ApiKeyAuth:
       type: http

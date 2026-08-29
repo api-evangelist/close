@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Endpoints subpackage_activities subpackage_activitiesLeadMerges API
+  title: Endpoints Subpackage Activities Lead Merges API
   version: 1.0.0
 servers:
 - url: https://api.close.com/api/v1
@@ -201,58 +201,11 @@ paths:
                 description: Any type
 components:
   schemas:
-    ActivityLeadMergeGetParametersDateCreatedLte:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityLeadMergeGetParametersDateCreatedLte
     activities.lead_merges_list_Response_200:
       type: object
       properties: {}
       description: Empty response body
       title: activities.lead_merges_list_Response_200
-    activities.lead_merges_get_Response_200:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: activities.lead_merges_get_Response_200
-    ActivityLeadMergeGetParametersDateCreatedLt:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityLeadMergeGetParametersDateCreatedLt
-    ActivityLeadMergeGetParametersActivityAtLte:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityLeadMergeGetParametersActivityAtLte
-    ActivityLeadMergeGetParametersDateCreatedGt:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityLeadMergeGetParametersDateCreatedGt
-    ActivityLeadMergeGetParametersActivityAtGt:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityLeadMergeGetParametersActivityAtGt
-    ActivityLeadMergeGetParametersDateCreatedGte:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityLeadMergeGetParametersDateCreatedGte
     ActivityLeadMergeGetParametersActivityAtLt:
       oneOf:
       - type: string
@@ -267,6 +220,53 @@ components:
       - type: string
         format: date
       title: ActivityLeadMergeGetParametersActivityAtGte
+    ActivityLeadMergeGetParametersActivityAtLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityLeadMergeGetParametersActivityAtLte
+    activities.lead_merges_get_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.lead_merges_get_Response_200
+    ActivityLeadMergeGetParametersDateCreatedLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityLeadMergeGetParametersDateCreatedLte
+    ActivityLeadMergeGetParametersActivityAtGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityLeadMergeGetParametersActivityAtGt
+    ActivityLeadMergeGetParametersDateCreatedGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityLeadMergeGetParametersDateCreatedGt
+    ActivityLeadMergeGetParametersDateCreatedGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityLeadMergeGetParametersDateCreatedGte
+    ActivityLeadMergeGetParametersDateCreatedLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityLeadMergeGetParametersDateCreatedLt
   securitySchemes:
     ApiKeyAuth:
       type: http

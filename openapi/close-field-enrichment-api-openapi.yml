@@ -1,0 +1,118 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Field Enrichment API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: field_enrichment
+  externalDocs:
+    url: https://developer.close.com/api/resources/field-enrichment
+paths:
+  /enrich_field/:
+    post:
+      operationId: field_enrichment_create
+      tags:
+      - field_enrichment
+      summary: Enrich a specific field on a lead or contact using AI
+      description: 'This endpoint uses AI to enrich (populate or enhance) a specific field on a lead or contact. The enrichment process analyzes existing data and external sources to provide intelligent field values.
+
+
+        **Parameters:**
+
+        - `organization_id` (required): The organization ID
+
+        - `object_type` (required): Either "lead" or "contact"
+
+        - `object_id` (required): The ID of the lead or contact to enrich
+
+        - `field_id` (required): The ID of the custom field to enrich
+
+        - `set_new_value` (optional): Whether to update the field with the enriched value (default: true)
+
+        - `overwrite_existing_value` (optional): Whether to overwrite existing field values (default: false)'
+      requestBody:
+        content:
+          application/json:
+            example:
+              field_id: cf_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+              object_id: lead_s6vHFTK1TSRoH6otXOexWDO9jM4xyb1kELHDoU7Fdsp
+              object_type: lead
+              organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+              overwrite_existing_value: false
+              set_new_value: true
+            schema:
+              $ref: '#/components/schemas/RunFieldEnrichment'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                confidence: high
+                field_id: cf_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                object_id: lead_s6vHFTK1TSRoH6otXOexWDO9jM4xyb1kELHDoU7Fdsp
+                object_type: lead
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                reasoning: Based on the company's website content and existing lead information, this appears to be a software development company specializing in CRM solutions.
+                value: Software Development
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  schemas:
+    RunFieldEnrichment:
+      title: RunFieldEnrichment
+      type: object
+      properties:
+        field_id:
+          title: Field ID
+          type: string
+        object_id:
+          title: Object ID
+          type: string
+        object_type:
+          title: Object Type
+          type: string
+          enum:
+          - lead
+          - contact
+        organization_id:
+          title: Organization ID
+          type: string
+        overwrite_existing_value:
+          title: Overwrite Existing Value
+          type: boolean
+          default: false
+        set_new_value:
+          title: Set New Value
+          type: boolean
+          default: true
+      required:
+      - field_id
+      - object_id
+      - object_type
+      - organization_id
+      additionalProperties: false
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

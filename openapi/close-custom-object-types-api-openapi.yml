@@ -1,0 +1,285 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Custom Object Types API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: custom_object_types
+  externalDocs:
+    url: https://developer.close.com/api/resources/custom-object-types
+paths:
+  /custom_object_type/:
+    get:
+      operationId: custom_object_types_list
+      tags:
+      - custom_object_types
+      summary: List Custom Object Types
+      description: 'The response will include all Custom Object Types, including Custom Field metadata for your organization.
+
+
+        Each Custom Object Type has two lists of Custom Fields. The `fields` property contains the list of fields that belong to the Custom Object Type. The `back_reference_fields` property contains the list of any objects (Leads, Contacts, Opportunities, Custom Activities, Custom Objects) that reference the Custom Object Type.'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - api_create_only: true
+                  back_reference_fields: []
+                  created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                  date_created: '2020-07-09T15:36:16.795350'
+                  date_updated: '2020-07-09T15:36:16.795350'
+                  description: A Resource tracked by an external system.
+                  editable_with_roles: []
+                  fields:
+                  - accepts_multiple_values: true
+                    back_reference_is_visible: true
+                    description: Account objects using this Resource.
+                    editable_with_roles: []
+                    id: cf_jnxTQDKnSxCEBtD5dvZdNgTzC3CqeyWUyU349PBA9Wf
+                    name: Linked Accounts
+                    referenced_custom_type_id: cotype_4hQsScWF3hnUOyngoaAV00
+                    required: true
+                    type: custom_object
+                  id: cotype_1h5m6uHM9BZOpwVhyRJb4Y
+                  name: Resource
+                  name_plural: Resources
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                - api_create_only: false
+                  back_reference_fields:
+                  - accepts_multiple_values: true
+                    back_reference_is_visible: true
+                    description: Account objects using this Resource.
+                    editable_with_roles: []
+                    id: cf_jnxTQDKnSxCEBtD5dvZdNgTzC3CqeyWUyU349PBA9Wf
+                    name: Linked Accounts
+                    referenced_custom_type_id: cotype_4hQsScWF3hnUOyngoaAV00
+                    required: true
+                    type: custom_object
+                  created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                  date_created: '2020-07-27T21:28:39.765523'
+                  date_updated: '2020-07-27T21:28:39.765523'
+                  description: An Account managed by this client.
+                  editable_with_roles: []
+                  fields:
+                  - accepts_multiple_values: false
+                    description: ID from the external Account system.
+                    editable_with_roles: []
+                    id: cf_cSh3fWT3rEJ1BFSezme2YAG6bPrZV5wUWKKrW4iN19g
+                    name: Account ID
+                    required: false
+                    type: text
+                  - accepts_multiple_values: false
+                    description: Main point of contact for this account.
+                    editable_with_roles: []
+                    id: cf_UpyNBvr6Rw8UBHh7zRboL3PYhbOVJl3XvwgPm3jg64S
+                    name: Point of Contact
+                    required: true
+                    type: contact
+                  - accepts_multiple_values: false
+                    choices:
+                    - Active
+                    - Cancelled
+                    - Potential
+                    description: null
+                    editable_with_roles: []
+                    id: cf_cSh3fWT3rEJ1BFSezme2YAG6bPrZV5wUWKKrW4iN19g
+                    name: Status
+                    required: false
+                    type: choices
+                  id: cotype_4hQsScWF3hnUOyngoaAV00
+                  name: Account
+                  name_plural: Accounts
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: custom_object_types_create
+      tags:
+      - custom_object_types
+      summary: Create new Custom Object Type
+      description: "The type must be created before Custom Fields can be added.\n\nThe following fields are required:\n  - `name`: The name of the Custom Object Type\n  - `name_plural`: A pluralized version of the name, for some UI display.\n\nThe following fields are optional:\n  - `description`: A longer description of the Custom Object Type.\n  - `api_create_only`: If `true`, instances can only be created by API clients. Defaults to `false`.\n  - `editable_with_roles`: Only users with the given roles can edit instances of this type. By default, any user in your organization can make changes to the instances of this type."
+      requestBody:
+        content:
+          application/json:
+            example:
+              api_create_only: false
+              description: An account managed by this client
+              editable_with_roles:
+              - admin
+              name: Account
+              name_plural: Accounts
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              example:
+                api_create_only: false
+                back_reference_fields: []
+                created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                date_created: '2020-08-07T15:18:33.797245'
+                date_updated: '2020-08-07T15:18:33.797245'
+                description: An account managed by this client
+                editable_with_roles:
+                - admin
+                fields: []
+                id: cotype_4hQsScWF3hnUOyngoaAV00
+                name: Account
+                name_plural: Accounts
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /custom_object_type/{id}/:
+    get:
+      operationId: custom_object_types_get
+      tags:
+      - custom_object_types
+      summary: Retrieve a single Custom Object Type
+      description: Retrieve a single custom object type by ID. The response contains the Custom Object Type including most Custom Field metadata.
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                api_create_only: true
+                back_reference_fields: []
+                created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                date_created: '2020-07-09T15:36:16.795350'
+                date_updated: '2020-07-09T15:36:16.795350'
+                description: A Resource tracked by an external system.
+                editable_with_roles: []
+                fields:
+                - accepts_multiple_values: true
+                  back_reference_is_visible: true
+                  description: Account objects using this Resource.
+                  editable_with_roles: []
+                  id: cf_UpyNBvr6Rw8UBHh7zRboL3PYhbOVJl3XvwgPm3jg64S
+                  name: Linked Accounts
+                  referenced_custom_type_id: cotype_4hQsScWF3hnUOyngoaAV00
+                  required: true
+                  type: custom_object
+                id: cotype_1h5m6uHM9BZOpwVhyRJb4Y
+                name: Resource
+                name_plural: Resources
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: custom_object_types_update
+      tags:
+      - custom_object_types
+      summary: Update existing Custom Object Type
+      description: The type's `name`, `name_plural`, `description`, `api_create_only` and `editable_with_roles` properties may be updated here. These properties will be updated immediately in the Custom Object API. You cannot add, modify, remove or reorder fields from a Custom Object Type using this resource. See [Custom Object Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object) and [Custom Field Schema API](https://developer.close.com/api/resources/custom-fields/custom-field-schemas) for these features.
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: Managed Resource
+              name_plural: Managed Resources
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                api_create_only: true
+                back_reference_fields: []
+                created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                date_created: '2020-07-09T15:36:16.795350'
+                date_updated: '2020-07-09T15:36:16.795350'
+                description: A Resource tracked by an external system.
+                editable_with_roles: []
+                fields:
+                - accepts_multiple_values: true
+                  back_reference_is_visible: true
+                  description: Account objects using this Resource.
+                  editable_with_roles: []
+                  id: cf_UpyNBvr6Rw8UBHh7zRboL3PYhbOVJl3XvwgPm3jg64S
+                  name: Linked Accounts
+                  referenced_custom_type_id: cotype_4hQsScWF3hnUOyngoaAV00
+                  required: true
+                  type: custom_object
+                id: cotype_1h5m6uHM9BZOpwVhyRJb4Y
+                name: Managed Resource
+                name_plural: Managed Resources
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: custom_object_types_delete
+      tags:
+      - custom_object_types
+      summary: Delete a Custom Object Type
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

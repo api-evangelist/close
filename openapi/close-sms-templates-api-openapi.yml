@@ -1,0 +1,316 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Sms Templates API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: sms_templates
+  externalDocs:
+    url: https://developer.close.com/api/resources/sms-templates
+paths:
+  /sms_template/:
+    get:
+      operationId: sms_templates_list
+      tags:
+      - sms_templates
+      summary: List SMS templates
+      parameters:
+      - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/SkipParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  date_created: '2022-09-26T15:08:03.402869'
+                  date_updated: '2022-09-26T15:08:03.402869'
+                  id: smstmpl_2JMKiwkNgBHjhxcmlVEvuM
+                  is_shared: false
+                  name: Cold 1
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  owned_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  status: active
+                  text: Hey {{ contact.first_name }}, ever considered Close?
+                  updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                has_more: false
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: sms_templates_create
+      tags:
+      - sms_templates
+      summary: Create an SMS template
+      requestBody:
+        content:
+          application/json:
+            example:
+              is_shared: false
+              name: Cold 1
+              text: Hey {{ contact.first_name }}, ever considered Close?
+            schema:
+              $ref: '#/components/schemas/CreateSMSTemplate'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              example:
+                created_by: user_l2RN00c7kDGBRRV7nfUsyWhMfRHu6OP9YCKP9UwQDXY
+                date_created: '2022-09-26T15:08:02.179681'
+                date_updated: '2022-09-26T15:08:02.179681'
+                id: smstmpl_0Yu13KOvH2cj1GSFzG9VRH
+                is_shared: false
+                name: Cold 1
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                owned_by: user_l2RN00c7kDGBRRV7nfUsyWhMfRHu6OP9YCKP9UwQDXY
+                status: active
+                text: Hey {{ contact.first_name }}, ever considered Close?
+                updated_by: user_l2RN00c7kDGBRRV7nfUsyWhMfRHu6OP9YCKP9UwQDXY
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /sms_template/{id}/:
+    get:
+      operationId: sms_templates_get
+      tags:
+      - sms_templates
+      summary: Fetch an SMS template
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: include_attachments
+        required: false
+        description: Include file attachments in the response.
+        schema:
+          title: Include Attachments
+          default: false
+          type: boolean
+      - in: query
+        name: include_embedded
+        required: false
+        description: Include embedded templates used by Workflows.
+        schema:
+          title: Include Embedded
+          default: false
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                created_by: user_ny9tGmxvGWUf5F7QqrnIovsPe5Mr2uBI4gRc8jJcYva
+                date_created: '2022-09-26T15:08:03.153064'
+                date_updated: '2022-09-26T15:08:03.153064'
+                id: smstmpl_3CilrqPkTo3zDSetUASKoP
+                is_shared: false
+                name: Cold 1
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                owned_by: user_ny9tGmxvGWUf5F7QqrnIovsPe5Mr2uBI4gRc8jJcYva
+                status: active
+                text: Hey {{ contact.first_name }}, ever considered Close?
+                updated_by: user_ny9tGmxvGWUf5F7QqrnIovsPe5Mr2uBI4gRc8jJcYva
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: sms_templates_update
+      tags:
+      - sms_templates
+      summary: Update an SMS template
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              is_shared: true
+            schema:
+              $ref: '#/components/schemas/UpdateSMSTemplate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                created_by: user_edP6Tb2nqUe1iGz9mjkFb30RXPzz1mbPbGWbwVW0EGI
+                date_created: '2022-09-26T15:08:02.738160'
+                date_updated: '2022-09-26T15:08:02.753292'
+                id: smstmpl_5qJHPcWbk9XbDwCjP7osdX
+                is_shared: true
+                name: changed name
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                owned_by: user_edP6Tb2nqUe1iGz9mjkFb30RXPzz1mbPbGWbwVW0EGI
+                status: active
+                text: This is a test template.
+                updated_by: user_edP6Tb2nqUe1iGz9mjkFb30RXPzz1mbPbGWbwVW0EGI
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: sms_templates_delete
+      tags:
+      - sms_templates
+      summary: Delete an SMS template
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  schemas:
+    CreateSMSTemplate:
+      title: CreateSMSTemplate
+      type: object
+      properties:
+        attachments:
+          title: Attachments
+          type: array
+          items:
+            $ref: '#/components/schemas/CreateSMSTemplateAttachment'
+        is_shared:
+          title: Is Shared
+          type: boolean
+        name:
+          title: Name
+          type: string
+        text:
+          title: Text
+          type: string
+      required:
+      - name
+      additionalProperties: false
+    UpdateSMSTemplate:
+      title: UpdateSMSTemplate
+      type: object
+      properties:
+        attachments:
+          title: Attachments
+          type: array
+          items:
+            $ref: '#/components/schemas/UpdateSMSTemplateAttachment'
+        is_shared:
+          title: Is Shared
+          type: boolean
+        name:
+          title: Name
+          type: string
+        status:
+          title: Status
+          $ref: '#/components/schemas/SMSTemplateStatus'
+        text:
+          title: Text
+          type: string
+      additionalProperties: false
+    UpdateSMSTemplateAttachment:
+      title: UpdateSMSTemplateAttachment
+      type: object
+      properties:
+        content_type:
+          title: Content Type
+          type: string
+        filename:
+          title: Filename
+          type: string
+        url:
+          title: Url
+          type: string
+      required:
+      - content_type
+      - filename
+      - url
+    CreateSMSTemplateAttachment:
+      title: CreateSMSTemplateAttachment
+      type: object
+      properties:
+        content_type:
+          title: Content Type
+          type: string
+        filename:
+          title: Filename
+          type: string
+        url:
+          title: Url
+          type: string
+      required:
+      - content_type
+      - filename
+      - url
+    SMSTemplateStatus:
+      title: SMSTemplateStatus
+      type: string
+      enum:
+      - active
+      - archived
+  parameters:
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

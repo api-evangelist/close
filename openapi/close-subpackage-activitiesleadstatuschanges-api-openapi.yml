@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Endpoints subpackage_activities subpackage_activitiesLeadStatusChanges API
+  title: Endpoints Subpackage Activities Lead Status Changes API
   version: 1.0.0
 servers:
 - url: https://api.close.com/api/v1
@@ -290,6 +290,30 @@ paths:
                 description: Any type
 components:
   schemas:
+    ActivityStatusChangeLeadGetParametersDateCreatedGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityStatusChangeLeadGetParametersDateCreatedGte
+    activities.lead_status_changes_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.lead_status_changes_delete_Response_200
+    activities.lead_status_changes_create_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.lead_status_changes_create_Response_200
+    ActivityStatusChangeLeadGetParametersActivityAtLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityStatusChangeLeadGetParametersActivityAtLt
     ActivityStatusChangeLeadGetParametersDateCreatedLt:
       oneOf:
       - type: string
@@ -304,16 +328,20 @@ components:
       - type: string
         format: date
       title: ActivityStatusChangeLeadGetParametersActivityAtGt
-    activities.lead_status_changes_create_Response_200:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: activities.lead_status_changes_create_Response_200
-    activities.lead_status_changes_delete_Response_200:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: activities.lead_status_changes_delete_Response_200
+    ActivityStatusChangeLeadGetParametersActivityAtLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityStatusChangeLeadGetParametersActivityAtLte
+    ActivityStatusChangeLeadGetParametersActivityAtGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityStatusChangeLeadGetParametersActivityAtGte
     ActivityStatusChangeLeadGetParametersDateCreatedLte:
       oneOf:
       - type: string
@@ -321,6 +349,11 @@ components:
       - type: string
         format: date
       title: ActivityStatusChangeLeadGetParametersDateCreatedLte
+    activities.lead_status_changes_list_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.lead_status_changes_list_Response_200
     activities.lead_status_changes_get_Response_200:
       type: object
       properties: {}
@@ -333,39 +366,6 @@ components:
       - type: string
         format: date
       title: ActivityStatusChangeLeadGetParametersDateCreatedGt
-    ActivityStatusChangeLeadGetParametersActivityAtGte:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityStatusChangeLeadGetParametersActivityAtGte
-    ActivityStatusChangeLeadGetParametersActivityAtLt:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityStatusChangeLeadGetParametersActivityAtLt
-    ActivityStatusChangeLeadGetParametersActivityAtLte:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityStatusChangeLeadGetParametersActivityAtLte
-    ActivityStatusChangeLeadGetParametersDateCreatedGte:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityStatusChangeLeadGetParametersDateCreatedGte
-    activities.lead_status_changes_list_Response_200:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: activities.lead_status_changes_list_Response_200
   securitySchemes:
     ApiKeyAuth:
       type: http

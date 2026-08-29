@@ -1,0 +1,85 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Files API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: files
+  externalDocs:
+    url: https://developer.close.com/api/resources/files
+paths:
+  /files/upload/:
+    post:
+      operationId: files_create
+      tags:
+      - files
+      summary: Generate a signed S3 POST
+      description: Get the data needed to make a request to S3 to store your file.
+      requestBody:
+        content:
+          application/json:
+            example:
+              content_type: image/jpeg
+              filename: image.jpg
+            schema:
+              $ref: '#/components/schemas/UploadFile'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                download:
+                  url: https://app.close.com/go/file/temporary/user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk/1Zx0AlY1DwBXzKKrVwpAoj/image.jpg/
+                upload:
+                  fields:
+                    AWSAccessKeyId: AKIAACCESSKEYHERE
+                    Content-Disposition: inline; filename="image.jpg"
+                    Content-Type: image/jpeg
+                    key: temporary/user/user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk/1Zx0AlY1DwBXzKKrVwpAoj/image.jpg
+                    policy: eyJleHBpcmF0aW9uIjogIjIwMjQtMDItMjJ...
+                    signature: ePInTgHEBsj0hzMeif/d0U2FQQk=
+                    success_action_status: '201'
+                  url: https://close-prd-files.s3.amazonaws.com/
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  schemas:
+    UploadFile:
+      title: UploadFile
+      type: object
+      properties:
+        content_type:
+          title: Content Type
+          type: string
+        filename:
+          title: Filename
+          type: string
+      required:
+      - content_type
+      - filename
+      additionalProperties: false
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

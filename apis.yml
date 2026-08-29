@@ -4337,6 +4337,657 @@ apis:
     url: https://developer.close.com/api/resources/webhooks
   - type: Documentation
     url: https://developer.close.com/api/overview/oauth-authentication
+- aid: close:close-activities-api
+  name: Close Activities API
+  description: The activities API from Close — 1 operation(s) for activities.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - activities
+  properties:
+  - type: OpenAPI
+    url: openapi/close-activities-api-openapi.yml
+- aid: close:close-activities-calls-api
+  name: Close Activities.calls API
+  description: The activities.calls API from Close — 2 operation(s) for activities.calls.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - activities.calls
+  properties:
+  - type: OpenAPI
+    url: openapi/close-activities-calls-api-openapi.yml
+- aid: close:close-activities-creations-api
+  name: Close Activities.creations API
+  description: The activities.creations API from Close — 2 operation(s) for activities.creations.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - activities.creations
+  properties:
+  - type: OpenAPI
+    url: openapi/close-activities-creations-api-openapi.yml
+- aid: close:close-activities-custom-activities-api
+  name: Close Activities.custom Activities API
+  description: >-
+    The activities.custom_activities API from Close — 2 operation(s) for activities.custom_activities.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - activities.custom_activities
+  properties:
+  - type: OpenAPI
+    url: openapi/close-activities-custom-activities-api-openapi.yml
+- aid: close:close-activities-email-threads-api
+  name: Close Activities.email Threads API
+  description: >-
+    The activities.email_threads API from Close — 2 operation(s) for activities.email_threads.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - activities.email_threads
+  properties:
+  - type: OpenAPI
+    url: openapi/close-activities-email-threads-api-openapi.yml
+- aid: close:close-activities-emails-api
+  name: Close Activities.emails API
+  description: The activities.emails API from Close — 2 operation(s) for activities.emails.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - activities.emails
+  properties:
+  - type: OpenAPI
+    url: openapi/close-activities-emails-api-openapi.yml
+- aid: close:close-activities-form-submissions-api
+  name: Close Activities.form Submissions API
+  description: >-
+    The activities.form_submissions API from Close — 2 operation(s) for activities.form_submissions.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - activities.form_submissions
+  properties:
+  - type: OpenAPI
+    url: openapi/close-activities-form-submissions-api-openapi.yml
+- aid: close:close-activities-import-updates-api
+  name: Close Activities.import Updates API
+  description: >-
+    The activities.import_updates API from Close — 2 operation(s) for activities.import_updates.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - activities.import_updates
+  properties:
+  - type: OpenAPI
+    url: openapi/close-activities-import-updates-api-openapi.yml
+- aid: close:close-activities-lead-merges-api
+  name: Close Activities.lead Merges API
+  description: The activities.lead_merges API from Close — 2 operation(s) for activities.lead_merges.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - activities.lead_merges
+  properties:
+  - type: OpenAPI
+    url: openapi/close-activities-lead-merges-api-openapi.yml
+- aid: close:close-activities-lead-status-changes-api
+  name: Close Activities.lead Status Changes API
+  description: >-
+    The activities.lead_status_changes API from Close — 2 operation(s) for activities.lead_status_changes.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - activities.lead_status_changes
+  properties:
+  - type: OpenAPI
+    url: openapi/close-activities-lead-status-changes-api-openapi.yml
+- aid: close:close-activities-meetings-api
+  name: Close Activities.meetings API
+  description: The activities.meetings API from Close — 3 operation(s) for activities.meetings.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - activities.meetings
+  properties:
+  - type: OpenAPI
+    url: openapi/close-activities-meetings-api-openapi.yml
+- aid: close:close-activities-notes-api
+  name: Close Activities.notes API
+  description: The activities.notes API from Close — 2 operation(s) for activities.notes.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - activities.notes
+  properties:
+  - type: OpenAPI
+    url: openapi/close-activities-notes-api-openapi.yml
+- aid: close:close-activities-opportunity-status-changes-api
+  name: Close Activities.opportunity Status Changes API
+  description: >-
+    The activities.opportunity_status_changes API from Close — 2 operation(s) for activities.opportunity_status_changes.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - activities.opportunity_status_changes
+  properties:
+  - type: OpenAPI
+    url: openapi/close-activities-opportunity-status-changes-api-openapi.yml
+- aid: close:close-activities-sms-api
+  name: Close Activities.sms API
+  description: The activities.sms API from Close — 2 operation(s) for activities.sms.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - activities.sms
+  properties:
+  - type: OpenAPI
+    url: openapi/close-activities-sms-api-openapi.yml
+- aid: close:close-activities-task-completions-api
+  name: Close Activities.task Completions API
+  description: >-
+    The activities.task_completions API from Close — 2 operation(s) for activities.task_completions.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - activities.task_completions
+  properties:
+  - type: OpenAPI
+    url: openapi/close-activities-task-completions-api-openapi.yml
+- aid: close:close-activities-whatsapp-messages-api
+  name: Close Activities.whatsapp Messages API
+  description: >-
+    The activities.whatsapp_messages API from Close — 2 operation(s) for activities.whatsapp_messages.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - activities.whatsapp_messages
+  properties:
+  - type: OpenAPI
+    url: openapi/close-activities-whatsapp-messages-api-openapi.yml
+- aid: close:close-blocked-phone-numbers-api
+  name: Close Blocked Phone Numbers API
+  description: The blocked_phone_numbers API from Close — 3 operation(s) for blocked_phone_numbers.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - blocked_phone_numbers
+  properties:
+  - type: OpenAPI
+    url: openapi/close-blocked-phone-numbers-api-openapi.yml
+- aid: close:close-bulk-actions-delete-api
+  name: Close Bulk Actions.delete API
+  description: The bulk_actions.delete API from Close — 2 operation(s) for bulk_actions.delete.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - bulk_actions.delete
+  properties:
+  - type: OpenAPI
+    url: openapi/close-bulk-actions-delete-api-openapi.yml
+- aid: close:close-bulk-actions-edit-api
+  name: Close Bulk Actions.edit API
+  description: The bulk_actions.edit API from Close — 2 operation(s) for bulk_actions.edit.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - bulk_actions.edit
+  properties:
+  - type: OpenAPI
+    url: openapi/close-bulk-actions-edit-api-openapi.yml
+- aid: close:close-bulk-actions-email-api
+  name: Close Bulk Actions.email API
+  description: The bulk_actions.email API from Close — 2 operation(s) for bulk_actions.email.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - bulk_actions.email
+  properties:
+  - type: OpenAPI
+    url: openapi/close-bulk-actions-email-api-openapi.yml
+- aid: close:close-bulk-actions-sequence-subscriptions-api
+  name: Close Bulk Actions.sequence Subscriptions API
+  description: >-
+    The bulk_actions.sequence_subscriptions API from Close — 2 operation(s) for bulk_actions.sequence_subscriptions.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - bulk_actions.sequence_subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/close-bulk-actions-sequence-subscriptions-api-openapi.yml
+- aid: close:close-comments-api
+  name: Close Comments API
+  description: The comments API from Close — 4 operation(s) for comments.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - comments
+  properties:
+  - type: OpenAPI
+    url: openapi/close-comments-api-openapi.yml
+- aid: close:close-connected-accounts-api
+  name: Close Connected Accounts API
+  description: The connected_accounts API from Close — 2 operation(s) for connected_accounts.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - connected_accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/close-connected-accounts-api-openapi.yml
+- aid: close:close-contacts-api
+  name: Close Contacts API
+  description: The contacts API from Close — 2 operation(s) for contacts.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - contacts
+  properties:
+  - type: OpenAPI
+    url: openapi/close-contacts-api-openapi.yml
+- aid: close:close-custom-activity-types-api
+  name: Close Custom Activity Types API
+  description: The custom_activity_types API from Close — 2 operation(s) for custom_activity_types.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - custom_activity_types
+  properties:
+  - type: OpenAPI
+    url: openapi/close-custom-activity-types-api-openapi.yml
+- aid: close:close-custom-field-schemas-api
+  name: Close Custom Field Schemas API
+  description: The custom_field_schemas API from Close — 1 operation(s) for custom_field_schemas.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - custom_field_schemas
+  properties:
+  - type: OpenAPI
+    url: openapi/close-custom-field-schemas-api-openapi.yml
+- aid: close:close-custom-fields-activity-api
+  name: Close Custom Fields.activity API
+  description: The custom_fields.activity API from Close — 2 operation(s) for custom_fields.activity.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - custom_fields.activity
+  properties:
+  - type: OpenAPI
+    url: openapi/close-custom-fields-activity-api-openapi.yml
+- aid: close:close-custom-fields-contact-api
+  name: Close Custom Fields.contact API
+  description: The custom_fields.contact API from Close — 2 operation(s) for custom_fields.contact.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - custom_fields.contact
+  properties:
+  - type: OpenAPI
+    url: openapi/close-custom-fields-contact-api-openapi.yml
+- aid: close:close-custom-fields-custom-object-api
+  name: Close Custom Fields.custom Object API
+  description: >-
+    The custom_fields.custom_object API from Close — 2 operation(s) for custom_fields.custom_object.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - custom_fields.custom_object
+  properties:
+  - type: OpenAPI
+    url: openapi/close-custom-fields-custom-object-api-openapi.yml
+- aid: close:close-custom-fields-lead-api
+  name: Close Custom Fields.lead API
+  description: The custom_fields.lead API from Close — 2 operation(s) for custom_fields.lead.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - custom_fields.lead
+  properties:
+  - type: OpenAPI
+    url: openapi/close-custom-fields-lead-api-openapi.yml
+- aid: close:close-custom-fields-opportunity-api
+  name: Close Custom Fields.opportunity API
+  description: >-
+    The custom_fields.opportunity API from Close — 2 operation(s) for custom_fields.opportunity.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - custom_fields.opportunity
+  properties:
+  - type: OpenAPI
+    url: openapi/close-custom-fields-opportunity-api-openapi.yml
+- aid: close:close-custom-fields-shared-api
+  name: Close Custom Fields.shared API
+  description: The custom_fields.shared API from Close — 4 operation(s) for custom_fields.shared.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - custom_fields.shared
+  properties:
+  - type: OpenAPI
+    url: openapi/close-custom-fields-shared-api-openapi.yml
+- aid: close:close-custom-object-types-api
+  name: Close Custom Object Types API
+  description: The custom_object_types API from Close — 2 operation(s) for custom_object_types.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - custom_object_types
+  properties:
+  - type: OpenAPI
+    url: openapi/close-custom-object-types-api-openapi.yml
+- aid: close:close-custom-objects-api
+  name: Close Custom Objects API
+  description: The custom_objects API from Close — 2 operation(s) for custom_objects.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - custom_objects
+  properties:
+  - type: OpenAPI
+    url: openapi/close-custom-objects-api-openapi.yml
+- aid: close:close-dialers-api
+  name: Close Dialers API
+  description: The dialers API from Close — 2 operation(s) for dialers.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - dialers
+  properties:
+  - type: OpenAPI
+    url: openapi/close-dialers-api-openapi.yml
+- aid: close:close-email-templates-api
+  name: Close Email Templates API
+  description: The email_templates API from Close — 3 operation(s) for email_templates.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - email_templates
+  properties:
+  - type: OpenAPI
+    url: openapi/close-email-templates-api-openapi.yml
+- aid: close:close-events-api
+  name: Close Events API
+  description: The events API from Close — 2 operation(s) for events.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - events
+  properties:
+  - type: OpenAPI
+    url: openapi/close-events-api-openapi.yml
+- aid: close:close-exports-api
+  name: Close Exports API
+  description: The exports API from Close — 6 operation(s) for exports.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - exports
+  properties:
+  - type: OpenAPI
+    url: openapi/close-exports-api-openapi.yml
+- aid: close:close-field-enrichment-api
+  name: Close Field Enrichment API
+  description: The field_enrichment API from Close — 1 operation(s) for field_enrichment.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - field_enrichment
+  properties:
+  - type: OpenAPI
+    url: openapi/close-field-enrichment-api-openapi.yml
+- aid: close:close-files-api
+  name: Close Files API
+  description: The files API from Close — 1 operation(s) for files.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - files
+  properties:
+  - type: OpenAPI
+    url: openapi/close-files-api-openapi.yml
+- aid: close:close-forms-api
+  name: Close Forms API
+  description: The forms API from Close — 2 operation(s) for forms.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - forms
+  properties:
+  - type: OpenAPI
+    url: openapi/close-forms-api-openapi.yml
+- aid: close:close-groups-api
+  name: Close Groups API
+  description: The groups API from Close — 4 operation(s) for groups.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - groups
+  properties:
+  - type: OpenAPI
+    url: openapi/close-groups-api-openapi.yml
+- aid: close:close-integration-links-api
+  name: Close Integration Links API
+  description: The integration_links API from Close — 2 operation(s) for integration_links.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - integration_links
+  properties:
+  - type: OpenAPI
+    url: openapi/close-integration-links-api-openapi.yml
+- aid: close:close-lead-statuses-api
+  name: Close Lead Statuses API
+  description: The lead_statuses API from Close — 2 operation(s) for lead_statuses.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - lead_statuses
+  properties:
+  - type: OpenAPI
+    url: openapi/close-lead-statuses-api-openapi.yml
+- aid: close:close-leads-api
+  name: Close Leads API
+  description: The leads API from Close — 3 operation(s) for leads.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - leads
+  properties:
+  - type: OpenAPI
+    url: openapi/close-leads-api-openapi.yml
+- aid: close:close-memberships-api
+  name: Close Memberships API
+  description: The memberships API from Close — 3 operation(s) for memberships.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - memberships
+  properties:
+  - type: OpenAPI
+    url: openapi/close-memberships-api-openapi.yml
+- aid: close:close-opportunities-api
+  name: Close Opportunities API
+  description: The opportunities API from Close — 2 operation(s) for opportunities.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - opportunities
+  properties:
+  - type: OpenAPI
+    url: openapi/close-opportunities-api-openapi.yml
+- aid: close:close-opportunity-statuses-api
+  name: Close Opportunity Statuses API
+  description: The opportunity_statuses API from Close — 2 operation(s) for opportunity_statuses.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - opportunity_statuses
+  properties:
+  - type: OpenAPI
+    url: openapi/close-opportunity-statuses-api-openapi.yml
+- aid: close:close-organizations-api
+  name: Close Organizations API
+  description: The organizations API from Close — 1 operation(s) for organizations.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/close-organizations-api-openapi.yml
+- aid: close:close-outcomes-api
+  name: Close Outcomes API
+  description: The outcomes API from Close — 2 operation(s) for outcomes.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - outcomes
+  properties:
+  - type: OpenAPI
+    url: openapi/close-outcomes-api-openapi.yml
+- aid: close:close-phone-numbers-api
+  name: Close Phone Numbers API
+  description: The phone_numbers API from Close — 3 operation(s) for phone_numbers.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - phone_numbers
+  properties:
+  - type: OpenAPI
+    url: openapi/close-phone-numbers-api-openapi.yml
+- aid: close:close-pipelines-api
+  name: Close Pipelines API
+  description: The pipelines API from Close — 2 operation(s) for pipelines.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - pipelines
+  properties:
+  - type: OpenAPI
+    url: openapi/close-pipelines-api-openapi.yml
+- aid: close:close-playbooks-api
+  name: Close Playbooks API
+  description: The playbooks API from Close — 4 operation(s) for playbooks.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - playbooks
+  properties:
+  - type: OpenAPI
+    url: openapi/close-playbooks-api-openapi.yml
+- aid: close:close-reporting-api
+  name: Close Reporting API
+  description: The reporting API from Close — 8 operation(s) for reporting.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - reporting
+  properties:
+  - type: OpenAPI
+    url: openapi/close-reporting-api-openapi.yml
+- aid: close:close-roles-api
+  name: Close Roles API
+  description: The roles API from Close — 2 operation(s) for roles.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - roles
+  properties:
+  - type: OpenAPI
+    url: openapi/close-roles-api-openapi.yml
+- aid: close:close-scheduling-links-api
+  name: Close Scheduling Links API
+  description: The scheduling_links API from Close — 8 operation(s) for scheduling_links.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - scheduling_links
+  properties:
+  - type: OpenAPI
+    url: openapi/close-scheduling-links-api-openapi.yml
+- aid: close:close-send-as-api
+  name: Close Send As API
+  description: The send_as API from Close — 3 operation(s) for send_as.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - send_as
+  properties:
+  - type: OpenAPI
+    url: openapi/close-send-as-api-openapi.yml
+- aid: close:close-sequences-api
+  name: Close Sequences API
+  description: The sequences API from Close — 4 operation(s) for sequences.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - sequences
+  properties:
+  - type: OpenAPI
+    url: openapi/close-sequences-api-openapi.yml
+- aid: close:close-smart-views-api
+  name: Close Smart Views API
+  description: The smart_views API from Close — 2 operation(s) for smart_views.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - smart_views
+  properties:
+  - type: OpenAPI
+    url: openapi/close-smart-views-api-openapi.yml
+- aid: close:close-sms-templates-api
+  name: Close Sms Templates API
+  description: The sms_templates API from Close — 2 operation(s) for sms_templates.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - sms_templates
+  properties:
+  - type: OpenAPI
+    url: openapi/close-sms-templates-api-openapi.yml
+- aid: close:close-tasks-api
+  name: Close Tasks API
+  description: The tasks API from Close — 2 operation(s) for tasks.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/close-tasks-api-openapi.yml
+- aid: close:close-unsubscribed-emails-api
+  name: Close Unsubscribed Emails API
+  description: The unsubscribed_emails API from Close — 2 operation(s) for unsubscribed_emails.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - unsubscribed_emails
+  properties:
+  - type: OpenAPI
+    url: openapi/close-unsubscribed-emails-api-openapi.yml
+- aid: close:close-users-api
+  name: Close Users API
+  description: The users API from Close — 4 operation(s) for users.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - users
+  properties:
+  - type: OpenAPI
+    url: openapi/close-users-api-openapi.yml
+- aid: close:close-webhooks-api
+  name: Close Webhooks API
+  description: The webhooks API from Close — 2 operation(s) for webhooks.
+  humanURL: https://developer.close.com/api/resources/activities
+  baseURL: https://api.close.com/api/v1
+  tags:
+  - webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/close-webhooks-api-openapi.yml
 common:
   - type: CapabilityMap
     url: capabilities/close-capability-edges.yml

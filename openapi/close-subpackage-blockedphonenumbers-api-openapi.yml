@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Endpoints subpackage_activities subpackage_blockedPhoneNumbers API
+  title: Endpoints Subpackage Blocked Phone Numbers API
   version: 1.0.0
 servers:
 - url: https://api.close.com/api/v1
@@ -339,19 +339,6 @@ paths:
                 description: Any type
 components:
   schemas:
-    CreateBlockedPhoneNumber:
-      type: object
-      properties:
-        phone:
-          type: string
-          description: The phone number (in E.164 format) that you wish to block.
-        reason:
-          type: string
-          description: The reason why you wish to block a given phone number.
-      required:
-      - phone
-      - reason
-      title: CreateBlockedPhoneNumber
     UpdateBlockedPhoneNumber:
       type: object
       properties:
@@ -369,6 +356,19 @@ components:
       required:
       - reject_anonymous_inbound_calls
       title: UpdateBlockedPhoneNumberSettings
+    CreateBlockedPhoneNumber:
+      type: object
+      properties:
+        phone:
+          type: string
+          description: The phone number (in E.164 format) that you wish to block.
+        reason:
+          type: string
+          description: The reason why you wish to block a given phone number.
+      required:
+      - phone
+      - reason
+      title: CreateBlockedPhoneNumber
     blocked_phone_numbers_list_Response_200:
       type: object
       properties:

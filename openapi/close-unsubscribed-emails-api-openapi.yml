@@ -1,0 +1,118 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Unsubscribed Emails API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: unsubscribed_emails
+  externalDocs:
+    url: https://developer.close.com/api/resources/unsubscribed-emails
+paths:
+  /unsubscribe/email/:
+    get:
+      operationId: unsubscribed_emails_list
+      tags:
+      - unsubscribed_emails
+      summary: List all unsubscribed emails
+      description: Get a list of unsubscribed email addresses.
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - email: jane@example.com
+                - email: bob@example.com
+                has_more: false
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: unsubscribed_emails_create
+      tags:
+      - unsubscribed_emails
+      summary: Unsubscribe an email address
+      description: This is useful for when you have an email address that has unsubscribed in another context (like a mailing list) and you want to unsubscribe them from messages from Close as well.
+      requestBody:
+        content:
+          application/json:
+            example:
+              email: steve@example.com
+            schema:
+              $ref: '#/components/schemas/CreateUnsubscribedEmail'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              example:
+                email: steve@example.com
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /unsubscribe/email/{email_address}/:
+    delete:
+      operationId: unsubscribed_emails_delete
+      tags:
+      - unsubscribed_emails
+      summary: Resubscribe an email address
+      parameters:
+      - in: path
+        name: email_address
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                email: steve@example.com
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  schemas:
+    CreateUnsubscribedEmail:
+      title: CreateUnsubscribedEmail
+      type: object
+      properties:
+        email:
+          title: Email
+          type: string
+          format: email
+          maxLength: 500
+      required:
+      - email
+      additionalProperties: false
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

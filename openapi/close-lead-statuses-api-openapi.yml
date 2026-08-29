@@ -1,0 +1,169 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Lead Statuses API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: lead_statuses
+  externalDocs:
+    url: https://developer.close.com/api/resources/lead-statuses
+paths:
+  /status/lead/:
+    get:
+      operationId: lead_statuses_list
+      tags:
+      - lead_statuses
+      summary: List lead statuses for your organization
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - id: stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                  label: Potential
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                - id: stat_2ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                  label: Bad Fit
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                - id: stat_3ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                  label: Qualified
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                - id: stat_8ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                  label: Not Serious
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                has_more: false
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: lead_statuses_create
+      tags:
+      - lead_statuses
+      summary: Create a new status that can be applied to leads
+      requestBody:
+        content:
+          application/json:
+            example:
+              label: Potential
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                id: stat_9ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                label: Potential
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /status/lead/{id}/:
+    get:
+      operationId: lead_statuses_get
+      tags:
+      - lead_statuses
+      summary: Fetch a single lead status
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                id: stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                label: Potential
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: lead_statuses_update
+      tags:
+      - lead_statuses
+      summary: Rename a lead status
+      description: Update a lead status. The `label` and `color` can be changed. To update the status of a particular lead, see PUT `/lead/{lead_id}/`.
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              label: Renamed
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                id: stat_9ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                label: Renamed
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: lead_statuses_delete
+      tags:
+      - lead_statuses
+      summary: Delete a lead status
+      description: You should make sure no leads are assigned this status, first.
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

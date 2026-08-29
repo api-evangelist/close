@@ -1,0 +1,199 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Roles API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: roles
+  externalDocs:
+    url: https://developer.close.com/api/resources/roles
+paths:
+  /role/:
+    get:
+      operationId: roles_list
+      tags:
+      - roles
+      summary: List all the roles defined for your organization
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - editable: false
+                  id: role_y6eLquXvRUdmwqi61tsmgCJUU7uGfxaRbDuLoONZL9p
+                  name: Admin
+                  permissions:
+                  - bulk_edit
+                  - export
+                  - manage_organization
+                  - view_all_leads
+                  visibility_user_lcf_behavior: null
+                  visibility_user_lcf_ids: null
+                - editable: true
+                  id: role_y6eLquXvRUdmwqi61tsmgCJUU7uGfxaRbDuLoONZL9p
+                  name: Account Manager
+                  permissions:
+                  - bulk_edit
+                  - export
+                  visibility_user_lcf_behavior: require_assignment
+                  visibility_user_lcf_ids:
+                  - cf_pHEkAE3enHZ08zBkYnIAAQDQOT3BBn0DhdF6Kr7Q8Ug
+                has_more: false
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: roles_create
+      tags:
+      - roles
+      summary: Create a new role
+      description: "`visibility_user_lcf_ids` (optional)\n\nA list of Lead Custom Field IDs that define which leads user with this role can see. If the role has `view_all_leads` permission, this field should be empty.\n\n`visibility_user_lcf_behavior` (optional)\n\nDefines how lead visibility works for leads that don't have assigned users. If the role has `view_all_leads` permission, this field should be empty.\n\n - `require_assignment` - leads without assigned users are not visible to this role\n - `allow_unassigned` - leads without assigned users are visible to this role"
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: Account Manager
+              permissions:
+              - bulk_edit
+              - export
+              visibility_user_lcf_behavior: null
+              visibility_user_lcf_ids: null
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              example:
+                editable: true
+                id: role_y6eLquXvRUdmwqi61tsmgCJUU7uGfxaRbDuLoONZL9p
+                name: Account Manager
+                permissions:
+                - bulk_edit
+                - export
+                visibility_user_lcf_behavior: null
+                visibility_user_lcf_ids: null
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /role/{id}/:
+    get:
+      operationId: roles_get
+      tags:
+      - roles
+      summary: Fetch a single role
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                editable: true
+                id: role_y6eLquXvRUdmwqi61tsmgCJUU7uGfxaRbDuLoONZL9p
+                name: Account Manager
+                permissions:
+                - bulk_edit
+                - export
+                - view_all_leads
+                visibility_user_lcf_behavior: null
+                visibility_user_lcf_ids: null
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: roles_update
+      tags:
+      - roles
+      summary: Update existing role
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              permissions:
+              - bulk_edit
+              - view_all_leads
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                editable: true
+                id: role_y6eLquXvRUdmwqi61tsmgCJUU7uGfxaRbDuLoONZL9p
+                name: Account Manager
+                permissions:
+                - bulk_edit
+                - view_all_leads
+                visibility_user_lcf_behavior: null
+                visibility_user_lcf_ids: null
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: roles_delete
+      tags:
+      - roles
+      summary: Delete a role
+      description: Delete a custom role. You must first move all users off this role by reassigning them to another role.
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

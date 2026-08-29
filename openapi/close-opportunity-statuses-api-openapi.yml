@@ -1,0 +1,199 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Opportunity Statuses API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: opportunity_statuses
+  externalDocs:
+    url: https://developer.close.com/api/resources/opportunity-statuses
+paths:
+  /status/opportunity/:
+    get:
+      operationId: opportunity_statuses_list
+      tags:
+      - opportunity_statuses
+      summary: List opportunity statuses for your organization
+      parameters:
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - id: stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                  label: Active
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  pipeline_id: pipe_6gV01if4wo7r2YTVQDWP2j
+                  type: active
+                - id: stat_5ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                  label: Won
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  pipeline_id: pipe_6gV01if4wo7r2YTVQDWP2j
+                  type: won
+                - id: stat_6ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                  label: Lost
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  pipeline_id: pipe_6gV01if4wo7r2YTVQDWP2j
+                  type: lost
+                - id: stat_7ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                  label: On hold
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  pipeline_id: pipe_6gV01if4wo7r2YTVQDWP2j
+                  type: active
+                has_more: false
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: opportunity_statuses_create
+      tags:
+      - opportunity_statuses
+      summary: Create an opportunity status
+      description: Create a new opportunity status. The status must belong to a pipeline (specified by `pipeline_id`) and have a `type` of `active`, `won`, or `lost`.
+      parameters:
+      - $ref: '#/components/parameters/FieldsParam'
+      requestBody:
+        content:
+          application/json:
+            example:
+              label: Closed
+              pipeline_id: pipe_6gV01if4wo7r2YTVQDWP2j
+              type: won
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                id: stat_10diZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                label: Closed
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                pipeline_id: pipe_6gV01if4wo7r2YTVQDWP2j
+                type: won
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /status/opportunity/{id}/:
+    get:
+      operationId: opportunity_statuses_get
+      tags:
+      - opportunity_statuses
+      summary: Fetch a single opportunity status
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                id: stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                label: Active
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                pipeline_id: pipe_6gV01if4wo7r2YTVQDWP2j
+                type: active
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: opportunity_statuses_update
+      tags:
+      - opportunity_statuses
+      summary: Rename an opportunity status
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/FieldsParam'
+      requestBody:
+        content:
+          application/json:
+            example:
+              label: Renamed
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                id: stat_10diZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                label: Renamed
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                pipeline_id: pipe_6gV01if4wo7r2YTVQDWP2j
+                type: active
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: opportunity_statuses_delete
+      tags:
+      - opportunity_statuses
+      summary: Delete an opportunity status
+      description: You should make sure no opportunities are assigned this status, first.
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  parameters:
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

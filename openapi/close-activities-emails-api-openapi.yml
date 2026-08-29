@@ -1,0 +1,1415 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Activities.emails API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: activities.emails
+  externalDocs:
+    url: https://developer.close.com/api/resources/activities/emails
+paths:
+  /activity/email/:
+    get:
+      operationId: activities.emails_list
+      tags:
+      - activities.emails
+      summary: List or filter all Email activities
+      description: You'll get one object per email message.
+      parameters:
+      - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/SkipParam'
+      - $ref: '#/components/parameters/ActivityFilters_IdInParam'
+      - $ref: '#/components/parameters/ActivityFilters_LeadIdParam'
+      - $ref: '#/components/parameters/ActivityFilters_ContactIdParam'
+      - $ref: '#/components/parameters/ActivityFilters_UserIdParam'
+      - $ref: '#/components/parameters/ActivityFilters_OrganizationIdParam'
+      - $ref: '#/components/parameters/ActivityFilters_TypeParam'
+      - $ref: '#/components/parameters/ActivityFilters_DateCreatedGteParam'
+      - $ref: '#/components/parameters/ActivityFilters_DateCreatedLteParam'
+      - $ref: '#/components/parameters/ActivityFilters_DateCreatedGtParam'
+      - $ref: '#/components/parameters/ActivityFilters_DateCreatedLtParam'
+      - $ref: '#/components/parameters/ActivityFilters_ActivityAtGteParam'
+      - $ref: '#/components/parameters/ActivityFilters_ActivityAtLteParam'
+      - $ref: '#/components/parameters/ActivityFilters_ActivityAtGtParam'
+      - $ref: '#/components/parameters/ActivityFilters_ActivityAtLtParam'
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - _type: Email
+                  activity_at: '2013-02-08T05:02:42.050000+00:00'
+                  attachments:
+                  - content_type: image/png
+                    filename: screenshot.png
+                    size: 1108447
+                    url: https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/activity.email/acti_C4DFcBED1FwLSDqn853hjc979h7DIuH2vwABzGWhRAO/3iPCenL9lciJrKnjFucsJ8/screenshot.png
+                  bcc: []
+                  body_html: 'Cool!<br>
+
+                    <br>
+
+                    This is rad. &lt;3<br>
+
+                    <br><br>______________________________________________<br>Sent via <a href=''http://close.com/?utm_source=signature&utm_medium=email&utm_campaign=signature''>Close</a> &ndash; sales communication made simple'
+                  body_text: 'Cool!
+
+
+                    This is rad. <3
+
+
+
+                    ______________________________________________
+
+                    Sent via http://close.com/ - sales communication made simple'
+                  body_text_quoted:
+                  - expand: true
+                    text: 'Cool!
+
+
+                      This is rad. <3
+
+
+
+                      ______________________________________________
+
+                      Sent via http://close.com/ - sales communication made simple'
+                  bulk_email_action_id: null
+                  cc: []
+                  contact_id: cont_eXZwc2SVL4G3xSR85jnfPny2ykvoAQndSyi1Doa2YLO
+                  created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  created_by_name: Bruce Wayne
+                  date_created: '2013-02-08T05:02:42.050000+00:00'
+                  date_scheduled: null
+                  date_sent: '2013-02-08T05:02:42.050000+00:00'
+                  date_updated: '2013-02-08T05:03:16.281000+00:00'
+                  direction: outgoing
+                  envelope:
+                    bcc: []
+                    cc: []
+                    date: Fri, 08 Feb 2013 05:03:15 +0000
+                    from:
+                    - email: phil@close.com
+                      name: Phil Freo
+                    in_reply_to: null
+                    message_id: <20130208050314.11553.33819@ec2-54-245-86-79.us-west-2.compute.amazonaws.com>
+                    reply_to: []
+                    sender:
+                    - email: phil@close.com
+                      name: Phil Freo
+                    subject: Testing testing!!!!
+                    to:
+                    - email: phil@close.com
+                      name: ''
+                  followup_sequence_add_cc_bcc: false
+                  followup_sequence_delay: null
+                  has_reply: false
+                  id: acti_C4DFcBED1FwLSDqn853hjc979h7DIuH2vwABzGWhRAO
+                  in_reply_to_id: null
+                  lead_id: lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h
+                  message_ids:
+                  - <20130208050314.11553.33819@ec2-54-245-86-79.us-west-2.compute.amazonaws.com>
+                  need_smtp_credentials: false
+                  opens: []
+                  opens_summary: null
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  references: []
+                  send_as_id: null
+                  send_attempts: []
+                  sender: phil@close.com
+                  sequence_id: seq_1BTljGuCooX0nbFoPihl07
+                  sequence_name: My Sequence
+                  sequence_subscription_id: sub_wRlAku35U53xEV7PcNY3Qo
+                  status: sent
+                  subject: Testing testing!!!!
+                  template_id: null
+                  thread_id: acti_C4DFcBED1FwLSDqn853hjc979h7DIuH2vwABzGWhRAO
+                  to:
+                  - phil@close.com
+                  updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  updated_by_name: Bruce Wayne
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  user_name: John Wayne
+                  users: []
+                - _type: Email
+                  activity_at: '2013-02-01T00:54:51.274000+00:00'
+                  attachments: []
+                  bcc: []
+                  body_html: Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!
+                  body_text: Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!
+                  body_text_quoted:
+                  - expand: true
+                    text: Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!
+                  bulk_email_action_id: null
+                  cc: []
+                  contact_id: cont_8NNOJnVwmHQEYuVOgJ4B4zU7g9RUxYH4JnPjza5Vr6t
+                  created_by: null
+                  date_created: '2013-02-01T00:54:51.274000+00:00'
+                  date_scheduled: null
+                  date_sent: '2013-02-01T00:54:51.274000+00:00'
+                  date_updated: '2013-02-01T00:56:04.184000+00:00'
+                  direction: incoming
+                  envelope:
+                    bcc: []
+                    cc: []
+                    date: Fri, 01 Feb 2013 00:54:51 +0000
+                    from:
+                    - email: karan@close.com
+                      name: ''
+                    in_reply_to: null
+                    message_id: <20130201005451.14369.20369@ec2-54-245-86-79.us-west-2.compute.amazonaws.com>
+                    reply_to: []
+                    sender:
+                    - email: karan@close.com
+                      name: ''
+                    subject: Welcome to Close!
+                    to:
+                    - email: phil+sample@close.com
+                      name: ''
+                  followup_sequence_add_cc_bcc: false
+                  followup_sequence_delay: null
+                  has_reply: false
+                  id: acti_WuIVvTT9b3zLmOOWalxK0OrqtdkxEEdu4mNr1TPGb2o
+                  in_reply_to_id: null
+                  lead_id: lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h
+                  message_ids:
+                  - <20130201005451.14369.20369@ec2-54-245-86-79.us-west-2.compute.amazonaws.com>
+                  need_smtp_credentials: false
+                  opens: []
+                  opens_summary: null
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  references: []
+                  send_as_id: null
+                  send_attempts: []
+                  sender: karan@close.com
+                  status: inbox
+                  subject: Welcome to Close!
+                  template_id: null
+                  thread_id: acti_WuIVvTT9b3zLmOOWalxK0OrqtdkxEEdu4mNr1TPGb2o
+                  to:
+                  - phil+sample@close.com
+                  updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  updated_by_name: Bruce Wayne
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  users: []
+                has_more: false
+              schema:
+                type: object
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/EmailActivity'
+                    type: array
+                  has_more:
+                    type: boolean
+                required:
+                - data
+                - has_more
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: activities.emails_create
+      tags:
+      - activities.emails
+      summary: Create an Email activity
+      description: "*status* must be one of the following:\n\n - `inbox` to log an already received email.\n - `draft` to create a draft email.\n - `scheduled` to send an email at a scheduled date and time, which must be specified in the `date_scheduled` field.\n - `outbox` to actually **send** an email. To delay email sending by a few seconds (to allow undo), specify `send_in` in seconds (must be less than 60).\n - `sent` to log an already sent email.\n\nOnly drafts can be modified, and their status can be changed to `scheduled` (to send later) or `outbox` (to send immediately). Scheduled emails, or emails in outbox that weren't sent yet can be canceled by setting the status back to `draft`.\n\nFor scheduled, outbox, or sent emails, a `followup_date` may be posted, which will have Close create an email followup task if no response was received.\n\nWe'll render an Email Template server-side if you include a `template_id` _without_ including `body_text` or `body_html` in your POST.\n\nTo specify both a sender name and a sender email address when posting an email, you can use the `sender` field with the format `\"sender\": \"\"John Smith\" <emailaddress@example.com>\"`\n\nThe `sender` field is **required** for emails with status `inbox`, `scheduled`, `outbox`, or `error`. It may be omitted for `draft` (since the sender can be specified later before sending) and `sent` (where it defaults to the email address of the `user` associated with the email or the owner of the API key).\n\nTo include an attachment, you must first upload the file to Close using the [Files API](https://developer.close.com/api/resources/files). Then, add an object to the `attachments` array with the following fields: `url`, `filename`, `content_type`, and `size`. The `url` should be the URL provided in the `download.url` field of the response from the [Files API](https://developer.close.com/api/resources/files). It must begin `https://app.close.com/go/file/`."
+      requestBody:
+        content:
+          application/json:
+            example:
+              attachments:
+              - content_type: image/jpeg
+                filename: image.jpg
+                size: 1108447
+                url: https://app.close.com/go/file/temporary/user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk/1Zx0AlY1DwBXzKKrVwpAoj/image.jpg/
+              bcc: []
+              body_html: Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!
+              body_text: Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!
+              cc: []
+              contact_id: cont_8NNOJnVwmHQEYuVOgJ4B4zU7g9RUxYH4JnPjza5Vr6t
+              created_by: null
+              date_created: '2013-02-01T00:54:51.274000+00:00'
+              email_account_id: emailacct_nuALjWGi09rlr36zXp0ygjja9De0mzPqyqPPVsriTzt
+              lead_id: lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h
+              sender: karan@close.com
+              status: draft
+              subject: Welcome to Close!
+              template_id: null
+              to:
+              - phil+sample@close.com
+              user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+            schema:
+              $ref: '#/components/schemas/CreateEmailActivity'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                _type: Email
+                activity_at: '2015-06-26T02:01:43.059265'
+                attachments:
+                - content_id: null
+                  content_type: image/jpeg
+                  filename: image.jpg
+                  inline_only: false
+                  size: 1108447
+                  url: https://app.close.com/go/file/persisted/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/activity.email/acti_EdpqkmtlQHIDWE2CixJo606BapX34SpYV3fzHryGPc3/1Zx0AlY1DwBXzKKrVwpAoj/image.jpg/
+                bcc: []
+                body_html: Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!
+                body_html_quoted:
+                  expand: true
+                  html: Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!
+                body_preview: 'Hi! My name is Karan and I''m your Account Manager. I''m here to get your team set up and help with anything you may need as you evaluate our platform. Please don''t hesitate to reach out to me with any '
+                body_text: Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!
+                body_text_quoted: null
+                bulk_email_action_id: null
+                cc: []
+                contact_id: cont_8NNOJnVwmHQEYuVOgJ4B4zU7g9RUxYH4JnPjza5Vr6t
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                created_by_name: Steve Wiseman
+                date_created: '2015-06-26T02:01:43.059265'
+                date_scheduled: null
+                date_sent: null
+                date_updated: '2015-06-26T02:01:43.101910'
+                direction: outgoing
+                email_account_id: emailacct_nuALjWGi09rlr36zXp0ygjja9De0mzPqyqPPVsriTzt
+                envelope: null
+                followup_sequence_add_cc_bcc: false
+                followup_sequence_delay: null
+                has_reply: false
+                id: acti_EdpqkmtlQHIDWE2CixJo606BapX34SpYV3fzHryGPc3
+                in_reply_to_id: null
+                lead_id: lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h
+                message_ids: []
+                need_smtp_credentials: false
+                opens: []
+                opens_summary: null
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                references: []
+                send_as_id: null
+                send_attempts: []
+                sender: karan@close.com
+                sequence_id: null
+                sequence_name: null
+                sequence_subscription_id: null
+                status: draft
+                subject: Welcome to Close!
+                template_id: null
+                template_name: null
+                thread_id: acti_3VFfJMUKvwvQPXAbXAbs9b01usbFC5acL8MrmFcsmK5
+                to:
+                - phil+sample@gclose.com
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                updated_by_name: Steve Wiseman
+                user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                user_name: Steve Wiseman
+                users: []
+              schema:
+                $ref: '#/components/schemas/EmailActivity'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /activity/email/{id}/:
+    get:
+      operationId: activities.emails_get
+      tags:
+      - activities.emails
+      summary: Get a single Email activity
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                _type: Email
+                activity_at: '2013-02-01T00:54:51.274000+00:00'
+                attachments: []
+                bcc: []
+                body_html: Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!
+                body_text: Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!
+                body_text_quoted:
+                - expand: true
+                  text: Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!
+                bulk_email_action_id: null
+                cc: []
+                contact_id: cont_8NNOJnVwmHQEYuVOgJ4B4zU7g9RUxYH4JnPjza5Vr6t
+                created_by: null
+                date_created: '2013-02-01T00:54:51.274000+00:00'
+                date_scheduled: null
+                date_sent: '2013-02-01T00:54:51.274000+00:00'
+                date_updated: '2013-02-01T00:56:04.184000+00:00'
+                direction: incoming
+                envelope:
+                  bcc: []
+                  cc: []
+                  date: Fri, 01 Feb 2013 00:54:51 +0000
+                  from:
+                  - email: karan@close.com
+                    name: ''
+                  in_reply_to: null
+                  message_id: <20130201005451.14369.20369@ec2-54-245-86-79.us-west-2.compute.amazonaws.com>
+                  reply_to: []
+                  sender:
+                  - email: karan@close.com
+                    name: ''
+                  subject: Welcome to Close!
+                  to:
+                  - email: phil+sample@close.com
+                    name: ''
+                followup_sequence_add_cc_bcc: false
+                followup_sequence_delay: null
+                has_reply: false
+                id: acti_WuIVvTT9b3zLmOOWalxK0OrqtdkxEEdu4mNr1TPGb2o
+                in_reply_to_id: null
+                lead_id: lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h
+                message_ids: []
+                need_smtp_credentials: false
+                opens: []
+                opens_summary: null
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                references: []
+                send_as_id: null
+                send_attempts: []
+                sender: karan@close.com
+                sequence_id: seq_1BTljGuCooX0nbFoPihl07
+                sequence_name: My Sequence
+                sequence_subscription_id: sub_wRlAku35U53xEV7PcNY3Qo
+                status: inbox
+                subject: Welcome to Close!
+                template_id: null
+                thread_id: acti_WuIVvTT9b3zLmOOWalxK0OrqtdkxEEdu4mNr1TPGb2o
+                to:
+                - phil+sample@close.com
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                updated_by_name: Bruce Wayne
+                user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                user_name: Bruce Wayne
+                users: []
+              schema:
+                $ref: '#/components/schemas/EmailActivity'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: activities.emails_update
+      tags:
+      - activities.emails
+      summary: Update an Email activity
+      description: 'This can be used to modify a draft or send it once the draft is complete.
+
+
+        When changing a draft''s status to `scheduled` or `outbox`, the `sender` field is required if not already set on the email.'
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              subject: Updated subject!
+            schema:
+              $ref: '#/components/schemas/UpdateEmailActivity'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                _type: Email
+                activity_at: '2015-06-26T02:01:43.059265'
+                attachments: []
+                bcc: []
+                body_html: Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!
+                body_html_quoted:
+                  expand: true
+                  html: Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!
+                body_preview: 'Hi! My name is Karan and I''m your Account Manager. I''m here to get your team set up and help with anything you may need as you evaluate our platform. Please don''t hesitate to reach out to me with any '
+                body_text: Hi! My name is Karan and I'm your Account Manager. I'm here to get your team set up and help with anything you may need as you evaluate our platform. Please don't hesitate to reach out to me with any questions!
+                body_text_quoted: null
+                bulk_email_action_id: null
+                cc: []
+                contact_id: cont_8NNOJnVwmHQEYuVOgJ4B4zU7g9RUxYH4JnPjza5Vr6t
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                created_by_name: Steve Wiseman
+                date_created: '2015-06-26T02:01:43.059265'
+                date_scheduled: null
+                date_sent: null
+                date_updated: '2015-06-26T02:01:43.101910'
+                direction: outgoing
+                email_account_id: null
+                envelope: null
+                followup_sequence_add_cc_bcc: false
+                followup_sequence_delay: null
+                has_reply: false
+                id: acti_EdpqkmtlQHIDWE2CixJo606BapX34SpYV3fzHryGPc3
+                in_reply_to_id: null
+                lead_id: lead_KwD00BYbXCHiPWj68LxFkxaeWuULpZ7awzm6LqeFs0h
+                message_ids: []
+                need_smtp_credentials: false
+                opens: []
+                opens_summary: null
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                references: []
+                send_as_id: null
+                send_attempts: []
+                sender: karan@close.com
+                sequence_id: null
+                sequence_name: null
+                sequence_subscription_id: null
+                status: draft
+                subject: Updated subject!
+                template_id: null
+                template_name: null
+                thread_id: acti_3VFfJMUKvwvQPXAbXAbs9b01usbFC5acL8MrmFcsmK5
+                to:
+                - phil+sample@gclose.com
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                updated_by_name: Steve Wiseman
+                user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                user_name: Steve Wiseman
+                users: []
+              schema:
+                $ref: '#/components/schemas/EmailActivity'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: activities.emails_delete
+      tags:
+      - activities.emails
+      summary: Delete an Email activity
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  parameters:
+    ActivityFilters_DateCreatedGteParam:
+      in: query
+      name: date_created__gte
+      required: false
+      schema:
+        title: Date Created (>=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_ActivityAtLteParam:
+      in: query
+      name: activity_at__lte
+      required: false
+      schema:
+        title: Activity At (<=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_TypeParam:
+      description: Filter by activity type, e.g. Call (comma-separated)
+      in: query
+      name: _type
+      required: false
+      schema:
+        title: Type
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    ActivityFilters_OrganizationIdParam:
+      in: query
+      name: organization_id
+      required: false
+      schema:
+        title: Organization ID
+        default: null
+        anyOf:
+        - type: string
+        - type: 'null'
+    ActivityFilters_LeadIdParam:
+      description: Filter by lead IDs (comma-separated)
+      in: query
+      name: lead_id
+      required: false
+      schema:
+        title: Lead ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    ActivityFilters_ActivityAtLtParam:
+      in: query
+      name: activity_at__lt
+      required: false
+      schema:
+        title: Activity At (<)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_ActivityAtGteParam:
+      in: query
+      name: activity_at__gte
+      required: false
+      schema:
+        title: Activity At (>=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_UserIdParam:
+      description: Filter by user IDs (comma-separated)
+      in: query
+      name: user_id
+      required: false
+      schema:
+        title: User ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    ActivityFilters_ContactIdParam:
+      description: Filter by contact IDs (comma-separated)
+      in: query
+      name: contact_id
+      required: false
+      schema:
+        title: Contact ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
+    ActivityFilters_IdInParam:
+      description: Filter by activity IDs (comma-separated)
+      in: query
+      name: id__in
+      required: false
+      schema:
+        title: ID In
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
+    ActivityFilters_DateCreatedLtParam:
+      in: query
+      name: date_created__lt
+      required: false
+      schema:
+        title: Date Created (<)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_ActivityAtGtParam:
+      in: query
+      name: activity_at__gt
+      required: false
+      schema:
+        title: Activity At (>)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_DateCreatedGtParam:
+      in: query
+      name: date_created__gt
+      required: false
+      schema:
+        title: Date Created (>)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_DateCreatedLteParam:
+      in: query
+      name: date_created__lte
+      required: false
+      schema:
+        title: Date Created (<=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+  schemas:
+    EmailOpen:
+      title: EmailOpen
+      type: object
+      properties:
+        ip_address:
+          title: Ip Address
+          anyOf:
+          - type: string
+          - type: 'null'
+        opened_at:
+          title: Opened At
+          type: string
+          format: date-time
+        opened_by:
+          title: Opened By
+          anyOf:
+          - type: string
+          - type: 'null'
+        user_agent:
+          title: User Agent
+          anyOf:
+          - type: string
+          - type: 'null'
+      required:
+      - ip_address
+      - opened_at
+      - opened_by
+      - user_agent
+    UpdateEmailActivity:
+      type: object
+      properties:
+        activity_at:
+          type:
+          - 'null'
+          - string
+          format: date-time
+        attachments:
+          type:
+          - array
+          - 'null'
+          maxItems: 1000
+          items:
+            type: object
+            properties:
+              content_id:
+                type:
+                - 'null'
+                - string
+              content_type:
+                type:
+                - 'null'
+                - string
+              filename:
+                type: string
+              inline_only:
+                type: boolean
+              size:
+                type: integer
+              url:
+                type: string
+                format: uri
+            required:
+            - filename
+            - size
+            - url
+        bcc:
+          type:
+          - array
+          - 'null'
+          maxItems: 500
+          items:
+            type: string
+            maxLength: 1000
+        body_html:
+          type:
+          - 'null'
+          - string
+          maxLength: 1048576
+        body_text:
+          type:
+          - 'null'
+          - string
+          maxLength: 1048576
+        cc:
+          type:
+          - array
+          - 'null'
+          maxItems: 500
+          items:
+            type: string
+            maxLength: 1000
+        contact_id:
+          type:
+          - 'null'
+          - string
+        email_account_id:
+          type:
+          - 'null'
+          - string
+        followup_date:
+          type:
+          - 'null'
+          - string
+          format: date-time
+        followup_sequence_add_cc_bcc:
+          type:
+          - boolean
+          - 'null'
+        followup_sequence_delay:
+          type:
+          - integer
+          - 'null'
+          minimum: 86400
+        followup_sequence_id:
+          type:
+          - 'null'
+          - string
+        in_reply_to_id:
+          type:
+          - 'null'
+          - string
+        opens:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+            properties:
+              opened_at:
+                type: string
+                format: date-time
+            required:
+            - opened_at
+        sender:
+          type:
+          - 'null'
+          - string
+          format: email
+        status:
+          type: string
+          enum:
+          - inbox
+          - draft
+          - scheduled
+          - outbox
+          - sent
+          - error
+        subject:
+          type:
+          - 'null'
+          - string
+          maxLength: 1000
+        template_id:
+          type:
+          - 'null'
+          - string
+        to:
+          type:
+          - array
+          - 'null'
+          maxItems: 500
+          items:
+            type: string
+            maxLength: 1000
+        user_id:
+          type:
+          - 'null'
+          - string
+      additionalProperties: false
+    CommunicationDirection:
+      title: CommunicationDirection
+      description: Direction of communication. Outgoing means the communication flowing from the user to the lead/contact. Inbound means the opposite.
+      type: string
+      enum:
+      - incoming
+      - outgoing
+    EmailActivity:
+      title: EmailActivity
+      type: object
+      properties:
+        _type:
+          title: Type
+          type: string
+        activity_at:
+          title: Activity At
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        agent_action_reason:
+          title: Agent Action Reason
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        agent_config_id:
+          title: Agent Config ID
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        attachments:
+          title: Attachments
+          default: null
+          anyOf:
+          - type: array
+            items:
+              $ref: '#/components/schemas/Attachment'
+          - type: 'null'
+        bcc:
+          title: Bcc
+          type: array
+          items:
+            type: string
+        body_html:
+          title: Body HTML
+          anyOf:
+          - type: string
+          - type: 'null'
+        body_preview:
+          title: Body Preview
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        body_text:
+          title: Body Text
+          anyOf:
+          - type: string
+          - type: 'null'
+        bulk_email_action_id:
+          title: Bulk Email Action ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        cc:
+          title: Cc
+          type: array
+          items:
+            type: string
+        contact_id:
+          title: Contact ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        created_by:
+          title: Created By
+          anyOf:
+          - type: string
+          - type: 'null'
+        created_by_name:
+          title: Created By Name
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        date_created:
+          title: Date Created
+          type: string
+          format: date-time
+        date_scheduled:
+          title: Date Scheduled
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        date_sent:
+          title: Date Sent
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        date_updated:
+          title: Date Updated
+          type: string
+          format: date-time
+        direction:
+          anyOf:
+          - $ref: '#/components/schemas/CommunicationDirection'
+          - type: 'null'
+        email_account_id:
+          title: Email Account ID
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        envelope:
+          title: Envelope
+          default: null
+          anyOf:
+          - type: object
+            additionalProperties: true
+          - type: 'null'
+        followup_sequence_add_cc_bcc:
+          title: Followup Sequence Add Cc Bcc
+          type: boolean
+        followup_sequence_delay:
+          title: Followup Sequence Delay
+          anyOf:
+          - type: integer
+          - type: 'null'
+        followup_sequence_id:
+          title: Followup Sequence ID
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        has_reply:
+          title: Has Reply
+          type: boolean
+        id:
+          title: ID
+          type: string
+        in_reply_to_id:
+          title: In Reply To ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        lead_id:
+          title: Lead ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        message_ids:
+          title: Message IDs
+          type: array
+          items:
+            type: string
+        need_smtp_credentials:
+          title: Need Smtp Credentials
+          type: boolean
+        opens:
+          title: Opens
+          default: null
+          anyOf:
+          - type: array
+            items:
+              $ref: '#/components/schemas/EmailOpen'
+          - type: 'null'
+        opens_summary:
+          title: Opens Summary
+          anyOf:
+          - type: string
+          - type: 'null'
+        organization_id:
+          title: Organization ID
+          type: string
+        references:
+          title: References
+          type: array
+          items:
+            type: string
+        send_as_id:
+          title: Send As ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        send_attempts:
+          title: Send Attempts
+          default: null
+          anyOf:
+          - type: array
+            items:
+              type: object
+              additionalProperties:
+                type: string
+          - type: 'null'
+        sender:
+          title: Sender
+          anyOf:
+          - type: string
+          - type: 'null'
+        sequence_id:
+          title: Sequence ID
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        sequence_name:
+          title: Sequence Name
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        sequence_subscription_id:
+          title: Sequence Subscription ID
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        status:
+          $ref: '#/components/schemas/MessageStatus'
+        subject:
+          title: Subject
+          anyOf:
+          - type: string
+          - type: 'null'
+        template_id:
+          title: Template ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        template_name:
+          title: Template Name
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        thread_id:
+          title: Thread ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        to:
+          title: To
+          type: array
+          items:
+            type: string
+        updated_by:
+          title: Updated By
+          anyOf:
+          - type: string
+          - type: 'null'
+        updated_by_name:
+          title: Updated By Name
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        user_id:
+          title: User ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        user_name:
+          title: User Name
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        users:
+          title: Users
+          type: array
+          items:
+            type: string
+      required:
+      - _type
+      - activity_at
+      - bcc
+      - body_html
+      - body_text
+      - bulk_email_action_id
+      - cc
+      - contact_id
+      - created_by
+      - date_created
+      - date_scheduled
+      - date_sent
+      - date_updated
+      - direction
+      - followup_sequence_add_cc_bcc
+      - followup_sequence_delay
+      - has_reply
+      - id
+      - in_reply_to_id
+      - lead_id
+      - message_ids
+      - need_smtp_credentials
+      - opens_summary
+      - organization_id
+      - references
+      - send_as_id
+      - sender
+      - status
+      - subject
+      - template_id
+      - thread_id
+      - to
+      - updated_by
+      - user_id
+      - users
+    MessageStatus:
+      title: MessageStatus
+      description: Status of a message, such as Email or SMS.
+      type: string
+      enum:
+      - inbox
+      - draft
+      - scheduled
+      - outbox
+      - sent
+      - error
+    CreateEmailActivity:
+      type: object
+      properties:
+        activity_at:
+          type:
+          - 'null'
+          - string
+          format: date-time
+        attachments:
+          type:
+          - array
+          - 'null'
+          maxItems: 1000
+          items:
+            type: object
+            properties:
+              content_id:
+                type:
+                - 'null'
+                - string
+              content_type:
+                type:
+                - 'null'
+                - string
+              filename:
+                type: string
+              inline_only:
+                type: boolean
+              size:
+                type: integer
+              url:
+                type: string
+                format: uri
+            required:
+            - filename
+            - size
+            - url
+        bcc:
+          type:
+          - array
+          - 'null'
+          maxItems: 500
+          items:
+            type: string
+            maxLength: 1000
+        body_html:
+          type:
+          - 'null'
+          - string
+          maxLength: 1048576
+        body_text:
+          type:
+          - 'null'
+          - string
+          maxLength: 1048576
+        cc:
+          type:
+          - array
+          - 'null'
+          maxItems: 500
+          items:
+            type: string
+            maxLength: 1000
+        contact_id:
+          type:
+          - 'null'
+          - string
+        created_by:
+          type:
+          - 'null'
+          - string
+        date_created:
+          type:
+          - 'null'
+          - string
+          format: date-time
+        email_account_id:
+          type:
+          - 'null'
+          - string
+        followup_date:
+          type:
+          - 'null'
+          - string
+          format: date-time
+        followup_sequence_add_cc_bcc:
+          type:
+          - boolean
+          - 'null'
+        followup_sequence_delay:
+          type:
+          - integer
+          - 'null'
+          minimum: 86400
+        followup_sequence_id:
+          type:
+          - 'null'
+          - string
+        in_reply_to_id:
+          type:
+          - 'null'
+          - string
+        lead_id:
+          type: string
+        opens:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+            properties:
+              opened_at:
+                type: string
+                format: date-time
+            required:
+            - opened_at
+        organization_id:
+          type:
+          - 'null'
+          - string
+        sender:
+          type:
+          - 'null'
+          - string
+          format: email
+        status:
+          type: string
+          enum:
+          - inbox
+          - draft
+          - scheduled
+          - outbox
+          - sent
+          - error
+        subject:
+          type:
+          - 'null'
+          - string
+          maxLength: 1000
+        template_id:
+          type:
+          - 'null'
+          - string
+        to:
+          type:
+          - array
+          - 'null'
+          maxItems: 500
+          items:
+            type: string
+            maxLength: 1000
+        user_id:
+          type:
+          - 'null'
+          - string
+      required:
+      - lead_id
+      - status
+      additionalProperties: false
+    Attachment:
+      title: Attachment
+      type: object
+      properties:
+        content_type:
+          title: Content Type
+          anyOf:
+          - type: string
+          - type: 'null'
+        filename:
+          title: Filename
+          anyOf:
+          - type: string
+          - type: 'null'
+        size:
+          title: Size
+          anyOf:
+          - type: integer
+          - type: 'null'
+        thumbnail_url:
+          title: Thumbnail URL
+          anyOf:
+          - type: string
+          - type: 'null'
+        url:
+          title: URL
+          type: string
+      required:
+      - content_type
+      - filename
+      - size
+      - url
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

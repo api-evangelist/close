@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Endpoints subpackage_activities subpackage_smartViews API
+  title: Endpoints Subpackage Smart Views API
   version: 1.0.0
 servers:
 - url: https://api.close.com/api/v1
@@ -275,26 +275,6 @@ components:
       - data
       - has_more
       title: smart_views_list_Response_200
-    SavedSearchType:
-      type: string
-      enum:
-      - lead
-      - contact
-      - opportunity
-      - call
-      - email
-      - sms
-      - meeting
-      - note
-      - whatsapp_message
-      - custom_activity
-      - form_submission
-      title: SavedSearchType
-    smart_views_delete_Response_200:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: smart_views_delete_Response_200
     SavedSearch:
       type: object
       properties:
@@ -368,6 +348,21 @@ components:
       - type
       - user_id
       title: SavedSearch
+    SavedSearchType:
+      type: string
+      enum:
+      - lead
+      - contact
+      - opportunity
+      - call
+      - email
+      - sms
+      - meeting
+      - note
+      - whatsapp_message
+      - custom_activity
+      - form_submission
+      title: SavedSearchType
     SharingSettingsEmbeddedResponse:
       type: object
       properties:
@@ -408,6 +403,11 @@ components:
       - user_ids
       - whole_org
       title: SharingSettingsEmbeddedResponse
+    smart_views_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: smart_views_delete_Response_200
   securitySchemes:
     ApiKeyAuth:
       type: http

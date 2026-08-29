@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Endpoints subpackage_activities subpackage_activitiesCreations API
+  title: Endpoints Subpackage Activities Creations API
   version: 1.0.0
 servers:
 - url: https://api.close.com/api/v1
@@ -208,44 +208,6 @@ components:
       - type: string
         format: date
       title: ActivityCreatedGetParametersDateCreatedLt
-    ActivityCreatedGetParametersDateCreatedLte:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityCreatedGetParametersDateCreatedLte
-    activities.creations_get_Response_200:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: activities.creations_get_Response_200
-    activities.creations_list_Response_200:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: activities.creations_list_Response_200
-    ActivityCreatedGetParametersActivityAtLte:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityCreatedGetParametersActivityAtLte
-    ActivityCreatedGetParametersDateCreatedGte:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityCreatedGetParametersDateCreatedGte
-    ActivityCreatedGetParametersActivityAtLt:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityCreatedGetParametersActivityAtLt
     ActivityCreatedGetParametersDateCreatedGt:
       oneOf:
       - type: string
@@ -267,6 +229,44 @@ components:
       - type: string
         format: date
       title: ActivityCreatedGetParametersActivityAtGte
+    ActivityCreatedGetParametersActivityAtLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCreatedGetParametersActivityAtLt
+    ActivityCreatedGetParametersActivityAtLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCreatedGetParametersActivityAtLte
+    ActivityCreatedGetParametersDateCreatedLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCreatedGetParametersDateCreatedLte
+    activities.creations_list_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.creations_list_Response_200
+    ActivityCreatedGetParametersDateCreatedGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCreatedGetParametersDateCreatedGte
+    activities.creations_get_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.creations_get_Response_200
   securitySchemes:
     ApiKeyAuth:
       type: http

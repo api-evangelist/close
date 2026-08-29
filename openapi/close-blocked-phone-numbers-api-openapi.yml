@@ -1,0 +1,382 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Blocked Phone Numbers API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: blocked_phone_numbers
+  externalDocs:
+    url: https://developer.close.com/api/resources/blocked-phone-numbers
+paths:
+  /blocked_phone_number/:
+    get:
+      operationId: blocked_phone_numbers_list
+      tags:
+      - blocked_phone_numbers
+      summary: List Blocked Phone Numbers
+      parameters:
+      - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/SkipParam'
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  date_created: '2026-03-01T12:00:00.000000+00:00'
+                  date_updated: '2026-03-01T12:00:00.000000+00:00'
+                  id: blkph_3wMz8Tc8NRE2YzDT5vNb1h
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  phone: '+15553334444'
+                  reason: Unwanted Caller
+                  updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                has_more: false
+              schema:
+                type: object
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/BlockedPhoneNumber'
+                    type: array
+                  has_more:
+                    type: boolean
+                required:
+                - data
+                - has_more
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: blocked_phone_numbers_create
+      tags:
+      - blocked_phone_numbers
+      summary: Create a Blocked Phone Number
+      description: 'Once this record is created, the phone number you have specified will no longer work for outbound nor inbound calls. That means:
+
+
+        * Nobody in your organization will be able to call that phone number.
+
+        * That phone number will not be able to call anybody in your organization.'
+      requestBody:
+        content:
+          application/json:
+            example:
+              phone: '+15553334444'
+              reason: Unwanted Caller
+            schema:
+              $ref: '#/components/schemas/CreateBlockedPhoneNumber'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              example:
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                date_created: '2026-03-01T12:00:00.000000+00:00'
+                date_updated: '2026-03-01T12:00:00.000000+00:00'
+                id: blkph_3wMz8Tc8NRE2YzDT5vNb1h
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                phone: '+15553334444'
+                reason: Unwanted Caller
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+              schema:
+                $ref: '#/components/schemas/BlockedPhoneNumber'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /blocked_phone_number/settings/:
+    get:
+      operationId: blocked_phone_numbers_get_settings
+      tags:
+      - blocked_phone_numbers
+      summary: Retrieve Blocked Phone Number settings
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                reject_anonymous_inbound_calls: false
+              schema:
+                $ref: '#/components/schemas/BlockedPhoneNumberSettings'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: blocked_phone_numbers_update_settings
+      tags:
+      - blocked_phone_numbers
+      summary: Update Blocked Phone Number settings
+      requestBody:
+        content:
+          application/json:
+            example:
+              reject_anonymous_inbound_calls: true
+            schema:
+              $ref: '#/components/schemas/UpdateBlockedPhoneNumberSettings'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                reject_anonymous_inbound_calls: true
+              schema:
+                $ref: '#/components/schemas/BlockedPhoneNumberSettings'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /blocked_phone_number/{id}/:
+    get:
+      operationId: blocked_phone_numbers_get
+      tags:
+      - blocked_phone_numbers
+      summary: Retrieve a single Blocked Phone Number
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                date_created: '2026-03-01T12:00:00.000000+00:00'
+                date_updated: '2026-03-01T12:00:00.000000+00:00'
+                id: blkph_3wMz8Tc8NRE2YzDT5vNb1h
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                phone: '+15553334444'
+                reason: Unwanted Caller
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+              schema:
+                $ref: '#/components/schemas/BlockedPhoneNumber'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: blocked_phone_numbers_update
+      tags:
+      - blocked_phone_numbers
+      summary: Update a Blocked Phone Number
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              reason: Incessant Robocaller
+            schema:
+              $ref: '#/components/schemas/UpdateBlockedPhoneNumber'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                date_created: '2026-03-01T12:00:00.000000+00:00'
+                date_updated: '2026-03-01T12:00:00.000000+00:00'
+                id: blkph_3wMz8Tc8NRE2YzDT5vNb1h
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                phone: '+15553334444'
+                reason: Incessant Robocaller
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+              schema:
+                $ref: '#/components/schemas/BlockedPhoneNumber'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: blocked_phone_numbers_delete
+      tags:
+      - blocked_phone_numbers
+      summary: Delete a Blocked Phone Number
+      description: 'Once the given Blocked Phone Number record is deleted, the specified "
+
+        "phone number will again be able to make calls into your organization "
+
+        "and you''ll be able to make calls to it.'
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  parameters:
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
+  schemas:
+    UpdateBlockedPhoneNumber:
+      title: UpdateBlockedPhoneNumber
+      type: object
+      properties:
+        reason:
+          title: Reason
+          description: The updated reason for blocking the given phone number.
+          type: string
+      required:
+      - reason
+      additionalProperties: false
+    BlockedPhoneNumberSettings:
+      title: BlockedPhoneNumberSettings
+      type: object
+      properties:
+        reject_anonymous_inbound_calls:
+          title: Reject Anonymous Inbound Calls
+          type: boolean
+      required:
+      - reject_anonymous_inbound_calls
+    UpdateBlockedPhoneNumberSettings:
+      title: UpdateBlockedPhoneNumberSettings
+      type: object
+      properties:
+        reject_anonymous_inbound_calls:
+          title: Reject Anonymous Inbound Calls
+          type: boolean
+      required:
+      - reject_anonymous_inbound_calls
+      additionalProperties: false
+    CreateBlockedPhoneNumber:
+      title: CreateBlockedPhoneNumber
+      type: object
+      properties:
+        phone:
+          title: Phone
+          description: The phone number (in E.164 format) that you wish to block.
+          type: string
+        reason:
+          title: Reason
+          description: The reason why you wish to block a given phone number.
+          type: string
+      required:
+      - phone
+      - reason
+      additionalProperties: false
+    BlockedPhoneNumber:
+      title: BlockedPhoneNumber
+      type: object
+      properties:
+        created_by:
+          title: Created By
+          description: User who created this Blocked Number initially.
+          type: string
+        date_created:
+          title: Date Created
+          description: When this Blocked Number was created.
+          type: string
+          format: date-time
+        date_updated:
+          title: Date Updated
+          description: When this Blocked Number was last updated.
+          type: string
+          format: date-time
+        id:
+          title: ID
+          type: string
+        organization_id:
+          title: Organization ID
+          type: string
+        phone:
+          title: Phone
+          description: The phone number (in E.164 format) to block.
+          type: string
+        reason:
+          title: Reason
+          description: The reason for blocking the given phone number.
+          type: string
+        updated_by:
+          title: Updated By
+          description: User who most recently updated this Blocked Number.
+          type: string
+      required:
+      - created_by
+      - date_created
+      - date_updated
+      - id
+      - organization_id
+      - phone
+      - reason
+      - updated_by
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

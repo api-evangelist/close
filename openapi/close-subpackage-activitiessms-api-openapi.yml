@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Endpoints subpackage_activities subpackage_activitiesSms API
+  title: Endpoints Subpackage Activities Sms API
   version: 1.0.0
 servers:
 - url: https://api.close.com/api/v1
@@ -349,82 +349,34 @@ paths:
                 description: Any type
 components:
   schemas:
-    PhoneActivityDirection:
-      type: string
-      enum:
-      - inbound
-      - outbound
-      description: Direction of a phone activity, such as a call or an SMS message.
-      title: PhoneActivityDirection
-    ActivitySmsGetParametersDateCreatedGt:
+    ActivitySmsGetParametersDateCreatedLt:
       oneOf:
       - type: string
         format: date-time
       - type: string
         format: date
-      title: ActivitySmsGetParametersDateCreatedGt
-    MessageStatus:
-      type: string
-      enum:
-      - inbox
-      - draft
-      - scheduled
-      - outbox
-      - sent
-      - error
-      description: Status of a message, such as Email or SMS.
-      title: MessageStatus
-    ActivitySmsGetParametersDateCreatedGte:
+      title: ActivitySmsGetParametersDateCreatedLt
+    ActivitySmsGetParametersActivityAtLte:
       oneOf:
       - type: string
         format: date-time
       - type: string
         format: date
-      title: ActivitySmsGetParametersDateCreatedGte
-    CreateSmsActivityAttachmentsItemsContentType:
-      type: string
-      enum:
-      - application/pdf
-      - application/vcard
-      - audio/3gpp
-      - audio/3gpp2
-      - audio/L24
-      - audio/ac3
-      - audio/amr
-      - audio/amr-nb
-      - audio/basic
-      - audio/mp4
-      - audio/mpeg
-      - audio/ogg
-      - audio/vnd.rn-realaudio
-      - audio/vnd.wave
-      - audio/webm
-      - image/bmp
-      - image/gif
-      - image/jpeg
-      - image/jpg
-      - image/png
-      - image/tiff
-      - text/calendar
-      - text/csv
-      - text/directory
-      - text/richtext
-      - text/rtf
-      - text/vcard
-      - text/x-vcard
-      - video/3gpp
-      - video/3gpp-tt
-      - video/3gpp2
-      - video/H261
-      - video/H263
-      - video/H263-1998
-      - video/H263-2000
-      - video/H264
-      - video/mp4
-      - video/mpeg
-      - video/quicktime
-      - video/webm
-      title: CreateSmsActivityAttachmentsItemsContentType
+      title: ActivitySmsGetParametersActivityAtLte
+    ActivitySmsGetParametersActivityAtGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivitySmsGetParametersActivityAtGte
+    ActivitySmsGetParametersDateCreatedLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivitySmsGetParametersDateCreatedLte
     SMSActivity:
       type: object
       properties:
@@ -586,150 +538,13 @@ components:
       - user_id
       - users
       title: SMSActivity
-    PhoneActivitySource:
-      type: string
-      enum:
-      - Close.io
-      - External
-      description: Source of a phone activity. Describes whether the phone activity (such as a call or an SMS) was handled by Close's telephony provider or handled externally by a 3rd party and is merely logged in Close.
-      title: PhoneActivitySource
-    UpdateSmsActivityStatus:
-      type: string
-      enum:
-      - inbox
-      - draft
-      - scheduled
-      - outbox
-      - sent
-      - error
-      title: UpdateSmsActivityStatus
-    ActivitySmsGetParametersActivityAtGt:
+    ActivitySmsGetParametersDateCreatedGte:
       oneOf:
       - type: string
         format: date-time
       - type: string
         format: date
-      title: ActivitySmsGetParametersActivityAtGt
-    ActivitySmsGetParametersActivityAtLte:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivitySmsGetParametersActivityAtLte
-    UpdateSmsActivityAttachmentsItemsContentType:
-      type: string
-      enum:
-      - application/pdf
-      - application/vcard
-      - audio/3gpp
-      - audio/3gpp2
-      - audio/L24
-      - audio/ac3
-      - audio/amr
-      - audio/amr-nb
-      - audio/basic
-      - audio/mp4
-      - audio/mpeg
-      - audio/ogg
-      - audio/vnd.rn-realaudio
-      - audio/vnd.wave
-      - audio/webm
-      - image/bmp
-      - image/gif
-      - image/jpeg
-      - image/jpg
-      - image/png
-      - image/tiff
-      - text/calendar
-      - text/csv
-      - text/directory
-      - text/richtext
-      - text/rtf
-      - text/vcard
-      - text/x-vcard
-      - video/3gpp
-      - video/3gpp-tt
-      - video/3gpp2
-      - video/H261
-      - video/H263
-      - video/H263-1998
-      - video/H263-2000
-      - video/H264
-      - video/mp4
-      - video/mpeg
-      - video/quicktime
-      - video/webm
-      title: UpdateSmsActivityAttachmentsItemsContentType
-    CreateSmsActivityStatus:
-      type: string
-      enum:
-      - inbox
-      - draft
-      - scheduled
-      - outbox
-      - sent
-      - error
-      title: CreateSmsActivityStatus
-    CreateSmsActivitySource:
-      type: string
-      enum:
-      - Close.io
-      - External
-      title: CreateSmsActivitySource
-    ActivitySmsGetParametersDateCreatedLte:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivitySmsGetParametersDateCreatedLte
-    activities.sms_delete_Response_200:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: activities.sms_delete_Response_200
-    ActivitySmsGetParametersDateCreatedLt:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivitySmsGetParametersDateCreatedLt
-    CreateSmsActivityDirection:
-      type: string
-      enum:
-      - inbound
-      - outbound
-      title: CreateSmsActivityDirection
-    UpdateSmsActivityAttachmentsItems:
-      type: object
-      properties:
-        content_type:
-          $ref: '#/components/schemas/UpdateSmsActivityAttachmentsItemsContentType'
-        filename:
-          type: string
-        url:
-          type: string
-      required:
-      - content_type
-      - filename
-      - url
-      title: UpdateSmsActivityAttachmentsItems
-    CreateSmsActivityAttachmentsItems:
-      type: object
-      properties:
-        content_type:
-          $ref: '#/components/schemas/CreateSmsActivityAttachmentsItemsContentType'
-        filename:
-          type: string
-        url:
-          type: string
-      required:
-      - content_type
-      - filename
-      - url
-      title: CreateSmsActivityAttachmentsItems
+      title: ActivitySmsGetParametersDateCreatedGte
     CreateSMSActivity:
       type: object
       properties:
@@ -796,26 +611,29 @@ components:
       required:
       - status
       title: CreateSMSActivity
-    ActivitySmsGetParametersActivityAtLt:
+    ActivitySmsGetParametersActivityAtGt:
       oneOf:
       - type: string
         format: date-time
       - type: string
         format: date
-      title: ActivitySmsGetParametersActivityAtLt
-    activities.sms_list_Response_200:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/SMSActivity'
-        has_more:
-          type: boolean
-      required:
-      - data
-      - has_more
-      title: activities.sms_list_Response_200
+      title: ActivitySmsGetParametersActivityAtGt
+    CreateSmsActivityDirection:
+      type: string
+      enum:
+      - inbound
+      - outbound
+      title: CreateSmsActivityDirection
+    CreateSmsActivityStatus:
+      type: string
+      enum:
+      - inbox
+      - draft
+      - scheduled
+      - outbox
+      - sent
+      - error
+      title: CreateSmsActivityStatus
     UpdateSMSActivity:
       type: object
       properties:
@@ -863,13 +681,195 @@ components:
           - string
           - 'null'
       title: UpdateSMSActivity
-    ActivitySmsGetParametersActivityAtGte:
+    UpdateSmsActivityAttachmentsItemsContentType:
+      type: string
+      enum:
+      - application/pdf
+      - application/vcard
+      - audio/3gpp
+      - audio/3gpp2
+      - audio/L24
+      - audio/ac3
+      - audio/amr
+      - audio/amr-nb
+      - audio/basic
+      - audio/mp4
+      - audio/mpeg
+      - audio/ogg
+      - audio/vnd.rn-realaudio
+      - audio/vnd.wave
+      - audio/webm
+      - image/bmp
+      - image/gif
+      - image/jpeg
+      - image/jpg
+      - image/png
+      - image/tiff
+      - text/calendar
+      - text/csv
+      - text/directory
+      - text/richtext
+      - text/rtf
+      - text/vcard
+      - text/x-vcard
+      - video/3gpp
+      - video/3gpp-tt
+      - video/3gpp2
+      - video/H261
+      - video/H263
+      - video/H263-1998
+      - video/H263-2000
+      - video/H264
+      - video/mp4
+      - video/mpeg
+      - video/quicktime
+      - video/webm
+      title: UpdateSmsActivityAttachmentsItemsContentType
+    ActivitySmsGetParametersDateCreatedGt:
       oneOf:
       - type: string
         format: date-time
       - type: string
         format: date
-      title: ActivitySmsGetParametersActivityAtGte
+      title: ActivitySmsGetParametersDateCreatedGt
+    CreateSmsActivitySource:
+      type: string
+      enum:
+      - Close.io
+      - External
+      title: CreateSmsActivitySource
+    MessageStatus:
+      type: string
+      enum:
+      - inbox
+      - draft
+      - scheduled
+      - outbox
+      - sent
+      - error
+      description: Status of a message, such as Email or SMS.
+      title: MessageStatus
+    UpdateSmsActivityStatus:
+      type: string
+      enum:
+      - inbox
+      - draft
+      - scheduled
+      - outbox
+      - sent
+      - error
+      title: UpdateSmsActivityStatus
+    PhoneActivitySource:
+      type: string
+      enum:
+      - Close.io
+      - External
+      description: Source of a phone activity. Describes whether the phone activity (such as a call or an SMS) was handled by Close's telephony provider or handled externally by a 3rd party and is merely logged in Close.
+      title: PhoneActivitySource
+    ActivitySmsGetParametersActivityAtLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivitySmsGetParametersActivityAtLt
+    PhoneActivityDirection:
+      type: string
+      enum:
+      - inbound
+      - outbound
+      description: Direction of a phone activity, such as a call or an SMS message.
+      title: PhoneActivityDirection
+    activities.sms_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.sms_delete_Response_200
+    activities.sms_list_Response_200:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SMSActivity'
+        has_more:
+          type: boolean
+      required:
+      - data
+      - has_more
+      title: activities.sms_list_Response_200
+    CreateSmsActivityAttachmentsItems:
+      type: object
+      properties:
+        content_type:
+          $ref: '#/components/schemas/CreateSmsActivityAttachmentsItemsContentType'
+        filename:
+          type: string
+        url:
+          type: string
+      required:
+      - content_type
+      - filename
+      - url
+      title: CreateSmsActivityAttachmentsItems
+    UpdateSmsActivityAttachmentsItems:
+      type: object
+      properties:
+        content_type:
+          $ref: '#/components/schemas/UpdateSmsActivityAttachmentsItemsContentType'
+        filename:
+          type: string
+        url:
+          type: string
+      required:
+      - content_type
+      - filename
+      - url
+      title: UpdateSmsActivityAttachmentsItems
+    CreateSmsActivityAttachmentsItemsContentType:
+      type: string
+      enum:
+      - application/pdf
+      - application/vcard
+      - audio/3gpp
+      - audio/3gpp2
+      - audio/L24
+      - audio/ac3
+      - audio/amr
+      - audio/amr-nb
+      - audio/basic
+      - audio/mp4
+      - audio/mpeg
+      - audio/ogg
+      - audio/vnd.rn-realaudio
+      - audio/vnd.wave
+      - audio/webm
+      - image/bmp
+      - image/gif
+      - image/jpeg
+      - image/jpg
+      - image/png
+      - image/tiff
+      - text/calendar
+      - text/csv
+      - text/directory
+      - text/richtext
+      - text/rtf
+      - text/vcard
+      - text/x-vcard
+      - video/3gpp
+      - video/3gpp-tt
+      - video/3gpp2
+      - video/H261
+      - video/H263
+      - video/H263-1998
+      - video/H263-2000
+      - video/H264
+      - video/mp4
+      - video/mpeg
+      - video/quicktime
+      - video/webm
+      title: CreateSmsActivityAttachmentsItemsContentType
   securitySchemes:
     ApiKeyAuth:
       type: http

@@ -1,0 +1,343 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Memberships API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: memberships
+  externalDocs:
+    url: https://developer.close.com/api/resources/memberships
+paths:
+  /membership/:
+    post:
+      operationId: memberships_create
+      tags:
+      - memberships
+      summary: Create a membership
+      description: 'Ensures an active membership for the given email will be provisioned.
+
+
+        - If the user already exists, they will be added to the requestor''s organization.
+
+        - If it doesn''t exist, a new user will be provisioned.
+
+
+        This request requires "Manage Organization" permissions.
+
+
+        As a security precaution, this operation requires the organization to have the
+
+        "Restrict new users to emails from these domains" setting enabled, and the new
+
+        member''s email address must belong to one of its verified domains.'
+      requestBody:
+        content:
+          application/json:
+            example:
+              email: john@salesteam.com
+              role_id: user
+            schema:
+              $ref: '#/components/schemas/CreateMembership'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                auto_record_calls: unset
+                default_caller_id: null
+                hangup_recording_url: null
+                id: memb_JPCqDJq0AmoZFhemXAWrWk9327DqfJgUF2VGPMOL4Lp
+                is_free: false
+                may_workflows_impersonate: false
+                onboarding_status: in-progress
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                permissions_granted:
+                - bulk_email
+                - bulk_import
+                - bulk_sequence_subscriptions
+                - calling
+                - delete_leads
+                - delete_own_activities
+                - delete_own_opportunities
+                - delete_own_tasks
+                - manage_others_activities
+                - manage_others_opportunities
+                - manage_others_tasks
+                - merge_leads
+                - view_all_leads
+                primary_personal_number: null
+                role: user
+                role_id: user
+                track_email_opens: true
+                user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+          description: Successful response
+        '400':
+          description: Invalid membership data, including an email address that does not belong to one of the organization's verified domains.
+        '401':
+          description: Unauthorized
+        '403':
+          description: Membership creation is not permitted because the requestor cannot manage the organization, the verified domain restriction is disabled, or the requested role grants the `manage_organization` permission.
+        '404':
+          description: Not found
+    put:
+      operationId: memberships_bulk_update
+      tags:
+      - memberships
+      summary: Bulk update memberships
+      description: 'Any field that can be updated on a membership individually can also be used to bulk update multiple memberships. Pass the comma-separated ids of the memberships to update into `id__in` in `_params`. For example:
+
+
+        ```json
+
+        {"_params": {"id__in": "memb_A,memb_B"}, "role_id": "role_y6eLquXvRUdmwqi61tsmgCJUU7uGfxaRbDuLoONZL9p"}
+
+        ```'
+      requestBody:
+        content:
+          application/json:
+            example:
+              role_id: role_y6eLquXvRUdmwqi61tsmgCJUU7uGfxaRbDuLoONZL9p
+            schema:
+              $ref: '#/components/schemas/Membership'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                count: 2
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /membership/{id}/:
+    put:
+      operationId: memberships_update
+      tags:
+      - memberships
+      summary: Update a membership
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              auto_record_calls: enabled
+              role_id: role_y6eLquXvRUdmwqi61tsmgCJUU7uGfxaRbDuLoONZL9p
+            schema:
+              $ref: '#/components/schemas/Membership'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                auto_record_calls: enabled
+                id: memb_SLfZq4IU5E2nBA3PBzHFsi1HUv98cPmGUIZGlWK7Z3y
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                permissions_granted:
+                - bulk_delete
+                - bulk_edit
+                - export
+                - manage_customizations
+                - manage_group_numbers
+                - manage_organization
+                - manage_team_smart_views
+                plan_type: enterprise
+                primary_personal_number: phon_nm67bxYRTJUZNOXflc1I3bBadd0PbQvvui1byxCwK7k
+                role_id: role_y6eLquXvRUdmwqi61tsmgCJUU7uGfxaRbDuLoONZL9p
+                user_id: user_A3HwmEOcDLL8ilFx8QKcYEuKDtRPtBuQ68PctqwMqtP
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: memberships_delete
+      tags:
+      - memberships
+      summary: Delete a membership
+      description: Deactivates a membership, removing the user from the associated organization.
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /membership/{id}/pinned_views/:
+    get:
+      operationId: memberships_get_pinned_views
+      tags:
+      - memberships
+      summary: Get pinned views for a membership
+      description: Get the ordered list of pinned views for the given membership.
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                saved_view_ids:
+                - save_LCt6QxYsDbdJfMiIkLjBFJBkJTwS9TufXu3nSkHopXM
+                - save_Ova4RKAzzFWejVEMUpDBFzB4YV3ObgCJUY1TpDK0ZGa
+                - save_Ova689zHHpAVwvHthafS1NOatGFYsBGtyKxFt7Ujg7t
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: memberships_update_pinned_views
+      tags:
+      - memberships
+      summary: Update pinned views for a membership
+      description: Set the pinned views for the given membership. Provide an ordered list that will overwrite the entire current list.
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              saved_view_ids:
+              - save_LCt6QxYsDbdJfMiIkLjBFJBkJTwS9TufXu3nSkHopXM
+              - save_Ova4RKAzzFWejVEMUpDBFzB4YV3ObgCJUY1TpDK0ZGa
+              - save_Ova689zHHpAVwvHthafS1NOatGFYsBGtyKxFt7Ujg7t
+            schema:
+              $ref: '#/components/schemas/SetPinnedSavedView'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                saved_view_ids:
+                - save_LCt6QxYsDbdJfMiIkLjBFJBkJTwS9TufXu3nSkHopXM
+                - save_Ova4RKAzzFWejVEMUpDBFzB4YV3ObgCJUY1TpDK0ZGa
+                - save_Ova689zHHpAVwvHthafS1NOatGFYsBGtyKxFt7Ujg7t
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  schemas:
+    CreateMembership:
+      title: CreateMembership
+      type: object
+      properties:
+        email:
+          title: Email
+          type: string
+          format: email
+        role_id:
+          title: Role ID
+          description: One of `superuser`, `user`, or `restricteduser` for the corresponding predefined role, or the ID of a custom [Role](https://developer.close.com/api/resources/roles). The role must not grant the `manage_organization` permission.
+          type: string
+          minLength: 1
+      required:
+      - email
+      - role_id
+      additionalProperties: false
+    Membership:
+      title: Membership
+      description: Editable settings for an organization membership.
+      type: object
+      properties:
+        auto_record_calls:
+          description: Whether this member's calls are automatically recorded. Starts as `unset` and can be set to `enabled` or `disabled`.
+          $ref: '#/components/schemas/AutoRecordCalls'
+        default_caller_id:
+          title: Default Caller ID
+          description: ID of the phone number to use as this member's default outbound caller ID.
+          anyOf:
+          - type: string
+          - type: 'null'
+        hangup_recording_url:
+          title: Hangup Recording URL
+          description: URL of the audio file used as this member's voicemail drop recording.
+          anyOf:
+          - type: string
+          - type: 'null'
+        may_workflows_impersonate:
+          title: May Workflows Impersonate
+          description: Whether Workflows may send emails on this member's behalf.
+          type: boolean
+        role_id:
+          title: Role ID
+          description: One of `admin`, `superuser`, `user`, or `restricteduser` for the corresponding predefined role, or the ID of a custom [Role](https://developer.close.com/api/resources/roles).
+          type: string
+        track_email_opens:
+          title: Track Email Opens
+          description: Whether email opens are tracked for emails this member sends.
+          type: boolean
+      additionalProperties: false
+    AutoRecordCalls:
+      title: AutoRecordCalls
+      type: string
+      enum:
+      - enabled
+      - disabled
+      - unset
+    SetPinnedSavedView:
+      title: SetPinnedSavedView
+      type: object
+      properties:
+        saved_view_ids:
+          title: Saved View IDs
+          type: array
+          items:
+            type: string
+      required:
+      - saved_view_ids
+      additionalProperties: false
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

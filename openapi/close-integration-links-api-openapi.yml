@@ -1,0 +1,312 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Integration Links API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: integration_links
+  externalDocs:
+    url: https://developer.close.com/api/resources/integration-links
+paths:
+  /integration_link/:
+    get:
+      operationId: integration_links_list
+      tags:
+      - integration_links
+      summary: Get all integration links for your organization
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  date_created: '2023-01-01T00:00:00+00:00'
+                  date_updated: '2023-01-01T00:00:00+00:00'
+                  id: ilink_wRlAku35U53xEV7PcNY3QodEHlgLPonBKkGFAxo9Ehb
+                  name: Google Search
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  type: lead
+                  updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  url: http://google.com/search?q={{lead.display_name}}
+                - created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  date_created: '2023-01-01T00:00:00+00:00'
+                  date_updated: '2023-01-01T00:00:00+00:00'
+                  id: ilink_wRlAku35U53xEV7PcNY3QodEHlgLPonBKkGFAxo9Ehz
+                  name: LinkedIn
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  type: contact
+                  updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  url: https://www.linkedin.com/vsearch/p?keywords={{contact.name}}
+                has_more: false
+              schema:
+                type: object
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/IntegrationLink'
+                    type: array
+                  has_more:
+                    type: boolean
+                required:
+                - data
+                - has_more
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: integration_links_create
+      tags:
+      - integration_links
+      summary: Create an integration link
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: Google Search
+              type: lead
+              url: http://google.com/search?q={{lead.display_name}}
+            schema:
+              $ref: '#/components/schemas/CreateIntegrationLink'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                date_created: '2023-01-01T00:00:00+00:00'
+                date_updated: '2023-01-01T00:00:00+00:00'
+                id: ilink_wRlAku35U53xEV7PcNY3QodEHlgLPonBKkGFAxo9Ehb
+                name: Google Search
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                type: lead
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                url: http://google.com/search?q={{lead.display_name}}
+              schema:
+                $ref: '#/components/schemas/IntegrationLink'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /integration_link/{id}/:
+    get:
+      operationId: integration_links_get
+      tags:
+      - integration_links
+      summary: Get a single integration link
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                date_created: '2023-01-01T00:00:00+00:00'
+                date_updated: '2023-01-01T00:00:00+00:00'
+                id: ilink_wRlAku35U53xEV7PcNY3QodEHlgLPonBKkGFAxo9Ehb
+                name: Google Search
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                type: lead
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                url: http://google.com/search?q={{lead.display_name}}
+              schema:
+                $ref: '#/components/schemas/IntegrationLink'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: integration_links_update
+      tags:
+      - integration_links
+      summary: Update an integration link
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: Google Lookup
+            schema:
+              $ref: '#/components/schemas/UpdateIntegrationLink'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                date_created: '2023-01-01T00:00:00+00:00'
+                date_updated: '2023-01-01T00:00:00+00:00'
+                id: ilink_wRlAku35U53xEV7PcNY3QodEHlgLPonBKkGFAxo9Ehb
+                name: Google Lookup
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                type: lead
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                url: http://google.com/search?q={{lead.display_name}}
+              schema:
+                $ref: '#/components/schemas/IntegrationLink'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: integration_links_delete
+      tags:
+      - integration_links
+      summary: Delete an integration link
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  schemas:
+    IntegrationLink:
+      title: IntegrationLink
+      type: object
+      properties:
+        created_by:
+          title: Created By
+          anyOf:
+          - type: string
+          - type: 'null'
+        date_created:
+          title: Date Created
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        date_updated:
+          title: Date Updated
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        id:
+          title: ID
+          type: string
+        name:
+          title: Name
+          type: string
+        organization_id:
+          title: Organization ID
+          type: string
+        type:
+          $ref: '#/components/schemas/IntegrationLinkType'
+        updated_by:
+          title: Updated By
+          anyOf:
+          - type: string
+          - type: 'null'
+        url:
+          title: Url
+          type: string
+      required:
+      - created_by
+      - date_created
+      - date_updated
+      - id
+      - name
+      - organization_id
+      - type
+      - updated_by
+      - url
+    IntegrationLinkType:
+      title: IntegrationLinkType
+      type: string
+      enum:
+      - lead
+      - contact
+      - opportunity
+    UpdateIntegrationLink:
+      title: UpdateIntegrationLink
+      type: object
+      properties:
+        name:
+          title: Name
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        type:
+          default: null
+          anyOf:
+          - $ref: '#/components/schemas/IntegrationLinkType'
+          - type: 'null'
+        url:
+          title: Url
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      additionalProperties: false
+    CreateIntegrationLink:
+      title: CreateIntegrationLink
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+        type:
+          $ref: '#/components/schemas/IntegrationLinkType'
+        url:
+          title: Url
+          type: string
+      required:
+      - name
+      - type
+      - url
+      additionalProperties: false
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

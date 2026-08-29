@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Endpoints subpackage_activities subpackage_dialers API
+  title: Endpoints Subpackage Dialers API
   version: 1.0.0
 servers:
 - url: https://api.close.com/api/v1
@@ -154,11 +154,6 @@ paths:
                 description: Any type
 components:
   schemas:
-    dialers_get_Response_200:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: dialers_get_Response_200
     DialerGetParametersSourceTypeSchema:
       type: string
       enum:
@@ -170,6 +165,11 @@ components:
       properties: {}
       description: Empty response body
       title: dialers_list_Response_200
+    dialers_get_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: dialers_get_Response_200
   securitySchemes:
     ApiKeyAuth:
       type: http

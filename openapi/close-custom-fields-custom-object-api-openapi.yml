@@ -1,0 +1,229 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Custom Fields.custom Object API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: custom_fields.custom_object
+  externalDocs:
+    url: https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object
+paths:
+  /custom_field/custom_object_type/:
+    get:
+      operationId: custom_fields.custom_object_list
+      tags:
+      - custom_fields.custom_object
+      summary: List Custom Object Custom Fields
+      description: List all the custom object custom fields for your organization.
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - accepts_multiple_values: true
+                  back_reference_is_visible: true
+                  created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                  custom_object_type_id: cotype_1h5m6uHM9BZOpwVhyRJb4Y
+                  date_created: '2020-08-04T17:36:09.235000+00:00'
+                  date_updated: '2020-08-04T17:36:09.235000+00:00'
+                  description: Account objects using this Resource.
+                  editable_with_roles: []
+                  id: cf_UpyNBvr6Rw8UBHh7zRboL3PYhbOVJl3XvwgPm3jg64S
+                  name: Linked Accounts
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  referenced_custom_type_id: cotype_4hQsScWF3hnUOyngoaAV00
+                  required: true
+                  type: custom_object
+                  updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                - accepts_multiple_values: false
+                  back_reference_is_visible: null
+                  created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                  custom_object_type_id: cotype_4hQsScWF3hnUOyngoaAV00
+                  date_created: '2020-07-28T20:05:36.202000+00:00'
+                  date_updated: '2020-07-28T20:05:36.202000+00:00'
+                  description: ID from the external Account system.
+                  editable_with_roles: []
+                  id: cf_cSh3fWT3rEJ1BFSezme2YAG6bPrZV5wUWKKrW4iN19g
+                  name: Account ID
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  referenced_custom_type_id: null
+                  required: false
+                  type: text
+                  updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                has_more: false
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: custom_fields.custom_object_create
+      tags:
+      - custom_fields.custom_object
+      summary: Create a new Custom Object Custom Field
+      description: "Custom Object Custom Fields belong to Custom Objects, and have additional attributes:\n\n- `custom_object_type_id` – the ID of the Custom Object Type this Field\n  should belong to.\n- `required` – whether the Field will be required to save the object."
+      requestBody:
+        content:
+          application/json:
+            example:
+              custom_object_type_id: cotype_1h5m6uHM9BZOpwVhyRJb4Y
+              description: Number of users belonging to this Account.
+              name: User Count
+              required: true
+              type: number
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              example:
+                accepts_multiple_values: false
+                created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                custom_object_type_id: cotype_1h5m6uHM9BZOpwVhyRJb4Y
+                date_created: '2020-08-07T17:11:44.299904'
+                date_updated: '2020-08-07T17:11:44.299904'
+                description: Number of users belonging to this Account.
+                editable_with_roles: []
+                id: cf_1nkEcnaoAiTJBfYmTBsOQqFCuIkqc82Q f4yKUx01e0K
+                name: User Count
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                required: true
+                type: number
+                updated_ by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /custom_field/custom_object_type/{id}/:
+    get:
+      operationId: custom_fields.custom_object_get
+      tags:
+      - custom_fields.custom_object
+      summary: Fetch Custom Object Custom Field's details
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                accepts_multiple_values: false
+                choices:
+                - 'No'
+                - 'Yes'
+                created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                custom_object_type_id: cotype_1h5m6uHM9BZOpwVhyRJb4Y
+                date_created: '2020-07-28T20:05:36.202000+00:00'
+                date_updated: '2020-07-28T20:05:36.202000+00:00'
+                description: null
+                editable_with_roles: []
+                id: cf_cSh3fWT3rEJ1BFSezme2YAG6bPrZV5wUWKKrW4iN19g
+                name: Wants Marketing Materials
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                required: false
+                type: choices
+                updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: custom_fields.custom_object_update
+      tags:
+      - custom_fields.custom_object
+      summary: Update a Custom Object Custom Field
+      description: 'You can rename it, change whether it accepts multiple values or not, change the "required" flag, change whether editing its values is restricted to specific Roles, or update the options for a "choices" field type. The updated name will immediately appear in the Close UI and only valid values for the updated `type` will be returned by the Custom Object API.
+
+
+        The `custom_object_type_id` and `type` values cannot be changed.'
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: Free-form Notes
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                accepts_multiple_values: false
+                created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                custom_object_type_id: cotype_1h5m6uHM9BZOpwVhyRJb4Y
+                date_created: '2020-08-07T17:11:44.299904'
+                date_updated: '2020-08-07T17:11:44.299904'
+                description: null
+                editable_with_roles: []
+                id: cf_1nkEcnaoAiTJBfYmTBsOQqFCuIkqc82Q f4yKUx01e0K
+                name: Free-form Notes
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                required: false
+                type: text
+                updated_ by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: custom_fields.custom_object_delete
+      tags:
+      - custom_fields.custom_object
+      summary: Delete a Custom Object Custom Field
+      description: Delete a custom field from a custom object type. The field will immediately disappear from API responses and values on existing custom object instances will be permanently removed.
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

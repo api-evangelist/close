@@ -1,0 +1,534 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Smart Views API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: smart_views
+  externalDocs:
+    url: https://developer.close.com/api/resources/smart-views
+paths:
+  /saved_search/:
+    get:
+      operationId: smart_views_list
+      tags:
+      - smart_views
+      summary: List Smart Views
+      description: 'Accepts:
+
+
+        - A `type` filter that accepts either `lead` or `contact`. Defaults to `lead`.
+
+        - A `type__in` filter that can be used to select multiple comma-separated types: `lead,contact`.'
+      parameters:
+      - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/SkipParam'
+      - in: query
+        name: type
+        required: false
+        schema:
+          default: null
+          anyOf:
+          - $ref: '#/components/schemas/SavedSearchType'
+          - type: 'null'
+      - in: query
+        name: type__in
+        required: false
+        schema:
+          title: Type (In)
+          type: array
+          items:
+            $ref: '#/components/schemas/SavedSearchType'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - date_created: '2021-05-20T18:37:35.936000+00:00'
+                  date_updated: '2021-05-20T18:37:35.936000+00:00'
+                  description: ''
+                  id: save_cxgvcccaFJh6uGE3S6x8YYt61TLTd6MG4JiYLD1Eaja
+                  is_shared: true
+                  is_user_dependent: false
+                  name: All Leads
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  query: null
+                  s_query:
+                    query:
+                      negate: false
+                      type: match_all
+                    results_limit: null
+                    sort: []
+                  type: lead
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                - date_created: '2021-05-20T18:42:47.015000+00:00'
+                  date_updated: '2021-05-20T18:42:47.015000+00:00'
+                  description: ''
+                  id: save_fV7sewhM4FOCFs1m677k2OuxV8RuzUKMHxH8OQEEUjU
+                  is_shared: false
+                  is_user_dependent: false
+                  name: All Contacts
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  query: null
+                  s_query:
+                    query:
+                      negate: false
+                      type: match_all
+                    results_limit: null
+                    sort: []
+                  type: contact
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                has_more: false
+              schema:
+                type: object
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/SavedSearch'
+                    type: array
+                  has_more:
+                    type: boolean
+                required:
+                - data
+                - has_more
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: smart_views_create
+      tags:
+      - smart_views
+      summary: Create a Smart View
+      description: 'Create a Lead or Contact Smart View.
+
+
+        For Lead Smart Views, the `type` field is optional (since `lead` is the default `type`).
+
+
+        When creating a Smart View, you must specify that you want to get objects of the appropriate type via an `object_type` clause as per the [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) section. See the examples below.'
+      requestBody:
+        content:
+          application/json:
+            examples:
+              leadSmartView:
+                description: For Lead Smart Views, the type field is optional since lead is the default.
+                summary: Create a Lead Smart View
+                value:
+                  name: every lead
+                  s_query:
+                    query:
+                      queries:
+                      - object_type: lead
+                        type: object_type
+                      - condition:
+                          mode: full_words
+                          type: text
+                          value: Bluth Company
+                        field:
+                          field_name: display_name
+                          object_type: lead
+                          type: regular_field
+                        type: field_condition
+                      type: and
+                  type: lead
+              contactSmartView:
+                description: For Contact Smart Views, you must specify type as contact.
+                summary: Create a Contact Smart View
+                value:
+                  name: CEOs
+                  s_query:
+                    query:
+                      queries:
+                      - object_type: contact
+                        type: object_type
+                      - condition:
+                          mode: full_words
+                          type: text
+                          value: CEO
+                        field:
+                          field_name: title
+                          object_type: contact
+                          type: regular_field
+                        type: field_condition
+                      type: and
+                  type: contact
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              examples:
+                leadSmartView:
+                  description: For Lead Smart Views, the type field is optional since lead is the default.
+                  summary: Create a Lead Smart View
+                  value:
+                    date_created: '2013-02-01T01:03:56.515000+00:00'
+                    date_updated: '2013-02-01T01:03:56.515000+00:00'
+                    description: ''
+                    id: save_Cin23B1CYKX83dbNnBB4Q5F5QXl9ucmgrqNf0esq1Ir
+                    is_shared: false
+                    is_user_dependent: false
+                    name: every lead
+                    organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                    query: null
+                    s_query:
+                      query:
+                        queries:
+                        - object_type: lead
+                          type: object_type
+                        - condition:
+                            mode: full_words
+                            type: text
+                            value: Bluth Company
+                          field:
+                            field_name: display_name
+                            object_type: lead
+                            type: regular_field
+                          type: field_condition
+                        type: and
+                    type: lead
+                    used_recently: true
+                    user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                contactSmartView:
+                  description: For Contact Smart Views, you must specify type as contact.
+                  summary: Create a Contact Smart View
+                  value:
+                    date_created: '2021-05-24T13:20:57.060848'
+                    date_updated: '2021-05-24T13:20:57.060848'
+                    description: ''
+                    id: save_6fhBU4Dzg5xCx9gOEmDLlPg3vEVIOqjteEqzpDGEkeL
+                    is_shared: false
+                    is_user_dependent: false
+                    name: CEOs
+                    organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                    query: null
+                    s_query:
+                      query:
+                        negate: false
+                        queries:
+                        - negate: false
+                          object_type: contact
+                          type: object_type
+                        - condition:
+                            mode: full_words
+                            type: text
+                            value: CEO
+                          field:
+                            field_name: title
+                            object_type: contact
+                            type: regular_field
+                          negate: false
+                          type: field_condition
+                        type: and
+                      results_limit: null
+                    type: contact
+                    user_id: user_MvDoAZA889UMrgsZbnXmHkJSomSi7qk2Iwc4JnGHTbo
+              schema:
+                $ref: '#/components/schemas/SavedSearch'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /saved_search/{id}/:
+    get:
+      operationId: smart_views_get
+      tags:
+      - smart_views
+      summary: Get a single Smart View
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                date_created: '2013-02-01T01:03:56.515000+00:00'
+                date_updated: '2013-02-01T01:03:56.515000+00:00'
+                description: ''
+                id: save_wRlAku35U53xEV7PcNY3QodEHlgLPonBKkGFAxo9Ehb
+                is_shared: true
+                is_user_dependent: false
+                name: All Leads
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                query: '*'
+                s_query: null
+                type: lead
+                used_recently: false
+                user_id: null
+              schema:
+                $ref: '#/components/schemas/SavedSearch'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: smart_views_update
+      tags:
+      - smart_views
+      summary: Update a Smart View
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: every lead
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                date_created: '2013-02-01T01:03:56.515000+00:00'
+                date_updated: '2013-02-01T01:03:56.515000+00:00'
+                description: ''
+                id: save_wRlAku35U53xEV7PcNY3QodEHlgLPonBKkGFAxo9Ehb
+                is_shared: false
+                is_user_dependent: false
+                name: every lead
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                query: null
+                s_query:
+                  query:
+                    negate: false
+                    type: match_all
+                  results_limit: null
+                  sort: []
+                type: lead
+                used_recently: true
+                user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+              schema:
+                $ref: '#/components/schemas/SavedSearch'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: smart_views_delete
+      tags:
+      - smart_views
+      summary: Delete a Smart View
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  schemas:
+    SavedSearch:
+      title: SavedSearch
+      type: object
+      properties:
+        date_created:
+          title: Date Created
+          type: string
+          format: date-time
+        date_updated:
+          title: Date Updated
+          type: string
+          format: date-time
+        description:
+          title: Description
+          anyOf:
+          - type: string
+          - type: 'null'
+        id:
+          title: ID
+          type: string
+        is_shared:
+          title: Is Shared
+          type: boolean
+        is_user_dependent:
+          title: Is User Dependent
+          anyOf:
+          - type: boolean
+          - type: 'null'
+        name:
+          title: Name
+          type: string
+        organization_id:
+          title: Organization ID
+          type: string
+        query:
+          title: Query
+          anyOf:
+          - type: string
+          - type: 'null'
+        s_query:
+          title: S Query
+          anyOf:
+          - type: object
+            additionalProperties: true
+          - type: 'null'
+        selected_fields:
+          title: Selected Fields
+          default: null
+          anyOf:
+          - type: array
+            items:
+              type: object
+              additionalProperties: true
+          - type: 'null'
+        shared_with:
+          title: Shared With
+          default: null
+          anyOf:
+          - type: array
+            items:
+              type: string
+          - type: 'null'
+        sharing_settings:
+          default: null
+          anyOf:
+          - $ref: '#/components/schemas/SharingSettingsEmbeddedResponse'
+          - type: 'null'
+        type:
+          $ref: '#/components/schemas/SavedSearchType'
+        user_id:
+          title: User ID
+          anyOf:
+          - type: string
+          - type: 'null'
+      required:
+      - date_created
+      - date_updated
+      - description
+      - id
+      - is_shared
+      - is_user_dependent
+      - name
+      - organization_id
+      - query
+      - s_query
+      - type
+      - user_id
+    SavedSearchType:
+      title: SavedSearchType
+      type: string
+      enum:
+      - lead
+      - contact
+      - opportunity
+      - call
+      - email
+      - sms
+      - meeting
+      - note
+      - whatsapp_message
+      - custom_activity
+      - form_submission
+    SharingSettingsEmbeddedResponse:
+      title: SharingSettingsEmbeddedResponse
+      type: object
+      properties:
+        created_at:
+          title: Created At
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        created_by_id:
+          title: Created By ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        group_ids:
+          title: Group IDs
+          type: array
+          items:
+            type: string
+        updated_at:
+          title: Updated At
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        updated_by_id:
+          title: Updated By ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        user_ids:
+          title: User IDs
+          type: array
+          items:
+            type: string
+        whole_org:
+          title: Whole Org
+          type: boolean
+      required:
+      - created_at
+      - created_by_id
+      - group_ids
+      - updated_at
+      - updated_by_id
+      - user_ids
+      - whole_org
+  parameters:
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

@@ -1,0 +1,321 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Groups API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: groups
+  externalDocs:
+    url: https://developer.close.com/api/resources/groups
+paths:
+  /group/:
+    get:
+      operationId: groups_list
+      tags:
+      - groups
+      summary: List Groups for your organization
+      description: Note that list endpoint does not support retrieving members for all groups. Use individual group endpoint instead.
+      parameters:
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - id: group_57P6QUf8b4BlepZJYgRj5W
+                  name: Support
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                has_more: false
+              schema:
+                type: object
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/Group'
+                    type: array
+                  has_more:
+                    type: boolean
+                required:
+                - data
+                - has_more
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: groups_create
+      tags:
+      - groups
+      summary: Create a Group
+      description: Create a new group. The `name` is required and must be unique within the organization. The group is created with no members. Use the member endpoint to add users.
+      parameters:
+      - $ref: '#/components/parameters/FieldsParam'
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: Support
+            schema:
+              $ref: '#/components/schemas/CreateGroup'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              example:
+                id: group_57P6QUf8b4BlepZJYgRj5W
+                members: []
+                name: Support
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+              schema:
+                $ref: '#/components/schemas/Group'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /group/{group_id}/member/:
+    post:
+      operationId: groups_add_member
+      tags:
+      - groups
+      summary: Add a User to a Group
+      description: Add a user to a group by providing the `user_id`. If the user is already a member, nothing changes.
+      parameters:
+      - in: path
+        name: group_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+            schema:
+              $ref: '#/components/schemas/CreateGroupMember'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              example:
+                user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+              schema:
+                $ref: '#/components/schemas/GroupMember'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /group/{group_id}/member/{user_id}/:
+    delete:
+      operationId: groups_remove_member
+      tags:
+      - groups
+      summary: Remove a User from a Group
+      description: If the user is not a member of the group, nothing changes.
+      parameters:
+      - in: path
+        name: group_id
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: user_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /group/{id}/:
+    get:
+      operationId: groups_get
+      tags:
+      - groups
+      summary: Fetch an individual Group
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                id: group_57P6QUf8b4BlepZJYgRj5W
+                members:
+                - user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                name: Support
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+              schema:
+                $ref: '#/components/schemas/Group'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: groups_update
+      tags:
+      - groups
+      summary: Update a Group
+      description: You can use this endpoint to rename a Group. If a name is not unique, an error will be returned.
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/FieldsParam'
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: Sales
+            schema:
+              $ref: '#/components/schemas/CreateGroup'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                id: group_57P6QUf8b4BlepZJYgRj5W
+                members:
+                - user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                name: Sales
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+              schema:
+                $ref: '#/components/schemas/Group'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: groups_delete
+      tags:
+      - groups
+      summary: Delete a Group
+      description: Delete a group. Members will be removed from the group but not from the organization. Deletion is only allowed if the group is not referenced by saved reports or smart views.
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  parameters:
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
+  schemas:
+    CreateGroupMember:
+      title: CreateGroupMember
+      type: object
+      properties:
+        user_id:
+          title: User ID
+          type: string
+      required:
+      - user_id
+      additionalProperties: false
+    GroupMember:
+      title: GroupMember
+      type: object
+      properties:
+        user_id:
+          title: User ID
+          type: string
+      required:
+      - user_id
+    CreateGroup:
+      title: CreateGroup
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+      required:
+      - name
+      additionalProperties: false
+    Group:
+      title: Group
+      type: object
+      properties:
+        id:
+          title: ID
+          type: string
+        members:
+          title: Members
+          default: null
+          anyOf:
+          - type: array
+            items:
+              $ref: '#/components/schemas/GroupMember'
+          - type: 'null'
+        name:
+          title: Name
+          type: string
+        organization_id:
+          title: Organization ID
+          type: string
+      required:
+      - id
+      - name
+      - organization_id
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

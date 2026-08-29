@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Endpoints subpackage_activities subpackage_activitiesCalls API
+  title: Endpoints Subpackage Activities Calls API
   version: 1.0.0
 servers:
 - url: https://api.close.com/api/v1
@@ -346,30 +346,13 @@ paths:
                 description: Any type
 components:
   schemas:
-    activities.calls_delete_Response_200:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: activities.calls_delete_Response_200
-    ActivityCallGetParametersActivityAtLt:
+    ActivityCallGetParametersActivityAtGte:
       oneOf:
       - type: string
         format: date-time
       - type: string
         format: date
-      title: ActivityCallGetParametersActivityAtLt
-    UpdateCallActivityStatus:
-      type: string
-      enum:
-      - created
-      - in-progress
-      - completed
-      - cancel
-      - no-answer
-      - busy
-      - failed
-      - timeout
-      title: UpdateCallActivityStatus
+      title: ActivityCallGetParametersActivityAtGte
     ActivityCallGetParametersDateCreatedLt:
       oneOf:
       - type: string
@@ -390,13 +373,18 @@ components:
       - data
       - has_more
       title: activities.calls_list_Response_200
-    ActivityCallGetParametersActivityAtGt:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityCallGetParametersActivityAtGt
+    CreateCallActivityStatus:
+      type: string
+      enum:
+      - created
+      - in-progress
+      - completed
+      - cancel
+      - no-answer
+      - busy
+      - failed
+      - timeout
+      title: CreateCallActivityStatus
     CreateCallActivity:
       type: object
       properties:
@@ -486,13 +474,18 @@ components:
           - 'null'
           format: uri
       title: CreateCallActivity
-    PhoneActivitySource:
+    UpdateCallActivityStatus:
       type: string
       enum:
-      - Close.io
-      - External
-      description: Source of a phone activity. Describes whether the phone activity (such as a call or an SMS) was handled by Close's telephony provider or handled externally by a 3rd party and is merely logged in Close.
-      title: PhoneActivitySource
+      - created
+      - in-progress
+      - completed
+      - cancel
+      - no-answer
+      - busy
+      - failed
+      - timeout
+      title: UpdateCallActivityStatus
     CreateCallActivityDirection:
       type: string
       enum:
@@ -512,20 +505,6 @@ components:
       - timeout
       description: Current status of the call.
       title: CallStatus
-    ActivityCallGetParametersActivityAtLte:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityCallGetParametersActivityAtLte
-    ActivityCallGetParametersDateCreatedGt:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityCallGetParametersDateCreatedGt
     ActivityCallGetParametersDateCreatedLte:
       oneOf:
       - type: string
@@ -533,13 +512,131 @@ components:
       - type: string
         format: date
       title: ActivityCallGetParametersDateCreatedLte
-    ActivityCallGetParametersActivityAtGte:
+    ActivityCallGetParametersDateCreatedGte:
       oneOf:
       - type: string
         format: date-time
       - type: string
         format: date
-      title: ActivityCallGetParametersActivityAtGte
+      title: ActivityCallGetParametersDateCreatedGte
+    ActivityCallGetParametersActivityAtLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCallGetParametersActivityAtLte
+    ActivityCallGetParametersActivityAtLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCallGetParametersActivityAtLt
+    PhoneActivitySource:
+      type: string
+      enum:
+      - Close.io
+      - External
+      description: Source of a phone activity. Describes whether the phone activity (such as a call or an SMS) was handled by Close's telephony provider or handled externally by a 3rd party and is merely logged in Close.
+      title: PhoneActivitySource
+    ActivityCallGetParametersDateCreatedGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCallGetParametersDateCreatedGt
+    UpdateCallActivity:
+      type: object
+      properties:
+        activity_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        contact_id:
+          type:
+          - string
+          - 'null'
+        conversation_type_id:
+          type:
+          - string
+          - 'null'
+        custom_fields:
+          type:
+          - object
+          - 'null'
+          additionalProperties:
+            description: Any type
+        duration:
+          type:
+          - integer
+          - 'null'
+        lead_id:
+          type:
+          - string
+          - 'null'
+        note:
+          type:
+          - string
+          - 'null'
+        note_html:
+          type:
+          - string
+          - 'null'
+        outcome_id:
+          type:
+          - string
+          - 'null'
+        phone:
+          type:
+          - string
+          - 'null'
+          description: Phone number in E.164 format
+        playbook_id:
+          type:
+          - string
+          - 'null'
+        quality_info:
+          type:
+          - string
+          - 'null'
+        recording_url:
+          type:
+          - string
+          - 'null'
+          format: uri
+        status:
+          $ref: '#/components/schemas/UpdateCallActivityStatus'
+        user_id:
+          type:
+          - string
+          - 'null'
+        voicemail_url:
+          type:
+          - string
+          - 'null'
+          format: uri
+      title: UpdateCallActivity
+    ActivityCallGetParametersActivityAtGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityCallGetParametersActivityAtGt
+    activities.calls_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.calls_delete_Response_200
+    CreateCallActivitySource:
+      type: string
+      enum:
+      - Close.io
+      - External
+      title: CreateCallActivitySource
     CallActivity:
       type: object
       properties:
@@ -633,103 +730,6 @@ components:
       - user_id
       - users
       title: CallActivity
-    CreateCallActivitySource:
-      type: string
-      enum:
-      - Close.io
-      - External
-      title: CreateCallActivitySource
-    CreateCallActivityStatus:
-      type: string
-      enum:
-      - created
-      - in-progress
-      - completed
-      - cancel
-      - no-answer
-      - busy
-      - failed
-      - timeout
-      title: CreateCallActivityStatus
-    ActivityCallGetParametersDateCreatedGte:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityCallGetParametersDateCreatedGte
-    UpdateCallActivity:
-      type: object
-      properties:
-        activity_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        contact_id:
-          type:
-          - string
-          - 'null'
-        conversation_type_id:
-          type:
-          - string
-          - 'null'
-        custom_fields:
-          type:
-          - object
-          - 'null'
-          additionalProperties:
-            description: Any type
-        duration:
-          type:
-          - integer
-          - 'null'
-        lead_id:
-          type:
-          - string
-          - 'null'
-        note:
-          type:
-          - string
-          - 'null'
-        note_html:
-          type:
-          - string
-          - 'null'
-        outcome_id:
-          type:
-          - string
-          - 'null'
-        phone:
-          type:
-          - string
-          - 'null'
-          description: Phone number in E.164 format
-        playbook_id:
-          type:
-          - string
-          - 'null'
-        quality_info:
-          type:
-          - string
-          - 'null'
-        recording_url:
-          type:
-          - string
-          - 'null'
-          format: uri
-        status:
-          $ref: '#/components/schemas/UpdateCallActivityStatus'
-        user_id:
-          type:
-          - string
-          - 'null'
-        voicemail_url:
-          type:
-          - string
-          - 'null'
-          format: uri
-      title: UpdateCallActivity
   securitySchemes:
     ApiKeyAuth:
       type: http

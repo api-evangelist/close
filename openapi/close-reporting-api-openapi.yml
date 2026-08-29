@@ -1,0 +1,976 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Reporting API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: reporting
+  externalDocs:
+    url: https://developer.close.com/api/resources/reporting
+paths:
+  /report/activity/:
+    post:
+      operationId: reporting_get_activity
+      tags:
+      - reporting
+      summary: Get an activity report
+      description: "The activity report returns the organization's metrics per time period (**overview** report) or user (**comparison** report).\n\nEvery report accepts the following parameters:\n\n* `datetime_range`: a time range to fetch data for. Either this field or `relative_range` needs to be specified.\n* `relative_range`: a relative time range to fetch data for. The allowed values are: `today`, `this-week`, `this-month`, `this-quarter`, `this-year`, `yesterday`, `last-week`, `last-month`, `last-quarter`, `last-year`, and `all-time`. Either this field or `datetime_range` needs to be specified.\n* `query`: a query to apply to the report to filter out data.\n  The value of the field is a dictionary with the key `type` and any type-specific keys. For now only the type `saved_search` is allowed which takes the extra key `saved_search_id` to specify the ID of a saved search. This parameter is *optional*.\n* `users`: a list of user IDs to limit the report results to. This parameter is *optional*.\n* `type`: the type of the report. The available values are `overview` and `comparison`.\n  This parameter is *mandatory*.\n* `metrics`: a list of metrics (see [List Activity Metrics](/api/resources/reporting/list-activity-metrics)) to fetch for the report. This parameter is *mandatory*.\n\nThe report can be requested either in a JSON format or in a CSV file. The format can be specified with the `accept` header."
+      requestBody:
+        content:
+          application/json:
+            example:
+              datetime_range:
+                end: '2019-01-08T00:00:00Z'
+                start: '2019-01-01T00:00:00Z'
+              metrics:
+              - calls.outbound.all.count
+              - emails.sent.all.count
+              query:
+                saved_search_id: save_ZVc26G33JTNiDNEFdZhBQAONg9cJHleAAHqBJakf239
+                type: saved_search
+              type: overview
+              users:
+              - user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+              - user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                aggregations:
+                  totals:
+                    calls.outbound.all.count: 0
+                    emails.sent.all.count: 0
+                data:
+                - calls.outbound.all.count: 0
+                  datetime: '2019-01-01T00:00:00+00:00'
+                  emails.sent.all.count: 0
+                - calls.outbound.all.count: 0
+                  datetime: '2019-01-02T00:00:00+00:00'
+                  emails.sent.all.count: 0
+                - calls.outbound.all.count: 0
+                  datetime: '2019-01-03T00:00:00+00:00'
+                  emails.sent.all.count: 0
+                - calls.outbound.all.count: 0
+                  datetime: '2019-01-04T00:00:00+00:00'
+                  emails.sent.all.count: 0
+                - calls.outbound.all.count: 0
+                  datetime: '2019-01-05T00:00:00+00:00'
+                  emails.sent.all.count: 0
+                - calls.outbound.all.count: 0
+                  datetime: '2019-01-06T00:00:00+00:00'
+                  emails.sent.all.count: 0
+                - calls.outbound.all.count: 0
+                  datetime: '2019-01-07T00:00:00+00:00'
+                  emails.sent.all.count: 0
+                queries:
+                  leads:
+                    calls.outbound.all.count:
+                    - 'call(direction: "outbound" and outgoing_call_date >= "2019-01-01T00:00:00.000+0000" and outgoing_call_date < "2019-01-08T00:00:00.000+0000" and user in ("user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA", "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk")) and in:"save_ZVc26G33JTNiDNEFdZhBQAONg9cJHleAAHqBJakf239"'
+                    emails.sent.all.count:
+                    - 'email(direction: "outgoing" and sent >= "2019-01-01T00:00:00.000+0000" and sent < "2019-01-08T00:00:00.000+0000" and status: "sent" and user in ("user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA", "user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk")) and in:"save_ZVc26G33JTNiDNEFdZhBQAONg9cJHleAAHqBJakf239"'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /report/activity/metrics/:
+    get:
+      operationId: reporting_list_activity_metrics
+      tags:
+      - reporting
+      summary: List the predefined metrics used in activity reports
+      description: List available metrics that can be used in activity reports.
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                metrics:
+                - description: The average duration of outbound calls made via the Predictive Dialer.
+                  key: calls.outbound.predictive_dialer.avg_duration
+                  name: Outbound Calls - Predictive Dialer Average Duration
+                - description: The number of lost opportunities created for/assigned to a user.
+                  key: opportunities.lost.all.count
+                  name: Opportunities - Lost
+                - description: The annualized value of won opportunities created for/assigned to a user.
+                  key: opportunities.won.all.sum_annualized_value
+                  name: Opportunities - Won - Annualized
+                - description: The number of all sent emails.
+                  key: emails.sent.all.count
+                  name: Sent Emails - All Types
+                - description: The total duration of regular outbound calls made.
+                  key: calls.outbound.regular.sum_duration
+                  name: Outbound Calls - Regular Total Duration
+                - description: The number of all outbound calls made.
+                  key: calls.outbound.all.count
+                  name: Outbound Calls - All Types
+                - description: The total duration of all outbound calls made.
+                  key: calls.outbound.all.sum_duration
+                  name: Outbound Calls - Total Duration
+                - description: The number of external outbound calls.
+                  key: calls.outbound.external.count
+                  name: Outbound Calls - External
+                - description: The number of regular outbound calls made.
+                  key: calls.outbound.regular.count
+                  name: Outbound Calls - Regular
+                - description: The total duration of inbound calls made.
+                  key: calls.inbound.all.sum_duration
+                  name: Inbound Calls - Total Duration
+                - description: The number of all received SMS messages.
+                  key: sms.received.all.count
+                  name: Received SMS - All Types
+                - description: The average duration of inbound calls made.
+                  key: calls.inbound.all.avg_duration
+                  name: Inbound Calls - Average Duration
+                - description: The number of emails sent by a sequence.
+                  key: emails.sent.sequences.count
+                  name: Sent Emails - Sequences
+                - description: The average duration of outbound calls made via the Power Dialer.
+                  key: calls.outbound.power_dialer.avg_duration
+                  name: Outbound Calls - Power Dialer Average Duration
+                - description: The average duration of all calls made.
+                  key: calls.all.all.avg_duration
+                  name: All Calls - Average Duration
+                - description: The average duration of external outbound calls.
+                  key: calls.outbound.external.avg_duration
+                  name: Outbound Calls - External Average Duration
+                - description: The number of leads created.
+                  key: leads.created.all.count
+                  name: Created Leads
+                - description: The number of won opportunities created for/assigned to a user.
+                  key: opportunities.won.all.count
+                  name: Opportunities - Won
+                - description: The number of outbound calls made via the Power Dialer.
+                  key: calls.outbound.power_dialer.count
+                  name: Outbound Calls - Power Dialer
+                - description: The number of annual won opportunities created for/assigned to a user.
+                  key: opportunities.value_won.annual.count
+                  name: Opportunities - Won - Annual
+                - description: The number of all sent SMS messages.
+                  key: sms.sent.all.count
+                  name: Sent SMS - All Types
+                - description: The number of one-time lost opportunities created for/assigned to a user.
+                  key: opportunities.value_lost.one_time.count
+                  name: Opportunities - Lost - One Time
+                - description: The total value of monthly won opportunities created for/assigned to a user.
+                  key: opportunities.value_won.monthly.sum_value
+                  name: Opportunities - Value Won - Monthly
+                - description: The total value of annual lost opportunities created for/assigned to a user.
+                  key: opportunities.value_lost.annual.sum_value
+                  name: Opportunities - Value Lost - Annual
+                - description: The number of all incoming emails.
+                  key: emails.received.all.count
+                  name: Received Emails - All Types
+                - description: The leads that have been contacted via a call, email or SMS.
+                  key: leads.contacted.all.count
+                  name: Contacted Leads
+                - description: The number of emails sent by a sequence that have a reply.
+                  key: emails.sent.sequences_with_reply.count
+                  name: Sent Emails - Sequences with Reply
+                - description: The number of inbound calls made.
+                  key: calls.inbound.all.count
+                  name: Inbound Calls - All Types
+                - description: The number of outgoing emails of all types that have been opened by the recipient.
+                  key: emails.opened.all.count
+                  name: Opened Emails - All Types
+                - description: The number of opportunities created by a user.
+                  key: opportunities.created.all.count
+                  name: Opportunities - Created
+                - description: The average duration of regular outbound calls made.
+                  key: calls.outbound.regular.avg_duration
+                  name: Outbound Calls - Regular Average Duration
+                - description: The number of emails sent by a sequence that do not have a reply.
+                  key: emails.sent.sequences_without_reply.count
+                  name: Sent Emails - Sequences without Reply
+                - description: The number of outbound calls made via the Predictive Dialer.
+                  key: calls.outbound.predictive_dialer.count
+                  name: Outbound Calls - Predictive Dialer
+                - description: The annualized value of lost opportunities created for/assigned to a user.
+                  key: opportunities.lost.all.sum_annualized_value
+                  name: Opportunities - Lost - Annualized
+                - description: The number of monthly won opportunities created for/assigned to a user.
+                  key: opportunities.value_won.monthly.count
+                  name: Opportunities - Won - Monthly
+                - description: The number of annual lost opportunities created for/assigned to a user.
+                  key: opportunities.value_lost.annual.count
+                  name: Opportunities - Lost - Annual
+                - description: The number of opportunities created for/assigned to a user.
+                  key: opportunities.created_for.all.count
+                  name: Opportunities - Created For
+                - description: The total duration of outbound calls made via the Predictive Dialer.
+                  key: calls.outbound.predictive_dialer.sum_duration
+                  name: Outbound Calls - Predictive Dialer Total Duration
+                - description: The total duration of all calls made.
+                  key: calls.all.all.sum_duration
+                  name: All Calls - Total Duration
+                - description: The number of all calls made.
+                  key: calls.all.all.count
+                  name: All Calls - All Types
+                - description: The number of monthly lost opportunities created for/assigned to a user.
+                  key: opportunities.value_lost.monthly.count
+                  name: Opportunities - Lost - Monthly
+                - description: The total duration of outbound calls made via the Power Dialer.
+                  key: calls.outbound.power_dialer.sum_duration
+                  name: Outbound Calls - Power Dialer Total Duration
+                - description: The total value of one-time lost opportunities created for/assigned to a user.
+                  key: opportunities.value_lost.one_time.sum_value
+                  name: Opportunities - Value Lost - One Time
+                - description: The average duration of all outbound calls made.
+                  key: calls.outbound.all.avg_duration
+                  name: Outbound Calls - Average Duration
+                - description: The total value of monthly lost opportunities created for/assigned to a user.
+                  key: opportunities.value_lost.monthly.sum_value
+                  name: Opportunities - Value Lost - Monthly
+                - description: The total duration of external outbound calls.
+                  key: calls.outbound.external.sum_duration
+                  name: Outbound Calls - External Total Duration
+                - description: The number of one-time won opportunities created for/assigned to a user.
+                  key: opportunities.value_won.one_time.count
+                  name: Opportunities - Won - One Time
+                - description: The total value of annual won opportunities created for/assigned to a user.
+                  key: opportunities.value_won.annual.sum_value
+                  name: Opportunities - Value Won - Annual
+                - description: The total value of one-time won opportunities created for/assigned to a user.
+                  key: opportunities.value_won.one_time.sum_value
+                  name: Opportunities - Value Won - One Time
+                - description: The number of outgoing emails sent by a sequence that have been opened by the recipient.
+                  key: emails.opened.sequences.count
+                  name: Opened Emails - Sequences
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /report/custom/{org_id}/:
+    get:
+      operationId: reporting_get_custom
+      tags:
+      - reporting
+      summary: Get custom report (Explorer)
+      description: "This endpoint returns data that allows graphing of arbitrary metrics and is what powers \"Explorer\" in the UI.\n\n - `query` is an optional search query filter. When reporting on leads, any regular lead search query may be used. When reporting on activities or opportunities, only properties of the chosen object type may be used. For example, `direction:incoming` may be used if `x` starts with `email.`. Defaults to `*`, which includes all objects.\n - `y` is made up of the object type and field which is reported on the Y axis. For example the value `lead.count` (used by default) may be used to graph the number of leads, or a numeric field may be used. Examples: `call.duration` (for call length), `opportunity.value` (for value of opportunities).\n - `x` is the field which is reported on the X axis, for example \"lead.custom.MRR\" or \"opportunity.date_created\".\n - `interval`: Graph interval, i.e. the precision of the X axis. For time based graphs (`x` is a date field), one of `auto`, `hour`, `day`, `week`, `month`, `quarter`, `year` (defaults to `auto`, which is chosen based on `start` and `end`). For graphs with a numeric X axis, an integer number can be specified to indicate the histogram interval (`auto` by default).\n - `group_by`: Optional field name by which the report will be grouped. When grouping, a separate series will be returned for each group. By default no grouping is applied.\n - `transform_y`: Transformation function that gets applied to the `y` parameter. One of `sum` (default), `avg`, `min`, or `max`. Does not apply for `.count` `y` values if `x` is of the same object type.\n - `start`: Date or integer of the start of the X axis range. For dates, defaults to the date of creation of your organization.\n - `end`: Date or integer of the end of the X axis range. For dates, defaults to now.\n\n To get a full list of fields that can be used, do a GET to `/report/custom/fields/`. Only the `number` data type can be used for the `y` parameter."
+      parameters:
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: query
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: x
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: y
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: group_by
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: transform_y
+        required: false
+        schema:
+          type: string
+          enum:
+          - sum
+          - avg
+          - min
+          - max
+      - in: query
+        name: interval
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: start
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: end
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /report/funnel/opportunity/stages/:
+    post:
+      operationId: reporting_get_funnel_stages
+      tags:
+      - reporting
+      summary: Get a funnel report (stages)
+      description: "The opportunity funnel \"stages\" report returns the pipeline funnel's metrics for the selected opportunities, aggregated (JSON format only) and per-user (JSON and CSV formats).\n\nEvery report accepts the following parameters:\n\n* `pipeline`: ID of the pipeline defining the funnel statuses.\n* `type`: the type of the report. The available values are `created-cohort` and `active-stage-cohort`.\n* `report_relative_range`: a relative time range to fetch data for. The allowed values are: `today`, `this-week`, `this-month`, `this-quarter`, `this-year`, `yesterday`, `last-week`, `last-month`, `last-quarter`, `last-year`, and `all-time`.\n* `report_datetime_range`: a time range to fetch data for.\n* `cohort_relative_range`: a relative time range defining the cohort of created opportunities to fetch data for, by date of creation of those opportunities. The allowed values are: `today`, `this-week`, `this-month`, `this-quarter`, `this-year`, `yesterday`, `last-week`, `last-month`, `last-quarter`, `last-year`, and `all-time`. Either this field or `cohort_datetime_range` needs to be specified for `created-cohort` reports. Its value will be ignored for `active-stage-cohort` reports.\n* `cohort_datetime_range`: a time range defining the cohort of created opportunities to fetch data for, by date of creation of those opportunities. Either this field or `cohort_relative_range` needs to be specified for `created-cohort` reports. Its value will be ignored for `active-stage-cohort` reports.\n* `compared_relative_range`: a relative time range to fetch comparison data for. Only allowed in combination with `report_relative_range` (for `active-stage-cohort` reports) or `cohort_relative_range` (for `created-cohort` reports). The allowed values are: `today`, `this-week`, `this-month`, `this-quarter`, `this-year`, `yesterday`, `last-week`, `last-month`, `last-quarter`, `last-year`, and `all-time`.\n* `compared_datetime_range`: a relative time range to fetch comparison data for. Only allowed in combination with `report_datetime_range` (for `active-stage-cohort` reports) or `cohort_datetime_range` (for `created-cohort` reports). The allowed values are: `same-days-last-week`, `same-days-last-month`, `same-days-last-quarter`, `same-days-last-year`.\n* `compared_custom_range`: a time range to fetch comparison data for.\n* `query`: a query to apply to the report to filter out data.\n  The value of the field is a dictionary with the key `type` and any type-specific keys. For now only the type `saved_search` is allowed which takes the extra key `saved_search_id` to specify the ID of a saved search. This parameter is *optional*.\n* `users`: a list of user IDs or group IDs to limit the report results to. When it's empty, the report will include all the available users. This parameter is *optional*.\n\nThe report can be requested either in JSON format or in CSV format. The format can be specified with the `accept` header.\n\nIn JSON format, it includes aggregated and per-user data. When requested in CSV format, it includes only per-user data.\n\nWhen `compared_datetime_range`, `compared_relative_range`, or `compared_custom_range` are used, the report returned is the compared one, not the base one."
+      requestBody:
+        content:
+          application/json:
+            example:
+              pipeline: pipe_4vukv2FUlFh9FDiVYAop1U
+              query:
+                saved_search_id: save_ZVc26G33JTNiDNEFdZhBQAONg9cJHleAAHqBJakf239
+                type: saved_search
+              report_datetime_range:
+                end: '2019-01-08T00:00:00Z'
+                start: '2019-01-01T00:00:00Z'
+              type: active-stage-cohort
+              users:
+              - user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+              - user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                aggregations:
+                  stages:
+                  - average_time_to_advance: 3600
+                    count: 2
+                    count_conversion_rate: 0.5
+                    count_lost: 1
+                    count_lost_ratio: 0.5
+                    status:
+                      id: stat_69GagUcJ0k0m4sg8YtLXzC3wiaQpvduPOncBmsyRc5Q
+                      label: Initial
+                      type: active
+                    value: 2000000
+                    value_conversion_rate: 0.5
+                    value_lost: 1000000
+                    value_lost_ratio: 0.5
+                    weighted_value: 1000000
+                    weighted_value_conversion_rate: 1
+                  - average_time_to_advance: null
+                    count: 1
+                    count_conversion_rate: 0
+                    count_lost: 0
+                    count_lost_ratio: 0
+                    status:
+                      id: stat_6mrcy0uLx1wKGfvhBpwy1UXCzyoD5f2lVGKvBfEI45U
+                      label: Won
+                      type: won
+                    value: 1000000
+                    value_conversion_rate: 0
+                    value_lost: 0
+                    value_lost_ratio: 0
+                    weighted_value: 1000000
+                    weighted_value_conversion_rate: 0
+                data:
+                - stages:
+                  - average_time_to_advance: 3600
+                    count: 1
+                    count_conversion_rate: 1
+                    count_lost: 0
+                    count_lost_ratio: 0
+                    status:
+                      id: stat_69GagUcJ0k0m4sg8YtLXzC3wiaQpvduPOncBmsyRc5Q
+                      label: Initial
+                      type: active
+                    value: 1000000
+                    value_conversion_rate: 1
+                    value_lost: 0
+                    value_lost_ratio: 0
+                    weighted_value: 1000000
+                    weighted_value_conversion_rate: 1
+                  - average_time_to_advance: null
+                    count: 1
+                    count_conversion_rate: 0
+                    count_lost: 0
+                    count_lost_ratio: 0
+                    status:
+                      id: stat_6mrcy0uLx1wKGfvhBpwy1UXCzyoD5f2lVGKvBfEI45U
+                      label: Won
+                      type: won
+                    value: 1000000
+                    value_conversion_rate: 0
+                    value_lost: 0
+                    value_lost_ratio: 0
+                    weighted_value: 1000000
+                    weighted_value_conversion_rate: 0
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                - stages:
+                  - average_time_to_advance: null
+                    count: 1
+                    count_conversion_rate: 0
+                    count_lost: 1
+                    count_lost_ratio: 1
+                    status:
+                      id: stat_69GagUcJ0k0m4sg8YtLXzC3wiaQpvduPOncBmsyRc5Q
+                      label: Initial
+                      type: active
+                    value: 1000000
+                    value_conversion_rate: 0
+                    value_lost: 1000000
+                    value_lost_ratio: 1
+                    weighted_value: 0
+                    weighted_value_conversion_rate: 0
+                  - average_time_to_advance: null
+                    count: 0
+                    count_conversion_rate: null
+                    count_lost: 0
+                    count_lost_ratio: null
+                    status:
+                      id: stat_6mrcy0uLx1wKGfvhBpwy1UXCzyoD5f2lVGKvBfEI45U
+                      label: Won
+                      type: won
+                    value: 0
+                    value_conversion_rate: null
+                    value_lost: 0
+                    value_lost_ratio: null
+                    weighted_value: 0
+                    weighted_value_conversion_rate: null
+                  user_id: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /report/funnel/opportunity/totals/:
+    post:
+      operationId: reporting_get_funnel_totals
+      tags:
+      - reporting
+      summary: Get a funnel report (totals)
+      description: "The opportunity funnel \"totals\" report returns the pipeline funnel's metrics for the selected opportunities, aggregated (JSON format only) and per-user (JSON and CSV formats).\n\nEvery report accepts the following parameters:\n\n* `pipeline`: ID of the pipeline defining the funnel statuses.\n* `type`: the type of the report. The available values are `created-cohort` and `active-stage-cohort`.\n* `report_relative_range`: a relative time range to fetch data for. The allowed values are: `today`, `this-week`, `this-month`, `this-quarter`, `this-year`, `yesterday`, `last-week`, `last-month`, `last-quarter`, `last-year`, and `all-time`.\n* `report_datetime_range`: a time range to fetch data for.\n* `cohort_relative_range`: a relative time range defining the cohort of created opportunities to fetch data for, by date of creation of those opportunities. The allowed values are: `today`, `this-week`, `this-month`, `this-quarter`, `this-year`, `yesterday`, `last-week`, `last-month`, `last-quarter`, `last-year`, and `all-time`. Either this field or `cohort_datetime_range` needs to be specified for `created-cohort` reports. Its value will be ignored for `active-stage-cohort` reports.\n* `cohort_datetime_range`: a time range defining the cohort of created opportunities to fetch data for, by date of creation of those opportunities. Either this field or `cohort_relative_range` needs to be specified for `created-cohort` reports. Its value will be ignored for `active-stage-cohort` reports.\n* `compared_relative_range`: a relative time range to fetch comparison data for. Only allowed in combination with `report_relative_range` (for `active-stage-cohort` reports) or `cohort_relative_range` (for `created-cohort` reports). The allowed values are: `today`, `this-week`, `this-month`, `this-quarter`, `this-year`, `yesterday`, `last-week`, `last-month`, `last-quarter`, `last-year`, and `all-time`.\n* `compared_datetime_range`: a relative time range to fetch comparison data for. Only allowed in combination with `report_datetime_range` (for `active-stage-cohort` reports) or `cohort_datetime_range` (for `created-cohort` reports). The allowed values are: `same-days-last-week`, `same-days-last-month`, `same-days-last-quarter`, `same-days-last-year`.\n* `compared_custom_range`: a time range to fetch comparison data for.\n* `query`: a query to apply to the report to filter out data.\n  The value of the field is a dictionary with the key `type` and any type-specific keys. For now only the type `saved_search` is allowed which takes the extra key `saved_search_id` to specify the ID of a saved search. This parameter is *optional*.\n* `users`: a list of user IDs or group IDs to limit the report results to. When it's empty, the report will include all the available users. This parameter is *optional*.\n\nThe report can be requested either in JSON format or in CSV format. The format can be specified with the `accept` header.\n\nIn JSON format, it includes aggregated and per-user data. When requested in CSV format, it includes only per-user data.\n\nWhen `compared_datetime_range`, `compared_relative_range`, or `compared_custom_range` are used, the report returned is the compared one, not the base one."
+      requestBody:
+        content:
+          application/json:
+            example:
+              pipeline: pipe_4vukv2FUlFh9FDiVYAop1U
+              query:
+                saved_search_id: save_ZVc26G33JTNiDNEFdZhBQAONg9cJHleAAHqBJakf239
+                type: saved_search
+              report_datetime_range:
+                end: '2019-01-08T00:00:00Z'
+                start: '2019-01-01T00:00:00Z'
+              type: active-stage-cohort
+              users:
+              - user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+              - user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                aggregations:
+                  average_time_to_win: 3600
+                  average_value_annualized_per_won_opportunity: 1000000
+                  count: 2
+                  count_total_complete: 2
+                  count_total_won: 1
+                  count_win_rate: 0.5
+                  sales_velocity: 1000000
+                  value_total_complete: 2000000
+                  value_total_won: 1000000
+                  value_win_rate: 0.5
+                data:
+                - average_time_to_win: 3600
+                  average_value_annualized_per_won_opportunity: 1000000
+                  count: 1
+                  count_total_complete: 1
+                  count_total_won: 1
+                  count_win_rate: 1
+                  sales_velocity: 1000000
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  value_total_complete: 1000000
+                  value_total_won: 1000000
+                  value_win_rate: 1
+                - average_time_to_win: null
+                  average_value_annualized_per_won_opportunity: 0
+                  count: 1
+                  count_total_complete: 1
+                  count_total_won: 0
+                  count_win_rate: 0
+                  sales_velocity: 0
+                  user_id: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                  value_total_complete: 1000000
+                  value_total_won: 0
+                  value_win_rate: 0
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /report/sent_emails/{org_id}/:
+    get:
+      operationId: reporting_get_sent_emails
+      tags:
+      - reporting
+      summary: Get sent emails report
+      parameters:
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: date_start
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: date_end
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: user_id
+        required: false
+        schema:
+          title: User ID
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                sent_email_stats:
+                - _queries:
+                    opened: email(direction:sent opened:yes)
+                    responded: email(direction:sent has_reply:yes)
+                    total: email(direction:sent)
+                  is_shared: true
+                  name: All Emails
+                  opened: 3474546
+                  percentage_opened: 21
+                  percentage_responded: 10
+                  responded: 348741
+                  template_id: null
+                  template_url: null
+                  total: 735434
+                - _queries:
+                    opened: email(direction:sent template:"Promo Email" opened:yes)
+                    responded: email(direction:sent template:"Promo Email" has_reply:yes)
+                    total: email(direction:sent template:"Promo Email")
+                  is_shared: true
+                  name: Promo Email
+                  opened: 40
+                  percentage_opened: 40
+                  percentage_responded: 9
+                  responded: 9
+                  template_id: tmpl_vB0Ql8Npgkq84jly82lqFn331D2tFfA2QXcRUvzcCOt
+                  template_url: /organization/orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH/email_templates/tmpl_vB0Ql8Npgkq84jly82lqFn331D2tFfA2QXcRUvzcCOt/
+                  total: 101
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /report/statuses/lead/{org_id}/:
+    get:
+      operationId: reporting_get_lead_statuses
+      tags:
+      - reporting
+      summary: Get lead status change report
+      description: "Get a lead status change report.\n\nThe date range is optional. A report may be requested\nfor a specific time period or overall. You can specify\neither a `query` or `smart_view_id` (but not both) to\nfilter leads included in the report.\n\nThe following fields are returned (when requesting an\noverall report, some inapplicable fields will not be\nreturned):\n\n* `status_overview`: A list of all statuses with:\n    * `status_id`, `status_label`,\n      `status_is_deleted`: The ID and label of the\n      status, and whether it was deleted.\n    * `started`: Number of leads in this status at\n      the start of the period.\n    * `ended`: Number in this status at the end.\n    * `change`: Net change during the period\n      (`ended` minus `started`).\n    * `change_percent`: Net change in percent.\n    * `gained`: Number that were not in this status\n      at the beginning but were at the end.\n    * `lost`: Number that were in this status at the\n      beginning but were not at the end.\n    * `entered`: Number that entered this status at\n      some point during the period.\n    * `left`: Number that left this status at some\n      point during the period.\n    * `_queries`: A dictionary containing search\n      queries for the different states (`started`,\n      `ended`, `gained`, `lost`, `entered`, `left`).\n    * `_leads_page_urls`: A dictionary containing\n      paths to the lead search UI page.\n* `status_transitions`: A list of all status\n  transitions (aggregated by start/end status) for\n  the given period with:\n    * `from_status_id`, `from_status_label`,\n      `from_status_is_deleted`: Starting status\n      (null for created leads).\n    * `to_status_id`, `to_status_label`,\n      `to_status_is_deleted`: Ending status.\n    * `count`: The number that transitioned.\n    * `_query`: The search query for those records.\n    * `_leads_page_url`: Path to the search UI page.\n* `status_transitions_summary`: Status transitions\n  summarized for the period. E.g. a lead that went\n  A→B→C is counted as A→C."
+      parameters:
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: date_start
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: date_end
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: query
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: smart_view_id
+        required: false
+        schema:
+          title: Smart View ID
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                status_overview:
+                - _leads_page_urls:
+                    ended: /search/lead_status%28status%3A%22Potential%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29/
+                    entered: /search/%28original_lead_status%3A%22Potential%22%20and%20created%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20created%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22%29%20or%20lead_status_change%28new_status%3A%22Potential%22%20and%20date%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20date%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22%29/
+                    gained: /search/not%20lead_status%28status%3A%22Potential%22%20on%3A%222014-01-01%2008%3A00%3A00%22%29%20and%20lead_status%28status%3A%22Potential%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29/
+                    left: /search/lead_status_change%28old_status%3A%22Potential%22%20and%20date%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20date%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22%29/
+                    lost: /search/lead_status%28status%3A%22Potential%22%20on%3A%222014-01-01%2008%3A00%3A00%22%29%20and%20not%20lead_status%28status%3A%22Potential%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29/
+                    started: /search/lead_status%28status%3A%22Potential%22%20on%3A%222014-01-01%2008%3A00%3A00%22%29/
+                  _queries:
+                    ended: lead_status(status:"Potential" on:"2014-06-01 06:59:59")
+                    entered: (original_lead_status:"Potential" and created >= "2014-01-01 08:00:00" and created <= "2014-06-01 06:59:59") or lead_status_change(new_status:"Potential" and date >= "2014-01-01 08:00:00" and date <= "2014-06-01 06:59:59")
+                    gained: not lead_status(status:"Potential" on:"2014-01-01 08:00:00") and lead_status(status:"Potential" on:"2014-06-01 06:59:59")
+                    left: lead_status_change(old_status:"Potential" and date >= "2014-01-01 08:00:00" and date <= "2014-06-01 06:59:59")
+                    lost: lead_status(status:"Potential" on:"2014-01-01 08:00:00") and not lead_status(status:"Potential" on:"2014-06-01 06:59:59")
+                    started: lead_status(status:"Potential" on:"2014-01-01 08:00:00")
+                  change: 1268
+                  change_percent: 3
+                  ended: 49997
+                  entered: 1270
+                  gained: 1269
+                  left: 2
+                  lost: 1
+                  started: 48729
+                  status_id: stat_a2RZn3jTsAA11zmBPpqQQ4ug8NqgUawkjyMdCu8yybX
+                  status_is_deleted: false
+                  status_label: Potential
+                - _leads_page_urls:
+                    ended: /search/lead_status%28status%3A%22Bad%20Fit%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29/
+                    entered: /search/%28original_lead_status%3A%22Bad%20Fit%22%20and%20created%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20created%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22%29%20or%20lead_status_change%28new_status%3A%22Bad%20Fit%22%20and%20date%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20date%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22%29/
+                    gained: /search/not%20lead_status%28status%3A%22Bad%20Fit%22%20on%3A%222014-01-01%2008%3A00%3A00%22%29%20and%20lead_status%28status%3A%22Bad%20Fit%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29/
+                    left: /search/lead_status_change%28old_status%3A%22Bad%20Fit%22%20and%20date%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20date%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22%29/
+                    lost: /search/lead_status%28status%3A%22Bad%20Fit%22%20on%3A%222014-01-01%2008%3A00%3A00%22%29%20and%20not%20lead_status%28status%3A%22Bad%20Fit%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29/
+                    started: /search/lead_status%28status%3A%22Bad%20Fit%22%20on%3A%222014-01-01%2008%3A00%3A00%22%29/
+                  _queries:
+                    ended: lead_status(status:"Bad Fit" on:"2014-06-01 06:59:59")
+                    entered: (original_lead_status:"Bad Fit" and created >= "2014-01-01 08:00:00" and created <= "2014-06-01 06:59:59") or lead_status_change(new_status:"Bad Fit" and date >= "2014-01-01 08:00:00" and date <= "2014-06-01 06:59:59")
+                    gained: not lead_status(status:"Bad Fit" on:"2014-01-01 08:00:00") and lead_status(status:"Bad Fit" on:"2014-06-01 06:59:59")
+                    left: lead_status_change(old_status:"Bad Fit" and date >= "2014-01-01 08:00:00" and date <= "2014-06-01 06:59:59")
+                    lost: lead_status(status:"Bad Fit" on:"2014-01-01 08:00:00") and not lead_status(status:"Bad Fit" on:"2014-06-01 06:59:59")
+                    started: lead_status(status:"Bad Fit" on:"2014-01-01 08:00:00")
+                  change: 0
+                  change_percent: 0
+                  ended: 35
+                  entered: 0
+                  gained: 0
+                  left: 0
+                  lost: 0
+                  started: 35
+                  status_id: stat_7a4mksScaP453DJeur2wdn8qXg3zcN3IQbbDeFZywNw
+                  status_is_deleted: false
+                  status_label: Bad Fit
+                - _leads_page_urls:
+                    ended: /search/lead_status%28status%3A%22Qualified%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29/
+                    entered: /search/%28original_lead_status%3A%22Qualified%22%20and%20created%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20created%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22%29%20or%20lead_status_change%28new_status%3A%22Qualified%22%20and%20date%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20date%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22%29/
+                    gained: /search/not%20lead_status%28status%3A%22Qualified%22%20on%3A%222014-01-01%2008%3A00%3A00%22%29%20and%20lead_status%28status%3A%22Qualified%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29/
+                    left: /search/lead_status_change%28old_status%3A%22Qualified%22%20and%20date%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20date%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22%29/
+                    lost: /search/lead_status%28status%3A%22Qualified%22%20on%3A%222014-01-01%2008%3A00%3A00%22%29%20and%20not%20lead_status%28status%3A%22Qualified%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29/
+                    started: /search/lead_status%28status%3A%22Qualified%22%20on%3A%222014-01-01%2008%3A00%3A00%22%29/
+                  _queries:
+                    ended: lead_status(status:"Qualified" on:"2014-06-01 06:59:59")
+                    entered: (original_lead_status:"Qualified" and created >= "2014-01-01 08:00:00" and created <= "2014-06-01 06:59:59") or lead_status_change(new_status:"Qualified" and date >= "2014-01-01 08:00:00" and date <= "2014-06-01 06:59:59")
+                    gained: not lead_status(status:"Qualified" on:"2014-01-01 08:00:00") and lead_status(status:"Qualified" on:"2014-06-01 06:59:59")
+                    left: lead_status_change(old_status:"Qualified" and date >= "2014-01-01 08:00:00" and date <= "2014-06-01 06:59:59")
+                    lost: lead_status(status:"Qualified" on:"2014-01-01 08:00:00") and not lead_status(status:"Qualified" on:"2014-06-01 06:59:59")
+                    started: lead_status(status:"Qualified" on:"2014-01-01 08:00:00")
+                  change: 2
+                  change_percent: 8
+                  ended: 28
+                  entered: 2
+                  gained: 2
+                  left: 0
+                  lost: 0
+                  started: 26
+                  status_id: stat_eQ5KZbBVePlxF7sUdiV7s0mDNBkUxGv7k4i0c7XsoqL
+                  status_is_deleted: false
+                  status_label: Qualified
+                status_transitions:
+                - _leads_page_url: /search/original_lead_status%3A%22Potential%22%20and%20created%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20created%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22/
+                  _query: original_lead_status:"Potential" and created >= "2014-01-01 08:00:00" and created <= "2014-06-01 06:59:59"
+                  count: 1270
+                  from_status_id: null
+                  from_status_is_deleted: null
+                  from_status_label: null
+                  to_status_id: stat_a2RZn3jTsAA11zmBPpqQQ4ug8NqgUawkjyMdCu8yybX
+                  to_status_is_deleted: false
+                  to_status_label: Potential
+                - _leads_page_url: /search/lead_status_change%28old_status%3A%22Potential%22%20new_status%3A%22Qualified%22%20and%20date%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20date%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22%29/
+                  _query: lead_status_change(old_status:"Potential" new_status:"Qualified" and date >= "2014-01-01 08:00:00" and date <= "2014-06-01 06:59:59")
+                  count: 2
+                  from_status_id: stat_a2RZn3jTsAA11zmBPpqQQ4ug8NqgUawkjyMdCu8yybX
+                  from_status_is_deleted: false
+                  from_status_label: Potential
+                  to_status_id: stat_eQ5KZbBVePlxF7sUdiV7s0mDNBkUxGv7k4i0c7XsoqL
+                  to_status_is_deleted: false
+                  to_status_label: Qualified
+                status_transitions_summary:
+                - _leads_page_url: /search/created%20%3E%20%222014-01-01%2008%3A00%3A00%22%20and%20lead_status%28status%3A%22Potential%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29/
+                  _query: created > "2014-01-01 08:00:00" and lead_status(status:"Potential" on:"2014-06-01 06:59:59")
+                  count: 1269
+                  from_status_id: null
+                  from_status_is_deleted: null
+                  from_status_label: null
+                  to_status_id: stat_a2RZn3jTsAA11zmBPpqQQ4ug8NqgUawkjyMdCu8yybX
+                  to_status_is_deleted: false
+                  to_status_label: Potential
+                - _leads_page_url: /search/created%20%3E%20%222014-01-01%2008%3A00%3A00%22%20and%20lead_status%28status%3A%22Qualified%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29/
+                  _query: created > "2014-01-01 08:00:00" and lead_status(status:"Qualified" on:"2014-06-01 06:59:59")
+                  count: 1
+                  from_status_id: null
+                  from_status_is_deleted: null
+                  from_status_label: null
+                  to_status_id: stat_eQ5KZbBVePlxF7sUdiV7s0mDNBkUxGv7k4i0c7XsoqL
+                  to_status_is_deleted: false
+                  to_status_label: Qualified
+                - _leads_page_url: /search/lead_status%28status%3A%22Potential%22%20on%3A%222014-01-01%2008%3A00%3A00%22%29%20and%20lead_status%28status%3A%22Qualified%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29/
+                  _query: lead_status(status:"Potential" on:"2014-01-01 08:00:00") and lead_status(status:"Qualified" on:"2014-06-01 06:59:59")
+                  count: 1
+                  from_status_id: stat_a2RZn3jTsAA11zmBPpqQQ4ug8NqgUawkjyMdCu8yybX
+                  from_status_is_deleted: false
+                  from_status_label: Potential
+                  to_status_id: stat_eQ5KZbBVePlxF7sUdiV7s0mDNBkUxGv7k4i0c7XsoqL
+                  to_status_is_deleted: false
+                  to_status_label: Qualified
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /report/statuses/opportunity/{org_id}/:
+    get:
+      operationId: reporting_get_opportunity_statuses
+      tags:
+      - reporting
+      summary: Get opportunity status change report
+      description: "Get an opportunity status change report.\n\nThe date range is optional. A report may be requested\nfor a specific time period or overall. You can specify\neither a `query` or `smart_view_id` (but not both) to\nfilter opportunities included in the report. The\nreport may optionally be filtered by the opportunity\nuser.\n\nThe following fields are returned (when requesting an\noverall report, some inapplicable fields will not be\nreturned):\n\n* `status_overview`: A list of all statuses with:\n    * `status_id`, `status_label`,\n      `status_is_deleted`: The ID and label of the\n      status, and whether it was deleted.\n    * `started`: Number of opportunities in this\n      status at the start of the period.\n    * `ended`: Number in this status at the end.\n    * `change`: Net change during the period\n      (`ended` minus `started`).\n    * `change_percent`: Net change in percent.\n    * `gained`: Number that were not in this status\n      at the beginning but were at the end.\n    * `lost`: Number that were in this status at the\n      beginning but were not at the end.\n    * `entered`: Number that entered this status at\n      some point during the period.\n    * `left`: Number that left this status at some\n      point during the period.\n    * `_queries`: A dictionary containing search\n      queries for the different states (`started`,\n      `ended`, `gained`, `lost`, `entered`, `left`).\n      Search queries are wrapped in a nested\n      `opportunity(...)` clause. To pass the query\n      to the opportunities API endpoint, use only\n      the query within the parentheses.\n    * `_leads_page_urls`: A dictionary containing\n      paths to the lead search UI page.\n    * `_opportunities_page_urls`: A dictionary\n      containing paths to the opportunity UI page.\n* `status_transitions`: A list of all status\n  transitions (aggregated by start/end status) for\n  the given period with:\n    * `from_status_id`, `from_status_label`,\n      `from_status_is_deleted`: Starting status\n      (null for created opportunities).\n    * `to_status_id`, `to_status_label`,\n      `to_status_is_deleted`: Ending status.\n    * `count`: The number that transitioned.\n    * `_query`: The search query for those records.\n    * `_leads_page_url`: Path to the search UI page.\n    * `_opportunities_page_url`: Path to the\n      opportunity UI page.\n* `status_transitions_summary`: Status transitions\n  summarized for the period. E.g. an opportunity\n  that went A→B→C is counted as A→C."
+      parameters:
+      - in: path
+        name: org_id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: date_start
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: date_end
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: query
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: smart_view_id
+        required: false
+        schema:
+          title: Smart View ID
+          type: string
+      - in: query
+        name: user_id
+        required: false
+        schema:
+          title: User ID
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                status_overview:
+                - _leads_page_urls:
+                    ended: /search/opportunity%28status%28status%3A%22Active%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29%29/
+                    entered: /search/opportunity%28%28original_status%3A%22Active%22%20and%20created%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20created%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22%29%20or%20status_change%28new_status%3A%22Active%22%20and%20date%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20date%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22%29%29/
+                    gained: /search/opportunity%28not%20status%28status%3A%22Active%22%20on%3A%222014-01-01%2008%3A00%3A00%22%29%20and%20status%28status%3A%22Active%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29%29/
+                    left: /search/opportunity%28status_change%28old_status%3A%22Active%22%20and%20date%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20date%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22%29%29/
+                    lost: /search/opportunity%28status%28status%3A%22Active%22%20on%3A%222014-01-01%2008%3A00%3A00%22%29%20and%20not%20status%28status%3A%22Active%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29%29/
+                    started: /search/opportunity%28status%28status%3A%22Active%22%20on%3A%222014-01-01%2008%3A00%3A00%22%29%29/
+                  _opportunities_page_urls:
+                    ended: /opportunities/custom_filter_end_status_label=Active&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=status%28status%3A%22Active%22+on%3A%222014-06-01+06%3A59%3A59%22%29&custom_filter_type=ended&custom_filter_end_status_id=stat_3FD9DnGUCJzccBKTh8LiiKoyVPpMJsOkJdcGoA5AYKH/
+                    entered: /opportunities/custom_filter_end_status_label=Active&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=%28original_status%3A%22Active%22+and+created+%3E%3D+%222014-01-01+08%3A00%3A00%22+and+created+%3C%3D+%222014-06-01+06%3A59%3A59%22%29+or+status_change%28new_status%3A%22Active%22+and+date+%3E%3D+%222014-01-01+08%3A00%3A00%22+and+date+%3C%3D+%222014-06-01+06%3A59%3A59%22%29&custom_filter_type=entered&custom_filter_end_status_id=stat_3FD9DnGUCJzccBKTh8LiiKoyVPpMJsOkJdcGoA5AYKH/
+                    gained: /opportunities/custom_filter_end_status_label=Active&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=not+status%28status%3A%22Active%22+on%3A%222014-01-01+08%3A00%3A00%22%29+and+status%28status%3A%22Active%22+on%3A%222014-06-01+06%3A59%3A59%22%29&custom_filter_type=gained&custom_filter_end_status_id=stat_3FD9DnGUCJzccBKTh8LiiKoyVPpMJsOkJdcGoA5AYKH/
+                    left: /opportunities/custom_filter_start_status_id=stat_3FD9DnGUCJzccBKTh8LiiKoyVPpMJsOkJdcGoA5AYKH&custom_filter_start_status_label=Active&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=status_change%28old_status%3A%22Active%22+and+date+%3E%3D+%222014-01-01+08%3A00%3A00%22+and+date+%3C%3D+%222014-06-01+06%3A59%3A59%22%29&custom_filter_type=left/
+                    lost: /opportunities/custom_filter_start_status_id=stat_3FD9DnGUCJzccBKTh8LiiKoyVPpMJsOkJdcGoA5AYKH&custom_filter_start_status_label=Active&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=status%28status%3A%22Active%22+on%3A%222014-01-01+08%3A00%3A00%22%29+and+not+status%28status%3A%22Active%22+on%3A%222014-06-01+06%3A59%3A59%22%29&custom_filter_type=lost/
+                    started: /opportunities/custom_filter_start_status_id=stat_3FD9DnGUCJzccBKTh8LiiKoyVPpMJsOkJdcGoA5AYKH&custom_filter_start_status_label=Active&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=status%28status%3A%22Active%22+on%3A%222014-01-01+08%3A00%3A00%22%29&custom_filter_type=started/
+                  _queries:
+                    ended: opportunity(status(status:"Active" on:"2014-06-01 06:59:59"))
+                    entered: opportunity((original_status:"Active" and created >= "2014-01-01 08:00:00" and created <= "2014-06-01 06:59:59") or status_change(new_status:"Active" and date >= "2014-01-01 08:00:00" and date <= "2014-06-01 06:59:59"))
+                    gained: opportunity(not status(status:"Active" on:"2014-01-01 08:00:00") and status(status:"Active" on:"2014-06-01 06:59:59"))
+                    left: opportunity(status_change(old_status:"Active" and date >= "2014-01-01 08:00:00" and date <= "2014-06-01 06:59:59"))
+                    lost: opportunity(status(status:"Active" on:"2014-01-01 08:00:00") and not status(status:"Active" on:"2014-06-01 06:59:59"))
+                    started: opportunity(status(status:"Active" on:"2014-01-01 08:00:00"))
+                  change: -1
+                  change_percent: -6
+                  ended: 16
+                  entered: 0
+                  gained: 0
+                  left: 1
+                  lost: 1
+                  started: 17
+                  status_id: stat_3FD9DnGUCJzccBKTh8LiiKoyVPpMJsOkJdcGoA5AYKH
+                  status_is_deleted: false
+                  status_label: Active
+                - _leads_page_urls:
+                    ended: /search/opportunity%28status%28status%3A%22Won%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29%29/
+                    entered: /search/opportunity%28%28original_status%3A%22Won%22%20and%20created%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20created%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22%29%20or%20status_change%28new_status%3A%22Won%22%20and%20date%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20date%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22%29%29/
+                    gained: /search/opportunity%28not%20status%28status%3A%22Won%22%20on%3A%222014-01-01%2008%3A00%3A00%22%29%20and%20status%28status%3A%22Won%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29%29/
+                    left: /search/opportunity%28status_change%28old_status%3A%22Won%22%20and%20date%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20date%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22%29%29/
+                    lost: /search/opportunity%28status%28status%3A%22Won%22%20on%3A%222014-01-01%2008%3A00%3A00%22%29%20and%20not%20status%28status%3A%22Won%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29%29/
+                    started: /search/opportunity%28status%28status%3A%22Won%22%20on%3A%222014-01-01%2008%3A00%3A00%22%29%29/
+                  _opportunities_page_urls:
+                    ended: /opportunities/custom_filter_end_status_label=Won&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=status%28status%3A%22Won%22+on%3A%222014-06-01+06%3A59%3A59%22%29&custom_filter_type=ended&custom_filter_end_status_id=stat_wMS9M6HC2O3CSEOzF5g2vEGt6RM5R3RfhIQixdnmjf2/
+                    entered: /opportunities/custom_filter_end_status_label=Won&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=%28original_status%3A%22Won%22+and+created+%3E%3D+%222014-01-01+08%3A00%3A00%22+and+created+%3C%3D+%222014-06-01+06%3A59%3A59%22%29+or+status_change%28new_status%3A%22Won%22+and+date+%3E%3D+%222014-01-01+08%3A00%3A00%22+and+date+%3C%3D+%222014-06-01+06%3A59%3A59%22%29&custom_filter_type=entered&custom_filter_end_status_id=stat_wMS9M6HC2O3CSEOzF5g2vEGt6RM5R3RfhIQixdnmjf2/
+                    gained: /opportunities/custom_filter_end_status_label=Won&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=not+status%28status%3A%22Won%22+on%3A%222014-01-01+08%3A00%3A00%22%29+and+status%28status%3A%22Won%22+on%3A%222014-06-01+06%3A59%3A59%22%29&custom_filter_type=gained&custom_filter_end_status_id=stat_wMS9M6HC2O3CSEOzF5g2vEGt6RM5R3RfhIQixdnmjf2/
+                    left: /opportunities/custom_filter_start_status_id=stat_wMS9M6HC2O3CSEOzF5g2vEGt6RM5R3RfhIQixdnmjf2&custom_filter_start_status_label=Won&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=status_change%28old_status%3A%22Won%22+and+date+%3E%3D+%222014-01-01+08%3A00%3A00%22+and+date+%3C%3D+%222014-06-01+06%3A59%3A59%22%29&custom_filter_type=left/
+                    lost: /opportunities/custom_filter_start_status_id=stat_wMS9M6HC2O3CSEOzF5g2vEGt6RM5R3RfhIQixdnmjf2&custom_filter_start_status_label=Won&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=status%28status%3A%22Won%22+on%3A%222014-01-01+08%3A00%3A00%22%29+and+not+status%28status%3A%22Won%22+on%3A%222014-06-01+06%3A59%3A59%22%29&custom_filter_type=lost/
+                    started: /opportunities/custom_filter_start_status_id=stat_wMS9M6HC2O3CSEOzF5g2vEGt6RM5R3RfhIQixdnmjf2&custom_filter_start_status_label=Won&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=status%28status%3A%22Won%22+on%3A%222014-01-01+08%3A00%3A00%22%29&custom_filter_type=started/
+                  _queries:
+                    ended: opportunity(status(status:"Won" on:"2014-06-01 06:59:59"))
+                    entered: opportunity((original_status:"Won" and created >= "2014-01-01 08:00:00" and created <= "2014-06-01 06:59:59") or status_change(new_status:"Won" and date >= "2014-01-01 08:00:00" and date <= "2014-06-01 06:59:59"))
+                    gained: opportunity(not status(status:"Won" on:"2014-01-01 08:00:00") and status(status:"Won" on:"2014-06-01 06:59:59"))
+                    left: opportunity(status_change(old_status:"Won" and date >= "2014-01-01 08:00:00" and date <= "2014-06-01 06:59:59"))
+                    lost: opportunity(status(status:"Won" on:"2014-01-01 08:00:00") and not status(status:"Won" on:"2014-06-01 06:59:59"))
+                    started: opportunity(status(status:"Won" on:"2014-01-01 08:00:00"))
+                  change: 0
+                  change_percent: 0
+                  ended: 8
+                  entered: 0
+                  gained: 0
+                  left: 0
+                  lost: 0
+                  started: 8
+                  status_id: stat_wMS9M6HC2O3CSEOzF5g2vEGt6RM5R3RfhIQixdnmjf2
+                  status_is_deleted: false
+                  status_label: Won
+                - _leads_page_urls:
+                    ended: /search/opportunity%28status%28status%3A%22Lost%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29%29/
+                    entered: /search/opportunity%28%28original_status%3A%22Lost%22%20and%20created%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20created%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22%29%20or%20status_change%28new_status%3A%22Lost%22%20and%20date%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20date%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22%29%29/
+                    gained: /search/opportunity%28not%20status%28status%3A%22Lost%22%20on%3A%222014-01-01%2008%3A00%3A00%22%29%20and%20status%28status%3A%22Lost%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29%29/
+                    left: /search/opportunity%28status_change%28old_status%3A%22Lost%22%20and%20date%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20date%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22%29%29/
+                    lost: /search/opportunity%28status%28status%3A%22Lost%22%20on%3A%222014-01-01%2008%3A00%3A00%22%29%20and%20not%20status%28status%3A%22Lost%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29%29/
+                    started: /search/opportunity%28status%28status%3A%22Lost%22%20on%3A%222014-01-01%2008%3A00%3A00%22%29%29/
+                  _opportunities_page_urls:
+                    ended: /opportunities/custom_filter_end_status_label=Lost&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=status%28status%3A%22Lost%22+on%3A%222014-06-01+06%3A59%3A59%22%29&custom_filter_type=ended&custom_filter_end_status_id=stat_Rq9QVdie9GhRKuEyYnRXfE6JDs6vhlwqh0GW7owibPD/
+                    entered: /opportunities/custom_filter_end_status_label=Lost&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=%28original_status%3A%22Lost%22+and+created+%3E%3D+%222014-01-01+08%3A00%3A00%22+and+created+%3C%3D+%222014-06-01+06%3A59%3A59%22%29+or+status_change%28new_status%3A%22Lost%22+and+date+%3E%3D+%222014-01-01+08%3A00%3A00%22+and+date+%3C%3D+%222014-06-01+06%3A59%3A59%22%29&custom_filter_type=entered&custom_filter_end_status_id=stat_Rq9QVdie9GhRKuEyYnRXfE6JDs6vhlwqh0GW7owibPD/
+                    gained: /opportunities/custom_filter_end_status_label=Lost&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=not+status%28status%3A%22Lost%22+on%3A%222014-01-01+08%3A00%3A00%22%29+and+status%28status%3A%22Lost%22+on%3A%222014-06-01+06%3A59%3A59%22%29&custom_filter_type=gained&custom_filter_end_status_id=stat_Rq9QVdie9GhRKuEyYnRXfE6JDs6vhlwqh0GW7owibPD/
+                    left: /opportunities/custom_filter_start_status_id=stat_Rq9QVdie9GhRKuEyYnRXfE6JDs6vhlwqh0GW7owibPD&custom_filter_start_status_label=Lost&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=status_change%28old_status%3A%22Lost%22+and+date+%3E%3D+%222014-01-01+08%3A00%3A00%22+and+date+%3C%3D+%222014-06-01+06%3A59%3A59%22%29&custom_filter_type=left/
+                    lost: /opportunities/custom_filter_start_status_id=stat_Rq9QVdie9GhRKuEyYnRXfE6JDs6vhlwqh0GW7owibPD&custom_filter_start_status_label=Lost&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=status%28status%3A%22Lost%22+on%3A%222014-01-01+08%3A00%3A00%22%29+and+not+status%28status%3A%22Lost%22+on%3A%222014-06-01+06%3A59%3A59%22%29&custom_filter_type=lost/
+                    started: /opportunities/custom_filter_start_status_id=stat_Rq9QVdie9GhRKuEyYnRXfE6JDs6vhlwqh0GW7owibPD&custom_filter_start_status_label=Lost&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=status%28status%3A%22Lost%22+on%3A%222014-01-01+08%3A00%3A00%22%29&custom_filter_type=started/
+                  _queries:
+                    ended: opportunity(status(status:"Lost" on:"2014-06-01 06:59:59"))
+                    entered: opportunity((original_status:"Lost" and created >= "2014-01-01 08:00:00" and created <= "2014-06-01 06:59:59") or status_change(new_status:"Lost" and date >= "2014-01-01 08:00:00" and date <= "2014-06-01 06:59:59"))
+                    gained: opportunity(not status(status:"Lost" on:"2014-01-01 08:00:00") and status(status:"Lost" on:"2014-06-01 06:59:59"))
+                    left: opportunity(status_change(old_status:"Lost" and date >= "2014-01-01 08:00:00" and date <= "2014-06-01 06:59:59"))
+                    lost: opportunity(status(status:"Lost" on:"2014-01-01 08:00:00") and not status(status:"Lost" on:"2014-06-01 06:59:59"))
+                    started: opportunity(status(status:"Lost" on:"2014-01-01 08:00:00"))
+                  change: 1
+                  change_percent: 25
+                  ended: 5
+                  entered: 1
+                  gained: 1
+                  left: 0
+                  lost: 0
+                  started: 4
+                  status_id: stat_Rq9QVdie9GhRKuEyYnRXfE6JDs6vhlwqh0GW7owibPD
+                  status_is_deleted: false
+                  status_label: Lost
+                - _leads_page_urls:
+                    ended: /search/opportunity%28status%28status%3A%22On%20hold%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29%29/
+                    entered: /search/opportunity%28%28original_status%3A%22On%20hold%22%20and%20created%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20created%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22%29%20or%20status_change%28new_status%3A%22On%20hold%22%20and%20date%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20date%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22%29%29/
+                    gained: /search/opportunity%28not%20status%28status%3A%22On%20hold%22%20on%3A%222014-01-01%2008%3A00%3A00%22%29%20and%20status%28status%3A%22On%20hold%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29%29/
+                    left: /search/opportunity%28status_change%28old_status%3A%22On%20hold%22%20and%20date%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20date%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22%29%29/
+                    lost: /search/opportunity%28status%28status%3A%22On%20hold%22%20on%3A%222014-01-01%2008%3A00%3A00%22%29%20and%20not%20status%28status%3A%22On%20hold%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29%29/
+                    started: /search/opportunity%28status%28status%3A%22On%20hold%22%20on%3A%222014-01-01%2008%3A00%3A00%22%29%29/
+                  _opportunities_page_urls:
+                    ended: /opportunities/custom_filter_end_status_label=On+hold&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=status%28status%3A%22On+hold%22+on%3A%222014-06-01+06%3A59%3A59%22%29&custom_filter_type=ended&custom_filter_end_status_id=stat_rJaLa9RS71Ry5yXUxTXyc7siYvvPzeHSM61rkOSOFKQ/
+                    entered: /opportunities/custom_filter_end_status_label=On+hold&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=%28original_status%3A%22On+hold%22+and+created+%3E%3D+%222014-01-01+08%3A00%3A00%22+and+created+%3C%3D+%222014-06-01+06%3A59%3A59%22%29+or+status_change%28new_status%3A%22On+hold%22+and+date+%3E%3D+%222014-01-01+08%3A00%3A00%22+and+date+%3C%3D+%222014-06-01+06%3A59%3A59%22%29&custom_filter_type=entered&custom_filter_end_status_id=stat_rJaLa9RS71Ry5yXUxTXyc7siYvvPzeHSM61rkOSOFKQ/
+                    gained: /opportunities/custom_filter_end_status_label=On+hold&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=not+status%28status%3A%22On+hold%22+on%3A%222014-01-01+08%3A00%3A00%22%29+and+status%28status%3A%22On+hold%22+on%3A%222014-06-01+06%3A59%3A59%22%29&custom_filter_type=gained&custom_filter_end_status_id=stat_rJaLa9RS71Ry5yXUxTXyc7siYvvPzeHSM61rkOSOFKQ/
+                    left: /opportunities/custom_filter_start_status_id=stat_rJaLa9RS71Ry5yXUxTXyc7siYvvPzeHSM61rkOSOFKQ&custom_filter_start_status_label=On+hold&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=status_change%28old_status%3A%22On+hold%22+and+date+%3E%3D+%222014-01-01+08%3A00%3A00%22+and+date+%3C%3D+%222014-06-01+06%3A59%3A59%22%29&custom_filter_type=left/
+                    lost: /opportunities/custom_filter_start_status_id=stat_rJaLa9RS71Ry5yXUxTXyc7siYvvPzeHSM61rkOSOFKQ&custom_filter_start_status_label=On+hold&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=status%28status%3A%22On+hold%22+on%3A%222014-01-01+08%3A00%3A00%22%29+and+not+status%28status%3A%22On+hold%22+on%3A%222014-06-01+06%3A59%3A59%22%29&custom_filter_type=lost/
+                    started: /opportunities/custom_filter_start_status_id=stat_rJaLa9RS71Ry5yXUxTXyc7siYvvPzeHSM61rkOSOFKQ&custom_filter_start_status_label=On+hold&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=status%28status%3A%22On+hold%22+on%3A%222014-01-01+08%3A00%3A00%22%29&custom_filter_type=started/
+                  _queries:
+                    ended: opportunity(status(status:"On hold" on:"2014-06-01 06:59:59"))
+                    entered: opportunity((original_status:"On hold" and created >= "2014-01-01 08:00:00" and created <= "2014-06-01 06:59:59") or status_change(new_status:"On hold" and date >= "2014-01-01 08:00:00" and date <= "2014-06-01 06:59:59"))
+                    gained: opportunity(not status(status:"On hold" on:"2014-01-01 08:00:00") and status(status:"On hold" on:"2014-06-01 06:59:59"))
+                    left: opportunity(status_change(old_status:"On hold" and date >= "2014-01-01 08:00:00" and date <= "2014-06-01 06:59:59"))
+                    lost: opportunity(status(status:"On hold" on:"2014-01-01 08:00:00") and not status(status:"On hold" on:"2014-06-01 06:59:59"))
+                    started: opportunity(status(status:"On hold" on:"2014-01-01 08:00:00"))
+                  change: 0
+                  change_percent: 0
+                  ended: 1
+                  entered: 0
+                  gained: 0
+                  left: 0
+                  lost: 0
+                  started: 1
+                  status_id: stat_rJaLa9RS71Ry5yXUxTXyc7siYvvPzeHSM61rkOSOFKQ
+                  status_is_deleted: false
+                  status_label: On hold
+                status_transitions:
+                - _leads_page_url: /search/opportunity%28status_change%28old_status%3A%22Active%22%20new_status%3A%22Lost%22%20and%20date%20%3E%3D%20%222014-01-01%2008%3A00%3A00%22%20and%20date%20%3C%3D%20%222014-06-01%2006%3A59%3A59%22%29%29/
+                  _opportunities_page_url: /opportunities/custom_filter_start_status_id=stat_3FD9DnGUCJzccBKTh8LiiKoyVPpMJsOkJdcGoA5AYKH&custom_filter_end_status_label=Lost&custom_filter_start_status_label=Active&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=status_change%28old_status%3A%22Active%22+new_status%3A%22Lost%22+and+date+%3E%3D+%222014-01-01+08%3A00%3A00%22+and+date+%3C%3D+%222014-06-01+06%3A59%3A59%22%29&custom_filter_type=transition&custom_filter_end_status_id=stat_Rq9QVdie9GhRKuEyYnRXfE6JDs6vhlwqh0GW7owibPD/
+                  _query: opportunity(status_change(old_status:"Active" new_status:"Lost" and date >= "2014-01-01 08:00:00" and date <= "2014-06-01 06:59:59"))
+                  count: 1
+                  from_status_id: stat_3FD9DnGUCJzccBKTh8LiiKoyVPpMJsOkJdcGoA5AYKH
+                  from_status_is_deleted: false
+                  from_status_label: Active
+                  to_status_id: stat_Rq9QVdie9GhRKuEyYnRXfE6JDs6vhlwqh0GW7owibPD
+                  to_status_is_deleted: false
+                  to_status_label: Lost
+                status_transitions_summary:
+                - _leads_page_url: /search/opportunity%28status%28status%3A%22Active%22%20on%3A%222014-01-01%2008%3A00%3A00%22%29%20and%20status%28status%3A%22Lost%22%20on%3A%222014-06-01%2006%3A59%3A59%22%29%29/
+                  _opportunities_page_url: /opportunities/custom_filter_start_status_id=stat_3FD9DnGUCJzccBKTh8LiiKoyVPpMJsOkJdcGoA5AYKH&custom_filter_end_status_label=Lost&custom_filter_start_status_label=Active&custom_filter_date_start=2014-01-01&custom_filter_date_end=2014-06-01&query=status%28status%3A%22Active%22+on%3A%222014-01-01+08%3A00%3A00%22%29+and+status%28status%3A%22Lost%22+on%3A%222014-06-01+06%3A59%3A59%22%29&custom_filter_type=transition&custom_filter_end_status_id=stat_Rq9QVdie9GhRKuEyYnRXfE6JDs6vhlwqh0GW7owibPD/
+                  _query: opportunity(status(status:"Active" on:"2014-01-01 08:00:00") and status(status:"Lost" on:"2014-06-01 06:59:59"))
+                  count: 1
+                  from_status_id: stat_3FD9DnGUCJzccBKTh8LiiKoyVPpMJsOkJdcGoA5AYKH
+                  from_status_is_deleted: false
+                  from_status_label: Active
+                  to_status_id: stat_Rq9QVdie9GhRKuEyYnRXfE6JDs6vhlwqh0GW7owibPD
+                  to_status_is_deleted: false
+                  to_status_label: Lost
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

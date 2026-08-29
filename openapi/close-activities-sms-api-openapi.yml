@@ -1,0 +1,1005 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Activities.sms API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: activities.sms
+  externalDocs:
+    url: https://developer.close.com/api/resources/activities/sms
+paths:
+  /activity/sms/:
+    get:
+      operationId: activities.sms_list
+      tags:
+      - activities.sms
+      summary: List or filter all SMS activities
+      description: 'Get a list of matching SMS activities.
+
+
+        MMS messages are considered SMS messages with attachments. Attachments have identical fields to email attachments (`url`, `filename`, `size` and `content_type`), a `media_id` uniquely identifying an attachment, and if Close was able to generate a thumbnail, a `thumbnail_url` too.
+
+
+        Accessing `url` or `thumbnail_url` requires an authenticated session and leads to a temporarily signed S3 URL.'
+      parameters:
+      - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/SkipParam'
+      - $ref: '#/components/parameters/ActivityFilters_IdInParam'
+      - $ref: '#/components/parameters/ActivityFilters_LeadIdParam'
+      - $ref: '#/components/parameters/ActivityFilters_ContactIdParam'
+      - $ref: '#/components/parameters/ActivityFilters_UserIdParam'
+      - $ref: '#/components/parameters/ActivityFilters_OrganizationIdParam'
+      - $ref: '#/components/parameters/ActivityFilters_TypeParam'
+      - $ref: '#/components/parameters/ActivityFilters_DateCreatedGteParam'
+      - $ref: '#/components/parameters/ActivityFilters_DateCreatedLteParam'
+      - $ref: '#/components/parameters/ActivityFilters_DateCreatedGtParam'
+      - $ref: '#/components/parameters/ActivityFilters_DateCreatedLtParam'
+      - $ref: '#/components/parameters/ActivityFilters_ActivityAtGteParam'
+      - $ref: '#/components/parameters/ActivityFilters_ActivityAtLteParam'
+      - $ref: '#/components/parameters/ActivityFilters_ActivityAtGtParam'
+      - $ref: '#/components/parameters/ActivityFilters_ActivityAtLtParam'
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - _type: SMS
+                  activity_at: '2016-10-03T16:06:11.167000+00:00'
+                  attachments:
+                  - content_type: image/png
+                    filename: media_1.png
+                    media_id: media_1GnAWzBfs0SOjTDcUnyyP9
+                    size: 15148
+                    thumbnail_url: https://app.close.com/go/sms/acti_12358hIUhaklslYoYSbtozZuUTyB2zO2nhm7iVSpZpp/media/media_7Ga8l93XLVvqNsgjPbBuUI/thumbnail/
+                    url: https://app.close.com/go/sms/acti_12358hIUhaklslYoYSbtozZuUTyB2zO2nhm7iVSpZpp/media/media_7Ga8l93XLVvqNsgjPbBuUI/
+                  contact_id: cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk
+                  cost: '1'
+                  created_by: null
+                  created_by_name: null
+                  date_created: '2016-10-03T16:06:11.167000+00:00'
+                  date_scheduled: null
+                  date_sent: null
+                  date_updated: '2016-10-03T16:06:11.167000+00:00'
+                  direction: inbound
+                  error_message: null
+                  id: acti_12358hIUhaklslYoYSbtozZuUTyB2zO2nhm7iVSpZpp
+                  lead_id: lead_iuSXNk1x3446ggPVwQS7ynmp8pGRIDieRYiCnuo4yFb
+                  local_country_iso: US
+                  local_phone: '+16503334444'
+                  local_phone_formatted: +1 650-333-4444
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  remote_country_iso: US
+                  remote_phone: '+18183004000'
+                  remote_phone_formatted: +1 818-300-4000
+                  source: Close.io
+                  status: inbox
+                  template_id: null
+                  text: SMS in Close? HUZZAH!!!
+                  updated_by: null
+                  updated_by_name: null
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  user_name: Tobias Fuenke
+                  users: []
+                has_more: false
+              schema:
+                type: object
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/SMSActivity'
+                    type: array
+                  has_more:
+                    type: boolean
+                required:
+                - data
+                - has_more
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: activities.sms_create
+      tags:
+      - activities.sms
+      summary: Create an SMS activity
+      description: "*status* must be one of the following:\n\n - `inbox` to log an already received SMS.\n - `draft` to create a draft SMS.\n - `scheduled` to send an SMS at a scheduled date and time, which must be specified in the `date_scheduled` field.\n - `outbox` to actually **send** an SMS. To delay SMS sending by a few seconds (to allow undo), specify `send_in` in seconds (must be less than 60).\n - `sent` to log an already sent SMS.\n\nOnly drafts can be modified, and their status can be changed to `scheduled` (to send later) or `outbox` (to send immediately). Scheduled SMS, or SMS in outbox that weren't sent yet can be canceled by setting the status back to `draft`.\n\nYou have to provide a `local_phone` that will be used to send the SMS. The number you choose has to be associated with a Phone Number of type `internal`. See the [Phone Numbers](https://developer.close.com/api/resources/phone-numbers) paragraph for more details.\n\nA `template_id` referencing an SMS Template may be provided instead of `text` to automatically render that template and use the content as `text`.\n\nWhen `direction` is not provided, but `status=\"inbox\"`, `direction` will default to \"inbound\". Otherwise, `direction` defaults to \"outbound\".\n\nWhen creating a new SMS with the status set to `inbox`, you can pass the query parameter `send_to_inbox` with the value of `true`  to create a corresponding Inbox Notification for the SMS."
+      parameters:
+      - in: query
+        name: send_to_inbox
+        required: false
+        schema:
+          type: boolean
+      requestBody:
+        content:
+          application/json:
+            example:
+              contact_id: cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk
+              direction: inbound
+              lead_id: lead_iuSXNk1x3446ggPVwQS7ynmp8pGRIDieRYiCnuo4yFb
+              local_phone: '+14154445555'
+              remote_phone: '+18183334444'
+              source: External
+              status: inbox
+              text: Hi! This is a reminder that we have a call scheduled for 12pm PT today.
+            schema:
+              $ref: '#/components/schemas/CreateSMSActivity'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                _type: SMS
+                activity_at: '2016-10-03T16:06:11.167000+00:00'
+                contact_id: cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk
+                cost: '1'
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                created_by_name: Tobias Fuenke
+                date_created: '2016-10-03T16:06:11.167000+00:00'
+                date_scheduled: null
+                date_sent: null
+                date_updated: '2016-10-03T16:06:11.167000+00:00'
+                direction: outbound
+                error_message: null
+                id: acti_12358hIUhaklslYoYSbtozZuUTyB2zO2nhm7iVSpZpp
+                lead_id: lead_iuSXNk1x3446ggPVwQS7ynmp8pGRIDieRYiCnuo4yFb
+                local_country_iso: US
+                local_phone: '+14154445555'
+                local_phone_formatted: +1 415-444-5555
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                remote_country_iso: US
+                remote_phone: '+18183334444'
+                remote_phone_formatted: +1 818-333-4444
+                source: Close.io
+                status: outbox
+                template_id: null
+                text: Hi! This is a reminder that we have a call scheduled for 12pm PT today.
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                updated_by_name: Tobias Fuenke
+                user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                user_name: Tobias Fuenke
+                users: []
+              schema:
+                $ref: '#/components/schemas/SMSActivity'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /activity/sms/{id}/:
+    get:
+      operationId: activities.sms_get
+      tags:
+      - activities.sms
+      summary: Get a single SMS activity
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                _type: SMS
+                activity_at: '2016-10-03T16:06:11.167000+00:00'
+                attachments:
+                - content_type: image/png
+                  filename: media_1.png
+                  media_id: media_1GnAWzBfs0SOjTDcUnyyP9
+                  size: 15148
+                  thumbnail_url: https://app.close.com/go/sms/acti_12358hIUhaklslYoYSbtozZuUTyB2zO2nhm7iVSpZpp/media/media_7Ga8l93XLVvqNsgjPbBuUI/thumbnail/
+                  url: https://app.close.com/go/sms/acti_12358hIUhaklslYoYSbtozZuUTyB2zO2nhm7iVSpZpp/media/media_7Ga8l93XLVvqNsgjPbBuUI/
+                contact_id: cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk
+                cost: '1'
+                created_by: null
+                created_by_name: null
+                date_created: '2016-10-03T16:06:11.167000+00:00'
+                date_scheduled: null
+                date_sent: null
+                date_updated: '2016-10-03T16:06:11.167000+00:00'
+                direction: inbound
+                error_message: null
+                id: acti_12358hIUhaklslYoYSbtozZuUTyB2zO2nhm7iVSpZpp
+                lead_id: lead_iuSXNk1x3446ggPVwQS7ynmp8pGRIDieRYiCnuo4yFb
+                local_country_iso: US
+                local_phone: '+16503334444'
+                local_phone_formatted: +1 650-333-4444
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                remote_country_iso: US
+                remote_phone: '+18183004000'
+                remote_phone_formatted: +1 818-300-4000
+                source: Close.io
+                status: inbox
+                template_id: null
+                text: SMS in Close? HUZZAH!!!
+                updated_by: null
+                updated_by_name: null
+                user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                user_name: Tobias Fuenke
+                users: []
+              schema:
+                $ref: '#/components/schemas/SMSActivity'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: activities.sms_update
+      tags:
+      - activities.sms
+      summary: Update an SMS activity
+      description: 'This can be used to modify a draft or send it once the draft is complete.
+
+
+        To send an SMS immediately, you can update its `status` to `outbox`. To send it at a later time, change the `status` to `scheduled` and provide the desired date & time in the `date_scheduled` field.'
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              text: Updated text message!
+            schema:
+              $ref: '#/components/schemas/UpdateSMSActivity'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                _type: SMS
+                activity_at: '2016-10-03T16:06:11.167000+00:00'
+                contact_id: cont_q4xYmlGhA3060dEl0NDJuHRxPMuVjqLn30AFSzh1fRk
+                cost: '1'
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                created_by_name: Tobias Fuenke
+                date_created: '2016-10-03T16:06:11.167000+00:00'
+                date_scheduled: null
+                date_sent: null
+                date_updated: '2016-10-03T18:00:00.167000+00:00'
+                direction: outbound
+                error_message: null
+                id: acti_12358hIUhaklslYoYSbtozZuUTyB2zO2nhm7iVSpZpp
+                lead_id: lead_iuSXNk1x3446ggPVwQS7ynmp8pGRIDieRYiCnuo4yFb
+                local_country_iso: US
+                local_phone: '+14154445555'
+                local_phone_formatted: +1 415-444-5555
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                remote_country_iso: US
+                remote_phone: '+18183334444'
+                remote_phone_formatted: +1 818-333-4444
+                source: Close.io
+                status: draft
+                template_id: null
+                text: Updated text message!
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                updated_by_name: Tobias Fuenke
+                user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                user_name: Tobias Fuenke
+                users: []
+              schema:
+                $ref: '#/components/schemas/SMSActivity'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: activities.sms_delete
+      tags:
+      - activities.sms
+      summary: Delete an SMS activity
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  parameters:
+    ActivityFilters_DateCreatedGteParam:
+      in: query
+      name: date_created__gte
+      required: false
+      schema:
+        title: Date Created (>=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_ActivityAtLteParam:
+      in: query
+      name: activity_at__lte
+      required: false
+      schema:
+        title: Activity At (<=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_TypeParam:
+      description: Filter by activity type, e.g. Call (comma-separated)
+      in: query
+      name: _type
+      required: false
+      schema:
+        title: Type
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    ActivityFilters_OrganizationIdParam:
+      in: query
+      name: organization_id
+      required: false
+      schema:
+        title: Organization ID
+        default: null
+        anyOf:
+        - type: string
+        - type: 'null'
+    ActivityFilters_LeadIdParam:
+      description: Filter by lead IDs (comma-separated)
+      in: query
+      name: lead_id
+      required: false
+      schema:
+        title: Lead ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    ActivityFilters_ActivityAtLtParam:
+      in: query
+      name: activity_at__lt
+      required: false
+      schema:
+        title: Activity At (<)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_ActivityAtGteParam:
+      in: query
+      name: activity_at__gte
+      required: false
+      schema:
+        title: Activity At (>=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_UserIdParam:
+      description: Filter by user IDs (comma-separated)
+      in: query
+      name: user_id
+      required: false
+      schema:
+        title: User ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    ActivityFilters_ContactIdParam:
+      description: Filter by contact IDs (comma-separated)
+      in: query
+      name: contact_id
+      required: false
+      schema:
+        title: Contact ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
+    ActivityFilters_IdInParam:
+      description: Filter by activity IDs (comma-separated)
+      in: query
+      name: id__in
+      required: false
+      schema:
+        title: ID In
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
+    ActivityFilters_DateCreatedLtParam:
+      in: query
+      name: date_created__lt
+      required: false
+      schema:
+        title: Date Created (<)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_ActivityAtGtParam:
+      in: query
+      name: activity_at__gt
+      required: false
+      schema:
+        title: Activity At (>)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_DateCreatedGtParam:
+      in: query
+      name: date_created__gt
+      required: false
+      schema:
+        title: Date Created (>)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_DateCreatedLteParam:
+      in: query
+      name: date_created__lte
+      required: false
+      schema:
+        title: Date Created (<=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+  schemas:
+    SMSActivity:
+      title: SMSActivity
+      type: object
+      properties:
+        _type:
+          title: Type
+          type: string
+        activity_at:
+          title: Activity At
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        agent_action_reason:
+          title: Agent Action Reason
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        agent_config_id:
+          title: Agent Config ID
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        contact_id:
+          title: Contact ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        cost:
+          title: Cost
+          anyOf:
+          - type: string
+          - type: 'null'
+        created_by:
+          title: Created By
+          anyOf:
+          - type: string
+          - type: 'null'
+        created_by_name:
+          title: Created By Name
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        date_created:
+          title: Date Created
+          type: string
+          format: date-time
+        date_scheduled:
+          title: Date Scheduled
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        date_sent:
+          title: Date Sent
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        date_updated:
+          title: Date Updated
+          type: string
+          format: date-time
+        direction:
+          $ref: '#/components/schemas/PhoneActivityDirection'
+        error_message:
+          title: Error Message
+          anyOf:
+          - type: string
+          - type: 'null'
+        id:
+          title: ID
+          type: string
+        lead_id:
+          title: Lead ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        local_country_iso:
+          title: Local Country Iso
+          anyOf:
+          - type: string
+          - type: 'null'
+        local_phone:
+          title: Local Phone
+          anyOf:
+          - type: string
+          - type: 'null'
+        local_phone_formatted:
+          title: Local Phone Formatted
+          anyOf:
+          - type: string
+          - type: 'null'
+        organization_id:
+          title: Organization ID
+          type: string
+        remote_country_iso:
+          title: Remote Country Iso
+          anyOf:
+          - type: string
+          - type: 'null'
+        remote_phone:
+          title: Remote Phone
+          anyOf:
+          - type: string
+          - type: 'null'
+        remote_phone_formatted:
+          title: Remote Phone Formatted
+          anyOf:
+          - type: string
+          - type: 'null'
+        sequence_id:
+          title: Sequence ID
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        sequence_name:
+          title: Sequence Name
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        sequence_subscription_id:
+          title: Sequence Subscription ID
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        source:
+          $ref: '#/components/schemas/PhoneActivitySource'
+        status:
+          $ref: '#/components/schemas/MessageStatus'
+        template_id:
+          title: Template ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        text:
+          title: Text
+          anyOf:
+          - type: string
+          - type: 'null'
+        updated_by:
+          title: Updated By
+          anyOf:
+          - type: string
+          - type: 'null'
+        updated_by_name:
+          title: Updated By Name
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        user_id:
+          title: User ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        user_name:
+          title: User Name
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        users:
+          title: Users
+          type: array
+          items:
+            type: string
+      required:
+      - _type
+      - activity_at
+      - contact_id
+      - cost
+      - created_by
+      - date_created
+      - date_scheduled
+      - date_sent
+      - date_updated
+      - direction
+      - error_message
+      - id
+      - lead_id
+      - local_country_iso
+      - local_phone
+      - local_phone_formatted
+      - organization_id
+      - remote_country_iso
+      - remote_phone
+      - remote_phone_formatted
+      - source
+      - status
+      - template_id
+      - text
+      - updated_by
+      - user_id
+      - users
+    CreateSMSActivity:
+      type: object
+      properties:
+        activity_at:
+          type:
+          - 'null'
+          - string
+          format: date-time
+        attachments:
+          type:
+          - array
+          - 'null'
+          maxItems: 10
+          items:
+            type: object
+            properties:
+              content_type:
+                type: string
+                enum:
+                - application/pdf
+                - application/vcard
+                - audio/3gpp
+                - audio/3gpp2
+                - audio/L24
+                - audio/ac3
+                - audio/amr
+                - audio/amr-nb
+                - audio/basic
+                - audio/mp4
+                - audio/mpeg
+                - audio/ogg
+                - audio/vnd.rn-realaudio
+                - audio/vnd.wave
+                - audio/webm
+                - image/bmp
+                - image/gif
+                - image/jpeg
+                - image/jpg
+                - image/png
+                - image/tiff
+                - text/calendar
+                - text/csv
+                - text/directory
+                - text/richtext
+                - text/rtf
+                - text/vcard
+                - text/x-vcard
+                - video/3gpp
+                - video/3gpp-tt
+                - video/3gpp2
+                - video/H261
+                - video/H263
+                - video/H263-1998
+                - video/H263-2000
+                - video/H264
+                - video/mp4
+                - video/mpeg
+                - video/quicktime
+                - video/webm
+              filename:
+                type: string
+              url:
+                type: string
+            required:
+            - content_type
+            - filename
+            - url
+        contact_id:
+          type:
+          - 'null'
+          - string
+        created_by:
+          type:
+          - 'null'
+          - string
+        date_created:
+          type:
+          - 'null'
+          - string
+          format: date-time
+        direction:
+          type:
+          - 'null'
+          - string
+          enum:
+          - inbound
+          - outbound
+          - null
+        lead_id:
+          type:
+          - 'null'
+          - string
+        local_phone:
+          description: Phone number in E.164 format
+          type:
+          - 'null'
+          - string
+        organization_id:
+          type:
+          - 'null'
+          - string
+        remote_phone:
+          description: Phone number in E.164 format
+          type:
+          - 'null'
+          - string
+        source:
+          type:
+          - 'null'
+          - string
+          enum:
+          - Close.io
+          - External
+          - null
+        status:
+          type: string
+          enum:
+          - inbox
+          - draft
+          - scheduled
+          - outbox
+          - sent
+          - error
+        template_id:
+          type:
+          - 'null'
+          - string
+        text:
+          type:
+          - 'null'
+          - string
+        user_id:
+          type:
+          - 'null'
+          - string
+      required:
+      - status
+      additionalProperties: false
+    UpdateSMSActivity:
+      type: object
+      properties:
+        activity_at:
+          type:
+          - 'null'
+          - string
+          format: date-time
+        attachments:
+          type:
+          - array
+          - 'null'
+          maxItems: 10
+          items:
+            type: object
+            properties:
+              content_type:
+                type: string
+                enum:
+                - application/pdf
+                - application/vcard
+                - audio/3gpp
+                - audio/3gpp2
+                - audio/L24
+                - audio/ac3
+                - audio/amr
+                - audio/amr-nb
+                - audio/basic
+                - audio/mp4
+                - audio/mpeg
+                - audio/ogg
+                - audio/vnd.rn-realaudio
+                - audio/vnd.wave
+                - audio/webm
+                - image/bmp
+                - image/gif
+                - image/jpeg
+                - image/jpg
+                - image/png
+                - image/tiff
+                - text/calendar
+                - text/csv
+                - text/directory
+                - text/richtext
+                - text/rtf
+                - text/vcard
+                - text/x-vcard
+                - video/3gpp
+                - video/3gpp-tt
+                - video/3gpp2
+                - video/H261
+                - video/H263
+                - video/H263-1998
+                - video/H263-2000
+                - video/H264
+                - video/mp4
+                - video/mpeg
+                - video/quicktime
+                - video/webm
+              filename:
+                type: string
+              url:
+                type: string
+            required:
+            - content_type
+            - filename
+            - url
+        contact_id:
+          type:
+          - 'null'
+          - string
+        lead_id:
+          type:
+          - 'null'
+          - string
+        local_phone:
+          description: Phone number in E.164 format
+          type:
+          - 'null'
+          - string
+        remote_phone:
+          description: Phone number in E.164 format
+          type:
+          - 'null'
+          - string
+        status:
+          type: string
+          enum:
+          - inbox
+          - draft
+          - scheduled
+          - outbox
+          - sent
+          - error
+        template_id:
+          type:
+          - 'null'
+          - string
+        text:
+          type:
+          - 'null'
+          - string
+        user_id:
+          type:
+          - 'null'
+          - string
+      additionalProperties: false
+    MessageStatus:
+      title: MessageStatus
+      description: Status of a message, such as Email or SMS.
+      type: string
+      enum:
+      - inbox
+      - draft
+      - scheduled
+      - outbox
+      - sent
+      - error
+    PhoneActivitySource:
+      title: PhoneActivitySource
+      description: Source of a phone activity. Describes whether the phone activity (such as a call or an SMS) was handled by Close's telephony provider or handled externally by a 3rd party and is merely logged in Close.
+      type: string
+      enum:
+      - Close.io
+      - External
+    PhoneActivityDirection:
+      title: PhoneActivityDirection
+      description: Direction of a phone activity, such as a call or an SMS message.
+      type: string
+      enum:
+      - inbound
+      - outbound
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

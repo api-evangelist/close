@@ -1,0 +1,1500 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Leads API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: leads
+  externalDocs:
+    url: https://developer.close.com/api/resources/leads
+paths:
+  /lead/:
+    get:
+      operationId: leads_list
+      tags:
+      - leads
+      summary: List Leads
+      parameters:
+      - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/SkipParam'
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - addresses: []
+                  contact_ids:
+                  - cont_o0kP3Nqyq0wxr5DLWIEm8mVr6ZpI0AhonKLDG0V5Qjh
+                  contacts:
+                  - created_by: null
+                    custom.cf_j0P7kHmgFTZZnYBFtyPSZ3uQw4dpW8xKcW7Krps8atj: CEO
+                    date_created: '2013-02-01T00:54:51.331000+00:00'
+                    date_updated: '2013-02-06T20:53:01.954000+00:00'
+                    display_name: Bruce Wayne
+                    emails:
+                    - email: thedarkknight@close.com
+                      is_unsubscribed: false
+                      type: office
+                    id: cont_o0kP3Nqyq0wxr5DLWIEm8mVr6ZpI0AhonKLDG0V5Qjh
+                    name: Bruce Wayne
+                    organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                    phones:
+                    - phone: '+16503334444'
+                      phone_formatted: +1 650-333-4444
+                      type: office
+                    title: The Dark Knight
+                    updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  created_by: null
+                  custom.cf_ORxgoOQ5YH1p7lDQzFJ88b4z0j7PLLTRaG66m8bmcKv: Website contact form
+                  custom.cf_nenE344jkwrjyRRezwsf8b4V1MCoXWIDHIStmFavZks:
+                  - Choice 1
+                  - Choice 2
+                  date_created: '2013-02-01T00:54:51.333000+00:00'
+                  date_updated: '2013-02-06T20:53:01.977000+00:00'
+                  description: ''
+                  display_name: Wayne Enterprises (Sample Lead)
+                  html_url: https://app.close.com/lead/lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O/
+                  id: lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O
+                  name: Wayne Enterprises (Sample Lead)
+                  opportunities:
+                  - annualized_expected_value: 37500
+                    annualized_value: 50000
+                    confidence: 75
+                    contact_id: null
+                    created_by: null
+                    date_created: '2013-02-01T00:54:51.337000+00:00'
+                    date_lost: null
+                    date_updated: '2013-02-01T00:54:51.337000+00:00'
+                    date_won: null
+                    expected_value: 37500
+                    id: oppo_8eB77gAdf8FMy6GsNHEy84f7uoeEWv55slvUjKQZpJt
+                    lead_id: lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O
+                    lead_name: Wayne Enterprises (Sample Lead)
+                    note: Bruce needs new software for the Bat Cave.
+                    note_html: <body><p>Bruce needs new software for the Bat Cave.</p></body>
+                    organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                    pipeline_id: pipe_04fC628PVB0HjK2Qq5EqEf
+                    pipeline_name: Sales
+                    status_id: stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                    status_label: Active
+                    status_type: active
+                    updated_by: null
+                    user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                    user_name: John Doe
+                    value: 50000
+                    value_currency: USD
+                    value_formatted: $500
+                    value_period: one_time
+                  - annualized_expected_value: 45000
+                    annualized_value: 60000
+                    confidence: 75
+                    contact_id: null
+                    created_by: null
+                    date_created: '2013-02-01T00:54:51.337000+00:00'
+                    date_lost: null
+                    date_updated: '2013-02-01T00:54:51.337000+00:00'
+                    date_won: null
+                    expected_value: 3750
+                    id: oppo_klajsdflf8FMy6GsNHEy84f7uoeEWv55slvUjKQZpJt
+                    lead_id: lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O
+                    lead_name: Wayne Enterprises (Sample Lead)
+                    note: Bat Cave monthly maintenance cost
+                    note_html: <body><p>Bat Cave monthly maintenance cost</p></body>
+                    organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                    pipeline_id: pipe_04fC628PVB0HjK2Qq5EqEf
+                    pipeline_name: Sales
+                    status_id: stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                    status_label: Active
+                    status_type: active
+                    updated_by: null
+                    user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                    user_name: John Doe
+                    value: 5000
+                    value_currency: USD
+                    value_formatted: $50 monthly
+                    value_period: monthly
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  status_id: stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                  status_label: Potential
+                  tasks: []
+                  updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  url: null
+                has_more: false
+                total_results: 1
+              schema:
+                type: object
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/Lead'
+                    type: array
+                  has_more:
+                    type: boolean
+                required:
+                - data
+                - has_more
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: leads_create
+      tags:
+      - leads
+      summary: Create a new lead
+      description: 'Contacts, addresses, and custom fields can all be nested in the lead. Activities, tasks, and opportunities must be posted separately.
+
+
+        **status / status_id** (optional): Post either `status` or `status_id` (but not both). If neither is provided, the organization''s default (first) status will be used. Using `status_id` is recommended so that users can rename statuses in the UI without breaking your implementation.
+
+
+        **custom.FIELD_ID** (optional): Set custom fields by setting `custom.FIELD_ID` to the field value, where FIELD_ID is the ID of the custom field, e.g.:
+
+
+        ```json
+
+        { "custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c": "value", "custom.cf_8wtBWsdRU2Fur7GDnEeXQ7ra2Vu7R4hG1SNYdiEhh0F": "other value" }
+
+        ```
+
+
+        If a custom field has `accepts_multiple_values: true`, the entire value will be replaced. For example, given a Lead has a Custom Choice Field with value `["A", "B"]`, adding choice `"C"` would mean setting the value to `["A", "B", "C"]`.
+
+
+        Note that using the `custom` field dict or the `custom.FIELD_NAME` syntax (instead of custom field IDs) is deprecated and will be removed from the API. See [Custom Fields](https://developer.close.com/api/resources/custom-fields) for more details.'
+      requestBody:
+        content:
+          application/json:
+            example:
+              addresses:
+              - address_1: 747 Howard St
+                address_2: Room 3
+                city: San Francisco
+                country: US
+                label: business
+                state: CA
+                zipcode: '94103'
+              contacts:
+              - emails:
+                - email: gob@example.com
+                  type: office
+                name: Gob
+                phones:
+                - phone: '8004445555'
+                  type: office
+                title: Sr. Vice President
+              custom.cf_FSYEbxYJFsnY9tN1OTAPIF33j7Sw5Lb7Eawll7JzoNh: Segway
+              custom.cf_ORxgoOQ5YH1p7lDQzFJ88b4z0j7PLLTRaG66m8bmcKv: Website contact form
+              custom.cf_bA7SU4vqaefQLuK5UjZMVpbfHK4SVujTJ9unKCIlTvI: Real Estate
+              custom.cf_nenE344jkwrjyRRezwsf8b4V1MCoXWIDHIStmFavZks:
+              - Choice 1
+              - Choice 2
+              description: Best. Show. Ever.
+              name: Bluth Company
+              status_id: stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+              url: http://thebluthcompany.tumblr.com/
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                addresses:
+                - address_1: 747 Howard St
+                  address_2: Room 3
+                  city: San Francisco
+                  country: US
+                  label: business
+                  state: CA
+                  zipcode: '94103'
+                contact_ids:
+                - cont_qpjDKxbN3WWsuhaJjg2Qr9pkqHqe1yviZ5BS0dEyz05
+                contacts:
+                - created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  date_created: '2013-02-20T05:30:24.844000+00:00'
+                  date_updated: '2013-02-20T05:30:24.844000+00:00'
+                  display_name: Gob
+                  emails:
+                  - email: gob@example.com
+                    is_unsubscribed: false
+                    type: office
+                  id: cont_qpjDKxbN3WWsuhaJjg2Qr9pkqHqe1yviZ5BS0dEyz05
+                  name: Gob
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  phones:
+                  - phone: '+18004445555'
+                    phone_formatted: +1 800-444-5555
+                    type: office
+                  title: sr. vice president
+                  updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                custom.cf_FSYEbxYJFsnY9tN1OTAPIF33j7Sw5Lb7Eawll7JzoNh: Segway
+                custom.cf_ORxgoOQ5YH1p7lDQzFJ88b4z0j7PLLTRaG66m8bmcKv: Website contact form
+                custom.cf_bA7SU4vqaefQLuK5UjZMVpbfHK4SVujTJ9unKCIlTvI: Real Estate
+                custom.cf_nenE344jkwrjyRRezwsf8b4V1MCoXWIDHIStmFavZks:
+                - Choice 1
+                - Choice 2
+                date_created: '2013-02-20T05:30:24.854000+00:00'
+                date_updated: '2013-02-20T05:30:24.854000+00:00'
+                description: Best. Show. Ever.
+                display_name: Bluth Company
+                html_url: https://app.close.com/lead/lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty/
+                id: lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty
+                name: Bluth Company
+                opportunities: []
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                status_id: stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                status_label: Potential
+                tasks: []
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                url: http://thebluthcompany.tumblr.com/
+              schema:
+                $ref: '#/components/schemas/Lead'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /lead/merge/:
+    post:
+      operationId: leads_merge
+      tags:
+      - leads
+      summary: Merge two leads
+      description: For details and definitions of 'source' and 'destination', see the Merge Leads feature in the UI.
+      requestBody:
+        content:
+          application/json:
+            example:
+              destination: lead_6ivpsIOFYDEwCUz8sdftdoWqlKpLSNOAg9glZSLvZEG
+              source: lead_JCTqyXSXD42eGO6PlWOe5ase8VRDCpE7ITYti8Th2Ei
+        required: true
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /lead/{id}/:
+    get:
+      operationId: leads_get
+      tags:
+      - leads
+      summary: Get a single Lead
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                addresses: []
+                contact_ids:
+                - cont_o0kP3Nqyq0wxr5DLWIEm8mVr6ZpI0AhonKLDG0V5Qjh
+                contacts:
+                - created_by: null
+                  custom.cf_j0P7kHmgFTZZnYBFtyPSZ3uQw4dpW8xKcW7Krps8atj: CEO
+                  date_created: '2013-02-01T00:54:51.331000+00:00'
+                  date_updated: '2013-02-06T20:53:01.954000+00:00'
+                  display_name: Bruce Wayne
+                  emails:
+                  - email: thedarkknight@close.com
+                    is_unsubscribed: false
+                    type: office
+                  id: cont_o0kP3Nqyq0wxr5DLWIEm8mVr6ZpI0AhonKLDG0V5Qjh
+                  name: Bruce Wayne
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  phones:
+                  - phone: '+16503334444'
+                    phone_formatted: +1 650-333-4444
+                    type: office
+                  title: The Dark Knight
+                  updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                created_by: null
+                custom.cf_ORxgoOQ5YH1p7lDQzFJ88b4z0j7PLLTRaG66m8bmcKv: Website contact form
+                custom.cf_nenE344jkwrjyRRezwsf8b4V1MCoXWIDHIStmFavZks:
+                - Choice 1
+                - Choice 2
+                date_created: '2013-02-01T00:54:51.333000+00:00'
+                date_updated: '2013-02-06T20:53:01.977000+00:00'
+                description: ''
+                display_name: Wayne Enterprises (Sample Lead)
+                html_url: https://app.close.com/lead/lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O/
+                id: lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O
+                name: Wayne Enterprises (Sample Lead)
+                opportunities:
+                - annualized_expected_value: 37500
+                  annualized_value: 50000
+                  confidence: 75
+                  contact_id: null
+                  created_by: null
+                  date_created: '2013-02-01T00:54:51.337000+00:00'
+                  date_lost: null
+                  date_updated: '2013-02-01T00:54:51.337000+00:00'
+                  date_won: null
+                  expected_value: 37500
+                  id: oppo_8eB77gAdf8FMy6GsNHEy84f7uoeEWv55slvUjKQZpJt
+                  lead_id: lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O
+                  lead_name: Wayne Enterprises (Sample Lead)
+                  note: Bruce needs new software for the Bat Cave.
+                  note_html: <body><p>Bruce needs new software for the Bat Cave.</p></body>
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  pipeline_id: pipe_04fC628PVB0HjK2Qq5EqEf
+                  pipeline_name: Sales
+                  status_id: stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                  status_label: Active
+                  status_type: active
+                  updated_by: null
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  user_name: John Doe
+                  value: 50000
+                  value_currency: USD
+                  value_formatted: $500
+                  value_period: one_time
+                - annualized_expected_value: 45000
+                  annualized_value: 60000
+                  confidence: 75
+                  contact_id: null
+                  created_by: null
+                  date_created: '2013-02-01T00:54:51.337000+00:00'
+                  date_lost: null
+                  date_updated: '2013-02-01T00:54:51.337000+00:00'
+                  date_won: null
+                  expected_value: 3750
+                  id: oppo_klajsdflf8FMy6GsNHEy84f7uoeEWv55slvUjKQZpJt
+                  lead_id: lead_IIDHIStmFcFQZZP0BRe99V1MCoXWz2PGCm6EDmR9v2O
+                  lead_name: Wayne Enterprises (Sample Lead)
+                  note: Bat Cave monthly maintenance cost
+                  note_html: <body><p>Bat Cave monthly maintenance cost</p></body>
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  pipeline_id: pipe_04fC628PVB0HjK2Qq5EqEf
+                  pipeline_name: Sales
+                  status_id: stat_4ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                  status_label: Active
+                  status_type: active
+                  updated_by: null
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  user_name: John Doe
+                  value: 5000
+                  value_currency: USD
+                  value_formatted: $50 monthly
+                  value_period: monthly
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                status_id: stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                status_label: Potential
+                tasks: []
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                url: null
+              schema:
+                $ref: '#/components/schemas/Lead'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: leads_update
+      tags:
+      - leads
+      summary: Update an existing lead
+      description: 'Supports non-destructive patches. Nested `contacts` cannot be updated through this endpoint -- use the Contacts API instead.
+
+
+        **status**: See `status` and `status_id` guidance on the create endpoint.
+
+
+        **custom.FIELD_ID** (optional): See `custom.FIELD_ID` guidance on the create endpoint. You can also unset a single field, e.g.:
+
+
+        ```json
+
+        { "custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c": null }
+
+        ```
+
+
+        If the custom field accepts multiple values, you can specify `.add` or `.remove` as part of the field key to add/remove a single value to/from a list of values, e.g.:
+
+
+        ```json
+
+        { "custom.cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c.add": "Wednesday" }
+
+        ```
+
+
+        adds "Wednesday" to the list of values which already exist on the given lead.'
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              description: Best show ever canceled.  Sad.
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                addresses: []
+                contact_ids:
+                - cont_qpjDKxbN3WWsuhaJjg2Qr9pkqHqe1yviZ5BS0dEyz05
+                contacts:
+                - created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  date_created: '2013-02-20T05:30:24.844000+00:00'
+                  date_updated: '2013-02-20T05:43:41.611000+00:00'
+                  display_name: Gob
+                  emails:
+                  - email: gob@example.com
+                    is_unsubscribed: false
+                    type: office
+                  id: cont_qpjDKxbN3WWsuhaJjg2Qr9pkqHqe1yviZ5BS0dEyz05
+                  name: Gob
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  phones:
+                  - phone: '+18004445555'
+                    phone_formatted: +1 800-444-5555
+                    type: office
+                  title: sr. vice president
+                  updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                date_created: '2013-02-20T05:30:24.854000+00:00'
+                date_updated: '2013-02-20T05:43:41.622000+00:00'
+                description: Best show ever canceled.  Sad.
+                display_name: Bluth Company
+                html_url: https://app.close.com/lead/lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty/
+                id: lead_70jZ5hiVt5X31MZ3vJ0R0GJMqJEihkoF7TtSVFbN2ty
+                name: Bluth Company
+                opportunities: []
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                status_id: stat_1ZdiZqcSIkoGVnNOyxiEY58eTGQmFNG3LPlEVQ4V7Nk
+                status_label: Potential
+                tasks: []
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                url: http://thebluthcompany.tumblr.com/
+              schema:
+                $ref: '#/components/schemas/Lead'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: leads_delete
+      tags:
+      - leads
+      summary: Delete a lead
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  schemas:
+    StalledOpportunityActionTypeV1:
+      title: StalledOpportunityActionTypeV1
+      type: string
+      enum:
+      - mark_as_lost
+      - change_status
+      - follow_up
+      - adjust_close_date
+      - ask_someone_else_to_reach_out
+      - change_communication_method
+    BasicSubscriptionInfoForContact:
+      title: BasicSubscriptionInfoForContact
+      type: object
+      properties:
+        contact_email:
+          title: Contact Email
+          anyOf:
+          - type: string
+          - type: 'null'
+        date_created:
+          title: Date Created
+          type: string
+          format: date-time
+        initial_email_id:
+          title: Initial Email ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        sequence_id:
+          title: Sequence ID
+          type: string
+        sequence_name:
+          title: Sequence Name
+          type: string
+        sequence_status:
+          $ref: '#/components/schemas/WorkflowStatus'
+        start_date:
+          title: Start Date
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        subscription_id:
+          title: Subscription ID
+          type: string
+        subscription_status:
+          $ref: '#/components/schemas/WorkflowRunStatus'
+        subscription_status_reason:
+          anyOf:
+          - $ref: '#/components/schemas/StatusReason'
+          - type: 'null'
+      required:
+      - contact_email
+      - date_created
+      - initial_email_id
+      - sequence_id
+      - sequence_name
+      - sequence_status
+      - start_date
+      - subscription_id
+      - subscription_status
+      - subscription_status_reason
+    Opportunity:
+      title: Opportunity
+      type: object
+      properties:
+        annualized_expected_value:
+          title: Annualized Expected Value
+          anyOf:
+          - type: integer
+          - type: 'null'
+        annualized_value:
+          title: Annualized Value
+          anyOf:
+          - type: integer
+          - type: 'null'
+        attachments:
+          title: Attachments
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        comment_summary:
+          title: Comment Summary
+          anyOf:
+          - $ref: '#/components/schemas/CommentSummary'
+          - type: 'null'
+        confidence:
+          title: Confidence
+          type: integer
+        contact_id:
+          title: Contact ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        contact_name:
+          title: Contact Name
+          anyOf:
+          - type: string
+          - type: 'null'
+        created_by:
+          title: Created By
+          anyOf:
+          - type: string
+          - type: 'null'
+        created_by_name:
+          title: Created By Name
+          anyOf:
+          - type: string
+          - type: 'null'
+        date_created:
+          title: Date Created
+          type: string
+          format: date-time
+        date_lost:
+          title: Date Lost
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        date_updated:
+          title: Date Updated
+          type: string
+          format: date-time
+        date_won:
+          title: Date Won
+          anyOf:
+          - type: string
+            format: date
+          - type: 'null'
+        expected_value:
+          title: Expected Value
+          anyOf:
+          - type: integer
+          - type: 'null'
+        id:
+          title: ID
+          type: string
+        integration_links:
+          title: Integration Links
+          type: array
+          items:
+            $ref: '#/components/schemas/RenderedIntegrationLink'
+        is_stalled:
+          title: Is Stalled
+          type: boolean
+        lead_id:
+          title: Lead ID
+          type: string
+        lead_name:
+          title: Lead Name
+          anyOf:
+          - type: string
+          - type: 'null'
+        lead_primary_email:
+          title: Lead Primary Email
+          anyOf:
+          - $ref: '#/components/schemas/ContactEmail'
+          - type: 'null'
+        lead_primary_phone:
+          title: Lead Primary Phone
+          anyOf:
+          - type: array
+            items:
+              $ref: '#/components/schemas/ContactPhone'
+          - type: 'null'
+        note:
+          title: Note
+          anyOf:
+          - type: string
+          - type: 'null'
+        note_html:
+          title: Note Html
+          anyOf:
+          - type: string
+          - type: 'null'
+        organization_id:
+          title: Organization ID
+          type: string
+        pipeline_id:
+          title: Pipeline ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        pipeline_name:
+          title: Pipeline Name
+          anyOf:
+          - type: string
+          - type: 'null'
+        stall_status:
+          title: Stall Status
+          anyOf:
+          - $ref: '#/components/schemas/StalledOpportunityActionItems'
+          - type: 'null'
+        status_display_name:
+          title: Status Display Name
+          type: string
+        status_id:
+          title: Status ID
+          type: string
+        status_label:
+          title: Status Label
+          type: string
+        status_type:
+          title: Status Type
+          $ref: '#/components/schemas/OpportunityStatusType'
+        suggested_action:
+          title: Suggested Action
+          anyOf:
+          - $ref: '#/components/schemas/OpportunitySuggestedAction'
+          - type: 'null'
+        updated_by:
+          title: Updated By
+          anyOf:
+          - type: string
+          - type: 'null'
+        updated_by_name:
+          title: Updated By Name
+          anyOf:
+          - type: string
+          - type: 'null'
+        user_id:
+          title: User ID
+          type: string
+        user_name:
+          title: User Name
+          anyOf:
+          - type: string
+          - type: 'null'
+        value:
+          title: Value
+          anyOf:
+          - type: integer
+          - type: 'null'
+        value_currency:
+          title: Value Currency
+          anyOf:
+          - type: string
+          - type: 'null'
+        value_formatted:
+          title: Value Formatted
+          anyOf:
+          - type: string
+          - type: 'null'
+        value_period:
+          $ref: '#/components/schemas/OpportunityValuePeriod'
+      required:
+      - annualized_expected_value
+      - annualized_value
+      - confidence
+      - contact_id
+      - created_by
+      - date_created
+      - date_lost
+      - date_updated
+      - date_won
+      - expected_value
+      - id
+      - lead_id
+      - note
+      - note_html
+      - organization_id
+      - status_id
+      - updated_by
+      - user_id
+      - value
+      - value_period
+    OpportunityStatusType:
+      title: OpportunityStatusType
+      type: string
+      enum:
+      - won
+      - lost
+      - active
+    Lead:
+      title: Lead
+      type: object
+      properties:
+        addresses:
+          title: Addresses
+          type: array
+          items:
+            $ref: '#/components/schemas/LeadAddress'
+        contact_ids:
+          title: Contact IDs
+          type: array
+          items:
+            type: string
+        contacts:
+          title: Contacts
+          deprecated: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+        contacts_summary:
+          title: Contacts Summary
+          type: string
+        created_by:
+          title: Created By
+          anyOf:
+          - type: string
+          - type: 'null'
+        created_by_name:
+          title: Created By Name
+          anyOf:
+          - type: string
+          - type: 'null'
+        date_created:
+          title: Date Created
+          type: string
+          format: date-time
+        date_updated:
+          title: Date Updated
+          type: string
+          format: date-time
+        description:
+          title: Description
+          anyOf:
+          - type: string
+          - type: 'null'
+        display_name:
+          title: Display Name
+          type: string
+        html_url:
+          title: HTML URL
+          type: string
+        id:
+          title: ID
+          type: string
+        integration_links:
+          title: Integration Links
+          type: array
+          items:
+            $ref: '#/components/schemas/RenderedIntegrationLink'
+        localtime:
+          title: Localtime
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        name:
+          title: Name
+          anyOf:
+          - type: string
+          - type: 'null'
+        opportunities:
+          title: Opportunities
+          deprecated: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Opportunity'
+        organization_id:
+          title: Organization ID
+          type: string
+        primary_address_full:
+          title: Primary Address Full
+          anyOf:
+          - type: string
+          - type: 'null'
+        primary_address_summary:
+          title: Primary Address Summary
+          anyOf:
+          - type: string
+          - type: 'null'
+        primary_email:
+          title: Primary Email
+          anyOf:
+          - $ref: '#/components/schemas/ContactEmail'
+          - type: 'null'
+        primary_phone:
+          title: Primary Phone
+          anyOf:
+          - $ref: '#/components/schemas/ContactPhone'
+          - type: 'null'
+        recent_calls:
+          title: Recent Calls
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        source:
+          title: Source
+          anyOf:
+          - type: string
+          - type: 'null'
+        status_id:
+          title: Status ID
+          type: string
+        status_label:
+          title: Status Label
+          type: string
+        summaries:
+          title: Summaries
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        tasks:
+          title: Tasks
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        updated_by:
+          title: Updated By
+          anyOf:
+          - type: string
+          - type: 'null'
+        updated_by_name:
+          title: Updated By Name
+          anyOf:
+          - type: string
+          - type: 'null'
+        url:
+          title: URL
+          anyOf:
+          - type: string
+          - type: 'null'
+      required:
+      - contact_ids
+      - created_by
+      - date_created
+      - date_updated
+      - description
+      - html_url
+      - id
+      - name
+      - organization_id
+      - status_id
+      - updated_by
+      - url
+    OpportunityFollowUpCallActionDetails:
+      title: OpportunityFollowUpCallActionDetails
+      type: object
+      properties:
+        call_plan:
+          title: Call Plan
+          type: string
+        contact_id:
+          title: Contact ID
+          type: string
+      required:
+      - call_plan
+      - contact_id
+    CallStatus:
+      title: CallStatus
+      description: Current status of the call.
+      type: string
+      enum:
+      - created
+      - in-progress
+      - completed
+      - cancel
+      - no-answer
+      - busy
+      - failed
+      - timeout
+    CommentSummary:
+      title: CommentSummary
+      type: object
+      properties:
+        comment_count:
+          title: Comment Count
+          type: integer
+        thread_id:
+          title: Thread ID
+          type: string
+      required:
+      - comment_count
+      - thread_id
+    StatusReason:
+      title: StatusReason
+      description: Reason for each higher level status on a Workflow run.
+      type: string
+      enum:
+      - manual
+      - pending-call-timed-out
+      - bulk-action
+      - rate-limited
+      - sequence-deleted
+      - workflow-paused
+      - filter-not-matched
+      - insufficient-ai-credit-balance
+      - reply-received
+      - call-answered
+      - meeting-booked
+      - lead-status-changed
+      - outcome-met
+      - account-invalid
+      - account-failures
+      - sending-throttled-too-long
+      - membership-inactive
+      - send-as-error
+      - email-bounced
+      - call-failed
+      - sms-failed
+      - no-user-phone
+      - billing-error
+      - assignment-field-invalid
+      - lead-status-field-invalid
+      - assignees-missing
+      - run-as-disabled
+      - lead-not-visible
+      - internal-error
+      - field-mapping-error
+      - filter-config-invalid
+      - email-ai-generation-failed
+    WorkflowStatus:
+      title: WorkflowStatus
+      type: string
+      enum:
+      - active
+      - paused
+      - draft
+    StalledOpportunityActionItems:
+      title: StalledOpportunityActionItems
+      deprecated: true
+      type: object
+      properties:
+        communication_issue:
+          description: The communication issue that is causing the stalled opportunity. If there is no issue, set to NoIssue.
+          $ref: '#/components/schemas/StalledOpportunityCommunicationIssue'
+        next_action:
+          description: An action item recommended to progress or resolve the stalled opportunity.
+          $ref: '#/components/schemas/ActionItem'
+      required:
+      - communication_issue
+      - next_action
+    LeadAddress:
+      title: LeadAddress
+      type: object
+      properties:
+        address_1:
+          title: Address 1
+          anyOf:
+          - type: string
+          - type: 'null'
+        address_2:
+          title: Address 2
+          anyOf:
+          - type: string
+          - type: 'null'
+        city:
+          title: City
+          anyOf:
+          - type: string
+          - type: 'null'
+        country:
+          title: Country
+          anyOf:
+          - type: string
+          - type: 'null'
+        label:
+          title: Label
+          anyOf:
+          - type: string
+          - type: 'null'
+        state:
+          title: State
+          anyOf:
+          - type: string
+          - type: 'null'
+        tz_ids:
+          title: TZ IDs
+          type: array
+          items:
+            type: string
+        zipcode:
+          title: Zipcode
+          anyOf:
+          - type: string
+          - type: 'null'
+      required:
+      - address_1
+      - address_2
+      - city
+      - country
+      - label
+      - state
+      - zipcode
+    ContactRecentCall:
+      title: ContactRecentCall
+      type: object
+      properties:
+        dialer_id:
+          title: Dialer ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        duration:
+          title: Duration
+          type: integer
+        finish_timestamp:
+          title: Finish Timestamp
+          type: string
+          format: date-time
+        id:
+          title: ID
+          type: string
+        status:
+          $ref: '#/components/schemas/CallStatus'
+      required:
+      - dialer_id
+      - duration
+      - finish_timestamp
+      - id
+      - status
+    ActionItem:
+      title: ActionItem
+      deprecated: true
+      type: object
+      properties:
+        action:
+          description: The recommended next step to progress or resolve the stalled opportunity
+          $ref: '#/components/schemas/StalledOpportunityActionTypeV1'
+        justification:
+          title: Justification
+          description: A short justification for the recommended action in the sales pipeline. Maximum 2 sentences.
+          type: string
+      required:
+      - action
+      - justification
+    StalledOpportunityActionTypeV2:
+      title: StalledOpportunityActionTypeV2
+      type: string
+      enum:
+      - change_status
+      - adjust_close_date
+      - follow_up_email
+      - follow_up_call
+      - follow_up_sms
+    ContactEmail:
+      title: ContactEmail
+      type: object
+      properties:
+        email:
+          title: Email
+          type: string
+        is_unsubscribed:
+          title: Is Unsubscribed
+          type: boolean
+        type:
+          title: Type
+          type: string
+      required:
+      - email
+      - is_unsubscribed
+      - type
+    OpportunityAdjustCloseDateActionDetails:
+      title: OpportunityAdjustCloseDateActionDetails
+      type: object
+      properties:
+        close_date:
+          title: Close Date
+          type: string
+          format: date
+      required:
+      - close_date
+    OpportunityFollowUpEmailActionDetails:
+      title: OpportunityFollowUpEmailActionDetails
+      type: object
+      properties:
+        contact_id:
+          title: Contact ID
+          type: string
+        message_draft:
+          title: Message Draft
+          type: string
+        subject_draft:
+          title: Subject Draft
+          type: string
+      required:
+      - contact_id
+      - message_draft
+      - subject_draft
+    RenderedIntegrationLink:
+      title: RenderedIntegrationLink
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+        url:
+          title: Url
+          type: string
+      required:
+      - name
+      - url
+    ContactUrl:
+      title: ContactUrl
+      type: object
+      properties:
+        type:
+          title: Type
+          type: string
+        url:
+          title: URL
+          type: string
+      required:
+      - type
+      - url
+    ContactPhone:
+      title: ContactPhone
+      type: object
+      properties:
+        country:
+          title: Country
+          anyOf:
+          - type: string
+          - type: 'null'
+        outbound_sms_blocked:
+          title: Outbound SMS Blocked
+          type: boolean
+        phone:
+          title: Phone
+          type: string
+        phone_formatted:
+          title: Phone Formatted
+          type: string
+        type:
+          title: Type
+          type: string
+        tz_ids:
+          title: TZ IDs
+          type: array
+          items:
+            type: string
+      required:
+      - phone
+      - type
+    WorkflowRunStatus:
+      title: WorkflowRunStatus
+      type: string
+      enum:
+      - active
+      - paused
+      - finished
+      - goal
+      - error
+    Contact:
+      title: Contact
+      type: object
+      properties:
+        created_by:
+          title: Created By
+          anyOf:
+          - type: string
+          - type: 'null'
+        date_created:
+          title: Date Created
+          type: string
+          format: date-time
+        date_updated:
+          title: Date Updated
+          type: string
+          format: date-time
+        display_name:
+          title: Display Name
+          type: string
+        emails:
+          title: Emails
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactEmail'
+        id:
+          title: ID
+          type: string
+        integration_links:
+          title: Integration Links
+          type: array
+          items:
+            $ref: '#/components/schemas/RenderedIntegrationLink'
+        lead_id:
+          title: Lead ID
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        lead_suggestions_operation_id:
+          title: Lead Suggestions Operation ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        name:
+          title: Name
+          anyOf:
+          - type: string
+          - type: 'null'
+        organization_id:
+          title: Organization ID
+          type: string
+        phones:
+          title: Phones
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactPhone'
+        recent_calls:
+          title: Recent Calls
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactRecentCall'
+        subscriptions:
+          title: Subscriptions
+          type: array
+          items:
+            $ref: '#/components/schemas/BasicSubscriptionInfoForContact'
+        timezone:
+          title: Timezone
+          anyOf:
+          - type: string
+          - type: 'null'
+        timezone_source:
+          title: Timezone Source
+          anyOf:
+          - type: string
+          - type: 'null'
+        title:
+          title: Title
+          anyOf:
+          - type: string
+          - type: 'null'
+        updated_by:
+          title: Updated By
+          anyOf:
+          - type: string
+          - type: 'null'
+        urls:
+          title: URLs
+          type: array
+          items:
+            $ref: '#/components/schemas/ContactUrl'
+      required:
+      - created_by
+      - date_created
+      - date_updated
+      - display_name
+      - id
+      - name
+      - organization_id
+      - title
+      - updated_by
+    OpportunityValuePeriod:
+      title: OpportunityValuePeriod
+      type: string
+      enum:
+      - one_time
+      - monthly
+      - annual
+    StalledOpportunityCommunicationIssue:
+      title: StalledOpportunityCommunicationIssue
+      type: string
+      enum:
+      - no_issue
+      - cant_get_in_touch
+      - no_communication_attempts
+    OpportunityChangeStatusActionDetails:
+      title: OpportunityChangeStatusActionDetails
+      type: object
+      properties:
+        status_id:
+          title: Status ID
+          type: string
+      required:
+      - status_id
+    OpportunitySuggestedAction:
+      title: OpportunitySuggestedAction
+      type: object
+      properties:
+        action:
+          $ref: '#/components/schemas/StalledOpportunityActionTypeV2'
+        details:
+          title: Details
+          anyOf:
+          - $ref: '#/components/schemas/OpportunityChangeStatusActionDetails'
+          - $ref: '#/components/schemas/OpportunityFollowUpEmailActionDetails'
+          - $ref: '#/components/schemas/OpportunityFollowUpSMSActionDetails'
+          - $ref: '#/components/schemas/OpportunityFollowUpCallActionDetails'
+          - $ref: '#/components/schemas/OpportunityAdjustCloseDateActionDetails'
+          - type: 'null'
+        justification:
+          title: Justification
+          type: string
+      required:
+      - action
+      - details
+      - justification
+    OpportunityFollowUpSMSActionDetails:
+      title: OpportunityFollowUpSMSActionDetails
+      type: object
+      properties:
+        contact_id:
+          title: Contact ID
+          type: string
+        message_draft:
+          title: Message Draft
+          type: string
+      required:
+      - contact_id
+      - message_draft
+    Attachment:
+      title: Attachment
+      type: object
+      properties:
+        content_type:
+          title: Content Type
+          anyOf:
+          - type: string
+          - type: 'null'
+        filename:
+          title: Filename
+          anyOf:
+          - type: string
+          - type: 'null'
+        size:
+          title: Size
+          anyOf:
+          - type: integer
+          - type: 'null'
+        thumbnail_url:
+          title: Thumbnail URL
+          anyOf:
+          - type: string
+          - type: 'null'
+        url:
+          title: URL
+          type: string
+      required:
+      - content_type
+      - filename
+      - size
+      - url
+  parameters:
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

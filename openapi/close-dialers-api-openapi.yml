@@ -1,0 +1,206 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Dialers API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: dialers
+  externalDocs:
+    url: https://developer.close.com/api/resources/dialers
+paths:
+  /dialer/:
+    get:
+      operationId: dialers_list
+      tags:
+      - dialers
+      summary: List or filter all dialer sessions
+      parameters:
+      - $ref: '#/components/parameters/ActivityFilters_OrganizationIdParam'
+      - in: query
+        name: source_type
+        required: false
+        schema:
+          title: Source Type
+          default: null
+          anyOf:
+          - type: string
+            enum:
+            - saved-search
+            - shared-entry
+          - type: 'null'
+      - in: query
+        name: source_value
+        required: false
+        schema:
+          title: Source Value
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: status
+        required: false
+        schema:
+          title: Status
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: status__in
+        required: false
+        schema:
+          title: Status (In)
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - in: query
+        name: user_id
+        required: false
+        schema:
+          title: User ID
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/SkipParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - caller_id: ''
+                  date_created: '2018-07-17T12:35:01.230707'
+                  date_updated: '2018-07-31T14:15:11.496227'
+                  id: dial_23eLaYZDjeL8tzFQMW5sto
+                  is_user_dependent: false
+                  music_preference: tone1
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  ring_mode: more-voicemails
+                  source_type: saved-search
+                  source_value: save_lch8hNQFbD9MgvMZbprURV715VVs1DEXSUl1xOA74p0
+                  status: inactive
+                  type: power
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  users:
+                  - is_active: false
+                    state: inactive
+                    user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                - caller_id: '+14356128874'
+                  date_created: '2018-07-31T13:45:07.444155'
+                  date_updated: '2018-07-31T13:45:42.875237'
+                  id: dial_4DejEkNkJOWj1jvqf5f6LO
+                  is_user_dependent: false
+                  music_preference: tone1
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  ring_mode: more-voicemails
+                  source_type: saved-search
+                  source_value: save_iKY1BB4HsI5Zzbgz3J20ycs8aPZK3Z9fq7rArkA85Gi
+                  status: inactive
+                  type: predictive
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  users:
+                  - is_active: false
+                    state: inactive
+                    user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                has_more: false
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /dialer/{id}/:
+    get:
+      operationId: dialers_get
+      tags:
+      - dialers
+      summary: Get a single dialer session
+      description: Once you have a `source_value` for a dialer session and `source_type=saved-search`, you can use the [saved_search endpoint](https://developer.close.com/api/resources/smart-views/get) to find out more information about the Smart View being used.
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ActivityFilters_OrganizationIdParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                caller_id: '+14356128874'
+                date_created: '2018-07-31T13:45:07.444155'
+                date_updated: '2018-07-31T13:45:42.875237'
+                id: dial_4DejEkNkJOWj1jvqf5f6LO
+                is_user_dependent: false
+                music_preference: tone1
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                ring_mode: more-voicemails
+                source_type: saved-search
+                source_value: save_iKY1BB4HsI5Zzbgz3J20ycs8aPZK3Z9fq7rArkA85Gi
+                status: inactive
+                type: predictive
+                user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                users:
+                - is_active: false
+                  state: inactive
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  parameters:
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
+    ActivityFilters_OrganizationIdParam:
+      in: query
+      name: organization_id
+      required: false
+      schema:
+        title: Organization ID
+        default: null
+        anyOf:
+        - type: string
+        - type: 'null'
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

@@ -1,0 +1,371 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Custom Fields.shared API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: custom_fields.shared
+  externalDocs:
+    url: https://developer.close.com/api/resources/custom-fields/custom-fields-shared
+paths:
+  /custom_field/shared/:
+    get:
+      operationId: custom_fields.shared_list
+      tags:
+      - custom_fields.shared
+      summary: List Shared Custom Fields
+      description: List all the shared custom fields for your organization.
+      parameters:
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - accepts_multiple_values: false
+                  associations:
+                  - editable_with_roles: []
+                    object_type: lead
+                    required: false
+                  - editable_with_roles: []
+                    object_type: contact
+                    required: false
+                  - custom_activity_type_id: actitype_2FqdeKTAEfMTwD4SVWwXqX
+                    editable_with_roles: []
+                    object_type: custom_activity_type
+                    required: true
+                  created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                  date_created: '2021-04-10T17:36:09.235000+00:00'
+                  date_updated: '2021-04-10T17:36:09.235000+00:00'
+                  description: User assigned to this Lead/Contact/Activity.
+                  id: cf_aU54Bvr6Rw8UBHh7zRboL3PYhbOVJl3XvwgPm3jgaKq
+                  name: Owner
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  type: user
+                  updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                - accepts_multiple_values: false
+                  associations:
+                  - editable_with_roles: []
+                    object_type: lead
+                    required: false
+                  - editable_with_roles: []
+                    object_type: contact
+                    required: false
+                  choices:
+                  - 'No'
+                  - 'Yes'
+                  created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                  date_created: '2020-07-28T20:05:36.202000+00:00'
+                  date_updated: '2020-07-28T20:05:36.202000+00:00'
+                  description: They requested not to be contacted again.
+                  id: cf_cSh3fWT3rEJ1BFSezme2YAG6bPrZV5wUWKKrW4iN19g
+                  name: Do Not Contact
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  type: choices
+                  updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                has_more: false
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: custom_fields.shared_create
+      tags:
+      - custom_fields.shared
+      summary: Create a new Shared Custom Field
+      requestBody:
+        content:
+          application/json:
+            example:
+              description: User assigned to this Lead/Contact/Activity.
+              name: Owner
+              type: user
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                accepts_multiple_values: false
+                associations: []
+                choices: null
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                date_created: '2021-04-10T05:06:09.422000+00:00'
+                date_updated: '2021-04-10T20:56:16.784000+00:00'
+                description: User assigned to this Lead/Contact/Activity.
+                id: cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c
+                name: Owner
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                type: user
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /custom_field/shared/{id}/:
+    get:
+      operationId: custom_fields.shared_get
+      tags:
+      - custom_fields.shared
+      summary: Fetch Shared Custom Field's details
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: custom_fields.shared_update
+      tags:
+      - custom_fields.shared
+      summary: Update a Shared Custom Field
+      description: 'You can rename it or update the options for a "choices" field type. The updated name will immediately appear in the Close UI and only valid values for the updated `choices` will be returned by the Lead/Contact/Custom Activity APIs.
+
+
+        The `type` value cannot be changed.'
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: Free-form Notes
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                accepts_multiple_values: false
+                associations:
+                - custom_activity_type_id: actitype_2FqdeKTAEfMTwD4SVWwXqX
+                  editable_with_roles: []
+                  object_type: custom_activity_type
+                  required: true
+                - custom_activity_type_id: actitype_9ab3QuzEAmFTvd56kByOMn
+                  editable_with_roles: []
+                  object_type: custom_activity_type
+                  required: true
+                choices: null
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                date_created: '2021-04-10T05:06:09.422000+00:00'
+                date_updated: '2021-04-10T20:56:16.784000+00:00'
+                description: null
+                id: cf_v6S011I6MqcbVvB2FA5Nk8dr5MkL8sWuCiG8cUleO9c
+                name: Free-form Notes
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                type: text
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: custom_fields.shared_delete
+      tags:
+      - custom_fields.shared
+      summary: Delete a Shared Custom Field
+      description: Delete a shared custom field and all its associations. The field will immediately disappear from API responses and values on all associated object types will be permanently removed.
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /custom_field/shared/{scf_id}/association/:
+    post:
+      operationId: custom_fields.shared_create_association
+      tags:
+      - custom_fields.shared
+      summary: Associate a Shared Custom Field with an object type
+      description: "Associates a Shared Custom Field with an object type such as Lead, Contact, or Custom Activity Type. Once associated, the Shared Custom Field can be set on objects of that type.\n\nThis endpoint accepts the following attributes:\n\n- `object_type` – can be one of: `lead`, `contact`, `opportunity`, `custom_activity_type`,\n  `custom_object_type`.\n- `custom_activity_type_id` – ID of the Custom Activity Type that you want to\n  associate this Shared Field with. Only relevant if you chose the `object_type` of `custom_activity_type`.\n- `custom_object_type_id` – ID of the Custom Object Type that you want to\n  associate this Shared Field with. Only relevant if you chose the `object_type` of `custom_object_type`.\n- `editable_with_roles` – list of [Roles](https://developer.close.com/api/resources/roles) that can edit the values of\n  this Field on the given object. Note that this is a per-association setting, meaning that editing of the Shared Custom Field can be restricted on one object and not restricted on another.\n- `required` – whether a value *must* be provided for this Field on the given\n  object. Only relevant if you chose the `object_type` of `custom_activity_type` or `custom_object_type`. Note that this is a per-association setting, meaning that this Shared Custom Field can be required on one object and not required on another."
+      parameters:
+      - in: path
+        name: scf_id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              editable_with_roles: []
+              object_type: lead
+              required: false
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              example:
+                editable_with_roles: []
+                object_type: lead
+                required: false
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /custom_field/shared/{scf_id}/association/{object_type}/:
+    get:
+      operationId: custom_fields.shared_get_association
+      tags:
+      - custom_fields.shared
+      summary: Fetch a Shared Custom Field Association
+      parameters:
+      - in: path
+        name: scf_id
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: object_type
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: custom_fields.shared_update_association
+      tags:
+      - custom_fields.shared
+      summary: Update an existing Shared Custom Field Association
+      description: "You can change the `required` or the `editable_with_roles` attributes. Everything else cannot be changed.\n\nThe `object_type` in the URL can be either:\n\n- `lead` when editing the association with the Lead object.\n- `contact` when editing the association with the Contact object.\n- `opportunity` when editing the association with the Opportunity object.\n- `custom_activity_type/<catype_id>` when editing the association with a specific\n  Custom Activity Type.\n- `custom_object_type/<cotype_id>` when editing the association with a specific\n  Custom Object Type."
+      parameters:
+      - in: path
+        name: scf_id
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: object_type
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              editable_with_roles:
+              - admin
+              - role_4zhUd9gDKwVv0Bbl2Nk0Ud
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                editable_with_roles:
+                - admin
+                - role_4zhUd9gDKwVv0Bbl2Nk0Ud
+                object_type: lead
+                required: false
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: custom_fields.shared_delete_association
+      tags:
+      - custom_fields.shared
+      summary: Disassociate a Shared Custom Field from an object type
+      description: 'Remove the association between a shared custom field and an object type. The field will immediately disappear from API responses for that object type and all stored values will be permanently deleted.
+
+
+        The `object_type` in the URL can be `lead`, `contact`, `opportunity`, `custom_activity_type/<catype_id>`, or `custom_object_type/<cotype_id>`.
+
+
+        If the field was `required` on the associated type, removing the association also removes that requirement.'
+      parameters:
+      - in: path
+        name: scf_id
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: object_type
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  parameters:
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

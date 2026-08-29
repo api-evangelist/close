@@ -1,0 +1,235 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Custom Objects API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: custom_objects
+  externalDocs:
+    url: https://developer.close.com/api/resources/custom-objects
+paths:
+  /custom_object/:
+    get:
+      operationId: custom_objects_list
+      tags:
+      - custom_objects
+      summary: List Custom Object instances
+      description: 'The `lead_id` parameter is required. If you want to retrieve all Custom Object instances regardless of the lead, you will need to use [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering).
+
+
+        Custom Fields values appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object).
+
+
+        Back references to each Custom Object are not collected in this response. If you need to access this information, please use the `back_reference_fields` on the Custom Object Type and [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) to search for objects that reference the Custom Object Instance.'
+      parameters:
+      - in: query
+        name: lead_id
+        required: true
+        schema:
+          title: Lead ID
+          type: string
+      - in: query
+        name: custom_object_type_id
+        required: false
+        schema:
+          title: Custom Object Type ID
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                  custom.cf_jnxTQDKnSxCEBtD5dvZdNgTzC3CqeyWUyU349PBA9Wf: custobj_v0VS1AZAg8LjnpBm1hZz83UZ3yWK0n9SdVV5i8yC6he
+                  custom_object_type_id: cotype_1h5m6uHM9BZOpwVhyRJb4Y
+                  date_created: '2020-08-04T16:45:35.367000+00:00'
+                  date_updated: '2020-08-04T17:37:56.439000+00:00'
+                  id: custobj_5J7mimiIKB1tQ3gVduP0c4UhXbNj5ptMLteAWRJu7Sf
+                  lead_id: lead_hwnL36A2iEMSLIlmGhsdrcmOJzTUzqEHwr66wrA1K2T
+                  name: Resource
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                - created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                  custom.cf_UpyNBvr6Rw8UBHh7zRboL3PYhbOVJl3XvwgPm3jg64S: cont_aHtUny9tps9LjJ8Cc5SP1NY3826j6PdNML9ZfkSUHyc
+                  custom.cf_cSh3fWT3rEJ1BFSezme2YAG6bPrZV5wUWKKrW4iN19g: Potential
+                  custom_object_type_id: cotype_4hQsScWF3hnUOyngoaAV00
+                  date_created: '2020-08-04T16:45:29.612000+00:00'
+                  date_updated: '2020-08-04T16:46:02.705000+00:00'
+                  id: custobj_v0VS1AZAg8LjnpBm1hZz83UZ3yWK0n9SdVV5i8yC6he
+                  lead_id: lead_hwnL36A2iEMSLIlmGhsdrcmOJzTUzqEHwr66wrA1K2T
+                  name: Primary Account
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                has_more: false
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: custom_objects_create
+      tags:
+      - custom_objects
+      summary: Create a new Custom Object instance
+      description: "Custom Field values can be set using the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object).\n\nThe following fields are required:\n  - `custom_object_type_id`: The type of Custom Object you are creating determines the Custom Fields that can be used.\n  - `lead_id`: The Lead that this Custom Object instance will belong to.\n  - `name`: Each Custom Object has a name, used for display."
+      requestBody:
+        content:
+          application/json:
+            example:
+              custom.cf_UpyNBvr6Rw8UBHh7zRboL3PYhbOVJl3XvwgPm3jg64S:
+              - Conference
+              - Meeting
+              custom.cf_cSh3fWT3rEJ1BFSezme2YAG6bPrZV5wUWKKrW4iN19g: Software
+              custom.cf_jnxTQDKnSxCEBtD5dvZdNgTzC3CqeyWUyU349PBA9Wf: custobj_v0VS1AZAg8LjnpBm1hZz83UZ3yWK0n9SdVV5i8yC6he
+              custom_object_type_id: cotype_1h5m6uHM9BZOpwVhyRJb4Y
+              lead_id: lead_hwnL36A2iEMSLIlmGhsdrcmOJzTUzqEHwr66wrA1K2T
+              name: Resource
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              example:
+                created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                custom.cf_UpyNBvr6Rw8UBHh7zRboL3PYhbOVJl3XvwgPm3jg64S:
+                - Conference
+                - Meeting
+                custom.cf_cSh3fWT3rEJ1BFSezme2YAG6bPrZV5wUWKKrW4iN19g: Software
+                custom.cf_jnxTQDKnSxCEBtD5dvZdNgTzC3CqeyWUyU349PBA9Wf: custobj_v0VS1AZAg8LjnpBm1hZz83UZ3yWK0n9SdVV5i8yC6he
+                custom_object_type_id: cotype_1h5m6uHM9BZOpwVhyRJb4Y
+                date_created: '2020-08-04T16:45:35.367000+00:00'
+                date_updated: '2020-08-04T17:37:56.439000+00:00'
+                id: custobj_5J7mimiIKB1tQ3gVduP0c4UhXbNj5ptMLteAWRJu7Sf
+                lead_id: lead_hwnL36A2iEMSLIlmGhsdrcmOJzTUzqEHwr66wrA1K2T
+                name: Resource
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /custom_object/{id}/:
+    get:
+      operationId: custom_objects_get
+      tags:
+      - custom_objects
+      summary: Retrieve a single Custom Object instance
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                custom.cf_jnxTQDKnSxCEBtD5dvZdNgTzC3CqeyWUyU349PBA9Wf: custobj_v0VS1AZAg8LjnpBm1hZz83UZ3yWK0n9SdVV5i8yC6he
+                custom_object_type_id: cotype_1h5m6uHM9BZOpwVhyRJb4Y
+                date_created: '2020-08-04T16:45:35.367000+00:00'
+                date_updated: '2020-08-04T17:37:56.439000+00:00'
+                id: custobj_5J7mimiIKB1tQ3gVduP0c4UhXbNj5ptMLteAWRJu7Sf
+                lead_id: lead_hwnL36A2iEMSLIlmGhsdrcmOJzTUzqEHwr66wrA1K2T
+                name: Resource
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: custom_objects_update
+      tags:
+      - custom_objects
+      summary: Updating a Custom Object instance
+      description: A Custom Object can be updated to add, change or remove any Custom Fields, and to change the `name` property.
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              custom.cf_cSh3fWT3rEJ1BFSezme2YAG6bPrZV5wUWKKrW4iN19g: Potential
+              custom.cf_jnxTQDKnSxCEBtD5dvZdNgTzC3CqeyWUyU349PBA9Wf: null
+              name: Updated Resource
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                custom.cf_cSh3fWT3rEJ1BFSezme2YAG6bPrZV5wUWKKrW4iN19g: Potential
+                custom_object_type_id: cotype_1h5m6uHM9BZOpwVhyRJb4Y
+                date_created: '2020-08-04T16:45:35.367000+00:00'
+                date_updated: '2020-08-04T17:37:56.439000+00:00'
+                id: custobj_5J7mimiIKB1tQ3gVduP0c4UhXbNj5ptMLteAWRJu7Sf
+                lead_id: lead_hwnL36A2iEMSLIlmGhsdrcmOJzTUzqEHwr66wrA1K2T
+                name: Updated Resource
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: custom_objects_delete
+      tags:
+      - custom_objects
+      summary: Delete a Custom Object instance
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No content
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

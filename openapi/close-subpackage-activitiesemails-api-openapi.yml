@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Endpoints subpackage_activities subpackage_activitiesEmails API
+  title: Endpoints Subpackage Activities Emails API
   version: 1.0.0
 servers:
 - url: https://api.close.com/api/v1
@@ -338,6 +338,13 @@ paths:
                 description: Any type
 components:
   schemas:
+    ActivityEmailGetParametersDateCreatedGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityEmailGetParametersDateCreatedGt
     ActivityEmailGetParametersDateCreatedLte:
       oneOf:
       - type: string
@@ -345,6 +352,73 @@ components:
       - type: string
         format: date
       title: ActivityEmailGetParametersDateCreatedLte
+    activities.emails_list_Response_200:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailActivity'
+        has_more:
+          type: boolean
+      required:
+      - data
+      - has_more
+      title: activities.emails_list_Response_200
+    CreateEmailActivityStatus:
+      type: string
+      enum:
+      - inbox
+      - draft
+      - scheduled
+      - outbox
+      - sent
+      - error
+      title: CreateEmailActivityStatus
+    UpdateEmailActivityAttachmentsItems:
+      type: object
+      properties:
+        content_id:
+          type:
+          - string
+          - 'null'
+        content_type:
+          type:
+          - string
+          - 'null'
+        filename:
+          type: string
+        inline_only:
+          type: boolean
+        size:
+          type: integer
+        url:
+          type: string
+          format: uri
+      required:
+      - filename
+      - size
+      - url
+      title: UpdateEmailActivityAttachmentsItems
+    UpdateEmailActivityOpensItems:
+      type: object
+      properties:
+        opened_at:
+          type: string
+          format: date-time
+      required:
+      - opened_at
+      title: UpdateEmailActivityOpensItems
+    UpdateEmailActivityStatus:
+      type: string
+      enum:
+      - inbox
+      - draft
+      - scheduled
+      - outbox
+      - sent
+      - error
+      title: UpdateEmailActivityStatus
     UpdateEmailActivity:
       type: object
       properties:
@@ -447,55 +521,6 @@ components:
       - outgoing
       description: Direction of communication. Outgoing means the communication flowing from the user to the lead/contact. Inbound means the opposite.
       title: CommunicationDirection
-    MessageStatus:
-      type: string
-      enum:
-      - inbox
-      - draft
-      - scheduled
-      - outbox
-      - sent
-      - error
-      description: Status of a message, such as Email or SMS.
-      title: MessageStatus
-    CreateEmailActivityStatus:
-      type: string
-      enum:
-      - inbox
-      - draft
-      - scheduled
-      - outbox
-      - sent
-      - error
-      title: CreateEmailActivityStatus
-    UpdateEmailActivityOpensItems:
-      type: object
-      properties:
-        opened_at:
-          type: string
-          format: date-time
-      required:
-      - opened_at
-      title: UpdateEmailActivityOpensItems
-    activities.emails_delete_Response_200:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: activities.emails_delete_Response_200
-    ActivityEmailGetParametersDateCreatedLt:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityEmailGetParametersDateCreatedLt
-    ActivityEmailGetParametersActivityAtGt:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityEmailGetParametersActivityAtGt
     ActivityEmailGetParametersDateCreatedGte:
       oneOf:
       - type: string
@@ -503,256 +528,6 @@ components:
       - type: string
         format: date
       title: ActivityEmailGetParametersDateCreatedGte
-    ActivityEmailGetParametersActivityAtGte:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityEmailGetParametersActivityAtGte
-    CreateEmailActivity:
-      type: object
-      properties:
-        account_id:
-          type:
-          - string
-          - 'null'
-        activity_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        attachments:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/CreateEmailActivityAttachmentsItems'
-        bcc:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-        body_html:
-          type:
-          - string
-          - 'null'
-        body_text:
-          type:
-          - string
-          - 'null'
-        cc:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-        contact_id:
-          type:
-          - string
-          - 'null'
-        created_by_id:
-          type:
-          - string
-          - 'null'
-        date_created:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        followup_date:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        followup_sequence_add_cc_bcc:
-          type:
-          - boolean
-          - 'null'
-        followup_sequence_delay:
-          type:
-          - integer
-          - 'null'
-        followup_sequence_id:
-          type:
-          - string
-          - 'null'
-        in_reply_to_id:
-          type:
-          - string
-          - 'null'
-        lead_id:
-          type: string
-        opens:
-          type:
-          - array
-          - 'null'
-          items:
-            $ref: '#/components/schemas/CreateEmailActivityOpensItems'
-        organization_id:
-          type:
-          - string
-          - 'null'
-        sender:
-          type:
-          - string
-          - 'null'
-          format: email
-        status:
-          $ref: '#/components/schemas/CreateEmailActivityStatus'
-        subject:
-          type:
-          - string
-          - 'null'
-        template_id:
-          type:
-          - string
-          - 'null'
-        to:
-          type:
-          - array
-          - 'null'
-          items:
-            type: string
-        user_id:
-          type:
-          - string
-          - 'null'
-      required:
-      - lead_id
-      - status
-      title: CreateEmailActivity
-    UpdateEmailActivityAttachmentsItems:
-      type: object
-      properties:
-        content_id:
-          type:
-          - string
-          - 'null'
-        content_type:
-          type:
-          - string
-          - 'null'
-        filename:
-          type: string
-        inline_only:
-          type: boolean
-        size:
-          type: integer
-        url:
-          type: string
-          format: uri
-      required:
-      - filename
-      - size
-      - url
-      title: UpdateEmailActivityAttachmentsItems
-    Attachment:
-      type: object
-      properties:
-        content_type:
-          type:
-          - string
-          - 'null'
-        filename:
-          type:
-          - string
-          - 'null'
-        size:
-          type:
-          - integer
-          - 'null'
-        thumbnail_url:
-          type:
-          - string
-          - 'null'
-        url:
-          type: string
-      required:
-      - content_type
-      - filename
-      - size
-      - url
-      title: Attachment
-    UpdateEmailActivityStatus:
-      type: string
-      enum:
-      - inbox
-      - draft
-      - scheduled
-      - outbox
-      - sent
-      - error
-      title: UpdateEmailActivityStatus
-    ActivityEmailGetParametersDateCreatedGt:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityEmailGetParametersDateCreatedGt
-    activities.emails_list_Response_200:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailActivity'
-        has_more:
-          type: boolean
-      required:
-      - data
-      - has_more
-      title: activities.emails_list_Response_200
-    CreateEmailActivityOpensItems:
-      type: object
-      properties:
-        opened_at:
-          type: string
-          format: date-time
-      required:
-      - opened_at
-      title: CreateEmailActivityOpensItems
-    ActivityEmailGetParametersActivityAtLte:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityEmailGetParametersActivityAtLte
-    ActivityEmailGetParametersActivityAtLt:
-      oneOf:
-      - type: string
-        format: date-time
-      - type: string
-        format: date
-      title: ActivityEmailGetParametersActivityAtLt
-    CreateEmailActivityAttachmentsItems:
-      type: object
-      properties:
-        content_id:
-          type:
-          - string
-          - 'null'
-        content_type:
-          type:
-          - string
-          - 'null'
-        filename:
-          type: string
-        inline_only:
-          type: boolean
-        size:
-          type: integer
-        url:
-          type: string
-          format: uri
-      required:
-      - filename
-      - size
-      - url
-      title: CreateEmailActivityAttachmentsItems
     EmailActivity:
       type: object
       properties:
@@ -996,6 +771,231 @@ components:
       - user_id
       - users
       title: EmailActivity
+    MessageStatus:
+      type: string
+      enum:
+      - inbox
+      - draft
+      - scheduled
+      - outbox
+      - sent
+      - error
+      description: Status of a message, such as Email or SMS.
+      title: MessageStatus
+    ActivityEmailGetParametersActivityAtGte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityEmailGetParametersActivityAtGte
+    ActivityEmailGetParametersDateCreatedLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityEmailGetParametersDateCreatedLt
+    ActivityEmailGetParametersActivityAtGt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityEmailGetParametersActivityAtGt
+    CreateEmailActivityAttachmentsItems:
+      type: object
+      properties:
+        content_id:
+          type:
+          - string
+          - 'null'
+        content_type:
+          type:
+          - string
+          - 'null'
+        filename:
+          type: string
+        inline_only:
+          type: boolean
+        size:
+          type: integer
+        url:
+          type: string
+          format: uri
+      required:
+      - filename
+      - size
+      - url
+      title: CreateEmailActivityAttachmentsItems
+    activities.emails_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: activities.emails_delete_Response_200
+    CreateEmailActivity:
+      type: object
+      properties:
+        account_id:
+          type:
+          - string
+          - 'null'
+        activity_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        attachments:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CreateEmailActivityAttachmentsItems'
+        bcc:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        body_html:
+          type:
+          - string
+          - 'null'
+        body_text:
+          type:
+          - string
+          - 'null'
+        cc:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        contact_id:
+          type:
+          - string
+          - 'null'
+        created_by_id:
+          type:
+          - string
+          - 'null'
+        date_created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        followup_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        followup_sequence_add_cc_bcc:
+          type:
+          - boolean
+          - 'null'
+        followup_sequence_delay:
+          type:
+          - integer
+          - 'null'
+        followup_sequence_id:
+          type:
+          - string
+          - 'null'
+        in_reply_to_id:
+          type:
+          - string
+          - 'null'
+        lead_id:
+          type: string
+        opens:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/CreateEmailActivityOpensItems'
+        organization_id:
+          type:
+          - string
+          - 'null'
+        sender:
+          type:
+          - string
+          - 'null'
+          format: email
+        status:
+          $ref: '#/components/schemas/CreateEmailActivityStatus'
+        subject:
+          type:
+          - string
+          - 'null'
+        template_id:
+          type:
+          - string
+          - 'null'
+        to:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        user_id:
+          type:
+          - string
+          - 'null'
+      required:
+      - lead_id
+      - status
+      title: CreateEmailActivity
+    ActivityEmailGetParametersActivityAtLt:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityEmailGetParametersActivityAtLt
+    ActivityEmailGetParametersActivityAtLte:
+      oneOf:
+      - type: string
+        format: date-time
+      - type: string
+        format: date
+      title: ActivityEmailGetParametersActivityAtLte
+    Attachment:
+      type: object
+      properties:
+        content_type:
+          type:
+          - string
+          - 'null'
+        filename:
+          type:
+          - string
+          - 'null'
+        size:
+          type:
+          - integer
+          - 'null'
+        thumbnail_url:
+          type:
+          - string
+          - 'null'
+        url:
+          type: string
+      required:
+      - content_type
+      - filename
+      - size
+      - url
+      title: Attachment
+    CreateEmailActivityOpensItems:
+      type: object
+      properties:
+        opened_at:
+          type: string
+          format: date-time
+      required:
+      - opened_at
+      title: CreateEmailActivityOpensItems
   securitySchemes:
     ApiKeyAuth:
       type: http

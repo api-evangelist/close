@@ -1,0 +1,247 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Custom Fields.contact API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: custom_fields.contact
+  externalDocs:
+    url: https://developer.close.com/api/resources/custom-fields/custom-fields-contact
+paths:
+  /custom_field/contact/:
+    get:
+      operationId: custom_fields.contact_list
+      tags:
+      - custom_fields.contact
+      summary: List Contact Custom Fields
+      description: List all the contact custom fields for your organization.
+      parameters:
+      - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/SkipParam'
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - accepts_multiple_values: false
+                  choices:
+                  - Account Executive
+                  - CEO
+                  - Sales Rep
+                  created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                  date_created: '2020-02-07T11:54:50.770000+00:00'
+                  date_updated: '2020-02-07T11:54:50.770000+00:00'
+                  description: null
+                  editable_with_roles: []
+                  id: cf_j0P7kHmgFTZZnYBFtyPSZ3uQw4dpW8xKcW7Krps8atj
+                  name: Role
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  type: choices
+                  updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                has_more: false
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    post:
+      operationId: custom_fields.contact_create
+      tags:
+      - custom_fields.contact
+      summary: Create a new Contact Custom Field
+      requestBody:
+        content:
+          application/json:
+            example:
+              choices:
+              - Account Executive
+              - CEO
+              - Sales Rep
+              description: What's this Contact's role within their organization
+              name: Role
+              type: choices
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                accepts_multiple_values: false
+                choices:
+                - Account Executive
+                - CEO
+                - Sales Rep
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                date_created: '2020-02-07T11:54:50.770000+00:00'
+                date_updated: '2020-02-07T11:54:50.770000+00:00'
+                description: What's this Contact's role within their organization
+                editable_with_roles: []
+                id: cf_j0P7kHmgFTZZnYBFtyPSZ3uQw4dpW8xKcW7Krps8atj
+                name: Role
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                type: choices
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /custom_field/contact/{id}/:
+    get:
+      operationId: custom_fields.contact_get
+      tags:
+      - custom_fields.contact
+      summary: Fetch Contact Custom Field's details
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                accepts_multiple_values: false
+                choices:
+                - Account Executive
+                - CEO
+                - Sales Rep
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                date_created: '2020-02-07T11:54:50.770000+00:00'
+                date_updated: '2020-02-07T11:54:50.770000+00:00'
+                description: null
+                editable_with_roles: []
+                id: cf_j0P7kHmgFTZZnYBFtyPSZ3uQw4dpW8xKcW7Krps8atj
+                name: Role
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                type: choices
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: custom_fields.contact_update
+      tags:
+      - custom_fields.contact
+      summary: Update a Contact Custom Field
+      description: 'You can rename it, change its type, change whether it accepts multiple values or not, change whether editing its values is restricted to specific Roles, or update the options for a "choices" field type. The updated name will immediately appear in the Close UI and only valid values for the updated `type` will be returned by the Contact API.
+
+
+        Some of the type changes need to convert all of the existing values for a given Custom Field to the new type. When this is required, the response will include an additional `converting_to_type` field. When the conversion is done, `converting_to_type` will no longer be returned.'
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              name: Role in Organization
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                accepts_multiple_values: false
+                choices:
+                - Account Executive
+                - CEO
+                - Sales Rep
+                created_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                date_created: '2020-02-07T11:54:50.770000+00:00'
+                date_updated: '2020-02-07T12:03:53.995000+00:00'
+                description: What's this Contact's role within their organization
+                editable_with_roles: []
+                id: cf_j0P7kHmgFTZZnYBFtyPSZ3uQw4dpW8xKcW7Krps8atj
+                name: Role in Organization
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                type: choices
+                updated_by: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: custom_fields.contact_delete
+      tags:
+      - custom_fields.contact
+      summary: Delete a Contact Custom Field
+      description: Delete a contact custom field. The field will immediately disappear from API responses and values on existing contacts will be permanently removed.
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  parameters:
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

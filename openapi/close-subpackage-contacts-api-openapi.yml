@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: API Endpoints subpackage_activities subpackage_contacts API
+  title: Endpoints Subpackage Contacts API
   version: 1.0.0
 servers:
 - url: https://api.close.com/api/v1
@@ -276,56 +276,6 @@ paths:
                 description: Any type
 components:
   schemas:
-    BasicSubscriptionInfoForContact:
-      type: object
-      properties:
-        contact_email:
-          type:
-          - string
-          - 'null'
-        date_created:
-          type: string
-          format: date-time
-        initial_email_id:
-          type:
-          - string
-          - 'null'
-        sequence_id:
-          type: string
-        sequence_name:
-          type: string
-        sequence_status:
-          $ref: '#/components/schemas/WorkflowStatus'
-        start_date:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        subscription_id:
-          type: string
-        subscription_status:
-          $ref: '#/components/schemas/WorkflowRunStatus'
-        subscription_status_reason:
-          oneOf:
-          - $ref: '#/components/schemas/StatusReason'
-          - type: 'null'
-      required:
-      - contact_email
-      - date_created
-      - initial_email_id
-      - sequence_id
-      - sequence_name
-      - sequence_status
-      - start_date
-      - subscription_id
-      - subscription_status
-      - subscription_status_reason
-      title: BasicSubscriptionInfoForContact
-    contacts_delete_Response_200:
-      type: object
-      properties: {}
-      description: Empty response body
-      title: contacts_delete_Response_200
     ContactPhone:
       type: object
       properties:
@@ -358,121 +308,6 @@ components:
       - goal
       - error
       title: WorkflowRunStatus
-    ContactUrl:
-      type: object
-      properties:
-        type:
-          type: string
-        url:
-          type: string
-      required:
-      - type
-      - url
-      title: ContactUrl
-    WorkflowStatus:
-      type: string
-      enum:
-      - active
-      - paused
-      - draft
-      title: WorkflowStatus
-    RenderedIntegrationLink:
-      type: object
-      properties:
-        name:
-          type: string
-        url:
-          type: string
-      required:
-      - name
-      - url
-      title: RenderedIntegrationLink
-    ContactRecentCall:
-      type: object
-      properties:
-        dialer_id:
-          type:
-          - string
-          - 'null'
-        duration:
-          type: integer
-        finish_timestamp:
-          type: string
-          format: date-time
-        id:
-          type: string
-        status:
-          $ref: '#/components/schemas/CallStatus'
-      required:
-      - dialer_id
-      - duration
-      - finish_timestamp
-      - id
-      - status
-      title: ContactRecentCall
-    ContactEmail:
-      type: object
-      properties:
-        email:
-          type: string
-        is_unsubscribed:
-          type: boolean
-        type:
-          type: string
-      required:
-      - email
-      - is_unsubscribed
-      - type
-      title: ContactEmail
-    StatusReason:
-      type: string
-      enum:
-      - manual
-      - pending-call-timed-out
-      - bulk-action
-      - rate-limited
-      - sequence-deleted
-      - workflow-paused
-      - filter-not-matched
-      - reply-received
-      - call-answered
-      - meeting-booked
-      - lead-status-changed
-      - outcome-met
-      - account-invalid
-      - account-failures
-      - sending-throttled-too-long
-      - membership-inactive
-      - send-as-error
-      - email-bounced
-      - call-failed
-      - sms-failed
-      - no-user-phone
-      - billing-error
-      - assignment-field-invalid
-      - lead-status-field-invalid
-      - assignees-missing
-      - run-as-disabled
-      - lead-not-visible
-      - internal-error
-      - field-mapping-error
-      - filter-config-invalid
-      - email-ai-generation-failed
-      description: Reason for each higher level status on a Workflow run.
-      title: StatusReason
-    CallStatus:
-      type: string
-      enum:
-      - created
-      - in-progress
-      - completed
-      - cancel
-      - no-answer
-      - busy
-      - failed
-      - timeout
-      description: Current status of the call.
-      title: CallStatus
     Contact:
       type: object
       properties:
@@ -568,6 +403,171 @@ components:
       - data
       - has_more
       title: contacts_list_Response_200
+    CallStatus:
+      type: string
+      enum:
+      - created
+      - in-progress
+      - completed
+      - cancel
+      - no-answer
+      - busy
+      - failed
+      - timeout
+      description: Current status of the call.
+      title: CallStatus
+    contacts_delete_Response_200:
+      type: object
+      properties: {}
+      description: Empty response body
+      title: contacts_delete_Response_200
+    StatusReason:
+      type: string
+      enum:
+      - manual
+      - pending-call-timed-out
+      - bulk-action
+      - rate-limited
+      - sequence-deleted
+      - workflow-paused
+      - filter-not-matched
+      - reply-received
+      - call-answered
+      - meeting-booked
+      - lead-status-changed
+      - outcome-met
+      - account-invalid
+      - account-failures
+      - sending-throttled-too-long
+      - membership-inactive
+      - send-as-error
+      - email-bounced
+      - call-failed
+      - sms-failed
+      - no-user-phone
+      - billing-error
+      - assignment-field-invalid
+      - lead-status-field-invalid
+      - assignees-missing
+      - run-as-disabled
+      - lead-not-visible
+      - internal-error
+      - field-mapping-error
+      - filter-config-invalid
+      - email-ai-generation-failed
+      description: Reason for each higher level status on a Workflow run.
+      title: StatusReason
+    WorkflowStatus:
+      type: string
+      enum:
+      - active
+      - paused
+      - draft
+      title: WorkflowStatus
+    BasicSubscriptionInfoForContact:
+      type: object
+      properties:
+        contact_email:
+          type:
+          - string
+          - 'null'
+        date_created:
+          type: string
+          format: date-time
+        initial_email_id:
+          type:
+          - string
+          - 'null'
+        sequence_id:
+          type: string
+        sequence_name:
+          type: string
+        sequence_status:
+          $ref: '#/components/schemas/WorkflowStatus'
+        start_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        subscription_id:
+          type: string
+        subscription_status:
+          $ref: '#/components/schemas/WorkflowRunStatus'
+        subscription_status_reason:
+          oneOf:
+          - $ref: '#/components/schemas/StatusReason'
+          - type: 'null'
+      required:
+      - contact_email
+      - date_created
+      - initial_email_id
+      - sequence_id
+      - sequence_name
+      - sequence_status
+      - start_date
+      - subscription_id
+      - subscription_status
+      - subscription_status_reason
+      title: BasicSubscriptionInfoForContact
+    ContactEmail:
+      type: object
+      properties:
+        email:
+          type: string
+        is_unsubscribed:
+          type: boolean
+        type:
+          type: string
+      required:
+      - email
+      - is_unsubscribed
+      - type
+      title: ContactEmail
+    ContactUrl:
+      type: object
+      properties:
+        type:
+          type: string
+        url:
+          type: string
+      required:
+      - type
+      - url
+      title: ContactUrl
+    RenderedIntegrationLink:
+      type: object
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+      required:
+      - name
+      - url
+      title: RenderedIntegrationLink
+    ContactRecentCall:
+      type: object
+      properties:
+        dialer_id:
+          type:
+          - string
+          - 'null'
+        duration:
+          type: integer
+        finish_timestamp:
+          type: string
+          format: date-time
+        id:
+          type: string
+        status:
+          $ref: '#/components/schemas/CallStatus'
+      required:
+      - dialer_id
+      - duration
+      - finish_timestamp
+      - id
+      - status
+      title: ContactRecentCall
   securitySchemes:
     ApiKeyAuth:
       type: http

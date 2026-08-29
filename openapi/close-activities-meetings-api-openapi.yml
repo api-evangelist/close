@@ -1,0 +1,1203 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Activities.meetings API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: activities.meetings
+  externalDocs:
+    url: https://developer.close.com/api/resources/activities/meetings
+paths:
+  /activity/meeting/:
+    get:
+      operationId: activities.meetings_list
+      tags:
+      - activities.meetings
+      summary: List or filter all Meeting activities
+      parameters:
+      - $ref: '#/components/parameters/LimitParam'
+      - $ref: '#/components/parameters/SkipParam'
+      - $ref: '#/components/parameters/ActivityFilters_IdInParam'
+      - $ref: '#/components/parameters/ActivityFilters_LeadIdParam'
+      - $ref: '#/components/parameters/ActivityFilters_ContactIdParam'
+      - $ref: '#/components/parameters/ActivityFilters_UserIdParam'
+      - $ref: '#/components/parameters/ActivityFilters_OrganizationIdParam'
+      - $ref: '#/components/parameters/ActivityFilters_TypeParam'
+      - $ref: '#/components/parameters/ActivityFilters_DateCreatedGteParam'
+      - $ref: '#/components/parameters/ActivityFilters_DateCreatedLteParam'
+      - $ref: '#/components/parameters/ActivityFilters_DateCreatedGtParam'
+      - $ref: '#/components/parameters/ActivityFilters_DateCreatedLtParam'
+      - $ref: '#/components/parameters/ActivityFilters_ActivityAtGteParam'
+      - $ref: '#/components/parameters/ActivityFilters_ActivityAtLteParam'
+      - $ref: '#/components/parameters/ActivityFilters_ActivityAtGtParam'
+      - $ref: '#/components/parameters/ActivityFilters_ActivityAtLtParam'
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - _type: Meeting
+                  activity_at: '2019-10-11T16:30:00+00:00'
+                  actual_duration: null
+                  attached_call_ids: []
+                  attendees:
+                  - contact_id: cont_V3RuqD9VJKJWOtPsoH7EMy3MnKoFED2Ulgd4g87Ayqc
+                    email: bruce@wayneenterprises.com
+                    is_organizer: false
+                    name: Bruce Wayne
+                    status: noreply
+                    user_id: null
+                  - contact_id: null
+                    email: jane@example.com
+                    is_organizer: true
+                    name: null
+                    status: 'yes'
+                    user_id: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                  calendar_event_link: https://www.google.com/calendar/event?eid=NzlrNGRoMmk5bm9jZDEwOGtjMmY3Y2RzODggamFuZUBleGFtcGxlLmNvbQ
+                  calendar_event_uids:
+                  - 79k4dh2i9nocd108kc2f7cds88
+                  conference_links:
+                  - type: ZOOM
+                    url: https://zoom.us/j/zoommeeting
+                  connected_account_id: emailacct_OoSyqxjm1HbuxcRsOyrm2SwR1uOTBdHKPdhAaf9mhUp
+                  contact_id: null
+                  conversation_type_id: null
+                  conversation_type_reason: null
+                  created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                  created_by_name: Jane User
+                  date_created: '2019-10-11T16:30:00+00:00'
+                  date_updated: '2019-10-11T16:18:17.942000+00:00'
+                  duration: 3600
+                  ends_at: '2019-10-11T17:30:00+00:00'
+                  id: acti_qwA2IPmjYyMQQ2UWuNxBOtc2CbZtRUOb5JkS1i3Qo1b
+                  integrations: []
+                  is_recurring: false
+                  lead_id: lead_Qq33JAqr6zrgqtJGkKv7XQxTnQxpTEJA7Mfcx98ZrWe
+                  location: https://zoom.us/j/zoommeeting
+                  note: '──────────
+
+                    Jane User is inviting you to a scheduled Zoom meeting to find out if you''re really Batman.
+
+
+                    Join Zoom Meeting
+
+                    https://zoom.us/j/zoommeeting
+
+
+                    ──────────'
+                  notetaker_id: null
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  outcome_autofill_confidence: null
+                  outcome_autofill_reasoning: null
+                  outcome_id: null
+                  outcome_reason: null
+                  playbook_id: null
+                  playbook_reason: null
+                  provider_calendar_event_id: 79k4dh2i9nocd108kc2f7cds88
+                  provider_calendar_ids:
+                  - primary
+                  provider_calendar_type: google
+                  source: calendar
+                  starts_at: '2019-10-11T16:30:00+00:00'
+                  status: upcoming
+                  summary: null
+                  title: Bruce Wayne Interview
+                  updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                  updated_by_name: Jane User
+                  user_id: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                  user_name: Jane User
+                  user_note: null
+                  user_note_date_updated: null
+                  user_note_html: null
+                  user_note_mentions: []
+                  users:
+                  - user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                has_more: false
+              schema:
+                type: object
+                properties:
+                  data:
+                    items:
+                      $ref: '#/components/schemas/MeetingActivity'
+                    type: array
+                  has_more:
+                    type: boolean
+                required:
+                - data
+                - has_more
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /activity/meeting/{id}/:
+    get:
+      operationId: activities.meetings_get
+      tags:
+      - activities.meetings
+      summary: Get a single Meeting activity
+      description: 'Meeting transcripts can be accessed using this API but are not loaded by default. To load transcripts, use the `_fields` parameter with `transcripts` value.
+
+
+        The `transcripts` field is an array of objects for each Close Notetaker bot that joined the meeting. Typically, there will be only one transcript. Transcripts are ordered by the time bots joined the meeting.
+
+
+        Example transcripts in response:
+
+
+        ```json
+
+        { "transcripts": [ { "utterances": [ { "speaker_label": "John Lead", "speaker_side": "contact", "start": 0.1, "end": 1.2, "text": "Hey, what''s up? How is it going?" }, { "speaker_label": "Jane User", "speaker_side": "close-user", "start": 1.3, "end": 2.4, "text": "Hey John, I''m doing great. How about you?" } ], "summary_text": "Summary text", "summary_html": "<p>Summary text</p>" } ] }
+
+        ```'
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/FieldsParam'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                _type: Meeting
+                activity_at: '2019-10-11T16:30:00+00:00'
+                actual_duration: null
+                attached_call_ids: []
+                attendees:
+                - contact_id: cont_V3RuqD9VJKJWOtPsoH7EMy3MnKoFED2Ulgd4g87Ayqc
+                  email: bruce@wayneenterprises.com
+                  is_organizer: false
+                  name: null
+                  status: noreply
+                  user_id: null
+                - contact_id: null
+                  email: jane@example.com
+                  is_organizer: true
+                  name: null
+                  status: 'yes'
+                  user_id: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                calendar_event_link: https://www.google.com/calendar/event?eid=NzlrNGRoMmk5bm9jZDEwOGtjMmY3Y2RzODggamFuZUBleGFtcGxlLmNvbQ
+                calendar_event_uids:
+                - 79k4dh2i9nocd108kc2f7cds88
+                conference_links:
+                - type: ZOOM
+                  url: https://zoom.us/j/zoommeeting
+                connected_account_id: emailacct_OoSyqxjm1HbuxcRsOyrm2SwR1uOTBdHKPdhAaf9mhUp
+                contact_id: null
+                conversation_type_id: null
+                conversation_type_reason: null
+                created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                created_by_name: Jane User
+                date_created: '2019-10-11T16:30:00+00:00'
+                date_updated: '2019-10-11T16:30:00.368000+00:00'
+                duration: 3600
+                ends_at: '2019-10-11T17:30:00+00:00'
+                id: acti_qwA2IPmjYyMQQ2UWuNxBOtc2CbZtRUOb5JkS1i3Qo1b
+                integrations: []
+                is_recurring: false
+                lead_id: lead_Qq33JAqr6zrgqtJGkKv7XQxTnQxpTEJA7Mfcx98ZrWe
+                location: https://zoom.us/j/zoommeeting
+                note: '──────────
+
+                  Jane User is inviting you to a scheduled Zoom meeting to find out if you''re really Batman.
+
+
+                  Join Zoom Meeting
+
+                  https://zoom.us/j/zoommeeting
+
+
+                  ──────────'
+                notetaker_id: null
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                outcome_autofill_confidence: null
+                outcome_autofill_reasoning: null
+                outcome_id: null
+                outcome_reason: null
+                playbook_id: null
+                playbook_reason: null
+                provider_calendar_event_id: 79k4dh2i9nocd108kc2f7cds88
+                provider_calendar_ids:
+                - primary
+                provider_calendar_type: google
+                source: calendar
+                starts_at: '2019-10-11T16:30:00+00:00'
+                status: in-progress
+                summary: null
+                title: Bruce Wayne Interview
+                updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                updated_by_name: Jane User
+                user_id: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                user_name: Jane User
+                user_note: null
+                user_note_date_updated: null
+                user_note_html: null
+                user_note_mentions: []
+                users:
+                - user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+              schema:
+                $ref: '#/components/schemas/MeetingActivity'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    put:
+      operationId: activities.meetings_update
+      tags:
+      - activities.meetings
+      summary: Update a Meeting activity
+      description: Most commonly this can be used to update a meetings's `user_note_html` or `outcome_id`.
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              outcome_id: outcome_031uY9IKV1JxfNKM9n2qCw
+              user_note_html: <body><p><ul><li>Discussed product/service offering, highlighting security and scalability features.</li><li>Addressed Bruce Wayne's specific project requirements and concerns.</li><li>Negotiated customized pricing package.</li><ul></p></body>
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                _type: Meeting
+                activity_at: '2019-10-11T16:30:00+00:00'
+                actual_duration: null
+                attached_call_ids: []
+                attendees:
+                - contact_id: cont_V3RuqD9VJKJWOtPsoH7EMy3MnKoFED2Ulgd4g87Ayqc
+                  email: bruce@wayneenterprises.com
+                  is_organizer: false
+                  name: null
+                  status: noreply
+                  user_id: null
+                - contact_id: null
+                  email: jane@example.com
+                  is_organizer: true
+                  name: null
+                  status: 'yes'
+                  user_id: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                calendar_event_link: https://www.google.com/calendar/event?eid=NzlrNGRoMmk5bm9jZDEwOGtjMmY3Y2RzODggamFuZUBleGFtcGxlLmNvbQ
+                calendar_event_uids:
+                - 79k4dh2i9nocd108kc2f7cds88
+                conference_links:
+                - type: ZOOM
+                  url: https://zoom.us/j/zoommeeting
+                connected_account_id: emailacct_OoSyqxjm1HbuxcRsOyrm2SwR1uOTBdHKPdhAaf9mhUp
+                contact_id: null
+                conversation_type_id: null
+                conversation_type_reason: null
+                created_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                created_by_name: Jane User
+                date_created: '2019-10-11T16:30:00+00:00'
+                date_updated: '2019-10-11T16:30:00.368000+00:00'
+                duration: 3600
+                ends_at: '2019-10-11T17:30:00+00:00'
+                id: acti_qwA2IPmjYyMQQ2UWuNxBOtc2CbZtRUOb5JkS1i3Qo1b
+                integrations: []
+                is_recurring: false
+                lead_id: lead_Qq33JAqr6zrgqtJGkKv7XQxTnQxpTEJA7Mfcx98ZrWe
+                location: https://zoom.us/j/zoommeeting
+                note: '──────────
+
+                  Jane User is inviting you to a scheduled Zoom meeting to find out if you''re really Batman.
+
+
+                  Join Zoom Meeting
+
+                  https://zoom.us/j/zoommeeting
+
+
+                  ──────────'
+                notetaker_id: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                outcome_autofill_confidence: null
+                outcome_autofill_reasoning: null
+                outcome_id: outcome_031uY9IKV1JxfNKM9n2qCw
+                outcome_reason: null
+                playbook_id: null
+                playbook_reason: null
+                provider_calendar_event_id: 79k4dh2i9nocd108kc2f7cds88
+                provider_calendar_ids:
+                - primary
+                provider_calendar_type: google
+                source: calendar
+                starts_at: '2019-10-11T16:30:00+00:00'
+                status: in-progress
+                summary: null
+                title: Bruce Wayne Interview
+                updated_by: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                updated_by_name: Jane User
+                user_id: user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+                user_name: Jane User
+                user_note: Discussed product/service offering, highlighting security and scalability features.
+                user_note_date_updated: '2019-10-11T16:30:00.368000+00:00'
+                user_note_html: <body><p><ul><li>Discussed product/service offering, highlighting security and scalability features.</li><li>Addressed Bruce Wayne's specific project requirements and concerns.</li><li>Negotiated customized pricing package.</li><ul></p></body>
+                user_note_mentions: []
+                users:
+                - user_Ova4RGFG7pztSeJiiMFdN7O2MFl71nD0uGO3bIOo4Wk
+              schema:
+                $ref: '#/components/schemas/MeetingActivity'
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+    delete:
+      operationId: activities.meetings_delete
+      tags:
+      - activities.meetings
+      summary: Delete a Meeting activity
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /activity/meeting/{id}/integration/:
+    post:
+      operationId: activities.meetings_create_integration
+      tags:
+      - activities.meetings
+      summary: Create or update third-party Meeting integration
+      description: 'Please note that only OAuth apps can perform this operation. Using API key will result in an error. See [Authentication with OAuth](https://developer.close.com/api/overview/oauth-authentication) for more information.
+
+
+        Third party integrations are presented as tabs titled with OAuth app name in the activity feed. When invoked for the first time with a given OAuth app a new integration is created, subsequent calls with the same OAuth app will update an existing integration. Submitting an empty JSON body does nothing.'
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            example:
+              integration_data:
+                note_html: <body><ul><li>Very interested in calendar integration feature.</li><li>Frustrated with their existing CRM.</li></ul></body>
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                id: evtint_68gPlaA2Q79nvAa4PFHG9J
+                integration_data:
+                  note_html: <body><ul><li>Very interested in calendar integration feature.</li><li>Frustrated with their existing CRM.</li></ul></body>
+                integration_name: third_party
+                oauth_client:
+                  id: oa2client_2hoWsDYOJtiaR7SrUbXyN2
+                  name: AI Highlights
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  parameters:
+    ActivityFilters_DateCreatedGteParam:
+      in: query
+      name: date_created__gte
+      required: false
+      schema:
+        title: Date Created (>=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_ActivityAtLteParam:
+      in: query
+      name: activity_at__lte
+      required: false
+      schema:
+        title: Activity At (<=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_TypeParam:
+      description: Filter by activity type, e.g. Call (comma-separated)
+      in: query
+      name: _type
+      required: false
+      schema:
+        title: Type
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    ActivityFilters_OrganizationIdParam:
+      in: query
+      name: organization_id
+      required: false
+      schema:
+        title: Organization ID
+        default: null
+        anyOf:
+        - type: string
+        - type: 'null'
+    ActivityFilters_LeadIdParam:
+      description: Filter by lead IDs (comma-separated)
+      in: query
+      name: lead_id
+      required: false
+      schema:
+        title: Lead ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    ActivityFilters_ActivityAtLtParam:
+      in: query
+      name: activity_at__lt
+      required: false
+      schema:
+        title: Activity At (<)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_ActivityAtGteParam:
+      in: query
+      name: activity_at__gte
+      required: false
+      schema:
+        title: Activity At (>=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_UserIdParam:
+      description: Filter by user IDs (comma-separated)
+      in: query
+      name: user_id
+      required: false
+      schema:
+        title: User ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    ActivityFilters_ContactIdParam:
+      description: Filter by contact IDs (comma-separated)
+      in: query
+      name: contact_id
+      required: false
+      schema:
+        title: Contact ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
+    ActivityFilters_IdInParam:
+      description: Filter by activity IDs (comma-separated)
+      in: query
+      name: id__in
+      required: false
+      schema:
+        title: ID In
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
+    ActivityFilters_DateCreatedLtParam:
+      in: query
+      name: date_created__lt
+      required: false
+      schema:
+        title: Date Created (<)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_ActivityAtGtParam:
+      in: query
+      name: activity_at__gt
+      required: false
+      schema:
+        title: Activity At (>)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_DateCreatedGtParam:
+      in: query
+      name: date_created__gt
+      required: false
+      schema:
+        title: Date Created (>)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_DateCreatedLteParam:
+      in: query
+      name: date_created__lte
+      required: false
+      schema:
+        title: Date Created (<=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+  schemas:
+    ConferenceLinkType:
+      title: ConferenceLinkType
+      type: string
+      enum:
+      - ZOOM
+      - GOOGLE_MEET
+      - GOOGLE_HANGOUTS
+      - MICROSOFT_TEAMS
+      - SKYPE
+      - WEBEX
+      - GO_TO_MEETING
+    PlaybookReason:
+      title: PlaybookReason
+      type: string
+      enum:
+      - user-selected
+      - autodetected
+    MeetingTranscriptWord:
+      title: MeetingTranscriptWord
+      type: object
+      properties:
+        end:
+          title: End
+          anyOf:
+          - type: number
+          - type: 'null'
+        start:
+          title: Start
+          anyOf:
+          - type: number
+          - type: 'null'
+        text:
+          title: Text
+          type: string
+      required:
+      - end
+      - start
+      - text
+    MeetingStatus:
+      title: MeetingStatus
+      type: string
+      enum:
+      - upcoming
+      - in-progress
+      - completed
+      - canceled
+      - declined-by-org
+      - declined-by-lead
+    MeetingConferenceLink:
+      title: MeetingConferenceLink
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/ConferenceLinkType'
+        url:
+          title: URL
+          type: string
+      required:
+      - type
+      - url
+    OutcomeAutofillConfidence:
+      title: OutcomeAutofillConfidence
+      type: string
+      enum:
+      - low
+      - medium
+      - high
+    CommentSummary:
+      title: CommentSummary
+      type: object
+      properties:
+        comment_count:
+          title: Comment Count
+          type: integer
+        thread_id:
+          title: Thread ID
+          type: string
+      required:
+      - comment_count
+      - thread_id
+    MeetingActivity:
+      title: MeetingActivity
+      type: object
+      properties:
+        _paused_subscriptions:
+          title: Paused Subscriptions
+          type: array
+          items:
+            $ref: '#/components/schemas/MeetingPausedSubscription'
+        _type:
+          title: Type
+          type: string
+        activity_at:
+          title: Activity At
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        actual_duration:
+          title: Actual Duration
+          anyOf:
+          - type: integer
+          - type: 'null'
+        attached_call_ids:
+          title: Attached Call IDs
+          type: array
+          items:
+            type: string
+        attendees:
+          title: Attendees
+          type: array
+          items:
+            $ref: '#/components/schemas/MeetingAttendee'
+        calendar_event_link:
+          title: Calendar Event Link
+          anyOf:
+          - type: string
+          - type: 'null'
+        calendar_event_uids:
+          title: Calendar Event UIDs
+          type: array
+          items:
+            type: string
+        comment_summary:
+          title: Comment Summary
+          anyOf:
+          - $ref: '#/components/schemas/CommentSummary'
+          - type: 'null'
+        conference_links:
+          title: Conference Links
+          type: array
+          items:
+            $ref: '#/components/schemas/MeetingConferenceLink'
+        connected_account_id:
+          title: Connected Account ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        contact_id:
+          title: Contact ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        conversation_type_id:
+          title: Conversation Type ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        conversation_type_reason:
+          anyOf:
+          - $ref: '#/components/schemas/PlaybookReason'
+          - type: 'null'
+        created_by:
+          title: Created By
+          anyOf:
+          - type: string
+          - type: 'null'
+        created_by_name:
+          title: Created By Name
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        date_created:
+          title: Date Created
+          type: string
+          format: date-time
+        date_updated:
+          title: Date Updated
+          type: string
+          format: date-time
+        duration:
+          title: Duration
+          type: integer
+        ends_at:
+          title: Ends At
+          type: string
+          format: date-time
+        id:
+          title: ID
+          type: string
+        integrations:
+          title: Integrations
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        is_recurring:
+          title: Is Recurring
+          type: boolean
+        lead_id:
+          title: Lead ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        location:
+          title: Location
+          type: string
+        note:
+          title: Note
+          type: string
+        notetaker_id:
+          title: Notetaker ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        organization_id:
+          title: Organization ID
+          type: string
+        outcome_autofill_confidence:
+          anyOf:
+          - $ref: '#/components/schemas/OutcomeAutofillConfidence'
+          - type: 'null'
+        outcome_autofill_reasoning:
+          title: Outcome Autofill Reasoning
+          anyOf:
+          - type: string
+          - type: 'null'
+        outcome_id:
+          title: Outcome ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        outcome_reason:
+          anyOf:
+          - $ref: '#/components/schemas/OutcomeReason'
+          - type: 'null'
+        playbook_id:
+          title: Playbook ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        playbook_reason:
+          anyOf:
+          - $ref: '#/components/schemas/PlaybookReason'
+          - type: 'null'
+        provider_calendar_event_id:
+          title: Provider Calendar Event ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        provider_calendar_ids:
+          title: Provider Calendar IDs
+          type: array
+          items:
+            type: string
+        provider_calendar_type:
+          anyOf:
+          - $ref: '#/components/schemas/ProviderCalendarType'
+          - type: 'null'
+        source:
+          $ref: '#/components/schemas/MeetingSource'
+        starts_at:
+          title: Starts At
+          type: string
+          format: date-time
+        status:
+          anyOf:
+          - $ref: '#/components/schemas/MeetingStatus'
+          - type: 'null'
+        summary:
+          anyOf:
+          - $ref: '#/components/schemas/MeetingSummary'
+          - type: 'null'
+        title:
+          title: Title
+          type: string
+        transcripts:
+          title: Transcripts
+          type: array
+          items:
+            anyOf:
+            - $ref: '#/components/schemas/MeetingTranscript'
+            - type: 'null'
+        updated_by:
+          title: Updated By
+          anyOf:
+          - type: string
+          - type: 'null'
+        updated_by_name:
+          title: Updated By Name
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        user_id:
+          title: User ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        user_name:
+          title: User Name
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        user_note:
+          title: User Note
+          anyOf:
+          - type: string
+          - type: 'null'
+        user_note_date_updated:
+          title: User Note Date Updated
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        user_note_html:
+          title: User Note Html
+          anyOf:
+          - type: string
+          - type: 'null'
+        user_note_mentions:
+          title: User Note Mentions
+          type: array
+          items:
+            type: string
+        users:
+          title: Users
+          type: array
+          items:
+            type: string
+      required:
+      - _type
+      - activity_at
+      - actual_duration
+      - attached_call_ids
+      - attendees
+      - calendar_event_link
+      - calendar_event_uids
+      - conference_links
+      - connected_account_id
+      - contact_id
+      - conversation_type_id
+      - conversation_type_reason
+      - created_by
+      - date_created
+      - date_updated
+      - duration
+      - ends_at
+      - id
+      - integrations
+      - is_recurring
+      - lead_id
+      - location
+      - note
+      - notetaker_id
+      - organization_id
+      - outcome_autofill_confidence
+      - outcome_autofill_reasoning
+      - outcome_id
+      - outcome_reason
+      - playbook_id
+      - playbook_reason
+      - provider_calendar_event_id
+      - provider_calendar_ids
+      - provider_calendar_type
+      - source
+      - starts_at
+      - status
+      - summary
+      - title
+      - updated_by
+      - user_id
+      - user_note
+      - user_note_date_updated
+      - user_note_html
+      - user_note_mentions
+      - users
+    MeetingAttendee:
+      title: MeetingAttendee
+      type: object
+      properties:
+        contact_id:
+          title: Contact ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        email:
+          title: Email
+          anyOf:
+          - type: string
+          - type: 'null'
+        is_organizer:
+          title: Is Organizer
+          anyOf:
+          - type: boolean
+          - type: 'null'
+        name:
+          title: Name
+          anyOf:
+          - type: string
+          - type: 'null'
+        status:
+          title: Status
+          anyOf:
+          - type: string
+          - type: 'null'
+        user_id:
+          title: User ID
+          anyOf:
+          - type: string
+          - type: 'null'
+      required:
+      - contact_id
+      - email
+      - is_organizer
+      - name
+      - status
+      - user_id
+    MeetingTranscriptSpeaker:
+      title: MeetingTranscriptSpeaker
+      type: object
+      properties:
+        speaker_label:
+          title: Speaker Label
+          type: string
+        speaker_side:
+          anyOf:
+          - $ref: '#/components/schemas/SpeakerSide'
+          - type: 'null'
+        talk_percentage:
+          title: Talk Percentage
+          type: number
+        talk_time:
+          title: Talk Time
+          type: number
+      required:
+      - speaker_label
+      - speaker_side
+      - talk_percentage
+      - talk_time
+    ProviderCalendarType:
+      title: ProviderCalendarType
+      type: string
+      enum:
+      - google
+      - microsoft
+    MeetingSummary:
+      title: MeetingSummary
+      type: object
+      properties:
+        html:
+          title: Html
+          type: string
+        text:
+          title: Text
+          type: string
+      required:
+      - html
+      - text
+    OutcomeReason:
+      title: OutcomeReason
+      type: string
+      enum:
+      - autofilled
+      - user-selected
+      - voicemail-dropped
+    MeetingTranscript:
+      title: MeetingTranscript
+      type: object
+      properties:
+        has_speaker_labels:
+          title: Has Speaker Labels
+          type: boolean
+        id:
+          title: ID
+          type: string
+        speakers:
+          title: Speakers
+          type: array
+          items:
+            $ref: '#/components/schemas/MeetingTranscriptSpeaker'
+        summary_html:
+          title: Summary Html
+          anyOf:
+          - type: string
+          - type: 'null'
+        summary_text:
+          title: Summary Text
+          anyOf:
+          - type: string
+          - type: 'null'
+        utterances:
+          title: Utterances
+          type: array
+          items:
+            $ref: '#/components/schemas/MeetingTranscriptUtterance'
+      required:
+      - has_speaker_labels
+      - id
+      - speakers
+      - summary_text
+      - utterances
+    SpeakerSide:
+      title: SpeakerSide
+      type: string
+      enum:
+      - contact
+      - close-user
+      - voice-agent
+    MeetingPausedSubscription:
+      title: MeetingPausedSubscription
+      type: object
+      properties:
+        contact_id:
+          title: Contact ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        contact_name:
+          title: Contact Name
+          anyOf:
+          - type: string
+          - type: 'null'
+        id:
+          title: ID
+          type: string
+        sequence_id:
+          title: Sequence ID
+          type: string
+        sequence_name:
+          title: Sequence Name
+          type: string
+        sequence_status:
+          title: Sequence Status
+          type: string
+      required:
+      - contact_id
+      - contact_name
+      - id
+      - sequence_id
+      - sequence_name
+      - sequence_status
+    MeetingTranscriptUtterance:
+      title: MeetingTranscriptUtterance
+      type: object
+      properties:
+        end:
+          title: End
+          type: number
+        speaker_label:
+          title: Speaker Label
+          type: string
+        speaker_side:
+          anyOf:
+          - $ref: '#/components/schemas/SpeakerSide'
+          - type: 'null'
+        start:
+          title: Start
+          type: number
+        text:
+          title: Text
+          type: string
+        words:
+          title: Words
+          type: array
+          items:
+            $ref: '#/components/schemas/MeetingTranscriptWord'
+      required:
+      - end
+      - speaker_label
+      - speaker_side
+      - start
+      - text
+    MeetingSource:
+      title: MeetingSource
+      type: string
+      enum:
+      - calendar
+      - manual
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2

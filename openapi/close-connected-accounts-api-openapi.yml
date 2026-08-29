@@ -1,0 +1,194 @@
+openapi: 3.2.0
+info:
+  description: Close CRM REST API
+  title: Close Connected Accounts API
+  version: 1.0.0
+servers:
+- url: https://api.close.com/api/v1
+security:
+- ApiKeyAuth: []
+- OAuth2: []
+tags:
+- name: connected_accounts
+  externalDocs:
+    url: https://developer.close.com/api/resources/connected-accounts
+paths:
+  /connected_account/:
+    get:
+      operationId: connected_accounts_list
+      tags:
+      - connected_accounts
+      summary: List connected accounts
+      description: You can filter down to a specific user by passing the `?user_id` query parameter.
+      parameters:
+      - in: query
+        name: _fields
+        required: false
+        schema:
+          title: Fields
+          default:
+          - _type
+          - available_calendars
+          - available_features
+          - calendar_receive_status
+          - calendly
+          - date_created
+          - default_identity
+          - email
+          - email_receive_status
+          - enabled_features
+          - has_meeting_creation_scopes
+          - id
+          - identities
+          - imap
+          - is_imap_archive_sync_enabled
+          - latest_receive_error
+          - latest_send_error
+          - lead_suggestions_updated_at
+          - organization_id
+          - receive_status
+          - send_status
+          - smtp
+          - sync_all_calendars
+          - synced_calendars
+          - user_id
+          - zoom_account_plan
+          type: array
+          items:
+            type: string
+      - in: query
+        name: user_id
+        required: false
+        schema:
+          title: User ID
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                data:
+                - _type: google
+                  id: emailacct_qG1RuJuy5baiXvVbIc2VelooJwGcKeIrQLNtTd9p6RO
+                  identities:
+                  - email: anthony@close.com
+                    name: Anthony Nemitz
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  synced_calendars:
+                  - anthony@close.com
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                - _type: custom_email
+                  id: emailacct_ngOT8utnZjBlZyXJBS7hM9HkDphGvtt8J21VJm1KSqe
+                  identities:
+                  - email: anthony@close.com
+                    name: Anthony Nemitz
+                  - email: support@close.com
+                    name: Close CRM Support
+                  imap: null
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  smtp:
+                    host: smtp.mailgun.org
+                    port: 465
+                    use_ssl: true
+                    username: anthony@close.com
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                - _type: zoom
+                  email: anthony@close.com
+                  id: emailacct_0WwZ19CuOSGOtT2RMOqTPIMyvNMuFbfEr3Iul2hrWYm
+                  identities: []
+                  organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                  user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+                has_more: false
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+  /connected_account/{id}/:
+    get:
+      operationId: connected_accounts_get
+      tags:
+      - connected_accounts
+      summary: Fetch a single connected account
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: _fields
+        required: false
+        schema:
+          title: Fields
+          default:
+          - _type
+          - available_calendars
+          - available_features
+          - calendar_receive_status
+          - calendly
+          - date_created
+          - default_identity
+          - email
+          - email_receive_status
+          - enabled_features
+          - has_meeting_creation_scopes
+          - id
+          - identities
+          - imap
+          - is_imap_archive_sync_enabled
+          - latest_receive_error
+          - latest_send_error
+          - lead_suggestions_updated_at
+          - organization_id
+          - receive_status
+          - send_status
+          - smtp
+          - sync_all_calendars
+          - synced_calendars
+          - user_id
+          - zoom_account_plan
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              example:
+                _type: google
+                id: emailacct_qG1RuJuy5baiXvVbIc2VelooJwGcKeIrQLNtTd9p6RO
+                identities:
+                - email: anthony@close.com
+                  name: Anthony Nemitz
+                organization_id: orga_RbREgmiiwcr1w2b4cOnCMQaQPSIFxMqAD2Dh243uxcH
+                synced_calendars:
+                - anthony@close.com
+                user_id: user_N6KhMpzHRCYQHdn4gRNIFNN5JExnsrprKA6ekxM63XA
+          description: Successful response
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not found
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use your API key as the username and leave the password empty.
+      scheme: basic
+      type: http
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://app.close.com/oauth2/authorize/
+          scopes:
+            all.full_access: Full access to all resources
+            offline_access: Request a refresh token
+          tokenUrl: https://api.close.com/oauth2/token/
+      type: oauth2
