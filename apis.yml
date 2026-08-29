@@ -4338,6 +4338,9 @@ apis:
   - type: Documentation
     url: https://developer.close.com/api/overview/oauth-authentication
 common:
+  - type: CapabilityMap
+    url: capabilities/close-capability-edges.yml
+    name: Close Business Capability Map
   - type: AgenticAccess
     url: agentic-access/close-agentic-access.yml
   - type: TrustCenter
