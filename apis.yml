@@ -4343,6 +4343,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Activities
+  tags_raw:
   - activities
   properties:
   - type: OpenAPI
@@ -4352,7 +4354,8 @@ apis:
   description: The activities.calls API from Close — 2 operation(s) for activities.calls.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - activities.calls
   properties:
   - type: OpenAPI
@@ -4362,7 +4365,8 @@ apis:
   description: The activities.creations API from Close — 2 operation(s) for activities.creations.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - activities.creations
   properties:
   - type: OpenAPI
@@ -4373,7 +4377,8 @@ apis:
     The activities.custom_activities API from Close — 2 operation(s) for activities.custom_activities.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - activities.custom_activities
   properties:
   - type: OpenAPI
@@ -4384,7 +4389,8 @@ apis:
     The activities.email_threads API from Close — 2 operation(s) for activities.email_threads.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - activities.email_threads
   properties:
   - type: OpenAPI
@@ -4394,7 +4400,8 @@ apis:
   description: The activities.emails API from Close — 2 operation(s) for activities.emails.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - activities.emails
   properties:
   - type: OpenAPI
@@ -4405,7 +4412,8 @@ apis:
     The activities.form_submissions API from Close — 2 operation(s) for activities.form_submissions.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - activities.form_submissions
   properties:
   - type: OpenAPI
@@ -4416,7 +4424,8 @@ apis:
     The activities.import_updates API from Close — 2 operation(s) for activities.import_updates.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - activities.import_updates
   properties:
   - type: OpenAPI
@@ -4426,7 +4435,8 @@ apis:
   description: The activities.lead_merges API from Close — 2 operation(s) for activities.lead_merges.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - activities.lead_merges
   properties:
   - type: OpenAPI
@@ -4437,7 +4447,8 @@ apis:
     The activities.lead_status_changes API from Close — 2 operation(s) for activities.lead_status_changes.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - activities.lead_status_changes
   properties:
   - type: OpenAPI
@@ -4447,7 +4458,8 @@ apis:
   description: The activities.meetings API from Close — 3 operation(s) for activities.meetings.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - activities.meetings
   properties:
   - type: OpenAPI
@@ -4457,7 +4469,8 @@ apis:
   description: The activities.notes API from Close — 2 operation(s) for activities.notes.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - activities.notes
   properties:
   - type: OpenAPI
@@ -4468,7 +4481,8 @@ apis:
     The activities.opportunity_status_changes API from Close — 2 operation(s) for activities.opportunity_status_changes.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - activities.opportunity_status_changes
   properties:
   - type: OpenAPI
@@ -4478,7 +4492,8 @@ apis:
   description: The activities.sms API from Close — 2 operation(s) for activities.sms.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - activities.sms
   properties:
   - type: OpenAPI
@@ -4489,7 +4504,8 @@ apis:
     The activities.task_completions API from Close — 2 operation(s) for activities.task_completions.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - activities.task_completions
   properties:
   - type: OpenAPI
@@ -4500,7 +4516,8 @@ apis:
     The activities.whatsapp_messages API from Close — 2 operation(s) for activities.whatsapp_messages.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - activities.whatsapp_messages
   properties:
   - type: OpenAPI
@@ -4510,7 +4527,8 @@ apis:
   description: The blocked_phone_numbers API from Close — 3 operation(s) for blocked_phone_numbers.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - blocked_phone_numbers
   properties:
   - type: OpenAPI
@@ -4562,6 +4580,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Comments
+  tags_raw:
   - comments
   properties:
   - type: OpenAPI
@@ -4572,6 +4592,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Connected Accounts
+  tags_raw:
   - connected_accounts
   properties:
   - type: OpenAPI
@@ -4582,6 +4604,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Contacts
+  tags_raw:
   - contacts
   properties:
   - type: OpenAPI
@@ -4591,7 +4615,8 @@ apis:
   description: The custom_activity_types API from Close — 2 operation(s) for custom_activity_types.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - custom_activity_types
   properties:
   - type: OpenAPI
@@ -4601,7 +4626,8 @@ apis:
   description: The custom_field_schemas API from Close — 1 operation(s) for custom_field_schemas.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - custom_field_schemas
   properties:
   - type: OpenAPI
@@ -4673,7 +4699,8 @@ apis:
   description: The custom_object_types API from Close — 2 operation(s) for custom_object_types.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - custom_object_types
   properties:
   - type: OpenAPI
@@ -4684,6 +4711,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Custom Objects
+  tags_raw:
   - custom_objects
   properties:
   - type: OpenAPI
@@ -4704,6 +4733,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Email Templates
+  tags_raw:
   - email_templates
   properties:
   - type: OpenAPI
@@ -4714,6 +4745,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Event
+  tags_raw:
   - events
   properties:
   - type: OpenAPI
@@ -4724,6 +4757,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Export
+  tags_raw:
   - exports
   properties:
   - type: OpenAPI
@@ -4733,7 +4768,8 @@ apis:
   description: The field_enrichment API from Close — 1 operation(s) for field_enrichment.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - field_enrichment
   properties:
   - type: OpenAPI
@@ -4744,6 +4780,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - File
+  tags_raw:
   - files
   properties:
   - type: OpenAPI
@@ -4754,6 +4792,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Forms
+  tags_raw:
   - forms
   properties:
   - type: OpenAPI
@@ -4764,6 +4804,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Group
+  tags_raw:
   - groups
   properties:
   - type: OpenAPI
@@ -4774,6 +4816,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Integration-Links
+  tags_raw:
   - integration_links
   properties:
   - type: OpenAPI
@@ -4784,6 +4828,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Lead Statuses
+  tags_raw:
   - lead_statuses
   properties:
   - type: OpenAPI
@@ -4794,6 +4840,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Leads
+  tags_raw:
   - leads
   properties:
   - type: OpenAPI
@@ -4804,6 +4852,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Memberships
+  tags_raw:
   - memberships
   properties:
   - type: OpenAPI
@@ -4814,6 +4864,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Opportunities
+  tags_raw:
   - opportunities
   properties:
   - type: OpenAPI
@@ -4823,7 +4875,8 @@ apis:
   description: The opportunity_statuses API from Close — 2 operation(s) for opportunity_statuses.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - opportunity_statuses
   properties:
   - type: OpenAPI
@@ -4834,6 +4887,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Organization
+  tags_raw:
   - organizations
   properties:
   - type: OpenAPI
@@ -4844,6 +4899,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Outcomes
+  tags_raw:
   - outcomes
   properties:
   - type: OpenAPI
@@ -4854,6 +4911,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Phone Numbers
+  tags_raw:
   - phone_numbers
   properties:
   - type: OpenAPI
@@ -4864,6 +4923,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Pipelines
+  tags_raw:
   - pipelines
   properties:
   - type: OpenAPI
@@ -4874,6 +4935,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Playbooks
+  tags_raw:
   - playbooks
   properties:
   - type: OpenAPI
@@ -4884,6 +4947,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Reporting
+  tags_raw:
   - reporting
   properties:
   - type: OpenAPI
@@ -4894,6 +4959,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Roles
+  tags_raw:
   - roles
   properties:
   - type: OpenAPI
@@ -4904,6 +4971,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Scheduling Links
+  tags_raw:
   - scheduling_links
   properties:
   - type: OpenAPI
@@ -4913,7 +4982,8 @@ apis:
   description: The send_as API from Close — 3 operation(s) for send_as.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - send_as
   properties:
   - type: OpenAPI
@@ -4924,6 +4994,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Sequences
+  tags_raw:
   - sequences
   properties:
   - type: OpenAPI
@@ -4933,7 +5005,8 @@ apis:
   description: The smart_views API from Close — 2 operation(s) for smart_views.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - smart_views
   properties:
   - type: OpenAPI
@@ -4944,6 +5017,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - SMS Templates
+  tags_raw:
   - sms_templates
   properties:
   - type: OpenAPI
@@ -4954,6 +5029,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Task
+  tags_raw:
   - tasks
   properties:
   - type: OpenAPI
@@ -4963,7 +5040,8 @@ apis:
   description: The unsubscribed_emails API from Close — 2 operation(s) for unsubscribed_emails.
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - unsubscribed_emails
   properties:
   - type: OpenAPI
@@ -4974,6 +5052,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - User
+  tags_raw:
   - users
   properties:
   - type: OpenAPI
@@ -4984,6 +5064,8 @@ apis:
   humanURL: https://developer.close.com/api/resources/activities
   baseURL: https://api.close.com/api/v1
   tags:
+  - Webhook
+  tags_raw:
   - webhooks
   properties:
   - type: OpenAPI
