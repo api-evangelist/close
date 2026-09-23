@@ -9,7 +9,7 @@ security:
 - ApiKeyAuth: []
 - OAuth2: []
 tags:
-- name: sequences
+- name: Sequences
   externalDocs:
     url: https://developer.close.com/api/resources/sequences
 paths:
@@ -17,7 +17,7 @@ paths:
     get:
       operationId: sequences_list
       tags:
-      - sequences
+      - Sequences
       summary: List Sequences
       parameters:
       - $ref: '#/components/parameters/LimitParam'
@@ -72,7 +72,7 @@ paths:
     post:
       operationId: sequences_create
       tags:
-      - sequences
+      - Sequences
       summary: Create a Sequence
       requestBody:
         content:
@@ -185,7 +185,7 @@ paths:
     get:
       operationId: sequences_get
       tags:
-      - sequences
+      - Sequences
       summary: Fetch a Sequence
       parameters:
       - in: path
@@ -260,7 +260,7 @@ paths:
     put:
       operationId: sequences_update
       tags:
-      - sequences
+      - Sequences
       summary: Update a Sequence
       description: '**Note**: If you include `steps` in the payload and exclude some of the existing steps in your sequence, it will remove those steps from the sequence entirely.'
       parameters:
@@ -344,7 +344,7 @@ paths:
     delete:
       operationId: sequences_delete
       tags:
-      - sequences
+      - Sequences
       summary: Delete a Sequence
       parameters:
       - in: path
@@ -365,7 +365,7 @@ paths:
     get:
       operationId: sequences_list_subscriptions
       tags:
-      - sequences
+      - Sequences
       summary: List Sequence Subscriptions
       description: At least one of `sequence_id`, `contact_id`, and `lead_id` is required.
       parameters:
@@ -424,7 +424,7 @@ paths:
     post:
       operationId: sequences_create_subscription
       tags:
-      - sequences
+      - Sequences
       summary: Subscribe a Contact to a Sequence
       requestBody:
         content:
@@ -473,7 +473,7 @@ paths:
     get:
       operationId: sequences_get_subscription
       tags:
-      - sequences
+      - Sequences
       summary: Fetch a single Sequence Subscription
       parameters:
       - in: path
@@ -514,7 +514,7 @@ paths:
     put:
       operationId: sequences_update_subscription
       tags:
-      - sequences
+      - Sequences
       summary: Update a specific Subscription
       parameters:
       - in: path
@@ -561,7 +561,7 @@ paths:
     delete:
       operationId: sequences_delete_subscription
       tags:
-      - sequences
+      - Sequences
       summary: Delete a Sequence Subscription
       description: Unsubscribe a contact from a sequence by deleting their subscription.
       parameters:
@@ -581,14 +581,6 @@ paths:
           description: Not found
 components:
   parameters:
-    LimitParam:
-      description: Number of results to return.
-      in: query
-      name: _limit
-      required: false
-      schema:
-        default: 100
-        type: integer
     SkipParam:
       description: Number of results to skip before returning, for pagination.
       in: query
@@ -596,6 +588,14 @@ components:
       required: false
       schema:
         default: 0
+        type: integer
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
         type: integer
   securitySchemes:
     ApiKeyAuth:

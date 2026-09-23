@@ -112,7 +112,33 @@ paths:
       tags:
       - activities.sms
       summary: Create an SMS activity
-      description: "*status* must be one of the following:\n\n - `inbox` to log an already received SMS.\n - `draft` to create a draft SMS.\n - `scheduled` to send an SMS at a scheduled date and time, which must be specified in the `date_scheduled` field.\n - `outbox` to actually **send** an SMS. To delay SMS sending by a few seconds (to allow undo), specify `send_in` in seconds (must be less than 60).\n - `sent` to log an already sent SMS.\n\nOnly drafts can be modified, and their status can be changed to `scheduled` (to send later) or `outbox` (to send immediately). Scheduled SMS, or SMS in outbox that weren't sent yet can be canceled by setting the status back to `draft`.\n\nYou have to provide a `local_phone` that will be used to send the SMS. The number you choose has to be associated with a Phone Number of type `internal`. See the [Phone Numbers](https://developer.close.com/api/resources/phone-numbers) paragraph for more details.\n\nA `template_id` referencing an SMS Template may be provided instead of `text` to automatically render that template and use the content as `text`.\n\nWhen `direction` is not provided, but `status=\"inbox\"`, `direction` will default to \"inbound\". Otherwise, `direction` defaults to \"outbound\".\n\nWhen creating a new SMS with the status set to `inbox`, you can pass the query parameter `send_to_inbox` with the value of `true`  to create a corresponding Inbox Notification for the SMS."
+      description: '*status* must be one of the following:
+
+
+        - `inbox` to log an already received SMS.
+
+        - `draft` to create a draft SMS.
+
+        - `scheduled` to send an SMS at a scheduled date and time, which must be specified in the `date_scheduled` field.
+
+        - `outbox` to actually **send** an SMS. To delay SMS sending by a few seconds (to allow undo), specify `send_in` in seconds (must be less than 60).
+
+        - `sent` to log an already sent SMS.
+
+
+        Only drafts can be modified, and their status can be changed to `scheduled` (to send later) or `outbox` (to send immediately). Scheduled SMS, or SMS in outbox that weren''t sent yet can be canceled by setting the status back to `draft`.
+
+
+        You have to provide a `local_phone` that will be used to send the SMS. The number you choose has to be associated with a Phone Number of type `internal`. See the Phone Numbers paragraph for more details.
+
+
+        A `template_id` referencing an SMS Template may be provided instead of `text` to automatically render that template and use the content as `text`.
+
+
+        When `direction` is not provided, but `status="inbox"`, `direction` will default to "inbound". Otherwise, `direction` defaults to "outbound".
+
+
+        When creating a new SMS with the status set to `inbox`, you can pass the query parameter `send_to_inbox` with the value of `true` to create a corresponding Inbox Notification for the SMS.'
       parameters:
       - in: query
         name: send_to_inbox
@@ -330,194 +356,277 @@ paths:
         '404':
           description: Not found
 components:
-  parameters:
-    ActivityFilters_DateCreatedGteParam:
-      in: query
-      name: date_created__gte
-      required: false
-      schema:
-        title: Date Created (>=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_ActivityAtLteParam:
-      in: query
-      name: activity_at__lte
-      required: false
-      schema:
-        title: Activity At (<=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_TypeParam:
-      description: Filter by activity type, e.g. Call (comma-separated)
-      in: query
-      name: _type
-      required: false
-      schema:
-        title: Type
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    ActivityFilters_OrganizationIdParam:
-      in: query
-      name: organization_id
-      required: false
-      schema:
-        title: Organization ID
-        default: null
-        anyOf:
-        - type: string
-        - type: 'null'
-    ActivityFilters_LeadIdParam:
-      description: Filter by lead IDs (comma-separated)
-      in: query
-      name: lead_id
-      required: false
-      schema:
-        title: Lead ID
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    ActivityFilters_ActivityAtLtParam:
-      in: query
-      name: activity_at__lt
-      required: false
-      schema:
-        title: Activity At (<)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_ActivityAtGteParam:
-      in: query
-      name: activity_at__gte
-      required: false
-      schema:
-        title: Activity At (>=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_UserIdParam:
-      description: Filter by user IDs (comma-separated)
-      in: query
-      name: user_id
-      required: false
-      schema:
-        title: User ID
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    ActivityFilters_ContactIdParam:
-      description: Filter by contact IDs (comma-separated)
-      in: query
-      name: contact_id
-      required: false
-      schema:
-        title: Contact ID
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    LimitParam:
-      description: Number of results to return.
-      in: query
-      name: _limit
-      required: false
-      schema:
-        default: 100
-        type: integer
-    SkipParam:
-      description: Number of results to skip before returning, for pagination.
-      in: query
-      name: _skip
-      required: false
-      schema:
-        default: 0
-        type: integer
-    ActivityFilters_IdInParam:
-      description: Filter by activity IDs (comma-separated)
-      in: query
-      name: id__in
-      required: false
-      schema:
-        title: ID In
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    FieldsParam:
-      description: Comma-separated list of fields to include in the response.
-      in: query
-      name: _fields
-      required: false
-      schema:
-        type: string
-    ActivityFilters_DateCreatedLtParam:
-      in: query
-      name: date_created__lt
-      required: false
-      schema:
-        title: Date Created (<)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_ActivityAtGtParam:
-      in: query
-      name: activity_at__gt
-      required: false
-      schema:
-        title: Activity At (>)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_DateCreatedGtParam:
-      in: query
-      name: date_created__gt
-      required: false
-      schema:
-        title: Date Created (>)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_DateCreatedLteParam:
-      in: query
-      name: date_created__lte
-      required: false
-      schema:
-        title: Date Created (<=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
   schemas:
+    UpdateSMSActivity:
+      type: object
+      properties:
+        activity_at:
+          type:
+          - 'null'
+          - string
+          format: date-time
+        attachments:
+          type:
+          - array
+          - 'null'
+          maxItems: 10
+          items:
+            type: object
+            properties:
+              content_type:
+                type: string
+                enum:
+                - application/pdf
+                - application/vcard
+                - audio/3gpp
+                - audio/3gpp2
+                - audio/L24
+                - audio/ac3
+                - audio/amr
+                - audio/amr-nb
+                - audio/basic
+                - audio/mp4
+                - audio/mpeg
+                - audio/ogg
+                - audio/vnd.rn-realaudio
+                - audio/vnd.wave
+                - audio/webm
+                - image/bmp
+                - image/gif
+                - image/jpeg
+                - image/jpg
+                - image/png
+                - image/tiff
+                - text/calendar
+                - text/csv
+                - text/directory
+                - text/richtext
+                - text/rtf
+                - text/vcard
+                - text/x-vcard
+                - video/3gpp
+                - video/3gpp-tt
+                - video/3gpp2
+                - video/H261
+                - video/H263
+                - video/H263-1998
+                - video/H263-2000
+                - video/H264
+                - video/mp4
+                - video/mpeg
+                - video/quicktime
+                - video/webm
+              filename:
+                type: string
+              url:
+                type: string
+            required:
+            - content_type
+            - filename
+            - url
+        contact_id:
+          type:
+          - 'null'
+          - string
+        lead_id:
+          type:
+          - 'null'
+          - string
+        local_phone:
+          description: Phone number in E.164 format
+          type:
+          - 'null'
+          - string
+        remote_phone:
+          description: Phone number in E.164 format
+          type:
+          - 'null'
+          - string
+        status:
+          type: string
+          enum:
+          - inbox
+          - draft
+          - scheduled
+          - outbox
+          - sent
+          - error
+        template_id:
+          type:
+          - 'null'
+          - string
+        text:
+          type:
+          - 'null'
+          - string
+        user_id:
+          type:
+          - 'null'
+          - string
+      additionalProperties: false
+    PhoneActivityDirection:
+      title: PhoneActivityDirection
+      description: Direction of a phone activity, such as a call or an SMS message.
+      type: string
+      enum:
+      - inbound
+      - outbound
+    MessageStatus:
+      title: MessageStatus
+      description: Status of a message, such as Email or SMS.
+      type: string
+      enum:
+      - inbox
+      - draft
+      - scheduled
+      - outbox
+      - sent
+      - error
+    CreateSMSActivity:
+      type: object
+      properties:
+        activity_at:
+          type:
+          - 'null'
+          - string
+          format: date-time
+        attachments:
+          type:
+          - array
+          - 'null'
+          maxItems: 10
+          items:
+            type: object
+            properties:
+              content_type:
+                type: string
+                enum:
+                - application/pdf
+                - application/vcard
+                - audio/3gpp
+                - audio/3gpp2
+                - audio/L24
+                - audio/ac3
+                - audio/amr
+                - audio/amr-nb
+                - audio/basic
+                - audio/mp4
+                - audio/mpeg
+                - audio/ogg
+                - audio/vnd.rn-realaudio
+                - audio/vnd.wave
+                - audio/webm
+                - image/bmp
+                - image/gif
+                - image/jpeg
+                - image/jpg
+                - image/png
+                - image/tiff
+                - text/calendar
+                - text/csv
+                - text/directory
+                - text/richtext
+                - text/rtf
+                - text/vcard
+                - text/x-vcard
+                - video/3gpp
+                - video/3gpp-tt
+                - video/3gpp2
+                - video/H261
+                - video/H263
+                - video/H263-1998
+                - video/H263-2000
+                - video/H264
+                - video/mp4
+                - video/mpeg
+                - video/quicktime
+                - video/webm
+              filename:
+                type: string
+              url:
+                type: string
+            required:
+            - content_type
+            - filename
+            - url
+        contact_id:
+          type:
+          - 'null'
+          - string
+        created_by:
+          type:
+          - 'null'
+          - string
+        date_created:
+          type:
+          - 'null'
+          - string
+          format: date-time
+        direction:
+          type:
+          - 'null'
+          - string
+          enum:
+          - inbound
+          - outbound
+          - null
+        lead_id:
+          type:
+          - 'null'
+          - string
+        local_phone:
+          description: Phone number in E.164 format
+          type:
+          - 'null'
+          - string
+        organization_id:
+          type:
+          - 'null'
+          - string
+        remote_phone:
+          description: Phone number in E.164 format
+          type:
+          - 'null'
+          - string
+        source:
+          type:
+          - 'null'
+          - string
+          enum:
+          - Close.io
+          - External
+          - null
+        status:
+          type: string
+          enum:
+          - inbox
+          - draft
+          - scheduled
+          - outbox
+          - sent
+          - error
+        template_id:
+          type:
+          - 'null'
+          - string
+        text:
+          type:
+          - 'null'
+          - string
+        user_id:
+          type:
+          - 'null'
+          - string
+      required:
+      - status
+      additionalProperties: false
+    PhoneActivitySource:
+      title: PhoneActivitySource
+      description: Source of a phone activity. Describes whether the phone activity (such as a call or an SMS) was handled by Close's telephony provider or handled externally by a 3rd party and is merely logged in Close.
+      type: string
+      enum:
+      - Close.io
+      - External
     SMSActivity:
       title: SMSActivity
       type: object
@@ -719,276 +828,193 @@ components:
       - updated_by
       - user_id
       - users
-    CreateSMSActivity:
-      type: object
-      properties:
-        activity_at:
-          type:
-          - 'null'
-          - string
+  parameters:
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
+    ActivityFilters_DateCreatedLtParam:
+      in: query
+      name: date_created__lt
+      required: false
+      schema:
+        title: Date Created (<)
+        anyOf:
+        - type: string
           format: date-time
-        attachments:
-          type:
-          - array
-          - 'null'
-          maxItems: 10
+        - type: string
+          format: date
+    ActivityFilters_UserIdParam:
+      description: Filter by user IDs (comma-separated)
+      in: query
+      name: user_id
+      required: false
+      schema:
+        title: User ID
+        default: null
+        anyOf:
+        - type: array
           items:
-            type: object
-            properties:
-              content_type:
-                type: string
-                enum:
-                - application/pdf
-                - application/vcard
-                - audio/3gpp
-                - audio/3gpp2
-                - audio/L24
-                - audio/ac3
-                - audio/amr
-                - audio/amr-nb
-                - audio/basic
-                - audio/mp4
-                - audio/mpeg
-                - audio/ogg
-                - audio/vnd.rn-realaudio
-                - audio/vnd.wave
-                - audio/webm
-                - image/bmp
-                - image/gif
-                - image/jpeg
-                - image/jpg
-                - image/png
-                - image/tiff
-                - text/calendar
-                - text/csv
-                - text/directory
-                - text/richtext
-                - text/rtf
-                - text/vcard
-                - text/x-vcard
-                - video/3gpp
-                - video/3gpp-tt
-                - video/3gpp2
-                - video/H261
-                - video/H263
-                - video/H263-1998
-                - video/H263-2000
-                - video/H264
-                - video/mp4
-                - video/mpeg
-                - video/quicktime
-                - video/webm
-              filename:
-                type: string
-              url:
-                type: string
-            required:
-            - content_type
-            - filename
-            - url
-        contact_id:
-          type:
-          - 'null'
-          - string
-        created_by:
-          type:
-          - 'null'
-          - string
-        date_created:
-          type:
-          - 'null'
-          - string
-          format: date-time
-        direction:
-          type:
-          - 'null'
-          - string
-          enum:
-          - inbound
-          - outbound
-          - null
-        lead_id:
-          type:
-          - 'null'
-          - string
-        local_phone:
-          description: Phone number in E.164 format
-          type:
-          - 'null'
-          - string
-        organization_id:
-          type:
-          - 'null'
-          - string
-        remote_phone:
-          description: Phone number in E.164 format
-          type:
-          - 'null'
-          - string
-        source:
-          type:
-          - 'null'
-          - string
-          enum:
-          - Close.io
-          - External
-          - null
-        status:
-          type: string
-          enum:
-          - inbox
-          - draft
-          - scheduled
-          - outbox
-          - sent
-          - error
-        template_id:
-          type:
-          - 'null'
-          - string
-        text:
-          type:
-          - 'null'
-          - string
-        user_id:
-          type:
-          - 'null'
-          - string
-      required:
-      - status
-      additionalProperties: false
-    UpdateSMSActivity:
-      type: object
-      properties:
-        activity_at:
-          type:
-          - 'null'
-          - string
-          format: date-time
-        attachments:
-          type:
-          - array
-          - 'null'
-          maxItems: 10
+            type: string
+        - type: 'null'
+    ActivityFilters_TypeParam:
+      description: Filter by activity type, e.g. Call (comma-separated)
+      in: query
+      name: _type
+      required: false
+      schema:
+        title: Type
+        default: null
+        anyOf:
+        - type: array
           items:
-            type: object
-            properties:
-              content_type:
-                type: string
-                enum:
-                - application/pdf
-                - application/vcard
-                - audio/3gpp
-                - audio/3gpp2
-                - audio/L24
-                - audio/ac3
-                - audio/amr
-                - audio/amr-nb
-                - audio/basic
-                - audio/mp4
-                - audio/mpeg
-                - audio/ogg
-                - audio/vnd.rn-realaudio
-                - audio/vnd.wave
-                - audio/webm
-                - image/bmp
-                - image/gif
-                - image/jpeg
-                - image/jpg
-                - image/png
-                - image/tiff
-                - text/calendar
-                - text/csv
-                - text/directory
-                - text/richtext
-                - text/rtf
-                - text/vcard
-                - text/x-vcard
-                - video/3gpp
-                - video/3gpp-tt
-                - video/3gpp2
-                - video/H261
-                - video/H263
-                - video/H263-1998
-                - video/H263-2000
-                - video/H264
-                - video/mp4
-                - video/mpeg
-                - video/quicktime
-                - video/webm
-              filename:
-                type: string
-              url:
-                type: string
-            required:
-            - content_type
-            - filename
-            - url
-        contact_id:
-          type:
-          - 'null'
-          - string
-        lead_id:
-          type:
-          - 'null'
-          - string
-        local_phone:
-          description: Phone number in E.164 format
-          type:
-          - 'null'
-          - string
-        remote_phone:
-          description: Phone number in E.164 format
-          type:
-          - 'null'
-          - string
-        status:
-          type: string
-          enum:
-          - inbox
-          - draft
-          - scheduled
-          - outbox
-          - sent
-          - error
-        template_id:
-          type:
-          - 'null'
-          - string
-        text:
-          type:
-          - 'null'
-          - string
-        user_id:
-          type:
-          - 'null'
-          - string
-      additionalProperties: false
-    MessageStatus:
-      title: MessageStatus
-      description: Status of a message, such as Email or SMS.
-      type: string
-      enum:
-      - inbox
-      - draft
-      - scheduled
-      - outbox
-      - sent
-      - error
-    PhoneActivitySource:
-      title: PhoneActivitySource
-      description: Source of a phone activity. Describes whether the phone activity (such as a call or an SMS) was handled by Close's telephony provider or handled externally by a 3rd party and is merely logged in Close.
-      type: string
-      enum:
-      - Close.io
-      - External
-    PhoneActivityDirection:
-      title: PhoneActivityDirection
-      description: Direction of a phone activity, such as a call or an SMS message.
-      type: string
-      enum:
-      - inbound
-      - outbound
+            type: string
+        - type: 'null'
+    ActivityFilters_ActivityAtLtParam:
+      in: query
+      name: activity_at__lt
+      required: false
+      schema:
+        title: Activity At (<)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_LeadIdParam:
+      description: Filter by lead IDs (comma-separated)
+      in: query
+      name: lead_id
+      required: false
+      schema:
+        title: Lead ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    ActivityFilters_ActivityAtGteParam:
+      in: query
+      name: activity_at__gte
+      required: false
+      schema:
+        title: Activity At (>=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
+    ActivityFilters_ContactIdParam:
+      description: Filter by contact IDs (comma-separated)
+      in: query
+      name: contact_id
+      required: false
+      schema:
+        title: Contact ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
+    ActivityFilters_DateCreatedGteParam:
+      in: query
+      name: date_created__gte
+      required: false
+      schema:
+        title: Date Created (>=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_DateCreatedLteParam:
+      in: query
+      name: date_created__lte
+      required: false
+      schema:
+        title: Date Created (<=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_ActivityAtLteParam:
+      in: query
+      name: activity_at__lte
+      required: false
+      schema:
+        title: Activity At (<=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_DateCreatedGtParam:
+      in: query
+      name: date_created__gt
+      required: false
+      schema:
+        title: Date Created (>)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_ActivityAtGtParam:
+      in: query
+      name: activity_at__gt
+      required: false
+      schema:
+        title: Activity At (>)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_OrganizationIdParam:
+      in: query
+      name: organization_id
+      required: false
+      schema:
+        title: Organization ID
+        default: null
+        anyOf:
+        - type: string
+        - type: 'null'
+    ActivityFilters_IdInParam:
+      description: Filter by activity IDs (comma-separated)
+      in: query
+      name: id__in
+      required: false
+      schema:
+        title: ID In
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

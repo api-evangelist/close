@@ -9,7 +9,7 @@ security:
 - ApiKeyAuth: []
 - OAuth2: []
 tags:
-- name: scheduling_links
+- name: Scheduling Links
   externalDocs:
     url: https://developer.close.com/api/resources/scheduling-links
 paths:
@@ -17,7 +17,7 @@ paths:
     get:
       operationId: scheduling_links_list
       tags:
-      - scheduling_links
+      - Scheduling Links
       summary: List User Scheduling Links
       responses:
         '200':
@@ -75,7 +75,7 @@ paths:
     post:
       operationId: scheduling_links_create
       tags:
-      - scheduling_links
+      - Scheduling Links
       summary: Create a User Scheduling Link
       requestBody:
         content:
@@ -114,9 +114,9 @@ paths:
     post:
       operationId: scheduling_links_create_integration
       tags:
-      - scheduling_links
+      - Scheduling Links
       summary: Create or update a Scheduling Link via OAuth
-      description: 'Please note that only OAuth apps can perform this operation. Using API key will result in an error. See [Authentication with OAuth](https://developer.close.com/api/overview/oauth-authentication) for more information.
+      description: 'Please note that only OAuth apps can perform this operation. Using API key will result in an error. See Authentication with OAuth for more information.
 
 
         Create or update a user scheduling link, managed by your application. Uses the integration-provided `source_id` field to identify and merge duplicate resources created by the same OAuth Application. If a scheduling link created by your OAuth application with the specified `source_id` does not exist, a new one will be created. Otherwise, the scheduling link resource will be updated. Requires authentication via OAuth.'
@@ -160,9 +160,9 @@ paths:
     delete:
       operationId: scheduling_links_delete_integration
       tags:
-      - scheduling_links
+      - Scheduling Links
       summary: Delete a User Scheduling Link via OAuth integration
-      description: 'Please note that only OAuth apps can perform this operation. Using API key will result in an error. See [Authentication with OAuth](https://developer.close.com/api/overview/oauth-authentication) for more information.
+      description: 'Please note that only OAuth apps can perform this operation. Using API key will result in an error. See Authentication with OAuth for more information.
 
 
         Uses the `source_id` field to identify and delete the specified User Scheduling Link created by your OAuth Application.'
@@ -185,7 +185,7 @@ paths:
     get:
       operationId: scheduling_links_get
       tags:
-      - scheduling_links
+      - Scheduling Links
       summary: Fetch a User Scheduling Link
       parameters:
       - in: path
@@ -221,7 +221,7 @@ paths:
     put:
       operationId: scheduling_links_update
       tags:
-      - scheduling_links
+      - Scheduling Links
       summary: Update a User Scheduling Link
       parameters:
       - in: path
@@ -265,7 +265,7 @@ paths:
     delete:
       operationId: scheduling_links_delete
       tags:
-      - scheduling_links
+      - Scheduling Links
       summary: Delete a User Scheduling Link
       parameters:
       - in: path
@@ -286,7 +286,7 @@ paths:
     get:
       operationId: scheduling_links_list_shared
       tags:
-      - scheduling_links
+      - Scheduling Links
       summary: List Shared Scheduling Links
       responses:
         '200':
@@ -329,7 +329,7 @@ paths:
     post:
       operationId: scheduling_links_create_shared
       tags:
-      - scheduling_links
+      - Scheduling Links
       summary: Create a Shared Scheduling Link
       requestBody:
         content:
@@ -366,7 +366,7 @@ paths:
     get:
       operationId: scheduling_links_get_shared
       tags:
-      - scheduling_links
+      - Scheduling Links
       summary: Fetch a Shared Scheduling Link
       parameters:
       - in: path
@@ -401,7 +401,7 @@ paths:
     put:
       operationId: scheduling_links_update_shared
       tags:
-      - scheduling_links
+      - Scheduling Links
       summary: Update a Shared Scheduling Link
       parameters:
       - in: path
@@ -442,7 +442,7 @@ paths:
     delete:
       operationId: scheduling_links_delete_shared
       tags:
-      - scheduling_links
+      - Scheduling Links
       summary: Delete a Shared Scheduling Link
       parameters:
       - in: path
@@ -463,7 +463,7 @@ paths:
     post:
       operationId: scheduling_links_create_shared_association
       tags:
-      - scheduling_links
+      - Scheduling Links
       summary: Map a Shared Scheduling Link
       description: 'Map a Shared Scheduling Link to either a User Scheduling Link or a URL.
 
@@ -524,7 +524,7 @@ paths:
     post:
       operationId: scheduling_links_delete_shared_association
       tags:
-      - scheduling_links
+      - Scheduling Links
       summary: Unmap a Shared Scheduling Link
       requestBody:
         content:

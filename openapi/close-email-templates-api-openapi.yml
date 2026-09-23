@@ -9,7 +9,7 @@ security:
 - ApiKeyAuth: []
 - OAuth2: []
 tags:
-- name: email_templates
+- name: Email Templates
   externalDocs:
     url: https://developer.close.com/api/resources/email-templates
 paths:
@@ -17,7 +17,7 @@ paths:
     get:
       operationId: email_templates_list
       tags:
-      - email_templates
+      - Email Templates
       summary: List email templates
       parameters:
       - $ref: '#/components/parameters/LimitParam'
@@ -61,7 +61,7 @@ paths:
     post:
       operationId: email_templates_create
       tags:
-      - email_templates
+      - Email Templates
       summary: Create an email template
       parameters:
       - $ref: '#/components/parameters/FieldsParam'
@@ -114,7 +114,7 @@ paths:
     get:
       operationId: email_templates_get
       tags:
-      - email_templates
+      - Email Templates
       summary: Fetch an email template
       parameters:
       - in: path
@@ -159,7 +159,7 @@ paths:
     put:
       operationId: email_templates_update
       tags:
-      - email_templates
+      - Email Templates
       summary: Update an email template
       parameters:
       - in: path
@@ -202,7 +202,7 @@ paths:
     delete:
       operationId: email_templates_delete
       tags:
-      - email_templates
+      - Email Templates
       summary: Delete an email template
       parameters:
       - in: path
@@ -223,9 +223,29 @@ paths:
     get:
       operationId: email_templates_render
       tags:
-      - email_templates
+      - Email Templates
       summary: Render an email template
-      description: "Render an email template for the given lead/contact using the current user context.\n\nAccepts two forms of usage:\n\n- Single lead/contact:\n  - `lead_id` and `contact_id` is supplied (both required)\n- Preview results from a search query\n  - `query` (required) contains a search query\n  - `entry` (optional, ranges from 0 to 99) specifies the index of the lead/contact that should be rendered.\n  - `mode` (optional), which can have a value of:\n     - `lead` (default), the first contact of the lead with the index given by `entry` will be rendered (excluding leads that have no email addresses).\n     - `contact`, then `entry` refers to the index of the contact (excluding contacts that have no emails). Will return an empty dict if there are no more entries."
+      description: 'Render an email template for the given lead/contact using the current user context.
+
+
+        Accepts two forms of usage:
+
+
+        - Single lead/contact:
+
+        - `lead_id` and `contact_id` is supplied (both required)
+
+        - Preview results from a search query
+
+        - `query` (required) contains a search query
+
+        - `entry` (optional, ranges from 0 to 99) specifies the index of the lead/contact that should be rendered.
+
+        - `mode` (optional), which can have a value of:
+
+        - `lead` (default), the first contact of the lead with the index given by `entry` will be rendered (excluding leads that have no email addresses).
+
+        - `contact`, then `entry` refers to the index of the contact (excluding contacts that have no emails). Will return an empty dict if there are no more entries.'
       parameters:
       - in: path
         name: id
@@ -355,6 +375,14 @@ paths:
           description: Not found
 components:
   parameters:
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
     LimitParam:
       description: Number of results to return.
       in: query
@@ -370,14 +398,6 @@ components:
       required: false
       schema:
         type: string
-    SkipParam:
-      description: Number of results to skip before returning, for pagination.
-      in: query
-      name: _skip
-      required: false
-      schema:
-        default: 0
-        type: integer
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

@@ -9,7 +9,7 @@ security:
 - ApiKeyAuth: []
 - OAuth2: []
 tags:
-- name: custom_objects
+- name: Custom Objects
   externalDocs:
     url: https://developer.close.com/api/resources/custom-objects
 paths:
@@ -17,15 +17,15 @@ paths:
     get:
       operationId: custom_objects_list
       tags:
-      - custom_objects
+      - Custom Objects
       summary: List Custom Object instances
-      description: 'The `lead_id` parameter is required. If you want to retrieve all Custom Object instances regardless of the lead, you will need to use [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering).
+      description: 'The `lead_id` parameter is required. If you want to retrieve all Custom Object instances regardless of the lead, you will need to use Advanced Filtering.
 
 
-        Custom Fields values appear in the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object).
+        Custom Fields values appear in the format: `custom.{custom_field_id}`. See Custom Fields.
 
 
-        Back references to each Custom Object are not collected in this response. If you need to access this information, please use the `back_reference_fields` on the Custom Object Type and [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) to search for objects that reference the Custom Object Instance.'
+        Back references to each Custom Object are not collected in this response. If you need to access this information, please use the `back_reference_fields` on the Custom Object Type and Advanced Filtering to search for objects that reference the Custom Object Instance.'
       parameters:
       - in: query
         name: lead_id
@@ -80,9 +80,18 @@ paths:
     post:
       operationId: custom_objects_create
       tags:
-      - custom_objects
+      - Custom Objects
       summary: Create a new Custom Object instance
-      description: "Custom Field values can be set using the format: `custom.{custom_field_id}`. See [Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object).\n\nThe following fields are required:\n  - `custom_object_type_id`: The type of Custom Object you are creating determines the Custom Fields that can be used.\n  - `lead_id`: The Lead that this Custom Object instance will belong to.\n  - `name`: Each Custom Object has a name, used for display."
+      description: 'Custom Field values can be set using the format: `custom.{custom_field_id}`. See Custom Fields.
+
+
+        The following fields are required:
+
+        - `custom_object_type_id`: The type of Custom Object you are creating determines the Custom Fields that can be used.
+
+        - `lead_id`: The Lead that this Custom Object instance will belong to.
+
+        - `name`: Each Custom Object has a name, used for display.'
       requestBody:
         content:
           application/json:
@@ -126,7 +135,7 @@ paths:
     get:
       operationId: custom_objects_get
       tags:
-      - custom_objects
+      - Custom Objects
       summary: Retrieve a single Custom Object instance
       parameters:
       - in: path
@@ -159,7 +168,7 @@ paths:
     put:
       operationId: custom_objects_update
       tags:
-      - custom_objects
+      - Custom Objects
       summary: Updating a Custom Object instance
       description: A Custom Object can be updated to add, change or remove any Custom Fields, and to change the `name` property.
       parameters:
@@ -201,7 +210,7 @@ paths:
     delete:
       operationId: custom_objects_delete
       tags:
-      - custom_objects
+      - Custom Objects
       summary: Delete a Custom Object instance
       parameters:
       - in: path

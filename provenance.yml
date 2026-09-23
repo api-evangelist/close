@@ -414,70 +414,7 @@ artifacts:
   finops/close-finops.yml:
     method: generated
     evidence: declared in the artifact
-  kin/checks-2026-08-28T221322.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-23T094130.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-23T182523.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-26T223651.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-27T083119.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-27T190208.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-28T115055.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-28T170848.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-28T172558.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-28T192327.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-28T200725.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-31T133250.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-31T151044.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-31T162206.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-07-31T202106.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-01T163141.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-01T163302.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-01T171935.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-03T113057.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-03T161012.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-04T083143.yml:
-    method: generated
-    evidence: Kin Score snapshot written by score.rb
-  kin/score-2026-08-05T153418.yml:
+  kin/checks-2026-09-05T072335.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
   kin/score-2026-08-06T210741.yml:
@@ -564,6 +501,57 @@ artifacts:
   kin/score-2026-08-28T221322.yml:
     method: generated
     evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-08-29T213958.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-08-29T230545.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-08-30T203505.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-08-30T220315.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-08-31T223420.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-01T063623.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-01T210448.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-01T222808.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-02T211804.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-02T224043.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-03T161828.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-03T174231.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-04T062714.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-04T212454.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-04T224856.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T055819.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
+  kin/score-2026-09-05T072335.yml:
+    method: generated
+    evidence: Kin Score snapshot written by score.rb
   lifecycle/close-lifecycle.yml:
     method: searched
     evidence: declared in the artifact
@@ -576,384 +564,390 @@ artifacts:
   mcp/close-tool-crosswalk.yml:
     method: derived
     evidence: declared in the artifact
+  openapi/_original/close-api-openapi.json:
+    method: harvested
+    evidence: fetched from the provider as-is; byte-identical to the source
+  openapi/_original/close-openapi.yml:
+    method: harvested
+    evidence: fetched from the provider as-is; byte-identical to the source
   openapi/close-activities-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-activities-calls-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-activities-creations-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-activities-custom-activities-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-activities-email-threads-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-activities-emails-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-activities-form-submissions-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-activities-import-updates-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-activities-lead-merges-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-activities-lead-status-changes-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-activities-meetings-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-activities-notes-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-activities-opportunity-status-changes-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-activities-sms-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-activities-task-completions-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-activities-whatsapp-messages-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-blocked-phone-numbers-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-bulk-actions-delete-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-bulk-actions-edit-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-bulk-actions-email-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-bulk-actions-sequence-subscriptions-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-comments-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-connected-accounts-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-contacts-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-custom-activity-types-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-custom-field-schemas-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-custom-fields-activity-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-custom-fields-contact-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-custom-fields-custom-object-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-custom-fields-lead-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-custom-fields-opportunity-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-custom-fields-shared-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-custom-object-types-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-custom-objects-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-dialers-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-email-templates-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-events-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-exports-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-field-enrichment-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-files-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-forms-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-groups-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-integration-links-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-lead-statuses-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-leads-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-memberships-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-opportunities-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-opportunity-statuses-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-organizations-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-outcomes-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-phone-numbers-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-pipelines-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-playbooks-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-reporting-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-roles-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-scheduling-links-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-send-as-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-sequences-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-smart-views-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-sms-templates-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-activities-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-activitiescalls-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-activitiescreations-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-activitiescustomactivities-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-activitiesemails-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-activitiesemailthreads-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-activitiesformsubmissions-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-activitiesleadmerges-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-activitiesleadstatuschanges-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-activitiesmeetings-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-activitiesnotes-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-activitiesopportunitystatuschanges-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-activitiessms-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-activitiestaskcompletions-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-activitieswhatsappmessages-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-blockedphonenumbers-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-bulkactionsdelete-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-bulkactionsedit-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-bulkactionsemail-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-bulkactionssequencesubscriptions-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-comments-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-connectedaccounts-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-contacts-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-customactivitytypes-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-customfieldsactivity-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-customfieldschemas-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-customfieldscontact-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-customfieldscustomobject-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-customfieldslead-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-customfieldsopportunity-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-customfieldsshared-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-customobjects-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-customobjecttypes-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-dialers-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-emailtemplates-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-events-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-exports-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-fieldenrichment-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-files-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-groups-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-integrationlinks-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-leads-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-leadstatuses-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-memberships-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-opportunities-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-opportunitystatuses-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-organizations-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-outcomes-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-phonenumbers-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-pipelines-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-playbooks-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-reporting-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-roles-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-schedulinglinks-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-sendas-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-sequences-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-smartviews-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-smstemplates-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-tasks-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-unsubscribedemails-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-users-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-subpackage-webhooks-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-tasks-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-unsubscribed-emails-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-users-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   openapi/close-webhooks-api-openapi.yml:
-    method: unknown
-    evidence: no authorship recorded
+    method: derived
+    evidence: paths are a subset of openapi/_original/ (split from the harvested spec)
   overlays/close-api-overlay.yaml:
     method: generated
     evidence: declared in the artifact

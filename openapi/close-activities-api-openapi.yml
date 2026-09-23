@@ -9,7 +9,7 @@ security:
 - ApiKeyAuth: []
 - OAuth2: []
 tags:
-- name: activities
+- name: Activities
   externalDocs:
     url: https://developer.close.com/api/resources/activities
 paths:
@@ -17,9 +17,31 @@ paths:
     get:
       operationId: activities_list
       tags:
-      - activities
+      - Activities
       summary: List or filter all activity types
-      description: "To list only a specific activity type (e.g., only `Call` or `LeadStatusChange`), use the other resources listed separately. When querying activities for a single lead (using the `lead_id` parameter), you can ask for multiple activity types using `_type__in`.\n\nWhen listing [Custom Activities](https://developer.close.com/api/resources/activities/custom-activities), `_type` and `_type__in` can include Custom Activity Type ids (e.g. `actitype_1h5m6uHM9BZOpwVhyRJb4Y`) to filter by a specific custom activity type or `Custom` to list custom activities of any type.\n\nThe following filtering parameters can only be used for listing activities on a single lead (using the `lead_id` parameter): `user_id`, `user_id__in`, `contact_id`, `contact_id__in`, `_type`, `_type__in`.\n\nAll activities have two sortable datetime fields: `date_created` and `activity_at`. `date_created` denotes when an activity was created or synced into Close and `activity_at` denotes when that activity actually occurred. For example, on outgoing Email activities, `date_created` is equal to when the email was first created in Close, and `activity_at` is equal to when the email was actually sent. For Meeting activities, `activity_at` is equal to the scheduled time of the meeting. On custom activities, users are able to update the `activity_at` field at any time.\n\nSorting by `-activity_at` can only be used when listing activities on a single lead using the `lead_id` parameter. In addition, you can only use the date-based filters of the field you're currently sorting on. This means that if you want to use `activity_at__lt` and `activity_at__gt` as filters, you need to include `_order_by=-activity_at` in your request.\n\n`thread_emails` parameter:\n\n - (Default) when this parameter is not present, `Email` objects will be returned for each email message.\n - A value of `true` will return `EmailThread` objects representing email conversations. Stripped-down version of `Email` objects will also be returned.\n - A value of `only` will return `EmailThread` objects representing email conversations. `Email` objects will not be returned."
+      description: 'To list only a specific activity type (e.g., only `Call` or `LeadStatusChange`), use the other resources listed separately. When querying activities for a single lead (using the `lead_id` parameter), you can ask for multiple activity types using `_type__in`.
+
+
+        When listing Custom Activities, `_type` and `_type__in` can include Custom Activity Type ids (e.g. `actitype_1h5m6uHM9BZOpwVhyRJb4Y`) to filter by a specific custom activity type or `Custom` to list custom activities of any type.
+
+
+        The following filtering parameters can only be used for listing activities on a single lead (using the `lead_id` parameter): `user_id`, `user_id__in`, `contact_id`, `contact_id__in`, `_type`, `_type__in`.
+
+
+        All activities have two sortable datetime fields: `date_created` and `activity_at`. `date_created` denotes when an activity was created or synced into Close and `activity_at` denotes when that activity actually occurred. For example, on outgoing Email activities, `date_created` is equal to when the email was first created in Close, and `activity_at` is equal to when the email was actually sent. For Meeting activities, `activity_at` is equal to the scheduled time of the meeting. On custom activities, users are able to update the `activity_at` field at any time.
+
+
+        Sorting by `-activity_at` can only be used when listing activities on a single lead using the `lead_id` parameter. In addition, you can only use the date-based filters of the field you''re currently sorting on. This means that if you want to use `activity_at__lt` and `activity_at__gt` as filters, you need to include `_order_by=-activity_at` in your request.
+
+
+        `thread_emails` parameter:
+
+
+        - (Default) when this parameter is not present, `Email` objects will be returned for each email message.
+
+        - A value of `true` will return `EmailThread` objects representing email conversations. Stripped-down version of `Email` objects will also be returned.
+
+        - A value of `only` will return `EmailThread` objects representing email conversations. `Email` objects will not be returned.'
       parameters:
       - $ref: '#/components/parameters/LimitParam'
       - $ref: '#/components/parameters/SkipParam'
@@ -271,25 +293,57 @@ paths:
           description: Not found
 components:
   parameters:
-    ActivityFilters_IdInParam:
-      description: Filter by activity IDs (comma-separated)
+    ActivityFilters_TypeParam:
+      description: Filter by activity type, e.g. Call (comma-separated)
       in: query
-      name: id__in
+      name: _type
       required: false
       schema:
-        title: ID In
+        title: Type
         default: null
         anyOf:
         - type: array
           items:
             type: string
         - type: 'null'
-    ActivityFilters_DateCreatedGteParam:
+    LimitParam:
+      description: Number of results to return.
       in: query
-      name: date_created__gte
+      name: _limit
       required: false
       schema:
-        title: Date Created (>=)
+        default: 100
+        type: integer
+    ActivityFilters_ActivityAtLteParam:
+      in: query
+      name: activity_at__lte
+      required: false
+      schema:
+        title: Activity At (<=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_ContactIdParam:
+      description: Filter by contact IDs (comma-separated)
+      in: query
+      name: contact_id
+      required: false
+      schema:
+        title: Contact ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    ActivityFilters_ActivityAtLtParam:
+      in: query
+      name: activity_at__lt
+      required: false
+      schema:
+        title: Activity At (<)
         anyOf:
         - type: string
           format: date-time
@@ -302,17 +356,38 @@ components:
       required: false
       schema:
         type: string
-    ActivityFilters_ActivityAtLteParam:
+    ActivityFilters_DateCreatedGtParam:
       in: query
-      name: activity_at__lte
+      name: date_created__gt
       required: false
       schema:
-        title: Activity At (<=)
+        title: Date Created (>)
         anyOf:
         - type: string
           format: date-time
         - type: string
           format: date
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
+    ActivityFilters_LeadIdParam:
+      description: Filter by lead IDs (comma-separated)
+      in: query
+      name: lead_id
+      required: false
+      schema:
+        title: Lead ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
     ActivityFilters_ActivityAtGtParam:
       in: query
       name: activity_at__gt
@@ -335,6 +410,28 @@ components:
           format: date-time
         - type: string
           format: date
+    ActivityFilters_ActivityAtGteParam:
+      in: query
+      name: activity_at__gte
+      required: false
+      schema:
+        title: Activity At (>=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_DateCreatedGteParam:
+      in: query
+      name: date_created__gte
+      required: false
+      schema:
+        title: Date Created (>=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
     ActivityFilters_UserIdParam:
       description: Filter by user IDs (comma-separated)
       in: query
@@ -348,37 +445,13 @@ components:
           items:
             type: string
         - type: 'null'
-    ActivityFilters_DateCreatedGtParam:
+    ActivityFilters_IdInParam:
+      description: Filter by activity IDs (comma-separated)
       in: query
-      name: date_created__gt
+      name: id__in
       required: false
       schema:
-        title: Date Created (>)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_ContactIdParam:
-      description: Filter by contact IDs (comma-separated)
-      in: query
-      name: contact_id
-      required: false
-      schema:
-        title: Contact ID
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    ActivityFilters_TypeParam:
-      description: Filter by activity type, e.g. Call (comma-separated)
-      in: query
-      name: _type
-      required: false
-      schema:
-        title: Type
+        title: ID In
         default: null
         anyOf:
         - type: array
@@ -395,49 +468,6 @@ components:
         anyOf:
         - type: string
         - type: 'null'
-    ActivityFilters_LeadIdParam:
-      description: Filter by lead IDs (comma-separated)
-      in: query
-      name: lead_id
-      required: false
-      schema:
-        title: Lead ID
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    ActivityFilters_ActivityAtLtParam:
-      in: query
-      name: activity_at__lt
-      required: false
-      schema:
-        title: Activity At (<)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_ActivityAtGteParam:
-      in: query
-      name: activity_at__gte
-      required: false
-      schema:
-        title: Activity At (>=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    LimitParam:
-      description: Number of results to return.
-      in: query
-      name: _limit
-      required: false
-      schema:
-        default: 100
-        type: integer
     ActivityFilters_DateCreatedLteParam:
       in: query
       name: date_created__lte
@@ -449,14 +479,6 @@ components:
           format: date-time
         - type: string
           format: date
-    SkipParam:
-      description: Number of results to skip before returning, for pagination.
-      in: query
-      name: _skip
-      required: false
-      schema:
-        default: 0
-        type: integer
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

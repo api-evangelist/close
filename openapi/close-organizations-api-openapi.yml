@@ -9,7 +9,7 @@ security:
 - ApiKeyAuth: []
 - OAuth2: []
 tags:
-- name: organizations
+- name: Organizations
   externalDocs:
     url: https://developer.close.com/api/resources/organizations
 paths:
@@ -17,7 +17,7 @@ paths:
     get:
       operationId: organizations_get
       tags:
-      - organizations
+      - Organizations
       summary: Get an organization's details
       description: By default, `memberships` and `inactive_memberships` are populated with user data prefixed with `user_`. If you'd rather have a nested `user` field, use a query string like `?_expand=memberships__user,inactive_memberships__user`.
       parameters:
@@ -119,7 +119,7 @@ paths:
     put:
       operationId: organizations_update
       tags:
-      - organizations
+      - Organizations
       summary: Update an organization
       parameters:
       - in: path

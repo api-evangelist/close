@@ -9,7 +9,7 @@ security:
 - ApiKeyAuth: []
 - OAuth2: []
 tags:
-- name: memberships
+- name: Memberships
   externalDocs:
     url: https://developer.close.com/api/resources/memberships
 paths:
@@ -17,7 +17,7 @@ paths:
     post:
       operationId: memberships_create
       tags:
-      - memberships
+      - Memberships
       summary: Create a membership
       description: 'Ensures an active membership for the given email will be provisioned.
 
@@ -88,7 +88,7 @@ paths:
     put:
       operationId: memberships_bulk_update
       tags:
-      - memberships
+      - Memberships
       summary: Bulk update memberships
       description: 'Any field that can be updated on a membership individually can also be used to bulk update multiple memberships. Pass the comma-separated ids of the memberships to update into `id__in` in `_params`. For example:
 
@@ -123,7 +123,7 @@ paths:
     put:
       operationId: memberships_update
       tags:
-      - memberships
+      - Memberships
       summary: Update a membership
       parameters:
       - in: path
@@ -170,7 +170,7 @@ paths:
     delete:
       operationId: memberships_delete
       tags:
-      - memberships
+      - Memberships
       summary: Delete a membership
       description: Deactivates a membership, removing the user from the associated organization.
       parameters:
@@ -192,7 +192,7 @@ paths:
     get:
       operationId: memberships_get_pinned_views
       tags:
-      - memberships
+      - Memberships
       summary: Get pinned views for a membership
       description: Get the ordered list of pinned views for the given membership.
       parameters:
@@ -220,7 +220,7 @@ paths:
     put:
       operationId: memberships_update_pinned_views
       tags:
-      - memberships
+      - Memberships
       summary: Update pinned views for a membership
       description: Set the pinned views for the given membership. Provide an ordered list that will overwrite the entire current list.
       parameters:
@@ -258,23 +258,6 @@ paths:
           description: Not found
 components:
   schemas:
-    CreateMembership:
-      title: CreateMembership
-      type: object
-      properties:
-        email:
-          title: Email
-          type: string
-          format: email
-        role_id:
-          title: Role ID
-          description: One of `superuser`, `user`, or `restricteduser` for the corresponding predefined role, or the ID of a custom [Role](https://developer.close.com/api/resources/roles). The role must not grant the `manage_organization` permission.
-          type: string
-          minLength: 1
-      required:
-      - email
-      - role_id
-      additionalProperties: false
     Membership:
       title: Membership
       description: Editable settings for an organization membership.
@@ -326,6 +309,23 @@ components:
             type: string
       required:
       - saved_view_ids
+      additionalProperties: false
+    CreateMembership:
+      title: CreateMembership
+      type: object
+      properties:
+        email:
+          title: Email
+          type: string
+          format: email
+        role_id:
+          title: Role ID
+          description: One of `superuser`, `user`, or `restricteduser` for the corresponding predefined role, or the ID of a custom [Role](https://developer.close.com/api/resources/roles). The role must not grant the `manage_organization` permission.
+          type: string
+          minLength: 1
+      required:
+      - email
+      - role_id
       additionalProperties: false
   securitySchemes:
     ApiKeyAuth:

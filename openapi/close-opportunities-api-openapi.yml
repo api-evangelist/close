@@ -9,7 +9,7 @@ security:
 - ApiKeyAuth: []
 - OAuth2: []
 tags:
-- name: opportunities
+- name: Opportunities
   externalDocs:
     url: https://developer.close.com/api/resources/opportunities
 paths:
@@ -17,9 +17,67 @@ paths:
     get:
       operationId: opportunities_list
       tags:
-      - opportunities
+      - Opportunities
       summary: List or filter opportunities
-      description: "* All opportunity list responses contain the following aggregate values about all the matching objects (regardless of pagination / limits):\n    * `total_results`: the total number of objects,\n    * `count_by_value_period`: a dictionary containing the number of opportunities by value period, e.g. `{ 'one_time': 2, 'annual': 1, 'monthly': 1 }`,\n    * `total_value_one_time`: the sum of the values of all one time opportunities,\n    * `total_value_monthly`: the sum of the values of all monthly opportunities,\n    * `total_value_annual`: the sum of the values of all annual opportunities,\n    * `total_value_annualized`: the sum of the values of all opportunities where monthly opportunity values are multiplied by 12,\n    * `expected_value_one_time`: the sum of the values of all one time opportunities multiplied by their confidence,\n    * `expected_value_monthly`: the sum of the values of all monthly opportunities multiplied by their confidence,\n    * `expected_value_annual`: the sum of the values of all annual opportunities multiplied by their confidence,\n    * `expected_value_annualized`: the sum of the values of all opportunities multiplied by their confidence where monthly opportunity values are multiplied by 12,\n* `query` is an optional search query filter. Only opportunity properties may be used in the filter. For example, `note:important` will only show opportunities which contain the text `important` in their note. Or, `status_change(old_status:active new_status:won date:yesterday)` will only show opportunities that transitioned from status `active` to status `won` on the previous day.\n* `_order_by` allows: `date_won`, `date_updated`, `date_created`, `confidence`, `user_name`, `value`, `annualized_value`, `annualized_expected_value` (each of them allows descending order by prepending a minus, e.g. `_order_by=-date_won`).\n* `value_period` allows: `one_time`, `monthly`, `annual`.\n* Multiple values for `user_id`, `status_id`, `status_label`, `status_type` and `value_period` can be specified using the *in* operator, e.g. `status_type__in=active,won`.\n* `_group_by` allows: `user_id`, `date_won__week`, `date_won__month`, `date_won__quarter` `date_won__year` to group results by the given criteria.\n\n    When grouping results, the `data` array contains a list of groups instead of objects. A group consists of the following fields:\n    * `key` containing a unique group key,\n    * `objects` containing the list of objects for the given group,\n    * `total_results` containing the number of total objects for the given group,\n    * all aggregate values for the given group,\n    * if grouping by year: `year`, containing the year for the given group,\n    * if grouping by month: `year` and `month`, containing the year and month (1-12) for the given group,\n    * if grouping by quarter: `year` and `quarter`, containing the year and quarter (1-4) for the given group,\n    * if grouping by week: `weekyear` and `week`, containing the ISO week year and ISO week number for the given group,\n    * if grouping by user: `user_id` and `user_name`, containing the user ID and full name of the user for the given group.\n\n    Note that pagination still applies to objects and not groups. The last or first group may be cut off during pagination, therefore `total_results` may not match the length of `objects`. When paginating, the `key` value may be used to combine groups across multiple pages. Sorting using `_order_by` may be applied and sorts the items within each of the groups. Group order can be reversed by prepending a minus. For example,  `_group_by=-date_won__week` will show the most recent weeks first. When grouping by `user_id`, results are ordered by the user's full name.\n* `lead_saved_search_id` is an optional lead Smart View filter.\n* (deprecated) `lead_query` is an optional lead search text-based query filter. This parameter is now deprecated in favor of using the `lead_saved_search_id` Smart View ID parameter."
+      description: '* All opportunity list responses contain the following aggregate values about all the matching objects (regardless of pagination / limits):
+
+        * `total_results`: the total number of objects,
+
+        * `count_by_value_period`: a dictionary containing the number of opportunities by value period, e.g. `{ ''one_time'': 2, ''annual'': 1, ''monthly'': 1 }`,
+
+        * `total_value_one_time`: the sum of the values of all one time opportunities,
+
+        * `total_value_monthly`: the sum of the values of all monthly opportunities,
+
+        * `total_value_annual`: the sum of the values of all annual opportunities,
+
+        * `total_value_annualized`: the sum of the values of all opportunities where monthly opportunity values are multiplied by 12,
+
+        * `expected_value_one_time`: the sum of the values of all one time opportunities multiplied by their confidence,
+
+        * `expected_value_monthly`: the sum of the values of all monthly opportunities multiplied by their confidence,
+
+        * `expected_value_annual`: the sum of the values of all annual opportunities multiplied by their confidence,
+
+        * `expected_value_annualized`: the sum of the values of all opportunities multiplied by their confidence where monthly opportunity values are multiplied by 12,
+
+        * `query` is an optional search query filter. Only opportunity properties may be used in the filter. For example, `note:important` will only show opportunities which contain the text `important` in their note. Or, `status_change(old_status:active new_status:won date:yesterday)` will only show opportunities that transitioned from status `active` to status `won` on the previous day.
+
+        * `_order_by` allows: `date_won`, `date_updated`, `date_created`, `confidence`, `user_name`, `value`, `annualized_value`, `annualized_expected_value` (each of them allows descending order by prepending a minus, e.g. `_order_by=-date_won`).
+
+        * `value_period` allows: `one_time`, `monthly`, `annual`.
+
+        * Multiple values for `user_id`, `status_id`, `status_label`, `status_type` and `value_period` can be specified using the *in* operator, e.g. `status_type__in=active,won`.
+
+        * `_group_by` allows: `user_id`, `date_won__week`, `date_won__month`, `date_won__quarter` `date_won__year` to group results by the given criteria.
+
+
+        When grouping results, the `data` array contains a list of groups instead of objects. A group consists of the following fields:
+
+        * `key` containing a unique group key,
+
+        * `objects` containing the list of objects for the given group,
+
+        * `total_results` containing the number of total objects for the given group,
+
+        * all aggregate values for the given group,
+
+        * if grouping by year: `year`, containing the year for the given group,
+
+        * if grouping by month: `year` and `month`, containing the year and month (1-12) for the given group,
+
+        * if grouping by quarter: `year` and `quarter`, containing the year and quarter (1-4) for the given group,
+
+        * if grouping by week: `weekyear` and `week`, containing the ISO week year and ISO week number for the given group,
+
+        * if grouping by user: `user_id` and `user_name`, containing the user ID and full name of the user for the given group.
+
+
+        Note that pagination still applies to objects and not groups. The last or first group may be cut off during pagination, therefore `total_results` may not match the length of `objects`. When paginating, the `key` value may be used to combine groups across multiple pages. Sorting using `_order_by` may be applied and sorts the items within each of the groups. Group order can be reversed by prepending a minus. For example, `_group_by=-date_won__week` will show the most recent weeks first. When grouping by `user_id`, results are ordered by the user''s full name.
+
+        * `lead_saved_search_id` is an optional lead Smart View filter.
+
+        * (deprecated) `lead_query` is an optional lead search text-based query filter. This parameter is now deprecated in favor of using the `lead_saved_search_id` Smart View ID parameter.'
       parameters:
       - $ref: '#/components/parameters/LimitParam'
       - $ref: '#/components/parameters/SkipParam'
@@ -466,7 +524,7 @@ paths:
     post:
       operationId: opportunities_create
       tags:
-      - opportunities
+      - Opportunities
       summary: Create an opportunity
       description: 'Create an opportunity, optionally linked to an existing lead.
 
@@ -484,7 +542,7 @@ paths:
         If a custom field has `accepts_multiple_values: true`, the entire value will be replaced. For example, given an Opportunity has a Custom Choice Field with value `["A", "B"]`, adding choice `"C"` would mean setting the value to `["A", "B", "C"]`.
 
 
-        Note that using the `custom` field dict or the `custom.FIELD_NAME` syntax (instead of custom field IDs) is deprecated and will be removed from the API. See [Custom Fields](https://developer.close.com/api/resources/custom-fields) for more details.'
+        Note that using the `custom` field dict or the `custom.FIELD_NAME` syntax (instead of custom field IDs) is deprecated and will be removed from the API. See Custom Fields for more details.'
       requestBody:
         content:
           application/json:
@@ -546,7 +604,7 @@ paths:
     get:
       operationId: opportunities_get
       tags:
-      - opportunities
+      - Opportunities
       summary: Retrieve an opportunity
       parameters:
       - in: path
@@ -601,7 +659,7 @@ paths:
     put:
       operationId: opportunities_update
       tags:
-      - opportunities
+      - Opportunities
       summary: Update an opportunity
       description: '**custom.FIELD_ID** (optional)
 
@@ -682,7 +740,7 @@ paths:
     delete:
       operationId: opportunities_delete
       tags:
-      - opportunities
+      - Opportunities
       summary: Delete an opportunity
       parameters:
       - in: path
@@ -701,16 +759,19 @@ paths:
           description: Not found
 components:
   schemas:
-    StalledOpportunityActionTypeV1:
-      title: StalledOpportunityActionTypeV1
-      type: string
-      enum:
-      - mark_as_lost
-      - change_status
-      - follow_up
-      - adjust_close_date
-      - ask_someone_else_to_reach_out
-      - change_communication_method
+    OpportunityFollowUpCallActionDetails:
+      title: OpportunityFollowUpCallActionDetails
+      type: object
+      properties:
+        call_plan:
+          title: Call Plan
+          type: string
+        contact_id:
+          title: Contact ID
+          type: string
+      required:
+      - call_plan
+      - contact_id
     Opportunity:
       title: Opportunity
       type: object
@@ -915,39 +976,179 @@ components:
       - user_id
       - value
       - value_period
-    OpportunityStatusType:
-      title: OpportunityStatusType
-      type: string
-      enum:
-      - won
-      - lost
-      - active
-    OpportunityFollowUpCallActionDetails:
-      title: OpportunityFollowUpCallActionDetails
+    OpportunityAdjustCloseDateActionDetails:
+      title: OpportunityAdjustCloseDateActionDetails
       type: object
       properties:
-        call_plan:
-          title: Call Plan
+        close_date:
+          title: Close Date
           type: string
+          format: date
+      required:
+      - close_date
+    OpportunityFollowUpSMSActionDetails:
+      title: OpportunityFollowUpSMSActionDetails
+      type: object
+      properties:
         contact_id:
           title: Contact ID
           type: string
-      required:
-      - call_plan
-      - contact_id
-    CommentSummary:
-      title: CommentSummary
-      type: object
-      properties:
-        comment_count:
-          title: Comment Count
-          type: integer
-        thread_id:
-          title: Thread ID
+        message_draft:
+          title: Message Draft
           type: string
       required:
-      - comment_count
-      - thread_id
+      - contact_id
+      - message_draft
+    StalledOpportunityActionTypeV1:
+      title: StalledOpportunityActionTypeV1
+      type: string
+      enum:
+      - mark_as_lost
+      - change_status
+      - follow_up
+      - adjust_close_date
+      - ask_someone_else_to_reach_out
+      - change_communication_method
+    StalledOpportunityActionItems:
+      title: StalledOpportunityActionItems
+      deprecated: true
+      type: object
+      properties:
+        communication_issue:
+          description: The communication issue that is causing the stalled opportunity. If there is no issue, set to NoIssue.
+          $ref: '#/components/schemas/StalledOpportunityCommunicationIssue'
+        next_action:
+          description: An action item recommended to progress or resolve the stalled opportunity.
+          $ref: '#/components/schemas/ActionItem'
+      required:
+      - communication_issue
+      - next_action
+    OpportunitySuggestedAction:
+      title: OpportunitySuggestedAction
+      type: object
+      properties:
+        action:
+          $ref: '#/components/schemas/StalledOpportunityActionTypeV2'
+        details:
+          title: Details
+          anyOf:
+          - $ref: '#/components/schemas/OpportunityChangeStatusActionDetails'
+          - $ref: '#/components/schemas/OpportunityFollowUpEmailActionDetails'
+          - $ref: '#/components/schemas/OpportunityFollowUpSMSActionDetails'
+          - $ref: '#/components/schemas/OpportunityFollowUpCallActionDetails'
+          - $ref: '#/components/schemas/OpportunityAdjustCloseDateActionDetails'
+          - type: 'null'
+        justification:
+          title: Justification
+          type: string
+      required:
+      - action
+      - details
+      - justification
+    ContactEmail:
+      title: ContactEmail
+      type: object
+      properties:
+        email:
+          title: Email
+          type: string
+        is_unsubscribed:
+          title: Is Unsubscribed
+          type: boolean
+        type:
+          title: Type
+          type: string
+      required:
+      - email
+      - is_unsubscribed
+      - type
+    ActionItem:
+      title: ActionItem
+      deprecated: true
+      type: object
+      properties:
+        action:
+          description: The recommended next step to progress or resolve the stalled opportunity
+          $ref: '#/components/schemas/StalledOpportunityActionTypeV1'
+        justification:
+          title: Justification
+          description: A short justification for the recommended action in the sales pipeline. Maximum 2 sentences.
+          type: string
+      required:
+      - action
+      - justification
+    Attachment:
+      title: Attachment
+      type: object
+      properties:
+        content_type:
+          title: Content Type
+          anyOf:
+          - type: string
+          - type: 'null'
+        filename:
+          title: Filename
+          anyOf:
+          - type: string
+          - type: 'null'
+        size:
+          title: Size
+          anyOf:
+          - type: integer
+          - type: 'null'
+        thumbnail_url:
+          title: Thumbnail URL
+          anyOf:
+          - type: string
+          - type: 'null'
+        url:
+          title: URL
+          type: string
+      required:
+      - content_type
+      - filename
+      - size
+      - url
+    OpportunityValuePeriod:
+      title: OpportunityValuePeriod
+      type: string
+      enum:
+      - one_time
+      - monthly
+      - annual
+    OpportunityFollowUpEmailActionDetails:
+      title: OpportunityFollowUpEmailActionDetails
+      type: object
+      properties:
+        contact_id:
+          title: Contact ID
+          type: string
+        message_draft:
+          title: Message Draft
+          type: string
+        subject_draft:
+          title: Subject Draft
+          type: string
+      required:
+      - contact_id
+      - message_draft
+      - subject_draft
+    StalledOpportunityCommunicationIssue:
+      title: StalledOpportunityCommunicationIssue
+      type: string
+      enum:
+      - no_issue
+      - cant_get_in_touch
+      - no_communication_attempts
+    OpportunityChangeStatusActionDetails:
+      title: OpportunityChangeStatusActionDetails
+      type: object
+      properties:
+        status_id:
+          title: Status ID
+          type: string
+      required:
+      - status_id
     UpdateOpportunity:
       title: UpdateOpportunity
       type: object
@@ -1005,35 +1206,55 @@ components:
         ^custom\.:
           not:
             type: object
-    StalledOpportunityActionItems:
-      title: StalledOpportunityActionItems
-      deprecated: true
+    ContactPhone:
+      title: ContactPhone
       type: object
       properties:
-        communication_issue:
-          description: The communication issue that is causing the stalled opportunity. If there is no issue, set to NoIssue.
-          $ref: '#/components/schemas/StalledOpportunityCommunicationIssue'
-        next_action:
-          description: An action item recommended to progress or resolve the stalled opportunity.
-          $ref: '#/components/schemas/ActionItem'
+        country:
+          title: Country
+          anyOf:
+          - type: string
+          - type: 'null'
+        outbound_sms_blocked:
+          title: Outbound SMS Blocked
+          type: boolean
+        phone:
+          title: Phone
+          type: string
+        phone_formatted:
+          title: Phone Formatted
+          type: string
+        type:
+          title: Type
+          type: string
+        tz_ids:
+          title: TZ IDs
+          type: array
+          items:
+            type: string
       required:
-      - communication_issue
-      - next_action
-    ActionItem:
-      title: ActionItem
-      deprecated: true
+      - phone
+      - type
+    OpportunityStatusType:
+      title: OpportunityStatusType
+      type: string
+      enum:
+      - won
+      - lost
+      - active
+    CommentSummary:
+      title: CommentSummary
       type: object
       properties:
-        action:
-          description: The recommended next step to progress or resolve the stalled opportunity
-          $ref: '#/components/schemas/StalledOpportunityActionTypeV1'
-        justification:
-          title: Justification
-          description: A short justification for the recommended action in the sales pipeline. Maximum 2 sentences.
+        comment_count:
+          title: Comment Count
+          type: integer
+        thread_id:
+          title: Thread ID
           type: string
       required:
-      - action
-      - justification
+      - comment_count
+      - thread_id
     CreateOpportunity:
       title: CreateOpportunity
       type: object
@@ -1136,6 +1357,28 @@ components:
         ^custom\.:
           not:
             type: object
+    StalledOpportunityActionTypeV2:
+      title: StalledOpportunityActionTypeV2
+      type: string
+      enum:
+      - change_status
+      - adjust_close_date
+      - follow_up_email
+      - follow_up_call
+      - follow_up_sms
+    RenderedIntegrationLink:
+      title: RenderedIntegrationLink
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+        url:
+          title: Url
+          type: string
+      required:
+      - name
+      - url
     AttachmentIn:
       title: AttachmentIn
       type: object
@@ -1153,192 +1396,30 @@ components:
       required:
       - filename
       - url
-    StalledOpportunityActionTypeV2:
-      title: StalledOpportunityActionTypeV2
-      type: string
-      enum:
-      - change_status
-      - adjust_close_date
-      - follow_up_email
-      - follow_up_call
-      - follow_up_sms
-    ContactEmail:
-      title: ContactEmail
-      type: object
-      properties:
-        email:
-          title: Email
-          type: string
-        is_unsubscribed:
-          title: Is Unsubscribed
-          type: boolean
-        type:
-          title: Type
-          type: string
-      required:
-      - email
-      - is_unsubscribed
-      - type
-    OpportunityAdjustCloseDateActionDetails:
-      title: OpportunityAdjustCloseDateActionDetails
-      type: object
-      properties:
-        close_date:
-          title: Close Date
-          type: string
-          format: date
-      required:
-      - close_date
-    OpportunityFollowUpEmailActionDetails:
-      title: OpportunityFollowUpEmailActionDetails
-      type: object
-      properties:
-        contact_id:
-          title: Contact ID
-          type: string
-        message_draft:
-          title: Message Draft
-          type: string
-        subject_draft:
-          title: Subject Draft
-          type: string
-      required:
-      - contact_id
-      - message_draft
-      - subject_draft
-    RenderedIntegrationLink:
-      title: RenderedIntegrationLink
-      type: object
-      properties:
-        name:
-          title: Name
-          type: string
-        url:
-          title: Url
-          type: string
-      required:
-      - name
-      - url
-    ContactPhone:
-      title: ContactPhone
-      type: object
-      properties:
-        country:
-          title: Country
-          anyOf:
-          - type: string
-          - type: 'null'
-        outbound_sms_blocked:
-          title: Outbound SMS Blocked
-          type: boolean
-        phone:
-          title: Phone
-          type: string
-        phone_formatted:
-          title: Phone Formatted
-          type: string
-        type:
-          title: Type
-          type: string
-        tz_ids:
-          title: TZ IDs
-          type: array
-          items:
-            type: string
-      required:
-      - phone
-      - type
-    OpportunityValuePeriod:
-      title: OpportunityValuePeriod
-      type: string
-      enum:
-      - one_time
-      - monthly
-      - annual
-    StalledOpportunityCommunicationIssue:
-      title: StalledOpportunityCommunicationIssue
-      type: string
-      enum:
-      - no_issue
-      - cant_get_in_touch
-      - no_communication_attempts
-    OpportunityChangeStatusActionDetails:
-      title: OpportunityChangeStatusActionDetails
-      type: object
-      properties:
-        status_id:
-          title: Status ID
-          type: string
-      required:
-      - status_id
-    OpportunitySuggestedAction:
-      title: OpportunitySuggestedAction
-      type: object
-      properties:
-        action:
-          $ref: '#/components/schemas/StalledOpportunityActionTypeV2'
-        details:
-          title: Details
-          anyOf:
-          - $ref: '#/components/schemas/OpportunityChangeStatusActionDetails'
-          - $ref: '#/components/schemas/OpportunityFollowUpEmailActionDetails'
-          - $ref: '#/components/schemas/OpportunityFollowUpSMSActionDetails'
-          - $ref: '#/components/schemas/OpportunityFollowUpCallActionDetails'
-          - $ref: '#/components/schemas/OpportunityAdjustCloseDateActionDetails'
-          - type: 'null'
-        justification:
-          title: Justification
-          type: string
-      required:
-      - action
-      - details
-      - justification
-    OpportunityFollowUpSMSActionDetails:
-      title: OpportunityFollowUpSMSActionDetails
-      type: object
-      properties:
-        contact_id:
-          title: Contact ID
-          type: string
-        message_draft:
-          title: Message Draft
-          type: string
-      required:
-      - contact_id
-      - message_draft
-    Attachment:
-      title: Attachment
-      type: object
-      properties:
-        content_type:
-          title: Content Type
-          anyOf:
-          - type: string
-          - type: 'null'
-        filename:
-          title: Filename
-          anyOf:
-          - type: string
-          - type: 'null'
-        size:
-          title: Size
-          anyOf:
-          - type: integer
-          - type: 'null'
-        thumbnail_url:
-          title: Thumbnail URL
-          anyOf:
-          - type: string
-          - type: 'null'
-        url:
-          title: URL
-          type: string
-      required:
-      - content_type
-      - filename
-      - size
-      - url
   parameters:
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
     ActivityFilters_OrganizationIdParam:
       in: query
       name: organization_id
@@ -1349,29 +1430,6 @@ components:
         anyOf:
         - type: string
         - type: 'null'
-    LimitParam:
-      description: Number of results to return.
-      in: query
-      name: _limit
-      required: false
-      schema:
-        default: 100
-        type: integer
-    SkipParam:
-      description: Number of results to skip before returning, for pagination.
-      in: query
-      name: _skip
-      required: false
-      schema:
-        default: 0
-        type: integer
-    FieldsParam:
-      description: Comma-separated list of fields to include in the response.
-      in: query
-      name: _fields
-      required: false
-      schema:
-        type: string
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

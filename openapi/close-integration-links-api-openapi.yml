@@ -9,7 +9,7 @@ security:
 - ApiKeyAuth: []
 - OAuth2: []
 tags:
-- name: integration_links
+- name: Integration Links
   externalDocs:
     url: https://developer.close.com/api/resources/integration-links
 paths:
@@ -17,7 +17,7 @@ paths:
     get:
       operationId: integration_links_list
       tags:
-      - integration_links
+      - Integration Links
       summary: Get all integration links for your organization
       responses:
         '200':
@@ -66,7 +66,7 @@ paths:
     post:
       operationId: integration_links_create
       tags:
-      - integration_links
+      - Integration Links
       summary: Create an integration link
       requestBody:
         content:
@@ -105,7 +105,7 @@ paths:
     get:
       operationId: integration_links_get
       tags:
-      - integration_links
+      - Integration Links
       summary: Get a single integration link
       parameters:
       - in: path
@@ -139,7 +139,7 @@ paths:
     put:
       operationId: integration_links_update
       tags:
-      - integration_links
+      - Integration Links
       summary: Update an integration link
       parameters:
       - in: path
@@ -181,7 +181,7 @@ paths:
     delete:
       operationId: integration_links_delete
       tags:
-      - integration_links
+      - Integration Links
       summary: Delete an integration link
       parameters:
       - in: path
@@ -200,6 +200,52 @@ paths:
           description: Not found
 components:
   schemas:
+    IntegrationLinkType:
+      title: IntegrationLinkType
+      type: string
+      enum:
+      - lead
+      - contact
+      - opportunity
+    CreateIntegrationLink:
+      title: CreateIntegrationLink
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+        type:
+          $ref: '#/components/schemas/IntegrationLinkType'
+        url:
+          title: Url
+          type: string
+      required:
+      - name
+      - type
+      - url
+      additionalProperties: false
+    UpdateIntegrationLink:
+      title: UpdateIntegrationLink
+      type: object
+      properties:
+        name:
+          title: Name
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        type:
+          default: null
+          anyOf:
+          - $ref: '#/components/schemas/IntegrationLinkType'
+          - type: 'null'
+        url:
+          title: Url
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      additionalProperties: false
     IntegrationLink:
       title: IntegrationLink
       type: object
@@ -250,52 +296,6 @@ components:
       - type
       - updated_by
       - url
-    IntegrationLinkType:
-      title: IntegrationLinkType
-      type: string
-      enum:
-      - lead
-      - contact
-      - opportunity
-    UpdateIntegrationLink:
-      title: UpdateIntegrationLink
-      type: object
-      properties:
-        name:
-          title: Name
-          default: null
-          anyOf:
-          - type: string
-          - type: 'null'
-        type:
-          default: null
-          anyOf:
-          - $ref: '#/components/schemas/IntegrationLinkType'
-          - type: 'null'
-        url:
-          title: Url
-          default: null
-          anyOf:
-          - type: string
-          - type: 'null'
-      additionalProperties: false
-    CreateIntegrationLink:
-      title: CreateIntegrationLink
-      type: object
-      properties:
-        name:
-          title: Name
-          type: string
-        type:
-          $ref: '#/components/schemas/IntegrationLinkType'
-        url:
-          title: Url
-          type: string
-      required:
-      - name
-      - type
-      - url
-      additionalProperties: false
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

@@ -9,7 +9,7 @@ security:
 - ApiKeyAuth: []
 - OAuth2: []
 tags:
-- name: lead_statuses
+- name: Lead Statuses
   externalDocs:
     url: https://developer.close.com/api/resources/lead-statuses
 paths:
@@ -17,7 +17,7 @@ paths:
     get:
       operationId: lead_statuses_list
       tags:
-      - lead_statuses
+      - Lead Statuses
       summary: List lead statuses for your organization
       responses:
         '200':
@@ -48,7 +48,7 @@ paths:
     post:
       operationId: lead_statuses_create
       tags:
-      - lead_statuses
+      - Lead Statuses
       summary: Create a new status that can be applied to leads
       requestBody:
         content:
@@ -75,7 +75,7 @@ paths:
     get:
       operationId: lead_statuses_get
       tags:
-      - lead_statuses
+      - Lead Statuses
       summary: Fetch a single lead status
       parameters:
       - in: path
@@ -101,7 +101,7 @@ paths:
     put:
       operationId: lead_statuses_update
       tags:
-      - lead_statuses
+      - Lead Statuses
       summary: Rename a lead status
       description: Update a lead status. The `label` and `color` can be changed. To update the status of a particular lead, see PUT `/lead/{lead_id}/`.
       parameters:
@@ -134,7 +134,7 @@ paths:
     delete:
       operationId: lead_statuses_delete
       tags:
-      - lead_statuses
+      - Lead Statuses
       summary: Delete a lead status
       description: You should make sure no leads are assigned this status, first.
       parameters:

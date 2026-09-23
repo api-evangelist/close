@@ -9,7 +9,7 @@ security:
 - ApiKeyAuth: []
 - OAuth2: []
 tags:
-- name: sms_templates
+- name: SMS Templates
   externalDocs:
     url: https://developer.close.com/api/resources/sms-templates
 paths:
@@ -17,7 +17,7 @@ paths:
     get:
       operationId: sms_templates_list
       tags:
-      - sms_templates
+      - SMS Templates
       summary: List SMS templates
       parameters:
       - $ref: '#/components/parameters/LimitParam'
@@ -50,7 +50,7 @@ paths:
     post:
       operationId: sms_templates_create
       tags:
-      - sms_templates
+      - SMS Templates
       summary: Create an SMS template
       requestBody:
         content:
@@ -89,7 +89,7 @@ paths:
     get:
       operationId: sms_templates_get
       tags:
-      - sms_templates
+      - SMS Templates
       summary: Fetch an SMS template
       parameters:
       - in: path
@@ -139,7 +139,7 @@ paths:
     put:
       operationId: sms_templates_update
       tags:
-      - sms_templates
+      - SMS Templates
       summary: Update an SMS template
       parameters:
       - in: path
@@ -181,7 +181,7 @@ paths:
     delete:
       operationId: sms_templates_delete
       tags:
-      - sms_templates
+      - SMS Templates
       summary: Delete an SMS template
       parameters:
       - in: path
@@ -200,6 +200,23 @@ paths:
           description: Not found
 components:
   schemas:
+    CreateSMSTemplateAttachment:
+      title: CreateSMSTemplateAttachment
+      type: object
+      properties:
+        content_type:
+          title: Content Type
+          type: string
+        filename:
+          title: Filename
+          type: string
+        url:
+          title: Url
+          type: string
+      required:
+      - content_type
+      - filename
+      - url
     CreateSMSTemplate:
       title: CreateSMSTemplate
       type: object
@@ -221,6 +238,29 @@ components:
       required:
       - name
       additionalProperties: false
+    SMSTemplateStatus:
+      title: SMSTemplateStatus
+      type: string
+      enum:
+      - active
+      - archived
+    UpdateSMSTemplateAttachment:
+      title: UpdateSMSTemplateAttachment
+      type: object
+      properties:
+        content_type:
+          title: Content Type
+          type: string
+        filename:
+          title: Filename
+          type: string
+        url:
+          title: Url
+          type: string
+      required:
+      - content_type
+      - filename
+      - url
     UpdateSMSTemplate:
       title: UpdateSMSTemplate
       type: object
@@ -243,46 +283,6 @@ components:
           title: Text
           type: string
       additionalProperties: false
-    UpdateSMSTemplateAttachment:
-      title: UpdateSMSTemplateAttachment
-      type: object
-      properties:
-        content_type:
-          title: Content Type
-          type: string
-        filename:
-          title: Filename
-          type: string
-        url:
-          title: Url
-          type: string
-      required:
-      - content_type
-      - filename
-      - url
-    CreateSMSTemplateAttachment:
-      title: CreateSMSTemplateAttachment
-      type: object
-      properties:
-        content_type:
-          title: Content Type
-          type: string
-        filename:
-          title: Filename
-          type: string
-        url:
-          title: Url
-          type: string
-      required:
-      - content_type
-      - filename
-      - url
-    SMSTemplateStatus:
-      title: SMSTemplateStatus
-      type: string
-      enum:
-      - active
-      - archived
   parameters:
     LimitParam:
       description: Number of results to return.

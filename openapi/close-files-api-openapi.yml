@@ -9,7 +9,7 @@ security:
 - ApiKeyAuth: []
 - OAuth2: []
 tags:
-- name: files
+- name: Files
   externalDocs:
     url: https://developer.close.com/api/resources/files
 paths:
@@ -17,7 +17,7 @@ paths:
     post:
       operationId: files_create
       tags:
-      - files
+      - Files
       summary: Generate a signed S3 POST
       description: Get the data needed to make a request to S3 to store your file.
       requestBody:

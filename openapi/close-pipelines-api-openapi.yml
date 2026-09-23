@@ -9,7 +9,7 @@ security:
 - ApiKeyAuth: []
 - OAuth2: []
 tags:
-- name: pipelines
+- name: Pipelines
   externalDocs:
     url: https://developer.close.com/api/resources/pipelines
 paths:
@@ -17,7 +17,7 @@ paths:
     get:
       operationId: pipelines_list
       tags:
-      - pipelines
+      - Pipelines
       summary: List Pipelines for your organization
       responses:
         '200':
@@ -52,7 +52,7 @@ paths:
     post:
       operationId: pipelines_create
       tags:
-      - pipelines
+      - Pipelines
       summary: Create a Pipeline
       requestBody:
         content:
@@ -84,7 +84,7 @@ paths:
     get:
       operationId: pipelines_get
       tags:
-      - pipelines
+      - Pipelines
       summary: Fetch a single Pipeline
       parameters:
       - in: path
@@ -124,9 +124,18 @@ paths:
     put:
       operationId: pipelines_update
       tags:
-      - pipelines
+      - Pipelines
       summary: Update a Pipeline
-      description: "You can use this endpoint to:\n\n* Rename a Pipeline.\n* Reorder Opportunity Statuses within a Pipeline.\n* Move an Opportunity Status from a different Pipeline into this one.\n    * To do so, include `{\"id\": \"id_of_the_status_from_another_pipeline\"}` in the `statuses` list."
+      description: 'You can use this endpoint to:
+
+
+        * Rename a Pipeline.
+
+        * Reorder Opportunity Statuses within a Pipeline.
+
+        * Move an Opportunity Status from a different Pipeline into this one.
+
+        * To do so, include `{"id": "id_of_the_status_from_another_pipeline"}` in the `statuses` list.'
       parameters:
       - in: path
         name: id
@@ -175,7 +184,7 @@ paths:
     delete:
       operationId: pipelines_delete
       tags:
-      - pipelines
+      - Pipelines
       summary: Delete a Pipeline
       description: Deletion is only allowed if the Pipeline doesn't contain any Opportunity Statuses. Delete all statuses first or move them to another pipeline.
       parameters:

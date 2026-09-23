@@ -9,7 +9,7 @@ security:
 - ApiKeyAuth: []
 - OAuth2: []
 tags:
-- name: playbooks
+- name: Playbooks
   externalDocs:
     url: https://developer.close.com/api/resources/playbooks
 paths:
@@ -17,7 +17,7 @@ paths:
     get:
       operationId: playbooks_list
       tags:
-      - playbooks
+      - Playbooks
       summary: List or filter playbooks
       description: Fetch a list of playbooks for the organization. Results are sorted by position ascending.
       parameters:
@@ -101,7 +101,7 @@ paths:
     post:
       operationId: playbooks_create
       tags:
-      - playbooks
+      - Playbooks
       summary: Create a playbook
       description: Create a new playbook for the organization.
       requestBody:
@@ -156,7 +156,7 @@ paths:
     get:
       operationId: playbooks_get
       tags:
-      - playbooks
+      - Playbooks
       summary: Fetch a single playbook
       parameters:
       - in: path
@@ -199,7 +199,7 @@ paths:
     put:
       operationId: playbooks_update
       tags:
-      - playbooks
+      - Playbooks
       summary: Update a playbook
       description: Update an existing playbook.
       parameters:
@@ -251,7 +251,7 @@ paths:
     delete:
       operationId: playbooks_delete
       tags:
-      - playbooks
+      - Playbooks
       summary: Delete a playbook
       description: Delete an existing playbook.
       parameters:
@@ -273,7 +273,7 @@ paths:
     post:
       operationId: playbooks_archive
       tags:
-      - playbooks
+      - Playbooks
       summary: Archive a playbook
       description: Archive an existing playbook. Archived playbooks are hidden from active listings but retain their associated history.
       parameters:
@@ -318,7 +318,7 @@ paths:
     post:
       operationId: playbooks_unarchive
       tags:
-      - playbooks
+      - Playbooks
       summary: Unarchive a playbook
       description: Restore a previously archived playbook to active status.
       parameters:
@@ -361,6 +361,40 @@ paths:
           description: Not found
 components:
   schemas:
+    CreatePlaybook:
+      title: CreatePlaybook
+      type: object
+      properties:
+        custom_field_ids:
+          title: Custom Field IDs
+          description: IDs of [Shared Custom Fields](/api/resources/custom-fields/custom-fields-shared) to associate with this Playbook.
+          type: array
+          items:
+            type: string
+        description:
+          title: Description
+          description: Description of the playbook.
+          anyOf:
+          - type: string
+          - type: 'null'
+        name:
+          title: Name
+          type: string
+        outcome_ids:
+          title: Outcome IDs
+          description: IDs of [Outcomes](/api/resources/outcomes/) that should be associated with this Playbook.
+          type: array
+          items:
+            type: string
+        summary_guidance:
+          title: Summary Guidance
+          description: Guidance for AI summaries of calls and meetings associated with this Playbook.
+          anyOf:
+          - type: string
+          - type: 'null'
+      required:
+      - name
+      additionalProperties: false
     Playbook:
       title: Playbook
       type: object
@@ -439,40 +473,6 @@ components:
       - summary_guidance
       - updated_at
       - updated_by_id
-    CreatePlaybook:
-      title: CreatePlaybook
-      type: object
-      properties:
-        custom_field_ids:
-          title: Custom Field IDs
-          description: IDs of [Shared Custom Fields](/api/resources/custom-fields/custom-fields-shared) to associate with this Playbook.
-          type: array
-          items:
-            type: string
-        description:
-          title: Description
-          description: Description of the playbook.
-          anyOf:
-          - type: string
-          - type: 'null'
-        name:
-          title: Name
-          type: string
-        outcome_ids:
-          title: Outcome IDs
-          description: IDs of [Outcomes](/api/resources/outcomes/) that should be associated with this Playbook.
-          type: array
-          items:
-            type: string
-        summary_guidance:
-          title: Summary Guidance
-          description: Guidance for AI summaries of calls and meetings associated with this Playbook.
-          anyOf:
-          - type: string
-          - type: 'null'
-      required:
-      - name
-      additionalProperties: false
     UpdatePlaybook:
       title: UpdatePlaybook
       type: object

@@ -9,7 +9,7 @@ security:
 - ApiKeyAuth: []
 - OAuth2: []
 tags:
-- name: phone_numbers
+- name: Phone Numbers
   externalDocs:
     url: https://developer.close.com/api/resources/phone-numbers
 paths:
@@ -17,7 +17,7 @@ paths:
     get:
       operationId: phone_numbers_list
       tags:
-      - phone_numbers
+      - Phone Numbers
       summary: List or search for phone numbers
       parameters:
       - $ref: '#/components/parameters/LimitParam'
@@ -206,9 +206,29 @@ paths:
     post:
       operationId: phone_numbers_create
       tags:
-      - phone_numbers
+      - Phone Numbers
       summary: Request an internal phone number
-      description: "Renting a phone number incurs a cost. You need the \"Manage Team Phone Numbers\" permission to rent group numbers.\n\nIf a number was rented, a 201 response is returned with the new number. If no number was rented (4xx response code), the response contains a `status` field which may contain one of the values below. New statuses may be added in the future.\n\n* `has-voice-only`: This country/prefix combination only has non-SMS-capable\n  numbers. You can attempt renting the number by passing `with_sms` as `false`.\n* `needs-more-info`: More information (such as proof of address) is needed to\n  rent this number. This number can only be rented by contacting Close support.\n* `billing-error`: An error related to billing has occurred. For example, the\n  telephony budget has been reached, or there are not enough funds and recharging failed.\n* `error`: An error has occurred while renting this number. A human-readable\n  message is returned in the `error` field."
+      description: 'Renting a phone number incurs a cost. You need the "Manage Team Phone Numbers" permission to rent group numbers.
+
+
+        If a number was rented, a 201 response is returned with the new number. If no number was rented (4xx response code), the response contains a `status` field which may contain one of the values below. New statuses may be added in the future.
+
+
+        * `has-voice-only`: This country/prefix combination only has non-SMS-capable
+
+        numbers. You can attempt renting the number by passing `with_sms` as `false`.
+
+        * `needs-more-info`: More information (such as proof of address) is needed to
+
+        rent this number. This number can only be rented by contacting Close support.
+
+        * `billing-error`: An error related to billing has occurred. For example, the
+
+        telephony budget has been reached, or there are not enough funds and recharging failed.
+
+        * `error`: An error has occurred while renting this number. A human-readable
+
+        message is returned in the `error` field.'
       requestBody:
         content:
           application/json:
@@ -269,7 +289,7 @@ paths:
     get:
       operationId: phone_numbers_get
       tags:
-      - phone_numbers
+      - Phone Numbers
       summary: Retrieve a single phone number
       parameters:
       - in: path
@@ -328,7 +348,7 @@ paths:
     put:
       operationId: phone_numbers_update
       tags:
-      - phone_numbers
+      - Phone Numbers
       summary: Update a phone number
       description: 'You need the "Manage Team Phone Numbers" permission to update a group number. You can only update your own personal numbers.
 
@@ -415,7 +435,7 @@ paths:
     delete:
       operationId: phone_numbers_delete
       tags:
-      - phone_numbers
+      - Phone Numbers
       summary: Delete a phone number
       description: You need the "Manage Team Phone Numbers" permission to delete a group number. You can only delete your own personal numbers.
       parameters:
@@ -434,40 +454,72 @@ paths:
         '404':
           description: Not found
 components:
-  parameters:
-    FieldsParam:
-      description: Comma-separated list of fields to include in the response.
-      in: query
-      name: _fields
-      required: false
-      schema:
-        type: string
-    LimitParam:
-      description: Number of results to return.
-      in: query
-      name: _limit
-      required: false
-      schema:
-        default: 100
-        type: integer
-    SkipParam:
-      description: Number of results to skip before returning, for pagination.
-      in: query
-      name: _skip
-      required: false
-      schema:
-        default: 0
-        type: integer
   schemas:
-    CarrierNumberType:
-      title: CarrierNumberType
+    UnderlyingCarrier:
+      title: UnderlyingCarrier
       type: string
       enum:
-      - local
-      - national
-      - mobile
-      - tollfree
-      - shortcode
+      - twilio
+      - plivo
+    CreatePhoneNumberRequest:
+      title: CreatePhoneNumberRequest
+      type: object
+      properties:
+        bundle_id:
+          title: Bundle ID
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        carrier_type:
+          title: Carrier Type
+          default: null
+          anyOf:
+          - type: string
+            enum:
+            - local
+            - national
+            - mobile
+            - tollfree
+          - type: 'null'
+        country:
+          title: Country
+          description: A two letter ISO country code (e.g. `US` for United States).
+          type: string
+        prefix:
+          title: Prefix
+          description: A string with the phone number prefix or area code, not including the country code.
+          type: string
+          default: ''
+          maxLength: 5
+        sharing:
+          description: Deprecated. `personal` for a number that belongs to an individual user, or `group` for a group number. The distinction between personal and group numbers is being removed, and this field will be removed in a future update. When omitted, defaults to `personal`.
+          deprecated: true
+          default: personal
+          $ref: '#/components/schemas/PhoneNumberSharing'
+        with_mms:
+          title: With MMS
+          description: By default, MMS-capable numbers are rented if Close supports MMS for the given country. Renting an MMS-capable number can be forced by setting this flag to `true`. If set to `false`, certain prefixes that don't support MMS can be rented in countries where Close supports MMS. In most scenarios, this flag should not be passed. When you request an MMS number, you must set `with_sms` to `true` as well.
+          default: null
+          anyOf:
+          - type: boolean
+          - type: 'null'
+        with_sms:
+          title: With SMS
+          description: By default, SMS-capable numbers are rented if Close supports SMS for the given country. Renting an SMS-capable number can be forced by setting this flag to `true`. If set to `false`, certain prefixes that don't support SMS can be rented in countries where Close supports SMS. In most scenarios, this flag should not be passed unless a `has-voice-only` error status is received.
+          default: null
+          anyOf:
+          - type: boolean
+          - type: 'null'
+      required:
+      - country
+      additionalProperties: false
+    PhoneNumberSharing:
+      title: PhoneNumberSharing
+      type: string
+      enum:
+      - personal
+      - group
     UpdatePhoneNumber:
       title: UpdatePhoneNumber
       type: object
@@ -506,6 +558,22 @@ components:
           - type: string
           - type: 'null'
       additionalProperties: false
+    CarrierNumberType:
+      title: CarrierNumberType
+      type: string
+      enum:
+      - local
+      - national
+      - mobile
+      - tollfree
+      - shortcode
+    PhoneNumberType:
+      title: PhoneNumberType
+      type: string
+      enum:
+      - internal
+      - external
+      - virtual
     PhoneNumber:
       title: PhoneNumber
       type: object
@@ -672,78 +740,30 @@ components:
       - supports_sms_to_countries
       - type
       - user_id
-    PhoneNumberSharing:
-      title: PhoneNumberSharing
-      type: string
-      enum:
-      - personal
-      - group
-    UnderlyingCarrier:
-      title: UnderlyingCarrier
-      type: string
-      enum:
-      - twilio
-      - plivo
-    PhoneNumberType:
-      title: PhoneNumberType
-      type: string
-      enum:
-      - internal
-      - external
-      - virtual
-    CreatePhoneNumberRequest:
-      title: CreatePhoneNumberRequest
-      type: object
-      properties:
-        bundle_id:
-          title: Bundle ID
-          default: null
-          anyOf:
-          - type: string
-          - type: 'null'
-        carrier_type:
-          title: Carrier Type
-          default: null
-          anyOf:
-          - type: string
-            enum:
-            - local
-            - national
-            - mobile
-            - tollfree
-          - type: 'null'
-        country:
-          title: Country
-          description: A two letter ISO country code (e.g. `US` for United States).
-          type: string
-        prefix:
-          title: Prefix
-          description: A string with the phone number prefix or area code, not including the country code.
-          type: string
-          default: ''
-          maxLength: 5
-        sharing:
-          description: Deprecated. `personal` for a number that belongs to an individual user, or `group` for a group number. The distinction between personal and group numbers is being removed, and this field will be removed in a future update. When omitted, defaults to `personal`.
-          deprecated: true
-          default: personal
-          $ref: '#/components/schemas/PhoneNumberSharing'
-        with_mms:
-          title: With MMS
-          description: By default, MMS-capable numbers are rented if Close supports MMS for the given country. Renting an MMS-capable number can be forced by setting this flag to `true`. If set to `false`, certain prefixes that don't support MMS can be rented in countries where Close supports MMS. In most scenarios, this flag should not be passed. When you request an MMS number, you must set `with_sms` to `true` as well.
-          default: null
-          anyOf:
-          - type: boolean
-          - type: 'null'
-        with_sms:
-          title: With SMS
-          description: By default, SMS-capable numbers are rented if Close supports SMS for the given country. Renting an SMS-capable number can be forced by setting this flag to `true`. If set to `false`, certain prefixes that don't support SMS can be rented in countries where Close supports SMS. In most scenarios, this flag should not be passed unless a `has-voice-only` error status is received.
-          default: null
-          anyOf:
-          - type: boolean
-          - type: 'null'
-      required:
-      - country
-      additionalProperties: false
+  parameters:
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

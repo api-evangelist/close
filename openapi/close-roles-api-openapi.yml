@@ -9,7 +9,7 @@ security:
 - ApiKeyAuth: []
 - OAuth2: []
 tags:
-- name: roles
+- name: Roles
   externalDocs:
     url: https://developer.close.com/api/resources/roles
 paths:
@@ -17,7 +17,7 @@ paths:
     get:
       operationId: roles_list
       tags:
-      - roles
+      - Roles
       summary: List all the roles defined for your organization
       responses:
         '200':
@@ -55,9 +55,23 @@ paths:
     post:
       operationId: roles_create
       tags:
-      - roles
+      - Roles
       summary: Create a new role
-      description: "`visibility_user_lcf_ids` (optional)\n\nA list of Lead Custom Field IDs that define which leads user with this role can see. If the role has `view_all_leads` permission, this field should be empty.\n\n`visibility_user_lcf_behavior` (optional)\n\nDefines how lead visibility works for leads that don't have assigned users. If the role has `view_all_leads` permission, this field should be empty.\n\n - `require_assignment` - leads without assigned users are not visible to this role\n - `allow_unassigned` - leads without assigned users are visible to this role"
+      description: '`visibility_user_lcf_ids` (optional)
+
+
+        A list of Lead Custom Field IDs that define which leads user with this role can see. If the role has `view_all_leads` permission, this field should be empty.
+
+
+        `visibility_user_lcf_behavior` (optional)
+
+
+        Defines how lead visibility works for leads that don''t have assigned users. If the role has `view_all_leads` permission, this field should be empty.
+
+
+        - `require_assignment` - leads without assigned users are not visible to this role
+
+        - `allow_unassigned` - leads without assigned users are visible to this role'
       requestBody:
         content:
           application/json:
@@ -93,7 +107,7 @@ paths:
     get:
       operationId: roles_get
       tags:
-      - roles
+      - Roles
       summary: Fetch a single role
       parameters:
       - in: path
@@ -125,7 +139,7 @@ paths:
     put:
       operationId: roles_update
       tags:
-      - roles
+      - Roles
       summary: Update existing role
       parameters:
       - in: path
@@ -164,7 +178,7 @@ paths:
     delete:
       operationId: roles_delete
       tags:
-      - roles
+      - Roles
       summary: Delete a role
       description: Delete a custom role. You must first move all users off this role by reassigning them to another role.
       parameters:

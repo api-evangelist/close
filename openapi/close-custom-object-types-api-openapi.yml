@@ -110,7 +110,23 @@ paths:
       tags:
       - custom_object_types
       summary: Create new Custom Object Type
-      description: "The type must be created before Custom Fields can be added.\n\nThe following fields are required:\n  - `name`: The name of the Custom Object Type\n  - `name_plural`: A pluralized version of the name, for some UI display.\n\nThe following fields are optional:\n  - `description`: A longer description of the Custom Object Type.\n  - `api_create_only`: If `true`, instances can only be created by API clients. Defaults to `false`.\n  - `editable_with_roles`: Only users with the given roles can edit instances of this type. By default, any user in your organization can make changes to the instances of this type."
+      description: 'The type must be created before Custom Fields can be added.
+
+
+        The following fields are required:
+
+        - `name`: The name of the Custom Object Type
+
+        - `name_plural`: A pluralized version of the name, for some UI display.
+
+
+        The following fields are optional:
+
+        - `description`: A longer description of the Custom Object Type.
+
+        - `api_create_only`: If `true`, instances can only be created by API clients. Defaults to `false`.
+
+        - `editable_with_roles`: Only users with the given roles can edit instances of this type. By default, any user in your organization can make changes to the instances of this type.'
       requestBody:
         content:
           application/json:
@@ -200,7 +216,7 @@ paths:
       tags:
       - custom_object_types
       summary: Update existing Custom Object Type
-      description: The type's `name`, `name_plural`, `description`, `api_create_only` and `editable_with_roles` properties may be updated here. These properties will be updated immediately in the Custom Object API. You cannot add, modify, remove or reorder fields from a Custom Object Type using this resource. See [Custom Object Custom Fields](https://developer.close.com/api/resources/custom-fields/custom-fields-custom-object) and [Custom Field Schema API](https://developer.close.com/api/resources/custom-fields/custom-field-schemas) for these features.
+      description: The type's `name`, `name_plural`, `description`, `api_create_only` and `editable_with_roles` properties may be updated here. These properties will be updated immediately in the Custom Object API. You cannot add, modify, remove or reorder fields from a Custom Object Type using this resource. See Custom Object Custom Fields and Custom Field Schema API for these features.
       parameters:
       - in: path
         name: id

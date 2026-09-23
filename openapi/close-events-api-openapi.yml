@@ -9,7 +9,7 @@ security:
 - ApiKeyAuth: []
 - OAuth2: []
 tags:
-- name: events
+- name: Events
   externalDocs:
     url: https://developer.close.com/api/resources/events
 paths:
@@ -17,9 +17,9 @@ paths:
     get:
       operationId: events_list
       tags:
-      - events
+      - Events
       summary: Retrieve a list of events
-      description: 'The list of available object types and actions is available [here](https://developer.close.com/api/resources/events/list-of-event-types). The event log can be filtered by the following parameters:
+      description: 'The list of available object types and actions is available here. The event log can be filtered by the following parameters:
 
 
         - `date_updated`: The date/time of when the event was last updated, in ISO format. Can be filtered by range (`date_updated__gte=X&date_updated__lte=Y`). Note: For pagination, it is recommended to use cursors instead of this filter (see below).
@@ -199,7 +199,7 @@ paths:
     get:
       operationId: events_get
       tags:
-      - events
+      - Events
       summary: Retrieve a single event by ID
       description: The response contains a dictionary with a single event, using the format outlined in “Event format”.
       parameters:
@@ -253,14 +253,6 @@ paths:
           description: Not found
 components:
   parameters:
-    LimitParam:
-      description: Number of results to return.
-      in: query
-      name: _limit
-      required: false
-      schema:
-        default: 100
-        type: integer
     SkipParam:
       description: Number of results to skip before returning, for pagination.
       in: query
@@ -268,6 +260,14 @@ components:
       required: false
       schema:
         default: 0
+        type: integer
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
         type: integer
   securitySchemes:
     ApiKeyAuth:

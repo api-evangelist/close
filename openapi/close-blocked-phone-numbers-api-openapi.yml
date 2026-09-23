@@ -251,13 +251,6 @@ paths:
           description: Not found
 components:
   parameters:
-    FieldsParam:
-      description: Comma-separated list of fields to include in the response.
-      in: query
-      name: _fields
-      required: false
-      schema:
-        type: string
     LimitParam:
       description: Number of results to return.
       in: query
@@ -266,6 +259,13 @@ components:
       schema:
         default: 100
         type: integer
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
     SkipParam:
       description: Number of results to skip before returning, for pagination.
       in: query
@@ -275,17 +275,6 @@ components:
         default: 0
         type: integer
   schemas:
-    UpdateBlockedPhoneNumber:
-      title: UpdateBlockedPhoneNumber
-      type: object
-      properties:
-        reason:
-          title: Reason
-          description: The updated reason for blocking the given phone number.
-          type: string
-      required:
-      - reason
-      additionalProperties: false
     BlockedPhoneNumberSettings:
       title: BlockedPhoneNumberSettings
       type: object
@@ -319,6 +308,17 @@ components:
           type: string
       required:
       - phone
+      - reason
+      additionalProperties: false
+    UpdateBlockedPhoneNumber:
+      title: UpdateBlockedPhoneNumber
+      type: object
+      properties:
+        reason:
+          title: Reason
+          description: The updated reason for blocking the given phone number.
+          type: string
+      required:
       - reason
       additionalProperties: false
     BlockedPhoneNumber:

@@ -9,7 +9,7 @@ security:
 - ApiKeyAuth: []
 - OAuth2: []
 tags:
-- name: groups
+- name: Groups
   externalDocs:
     url: https://developer.close.com/api/resources/groups
 paths:
@@ -17,7 +17,7 @@ paths:
     get:
       operationId: groups_list
       tags:
-      - groups
+      - Groups
       summary: List Groups for your organization
       description: Note that list endpoint does not support retrieving members for all groups. Use individual group endpoint instead.
       parameters:
@@ -54,7 +54,7 @@ paths:
     post:
       operationId: groups_create
       tags:
-      - groups
+      - Groups
       summary: Create a Group
       description: Create a new group. The `name` is required and must be unique within the organization. The group is created with no members. Use the member endpoint to add users.
       parameters:
@@ -89,7 +89,7 @@ paths:
     post:
       operationId: groups_add_member
       tags:
-      - groups
+      - Groups
       summary: Add a User to a Group
       description: Add a user to a group by providing the `user_id`. If the user is already a member, nothing changes.
       parameters:
@@ -125,7 +125,7 @@ paths:
     delete:
       operationId: groups_remove_member
       tags:
-      - groups
+      - Groups
       summary: Remove a User from a Group
       description: If the user is not a member of the group, nothing changes.
       parameters:
@@ -152,7 +152,7 @@ paths:
     get:
       operationId: groups_get
       tags:
-      - groups
+      - Groups
       summary: Fetch an individual Group
       parameters:
       - in: path
@@ -183,7 +183,7 @@ paths:
     put:
       operationId: groups_update
       tags:
-      - groups
+      - Groups
       summary: Update a Group
       description: You can use this endpoint to rename a Group. If a name is not unique, an error will be returned.
       parameters:
@@ -223,7 +223,7 @@ paths:
     delete:
       operationId: groups_delete
       tags:
-      - groups
+      - Groups
       summary: Delete a Group
       description: Delete a group. Members will be removed from the group but not from the organization. Deletion is only allowed if the group is not referenced by saved reports or smart views.
       parameters:
@@ -242,34 +242,7 @@ paths:
         '404':
           description: Not found
 components:
-  parameters:
-    FieldsParam:
-      description: Comma-separated list of fields to include in the response.
-      in: query
-      name: _fields
-      required: false
-      schema:
-        type: string
   schemas:
-    CreateGroupMember:
-      title: CreateGroupMember
-      type: object
-      properties:
-        user_id:
-          title: User ID
-          type: string
-      required:
-      - user_id
-      additionalProperties: false
-    GroupMember:
-      title: GroupMember
-      type: object
-      properties:
-        user_id:
-          title: User ID
-          type: string
-      required:
-      - user_id
     CreateGroup:
       title: CreateGroup
       type: object
@@ -280,6 +253,15 @@ components:
       required:
       - name
       additionalProperties: false
+    GroupMember:
+      title: GroupMember
+      type: object
+      properties:
+        user_id:
+          title: User ID
+          type: string
+      required:
+      - user_id
     Group:
       title: Group
       type: object
@@ -305,6 +287,24 @@ components:
       - id
       - name
       - organization_id
+    CreateGroupMember:
+      title: CreateGroupMember
+      type: object
+      properties:
+        user_id:
+          title: User ID
+          type: string
+      required:
+      - user_id
+      additionalProperties: false
+  parameters:
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

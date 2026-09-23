@@ -9,7 +9,7 @@ security:
 - ApiKeyAuth: []
 - OAuth2: []
 tags:
-- name: webhooks
+- name: Webhooks
   externalDocs:
     url: https://developer.close.com/api/resources/webhooks
 paths:
@@ -17,7 +17,7 @@ paths:
     get:
       operationId: webhooks_list
       tags:
-      - webhooks
+      - Webhooks
       summary: List Webhook subscriptions
       description: List all webhook subscriptions for the organization.
       responses:
@@ -32,7 +32,7 @@ paths:
     post:
       operationId: webhooks_create
       tags:
-      - webhooks
+      - Webhooks
       summary: Create new Webhook subscription
       description: The subscription will send events to the specified URL.
       requestBody:
@@ -142,7 +142,7 @@ paths:
     get:
       operationId: webhooks_get
       tags:
-      - webhooks
+      - Webhooks
       summary: Retrieve a single Webhook subscription
       description: The response contains the subscription details.
       parameters:
@@ -191,7 +191,7 @@ paths:
     put:
       operationId: webhooks_update
       tags:
-      - webhooks
+      - Webhooks
       summary: Update existing Webhook subscription
       parameters:
       - in: path
@@ -247,7 +247,7 @@ paths:
     delete:
       operationId: webhooks_delete
       tags:
-      - webhooks
+      - Webhooks
       summary: Delete Webhook subscription
       parameters:
       - in: path
@@ -266,45 +266,6 @@ paths:
           description: Not found
 components:
   schemas:
-    WebhookStatus:
-      title: WebhookStatus
-      type: string
-      enum:
-      - active
-      - paused
-    UpdateWebhook:
-      title: UpdateWebhook
-      type: object
-      properties:
-        events:
-          title: Events
-          description: A list of events to subscribe to. Each event has an `object_type` and an `action` from values in the [event log](https://developer.close.com/api/resources/events/list-of-event-types). You can also use [Webhook Filters](https://developer.close.com/api/resources/webhooks/webhook-filters) while creating your subscription so that an event only fires to a Webhook when certain conditions are met.
-          default: null
-          anyOf:
-          - type: array
-            items:
-              $ref: '#/components/schemas/WebhookSubscriptionEvent'
-          - type: 'null'
-        status:
-          default: null
-          anyOf:
-          - $ref: '#/components/schemas/WebhookStatus'
-          - type: 'null'
-        url:
-          title: Url
-          description: Destination URL for the webhook subscription
-          default: null
-          anyOf:
-          - type: string
-          - type: 'null'
-        verify_ssl:
-          title: Verify Ssl
-          description: Verify SSL certificate of destination webhook URL. Set to `false` to disable SSL certificate validation. We recommend using https to protect your data during delivery.
-          default: null
-          anyOf:
-          - type: boolean
-          - type: 'null'
-      additionalProperties: false
     WebhookSubscriptionEvent:
       title: WebhookSubscriptionEvent
       type: object
@@ -347,6 +308,45 @@ components:
       required:
       - events
       - url
+      additionalProperties: false
+    WebhookStatus:
+      title: WebhookStatus
+      type: string
+      enum:
+      - active
+      - paused
+    UpdateWebhook:
+      title: UpdateWebhook
+      type: object
+      properties:
+        events:
+          title: Events
+          description: A list of events to subscribe to. Each event has an `object_type` and an `action` from values in the [event log](https://developer.close.com/api/resources/events/list-of-event-types). You can also use [Webhook Filters](https://developer.close.com/api/resources/webhooks/webhook-filters) while creating your subscription so that an event only fires to a Webhook when certain conditions are met.
+          default: null
+          anyOf:
+          - type: array
+            items:
+              $ref: '#/components/schemas/WebhookSubscriptionEvent'
+          - type: 'null'
+        status:
+          default: null
+          anyOf:
+          - $ref: '#/components/schemas/WebhookStatus'
+          - type: 'null'
+        url:
+          title: Url
+          description: Destination URL for the webhook subscription
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        verify_ssl:
+          title: Verify Ssl
+          description: Verify SSL certificate of destination webhook URL. Set to `false` to disable SSL certificate validation. We recommend using https to protect your data during delivery.
+          default: null
+          anyOf:
+          - type: boolean
+          - type: 'null'
       additionalProperties: false
   securitySchemes:
     ApiKeyAuth:

@@ -69,7 +69,14 @@ paths:
       tags:
       - custom_fields.custom_object
       summary: Create a new Custom Object Custom Field
-      description: "Custom Object Custom Fields belong to Custom Objects, and have additional attributes:\n\n- `custom_object_type_id` – the ID of the Custom Object Type this Field\n  should belong to.\n- `required` – whether the Field will be required to save the object."
+      description: 'Custom Object Custom Fields belong to Custom Objects, and have additional attributes:
+
+
+        - `custom_object_type_id` – the ID of the Custom Object Type this Field
+
+        should belong to.
+
+        - `required` – whether the Field will be required to save the object.'
       requestBody:
         content:
           application/json:

@@ -9,7 +9,7 @@ security:
 - ApiKeyAuth: []
 - OAuth2: []
 tags:
-- name: connected_accounts
+- name: Connected Accounts
   externalDocs:
     url: https://developer.close.com/api/resources/connected-accounts
 paths:
@@ -17,7 +17,7 @@ paths:
     get:
       operationId: connected_accounts_list
       tags:
-      - connected_accounts
+      - Connected Accounts
       summary: List connected accounts
       description: You can filter down to a specific user by passing the `?user_id` query parameter.
       parameters:
@@ -113,7 +113,7 @@ paths:
     get:
       operationId: connected_accounts_get
       tags:
-      - connected_accounts
+      - Connected Accounts
       summary: Fetch a single connected account
       parameters:
       - in: path

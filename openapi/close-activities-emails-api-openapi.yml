@@ -224,7 +224,36 @@ paths:
       tags:
       - activities.emails
       summary: Create an Email activity
-      description: "*status* must be one of the following:\n\n - `inbox` to log an already received email.\n - `draft` to create a draft email.\n - `scheduled` to send an email at a scheduled date and time, which must be specified in the `date_scheduled` field.\n - `outbox` to actually **send** an email. To delay email sending by a few seconds (to allow undo), specify `send_in` in seconds (must be less than 60).\n - `sent` to log an already sent email.\n\nOnly drafts can be modified, and their status can be changed to `scheduled` (to send later) or `outbox` (to send immediately). Scheduled emails, or emails in outbox that weren't sent yet can be canceled by setting the status back to `draft`.\n\nFor scheduled, outbox, or sent emails, a `followup_date` may be posted, which will have Close create an email followup task if no response was received.\n\nWe'll render an Email Template server-side if you include a `template_id` _without_ including `body_text` or `body_html` in your POST.\n\nTo specify both a sender name and a sender email address when posting an email, you can use the `sender` field with the format `\"sender\": \"\"John Smith\" <emailaddress@example.com>\"`\n\nThe `sender` field is **required** for emails with status `inbox`, `scheduled`, `outbox`, or `error`. It may be omitted for `draft` (since the sender can be specified later before sending) and `sent` (where it defaults to the email address of the `user` associated with the email or the owner of the API key).\n\nTo include an attachment, you must first upload the file to Close using the [Files API](https://developer.close.com/api/resources/files). Then, add an object to the `attachments` array with the following fields: `url`, `filename`, `content_type`, and `size`. The `url` should be the URL provided in the `download.url` field of the response from the [Files API](https://developer.close.com/api/resources/files). It must begin `https://app.close.com/go/file/`."
+      description: '*status* must be one of the following:
+
+
+        - `inbox` to log an already received email.
+
+        - `draft` to create a draft email.
+
+        - `scheduled` to send an email at a scheduled date and time, which must be specified in the `date_scheduled` field.
+
+        - `outbox` to actually **send** an email. To delay email sending by a few seconds (to allow undo), specify `send_in` in seconds (must be less than 60).
+
+        - `sent` to log an already sent email.
+
+
+        Only drafts can be modified, and their status can be changed to `scheduled` (to send later) or `outbox` (to send immediately). Scheduled emails, or emails in outbox that weren''t sent yet can be canceled by setting the status back to `draft`.
+
+
+        For scheduled, outbox, or sent emails, a `followup_date` may be posted, which will have Close create an email followup task if no response was received.
+
+
+        We''ll render an Email Template server-side if you include a `template_id` _without_ including `body_text` or `body_html` in your POST.
+
+
+        To specify both a sender name and a sender email address when posting an email, you can use the `sender` field with the format `"sender": ""John Smith" "`
+
+
+        The `sender` field is **required** for emails with status `inbox`, `scheduled`, `outbox`, or `error`. It may be omitted for `draft` (since the sender can be specified later before sending) and `sent` (where it defaults to the email address of the `user` associated with the email or the owner of the API key).
+
+
+        To include an attachment, you must first upload the file to Close using the Files API. Then, add an object to the `attachments` array with the following fields: `url`, `filename`, `content_type`, and `size`. The `url` should be the URL provided in the `download.url` field of the response from the Files API. It must begin `https://app.close.com/go/file/`.'
       requestBody:
         content:
           application/json:
@@ -528,222 +557,14 @@ paths:
         '404':
           description: Not found
 components:
-  parameters:
-    ActivityFilters_DateCreatedGteParam:
-      in: query
-      name: date_created__gte
-      required: false
-      schema:
-        title: Date Created (>=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_ActivityAtLteParam:
-      in: query
-      name: activity_at__lte
-      required: false
-      schema:
-        title: Activity At (<=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_TypeParam:
-      description: Filter by activity type, e.g. Call (comma-separated)
-      in: query
-      name: _type
-      required: false
-      schema:
-        title: Type
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    ActivityFilters_OrganizationIdParam:
-      in: query
-      name: organization_id
-      required: false
-      schema:
-        title: Organization ID
-        default: null
-        anyOf:
-        - type: string
-        - type: 'null'
-    ActivityFilters_LeadIdParam:
-      description: Filter by lead IDs (comma-separated)
-      in: query
-      name: lead_id
-      required: false
-      schema:
-        title: Lead ID
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    ActivityFilters_ActivityAtLtParam:
-      in: query
-      name: activity_at__lt
-      required: false
-      schema:
-        title: Activity At (<)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_ActivityAtGteParam:
-      in: query
-      name: activity_at__gte
-      required: false
-      schema:
-        title: Activity At (>=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_UserIdParam:
-      description: Filter by user IDs (comma-separated)
-      in: query
-      name: user_id
-      required: false
-      schema:
-        title: User ID
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    ActivityFilters_ContactIdParam:
-      description: Filter by contact IDs (comma-separated)
-      in: query
-      name: contact_id
-      required: false
-      schema:
-        title: Contact ID
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    LimitParam:
-      description: Number of results to return.
-      in: query
-      name: _limit
-      required: false
-      schema:
-        default: 100
-        type: integer
-    SkipParam:
-      description: Number of results to skip before returning, for pagination.
-      in: query
-      name: _skip
-      required: false
-      schema:
-        default: 0
-        type: integer
-    ActivityFilters_IdInParam:
-      description: Filter by activity IDs (comma-separated)
-      in: query
-      name: id__in
-      required: false
-      schema:
-        title: ID In
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    FieldsParam:
-      description: Comma-separated list of fields to include in the response.
-      in: query
-      name: _fields
-      required: false
-      schema:
-        type: string
-    ActivityFilters_DateCreatedLtParam:
-      in: query
-      name: date_created__lt
-      required: false
-      schema:
-        title: Date Created (<)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_ActivityAtGtParam:
-      in: query
-      name: activity_at__gt
-      required: false
-      schema:
-        title: Activity At (>)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_DateCreatedGtParam:
-      in: query
-      name: date_created__gt
-      required: false
-      schema:
-        title: Date Created (>)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_DateCreatedLteParam:
-      in: query
-      name: date_created__lte
-      required: false
-      schema:
-        title: Date Created (<=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
   schemas:
-    EmailOpen:
-      title: EmailOpen
-      type: object
-      properties:
-        ip_address:
-          title: Ip Address
-          anyOf:
-          - type: string
-          - type: 'null'
-        opened_at:
-          title: Opened At
-          type: string
-          format: date-time
-        opened_by:
-          title: Opened By
-          anyOf:
-          - type: string
-          - type: 'null'
-        user_agent:
-          title: User Agent
-          anyOf:
-          - type: string
-          - type: 'null'
-      required:
-      - ip_address
-      - opened_at
-      - opened_by
-      - user_agent
+    CommunicationDirection:
+      title: CommunicationDirection
+      description: Direction of communication. Outgoing means the communication flowing from the user to the lead/contact. Inbound means the opposite.
+      type: string
+      enum:
+      - incoming
+      - outgoing
     UpdateEmailActivity:
       type: object
       properties:
@@ -885,13 +706,236 @@ components:
           - 'null'
           - string
       additionalProperties: false
-    CommunicationDirection:
-      title: CommunicationDirection
-      description: Direction of communication. Outgoing means the communication flowing from the user to the lead/contact. Inbound means the opposite.
+    EmailOpen:
+      title: EmailOpen
+      type: object
+      properties:
+        ip_address:
+          title: Ip Address
+          anyOf:
+          - type: string
+          - type: 'null'
+        opened_at:
+          title: Opened At
+          type: string
+          format: date-time
+        opened_by:
+          title: Opened By
+          anyOf:
+          - type: string
+          - type: 'null'
+        user_agent:
+          title: User Agent
+          anyOf:
+          - type: string
+          - type: 'null'
+      required:
+      - ip_address
+      - opened_at
+      - opened_by
+      - user_agent
+    Attachment:
+      title: Attachment
+      type: object
+      properties:
+        content_type:
+          title: Content Type
+          anyOf:
+          - type: string
+          - type: 'null'
+        filename:
+          title: Filename
+          anyOf:
+          - type: string
+          - type: 'null'
+        size:
+          title: Size
+          anyOf:
+          - type: integer
+          - type: 'null'
+        thumbnail_url:
+          title: Thumbnail URL
+          anyOf:
+          - type: string
+          - type: 'null'
+        url:
+          title: URL
+          type: string
+      required:
+      - content_type
+      - filename
+      - size
+      - url
+    MessageStatus:
+      title: MessageStatus
+      description: Status of a message, such as Email or SMS.
       type: string
       enum:
-      - incoming
-      - outgoing
+      - inbox
+      - draft
+      - scheduled
+      - outbox
+      - sent
+      - error
+    CreateEmailActivity:
+      type: object
+      properties:
+        activity_at:
+          type:
+          - 'null'
+          - string
+          format: date-time
+        attachments:
+          type:
+          - array
+          - 'null'
+          maxItems: 1000
+          items:
+            type: object
+            properties:
+              content_id:
+                type:
+                - 'null'
+                - string
+              content_type:
+                type:
+                - 'null'
+                - string
+              filename:
+                type: string
+              inline_only:
+                type: boolean
+              size:
+                type: integer
+              url:
+                type: string
+                format: uri
+            required:
+            - filename
+            - size
+            - url
+        bcc:
+          type:
+          - array
+          - 'null'
+          maxItems: 500
+          items:
+            type: string
+            maxLength: 1000
+        body_html:
+          type:
+          - 'null'
+          - string
+          maxLength: 1048576
+        body_text:
+          type:
+          - 'null'
+          - string
+          maxLength: 1048576
+        cc:
+          type:
+          - array
+          - 'null'
+          maxItems: 500
+          items:
+            type: string
+            maxLength: 1000
+        contact_id:
+          type:
+          - 'null'
+          - string
+        created_by:
+          type:
+          - 'null'
+          - string
+        date_created:
+          type:
+          - 'null'
+          - string
+          format: date-time
+        email_account_id:
+          type:
+          - 'null'
+          - string
+        followup_date:
+          type:
+          - 'null'
+          - string
+          format: date-time
+        followup_sequence_add_cc_bcc:
+          type:
+          - boolean
+          - 'null'
+        followup_sequence_delay:
+          type:
+          - integer
+          - 'null'
+          minimum: 86400
+        followup_sequence_id:
+          type:
+          - 'null'
+          - string
+        in_reply_to_id:
+          type:
+          - 'null'
+          - string
+        lead_id:
+          type: string
+        opens:
+          type:
+          - array
+          - 'null'
+          items:
+            type: object
+            properties:
+              opened_at:
+                type: string
+                format: date-time
+            required:
+            - opened_at
+        organization_id:
+          type:
+          - 'null'
+          - string
+        sender:
+          type:
+          - 'null'
+          - string
+          format: email
+        status:
+          type: string
+          enum:
+          - inbox
+          - draft
+          - scheduled
+          - outbox
+          - sent
+          - error
+        subject:
+          type:
+          - 'null'
+          - string
+          maxLength: 1000
+        template_id:
+          type:
+          - 'null'
+          - string
+        to:
+          type:
+          - array
+          - 'null'
+          maxItems: 500
+          items:
+            type: string
+            maxLength: 1000
+        user_id:
+          type:
+          - 'null'
+          - string
+      required:
+      - lead_id
+      - status
+      additionalProperties: false
     EmailActivity:
       title: EmailActivity
       type: object
@@ -1197,208 +1241,193 @@ components:
       - updated_by
       - user_id
       - users
-    MessageStatus:
-      title: MessageStatus
-      description: Status of a message, such as Email or SMS.
-      type: string
-      enum:
-      - inbox
-      - draft
-      - scheduled
-      - outbox
-      - sent
-      - error
-    CreateEmailActivity:
-      type: object
-      properties:
-        activity_at:
-          type:
-          - 'null'
-          - string
+  parameters:
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
+    ActivityFilters_DateCreatedLtParam:
+      in: query
+      name: date_created__lt
+      required: false
+      schema:
+        title: Date Created (<)
+        anyOf:
+        - type: string
           format: date-time
-        attachments:
-          type:
-          - array
-          - 'null'
-          maxItems: 1000
-          items:
-            type: object
-            properties:
-              content_id:
-                type:
-                - 'null'
-                - string
-              content_type:
-                type:
-                - 'null'
-                - string
-              filename:
-                type: string
-              inline_only:
-                type: boolean
-              size:
-                type: integer
-              url:
-                type: string
-                format: uri
-            required:
-            - filename
-            - size
-            - url
-        bcc:
-          type:
-          - array
-          - 'null'
-          maxItems: 500
+        - type: string
+          format: date
+    ActivityFilters_UserIdParam:
+      description: Filter by user IDs (comma-separated)
+      in: query
+      name: user_id
+      required: false
+      schema:
+        title: User ID
+        default: null
+        anyOf:
+        - type: array
           items:
             type: string
-            maxLength: 1000
-        body_html:
-          type:
-          - 'null'
-          - string
-          maxLength: 1048576
-        body_text:
-          type:
-          - 'null'
-          - string
-          maxLength: 1048576
-        cc:
-          type:
-          - array
-          - 'null'
-          maxItems: 500
+        - type: 'null'
+    ActivityFilters_TypeParam:
+      description: Filter by activity type, e.g. Call (comma-separated)
+      in: query
+      name: _type
+      required: false
+      schema:
+        title: Type
+        default: null
+        anyOf:
+        - type: array
           items:
             type: string
-            maxLength: 1000
-        contact_id:
-          type:
-          - 'null'
-          - string
-        created_by:
-          type:
-          - 'null'
-          - string
-        date_created:
-          type:
-          - 'null'
-          - string
+        - type: 'null'
+    ActivityFilters_ActivityAtLtParam:
+      in: query
+      name: activity_at__lt
+      required: false
+      schema:
+        title: Activity At (<)
+        anyOf:
+        - type: string
           format: date-time
-        email_account_id:
-          type:
-          - 'null'
-          - string
-        followup_date:
-          type:
-          - 'null'
-          - string
-          format: date-time
-        followup_sequence_add_cc_bcc:
-          type:
-          - boolean
-          - 'null'
-        followup_sequence_delay:
-          type:
-          - integer
-          - 'null'
-          minimum: 86400
-        followup_sequence_id:
-          type:
-          - 'null'
-          - string
-        in_reply_to_id:
-          type:
-          - 'null'
-          - string
-        lead_id:
-          type: string
-        opens:
-          type:
-          - array
-          - 'null'
-          items:
-            type: object
-            properties:
-              opened_at:
-                type: string
-                format: date-time
-            required:
-            - opened_at
-        organization_id:
-          type:
-          - 'null'
-          - string
-        sender:
-          type:
-          - 'null'
-          - string
-          format: email
-        status:
-          type: string
-          enum:
-          - inbox
-          - draft
-          - scheduled
-          - outbox
-          - sent
-          - error
-        subject:
-          type:
-          - 'null'
-          - string
-          maxLength: 1000
-        template_id:
-          type:
-          - 'null'
-          - string
-        to:
-          type:
-          - array
-          - 'null'
-          maxItems: 500
+        - type: string
+          format: date
+    ActivityFilters_LeadIdParam:
+      description: Filter by lead IDs (comma-separated)
+      in: query
+      name: lead_id
+      required: false
+      schema:
+        title: Lead ID
+        default: null
+        anyOf:
+        - type: array
           items:
             type: string
-            maxLength: 1000
-        user_id:
-          type:
-          - 'null'
-          - string
-      required:
-      - lead_id
-      - status
-      additionalProperties: false
-    Attachment:
-      title: Attachment
-      type: object
-      properties:
-        content_type:
-          title: Content Type
-          anyOf:
-          - type: string
-          - type: 'null'
-        filename:
-          title: Filename
-          anyOf:
-          - type: string
-          - type: 'null'
-        size:
-          title: Size
-          anyOf:
-          - type: integer
-          - type: 'null'
-        thumbnail_url:
-          title: Thumbnail URL
-          anyOf:
-          - type: string
-          - type: 'null'
-        url:
-          title: URL
-          type: string
-      required:
-      - content_type
-      - filename
-      - size
-      - url
+        - type: 'null'
+    ActivityFilters_ActivityAtGteParam:
+      in: query
+      name: activity_at__gte
+      required: false
+      schema:
+        title: Activity At (>=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
+    ActivityFilters_ContactIdParam:
+      description: Filter by contact IDs (comma-separated)
+      in: query
+      name: contact_id
+      required: false
+      schema:
+        title: Contact ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
+    ActivityFilters_DateCreatedGteParam:
+      in: query
+      name: date_created__gte
+      required: false
+      schema:
+        title: Date Created (>=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_DateCreatedLteParam:
+      in: query
+      name: date_created__lte
+      required: false
+      schema:
+        title: Date Created (<=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_ActivityAtLteParam:
+      in: query
+      name: activity_at__lte
+      required: false
+      schema:
+        title: Activity At (<=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_DateCreatedGtParam:
+      in: query
+      name: date_created__gt
+      required: false
+      schema:
+        title: Date Created (>)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_ActivityAtGtParam:
+      in: query
+      name: activity_at__gt
+      required: false
+      schema:
+        title: Activity At (>)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_OrganizationIdParam:
+      in: query
+      name: organization_id
+      required: false
+      schema:
+        title: Organization ID
+        default: null
+        anyOf:
+        - type: string
+        - type: 'null'
+    ActivityFilters_IdInParam:
+      description: Filter by activity IDs (comma-separated)
+      in: query
+      name: id__in
+      required: false
+      schema:
+        title: ID In
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

@@ -115,7 +115,7 @@ paths:
         For Lead Smart Views, the `type` field is optional (since `lead` is the default `type`).
 
 
-        When creating a Smart View, you must specify that you want to get objects of the appropriate type via an `object_type` clause as per the [Advanced Filtering](https://developer.close.com/api/resources/advanced-filtering) section. See the examples below.'
+        When creating a Smart View, you must specify that you want to get objects of the appropriate type via an `object_type` clause as per the Advanced Filtering section. See the examples below.'
       requestBody:
         content:
           application/json:
@@ -351,7 +351,71 @@ paths:
         '404':
           description: Not found
 components:
+  parameters:
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
   schemas:
+    SharingSettingsEmbeddedResponse:
+      title: SharingSettingsEmbeddedResponse
+      type: object
+      properties:
+        created_at:
+          title: Created At
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        created_by_id:
+          title: Created By ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        group_ids:
+          title: Group IDs
+          type: array
+          items:
+            type: string
+        updated_at:
+          title: Updated At
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        updated_by_id:
+          title: Updated By ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        user_ids:
+          title: User IDs
+          type: array
+          items:
+            type: string
+        whole_org:
+          title: Whole Org
+          type: boolean
+      required:
+      - created_at
+      - created_by_id
+      - group_ids
+      - updated_at
+      - updated_by_id
+      - user_ids
+      - whole_org
     SavedSearch:
       title: SavedSearch
       type: object
@@ -454,70 +518,6 @@ components:
       - whatsapp_message
       - custom_activity
       - form_submission
-    SharingSettingsEmbeddedResponse:
-      title: SharingSettingsEmbeddedResponse
-      type: object
-      properties:
-        created_at:
-          title: Created At
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-        created_by_id:
-          title: Created By ID
-          anyOf:
-          - type: string
-          - type: 'null'
-        group_ids:
-          title: Group IDs
-          type: array
-          items:
-            type: string
-        updated_at:
-          title: Updated At
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-        updated_by_id:
-          title: Updated By ID
-          anyOf:
-          - type: string
-          - type: 'null'
-        user_ids:
-          title: User IDs
-          type: array
-          items:
-            type: string
-        whole_org:
-          title: Whole Org
-          type: boolean
-      required:
-      - created_at
-      - created_by_id
-      - group_ids
-      - updated_at
-      - updated_by_id
-      - user_ids
-      - whole_org
-  parameters:
-    LimitParam:
-      description: Number of results to return.
-      in: query
-      name: _limit
-      required: false
-      schema:
-        default: 100
-        type: integer
-    SkipParam:
-      description: Number of results to skip before returning, for pagination.
-      in: query
-      name: _skip
-      required: false
-      schema:
-        default: 0
-        type: integer
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

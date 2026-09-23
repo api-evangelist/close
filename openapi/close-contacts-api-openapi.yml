@@ -9,7 +9,7 @@ security:
 - ApiKeyAuth: []
 - OAuth2: []
 tags:
-- name: contacts
+- name: Contacts
   externalDocs:
     url: https://developer.close.com/api/resources/contacts
 paths:
@@ -17,7 +17,7 @@ paths:
     get:
       operationId: contacts_list
       tags:
-      - contacts
+      - Contacts
       summary: List contacts
       parameters:
       - $ref: '#/components/parameters/LimitParam'
@@ -191,7 +191,7 @@ paths:
     post:
       operationId: contacts_create
       tags:
-      - contacts
+      - Contacts
       summary: Create a new contact
       description: 'Contacts belong to exactly one Lead (specified by `lead_id`). If you do not provide a `lead_id` then a new lead will be created, named after the contact.
 
@@ -259,7 +259,7 @@ paths:
     get:
       operationId: contacts_get
       tags:
-      - contacts
+      - Contacts
       summary: Fetch a single contact
       parameters:
       - in: path
@@ -304,7 +304,7 @@ paths:
     put:
       operationId: contacts_update
       tags:
-      - contacts
+      - Contacts
       summary: Update an existing contact
       description: 'Update a contact''s information. Custom field values can be set by including `custom.cf_*` keys in the request body, e.g. `"custom.cf_abc123": "value"`.
 
@@ -372,7 +372,7 @@ paths:
     delete:
       operationId: contacts_delete
       tags:
-      - contacts
+      - Contacts
       summary: Delete a contact
       parameters:
       - in: path
@@ -391,35 +391,42 @@ paths:
           description: Not found
 components:
   schemas:
-    ContactPhone:
-      title: ContactPhone
+    WorkflowRunStatus:
+      title: WorkflowRunStatus
+      type: string
+      enum:
+      - active
+      - paused
+      - finished
+      - goal
+      - error
+    ContactRecentCall:
+      title: ContactRecentCall
       type: object
       properties:
-        country:
-          title: Country
+        dialer_id:
+          title: Dialer ID
           anyOf:
           - type: string
           - type: 'null'
-        outbound_sms_blocked:
-          title: Outbound SMS Blocked
-          type: boolean
-        phone:
-          title: Phone
+        duration:
+          title: Duration
+          type: integer
+        finish_timestamp:
+          title: Finish Timestamp
           type: string
-        phone_formatted:
-          title: Phone Formatted
+          format: date-time
+        id:
+          title: ID
           type: string
-        type:
-          title: Type
-          type: string
-        tz_ids:
-          title: TZ IDs
-          type: array
-          items:
-            type: string
+        status:
+          $ref: '#/components/schemas/CallStatus'
       required:
-      - phone
-      - type
+      - dialer_id
+      - duration
+      - finish_timestamp
+      - id
+      - status
     CreateContact:
       type: object
       properties:
@@ -501,15 +508,105 @@ components:
         ^custom\.:
           not:
             type: object
-    WorkflowRunStatus:
-      title: WorkflowRunStatus
+    ContactPhone:
+      title: ContactPhone
+      type: object
+      properties:
+        country:
+          title: Country
+          anyOf:
+          - type: string
+          - type: 'null'
+        outbound_sms_blocked:
+          title: Outbound SMS Blocked
+          type: boolean
+        phone:
+          title: Phone
+          type: string
+        phone_formatted:
+          title: Phone Formatted
+          type: string
+        type:
+          title: Type
+          type: string
+        tz_ids:
+          title: TZ IDs
+          type: array
+          items:
+            type: string
+      required:
+      - phone
+      - type
+    RenderedIntegrationLink:
+      title: RenderedIntegrationLink
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+        url:
+          title: Url
+          type: string
+      required:
+      - name
+      - url
+    StatusReason:
+      title: StatusReason
+      description: Reason for each higher level status on a Workflow run.
+      type: string
+      enum:
+      - manual
+      - pending-call-timed-out
+      - bulk-action
+      - rate-limited
+      - sequence-deleted
+      - workflow-paused
+      - filter-not-matched
+      - insufficient-ai-credit-balance
+      - reply-received
+      - call-answered
+      - meeting-booked
+      - lead-status-changed
+      - outcome-met
+      - account-invalid
+      - account-failures
+      - sending-throttled-too-long
+      - membership-inactive
+      - send-as-error
+      - email-bounced
+      - call-failed
+      - sms-failed
+      - no-user-phone
+      - billing-error
+      - assignment-field-invalid
+      - lead-status-field-invalid
+      - assignees-missing
+      - run-as-disabled
+      - lead-not-visible
+      - internal-error
+      - field-mapping-error
+      - filter-config-invalid
+      - email-ai-generation-failed
+    WorkflowStatus:
+      title: WorkflowStatus
       type: string
       enum:
       - active
       - paused
-      - finished
-      - goal
-      - error
+      - draft
+    CallStatus:
+      title: CallStatus
+      description: Current status of the call.
+      type: string
+      enum:
+      - created
+      - in-progress
+      - completed
+      - cancel
+      - no-answer
+      - busy
+      - failed
+      - timeout
     ContactUrl:
       title: ContactUrl
       type: object
@@ -523,6 +620,147 @@ components:
       required:
       - type
       - url
+    UpdateContact:
+      type: object
+      properties:
+        emails:
+          type:
+          - array
+          - 'null'
+          maxItems: 100
+          items:
+            type: object
+            properties:
+              email:
+                type: string
+                format: email
+              type:
+                type: string
+            required:
+            - email
+        lead_id:
+          type:
+          - 'null'
+          - string
+        name:
+          type:
+          - 'null'
+          - string
+          maxLength: 1000
+        phones:
+          type:
+          - array
+          - 'null'
+          maxItems: 100
+          items:
+            type: object
+            properties:
+              phone:
+                description: Phone number in E.164 format
+                type:
+                - 'null'
+                - string
+              type:
+                type: string
+        timezone:
+          description: IANA timezone identifier
+          type:
+          - 'null'
+          - string
+        title:
+          type:
+          - 'null'
+          - string
+          maxLength: 1000
+        urls:
+          type:
+          - array
+          - 'null'
+          maxItems: 100
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+              url:
+                type: string
+                format: uri
+            required:
+            - url
+      additionalProperties: false
+      patternProperties:
+        ^custom\.:
+          not:
+            type: object
+    ContactEmail:
+      title: ContactEmail
+      type: object
+      properties:
+        email:
+          title: Email
+          type: string
+        is_unsubscribed:
+          title: Is Unsubscribed
+          type: boolean
+        type:
+          title: Type
+          type: string
+      required:
+      - email
+      - is_unsubscribed
+      - type
+    BasicSubscriptionInfoForContact:
+      title: BasicSubscriptionInfoForContact
+      type: object
+      properties:
+        contact_email:
+          title: Contact Email
+          anyOf:
+          - type: string
+          - type: 'null'
+        date_created:
+          title: Date Created
+          type: string
+          format: date-time
+        initial_email_id:
+          title: Initial Email ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        sequence_id:
+          title: Sequence ID
+          type: string
+        sequence_name:
+          title: Sequence Name
+          type: string
+        sequence_status:
+          $ref: '#/components/schemas/WorkflowStatus'
+        start_date:
+          title: Start Date
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        subscription_id:
+          title: Subscription ID
+          type: string
+        subscription_status:
+          $ref: '#/components/schemas/WorkflowRunStatus'
+        subscription_status_reason:
+          anyOf:
+          - $ref: '#/components/schemas/StatusReason'
+          - type: 'null'
+      required:
+      - contact_email
+      - date_created
+      - initial_email_id
+      - sequence_id
+      - sequence_name
+      - sequence_status
+      - start_date
+      - subscription_id
+      - subscription_status
+      - subscription_status_reason
     Contact:
       title: Contact
       type: object
@@ -625,252 +863,7 @@ components:
       - organization_id
       - title
       - updated_by
-    CallStatus:
-      title: CallStatus
-      description: Current status of the call.
-      type: string
-      enum:
-      - created
-      - in-progress
-      - completed
-      - cancel
-      - no-answer
-      - busy
-      - failed
-      - timeout
-    UpdateContact:
-      type: object
-      properties:
-        emails:
-          type:
-          - array
-          - 'null'
-          maxItems: 100
-          items:
-            type: object
-            properties:
-              email:
-                type: string
-                format: email
-              type:
-                type: string
-            required:
-            - email
-        lead_id:
-          type:
-          - 'null'
-          - string
-        name:
-          type:
-          - 'null'
-          - string
-          maxLength: 1000
-        phones:
-          type:
-          - array
-          - 'null'
-          maxItems: 100
-          items:
-            type: object
-            properties:
-              phone:
-                description: Phone number in E.164 format
-                type:
-                - 'null'
-                - string
-              type:
-                type: string
-        timezone:
-          description: IANA timezone identifier
-          type:
-          - 'null'
-          - string
-        title:
-          type:
-          - 'null'
-          - string
-          maxLength: 1000
-        urls:
-          type:
-          - array
-          - 'null'
-          maxItems: 100
-          items:
-            type: object
-            properties:
-              type:
-                type: string
-              url:
-                type: string
-                format: uri
-            required:
-            - url
-      additionalProperties: false
-      patternProperties:
-        ^custom\.:
-          not:
-            type: object
-    StatusReason:
-      title: StatusReason
-      description: Reason for each higher level status on a Workflow run.
-      type: string
-      enum:
-      - manual
-      - pending-call-timed-out
-      - bulk-action
-      - rate-limited
-      - sequence-deleted
-      - workflow-paused
-      - filter-not-matched
-      - insufficient-ai-credit-balance
-      - reply-received
-      - call-answered
-      - meeting-booked
-      - lead-status-changed
-      - outcome-met
-      - account-invalid
-      - account-failures
-      - sending-throttled-too-long
-      - membership-inactive
-      - send-as-error
-      - email-bounced
-      - call-failed
-      - sms-failed
-      - no-user-phone
-      - billing-error
-      - assignment-field-invalid
-      - lead-status-field-invalid
-      - assignees-missing
-      - run-as-disabled
-      - lead-not-visible
-      - internal-error
-      - field-mapping-error
-      - filter-config-invalid
-      - email-ai-generation-failed
-    WorkflowStatus:
-      title: WorkflowStatus
-      type: string
-      enum:
-      - active
-      - paused
-      - draft
-    BasicSubscriptionInfoForContact:
-      title: BasicSubscriptionInfoForContact
-      type: object
-      properties:
-        contact_email:
-          title: Contact Email
-          anyOf:
-          - type: string
-          - type: 'null'
-        date_created:
-          title: Date Created
-          type: string
-          format: date-time
-        initial_email_id:
-          title: Initial Email ID
-          anyOf:
-          - type: string
-          - type: 'null'
-        sequence_id:
-          title: Sequence ID
-          type: string
-        sequence_name:
-          title: Sequence Name
-          type: string
-        sequence_status:
-          $ref: '#/components/schemas/WorkflowStatus'
-        start_date:
-          title: Start Date
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-        subscription_id:
-          title: Subscription ID
-          type: string
-        subscription_status:
-          $ref: '#/components/schemas/WorkflowRunStatus'
-        subscription_status_reason:
-          anyOf:
-          - $ref: '#/components/schemas/StatusReason'
-          - type: 'null'
-      required:
-      - contact_email
-      - date_created
-      - initial_email_id
-      - sequence_id
-      - sequence_name
-      - sequence_status
-      - start_date
-      - subscription_id
-      - subscription_status
-      - subscription_status_reason
-    ContactEmail:
-      title: ContactEmail
-      type: object
-      properties:
-        email:
-          title: Email
-          type: string
-        is_unsubscribed:
-          title: Is Unsubscribed
-          type: boolean
-        type:
-          title: Type
-          type: string
-      required:
-      - email
-      - is_unsubscribed
-      - type
-    ContactRecentCall:
-      title: ContactRecentCall
-      type: object
-      properties:
-        dialer_id:
-          title: Dialer ID
-          anyOf:
-          - type: string
-          - type: 'null'
-        duration:
-          title: Duration
-          type: integer
-        finish_timestamp:
-          title: Finish Timestamp
-          type: string
-          format: date-time
-        id:
-          title: ID
-          type: string
-        status:
-          $ref: '#/components/schemas/CallStatus'
-      required:
-      - dialer_id
-      - duration
-      - finish_timestamp
-      - id
-      - status
-    RenderedIntegrationLink:
-      title: RenderedIntegrationLink
-      type: object
-      properties:
-        name:
-          title: Name
-          type: string
-        url:
-          title: Url
-          type: string
-      required:
-      - name
-      - url
   parameters:
-    FieldsParam:
-      description: Comma-separated list of fields to include in the response.
-      in: query
-      name: _fields
-      required: false
-      schema:
-        type: string
     LimitParam:
       description: Number of results to return.
       in: query
@@ -879,6 +872,13 @@ components:
       schema:
         default: 100
         type: integer
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
     SkipParam:
       description: Number of results to skip before returning, for pagination.
       in: query

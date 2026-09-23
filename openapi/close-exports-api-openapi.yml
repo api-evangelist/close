@@ -9,7 +9,7 @@ security:
 - ApiKeyAuth: []
 - OAuth2: []
 tags:
-- name: exports
+- name: Exports
   externalDocs:
     url: https://developer.close.com/api/resources/exports
 paths:
@@ -17,7 +17,7 @@ paths:
     get:
       operationId: exports_list
       tags:
-      - exports
+      - Exports
       summary: List all the exports
       parameters:
       - $ref: '#/components/parameters/LimitParam'
@@ -207,7 +207,7 @@ paths:
     get:
       operationId: exports_list_lead
       tags:
-      - exports
+      - Exports
       summary: List Lead Exports
       parameters:
       - $ref: '#/components/parameters/LimitParam'
@@ -277,9 +277,55 @@ paths:
     post:
       operationId: exports_create_lead
       tags:
-      - exports
+      - Exports
       summary: Export leads based on a search query
-      description: "You will receive a link to the generated file via email once the export is done.\n\nThe exported file is GZIP compressed to make your download and our upload faster. The `content-encoding` HTTP header will be set to `gzip` and the `content-type` HTTP header will be set to `text/csv` for CSV exports or `application/json` for JSON exports.\n\nParameters:\n  - `s_query/results_limit/sort` (optional) - The [Advanced Filtering API](https://developer.close.com/api/resources/advanced-filtering) parameters used to narrow the exported results down. By default, all leads are exported.\n  - `format` - Format of the exported file. The choices are: `csv`, `json`. JSON is recommended for raw backups or data migrations.\n  - `type` - Type of the export.\n    - `leads` - For CSV exports, it results in one row per lead. For JSON exports, this is the recommended type and is a superset of the other two types.\n    - `contacts` - For CSV exports, it results in one row per contact.\n    - `lead_opps` - For CSV exports, it results in one row per opportunity.\n  - `date_format` (optional) - Controls the format of date objects. Note: this only works with the `csv` format.\n    - `original` (default) - A date format that includes microseconds and timezone information.\n        - Date: `[YYYY]-[MM]-[DD]`\n        - Date w/ time: `[YYYY]-[MM]-[DD] [hh]:[mm]:[ss.sssss]±[hh]:[mm]`\n    - `iso8601` (recommended) - An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) compatible date representation that does not include microseconds.\n        - Date: `[YYYY]-[MM]-[DD]`\n        - Date w/ time: `[YYYY]-[MM]-[DD]T[hh]:[mm]:[ss]±[hh]:[mm]`\n    - `excel` - An Excel compatible date format. Dates are always in UTC, do not include timezone information or microseconds, and use a 12 hour clock with an AM or PM designation.\n        - Date: `[YYYY]-[MM]-[DD]`\n        - Date w/ time: `[YYYY]-[MM]-[DD] [hh]:[mm]:[ss] [AM|PM]`\n  - `fields` (optional) - By default we return all the data fields in each export type. If you only need specific fields exported, you can explicitly list them in `fields` to get smaller exports.\n  - `include_activities` (optional) - Activities aren't included in any exports by default. If you want all your Activities exported as well, pass `\"include_activities\": true`. Note: this only works for `leads` type with `json` format.\n  - `include_smart_fields` (optional) - Smart Fields aren't included in any exports by default. If you want all of them exported as well, pass `\"include_smart_fields\": true`. Note: this only works for `leads` type with `json` format or any type formatted as `csv`. Smart fields are calculated fields, like number of emails on a lead.\n  - `send_done_email` - Set to `false` if you don't want to get a confirmation email after the bulk action is done."
+      description: 'You will receive a link to the generated file via email once the export is done.
+
+
+        The exported file is GZIP compressed to make your download and our upload faster. The `content-encoding` HTTP header will be set to `gzip` and the `content-type` HTTP header will be set to `text/csv` for CSV exports or `application/json` for JSON exports.
+
+
+        Parameters:
+
+        - `s_query/results_limit/sort` (optional) - The Advanced Filtering API parameters used to narrow the exported results down. By default, all leads are exported.
+
+        - `format` - Format of the exported file. The choices are: `csv`, `json`. JSON is recommended for raw backups or data migrations.
+
+        - `type` - Type of the export.
+
+        - `leads` - For CSV exports, it results in one row per lead. For JSON exports, this is the recommended type and is a superset of the other two types.
+
+        - `contacts` - For CSV exports, it results in one row per contact.
+
+        - `lead_opps` - For CSV exports, it results in one row per opportunity.
+
+        - `date_format` (optional) - Controls the format of date objects. Note: this only works with the `csv` format.
+
+        - `original` (default) - A date format that includes microseconds and timezone information.
+
+        - Date: `[YYYY]-[MM]-[DD]`
+
+        - Date w/ time: `[YYYY]-[MM]-[DD] [hh]:[mm]:[ss.sssss]±[hh]:[mm]`
+
+        - `iso8601` (recommended) - An ISO 8601 compatible date representation that does not include microseconds.
+
+        - Date: `[YYYY]-[MM]-[DD]`
+
+        - Date w/ time: `[YYYY]-[MM]-[DD]T[hh]:[mm]:[ss]±[hh]:[mm]`
+
+        - `excel` - An Excel compatible date format. Dates are always in UTC, do not include timezone information or microseconds, and use a 12 hour clock with an AM or PM designation.
+
+        - Date: `[YYYY]-[MM]-[DD]`
+
+        - Date w/ time: `[YYYY]-[MM]-[DD] [hh]:[mm]:[ss] [AM|PM]`
+
+        - `fields` (optional) - By default we return all the data fields in each export type. If you only need specific fields exported, you can explicitly list them in `fields` to get smaller exports.
+
+        - `include_activities` (optional) - Activities aren''t included in any exports by default. If you want all your Activities exported as well, pass `"include_activities": true`. Note: this only works for `leads` type with `json` format.
+
+        - `include_smart_fields` (optional) - Smart Fields aren''t included in any exports by default. If you want all of them exported as well, pass `"include_smart_fields": true`. Note: this only works for `leads` type with `json` format or any type formatted as `csv`. Smart fields are calculated fields, like number of emails on a lead.
+
+        - `send_done_email` - Set to `false` if you don''t want to get a confirmation email after the bulk action is done.'
       requestBody:
         content:
           application/json:
@@ -378,7 +424,7 @@ paths:
     get:
       operationId: exports_get_lead
       tags:
-      - exports
+      - Exports
       summary: Get a single Lead Export
       description: 'Get a single lead export to do things like check its `status` or get a `download_url`.
 
@@ -454,7 +500,7 @@ paths:
     get:
       operationId: exports_list_opportunity
       tags:
-      - exports
+      - Exports
       summary: List Opportunity Exports
       parameters:
       - $ref: '#/components/parameters/LimitParam'
@@ -515,9 +561,37 @@ paths:
     post:
       operationId: exports_create_opportunity
       tags:
-      - exports
+      - Exports
       summary: Export opportunities, based on opportunity filters
-      description: "Parameters:\n  - `params` (optional) - A dictionary of filters, which would be used for the `/opportunity/` endpoint.\n  - `format` - Format of the exported file. The choices are: `csv`, `json`\n  - `date_format` (optional) - Controls the format of date objects. Note: this only works with the `csv` format.\n    - `original` (default) - A date format that includes microseconds and timezone information.\n        - Date: `[YYYY]-[MM]-[DD]`\n        - Date w/ time: `[YYYY]-[MM]-[DD] [hh]:[mm]:[ss.sssss]±[hh]:[mm]`\n    - `iso8601` (recommended) - An [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) compatible date representation that does not include microseconds.\n        - Date: `[YYYY]-[MM]-[DD]`\n        - Date w/ time: `[YYYY]-[MM]-[DD]T[hh]:[mm]:[ss]±[hh]:[mm]`\n    - `excel` - An Excel compatible date format. Dates are always in UTC, do not include timezone information or microseconds, and use a 12 hour clock with an AM or PM designation.\n        - Date: `[YYYY]-[MM]-[DD]`\n        - Date w/ time: `[YYYY]-[MM]-[DD] [hh]:[mm]:[ss] [AM|PM]`\n  - `fields` (optional) - By default we return all the data fields. If you only need specific fields exported, you can explicitly list them in fields to get smaller exports.\n  - `send_done_email` - Set to `false` if you don't want to get a confirmation email after the bulk action is done."
+      description: 'Parameters:
+
+        - `params` (optional) - A dictionary of filters, which would be used for the `/opportunity/` endpoint.
+
+        - `format` - Format of the exported file. The choices are: `csv`, `json`
+
+        - `date_format` (optional) - Controls the format of date objects. Note: this only works with the `csv` format.
+
+        - `original` (default) - A date format that includes microseconds and timezone information.
+
+        - Date: `[YYYY]-[MM]-[DD]`
+
+        - Date w/ time: `[YYYY]-[MM]-[DD] [hh]:[mm]:[ss.sssss]±[hh]:[mm]`
+
+        - `iso8601` (recommended) - An ISO 8601 compatible date representation that does not include microseconds.
+
+        - Date: `[YYYY]-[MM]-[DD]`
+
+        - Date w/ time: `[YYYY]-[MM]-[DD]T[hh]:[mm]:[ss]±[hh]:[mm]`
+
+        - `excel` - An Excel compatible date format. Dates are always in UTC, do not include timezone information or microseconds, and use a 12 hour clock with an AM or PM designation.
+
+        - Date: `[YYYY]-[MM]-[DD]`
+
+        - Date w/ time: `[YYYY]-[MM]-[DD] [hh]:[mm]:[ss] [AM|PM]`
+
+        - `fields` (optional) - By default we return all the data fields. If you only need specific fields exported, you can explicitly list them in fields to get smaller exports.
+
+        - `send_done_email` - Set to `false` if you don''t want to get a confirmation email after the bulk action is done.'
       requestBody:
         content:
           application/json:
@@ -583,7 +657,7 @@ paths:
     get:
       operationId: exports_get_opportunity
       tags:
-      - exports
+      - Exports
       summary: Get a single Opportunity Export
       description: 'Get a single opportunity export to do things like check its `status` or get a `download_url`.
 
@@ -650,9 +724,12 @@ paths:
     get:
       operationId: exports_get
       tags:
-      - exports
+      - Exports
       summary: Get a single Export
-      description: "You can get a single export to do things like check its `status` or get a `download_url`\n\n - `status` can have one of these values: `created`, `started`, `in_progress`, `done`, `error`."
+      description: 'You can get a single export to do things like check its `status` or get a `download_url`
+
+
+        - `status` can have one of these values: `created`, `started`, `in_progress`, `done`, `error`.'
       parameters:
       - in: path
         name: id
@@ -715,6 +792,14 @@ paths:
           description: Not found
 components:
   parameters:
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
     LimitParam:
       description: Number of results to return.
       in: query
@@ -730,14 +815,6 @@ components:
       required: false
       schema:
         type: string
-    SkipParam:
-      description: Number of results to skip before returning, for pagination.
-      in: query
-      name: _skip
-      required: false
-      schema:
-        default: 0
-        type: integer
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

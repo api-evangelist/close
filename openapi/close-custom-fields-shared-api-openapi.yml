@@ -216,7 +216,31 @@ paths:
       tags:
       - custom_fields.shared
       summary: Associate a Shared Custom Field with an object type
-      description: "Associates a Shared Custom Field with an object type such as Lead, Contact, or Custom Activity Type. Once associated, the Shared Custom Field can be set on objects of that type.\n\nThis endpoint accepts the following attributes:\n\n- `object_type` – can be one of: `lead`, `contact`, `opportunity`, `custom_activity_type`,\n  `custom_object_type`.\n- `custom_activity_type_id` – ID of the Custom Activity Type that you want to\n  associate this Shared Field with. Only relevant if you chose the `object_type` of `custom_activity_type`.\n- `custom_object_type_id` – ID of the Custom Object Type that you want to\n  associate this Shared Field with. Only relevant if you chose the `object_type` of `custom_object_type`.\n- `editable_with_roles` – list of [Roles](https://developer.close.com/api/resources/roles) that can edit the values of\n  this Field on the given object. Note that this is a per-association setting, meaning that editing of the Shared Custom Field can be restricted on one object and not restricted on another.\n- `required` – whether a value *must* be provided for this Field on the given\n  object. Only relevant if you chose the `object_type` of `custom_activity_type` or `custom_object_type`. Note that this is a per-association setting, meaning that this Shared Custom Field can be required on one object and not required on another."
+      description: 'Associates a Shared Custom Field with an object type such as Lead, Contact, or Custom Activity Type. Once associated, the Shared Custom Field can be set on objects of that type.
+
+
+        This endpoint accepts the following attributes:
+
+
+        - `object_type` – can be one of: `lead`, `contact`, `opportunity`, `custom_activity_type`,
+
+        `custom_object_type`.
+
+        - `custom_activity_type_id` – ID of the Custom Activity Type that you want to
+
+        associate this Shared Field with. Only relevant if you chose the `object_type` of `custom_activity_type`.
+
+        - `custom_object_type_id` – ID of the Custom Object Type that you want to
+
+        associate this Shared Field with. Only relevant if you chose the `object_type` of `custom_object_type`.
+
+        - `editable_with_roles` – list of Roles that can edit the values of
+
+        this Field on the given object. Note that this is a per-association setting, meaning that editing of the Shared Custom Field can be restricted on one object and not restricted on another.
+
+        - `required` – whether a value *must* be provided for this Field on the given
+
+        object. Only relevant if you chose the `object_type` of `custom_activity_type` or `custom_object_type`. Note that this is a per-association setting, meaning that this Shared Custom Field can be required on one object and not required on another.'
       parameters:
       - in: path
         name: scf_id
@@ -277,7 +301,25 @@ paths:
       tags:
       - custom_fields.shared
       summary: Update an existing Shared Custom Field Association
-      description: "You can change the `required` or the `editable_with_roles` attributes. Everything else cannot be changed.\n\nThe `object_type` in the URL can be either:\n\n- `lead` when editing the association with the Lead object.\n- `contact` when editing the association with the Contact object.\n- `opportunity` when editing the association with the Opportunity object.\n- `custom_activity_type/<catype_id>` when editing the association with a specific\n  Custom Activity Type.\n- `custom_object_type/<cotype_id>` when editing the association with a specific\n  Custom Object Type."
+      description: 'You can change the `required` or the `editable_with_roles` attributes. Everything else cannot be changed.
+
+
+        The `object_type` in the URL can be either:
+
+
+        - `lead` when editing the association with the Lead object.
+
+        - `contact` when editing the association with the Contact object.
+
+        - `opportunity` when editing the association with the Opportunity object.
+
+        - `custom_activity_type/` when editing the association with a specific
+
+        Custom Activity Type.
+
+        - `custom_object_type/` when editing the association with a specific
+
+        Custom Object Type.'
       parameters:
       - in: path
         name: scf_id
@@ -322,7 +364,7 @@ paths:
       description: 'Remove the association between a shared custom field and an object type. The field will immediately disappear from API responses for that object type and all stored values will be permanently deleted.
 
 
-        The `object_type` in the URL can be `lead`, `contact`, `opportunity`, `custom_activity_type/<catype_id>`, or `custom_object_type/<cotype_id>`.
+        The `object_type` in the URL can be `lead`, `contact`, `opportunity`, `custom_activity_type/`, or `custom_object_type/`.
 
 
         If the field was `required` on the associated type, removing the association also removes that requirement.'
