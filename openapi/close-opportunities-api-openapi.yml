@@ -759,6 +759,80 @@ paths:
           description: Not found
 components:
   schemas:
+    AttachmentIn:
+      title: AttachmentIn
+      type: object
+      properties:
+        content_type:
+          title: Content Type
+          type: string
+          default: ''
+        filename:
+          title: Filename
+          type: string
+        url:
+          title: Url
+          type: string
+      required:
+      - filename
+      - url
+    CommentSummary:
+      title: CommentSummary
+      type: object
+      properties:
+        comment_count:
+          title: Comment Count
+          type: integer
+        thread_id:
+          title: Thread ID
+          type: string
+      required:
+      - comment_count
+      - thread_id
+    RenderedIntegrationLink:
+      title: RenderedIntegrationLink
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+        url:
+          title: Url
+          type: string
+      required:
+      - name
+      - url
+    OpportunityStatusType:
+      title: OpportunityStatusType
+      type: string
+      enum:
+      - won
+      - lost
+      - active
+    OpportunityFollowUpEmailActionDetails:
+      title: OpportunityFollowUpEmailActionDetails
+      type: object
+      properties:
+        contact_id:
+          title: Contact ID
+          type: string
+        message_draft:
+          title: Message Draft
+          type: string
+        subject_draft:
+          title: Subject Draft
+          type: string
+      required:
+      - contact_id
+      - message_draft
+      - subject_draft
+    StalledOpportunityCommunicationIssue:
+      title: StalledOpportunityCommunicationIssue
+      type: string
+      enum:
+      - no_issue
+      - cant_get_in_touch
+      - no_communication_attempts
     OpportunityFollowUpCallActionDetails:
       title: OpportunityFollowUpCallActionDetails
       type: object
@@ -976,53 +1050,6 @@ components:
       - user_id
       - value
       - value_period
-    OpportunityAdjustCloseDateActionDetails:
-      title: OpportunityAdjustCloseDateActionDetails
-      type: object
-      properties:
-        close_date:
-          title: Close Date
-          type: string
-          format: date
-      required:
-      - close_date
-    OpportunityFollowUpSMSActionDetails:
-      title: OpportunityFollowUpSMSActionDetails
-      type: object
-      properties:
-        contact_id:
-          title: Contact ID
-          type: string
-        message_draft:
-          title: Message Draft
-          type: string
-      required:
-      - contact_id
-      - message_draft
-    StalledOpportunityActionTypeV1:
-      title: StalledOpportunityActionTypeV1
-      type: string
-      enum:
-      - mark_as_lost
-      - change_status
-      - follow_up
-      - adjust_close_date
-      - ask_someone_else_to_reach_out
-      - change_communication_method
-    StalledOpportunityActionItems:
-      title: StalledOpportunityActionItems
-      deprecated: true
-      type: object
-      properties:
-        communication_issue:
-          description: The communication issue that is causing the stalled opportunity. If there is no issue, set to NoIssue.
-          $ref: '#/components/schemas/StalledOpportunityCommunicationIssue'
-        next_action:
-          description: An action item recommended to progress or resolve the stalled opportunity.
-          $ref: '#/components/schemas/ActionItem'
-      required:
-      - communication_issue
-      - next_action
     OpportunitySuggestedAction:
       title: OpportunitySuggestedAction
       type: object
@@ -1045,110 +1072,16 @@ components:
       - action
       - details
       - justification
-    ContactEmail:
-      title: ContactEmail
+    OpportunityAdjustCloseDateActionDetails:
+      title: OpportunityAdjustCloseDateActionDetails
       type: object
       properties:
-        email:
-          title: Email
+        close_date:
+          title: Close Date
           type: string
-        is_unsubscribed:
-          title: Is Unsubscribed
-          type: boolean
-        type:
-          title: Type
-          type: string
+          format: date
       required:
-      - email
-      - is_unsubscribed
-      - type
-    ActionItem:
-      title: ActionItem
-      deprecated: true
-      type: object
-      properties:
-        action:
-          description: The recommended next step to progress or resolve the stalled opportunity
-          $ref: '#/components/schemas/StalledOpportunityActionTypeV1'
-        justification:
-          title: Justification
-          description: A short justification for the recommended action in the sales pipeline. Maximum 2 sentences.
-          type: string
-      required:
-      - action
-      - justification
-    Attachment:
-      title: Attachment
-      type: object
-      properties:
-        content_type:
-          title: Content Type
-          anyOf:
-          - type: string
-          - type: 'null'
-        filename:
-          title: Filename
-          anyOf:
-          - type: string
-          - type: 'null'
-        size:
-          title: Size
-          anyOf:
-          - type: integer
-          - type: 'null'
-        thumbnail_url:
-          title: Thumbnail URL
-          anyOf:
-          - type: string
-          - type: 'null'
-        url:
-          title: URL
-          type: string
-      required:
-      - content_type
-      - filename
-      - size
-      - url
-    OpportunityValuePeriod:
-      title: OpportunityValuePeriod
-      type: string
-      enum:
-      - one_time
-      - monthly
-      - annual
-    OpportunityFollowUpEmailActionDetails:
-      title: OpportunityFollowUpEmailActionDetails
-      type: object
-      properties:
-        contact_id:
-          title: Contact ID
-          type: string
-        message_draft:
-          title: Message Draft
-          type: string
-        subject_draft:
-          title: Subject Draft
-          type: string
-      required:
-      - contact_id
-      - message_draft
-      - subject_draft
-    StalledOpportunityCommunicationIssue:
-      title: StalledOpportunityCommunicationIssue
-      type: string
-      enum:
-      - no_issue
-      - cant_get_in_touch
-      - no_communication_attempts
-    OpportunityChangeStatusActionDetails:
-      title: OpportunityChangeStatusActionDetails
-      type: object
-      properties:
-        status_id:
-          title: Status ID
-          type: string
-      required:
-      - status_id
+      - close_date
     UpdateOpportunity:
       title: UpdateOpportunity
       type: object
@@ -1206,55 +1139,6 @@ components:
         ^custom\.:
           not:
             type: object
-    ContactPhone:
-      title: ContactPhone
-      type: object
-      properties:
-        country:
-          title: Country
-          anyOf:
-          - type: string
-          - type: 'null'
-        outbound_sms_blocked:
-          title: Outbound SMS Blocked
-          type: boolean
-        phone:
-          title: Phone
-          type: string
-        phone_formatted:
-          title: Phone Formatted
-          type: string
-        type:
-          title: Type
-          type: string
-        tz_ids:
-          title: TZ IDs
-          type: array
-          items:
-            type: string
-      required:
-      - phone
-      - type
-    OpportunityStatusType:
-      title: OpportunityStatusType
-      type: string
-      enum:
-      - won
-      - lost
-      - active
-    CommentSummary:
-      title: CommentSummary
-      type: object
-      properties:
-        comment_count:
-          title: Comment Count
-          type: integer
-        thread_id:
-          title: Thread ID
-          type: string
-      required:
-      - comment_count
-      - thread_id
     CreateOpportunity:
       title: CreateOpportunity
       type: object
@@ -1357,6 +1241,13 @@ components:
         ^custom\.:
           not:
             type: object
+    OpportunityValuePeriod:
+      title: OpportunityValuePeriod
+      type: string
+      enum:
+      - one_time
+      - monthly
+      - annual
     StalledOpportunityActionTypeV2:
       title: StalledOpportunityActionTypeV2
       type: string
@@ -1366,45 +1257,146 @@ components:
       - follow_up_email
       - follow_up_call
       - follow_up_sms
-    RenderedIntegrationLink:
-      title: RenderedIntegrationLink
+    ContactPhone:
+      title: ContactPhone
       type: object
       properties:
-        name:
-          title: Name
+        country:
+          title: Country
+          anyOf:
+          - type: string
+          - type: 'null'
+        outbound_sms_blocked:
+          title: Outbound SMS Blocked
+          type: boolean
+        phone:
+          title: Phone
           type: string
-        url:
-          title: Url
+        phone_formatted:
+          title: Phone Formatted
+          type: string
+        type:
+          title: Type
+          type: string
+        tz_ids:
+          title: TZ IDs
+          type: array
+          items:
+            type: string
+      required:
+      - phone
+      - type
+    OpportunityFollowUpSMSActionDetails:
+      title: OpportunityFollowUpSMSActionDetails
+      type: object
+      properties:
+        contact_id:
+          title: Contact ID
+          type: string
+        message_draft:
+          title: Message Draft
           type: string
       required:
-      - name
-      - url
-    AttachmentIn:
-      title: AttachmentIn
+      - contact_id
+      - message_draft
+    ActionItem:
+      title: ActionItem
+      deprecated: true
+      type: object
+      properties:
+        action:
+          description: The recommended next step to progress or resolve the stalled opportunity
+          $ref: '#/components/schemas/StalledOpportunityActionTypeV1'
+        justification:
+          title: Justification
+          description: A short justification for the recommended action in the sales pipeline. Maximum 2 sentences.
+          type: string
+      required:
+      - action
+      - justification
+    Attachment:
+      title: Attachment
       type: object
       properties:
         content_type:
           title: Content Type
-          type: string
-          default: ''
+          anyOf:
+          - type: string
+          - type: 'null'
         filename:
           title: Filename
-          type: string
+          anyOf:
+          - type: string
+          - type: 'null'
+        size:
+          title: Size
+          anyOf:
+          - type: integer
+          - type: 'null'
+        thumbnail_url:
+          title: Thumbnail URL
+          anyOf:
+          - type: string
+          - type: 'null'
         url:
-          title: Url
+          title: URL
           type: string
       required:
+      - content_type
       - filename
+      - size
       - url
+    StalledOpportunityActionTypeV1:
+      title: StalledOpportunityActionTypeV1
+      type: string
+      enum:
+      - mark_as_lost
+      - change_status
+      - follow_up
+      - adjust_close_date
+      - ask_someone_else_to_reach_out
+      - change_communication_method
+    StalledOpportunityActionItems:
+      title: StalledOpportunityActionItems
+      deprecated: true
+      type: object
+      properties:
+        communication_issue:
+          description: The communication issue that is causing the stalled opportunity. If there is no issue, set to NoIssue.
+          $ref: '#/components/schemas/StalledOpportunityCommunicationIssue'
+        next_action:
+          description: An action item recommended to progress or resolve the stalled opportunity.
+          $ref: '#/components/schemas/ActionItem'
+      required:
+      - communication_issue
+      - next_action
+    ContactEmail:
+      title: ContactEmail
+      type: object
+      properties:
+        email:
+          title: Email
+          type: string
+        is_unsubscribed:
+          title: Is Unsubscribed
+          type: boolean
+        type:
+          title: Type
+          type: string
+      required:
+      - email
+      - is_unsubscribed
+      - type
+    OpportunityChangeStatusActionDetails:
+      title: OpportunityChangeStatusActionDetails
+      type: object
+      properties:
+        status_id:
+          title: Status ID
+          type: string
+      required:
+      - status_id
   parameters:
-    SkipParam:
-      description: Number of results to skip before returning, for pagination.
-      in: query
-      name: _skip
-      required: false
-      schema:
-        default: 0
-        type: integer
     LimitParam:
       description: Number of results to return.
       in: query
@@ -1412,6 +1404,14 @@ components:
       required: false
       schema:
         default: 100
+        type: integer
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
         type: integer
     FieldsParam:
       description: Comma-separated list of fields to include in the response.

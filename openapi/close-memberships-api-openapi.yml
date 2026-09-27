@@ -258,6 +258,18 @@ paths:
           description: Not found
 components:
   schemas:
+    SetPinnedSavedView:
+      title: SetPinnedSavedView
+      type: object
+      properties:
+        saved_view_ids:
+          title: Saved View IDs
+          type: array
+          items:
+            type: string
+      required:
+      - saved_view_ids
+      additionalProperties: false
     Membership:
       title: Membership
       description: Editable settings for an organization membership.
@@ -298,18 +310,6 @@ components:
       - enabled
       - disabled
       - unset
-    SetPinnedSavedView:
-      title: SetPinnedSavedView
-      type: object
-      properties:
-        saved_view_ids:
-          title: Saved View IDs
-          type: array
-          items:
-            type: string
-      required:
-      - saved_view_ids
-      additionalProperties: false
     CreateMembership:
       title: CreateMembership
       type: object

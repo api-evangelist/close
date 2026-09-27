@@ -253,6 +253,16 @@ components:
       required:
       - name
       additionalProperties: false
+    CreateGroupMember:
+      title: CreateGroupMember
+      type: object
+      properties:
+        user_id:
+          title: User ID
+          type: string
+      required:
+      - user_id
+      additionalProperties: false
     GroupMember:
       title: GroupMember
       type: object
@@ -287,16 +297,6 @@ components:
       - id
       - name
       - organization_id
-    CreateGroupMember:
-      title: CreateGroupMember
-      type: object
-      properties:
-        user_id:
-          title: User ID
-          type: string
-      required:
-      - user_id
-      additionalProperties: false
   parameters:
     FieldsParam:
       description: Comma-separated list of fields to include in the response.

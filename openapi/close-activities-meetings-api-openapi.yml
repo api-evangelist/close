@@ -433,73 +433,48 @@ paths:
           description: Not found
 components:
   schemas:
-    MeetingTranscript:
-      title: MeetingTranscript
-      type: object
-      properties:
-        has_speaker_labels:
-          title: Has Speaker Labels
-          type: boolean
-        id:
-          title: ID
-          type: string
-        speakers:
-          title: Speakers
-          type: array
-          items:
-            $ref: '#/components/schemas/MeetingTranscriptSpeaker'
-        summary_html:
-          title: Summary Html
-          anyOf:
-          - type: string
-          - type: 'null'
-        summary_text:
-          title: Summary Text
-          anyOf:
-          - type: string
-          - type: 'null'
-        utterances:
-          title: Utterances
-          type: array
-          items:
-            $ref: '#/components/schemas/MeetingTranscriptUtterance'
-      required:
-      - has_speaker_labels
-      - id
-      - speakers
-      - summary_text
-      - utterances
-    MeetingConferenceLink:
-      title: MeetingConferenceLink
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/ConferenceLinkType'
-        url:
-          title: URL
-          type: string
-      required:
-      - type
-      - url
-    PlaybookReason:
-      title: PlaybookReason
+    OutcomeReason:
+      title: OutcomeReason
       type: string
       enum:
+      - autofilled
       - user-selected
-      - autodetected
-    MeetingSummary:
-      title: MeetingSummary
+      - voicemail-dropped
+    CommentSummary:
+      title: CommentSummary
       type: object
       properties:
-        html:
-          title: Html
-          type: string
-        text:
-          title: Text
+        comment_count:
+          title: Comment Count
+          type: integer
+        thread_id:
+          title: Thread ID
           type: string
       required:
-      - html
-      - text
+      - comment_count
+      - thread_id
+    MeetingTranscriptSpeaker:
+      title: MeetingTranscriptSpeaker
+      type: object
+      properties:
+        speaker_label:
+          title: Speaker Label
+          type: string
+        speaker_side:
+          anyOf:
+          - $ref: '#/components/schemas/SpeakerSide'
+          - type: 'null'
+        talk_percentage:
+          title: Talk Percentage
+          type: number
+        talk_time:
+          title: Talk Time
+          type: number
+      required:
+      - speaker_label
+      - speaker_side
+      - talk_percentage
+      - talk_time
     MeetingStatus:
       title: MeetingStatus
       type: string
@@ -510,105 +485,6 @@ components:
       - canceled
       - declined-by-org
       - declined-by-lead
-    SpeakerSide:
-      title: SpeakerSide
-      type: string
-      enum:
-      - contact
-      - close-user
-      - voice-agent
-    MeetingSource:
-      title: MeetingSource
-      type: string
-      enum:
-      - calendar
-      - manual
-    MeetingTranscriptWord:
-      title: MeetingTranscriptWord
-      type: object
-      properties:
-        end:
-          title: End
-          anyOf:
-          - type: number
-          - type: 'null'
-        start:
-          title: Start
-          anyOf:
-          - type: number
-          - type: 'null'
-        text:
-          title: Text
-          type: string
-      required:
-      - end
-      - start
-      - text
-    OutcomeReason:
-      title: OutcomeReason
-      type: string
-      enum:
-      - autofilled
-      - user-selected
-      - voicemail-dropped
-    ConferenceLinkType:
-      title: ConferenceLinkType
-      type: string
-      enum:
-      - ZOOM
-      - GOOGLE_MEET
-      - GOOGLE_HANGOUTS
-      - MICROSOFT_TEAMS
-      - SKYPE
-      - WEBEX
-      - GO_TO_MEETING
-    ProviderCalendarType:
-      title: ProviderCalendarType
-      type: string
-      enum:
-      - google
-      - microsoft
-    MeetingAttendee:
-      title: MeetingAttendee
-      type: object
-      properties:
-        contact_id:
-          title: Contact ID
-          anyOf:
-          - type: string
-          - type: 'null'
-        email:
-          title: Email
-          anyOf:
-          - type: string
-          - type: 'null'
-        is_organizer:
-          title: Is Organizer
-          anyOf:
-          - type: boolean
-          - type: 'null'
-        name:
-          title: Name
-          anyOf:
-          - type: string
-          - type: 'null'
-        status:
-          title: Status
-          anyOf:
-          - type: string
-          - type: 'null'
-        user_id:
-          title: User ID
-          anyOf:
-          - type: string
-          - type: 'null'
-      required:
-      - contact_id
-      - email
-      - is_organizer
-      - name
-      - status
-      - user_id
     MeetingActivity:
       title: MeetingActivity
       type: object
@@ -898,28 +774,65 @@ components:
       - user_note_html
       - user_note_mentions
       - users
-    MeetingTranscriptSpeaker:
-      title: MeetingTranscriptSpeaker
+    MeetingConferenceLink:
+      title: MeetingConferenceLink
       type: object
       properties:
-        speaker_label:
-          title: Speaker Label
+        type:
+          $ref: '#/components/schemas/ConferenceLinkType'
+        url:
+          title: URL
           type: string
-        speaker_side:
-          anyOf:
-          - $ref: '#/components/schemas/SpeakerSide'
-          - type: 'null'
-        talk_percentage:
-          title: Talk Percentage
-          type: number
-        talk_time:
-          title: Talk Time
-          type: number
       required:
-      - speaker_label
-      - speaker_side
-      - talk_percentage
-      - talk_time
+      - type
+      - url
+    MeetingAttendee:
+      title: MeetingAttendee
+      type: object
+      properties:
+        contact_id:
+          title: Contact ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        email:
+          title: Email
+          anyOf:
+          - type: string
+          - type: 'null'
+        is_organizer:
+          title: Is Organizer
+          anyOf:
+          - type: boolean
+          - type: 'null'
+        name:
+          title: Name
+          anyOf:
+          - type: string
+          - type: 'null'
+        status:
+          title: Status
+          anyOf:
+          - type: string
+          - type: 'null'
+        user_id:
+          title: User ID
+          anyOf:
+          - type: string
+          - type: 'null'
+      required:
+      - contact_id
+      - email
+      - is_organizer
+      - name
+      - status
+      - user_id
+    ProviderCalendarType:
+      title: ProviderCalendarType
+      type: string
+      enum:
+      - google
+      - microsoft
     OutcomeAutofillConfidence:
       title: OutcomeAutofillConfidence
       type: string
@@ -927,19 +840,36 @@ components:
       - low
       - medium
       - high
-    CommentSummary:
-      title: CommentSummary
+    ConferenceLinkType:
+      title: ConferenceLinkType
+      type: string
+      enum:
+      - ZOOM
+      - GOOGLE_MEET
+      - GOOGLE_HANGOUTS
+      - MICROSOFT_TEAMS
+      - SKYPE
+      - WEBEX
+      - GO_TO_MEETING
+    MeetingSource:
+      title: MeetingSource
+      type: string
+      enum:
+      - calendar
+      - manual
+    MeetingSummary:
+      title: MeetingSummary
       type: object
       properties:
-        comment_count:
-          title: Comment Count
-          type: integer
-        thread_id:
-          title: Thread ID
+        html:
+          title: Html
+          type: string
+        text:
+          title: Text
           type: string
       required:
-      - comment_count
-      - thread_id
+      - html
+      - text
     MeetingPausedSubscription:
       title: MeetingPausedSubscription
       type: object
@@ -1004,15 +934,77 @@ components:
       - speaker_side
       - start
       - text
+    MeetingTranscript:
+      title: MeetingTranscript
+      type: object
+      properties:
+        has_speaker_labels:
+          title: Has Speaker Labels
+          type: boolean
+        id:
+          title: ID
+          type: string
+        speakers:
+          title: Speakers
+          type: array
+          items:
+            $ref: '#/components/schemas/MeetingTranscriptSpeaker'
+        summary_html:
+          title: Summary Html
+          anyOf:
+          - type: string
+          - type: 'null'
+        summary_text:
+          title: Summary Text
+          anyOf:
+          - type: string
+          - type: 'null'
+        utterances:
+          title: Utterances
+          type: array
+          items:
+            $ref: '#/components/schemas/MeetingTranscriptUtterance'
+      required:
+      - has_speaker_labels
+      - id
+      - speakers
+      - summary_text
+      - utterances
+    PlaybookReason:
+      title: PlaybookReason
+      type: string
+      enum:
+      - user-selected
+      - autodetected
+    SpeakerSide:
+      title: SpeakerSide
+      type: string
+      enum:
+      - contact
+      - close-user
+      - voice-agent
+    MeetingTranscriptWord:
+      title: MeetingTranscriptWord
+      type: object
+      properties:
+        end:
+          title: End
+          anyOf:
+          - type: number
+          - type: 'null'
+        start:
+          title: Start
+          anyOf:
+          - type: number
+          - type: 'null'
+        text:
+          title: Text
+          type: string
+      required:
+      - end
+      - start
+      - text
   parameters:
-    SkipParam:
-      description: Number of results to skip before returning, for pagination.
-      in: query
-      name: _skip
-      required: false
-      schema:
-        default: 0
-        type: integer
     ActivityFilters_DateCreatedLtParam:
       in: query
       name: date_created__lt
@@ -1024,19 +1016,25 @@ components:
           format: date-time
         - type: string
           format: date
-    ActivityFilters_UserIdParam:
-      description: Filter by user IDs (comma-separated)
+    LimitParam:
+      description: Number of results to return.
       in: query
-      name: user_id
+      name: _limit
       required: false
       schema:
-        title: User ID
-        default: null
+        default: 100
+        type: integer
+    ActivityFilters_DateCreatedLteParam:
+      in: query
+      name: date_created__lte
+      required: false
+      schema:
+        title: Date Created (<=)
         anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
+        - type: string
+          format: date-time
+        - type: string
+          format: date
     ActivityFilters_TypeParam:
       description: Filter by activity type, e.g. Call (comma-separated)
       in: query
@@ -1061,6 +1059,71 @@ components:
           format: date-time
         - type: string
           format: date
+    ActivityFilters_ActivityAtGtParam:
+      in: query
+      name: activity_at__gt
+      required: false
+      schema:
+        title: Activity At (>)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_DateCreatedGtParam:
+      in: query
+      name: date_created__gt
+      required: false
+      schema:
+        title: Date Created (>)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_IdInParam:
+      description: Filter by activity IDs (comma-separated)
+      in: query
+      name: id__in
+      required: false
+      schema:
+        title: ID In
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
+    ActivityFilters_ActivityAtGteParam:
+      in: query
+      name: activity_at__gte
+      required: false
+      schema:
+        title: Activity At (>=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_DateCreatedGteParam:
+      in: query
+      name: date_created__gte
+      required: false
+      schema:
+        title: Date Created (>=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
     ActivityFilters_LeadIdParam:
       description: Filter by lead IDs (comma-separated)
       in: query
@@ -1074,25 +1137,6 @@ components:
           items:
             type: string
         - type: 'null'
-    ActivityFilters_ActivityAtGteParam:
-      in: query
-      name: activity_at__gte
-      required: false
-      schema:
-        title: Activity At (>=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    LimitParam:
-      description: Number of results to return.
-      in: query
-      name: _limit
-      required: false
-      schema:
-        default: 100
-        type: integer
     ActivityFilters_ContactIdParam:
       description: Filter by contact IDs (comma-separated)
       in: query
@@ -1113,28 +1157,16 @@ components:
       required: false
       schema:
         type: string
-    ActivityFilters_DateCreatedGteParam:
+    ActivityFilters_OrganizationIdParam:
       in: query
-      name: date_created__gte
+      name: organization_id
       required: false
       schema:
-        title: Date Created (>=)
+        title: Organization ID
+        default: null
         anyOf:
         - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_DateCreatedLteParam:
-      in: query
-      name: date_created__lte
-      required: false
-      schema:
-        title: Date Created (<=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
+        - type: 'null'
     ActivityFilters_ActivityAtLteParam:
       in: query
       name: activity_at__lte
@@ -1146,45 +1178,13 @@ components:
           format: date-time
         - type: string
           format: date
-    ActivityFilters_DateCreatedGtParam:
+    ActivityFilters_UserIdParam:
+      description: Filter by user IDs (comma-separated)
       in: query
-      name: date_created__gt
+      name: user_id
       required: false
       schema:
-        title: Date Created (>)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_ActivityAtGtParam:
-      in: query
-      name: activity_at__gt
-      required: false
-      schema:
-        title: Activity At (>)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_OrganizationIdParam:
-      in: query
-      name: organization_id
-      required: false
-      schema:
-        title: Organization ID
-        default: null
-        anyOf:
-        - type: string
-        - type: 'null'
-    ActivityFilters_IdInParam:
-      description: Filter by activity IDs (comma-separated)
-      in: query
-      name: id__in
-      required: false
-      schema:
-        title: ID In
+        title: User ID
         default: null
         anyOf:
         - type: array

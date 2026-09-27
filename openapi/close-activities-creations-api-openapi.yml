@@ -126,14 +126,6 @@ paths:
           description: Not found
 components:
   parameters:
-    SkipParam:
-      description: Number of results to skip before returning, for pagination.
-      in: query
-      name: _skip
-      required: false
-      schema:
-        default: 0
-        type: integer
     ActivityFilters_DateCreatedLtParam:
       in: query
       name: date_created__lt
@@ -145,19 +137,25 @@ components:
           format: date-time
         - type: string
           format: date
-    ActivityFilters_UserIdParam:
-      description: Filter by user IDs (comma-separated)
+    LimitParam:
+      description: Number of results to return.
       in: query
-      name: user_id
+      name: _limit
       required: false
       schema:
-        title: User ID
-        default: null
+        default: 100
+        type: integer
+    ActivityFilters_DateCreatedLteParam:
+      in: query
+      name: date_created__lte
+      required: false
+      schema:
+        title: Date Created (<=)
         anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
+        - type: string
+          format: date-time
+        - type: string
+          format: date
     ActivityFilters_TypeParam:
       description: Filter by activity type, e.g. Call (comma-separated)
       in: query
@@ -182,25 +180,23 @@ components:
           format: date-time
         - type: string
           format: date
-    ActivityFilters_LeadIdParam:
-      description: Filter by lead IDs (comma-separated)
+    ActivityFilters_ActivityAtGtParam:
       in: query
-      name: lead_id
+      name: activity_at__gt
       required: false
       schema:
-        title: Lead ID
-        default: null
+        title: Activity At (>)
         anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    ActivityFilters_ActivityAtGteParam:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_DateCreatedGtParam:
       in: query
-      name: activity_at__gte
+      name: date_created__gt
       required: false
       schema:
-        title: Activity At (>=)
+        title: Date Created (>)
         anyOf:
         - type: string
           format: date-time
@@ -219,14 +215,38 @@ components:
           items:
             type: string
         - type: 'null'
-    LimitParam:
-      description: Number of results to return.
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
       in: query
-      name: _limit
+      name: _skip
       required: false
       schema:
-        default: 100
+        default: 0
         type: integer
+    ActivityFilters_ActivityAtGteParam:
+      in: query
+      name: activity_at__gte
+      required: false
+      schema:
+        title: Activity At (>=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_LeadIdParam:
+      description: Filter by lead IDs (comma-separated)
+      in: query
+      name: lead_id
+      required: false
+      schema:
+        title: Lead ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
     ActivityFilters_ContactIdParam:
       description: Filter by contact IDs (comma-separated)
       in: query
@@ -247,17 +267,16 @@ components:
       required: false
       schema:
         type: string
-    ActivityFilters_DateCreatedLteParam:
+    ActivityFilters_OrganizationIdParam:
       in: query
-      name: date_created__lte
+      name: organization_id
       required: false
       schema:
-        title: Date Created (<=)
+        title: Organization ID
+        default: null
         anyOf:
         - type: string
-          format: date-time
-        - type: string
-          format: date
+        - type: 'null'
     ActivityFilters_ActivityAtLteParam:
       in: query
       name: activity_at__lte
@@ -269,38 +288,6 @@ components:
           format: date-time
         - type: string
           format: date
-    ActivityFilters_DateCreatedGtParam:
-      in: query
-      name: date_created__gt
-      required: false
-      schema:
-        title: Date Created (>)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_ActivityAtGtParam:
-      in: query
-      name: activity_at__gt
-      required: false
-      schema:
-        title: Activity At (>)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_OrganizationIdParam:
-      in: query
-      name: organization_id
-      required: false
-      schema:
-        title: Organization ID
-        default: null
-        anyOf:
-        - type: string
-        - type: 'null'
     ActivityFilters_DateCreatedGteParam:
       in: query
       name: date_created__gte
@@ -312,23 +299,20 @@ components:
           format: date-time
         - type: string
           format: date
+    ActivityFilters_UserIdParam:
+      description: Filter by user IDs (comma-separated)
+      in: query
+      name: user_id
+      required: false
+      schema:
+        title: User ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
   schemas:
-    CreationSource:
-      title: CreationSource
-      type: string
-      enum:
-      - ui
-      - api
-      - import
-      - clipper
-      - email
-      - suggestion
-      - segment-integration
-      - customerio-integration
-      - calendly-integration
-      - ai
-      - whatsapp
-      - webform
     CreatedActivity:
       title: CreatedActivity
       type: object
@@ -428,6 +412,22 @@ components:
       - updated_by
       - user_id
       - users
+    CreationSource:
+      title: CreationSource
+      type: string
+      enum:
+      - ui
+      - api
+      - import
+      - clipper
+      - email
+      - suggestion
+      - segment-integration
+      - customerio-integration
+      - calendly-integration
+      - ai
+      - whatsapp
+      - webform
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

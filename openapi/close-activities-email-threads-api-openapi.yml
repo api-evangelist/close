@@ -602,6 +602,32 @@ paths:
           description: Not found
 components:
   schemas:
+    CommentSummary:
+      title: CommentSummary
+      type: object
+      properties:
+        comment_count:
+          title: Comment Count
+          type: integer
+        thread_id:
+          title: Thread ID
+          type: string
+      required:
+      - comment_count
+      - thread_id
+    QuotedEmailHTML:
+      title: QuotedEmailHTML
+      type: object
+      properties:
+        expand:
+          title: Expand
+          type: boolean
+        html:
+          title: HTML
+          type: string
+      required:
+      - expand
+      - html
     CommunicationDirection:
       title: CommunicationDirection
       description: Direction of communication. Outgoing means the communication flowing from the user to the lead/contact. Inbound means the opposite.
@@ -609,19 +635,49 @@ components:
       enum:
       - incoming
       - outgoing
-    EmailIdentity:
-      title: EmailIdentity
+    ImportantEmailThread:
+      title: ImportantEmailThread
       type: object
       properties:
-        email:
-          title: Email
+        reason:
+          $ref: '#/components/schemas/ImportantThreadReason'
+        type:
+          title: Type
           type: string
-        name:
-          title: Name
-          type: string
+          const: important
       required:
-      - email
-      - name
+      - reason
+      - type
+    EmailThreadSummaryFeedback:
+      title: EmailThreadSummaryFeedback
+      type: object
+      properties:
+        detail:
+          title: Detail
+          anyOf:
+          - type: string
+          - type: 'null'
+        given_at:
+          title: Given At
+          type: string
+          format: date-time
+        rating:
+          $ref: '#/components/schemas/SummaryFeedbackRating'
+      required:
+      - detail
+      - given_at
+      - rating
+    ImportantThreadReason:
+      title: ImportantThreadReason
+      type: string
+      enum:
+      - manual
+      - contains-manual-message
+      - most-recent-communication
+      - has-response
+      - whitelisted
+      - by-default
+      - unset-initial-default
     SummaryStatus:
       title: SummaryStatus
       type: string
@@ -630,6 +686,54 @@ components:
       - success
       - failure
       - expired
+    NotImportantThreadReason:
+      title: NotImportantThreadReason
+      type: string
+      enum:
+      - manual
+      - scheduling-emails
+      - automated-outbound
+      - marketing-or-transactional
+      - by-default
+    MessageStatus:
+      title: MessageStatus
+      description: Status of a message, such as Email or SMS.
+      type: string
+      enum:
+      - inbox
+      - draft
+      - scheduled
+      - outbox
+      - sent
+      - error
+    EmailOpen:
+      title: EmailOpen
+      type: object
+      properties:
+        ip_address:
+          title: Ip Address
+          anyOf:
+          - type: string
+          - type: 'null'
+        opened_at:
+          title: Opened At
+          type: string
+          format: date-time
+        opened_by:
+          title: Opened By
+          anyOf:
+          - type: string
+          - type: 'null'
+        user_agent:
+          title: User Agent
+          anyOf:
+          - type: string
+          - type: 'null'
+      required:
+      - ip_address
+      - opened_at
+      - opened_by
+      - user_agent
     EmailPreview:
       title: EmailPreview
       type: object
@@ -729,12 +833,61 @@ components:
       - subject
       - to
       - user_id
-    SummaryFeedbackRating:
-      title: SummaryFeedbackRating
-      type: string
-      enum:
-      - positive
-      - negative
+    QuotedEmailText:
+      title: QuotedEmailText
+      type: object
+      properties:
+        expand:
+          title: Expand
+          type: boolean
+        text:
+          title: Text
+          type: string
+      required:
+      - expand
+      - text
+    EmailThreadSummary:
+      title: EmailThreadSummary
+      type: object
+      properties:
+        expired_at:
+          title: Expired At
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        feedback:
+          title: Feedback
+          $ref: '#/components/schemas/EmailThreadSummaryFeedback'
+        generated_at:
+          title: Generated At
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        status:
+          $ref: '#/components/schemas/SummaryStatus'
+        summary_html:
+          title: Summary HTML
+          anyOf:
+          - type: string
+          - type: 'null'
+        summary_text:
+          title: Summary Text
+          anyOf:
+          - type: string
+          - type: 'null'
+        updated_at:
+          title: Updated At
+          type: string
+          format: date-time
+      required:
+      - expired_at
+      - generated_at
+      - status
+      - summary_html
+      - summary_text
+      - updated_at
     EmailEnvelope:
       title: EmailEnvelope
       type: object
@@ -804,75 +957,155 @@ components:
       - sender
       - subject
       - to
-    ImportantEmailThread:
-      title: ImportantEmailThread
+    EmailIdentity:
+      title: EmailIdentity
       type: object
       properties:
-        reason:
-          $ref: '#/components/schemas/ImportantThreadReason'
-        type:
+        email:
+          title: Email
+          type: string
+        name:
+          title: Name
+          type: string
+      required:
+      - email
+      - name
+    EmailThreadActivity:
+      title: EmailThreadActivity
+      type: object
+      properties:
+        _type:
           title: Type
           type: string
-          const: important
+        activity_at:
+          title: Activity At
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        comment_summary:
+          title: Comment Summary
+          anyOf:
+          - $ref: '#/components/schemas/CommentSummary'
+          - type: 'null'
+        contact_id:
+          title: Contact ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        created_by:
+          title: Created By
+          anyOf:
+          - type: string
+          - type: 'null'
+        created_by_name:
+          title: Created By Name
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        date_created:
+          title: Date Created
+          type: string
+          format: date-time
+        date_updated:
+          title: Date Updated
+          type: string
+          format: date-time
+        emails:
+          title: Emails
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailInThread'
+        id:
+          title: ID
+          type: string
+        importance:
+          title: Importance
+          anyOf:
+          - $ref: '#/components/schemas/ImportantEmailThread'
+          - $ref: '#/components/schemas/NotImportantEmailThread'
+        latest_emails:
+          title: Latest Emails
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailPreview'
+        latest_normalized_subject:
+          title: Latest Normalized Subject
+          anyOf:
+          - type: string
+          - type: 'null'
+        lead_id:
+          title: Lead ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        n_emails:
+          title: Number of Emails
+          anyOf:
+          - type: integer
+          - type: 'null'
+        organization_id:
+          title: Organization ID
+          type: string
+        participants:
+          title: Participants
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailIdentity'
+        summary:
+          title: Summary
+          anyOf:
+          - $ref: '#/components/schemas/EmailThreadSummary'
+          - type: 'null'
+        updated_by:
+          title: Updated By
+          anyOf:
+          - type: string
+          - type: 'null'
+        updated_by_name:
+          title: Updated By Name
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        user_id:
+          title: User ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        user_name:
+          title: User Name
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        users:
+          title: Users
+          type: array
+          items:
+            type: string
       required:
-      - reason
-      - type
-    NotImportantThreadReason:
-      title: NotImportantThreadReason
+      - _type
+      - activity_at
+      - contact_id
+      - created_by
+      - date_created
+      - date_updated
+      - id
+      - latest_normalized_subject
+      - lead_id
+      - n_emails
+      - organization_id
+      - updated_by
+      - user_id
+      - users
+    SummaryFeedbackRating:
+      title: SummaryFeedbackRating
       type: string
       enum:
-      - manual
-      - scheduling-emails
-      - automated-outbound
-      - marketing-or-transactional
-      - by-default
-    EmailOpen:
-      title: EmailOpen
-      type: object
-      properties:
-        ip_address:
-          title: Ip Address
-          anyOf:
-          - type: string
-          - type: 'null'
-        opened_at:
-          title: Opened At
-          type: string
-          format: date-time
-        opened_by:
-          title: Opened By
-          anyOf:
-          - type: string
-          - type: 'null'
-        user_agent:
-          title: User Agent
-          anyOf:
-          - type: string
-          - type: 'null'
-      required:
-      - ip_address
-      - opened_at
-      - opened_by
-      - user_agent
-    EmailThreadSummaryFeedback:
-      title: EmailThreadSummaryFeedback
-      type: object
-      properties:
-        detail:
-          title: Detail
-          anyOf:
-          - type: string
-          - type: 'null'
-        given_at:
-          title: Given At
-          type: string
-          format: date-time
-        rating:
-          $ref: '#/components/schemas/SummaryFeedbackRating'
-      required:
-      - detail
-      - given_at
-      - rating
+      - positive
+      - negative
     Attachment:
       title: Attachment
       type: object
@@ -905,17 +1138,19 @@ components:
       - filename
       - size
       - url
-    ImportantThreadReason:
-      title: ImportantThreadReason
-      type: string
-      enum:
-      - manual
-      - contains-manual-message
-      - most-recent-communication
-      - has-response
-      - whitelisted
-      - by-default
-      - unset-initial-default
+    NotImportantEmailThread:
+      title: NotImportantEmailThread
+      type: object
+      properties:
+        reason:
+          $ref: '#/components/schemas/NotImportantThreadReason'
+        type:
+          title: Type
+          type: string
+          const: not_important
+      required:
+      - reason
+      - type
     EmailInThread:
       title: EmailInThread
       type: object
@@ -1239,250 +1474,7 @@ components:
       - updated_by
       - user_id
       - users
-    MessageStatus:
-      title: MessageStatus
-      description: Status of a message, such as Email or SMS.
-      type: string
-      enum:
-      - inbox
-      - draft
-      - scheduled
-      - outbox
-      - sent
-      - error
-    EmailThreadActivity:
-      title: EmailThreadActivity
-      type: object
-      properties:
-        _type:
-          title: Type
-          type: string
-        activity_at:
-          title: Activity At
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-        comment_summary:
-          title: Comment Summary
-          anyOf:
-          - $ref: '#/components/schemas/CommentSummary'
-          - type: 'null'
-        contact_id:
-          title: Contact ID
-          anyOf:
-          - type: string
-          - type: 'null'
-        created_by:
-          title: Created By
-          anyOf:
-          - type: string
-          - type: 'null'
-        created_by_name:
-          title: Created By Name
-          default: null
-          anyOf:
-          - type: string
-          - type: 'null'
-        date_created:
-          title: Date Created
-          type: string
-          format: date-time
-        date_updated:
-          title: Date Updated
-          type: string
-          format: date-time
-        emails:
-          title: Emails
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailInThread'
-        id:
-          title: ID
-          type: string
-        importance:
-          title: Importance
-          anyOf:
-          - $ref: '#/components/schemas/ImportantEmailThread'
-          - $ref: '#/components/schemas/NotImportantEmailThread'
-        latest_emails:
-          title: Latest Emails
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailPreview'
-        latest_normalized_subject:
-          title: Latest Normalized Subject
-          anyOf:
-          - type: string
-          - type: 'null'
-        lead_id:
-          title: Lead ID
-          anyOf:
-          - type: string
-          - type: 'null'
-        n_emails:
-          title: Number of Emails
-          anyOf:
-          - type: integer
-          - type: 'null'
-        organization_id:
-          title: Organization ID
-          type: string
-        participants:
-          title: Participants
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailIdentity'
-        summary:
-          title: Summary
-          anyOf:
-          - $ref: '#/components/schemas/EmailThreadSummary'
-          - type: 'null'
-        updated_by:
-          title: Updated By
-          anyOf:
-          - type: string
-          - type: 'null'
-        updated_by_name:
-          title: Updated By Name
-          default: null
-          anyOf:
-          - type: string
-          - type: 'null'
-        user_id:
-          title: User ID
-          anyOf:
-          - type: string
-          - type: 'null'
-        user_name:
-          title: User Name
-          default: null
-          anyOf:
-          - type: string
-          - type: 'null'
-        users:
-          title: Users
-          type: array
-          items:
-            type: string
-      required:
-      - _type
-      - activity_at
-      - contact_id
-      - created_by
-      - date_created
-      - date_updated
-      - id
-      - latest_normalized_subject
-      - lead_id
-      - n_emails
-      - organization_id
-      - updated_by
-      - user_id
-      - users
-    QuotedEmailText:
-      title: QuotedEmailText
-      type: object
-      properties:
-        expand:
-          title: Expand
-          type: boolean
-        text:
-          title: Text
-          type: string
-      required:
-      - expand
-      - text
-    EmailThreadSummary:
-      title: EmailThreadSummary
-      type: object
-      properties:
-        expired_at:
-          title: Expired At
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-        feedback:
-          title: Feedback
-          $ref: '#/components/schemas/EmailThreadSummaryFeedback'
-        generated_at:
-          title: Generated At
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-        status:
-          $ref: '#/components/schemas/SummaryStatus'
-        summary_html:
-          title: Summary HTML
-          anyOf:
-          - type: string
-          - type: 'null'
-        summary_text:
-          title: Summary Text
-          anyOf:
-          - type: string
-          - type: 'null'
-        updated_at:
-          title: Updated At
-          type: string
-          format: date-time
-      required:
-      - expired_at
-      - generated_at
-      - status
-      - summary_html
-      - summary_text
-      - updated_at
-    CommentSummary:
-      title: CommentSummary
-      type: object
-      properties:
-        comment_count:
-          title: Comment Count
-          type: integer
-        thread_id:
-          title: Thread ID
-          type: string
-      required:
-      - comment_count
-      - thread_id
-    NotImportantEmailThread:
-      title: NotImportantEmailThread
-      type: object
-      properties:
-        reason:
-          $ref: '#/components/schemas/NotImportantThreadReason'
-        type:
-          title: Type
-          type: string
-          const: not_important
-      required:
-      - reason
-      - type
-    QuotedEmailHTML:
-      title: QuotedEmailHTML
-      type: object
-      properties:
-        expand:
-          title: Expand
-          type: boolean
-        html:
-          title: HTML
-          type: string
-      required:
-      - expand
-      - html
   parameters:
-    SkipParam:
-      description: Number of results to skip before returning, for pagination.
-      in: query
-      name: _skip
-      required: false
-      schema:
-        default: 0
-        type: integer
     ActivityFilters_DateCreatedLtParam:
       in: query
       name: date_created__lt
@@ -1494,19 +1486,25 @@ components:
           format: date-time
         - type: string
           format: date
-    ActivityFilters_UserIdParam:
-      description: Filter by user IDs (comma-separated)
+    LimitParam:
+      description: Number of results to return.
       in: query
-      name: user_id
+      name: _limit
       required: false
       schema:
-        title: User ID
-        default: null
+        default: 100
+        type: integer
+    ActivityFilters_DateCreatedLteParam:
+      in: query
+      name: date_created__lte
+      required: false
+      schema:
+        title: Date Created (<=)
         anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
+        - type: string
+          format: date-time
+        - type: string
+          format: date
     ActivityFilters_TypeParam:
       description: Filter by activity type, e.g. Call (comma-separated)
       in: query
@@ -1531,25 +1529,23 @@ components:
           format: date-time
         - type: string
           format: date
-    ActivityFilters_LeadIdParam:
-      description: Filter by lead IDs (comma-separated)
+    ActivityFilters_ActivityAtGtParam:
       in: query
-      name: lead_id
+      name: activity_at__gt
       required: false
       schema:
-        title: Lead ID
-        default: null
+        title: Activity At (>)
         anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    ActivityFilters_ActivityAtGteParam:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_DateCreatedGtParam:
       in: query
-      name: activity_at__gte
+      name: date_created__gt
       required: false
       schema:
-        title: Activity At (>=)
+        title: Date Created (>)
         anyOf:
         - type: string
           format: date-time
@@ -1568,14 +1564,38 @@ components:
           items:
             type: string
         - type: 'null'
-    LimitParam:
-      description: Number of results to return.
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
       in: query
-      name: _limit
+      name: _skip
       required: false
       schema:
-        default: 100
+        default: 0
         type: integer
+    ActivityFilters_ActivityAtGteParam:
+      in: query
+      name: activity_at__gte
+      required: false
+      schema:
+        title: Activity At (>=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_LeadIdParam:
+      description: Filter by lead IDs (comma-separated)
+      in: query
+      name: lead_id
+      required: false
+      schema:
+        title: Lead ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
     ActivityFilters_ContactIdParam:
       description: Filter by contact IDs (comma-separated)
       in: query
@@ -1596,28 +1616,16 @@ components:
       required: false
       schema:
         type: string
-    ActivityFilters_DateCreatedGteParam:
+    ActivityFilters_OrganizationIdParam:
       in: query
-      name: date_created__gte
+      name: organization_id
       required: false
       schema:
-        title: Date Created (>=)
+        title: Organization ID
+        default: null
         anyOf:
         - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_DateCreatedLteParam:
-      in: query
-      name: date_created__lte
-      required: false
-      schema:
-        title: Date Created (<=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
+        - type: 'null'
     ActivityFilters_ActivityAtLteParam:
       in: query
       name: activity_at__lte
@@ -1629,37 +1637,29 @@ components:
           format: date-time
         - type: string
           format: date
-    ActivityFilters_DateCreatedGtParam:
+    ActivityFilters_DateCreatedGteParam:
       in: query
-      name: date_created__gt
+      name: date_created__gte
       required: false
       schema:
-        title: Date Created (>)
+        title: Date Created (>=)
         anyOf:
         - type: string
           format: date-time
         - type: string
           format: date
-    ActivityFilters_ActivityAtGtParam:
+    ActivityFilters_UserIdParam:
+      description: Filter by user IDs (comma-separated)
       in: query
-      name: activity_at__gt
+      name: user_id
       required: false
       schema:
-        title: Activity At (>)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_OrganizationIdParam:
-      in: query
-      name: organization_id
-      required: false
-      schema:
-        title: Organization ID
+        title: User ID
         default: null
         anyOf:
-        - type: string
+        - type: array
+          items:
+            type: string
         - type: 'null'
   securitySchemes:
     ApiKeyAuth:

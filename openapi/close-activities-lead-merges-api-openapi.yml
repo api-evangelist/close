@@ -134,14 +134,6 @@ paths:
           description: Not found
 components:
   parameters:
-    SkipParam:
-      description: Number of results to skip before returning, for pagination.
-      in: query
-      name: _skip
-      required: false
-      schema:
-        default: 0
-        type: integer
     ActivityFilters_DateCreatedLtParam:
       in: query
       name: date_created__lt
@@ -153,19 +145,25 @@ components:
           format: date-time
         - type: string
           format: date
-    ActivityFilters_UserIdParam:
-      description: Filter by user IDs (comma-separated)
+    LimitParam:
+      description: Number of results to return.
       in: query
-      name: user_id
+      name: _limit
       required: false
       schema:
-        title: User ID
-        default: null
+        default: 100
+        type: integer
+    ActivityFilters_DateCreatedLteParam:
+      in: query
+      name: date_created__lte
+      required: false
+      schema:
+        title: Date Created (<=)
         anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
+        - type: string
+          format: date-time
+        - type: string
+          format: date
     ActivityFilters_TypeParam:
       description: Filter by activity type, e.g. Call (comma-separated)
       in: query
@@ -190,6 +188,60 @@ components:
           format: date-time
         - type: string
           format: date
+    ActivityFilters_ActivityAtGtParam:
+      in: query
+      name: activity_at__gt
+      required: false
+      schema:
+        title: Activity At (>)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_DateCreatedGtParam:
+      in: query
+      name: date_created__gt
+      required: false
+      schema:
+        title: Date Created (>)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_IdInParam:
+      description: Filter by activity IDs (comma-separated)
+      in: query
+      name: id__in
+      required: false
+      schema:
+        title: ID In
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
+    ActivityFilters_ActivityAtGteParam:
+      in: query
+      name: activity_at__gte
+      required: false
+      schema:
+        title: Activity At (>=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
     ActivityFilters_LeadIdParam:
       description: Filter by lead IDs (comma-separated)
       in: query
@@ -203,25 +255,6 @@ components:
           items:
             type: string
         - type: 'null'
-    ActivityFilters_ActivityAtGteParam:
-      in: query
-      name: activity_at__gte
-      required: false
-      schema:
-        title: Activity At (>=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    LimitParam:
-      description: Number of results to return.
-      in: query
-      name: _limit
-      required: false
-      schema:
-        default: 100
-        type: integer
     ActivityFilters_ContactIdParam:
       description: Filter by contact IDs (comma-separated)
       in: query
@@ -242,28 +275,16 @@ components:
       required: false
       schema:
         type: string
-    ActivityFilters_DateCreatedGteParam:
+    ActivityFilters_OrganizationIdParam:
       in: query
-      name: date_created__gte
+      name: organization_id
       required: false
       schema:
-        title: Date Created (>=)
+        title: Organization ID
+        default: null
         anyOf:
         - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_DateCreatedLteParam:
-      in: query
-      name: date_created__lte
-      required: false
-      schema:
-        title: Date Created (<=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
+        - type: 'null'
     ActivityFilters_ActivityAtLteParam:
       in: query
       name: activity_at__lte
@@ -275,45 +296,24 @@ components:
           format: date-time
         - type: string
           format: date
-    ActivityFilters_DateCreatedGtParam:
+    ActivityFilters_DateCreatedGteParam:
       in: query
-      name: date_created__gt
+      name: date_created__gte
       required: false
       schema:
-        title: Date Created (>)
+        title: Date Created (>=)
         anyOf:
         - type: string
           format: date-time
         - type: string
           format: date
-    ActivityFilters_ActivityAtGtParam:
+    ActivityFilters_UserIdParam:
+      description: Filter by user IDs (comma-separated)
       in: query
-      name: activity_at__gt
+      name: user_id
       required: false
       schema:
-        title: Activity At (>)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_OrganizationIdParam:
-      in: query
-      name: organization_id
-      required: false
-      schema:
-        title: Organization ID
-        default: null
-        anyOf:
-        - type: string
-        - type: 'null'
-    ActivityFilters_IdInParam:
-      description: Filter by activity IDs (comma-separated)
-      in: query
-      name: id__in
-      required: false
-      schema:
-        title: ID In
+        title: User ID
         default: null
         anyOf:
         - type: array
@@ -321,6 +321,14 @@ components:
             type: string
         - type: 'null'
   schemas:
+    LeadMergeStatus:
+      title: LeadMergeStatus
+      type: string
+      enum:
+      - pending
+      - in_progress
+      - completed
+      - errored
     LeadMergeActivity:
       title: LeadMergeActivity
       type: object
@@ -438,14 +446,6 @@ components:
       - updated_by
       - user_id
       - users
-    LeadMergeStatus:
-      title: LeadMergeStatus
-      type: string
-      enum:
-      - pending
-      - in_progress
-      - completed
-      - errored
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

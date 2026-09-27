@@ -200,13 +200,6 @@ paths:
           description: Not found
 components:
   schemas:
-    IntegrationLinkType:
-      title: IntegrationLinkType
-      type: string
-      enum:
-      - lead
-      - contact
-      - opportunity
     CreateIntegrationLink:
       title: CreateIntegrationLink
       type: object
@@ -224,28 +217,13 @@ components:
       - type
       - url
       additionalProperties: false
-    UpdateIntegrationLink:
-      title: UpdateIntegrationLink
-      type: object
-      properties:
-        name:
-          title: Name
-          default: null
-          anyOf:
-          - type: string
-          - type: 'null'
-        type:
-          default: null
-          anyOf:
-          - $ref: '#/components/schemas/IntegrationLinkType'
-          - type: 'null'
-        url:
-          title: Url
-          default: null
-          anyOf:
-          - type: string
-          - type: 'null'
-      additionalProperties: false
+    IntegrationLinkType:
+      title: IntegrationLinkType
+      type: string
+      enum:
+      - lead
+      - contact
+      - opportunity
     IntegrationLink:
       title: IntegrationLink
       type: object
@@ -296,6 +274,28 @@ components:
       - type
       - updated_by
       - url
+    UpdateIntegrationLink:
+      title: UpdateIntegrationLink
+      type: object
+      properties:
+        name:
+          title: Name
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        type:
+          default: null
+          anyOf:
+          - $ref: '#/components/schemas/IntegrationLinkType'
+          - type: 'null'
+        url:
+          title: Url
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+      additionalProperties: false
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

@@ -306,31 +306,6 @@ paths:
         '404':
           description: Not found
 components:
-  schemas:
-    CreateComment:
-      title: CreateComment
-      type: object
-      properties:
-        body:
-          title: Body
-          type: string
-        object_id:
-          title: Object ID
-          type: string
-      required:
-      - body
-      - object_id
-      additionalProperties: false
-    UpdateCommentThreads:
-      title: UpdateCommentThreads
-      type: object
-      properties:
-        body:
-          title: Body
-          type: string
-      required:
-      - body
-      additionalProperties: false
   parameters:
     SkipParam:
       description: Number of results to skip before returning, for pagination.
@@ -348,6 +323,31 @@ components:
       schema:
         default: 100
         type: integer
+  schemas:
+    UpdateCommentThreads:
+      title: UpdateCommentThreads
+      type: object
+      properties:
+        body:
+          title: Body
+          type: string
+      required:
+      - body
+      additionalProperties: false
+    CreateComment:
+      title: CreateComment
+      type: object
+      properties:
+        body:
+          title: Body
+          type: string
+        object_id:
+          title: Object ID
+          type: string
+      required:
+      - body
+      - object_id
+      additionalProperties: false
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

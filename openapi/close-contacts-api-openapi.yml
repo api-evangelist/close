@@ -391,42 +391,71 @@ paths:
           description: Not found
 components:
   schemas:
-    WorkflowRunStatus:
-      title: WorkflowRunStatus
-      type: string
-      enum:
-      - active
-      - paused
-      - finished
-      - goal
-      - error
-    ContactRecentCall:
-      title: ContactRecentCall
+    BasicSubscriptionInfoForContact:
+      title: BasicSubscriptionInfoForContact
       type: object
       properties:
-        dialer_id:
-          title: Dialer ID
+        contact_email:
+          title: Contact Email
           anyOf:
           - type: string
           - type: 'null'
-        duration:
-          title: Duration
-          type: integer
-        finish_timestamp:
-          title: Finish Timestamp
+        date_created:
+          title: Date Created
           type: string
           format: date-time
-        id:
-          title: ID
+        initial_email_id:
+          title: Initial Email ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        sequence_id:
+          title: Sequence ID
           type: string
-        status:
-          $ref: '#/components/schemas/CallStatus'
+        sequence_name:
+          title: Sequence Name
+          type: string
+        sequence_status:
+          $ref: '#/components/schemas/WorkflowStatus'
+        start_date:
+          title: Start Date
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        subscription_id:
+          title: Subscription ID
+          type: string
+        subscription_status:
+          $ref: '#/components/schemas/WorkflowRunStatus'
+        subscription_status_reason:
+          anyOf:
+          - $ref: '#/components/schemas/StatusReason'
+          - type: 'null'
       required:
-      - dialer_id
-      - duration
-      - finish_timestamp
-      - id
-      - status
+      - contact_email
+      - date_created
+      - initial_email_id
+      - sequence_id
+      - sequence_name
+      - sequence_status
+      - start_date
+      - subscription_id
+      - subscription_status
+      - subscription_status_reason
+    RenderedIntegrationLink:
+      title: RenderedIntegrationLink
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+        url:
+          title: Url
+          type: string
+      required:
+      - name
+      - url
     CreateContact:
       type: object
       properties:
@@ -508,48 +537,15 @@ components:
         ^custom\.:
           not:
             type: object
-    ContactPhone:
-      title: ContactPhone
-      type: object
-      properties:
-        country:
-          title: Country
-          anyOf:
-          - type: string
-          - type: 'null'
-        outbound_sms_blocked:
-          title: Outbound SMS Blocked
-          type: boolean
-        phone:
-          title: Phone
-          type: string
-        phone_formatted:
-          title: Phone Formatted
-          type: string
-        type:
-          title: Type
-          type: string
-        tz_ids:
-          title: TZ IDs
-          type: array
-          items:
-            type: string
-      required:
-      - phone
-      - type
-    RenderedIntegrationLink:
-      title: RenderedIntegrationLink
-      type: object
-      properties:
-        name:
-          title: Name
-          type: string
-        url:
-          title: Url
-          type: string
-      required:
-      - name
-      - url
+    WorkflowRunStatus:
+      title: WorkflowRunStatus
+      type: string
+      enum:
+      - active
+      - paused
+      - finished
+      - goal
+      - error
     StatusReason:
       title: StatusReason
       description: Reason for each higher level status on a Workflow run.
@@ -587,39 +583,6 @@ components:
       - field-mapping-error
       - filter-config-invalid
       - email-ai-generation-failed
-    WorkflowStatus:
-      title: WorkflowStatus
-      type: string
-      enum:
-      - active
-      - paused
-      - draft
-    CallStatus:
-      title: CallStatus
-      description: Current status of the call.
-      type: string
-      enum:
-      - created
-      - in-progress
-      - completed
-      - cancel
-      - no-answer
-      - busy
-      - failed
-      - timeout
-    ContactUrl:
-      title: ContactUrl
-      type: object
-      properties:
-        type:
-          title: Type
-          type: string
-        url:
-          title: URL
-          type: string
-      required:
-      - type
-      - url
     UpdateContact:
       type: object
       properties:
@@ -692,75 +655,19 @@ components:
         ^custom\.:
           not:
             type: object
-    ContactEmail:
-      title: ContactEmail
+    ContactUrl:
+      title: ContactUrl
       type: object
       properties:
-        email:
-          title: Email
-          type: string
-        is_unsubscribed:
-          title: Is Unsubscribed
-          type: boolean
         type:
           title: Type
           type: string
+        url:
+          title: URL
+          type: string
       required:
-      - email
-      - is_unsubscribed
       - type
-    BasicSubscriptionInfoForContact:
-      title: BasicSubscriptionInfoForContact
-      type: object
-      properties:
-        contact_email:
-          title: Contact Email
-          anyOf:
-          - type: string
-          - type: 'null'
-        date_created:
-          title: Date Created
-          type: string
-          format: date-time
-        initial_email_id:
-          title: Initial Email ID
-          anyOf:
-          - type: string
-          - type: 'null'
-        sequence_id:
-          title: Sequence ID
-          type: string
-        sequence_name:
-          title: Sequence Name
-          type: string
-        sequence_status:
-          $ref: '#/components/schemas/WorkflowStatus'
-        start_date:
-          title: Start Date
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-        subscription_id:
-          title: Subscription ID
-          type: string
-        subscription_status:
-          $ref: '#/components/schemas/WorkflowRunStatus'
-        subscription_status_reason:
-          anyOf:
-          - $ref: '#/components/schemas/StatusReason'
-          - type: 'null'
-      required:
-      - contact_email
-      - date_created
-      - initial_email_id
-      - sequence_id
-      - sequence_name
-      - sequence_status
-      - start_date
-      - subscription_id
-      - subscription_status
-      - subscription_status_reason
+      - url
     Contact:
       title: Contact
       type: object
@@ -863,7 +770,108 @@ components:
       - organization_id
       - title
       - updated_by
+    CallStatus:
+      title: CallStatus
+      description: Current status of the call.
+      type: string
+      enum:
+      - created
+      - in-progress
+      - completed
+      - cancel
+      - no-answer
+      - busy
+      - failed
+      - timeout
+    WorkflowStatus:
+      title: WorkflowStatus
+      type: string
+      enum:
+      - active
+      - paused
+      - draft
+    ContactRecentCall:
+      title: ContactRecentCall
+      type: object
+      properties:
+        dialer_id:
+          title: Dialer ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        duration:
+          title: Duration
+          type: integer
+        finish_timestamp:
+          title: Finish Timestamp
+          type: string
+          format: date-time
+        id:
+          title: ID
+          type: string
+        status:
+          $ref: '#/components/schemas/CallStatus'
+      required:
+      - dialer_id
+      - duration
+      - finish_timestamp
+      - id
+      - status
+    ContactEmail:
+      title: ContactEmail
+      type: object
+      properties:
+        email:
+          title: Email
+          type: string
+        is_unsubscribed:
+          title: Is Unsubscribed
+          type: boolean
+        type:
+          title: Type
+          type: string
+      required:
+      - email
+      - is_unsubscribed
+      - type
+    ContactPhone:
+      title: ContactPhone
+      type: object
+      properties:
+        country:
+          title: Country
+          anyOf:
+          - type: string
+          - type: 'null'
+        outbound_sms_blocked:
+          title: Outbound SMS Blocked
+          type: boolean
+        phone:
+          title: Phone
+          type: string
+        phone_formatted:
+          title: Phone Formatted
+          type: string
+        type:
+          title: Type
+          type: string
+        tz_ids:
+          title: TZ IDs
+          type: array
+          items:
+            type: string
+      required:
+      - phone
+      - type
   parameters:
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
     LimitParam:
       description: Number of results to return.
       in: query
@@ -879,14 +887,6 @@ components:
       required: false
       schema:
         type: string
-    SkipParam:
-      description: Number of results to skip before returning, for pagination.
-      in: query
-      name: _skip
-      required: false
-      schema:
-        default: 0
-        type: integer
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.
