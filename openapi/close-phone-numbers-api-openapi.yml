@@ -455,21 +455,6 @@ paths:
           description: Not found
 components:
   schemas:
-    CarrierNumberType:
-      title: CarrierNumberType
-      type: string
-      enum:
-      - local
-      - national
-      - mobile
-      - tollfree
-      - shortcode
-    UnderlyingCarrier:
-      title: UnderlyingCarrier
-      type: string
-      enum:
-      - twilio
-      - plivo
     PhoneNumberSharing:
       title: PhoneNumberSharing
       type: string
@@ -520,6 +505,59 @@ components:
           anyOf:
           - type: string
           - type: 'null'
+      additionalProperties: false
+    CreatePhoneNumberRequest:
+      title: CreatePhoneNumberRequest
+      type: object
+      properties:
+        bundle_id:
+          title: Bundle ID
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        carrier_type:
+          title: Carrier Type
+          default: null
+          anyOf:
+          - type: string
+            enum:
+            - local
+            - national
+            - mobile
+            - tollfree
+          - type: 'null'
+        country:
+          title: Country
+          description: A two letter ISO country code (e.g. `US` for United States).
+          type: string
+        prefix:
+          title: Prefix
+          description: A string with the phone number prefix or area code, not including the country code.
+          type: string
+          default: ''
+          maxLength: 5
+        sharing:
+          description: Deprecated. `personal` for a number that belongs to an individual user, or `group` for a group number. The distinction between personal and group numbers is being removed, and this field will be removed in a future update. When omitted, defaults to `personal`.
+          deprecated: true
+          default: personal
+          $ref: '#/components/schemas/PhoneNumberSharing'
+        with_mms:
+          title: With MMS
+          description: By default, MMS-capable numbers are rented if Close supports MMS for the given country. Renting an MMS-capable number can be forced by setting this flag to `true`. If set to `false`, certain prefixes that don't support MMS can be rented in countries where Close supports MMS. In most scenarios, this flag should not be passed. When you request an MMS number, you must set `with_sms` to `true` as well.
+          default: null
+          anyOf:
+          - type: boolean
+          - type: 'null'
+        with_sms:
+          title: With SMS
+          description: By default, SMS-capable numbers are rented if Close supports SMS for the given country. Renting an SMS-capable number can be forced by setting this flag to `true`. If set to `false`, certain prefixes that don't support SMS can be rented in countries where Close supports SMS. In most scenarios, this flag should not be passed unless a `has-voice-only` error status is received.
+          default: null
+          anyOf:
+          - type: boolean
+          - type: 'null'
+      required:
+      - country
       additionalProperties: false
     PhoneNumber:
       title: PhoneNumber
@@ -687,59 +725,21 @@ components:
       - supports_sms_to_countries
       - type
       - user_id
-    CreatePhoneNumberRequest:
-      title: CreatePhoneNumberRequest
-      type: object
-      properties:
-        bundle_id:
-          title: Bundle ID
-          default: null
-          anyOf:
-          - type: string
-          - type: 'null'
-        carrier_type:
-          title: Carrier Type
-          default: null
-          anyOf:
-          - type: string
-            enum:
-            - local
-            - national
-            - mobile
-            - tollfree
-          - type: 'null'
-        country:
-          title: Country
-          description: A two letter ISO country code (e.g. `US` for United States).
-          type: string
-        prefix:
-          title: Prefix
-          description: A string with the phone number prefix or area code, not including the country code.
-          type: string
-          default: ''
-          maxLength: 5
-        sharing:
-          description: Deprecated. `personal` for a number that belongs to an individual user, or `group` for a group number. The distinction between personal and group numbers is being removed, and this field will be removed in a future update. When omitted, defaults to `personal`.
-          deprecated: true
-          default: personal
-          $ref: '#/components/schemas/PhoneNumberSharing'
-        with_mms:
-          title: With MMS
-          description: By default, MMS-capable numbers are rented if Close supports MMS for the given country. Renting an MMS-capable number can be forced by setting this flag to `true`. If set to `false`, certain prefixes that don't support MMS can be rented in countries where Close supports MMS. In most scenarios, this flag should not be passed. When you request an MMS number, you must set `with_sms` to `true` as well.
-          default: null
-          anyOf:
-          - type: boolean
-          - type: 'null'
-        with_sms:
-          title: With SMS
-          description: By default, SMS-capable numbers are rented if Close supports SMS for the given country. Renting an SMS-capable number can be forced by setting this flag to `true`. If set to `false`, certain prefixes that don't support SMS can be rented in countries where Close supports SMS. In most scenarios, this flag should not be passed unless a `has-voice-only` error status is received.
-          default: null
-          anyOf:
-          - type: boolean
-          - type: 'null'
-      required:
-      - country
-      additionalProperties: false
+    UnderlyingCarrier:
+      title: UnderlyingCarrier
+      type: string
+      enum:
+      - twilio
+      - plivo
+    CarrierNumberType:
+      title: CarrierNumberType
+      type: string
+      enum:
+      - local
+      - national
+      - mobile
+      - tollfree
+      - shortcode
   parameters:
     SkipParam:
       description: Number of results to skip before returning, for pagination.

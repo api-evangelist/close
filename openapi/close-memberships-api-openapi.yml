@@ -258,17 +258,22 @@ paths:
           description: Not found
 components:
   schemas:
-    SetPinnedSavedView:
-      title: SetPinnedSavedView
+    CreateMembership:
+      title: CreateMembership
       type: object
       properties:
-        saved_view_ids:
-          title: Saved View IDs
-          type: array
-          items:
-            type: string
+        email:
+          title: Email
+          type: string
+          format: email
+        role_id:
+          title: Role ID
+          description: One of `superuser`, `user`, or `restricteduser` for the corresponding predefined role, or the ID of a custom [Role](https://developer.close.com/api/resources/roles). The role must not grant the `manage_organization` permission.
+          type: string
+          minLength: 1
       required:
-      - saved_view_ids
+      - email
+      - role_id
       additionalProperties: false
     Membership:
       title: Membership
@@ -303,6 +308,18 @@ components:
           description: Whether email opens are tracked for emails this member sends.
           type: boolean
       additionalProperties: false
+    SetPinnedSavedView:
+      title: SetPinnedSavedView
+      type: object
+      properties:
+        saved_view_ids:
+          title: Saved View IDs
+          type: array
+          items:
+            type: string
+      required:
+      - saved_view_ids
+      additionalProperties: false
     AutoRecordCalls:
       title: AutoRecordCalls
       type: string
@@ -310,23 +327,6 @@ components:
       - enabled
       - disabled
       - unset
-    CreateMembership:
-      title: CreateMembership
-      type: object
-      properties:
-        email:
-          title: Email
-          type: string
-          format: email
-        role_id:
-          title: Role ID
-          description: One of `superuser`, `user`, or `restricteduser` for the corresponding predefined role, or the ID of a custom [Role](https://developer.close.com/api/resources/roles). The role must not grant the `manage_organization` permission.
-          type: string
-          minLength: 1
-      required:
-      - email
-      - role_id
-      additionalProperties: false
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

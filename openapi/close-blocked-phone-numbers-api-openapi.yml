@@ -251,15 +251,22 @@ paths:
           description: Not found
 components:
   schemas:
-    BlockedPhoneNumberSettings:
-      title: BlockedPhoneNumberSettings
+    CreateBlockedPhoneNumber:
+      title: CreateBlockedPhoneNumber
       type: object
       properties:
-        reject_anonymous_inbound_calls:
-          title: Reject Anonymous Inbound Calls
-          type: boolean
+        phone:
+          title: Phone
+          description: The phone number (in E.164 format) that you wish to block.
+          type: string
+        reason:
+          title: Reason
+          description: The reason why you wish to block a given phone number.
+          type: string
       required:
-      - reject_anonymous_inbound_calls
+      - phone
+      - reason
+      additionalProperties: false
     UpdateBlockedPhoneNumber:
       title: UpdateBlockedPhoneNumber
       type: object
@@ -316,22 +323,15 @@ components:
       - phone
       - reason
       - updated_by
-    CreateBlockedPhoneNumber:
-      title: CreateBlockedPhoneNumber
+    BlockedPhoneNumberSettings:
+      title: BlockedPhoneNumberSettings
       type: object
       properties:
-        phone:
-          title: Phone
-          description: The phone number (in E.164 format) that you wish to block.
-          type: string
-        reason:
-          title: Reason
-          description: The reason why you wish to block a given phone number.
-          type: string
+        reject_anonymous_inbound_calls:
+          title: Reject Anonymous Inbound Calls
+          type: boolean
       required:
-      - phone
-      - reason
-      additionalProperties: false
+      - reject_anonymous_inbound_calls
     UpdateBlockedPhoneNumberSettings:
       title: UpdateBlockedPhoneNumberSettings
       type: object

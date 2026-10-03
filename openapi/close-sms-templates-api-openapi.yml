@@ -200,34 +200,23 @@ paths:
           description: Not found
 components:
   schemas:
-    SMSTemplateStatus:
-      title: SMSTemplateStatus
-      type: string
-      enum:
-      - active
-      - archived
-    UpdateSMSTemplate:
-      title: UpdateSMSTemplate
+    UpdateSMSTemplateAttachment:
+      title: UpdateSMSTemplateAttachment
       type: object
       properties:
-        attachments:
-          title: Attachments
-          type: array
-          items:
-            $ref: '#/components/schemas/UpdateSMSTemplateAttachment'
-        is_shared:
-          title: Is Shared
-          type: boolean
-        name:
-          title: Name
+        content_type:
+          title: Content Type
           type: string
-        status:
-          title: Status
-          $ref: '#/components/schemas/SMSTemplateStatus'
-        text:
-          title: Text
+        filename:
+          title: Filename
           type: string
-      additionalProperties: false
+        url:
+          title: Url
+          type: string
+      required:
+      - content_type
+      - filename
+      - url
     CreateSMSTemplateAttachment:
       title: CreateSMSTemplateAttachment
       type: object
@@ -266,23 +255,34 @@ components:
       required:
       - name
       additionalProperties: false
-    UpdateSMSTemplateAttachment:
-      title: UpdateSMSTemplateAttachment
+    SMSTemplateStatus:
+      title: SMSTemplateStatus
+      type: string
+      enum:
+      - active
+      - archived
+    UpdateSMSTemplate:
+      title: UpdateSMSTemplate
       type: object
       properties:
-        content_type:
-          title: Content Type
+        attachments:
+          title: Attachments
+          type: array
+          items:
+            $ref: '#/components/schemas/UpdateSMSTemplateAttachment'
+        is_shared:
+          title: Is Shared
+          type: boolean
+        name:
+          title: Name
           type: string
-        filename:
-          title: Filename
+        status:
+          title: Status
+          $ref: '#/components/schemas/SMSTemplateStatus'
+        text:
+          title: Text
           type: string
-        url:
-          title: Url
-          type: string
-      required:
-      - content_type
-      - filename
-      - url
+      additionalProperties: false
   parameters:
     SkipParam:
       description: Number of results to skip before returning, for pagination.

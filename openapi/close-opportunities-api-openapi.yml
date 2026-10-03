@@ -759,56 +759,43 @@ paths:
           description: Not found
 components:
   schemas:
-    AttachmentIn:
-      title: AttachmentIn
+    ActionItem:
+      title: ActionItem
+      deprecated: true
       type: object
       properties:
-        content_type:
-          title: Content Type
-          type: string
-          default: ''
-        filename:
-          title: Filename
-          type: string
-        url:
-          title: Url
+        action:
+          description: The recommended next step to progress or resolve the stalled opportunity
+          $ref: '#/components/schemas/StalledOpportunityActionTypeV1'
+        justification:
+          title: Justification
+          description: A short justification for the recommended action in the sales pipeline. Maximum 2 sentences.
           type: string
       required:
-      - filename
-      - url
-    CommentSummary:
-      title: CommentSummary
+      - action
+      - justification
+    OpportunitySuggestedAction:
+      title: OpportunitySuggestedAction
       type: object
       properties:
-        comment_count:
-          title: Comment Count
-          type: integer
-        thread_id:
-          title: Thread ID
+        action:
+          $ref: '#/components/schemas/StalledOpportunityActionTypeV2'
+        details:
+          title: Details
+          anyOf:
+          - $ref: '#/components/schemas/OpportunityChangeStatusActionDetails'
+          - $ref: '#/components/schemas/OpportunityFollowUpEmailActionDetails'
+          - $ref: '#/components/schemas/OpportunityFollowUpSMSActionDetails'
+          - $ref: '#/components/schemas/OpportunityFollowUpCallActionDetails'
+          - $ref: '#/components/schemas/OpportunityAdjustCloseDateActionDetails'
+          - type: 'null'
+        justification:
+          title: Justification
           type: string
       required:
-      - comment_count
-      - thread_id
-    RenderedIntegrationLink:
-      title: RenderedIntegrationLink
-      type: object
-      properties:
-        name:
-          title: Name
-          type: string
-        url:
-          title: Url
-          type: string
-      required:
-      - name
-      - url
-    OpportunityStatusType:
-      title: OpportunityStatusType
-      type: string
-      enum:
-      - won
-      - lost
-      - active
+      - action
+      - details
+      - justification
     OpportunityFollowUpEmailActionDetails:
       title: OpportunityFollowUpEmailActionDetails
       type: object
@@ -826,13 +813,135 @@ components:
       - contact_id
       - message_draft
       - subject_draft
-    StalledOpportunityCommunicationIssue:
-      title: StalledOpportunityCommunicationIssue
-      type: string
-      enum:
-      - no_issue
-      - cant_get_in_touch
-      - no_communication_attempts
+    Attachment:
+      title: Attachment
+      type: object
+      properties:
+        content_type:
+          title: Content Type
+          anyOf:
+          - type: string
+          - type: 'null'
+        filename:
+          title: Filename
+          anyOf:
+          - type: string
+          - type: 'null'
+        size:
+          title: Size
+          anyOf:
+          - type: integer
+          - type: 'null'
+        thumbnail_url:
+          title: Thumbnail URL
+          anyOf:
+          - type: string
+          - type: 'null'
+        url:
+          title: URL
+          type: string
+      required:
+      - content_type
+      - filename
+      - size
+      - url
+    CommentSummary:
+      title: CommentSummary
+      type: object
+      properties:
+        comment_count:
+          title: Comment Count
+          type: integer
+        thread_id:
+          title: Thread ID
+          type: string
+      required:
+      - comment_count
+      - thread_id
+    OpportunityAdjustCloseDateActionDetails:
+      title: OpportunityAdjustCloseDateActionDetails
+      type: object
+      properties:
+        close_date:
+          title: Close Date
+          type: string
+          format: date
+      required:
+      - close_date
+    ContactEmail:
+      title: ContactEmail
+      type: object
+      properties:
+        email:
+          title: Email
+          type: string
+        is_unsubscribed:
+          title: Is Unsubscribed
+          type: boolean
+        type:
+          title: Type
+          type: string
+      required:
+      - email
+      - is_unsubscribed
+      - type
+    UpdateOpportunity:
+      title: UpdateOpportunity
+      type: object
+      properties:
+        attachments:
+          title: Attachments
+          type: array
+          items:
+            $ref: '#/components/schemas/AttachmentIn'
+        confidence:
+          title: Confidence
+          type: integer
+        contact_id:
+          title: Contact ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        date_won:
+          title: Date Won
+          description: If not set on the resource or in the request, `date_won` will be set automatically to today's date when setting `status_id` to a status with type `won`. The `x-tz-offset` header, used to pass your timezone's UTC offset, will be taken into account.
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        note:
+          title: Note
+          description: Plaintext/markdown version of the note. If `note_html` is also provided in the same request, this value is ignored and `note` is derived from the HTML instead.
+          type: string
+        note_html:
+          title: Note HTML
+          description: Rich-text HTML version of the note. When set, `note` is automatically populated with the plaintext version (tags become markdown), overriding any `note` value passed in the same request. Pass `null` to clear `note_html`; `note` is cleared as well.
+          anyOf:
+          - type: string
+          - type: 'null'
+        status:
+          title: Status
+          type: string
+        status_id:
+          title: Status ID
+          description: Setting the `status_id` to a status with a type of `won` will automatically set the `date_won` field if it is not already set or provided in the request. Reverting it from a `won` status to an `active` or `lost` will not automatically change `date_won`.
+          type: string
+        user_id:
+          title: User ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        value:
+          title: Value
+          type: integer
+        value_period:
+          title: Value Period
+          $ref: '#/components/schemas/OpportunityValuePeriod'
+      additionalProperties: false
+      patternProperties:
+        ^custom\.:
+          not:
+            type: object
     OpportunityFollowUpCallActionDetails:
       title: OpportunityFollowUpCallActionDetails
       type: object
@@ -846,6 +955,36 @@ components:
       required:
       - call_plan
       - contact_id
+    StalledOpportunityCommunicationIssue:
+      title: StalledOpportunityCommunicationIssue
+      type: string
+      enum:
+      - no_issue
+      - cant_get_in_touch
+      - no_communication_attempts
+    StalledOpportunityActionTypeV1:
+      title: StalledOpportunityActionTypeV1
+      type: string
+      enum:
+      - mark_as_lost
+      - change_status
+      - follow_up
+      - adjust_close_date
+      - ask_someone_else_to_reach_out
+      - change_communication_method
+    RenderedIntegrationLink:
+      title: RenderedIntegrationLink
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+        url:
+          title: Url
+          type: string
+      required:
+      - name
+      - url
     Opportunity:
       title: Opportunity
       type: object
@@ -1050,95 +1189,22 @@ components:
       - user_id
       - value
       - value_period
-    OpportunitySuggestedAction:
-      title: OpportunitySuggestedAction
+    OpportunityValuePeriod:
+      title: OpportunityValuePeriod
+      type: string
+      enum:
+      - one_time
+      - monthly
+      - annual
+    OpportunityChangeStatusActionDetails:
+      title: OpportunityChangeStatusActionDetails
       type: object
       properties:
-        action:
-          $ref: '#/components/schemas/StalledOpportunityActionTypeV2'
-        details:
-          title: Details
-          anyOf:
-          - $ref: '#/components/schemas/OpportunityChangeStatusActionDetails'
-          - $ref: '#/components/schemas/OpportunityFollowUpEmailActionDetails'
-          - $ref: '#/components/schemas/OpportunityFollowUpSMSActionDetails'
-          - $ref: '#/components/schemas/OpportunityFollowUpCallActionDetails'
-          - $ref: '#/components/schemas/OpportunityAdjustCloseDateActionDetails'
-          - type: 'null'
-        justification:
-          title: Justification
-          type: string
-      required:
-      - action
-      - details
-      - justification
-    OpportunityAdjustCloseDateActionDetails:
-      title: OpportunityAdjustCloseDateActionDetails
-      type: object
-      properties:
-        close_date:
-          title: Close Date
-          type: string
-          format: date
-      required:
-      - close_date
-    UpdateOpportunity:
-      title: UpdateOpportunity
-      type: object
-      properties:
-        attachments:
-          title: Attachments
-          type: array
-          items:
-            $ref: '#/components/schemas/AttachmentIn'
-        confidence:
-          title: Confidence
-          type: integer
-        contact_id:
-          title: Contact ID
-          anyOf:
-          - type: string
-          - type: 'null'
-        date_won:
-          title: Date Won
-          description: If not set on the resource or in the request, `date_won` will be set automatically to today's date when setting `status_id` to a status with type `won`. The `x-tz-offset` header, used to pass your timezone's UTC offset, will be taken into account.
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-        note:
-          title: Note
-          description: Plaintext/markdown version of the note. If `note_html` is also provided in the same request, this value is ignored and `note` is derived from the HTML instead.
-          type: string
-        note_html:
-          title: Note HTML
-          description: Rich-text HTML version of the note. When set, `note` is automatically populated with the plaintext version (tags become markdown), overriding any `note` value passed in the same request. Pass `null` to clear `note_html`; `note` is cleared as well.
-          anyOf:
-          - type: string
-          - type: 'null'
-        status:
-          title: Status
-          type: string
         status_id:
           title: Status ID
-          description: Setting the `status_id` to a status with a type of `won` will automatically set the `date_won` field if it is not already set or provided in the request. Reverting it from a `won` status to an `active` or `lost` will not automatically change `date_won`.
           type: string
-        user_id:
-          title: User ID
-          anyOf:
-          - type: string
-          - type: 'null'
-        value:
-          title: Value
-          type: integer
-        value_period:
-          title: Value Period
-          $ref: '#/components/schemas/OpportunityValuePeriod'
-      additionalProperties: false
-      patternProperties:
-        ^custom\.:
-          not:
-            type: object
+      required:
+      - status_id
     CreateOpportunity:
       title: CreateOpportunity
       type: object
@@ -1241,13 +1307,13 @@ components:
         ^custom\.:
           not:
             type: object
-    OpportunityValuePeriod:
-      title: OpportunityValuePeriod
+    OpportunityStatusType:
+      title: OpportunityStatusType
       type: string
       enum:
-      - one_time
-      - monthly
-      - annual
+      - won
+      - lost
+      - active
     StalledOpportunityActionTypeV2:
       title: StalledOpportunityActionTypeV2
       type: string
@@ -1257,6 +1323,36 @@ components:
       - follow_up_email
       - follow_up_call
       - follow_up_sms
+    OpportunityFollowUpSMSActionDetails:
+      title: OpportunityFollowUpSMSActionDetails
+      type: object
+      properties:
+        contact_id:
+          title: Contact ID
+          type: string
+        message_draft:
+          title: Message Draft
+          type: string
+      required:
+      - contact_id
+      - message_draft
+    AttachmentIn:
+      title: AttachmentIn
+      type: object
+      properties:
+        content_type:
+          title: Content Type
+          type: string
+          default: ''
+        filename:
+          title: Filename
+          type: string
+        url:
+          title: Url
+          type: string
+      required:
+      - filename
+      - url
     ContactPhone:
       title: ContactPhone
       type: object
@@ -1286,76 +1382,6 @@ components:
       required:
       - phone
       - type
-    OpportunityFollowUpSMSActionDetails:
-      title: OpportunityFollowUpSMSActionDetails
-      type: object
-      properties:
-        contact_id:
-          title: Contact ID
-          type: string
-        message_draft:
-          title: Message Draft
-          type: string
-      required:
-      - contact_id
-      - message_draft
-    ActionItem:
-      title: ActionItem
-      deprecated: true
-      type: object
-      properties:
-        action:
-          description: The recommended next step to progress or resolve the stalled opportunity
-          $ref: '#/components/schemas/StalledOpportunityActionTypeV1'
-        justification:
-          title: Justification
-          description: A short justification for the recommended action in the sales pipeline. Maximum 2 sentences.
-          type: string
-      required:
-      - action
-      - justification
-    Attachment:
-      title: Attachment
-      type: object
-      properties:
-        content_type:
-          title: Content Type
-          anyOf:
-          - type: string
-          - type: 'null'
-        filename:
-          title: Filename
-          anyOf:
-          - type: string
-          - type: 'null'
-        size:
-          title: Size
-          anyOf:
-          - type: integer
-          - type: 'null'
-        thumbnail_url:
-          title: Thumbnail URL
-          anyOf:
-          - type: string
-          - type: 'null'
-        url:
-          title: URL
-          type: string
-      required:
-      - content_type
-      - filename
-      - size
-      - url
-    StalledOpportunityActionTypeV1:
-      title: StalledOpportunityActionTypeV1
-      type: string
-      enum:
-      - mark_as_lost
-      - change_status
-      - follow_up
-      - adjust_close_date
-      - ask_someone_else_to_reach_out
-      - change_communication_method
     StalledOpportunityActionItems:
       title: StalledOpportunityActionItems
       deprecated: true
@@ -1370,41 +1396,7 @@ components:
       required:
       - communication_issue
       - next_action
-    ContactEmail:
-      title: ContactEmail
-      type: object
-      properties:
-        email:
-          title: Email
-          type: string
-        is_unsubscribed:
-          title: Is Unsubscribed
-          type: boolean
-        type:
-          title: Type
-          type: string
-      required:
-      - email
-      - is_unsubscribed
-      - type
-    OpportunityChangeStatusActionDetails:
-      title: OpportunityChangeStatusActionDetails
-      type: object
-      properties:
-        status_id:
-          title: Status ID
-          type: string
-      required:
-      - status_id
   parameters:
-    LimitParam:
-      description: Number of results to return.
-      in: query
-      name: _limit
-      required: false
-      schema:
-        default: 100
-        type: integer
     SkipParam:
       description: Number of results to skip before returning, for pagination.
       in: query
@@ -1430,6 +1422,14 @@ components:
         anyOf:
         - type: string
         - type: 'null'
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

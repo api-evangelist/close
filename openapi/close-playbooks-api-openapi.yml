@@ -360,58 +360,7 @@ paths:
         '404':
           description: Not found
 components:
-  parameters:
-    SkipParam:
-      description: Number of results to skip before returning, for pagination.
-      in: query
-      name: _skip
-      required: false
-      schema:
-        default: 0
-        type: integer
-    LimitParam:
-      description: Number of results to return.
-      in: query
-      name: _limit
-      required: false
-      schema:
-        default: 100
-        type: integer
   schemas:
-    CreatePlaybook:
-      title: CreatePlaybook
-      type: object
-      properties:
-        custom_field_ids:
-          title: Custom Field IDs
-          description: IDs of [Shared Custom Fields](/api/resources/custom-fields/custom-fields-shared) to associate with this Playbook.
-          type: array
-          items:
-            type: string
-        description:
-          title: Description
-          description: Description of the playbook.
-          anyOf:
-          - type: string
-          - type: 'null'
-        name:
-          title: Name
-          type: string
-        outcome_ids:
-          title: Outcome IDs
-          description: IDs of [Outcomes](/api/resources/outcomes/) that should be associated with this Playbook.
-          type: array
-          items:
-            type: string
-        summary_guidance:
-          title: Summary Guidance
-          description: Guidance for AI summaries of calls and meetings associated with this Playbook.
-          anyOf:
-          - type: string
-          - type: 'null'
-      required:
-      - name
-      additionalProperties: false
     Playbook:
       title: Playbook
       type: object
@@ -522,6 +471,57 @@ components:
           - type: string
           - type: 'null'
       additionalProperties: false
+    CreatePlaybook:
+      title: CreatePlaybook
+      type: object
+      properties:
+        custom_field_ids:
+          title: Custom Field IDs
+          description: IDs of [Shared Custom Fields](/api/resources/custom-fields/custom-fields-shared) to associate with this Playbook.
+          type: array
+          items:
+            type: string
+        description:
+          title: Description
+          description: Description of the playbook.
+          anyOf:
+          - type: string
+          - type: 'null'
+        name:
+          title: Name
+          type: string
+        outcome_ids:
+          title: Outcome IDs
+          description: IDs of [Outcomes](/api/resources/outcomes/) that should be associated with this Playbook.
+          type: array
+          items:
+            type: string
+        summary_guidance:
+          title: Summary Guidance
+          description: Guidance for AI summaries of calls and meetings associated with this Playbook.
+          anyOf:
+          - type: string
+          - type: 'null'
+      required:
+      - name
+      additionalProperties: false
+  parameters:
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

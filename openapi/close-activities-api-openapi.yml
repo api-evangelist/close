@@ -293,49 +293,6 @@ paths:
           description: Not found
 components:
   parameters:
-    ActivityFilters_DateCreatedGtParam:
-      in: query
-      name: date_created__gt
-      required: false
-      schema:
-        title: Date Created (>)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_DateCreatedLtParam:
-      in: query
-      name: date_created__lt
-      required: false
-      schema:
-        title: Date Created (<)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_IdInParam:
-      description: Filter by activity IDs (comma-separated)
-      in: query
-      name: id__in
-      required: false
-      schema:
-        title: ID In
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    SkipParam:
-      description: Number of results to skip before returning, for pagination.
-      in: query
-      name: _skip
-      required: false
-      schema:
-        default: 0
-        type: integer
     ActivityFilters_LeadIdParam:
       description: Filter by lead IDs (comma-separated)
       in: query
@@ -343,6 +300,32 @@ components:
       required: false
       schema:
         title: Lead ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    ActivityFilters_TypeParam:
+      description: Filter by activity type, e.g. Call (comma-separated)
+      in: query
+      name: _type
+      required: false
+      schema:
+        title: Type
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    ActivityFilters_IdInParam:
+      description: Filter by activity IDs (comma-separated)
+      in: query
+      name: id__in
+      required: false
+      schema:
+        title: ID In
         default: null
         anyOf:
         - type: array
@@ -360,24 +343,28 @@ components:
           format: date-time
         - type: string
           format: date
-    ActivityFilters_OrganizationIdParam:
+    ActivityFilters_DateCreatedLtParam:
       in: query
-      name: organization_id
+      name: date_created__lt
       required: false
       schema:
-        title: Organization ID
-        default: null
+        title: Date Created (<)
         anyOf:
         - type: string
-        - type: 'null'
-    LimitParam:
-      description: Number of results to return.
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_ActivityAtGtParam:
       in: query
-      name: _limit
+      name: activity_at__gt
       required: false
       schema:
-        default: 100
-        type: integer
+        title: Activity At (>)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
     ActivityFilters_ActivityAtLteParam:
       in: query
       name: activity_at__lte
@@ -389,30 +376,6 @@ components:
           format: date-time
         - type: string
           format: date
-    ActivityFilters_DateCreatedLteParam:
-      in: query
-      name: date_created__lte
-      required: false
-      schema:
-        title: Date Created (<=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_TypeParam:
-      description: Filter by activity type, e.g. Call (comma-separated)
-      in: query
-      name: _type
-      required: false
-      schema:
-        title: Type
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
     ActivityFilters_DateCreatedGteParam:
       in: query
       name: date_created__gte
@@ -424,6 +387,14 @@ components:
           format: date-time
         - type: string
           format: date
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
     ActivityFilters_UserIdParam:
       description: Filter by user IDs (comma-separated)
       in: query
@@ -437,12 +408,27 @@ components:
           items:
             type: string
         - type: 'null'
-    ActivityFilters_ActivityAtGteParam:
+    LimitParam:
+      description: Number of results to return.
       in: query
-      name: activity_at__gte
+      name: _limit
       required: false
       schema:
-        title: Activity At (>=)
+        default: 100
+        type: integer
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
+    ActivityFilters_DateCreatedLteParam:
+      in: query
+      name: date_created__lte
+      required: false
+      schema:
+        title: Date Created (<=)
         anyOf:
         - type: string
           format: date-time
@@ -461,24 +447,38 @@ components:
           items:
             type: string
         - type: 'null'
-    FieldsParam:
-      description: Comma-separated list of fields to include in the response.
+    ActivityFilters_ActivityAtGteParam:
       in: query
-      name: _fields
+      name: activity_at__gte
       required: false
       schema:
-        type: string
-    ActivityFilters_ActivityAtGtParam:
-      in: query
-      name: activity_at__gt
-      required: false
-      schema:
-        title: Activity At (>)
+        title: Activity At (>=)
         anyOf:
         - type: string
           format: date-time
         - type: string
           format: date
+    ActivityFilters_DateCreatedGtParam:
+      in: query
+      name: date_created__gt
+      required: false
+      schema:
+        title: Date Created (>)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_OrganizationIdParam:
+      in: query
+      name: organization_id
+      required: false
+      schema:
+        title: Organization ID
+        default: null
+        anyOf:
+        - type: string
+        - type: 'null'
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

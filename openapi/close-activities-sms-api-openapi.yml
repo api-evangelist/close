@@ -357,36 +357,19 @@ paths:
           description: Not found
 components:
   parameters:
-    ActivityFilters_DateCreatedLtParam:
+    ActivityFilters_IdInParam:
+      description: Filter by activity IDs (comma-separated)
       in: query
-      name: date_created__lt
+      name: id__in
       required: false
       schema:
-        title: Date Created (<)
+        title: ID In
+        default: null
         anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    LimitParam:
-      description: Number of results to return.
-      in: query
-      name: _limit
-      required: false
-      schema:
-        default: 100
-        type: integer
-    ActivityFilters_DateCreatedLteParam:
-      in: query
-      name: date_created__lte
-      required: false
-      schema:
-        title: Date Created (<=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
+        - type: array
+          items:
+            type: string
+        - type: 'null'
     ActivityFilters_TypeParam:
       description: Filter by activity type, e.g. Call (comma-separated)
       in: query
@@ -400,12 +383,12 @@ components:
           items:
             type: string
         - type: 'null'
-    ActivityFilters_ActivityAtLtParam:
+    ActivityFilters_DateCreatedLtParam:
       in: query
-      name: activity_at__lt
+      name: date_created__lt
       required: false
       schema:
-        title: Activity At (<)
+        title: Date Created (<)
         anyOf:
         - type: string
           format: date-time
@@ -422,103 +405,6 @@ components:
           format: date-time
         - type: string
           format: date
-    ActivityFilters_DateCreatedGtParam:
-      in: query
-      name: date_created__gt
-      required: false
-      schema:
-        title: Date Created (>)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_IdInParam:
-      description: Filter by activity IDs (comma-separated)
-      in: query
-      name: id__in
-      required: false
-      schema:
-        title: ID In
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    SkipParam:
-      description: Number of results to skip before returning, for pagination.
-      in: query
-      name: _skip
-      required: false
-      schema:
-        default: 0
-        type: integer
-    ActivityFilters_ActivityAtGteParam:
-      in: query
-      name: activity_at__gte
-      required: false
-      schema:
-        title: Activity At (>=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_LeadIdParam:
-      description: Filter by lead IDs (comma-separated)
-      in: query
-      name: lead_id
-      required: false
-      schema:
-        title: Lead ID
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    ActivityFilters_ContactIdParam:
-      description: Filter by contact IDs (comma-separated)
-      in: query
-      name: contact_id
-      required: false
-      schema:
-        title: Contact ID
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    FieldsParam:
-      description: Comma-separated list of fields to include in the response.
-      in: query
-      name: _fields
-      required: false
-      schema:
-        type: string
-    ActivityFilters_OrganizationIdParam:
-      in: query
-      name: organization_id
-      required: false
-      schema:
-        title: Organization ID
-        default: null
-        anyOf:
-        - type: string
-        - type: 'null'
-    ActivityFilters_ActivityAtLteParam:
-      in: query
-      name: activity_at__lte
-      required: false
-      schema:
-        title: Activity At (<=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
     ActivityFilters_DateCreatedGteParam:
       in: query
       name: date_created__gte
@@ -530,6 +416,14 @@ components:
           format: date-time
         - type: string
           format: date
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
     ActivityFilters_UserIdParam:
       description: Filter by user IDs (comma-separated)
       in: query
@@ -543,6 +437,112 @@ components:
           items:
             type: string
         - type: 'null'
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
+    ActivityFilters_ActivityAtGteParam:
+      in: query
+      name: activity_at__gte
+      required: false
+      schema:
+        title: Activity At (>=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_OrganizationIdParam:
+      in: query
+      name: organization_id
+      required: false
+      schema:
+        title: Organization ID
+        default: null
+        anyOf:
+        - type: string
+        - type: 'null'
+    ActivityFilters_ActivityAtLtParam:
+      in: query
+      name: activity_at__lt
+      required: false
+      schema:
+        title: Activity At (<)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_ActivityAtLteParam:
+      in: query
+      name: activity_at__lte
+      required: false
+      schema:
+        title: Activity At (<=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_DateCreatedLteParam:
+      in: query
+      name: date_created__lte
+      required: false
+      schema:
+        title: Date Created (<=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_ContactIdParam:
+      description: Filter by contact IDs (comma-separated)
+      in: query
+      name: contact_id
+      required: false
+      schema:
+        title: Contact ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    ActivityFilters_LeadIdParam:
+      description: Filter by lead IDs (comma-separated)
+      in: query
+      name: lead_id
+      required: false
+      schema:
+        title: Lead ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
+    ActivityFilters_DateCreatedGtParam:
+      in: query
+      name: date_created__gt
+      required: false
+      schema:
+        title: Date Created (>)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
   schemas:
     UpdateSMSActivity:
       type: object
@@ -651,6 +651,13 @@ components:
           - 'null'
           - string
       additionalProperties: false
+    PhoneActivitySource:
+      title: PhoneActivitySource
+      description: Source of a phone activity. Describes whether the phone activity (such as a call or an SMS) was handled by Close's telephony provider or handled externally by a 3rd party and is merely logged in Close.
+      type: string
+      enum:
+      - Close.io
+      - External
     PhoneActivityDirection:
       title: PhoneActivityDirection
       description: Direction of a phone activity, such as a call or an SMS message.
@@ -658,155 +665,6 @@ components:
       enum:
       - inbound
       - outbound
-    MessageStatus:
-      title: MessageStatus
-      description: Status of a message, such as Email or SMS.
-      type: string
-      enum:
-      - inbox
-      - draft
-      - scheduled
-      - outbox
-      - sent
-      - error
-    CreateSMSActivity:
-      type: object
-      properties:
-        activity_at:
-          type:
-          - 'null'
-          - string
-          format: date-time
-        attachments:
-          type:
-          - array
-          - 'null'
-          maxItems: 10
-          items:
-            type: object
-            properties:
-              content_type:
-                type: string
-                enum:
-                - application/pdf
-                - application/vcard
-                - audio/3gpp
-                - audio/3gpp2
-                - audio/L24
-                - audio/ac3
-                - audio/amr
-                - audio/amr-nb
-                - audio/basic
-                - audio/mp4
-                - audio/mpeg
-                - audio/ogg
-                - audio/vnd.rn-realaudio
-                - audio/vnd.wave
-                - audio/webm
-                - image/bmp
-                - image/gif
-                - image/jpeg
-                - image/jpg
-                - image/png
-                - image/tiff
-                - text/calendar
-                - text/csv
-                - text/directory
-                - text/richtext
-                - text/rtf
-                - text/vcard
-                - text/x-vcard
-                - video/3gpp
-                - video/3gpp-tt
-                - video/3gpp2
-                - video/H261
-                - video/H263
-                - video/H263-1998
-                - video/H263-2000
-                - video/H264
-                - video/mp4
-                - video/mpeg
-                - video/quicktime
-                - video/webm
-              filename:
-                type: string
-              url:
-                type: string
-            required:
-            - content_type
-            - filename
-            - url
-        contact_id:
-          type:
-          - 'null'
-          - string
-        created_by:
-          type:
-          - 'null'
-          - string
-        date_created:
-          type:
-          - 'null'
-          - string
-          format: date-time
-        direction:
-          type:
-          - 'null'
-          - string
-          enum:
-          - inbound
-          - outbound
-          - null
-        lead_id:
-          type:
-          - 'null'
-          - string
-        local_phone:
-          description: Phone number in E.164 format
-          type:
-          - 'null'
-          - string
-        organization_id:
-          type:
-          - 'null'
-          - string
-        remote_phone:
-          description: Phone number in E.164 format
-          type:
-          - 'null'
-          - string
-        source:
-          type:
-          - 'null'
-          - string
-          enum:
-          - Close.io
-          - External
-          - null
-        status:
-          type: string
-          enum:
-          - inbox
-          - draft
-          - scheduled
-          - outbox
-          - sent
-          - error
-        template_id:
-          type:
-          - 'null'
-          - string
-        text:
-          type:
-          - 'null'
-          - string
-        user_id:
-          type:
-          - 'null'
-          - string
-      required:
-      - status
-      additionalProperties: false
     SMSActivity:
       title: SMSActivity
       type: object
@@ -1008,13 +866,155 @@ components:
       - updated_by
       - user_id
       - users
-    PhoneActivitySource:
-      title: PhoneActivitySource
-      description: Source of a phone activity. Describes whether the phone activity (such as a call or an SMS) was handled by Close's telephony provider or handled externally by a 3rd party and is merely logged in Close.
+    MessageStatus:
+      title: MessageStatus
+      description: Status of a message, such as Email or SMS.
       type: string
       enum:
-      - Close.io
-      - External
+      - inbox
+      - draft
+      - scheduled
+      - outbox
+      - sent
+      - error
+    CreateSMSActivity:
+      type: object
+      properties:
+        activity_at:
+          type:
+          - 'null'
+          - string
+          format: date-time
+        attachments:
+          type:
+          - array
+          - 'null'
+          maxItems: 10
+          items:
+            type: object
+            properties:
+              content_type:
+                type: string
+                enum:
+                - application/pdf
+                - application/vcard
+                - audio/3gpp
+                - audio/3gpp2
+                - audio/L24
+                - audio/ac3
+                - audio/amr
+                - audio/amr-nb
+                - audio/basic
+                - audio/mp4
+                - audio/mpeg
+                - audio/ogg
+                - audio/vnd.rn-realaudio
+                - audio/vnd.wave
+                - audio/webm
+                - image/bmp
+                - image/gif
+                - image/jpeg
+                - image/jpg
+                - image/png
+                - image/tiff
+                - text/calendar
+                - text/csv
+                - text/directory
+                - text/richtext
+                - text/rtf
+                - text/vcard
+                - text/x-vcard
+                - video/3gpp
+                - video/3gpp-tt
+                - video/3gpp2
+                - video/H261
+                - video/H263
+                - video/H263-1998
+                - video/H263-2000
+                - video/H264
+                - video/mp4
+                - video/mpeg
+                - video/quicktime
+                - video/webm
+              filename:
+                type: string
+              url:
+                type: string
+            required:
+            - content_type
+            - filename
+            - url
+        contact_id:
+          type:
+          - 'null'
+          - string
+        created_by:
+          type:
+          - 'null'
+          - string
+        date_created:
+          type:
+          - 'null'
+          - string
+          format: date-time
+        direction:
+          type:
+          - 'null'
+          - string
+          enum:
+          - inbound
+          - outbound
+          - null
+        lead_id:
+          type:
+          - 'null'
+          - string
+        local_phone:
+          description: Phone number in E.164 format
+          type:
+          - 'null'
+          - string
+        organization_id:
+          type:
+          - 'null'
+          - string
+        remote_phone:
+          description: Phone number in E.164 format
+          type:
+          - 'null'
+          - string
+        source:
+          type:
+          - 'null'
+          - string
+          enum:
+          - Close.io
+          - External
+          - null
+        status:
+          type: string
+          enum:
+          - inbox
+          - draft
+          - scheduled
+          - outbox
+          - sent
+          - error
+        template_id:
+          type:
+          - 'null'
+          - string
+        text:
+          type:
+          - 'null'
+          - string
+        user_id:
+          type:
+          - 'null'
+          - string
+      required:
+      - status
+      additionalProperties: false
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

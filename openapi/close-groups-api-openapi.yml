@@ -243,16 +243,15 @@ paths:
           description: Not found
 components:
   schemas:
-    CreateGroup:
-      title: CreateGroup
+    GroupMember:
+      title: GroupMember
       type: object
       properties:
-        name:
-          title: Name
+        user_id:
+          title: User ID
           type: string
       required:
-      - name
-      additionalProperties: false
+      - user_id
     CreateGroupMember:
       title: CreateGroupMember
       type: object
@@ -263,15 +262,16 @@ components:
       required:
       - user_id
       additionalProperties: false
-    GroupMember:
-      title: GroupMember
+    CreateGroup:
+      title: CreateGroup
       type: object
       properties:
-        user_id:
-          title: User ID
+        name:
+          title: Name
           type: string
       required:
-      - user_id
+      - name
+      additionalProperties: false
     Group:
       title: Group
       type: object
