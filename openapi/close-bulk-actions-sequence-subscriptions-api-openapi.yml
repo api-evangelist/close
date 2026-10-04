@@ -266,23 +266,6 @@ paths:
           description: Not found
 components:
   schemas:
-    BulkActionStatus:
-      title: BulkActionStatus
-      type: string
-      enum:
-      - created
-      - loading
-      - processing
-      - done
-      - paused
-      - resuming
-      - error
-    BulkSequenceSubscriptionContactPreference:
-      title: BulkSequenceSubscriptionContactPreference
-      type: string
-      enum:
-      - lead
-      - contact
     BulkSequenceSubscriptionAction:
       title: BulkSequenceSubscriptionAction
       type: object
@@ -421,6 +404,23 @@ components:
       - sort
       - status
       - updated_by
+    BulkActionStatus:
+      title: BulkActionStatus
+      type: string
+      enum:
+      - created
+      - loading
+      - processing
+      - done
+      - paused
+      - resuming
+      - error
+    BulkSequenceSubscriptionContactPreference:
+      title: BulkSequenceSubscriptionContactPreference
+      type: string
+      enum:
+      - lead
+      - contact
     BulkSequenceSubscriptionActionType:
       title: BulkSequenceSubscriptionActionType
       type: string

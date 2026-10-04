@@ -275,6 +275,25 @@ components:
       - email
       - role_id
       additionalProperties: false
+    SetPinnedSavedView:
+      title: SetPinnedSavedView
+      type: object
+      properties:
+        saved_view_ids:
+          title: Saved View IDs
+          type: array
+          items:
+            type: string
+      required:
+      - saved_view_ids
+      additionalProperties: false
+    AutoRecordCalls:
+      title: AutoRecordCalls
+      type: string
+      enum:
+      - enabled
+      - disabled
+      - unset
     Membership:
       title: Membership
       description: Editable settings for an organization membership.
@@ -308,25 +327,6 @@ components:
           description: Whether email opens are tracked for emails this member sends.
           type: boolean
       additionalProperties: false
-    SetPinnedSavedView:
-      title: SetPinnedSavedView
-      type: object
-      properties:
-        saved_view_ids:
-          title: Saved View IDs
-          type: array
-          items:
-            type: string
-      required:
-      - saved_view_ids
-      additionalProperties: false
-    AutoRecordCalls:
-      title: AutoRecordCalls
-      type: string
-      enum:
-      - enabled
-      - disabled
-      - unset
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

@@ -530,45 +530,8 @@ paths:
           description: Not found
 components:
   schemas:
-    ActionItem:
-      title: ActionItem
-      deprecated: true
-      type: object
-      properties:
-        action:
-          description: The recommended next step to progress or resolve the stalled opportunity
-          $ref: '#/components/schemas/StalledOpportunityActionTypeV1'
-        justification:
-          title: Justification
-          description: A short justification for the recommended action in the sales pipeline. Maximum 2 sentences.
-          type: string
-      required:
-      - action
-      - justification
-    OpportunitySuggestedAction:
-      title: OpportunitySuggestedAction
-      type: object
-      properties:
-        action:
-          $ref: '#/components/schemas/StalledOpportunityActionTypeV2'
-        details:
-          title: Details
-          anyOf:
-          - $ref: '#/components/schemas/OpportunityChangeStatusActionDetails'
-          - $ref: '#/components/schemas/OpportunityFollowUpEmailActionDetails'
-          - $ref: '#/components/schemas/OpportunityFollowUpSMSActionDetails'
-          - $ref: '#/components/schemas/OpportunityFollowUpCallActionDetails'
-          - $ref: '#/components/schemas/OpportunityAdjustCloseDateActionDetails'
-          - type: 'null'
-        justification:
-          title: Justification
-          type: string
-      required:
-      - action
-      - details
-      - justification
-    OpportunityFollowUpEmailActionDetails:
-      title: OpportunityFollowUpEmailActionDetails
+    OpportunityFollowUpSMSActionDetails:
+      title: OpportunityFollowUpSMSActionDetails
       type: object
       properties:
         contact_id:
@@ -577,45 +540,31 @@ components:
         message_draft:
           title: Message Draft
           type: string
-        subject_draft:
-          title: Subject Draft
-          type: string
       required:
       - contact_id
       - message_draft
-      - subject_draft
-    Attachment:
-      title: Attachment
-      type: object
-      properties:
-        content_type:
-          title: Content Type
-          anyOf:
-          - type: string
-          - type: 'null'
-        filename:
-          title: Filename
-          anyOf:
-          - type: string
-          - type: 'null'
-        size:
-          title: Size
-          anyOf:
-          - type: integer
-          - type: 'null'
-        thumbnail_url:
-          title: Thumbnail URL
-          anyOf:
-          - type: string
-          - type: 'null'
-        url:
-          title: URL
-          type: string
-      required:
-      - content_type
-      - filename
-      - size
-      - url
+    CallStatus:
+      title: CallStatus
+      description: Current status of the call.
+      type: string
+      enum:
+      - created
+      - in-progress
+      - completed
+      - cancel
+      - no-answer
+      - busy
+      - failed
+      - timeout
+    StalledOpportunityActionTypeV2:
+      title: StalledOpportunityActionTypeV2
+      type: string
+      enum:
+      - change_status
+      - adjust_close_date
+      - follow_up_email
+      - follow_up_call
+      - follow_up_sms
     WorkflowStatus:
       title: WorkflowStatus
       type: string
@@ -632,6 +581,26 @@ components:
       - finished
       - goal
       - error
+    OpportunityStatusType:
+      title: OpportunityStatusType
+      type: string
+      enum:
+      - won
+      - lost
+      - active
+    RenderedIntegrationLink:
+      title: RenderedIntegrationLink
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+        url:
+          title: Url
+          type: string
+      required:
+      - name
+      - url
     Contact:
       title: Contact
       type: object
@@ -734,29 +703,19 @@ components:
       - organization_id
       - title
       - updated_by
-    CommentSummary:
-      title: CommentSummary
+    OpportunityFollowUpCallActionDetails:
+      title: OpportunityFollowUpCallActionDetails
       type: object
       properties:
-        comment_count:
-          title: Comment Count
-          type: integer
-        thread_id:
-          title: Thread ID
+        call_plan:
+          title: Call Plan
+          type: string
+        contact_id:
+          title: Contact ID
           type: string
       required:
-      - comment_count
-      - thread_id
-    OpportunityAdjustCloseDateActionDetails:
-      title: OpportunityAdjustCloseDateActionDetails
-      type: object
-      properties:
-        close_date:
-          title: Close Date
-          type: string
-          format: date
-      required:
-      - close_date
+      - call_plan
+      - contact_id
     ContactUrl:
       title: ContactUrl
       type: object
@@ -770,6 +729,178 @@ components:
       required:
       - type
       - url
+    StalledOpportunityActionItems:
+      title: StalledOpportunityActionItems
+      deprecated: true
+      type: object
+      properties:
+        communication_issue:
+          description: The communication issue that is causing the stalled opportunity. If there is no issue, set to NoIssue.
+          $ref: '#/components/schemas/StalledOpportunityCommunicationIssue'
+        next_action:
+          description: An action item recommended to progress or resolve the stalled opportunity.
+          $ref: '#/components/schemas/ActionItem'
+      required:
+      - communication_issue
+      - next_action
+    OpportunityFollowUpEmailActionDetails:
+      title: OpportunityFollowUpEmailActionDetails
+      type: object
+      properties:
+        contact_id:
+          title: Contact ID
+          type: string
+        message_draft:
+          title: Message Draft
+          type: string
+        subject_draft:
+          title: Subject Draft
+          type: string
+      required:
+      - contact_id
+      - message_draft
+      - subject_draft
+    OpportunityChangeStatusActionDetails:
+      title: OpportunityChangeStatusActionDetails
+      type: object
+      properties:
+        status_id:
+          title: Status ID
+          type: string
+      required:
+      - status_id
+    BasicSubscriptionInfoForContact:
+      title: BasicSubscriptionInfoForContact
+      type: object
+      properties:
+        contact_email:
+          title: Contact Email
+          anyOf:
+          - type: string
+          - type: 'null'
+        date_created:
+          title: Date Created
+          type: string
+          format: date-time
+        initial_email_id:
+          title: Initial Email ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        sequence_id:
+          title: Sequence ID
+          type: string
+        sequence_name:
+          title: Sequence Name
+          type: string
+        sequence_status:
+          $ref: '#/components/schemas/WorkflowStatus'
+        start_date:
+          title: Start Date
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        subscription_id:
+          title: Subscription ID
+          type: string
+        subscription_status:
+          $ref: '#/components/schemas/WorkflowRunStatus'
+        subscription_status_reason:
+          anyOf:
+          - $ref: '#/components/schemas/StatusReason'
+          - type: 'null'
+      required:
+      - contact_email
+      - date_created
+      - initial_email_id
+      - sequence_id
+      - sequence_name
+      - sequence_status
+      - start_date
+      - subscription_id
+      - subscription_status
+      - subscription_status_reason
+    ActionItem:
+      title: ActionItem
+      deprecated: true
+      type: object
+      properties:
+        action:
+          description: The recommended next step to progress or resolve the stalled opportunity
+          $ref: '#/components/schemas/StalledOpportunityActionTypeV1'
+        justification:
+          title: Justification
+          description: A short justification for the recommended action in the sales pipeline. Maximum 2 sentences.
+          type: string
+      required:
+      - action
+      - justification
+    LeadAddress:
+      title: LeadAddress
+      type: object
+      properties:
+        address_1:
+          title: Address 1
+          anyOf:
+          - type: string
+          - type: 'null'
+        address_2:
+          title: Address 2
+          anyOf:
+          - type: string
+          - type: 'null'
+        city:
+          title: City
+          anyOf:
+          - type: string
+          - type: 'null'
+        country:
+          title: Country
+          anyOf:
+          - type: string
+          - type: 'null'
+        label:
+          title: Label
+          anyOf:
+          - type: string
+          - type: 'null'
+        state:
+          title: State
+          anyOf:
+          - type: string
+          - type: 'null'
+        tz_ids:
+          title: TZ IDs
+          type: array
+          items:
+            type: string
+        zipcode:
+          title: Zipcode
+          anyOf:
+          - type: string
+          - type: 'null'
+      required:
+      - address_1
+      - address_2
+      - city
+      - country
+      - label
+      - state
+      - zipcode
+    CommentSummary:
+      title: CommentSummary
+      type: object
+      properties:
+        comment_count:
+          title: Comment Count
+          type: integer
+        thread_id:
+          title: Thread ID
+          type: string
+      required:
+      - comment_count
+      - thread_id
     ContactRecentCall:
       title: ContactRecentCall
       type: object
@@ -814,39 +945,45 @@ components:
       - email
       - is_unsubscribed
       - type
-    CallStatus:
-      title: CallStatus
-      description: Current status of the call.
-      type: string
-      enum:
-      - created
-      - in-progress
-      - completed
-      - cancel
-      - no-answer
-      - busy
-      - failed
-      - timeout
-    OpportunityFollowUpCallActionDetails:
-      title: OpportunityFollowUpCallActionDetails
+    OpportunityAdjustCloseDateActionDetails:
+      title: OpportunityAdjustCloseDateActionDetails
       type: object
       properties:
-        call_plan:
-          title: Call Plan
+        close_date:
+          title: Close Date
           type: string
-        contact_id:
-          title: Contact ID
-          type: string
+          format: date
       required:
-      - call_plan
-      - contact_id
-    StalledOpportunityCommunicationIssue:
-      title: StalledOpportunityCommunicationIssue
-      type: string
-      enum:
-      - no_issue
-      - cant_get_in_touch
-      - no_communication_attempts
+      - close_date
+    ContactPhone:
+      title: ContactPhone
+      type: object
+      properties:
+        country:
+          title: Country
+          anyOf:
+          - type: string
+          - type: 'null'
+        outbound_sms_blocked:
+          title: Outbound SMS Blocked
+          type: boolean
+        phone:
+          title: Phone
+          type: string
+        phone_formatted:
+          title: Phone Formatted
+          type: string
+        type:
+          title: Type
+          type: string
+        tz_ids:
+          title: TZ IDs
+          type: array
+          items:
+            type: string
+      required:
+      - phone
+      - type
     StalledOpportunityActionTypeV1:
       title: StalledOpportunityActionTypeV1
       type: string
@@ -857,19 +994,268 @@ components:
       - adjust_close_date
       - ask_someone_else_to_reach_out
       - change_communication_method
-    RenderedIntegrationLink:
-      title: RenderedIntegrationLink
+    Attachment:
+      title: Attachment
       type: object
       properties:
-        name:
-          title: Name
-          type: string
+        content_type:
+          title: Content Type
+          anyOf:
+          - type: string
+          - type: 'null'
+        filename:
+          title: Filename
+          anyOf:
+          - type: string
+          - type: 'null'
+        size:
+          title: Size
+          anyOf:
+          - type: integer
+          - type: 'null'
+        thumbnail_url:
+          title: Thumbnail URL
+          anyOf:
+          - type: string
+          - type: 'null'
         url:
-          title: Url
+          title: URL
           type: string
       required:
-      - name
+      - content_type
+      - filename
+      - size
       - url
+    StatusReason:
+      title: StatusReason
+      description: Reason for each higher level status on a Workflow run.
+      type: string
+      enum:
+      - manual
+      - pending-call-timed-out
+      - bulk-action
+      - rate-limited
+      - sequence-deleted
+      - workflow-paused
+      - filter-not-matched
+      - insufficient-ai-credit-balance
+      - reply-received
+      - call-answered
+      - meeting-booked
+      - lead-status-changed
+      - outcome-met
+      - account-invalid
+      - account-failures
+      - sending-throttled-too-long
+      - membership-inactive
+      - send-as-error
+      - email-bounced
+      - call-failed
+      - sms-failed
+      - no-user-phone
+      - billing-error
+      - assignment-field-invalid
+      - lead-status-field-invalid
+      - assignees-missing
+      - run-as-disabled
+      - lead-not-visible
+      - internal-error
+      - field-mapping-error
+      - filter-config-invalid
+      - email-ai-generation-failed
+    StalledOpportunityCommunicationIssue:
+      title: StalledOpportunityCommunicationIssue
+      type: string
+      enum:
+      - no_issue
+      - cant_get_in_touch
+      - no_communication_attempts
+    Lead:
+      title: Lead
+      type: object
+      properties:
+        addresses:
+          title: Addresses
+          type: array
+          items:
+            $ref: '#/components/schemas/LeadAddress'
+        contact_ids:
+          title: Contact IDs
+          type: array
+          items:
+            type: string
+        contacts:
+          title: Contacts
+          deprecated: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+        contacts_summary:
+          title: Contacts Summary
+          type: string
+        created_by:
+          title: Created By
+          anyOf:
+          - type: string
+          - type: 'null'
+        created_by_name:
+          title: Created By Name
+          anyOf:
+          - type: string
+          - type: 'null'
+        date_created:
+          title: Date Created
+          type: string
+          format: date-time
+        date_updated:
+          title: Date Updated
+          type: string
+          format: date-time
+        description:
+          title: Description
+          anyOf:
+          - type: string
+          - type: 'null'
+        display_name:
+          title: Display Name
+          type: string
+        html_url:
+          title: HTML URL
+          type: string
+        id:
+          title: ID
+          type: string
+        integration_links:
+          title: Integration Links
+          type: array
+          items:
+            $ref: '#/components/schemas/RenderedIntegrationLink'
+        localtime:
+          title: Localtime
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        name:
+          title: Name
+          anyOf:
+          - type: string
+          - type: 'null'
+        opportunities:
+          title: Opportunities
+          deprecated: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Opportunity'
+        organization_id:
+          title: Organization ID
+          type: string
+        primary_address_full:
+          title: Primary Address Full
+          anyOf:
+          - type: string
+          - type: 'null'
+        primary_address_summary:
+          title: Primary Address Summary
+          anyOf:
+          - type: string
+          - type: 'null'
+        primary_email:
+          title: Primary Email
+          anyOf:
+          - $ref: '#/components/schemas/ContactEmail'
+          - type: 'null'
+        primary_phone:
+          title: Primary Phone
+          anyOf:
+          - $ref: '#/components/schemas/ContactPhone'
+          - type: 'null'
+        recent_calls:
+          title: Recent Calls
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        source:
+          title: Source
+          anyOf:
+          - type: string
+          - type: 'null'
+        status_id:
+          title: Status ID
+          type: string
+        status_label:
+          title: Status Label
+          type: string
+        summaries:
+          title: Summaries
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        tasks:
+          title: Tasks
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        updated_by:
+          title: Updated By
+          anyOf:
+          - type: string
+          - type: 'null'
+        updated_by_name:
+          title: Updated By Name
+          anyOf:
+          - type: string
+          - type: 'null'
+        url:
+          title: URL
+          anyOf:
+          - type: string
+          - type: 'null'
+      required:
+      - contact_ids
+      - created_by
+      - date_created
+      - date_updated
+      - description
+      - html_url
+      - id
+      - name
+      - organization_id
+      - status_id
+      - updated_by
+      - url
+    OpportunityValuePeriod:
+      title: OpportunityValuePeriod
+      type: string
+      enum:
+      - one_time
+      - monthly
+      - annual
+    OpportunitySuggestedAction:
+      title: OpportunitySuggestedAction
+      type: object
+      properties:
+        action:
+          $ref: '#/components/schemas/StalledOpportunityActionTypeV2'
+        details:
+          title: Details
+          anyOf:
+          - $ref: '#/components/schemas/OpportunityChangeStatusActionDetails'
+          - $ref: '#/components/schemas/OpportunityFollowUpEmailActionDetails'
+          - $ref: '#/components/schemas/OpportunityFollowUpSMSActionDetails'
+          - $ref: '#/components/schemas/OpportunityFollowUpCallActionDetails'
+          - $ref: '#/components/schemas/OpportunityAdjustCloseDateActionDetails'
+          - type: 'null'
+        justification:
+          title: Justification
+          type: string
+      required:
+      - action
+      - details
+      - justification
     Opportunity:
       title: Opportunity
       type: object
@@ -1074,392 +1460,6 @@ components:
       - user_id
       - value
       - value_period
-    OpportunityValuePeriod:
-      title: OpportunityValuePeriod
-      type: string
-      enum:
-      - one_time
-      - monthly
-      - annual
-    OpportunityChangeStatusActionDetails:
-      title: OpportunityChangeStatusActionDetails
-      type: object
-      properties:
-        status_id:
-          title: Status ID
-          type: string
-      required:
-      - status_id
-    OpportunityStatusType:
-      title: OpportunityStatusType
-      type: string
-      enum:
-      - won
-      - lost
-      - active
-    StalledOpportunityActionTypeV2:
-      title: StalledOpportunityActionTypeV2
-      type: string
-      enum:
-      - change_status
-      - adjust_close_date
-      - follow_up_email
-      - follow_up_call
-      - follow_up_sms
-    OpportunityFollowUpSMSActionDetails:
-      title: OpportunityFollowUpSMSActionDetails
-      type: object
-      properties:
-        contact_id:
-          title: Contact ID
-          type: string
-        message_draft:
-          title: Message Draft
-          type: string
-      required:
-      - contact_id
-      - message_draft
-    StatusReason:
-      title: StatusReason
-      description: Reason for each higher level status on a Workflow run.
-      type: string
-      enum:
-      - manual
-      - pending-call-timed-out
-      - bulk-action
-      - rate-limited
-      - sequence-deleted
-      - workflow-paused
-      - filter-not-matched
-      - insufficient-ai-credit-balance
-      - reply-received
-      - call-answered
-      - meeting-booked
-      - lead-status-changed
-      - outcome-met
-      - account-invalid
-      - account-failures
-      - sending-throttled-too-long
-      - membership-inactive
-      - send-as-error
-      - email-bounced
-      - call-failed
-      - sms-failed
-      - no-user-phone
-      - billing-error
-      - assignment-field-invalid
-      - lead-status-field-invalid
-      - assignees-missing
-      - run-as-disabled
-      - lead-not-visible
-      - internal-error
-      - field-mapping-error
-      - filter-config-invalid
-      - email-ai-generation-failed
-    Lead:
-      title: Lead
-      type: object
-      properties:
-        addresses:
-          title: Addresses
-          type: array
-          items:
-            $ref: '#/components/schemas/LeadAddress'
-        contact_ids:
-          title: Contact IDs
-          type: array
-          items:
-            type: string
-        contacts:
-          title: Contacts
-          deprecated: true
-          type: array
-          items:
-            $ref: '#/components/schemas/Contact'
-        contacts_summary:
-          title: Contacts Summary
-          type: string
-        created_by:
-          title: Created By
-          anyOf:
-          - type: string
-          - type: 'null'
-        created_by_name:
-          title: Created By Name
-          anyOf:
-          - type: string
-          - type: 'null'
-        date_created:
-          title: Date Created
-          type: string
-          format: date-time
-        date_updated:
-          title: Date Updated
-          type: string
-          format: date-time
-        description:
-          title: Description
-          anyOf:
-          - type: string
-          - type: 'null'
-        display_name:
-          title: Display Name
-          type: string
-        html_url:
-          title: HTML URL
-          type: string
-        id:
-          title: ID
-          type: string
-        integration_links:
-          title: Integration Links
-          type: array
-          items:
-            $ref: '#/components/schemas/RenderedIntegrationLink'
-        localtime:
-          title: Localtime
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-        name:
-          title: Name
-          anyOf:
-          - type: string
-          - type: 'null'
-        opportunities:
-          title: Opportunities
-          deprecated: true
-          type: array
-          items:
-            $ref: '#/components/schemas/Opportunity'
-        organization_id:
-          title: Organization ID
-          type: string
-        primary_address_full:
-          title: Primary Address Full
-          anyOf:
-          - type: string
-          - type: 'null'
-        primary_address_summary:
-          title: Primary Address Summary
-          anyOf:
-          - type: string
-          - type: 'null'
-        primary_email:
-          title: Primary Email
-          anyOf:
-          - $ref: '#/components/schemas/ContactEmail'
-          - type: 'null'
-        primary_phone:
-          title: Primary Phone
-          anyOf:
-          - $ref: '#/components/schemas/ContactPhone'
-          - type: 'null'
-        recent_calls:
-          title: Recent Calls
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-        source:
-          title: Source
-          anyOf:
-          - type: string
-          - type: 'null'
-        status_id:
-          title: Status ID
-          type: string
-        status_label:
-          title: Status Label
-          type: string
-        summaries:
-          title: Summaries
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-        tasks:
-          title: Tasks
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-        updated_by:
-          title: Updated By
-          anyOf:
-          - type: string
-          - type: 'null'
-        updated_by_name:
-          title: Updated By Name
-          anyOf:
-          - type: string
-          - type: 'null'
-        url:
-          title: URL
-          anyOf:
-          - type: string
-          - type: 'null'
-      required:
-      - contact_ids
-      - created_by
-      - date_created
-      - date_updated
-      - description
-      - html_url
-      - id
-      - name
-      - organization_id
-      - status_id
-      - updated_by
-      - url
-    ContactPhone:
-      title: ContactPhone
-      type: object
-      properties:
-        country:
-          title: Country
-          anyOf:
-          - type: string
-          - type: 'null'
-        outbound_sms_blocked:
-          title: Outbound SMS Blocked
-          type: boolean
-        phone:
-          title: Phone
-          type: string
-        phone_formatted:
-          title: Phone Formatted
-          type: string
-        type:
-          title: Type
-          type: string
-        tz_ids:
-          title: TZ IDs
-          type: array
-          items:
-            type: string
-      required:
-      - phone
-      - type
-    StalledOpportunityActionItems:
-      title: StalledOpportunityActionItems
-      deprecated: true
-      type: object
-      properties:
-        communication_issue:
-          description: The communication issue that is causing the stalled opportunity. If there is no issue, set to NoIssue.
-          $ref: '#/components/schemas/StalledOpportunityCommunicationIssue'
-        next_action:
-          description: An action item recommended to progress or resolve the stalled opportunity.
-          $ref: '#/components/schemas/ActionItem'
-      required:
-      - communication_issue
-      - next_action
-    BasicSubscriptionInfoForContact:
-      title: BasicSubscriptionInfoForContact
-      type: object
-      properties:
-        contact_email:
-          title: Contact Email
-          anyOf:
-          - type: string
-          - type: 'null'
-        date_created:
-          title: Date Created
-          type: string
-          format: date-time
-        initial_email_id:
-          title: Initial Email ID
-          anyOf:
-          - type: string
-          - type: 'null'
-        sequence_id:
-          title: Sequence ID
-          type: string
-        sequence_name:
-          title: Sequence Name
-          type: string
-        sequence_status:
-          $ref: '#/components/schemas/WorkflowStatus'
-        start_date:
-          title: Start Date
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-        subscription_id:
-          title: Subscription ID
-          type: string
-        subscription_status:
-          $ref: '#/components/schemas/WorkflowRunStatus'
-        subscription_status_reason:
-          anyOf:
-          - $ref: '#/components/schemas/StatusReason'
-          - type: 'null'
-      required:
-      - contact_email
-      - date_created
-      - initial_email_id
-      - sequence_id
-      - sequence_name
-      - sequence_status
-      - start_date
-      - subscription_id
-      - subscription_status
-      - subscription_status_reason
-    LeadAddress:
-      title: LeadAddress
-      type: object
-      properties:
-        address_1:
-          title: Address 1
-          anyOf:
-          - type: string
-          - type: 'null'
-        address_2:
-          title: Address 2
-          anyOf:
-          - type: string
-          - type: 'null'
-        city:
-          title: City
-          anyOf:
-          - type: string
-          - type: 'null'
-        country:
-          title: Country
-          anyOf:
-          - type: string
-          - type: 'null'
-        label:
-          title: Label
-          anyOf:
-          - type: string
-          - type: 'null'
-        state:
-          title: State
-          anyOf:
-          - type: string
-          - type: 'null'
-        tz_ids:
-          title: TZ IDs
-          type: array
-          items:
-            type: string
-        zipcode:
-          title: Zipcode
-          anyOf:
-          - type: string
-          - type: 'null'
-      required:
-      - address_1
-      - address_2
-      - city
-      - country
-      - label
-      - state
-      - zipcode
   parameters:
     SkipParam:
       description: Number of results to skip before returning, for pagination.
@@ -1469,13 +1469,6 @@ components:
       schema:
         default: 0
         type: integer
-    FieldsParam:
-      description: Comma-separated list of fields to include in the response.
-      in: query
-      name: _fields
-      required: false
-      schema:
-        type: string
     LimitParam:
       description: Number of results to return.
       in: query
@@ -1484,6 +1477,13 @@ components:
       schema:
         default: 100
         type: integer
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

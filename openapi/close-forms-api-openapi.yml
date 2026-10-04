@@ -132,19 +132,6 @@ paths:
           description: Not found
 components:
   schemas:
-    FormFieldChoice:
-      title: FormFieldChoice
-      type: object
-      properties:
-        label:
-          title: Label
-          type: string
-        value:
-          title: Value
-          type: string
-      required:
-      - label
-      - value
     FormFieldDefinition:
       title: FormFieldDefinition
       type: object
@@ -170,6 +157,19 @@ components:
       - id
       - name
       - type
+    FormFieldChoice:
+      title: FormFieldChoice
+      type: object
+      properties:
+        label:
+          title: Label
+          type: string
+        value:
+          title: Value
+          type: string
+      required:
+      - label
+      - value
     Form:
       title: Form
       type: object

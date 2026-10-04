@@ -200,35 +200,23 @@ paths:
           description: Not found
 components:
   schemas:
-    UpdateIntegrationLink:
-      title: UpdateIntegrationLink
+    CreateIntegrationLink:
+      title: CreateIntegrationLink
       type: object
       properties:
         name:
           title: Name
-          default: null
-          anyOf:
-          - type: string
-          - type: 'null'
+          type: string
         type:
-          default: null
-          anyOf:
-          - $ref: '#/components/schemas/IntegrationLinkType'
-          - type: 'null'
+          $ref: '#/components/schemas/IntegrationLinkType'
         url:
           title: Url
-          default: null
-          anyOf:
-          - type: string
-          - type: 'null'
+          type: string
+      required:
+      - name
+      - type
+      - url
       additionalProperties: false
-    IntegrationLinkType:
-      title: IntegrationLinkType
-      type: string
-      enum:
-      - lead
-      - contact
-      - opportunity
     IntegrationLink:
       title: IntegrationLink
       type: object
@@ -279,22 +267,34 @@ components:
       - type
       - updated_by
       - url
-    CreateIntegrationLink:
-      title: CreateIntegrationLink
+    IntegrationLinkType:
+      title: IntegrationLinkType
+      type: string
+      enum:
+      - lead
+      - contact
+      - opportunity
+    UpdateIntegrationLink:
+      title: UpdateIntegrationLink
       type: object
       properties:
         name:
           title: Name
-          type: string
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
         type:
-          $ref: '#/components/schemas/IntegrationLinkType'
+          default: null
+          anyOf:
+          - $ref: '#/components/schemas/IntegrationLinkType'
+          - type: 'null'
         url:
           title: Url
-          type: string
-      required:
-      - name
-      - type
-      - url
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
       additionalProperties: false
   securitySchemes:
     ApiKeyAuth:

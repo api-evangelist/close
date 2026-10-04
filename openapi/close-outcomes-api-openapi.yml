@@ -225,86 +225,31 @@ paths:
         '404':
           description: Not found
 components:
+  parameters:
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
   schemas:
-    UpdateOutcome:
-      title: UpdateOutcome
-      type: object
-      properties:
-        applies_to:
-          title: Applies To
-          description: 'Deprecated. This field will be derived from `type` in a future update: `custom` applies to calls and meetings, `vm-dropped` applies to calls only.'
-          deprecated: true
-          default: null
-          anyOf:
-          - type: array
-            items:
-              $ref: '#/components/schemas/OutcomeAppliesTo'
-          - type: 'null'
-        description:
-          title: Description
-          description: Explain what the outcome means and when it should be used.
-          default: null
-          anyOf:
-          - type: string
-          - type: 'null'
-        name:
-          title: Name
-          description: Displayed to users wherever outcomes can be selected.
-          default: null
-          anyOf:
-          - type: string
-          - type: 'null'
-        type:
-          description: Set to `vm-dropped` if this outcome should be automatically set on calls whenever a team member performs a Voicemail Drop. Otherwise, leave empty or explicitly set to `custom` (default).
-          default: null
-          anyOf:
-          - $ref: '#/components/schemas/OutcomeType'
-          - type: 'null'
-      additionalProperties: false
-    OutcomeAppliesTo:
-      title: OutcomeAppliesTo
-      type: string
-      enum:
-      - calls
-      - meetings
-    OutcomeType:
-      title: OutcomeType
-      type: string
-      enum:
-      - vm-dropped
-      - custom
-    CreateOutcome:
-      title: CreateOutcome
-      type: object
-      properties:
-        applies_to:
-          title: Applies To
-          description: 'Deprecated. This field will be derived from `type` in a future update: `custom` applies to calls and meetings, `vm-dropped` applies to calls only.'
-          deprecated: true
-          default: null
-          anyOf:
-          - type: array
-            items:
-              $ref: '#/components/schemas/OutcomeAppliesTo'
-          - type: 'null'
-        description:
-          title: Description
-          description: Explain what the outcome means and when it should be used.
-          default: null
-          anyOf:
-          - type: string
-          - type: 'null'
-        name:
-          title: Name
-          description: Displayed to users wherever outcomes can be selected.
-          type: string
-        type:
-          description: Set to `vm-dropped` if this outcome should be automatically set on calls whenever a team member performs a Voicemail Drop. Otherwise, leave empty or explicitly set to `custom` (default).
-          default: custom
-          $ref: '#/components/schemas/OutcomeType'
-      required:
-      - name
-      additionalProperties: false
     Outcome:
       title: Outcome
       type: object
@@ -359,30 +304,85 @@ components:
       - organization_id
       - type
       - updated_by
-  parameters:
-    SkipParam:
-      description: Number of results to skip before returning, for pagination.
-      in: query
-      name: _skip
-      required: false
-      schema:
-        default: 0
-        type: integer
-    LimitParam:
-      description: Number of results to return.
-      in: query
-      name: _limit
-      required: false
-      schema:
-        default: 100
-        type: integer
-    FieldsParam:
-      description: Comma-separated list of fields to include in the response.
-      in: query
-      name: _fields
-      required: false
-      schema:
-        type: string
+    CreateOutcome:
+      title: CreateOutcome
+      type: object
+      properties:
+        applies_to:
+          title: Applies To
+          description: 'Deprecated. This field will be derived from `type` in a future update: `custom` applies to calls and meetings, `vm-dropped` applies to calls only.'
+          deprecated: true
+          default: null
+          anyOf:
+          - type: array
+            items:
+              $ref: '#/components/schemas/OutcomeAppliesTo'
+          - type: 'null'
+        description:
+          title: Description
+          description: Explain what the outcome means and when it should be used.
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        name:
+          title: Name
+          description: Displayed to users wherever outcomes can be selected.
+          type: string
+        type:
+          description: Set to `vm-dropped` if this outcome should be automatically set on calls whenever a team member performs a Voicemail Drop. Otherwise, leave empty or explicitly set to `custom` (default).
+          default: custom
+          $ref: '#/components/schemas/OutcomeType'
+      required:
+      - name
+      additionalProperties: false
+    OutcomeAppliesTo:
+      title: OutcomeAppliesTo
+      type: string
+      enum:
+      - calls
+      - meetings
+    UpdateOutcome:
+      title: UpdateOutcome
+      type: object
+      properties:
+        applies_to:
+          title: Applies To
+          description: 'Deprecated. This field will be derived from `type` in a future update: `custom` applies to calls and meetings, `vm-dropped` applies to calls only.'
+          deprecated: true
+          default: null
+          anyOf:
+          - type: array
+            items:
+              $ref: '#/components/schemas/OutcomeAppliesTo'
+          - type: 'null'
+        description:
+          title: Description
+          description: Explain what the outcome means and when it should be used.
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        name:
+          title: Name
+          description: Displayed to users wherever outcomes can be selected.
+          default: null
+          anyOf:
+          - type: string
+          - type: 'null'
+        type:
+          description: Set to `vm-dropped` if this outcome should be automatically set on calls whenever a team member performs a Voicemail Drop. Otherwise, leave empty or explicitly set to `custom` (default).
+          default: null
+          anyOf:
+          - $ref: '#/components/schemas/OutcomeType'
+          - type: 'null'
+      additionalProperties: false
+    OutcomeType:
+      title: OutcomeType
+      type: string
+      enum:
+      - vm-dropped
+      - custom
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

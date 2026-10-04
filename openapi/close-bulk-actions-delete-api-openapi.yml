@@ -219,26 +219,6 @@ paths:
           description: Not found
 components:
   schemas:
-    BulkActionStatus:
-      title: BulkActionStatus
-      type: string
-      enum:
-      - created
-      - loading
-      - processing
-      - done
-      - paused
-      - resuming
-      - error
-    BulkActionObjectType:
-      title: BulkActionObjectType
-      type: string
-      enum:
-      - lead
-      - contact
-      - call
-      - custom_activity
-      - form_submission
     BulkDeleteAction:
       title: BulkDeleteAction
       type: object
@@ -334,6 +314,26 @@ components:
       - sort
       - status
       - updated_by
+    BulkActionStatus:
+      title: BulkActionStatus
+      type: string
+      enum:
+      - created
+      - loading
+      - processing
+      - done
+      - paused
+      - resuming
+      - error
+    BulkActionObjectType:
+      title: BulkActionObjectType
+      type: string
+      enum:
+      - lead
+      - contact
+      - call
+      - custom_activity
+      - form_submission
   parameters:
     SkipParam:
       description: Number of results to skip before returning, for pagination.

@@ -210,6 +210,19 @@ paths:
           description: Not found
 components:
   schemas:
+    InlineLeadStatusPayload:
+      title: InlineLeadStatusPayload
+      description: Reference to an existing lead status by `id`.
+      type: object
+      properties:
+        id:
+          title: ID
+          description: ID of an existing lead status.
+          type: string
+        label:
+          title: Label
+          description: Label of the lead status.
+          type: string
     Organization:
       title: Organization
       description: Editable organization settings.
@@ -240,19 +253,6 @@ components:
           description: Require an unsubscribe link in Bulk Emails and Workflows.
           type: boolean
       additionalProperties: false
-    InlineLeadStatusPayload:
-      title: InlineLeadStatusPayload
-      description: Reference to an existing lead status by `id`.
-      type: object
-      properties:
-        id:
-          title: ID
-          description: ID of an existing lead status.
-          type: string
-        label:
-          title: Label
-          description: Label of the lead status.
-          type: string
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

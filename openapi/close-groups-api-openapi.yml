@@ -243,25 +243,6 @@ paths:
           description: Not found
 components:
   schemas:
-    GroupMember:
-      title: GroupMember
-      type: object
-      properties:
-        user_id:
-          title: User ID
-          type: string
-      required:
-      - user_id
-    CreateGroupMember:
-      title: CreateGroupMember
-      type: object
-      properties:
-        user_id:
-          title: User ID
-          type: string
-      required:
-      - user_id
-      additionalProperties: false
     CreateGroup:
       title: CreateGroup
       type: object
@@ -271,6 +252,16 @@ components:
           type: string
       required:
       - name
+      additionalProperties: false
+    CreateGroupMember:
+      title: CreateGroupMember
+      type: object
+      properties:
+        user_id:
+          title: User ID
+          type: string
+      required:
+      - user_id
       additionalProperties: false
     Group:
       title: Group
@@ -297,6 +288,15 @@ components:
       - id
       - name
       - organization_id
+    GroupMember:
+      title: GroupMember
+      type: object
+      properties:
+        user_id:
+          title: User ID
+          type: string
+      required:
+      - user_id
   parameters:
     FieldsParam:
       description: Comma-separated list of fields to include in the response.

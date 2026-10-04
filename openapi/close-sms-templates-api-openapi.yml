@@ -199,41 +199,24 @@ paths:
         '404':
           description: Not found
 components:
+  parameters:
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
   schemas:
-    UpdateSMSTemplateAttachment:
-      title: UpdateSMSTemplateAttachment
-      type: object
-      properties:
-        content_type:
-          title: Content Type
-          type: string
-        filename:
-          title: Filename
-          type: string
-        url:
-          title: Url
-          type: string
-      required:
-      - content_type
-      - filename
-      - url
-    CreateSMSTemplateAttachment:
-      title: CreateSMSTemplateAttachment
-      type: object
-      properties:
-        content_type:
-          title: Content Type
-          type: string
-        filename:
-          title: Filename
-          type: string
-        url:
-          title: Url
-          type: string
-      required:
-      - content_type
-      - filename
-      - url
     CreateSMSTemplate:
       title: CreateSMSTemplate
       type: object
@@ -255,12 +238,46 @@ components:
       required:
       - name
       additionalProperties: false
+    UpdateSMSTemplateAttachment:
+      title: UpdateSMSTemplateAttachment
+      type: object
+      properties:
+        content_type:
+          title: Content Type
+          type: string
+        filename:
+          title: Filename
+          type: string
+        url:
+          title: Url
+          type: string
+      required:
+      - content_type
+      - filename
+      - url
     SMSTemplateStatus:
       title: SMSTemplateStatus
       type: string
       enum:
       - active
       - archived
+    CreateSMSTemplateAttachment:
+      title: CreateSMSTemplateAttachment
+      type: object
+      properties:
+        content_type:
+          title: Content Type
+          type: string
+        filename:
+          title: Filename
+          type: string
+        url:
+          title: Url
+          type: string
+      required:
+      - content_type
+      - filename
+      - url
     UpdateSMSTemplate:
       title: UpdateSMSTemplate
       type: object
@@ -283,23 +300,6 @@ components:
           title: Text
           type: string
       additionalProperties: false
-  parameters:
-    SkipParam:
-      description: Number of results to skip before returning, for pagination.
-      in: query
-      name: _skip
-      required: false
-      schema:
-        default: 0
-        type: integer
-    LimitParam:
-      description: Number of results to return.
-      in: query
-      name: _limit
-      required: false
-      schema:
-        default: 100
-        type: integer
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

@@ -251,22 +251,6 @@ paths:
           description: Not found
 components:
   schemas:
-    CreateBlockedPhoneNumber:
-      title: CreateBlockedPhoneNumber
-      type: object
-      properties:
-        phone:
-          title: Phone
-          description: The phone number (in E.164 format) that you wish to block.
-          type: string
-        reason:
-          title: Reason
-          description: The reason why you wish to block a given phone number.
-          type: string
-      required:
-      - phone
-      - reason
-      additionalProperties: false
     UpdateBlockedPhoneNumber:
       title: UpdateBlockedPhoneNumber
       type: object
@@ -323,15 +307,6 @@ components:
       - phone
       - reason
       - updated_by
-    BlockedPhoneNumberSettings:
-      title: BlockedPhoneNumberSettings
-      type: object
-      properties:
-        reject_anonymous_inbound_calls:
-          title: Reject Anonymous Inbound Calls
-          type: boolean
-      required:
-      - reject_anonymous_inbound_calls
     UpdateBlockedPhoneNumberSettings:
       title: UpdateBlockedPhoneNumberSettings
       type: object
@@ -341,6 +316,31 @@ components:
           type: boolean
       required:
       - reject_anonymous_inbound_calls
+      additionalProperties: false
+    BlockedPhoneNumberSettings:
+      title: BlockedPhoneNumberSettings
+      type: object
+      properties:
+        reject_anonymous_inbound_calls:
+          title: Reject Anonymous Inbound Calls
+          type: boolean
+      required:
+      - reject_anonymous_inbound_calls
+    CreateBlockedPhoneNumber:
+      title: CreateBlockedPhoneNumber
+      type: object
+      properties:
+        phone:
+          title: Phone
+          description: The phone number (in E.164 format) that you wish to block.
+          type: string
+        reason:
+          title: Reason
+          description: The reason why you wish to block a given phone number.
+          type: string
+      required:
+      - phone
+      - reason
       additionalProperties: false
   parameters:
     SkipParam:
