@@ -1,0 +1,613 @@
+generated: '2026-10-12'
+method: searched
+source:
+- https://zapier.com/apps/close/integrations
+- https://composio.dev/toolkits/close
+checked:
+- https://composio.dev/toolkits/close
+- https://monid.ai/tools/close
+- https://n8n.io/integrations/close/
+- https://zapier.com/apps/close/integrations
+summary: null
+marketplace_apps:
+- marketplace: zapier
+  channel: ipaas-listing
+  app: close
+  url: https://zapier.com/apps/close/integrations
+  external_url: https://www.close.com/?utm_source=Partner&utm_medium=Integration_Listing&utm_campaign=2025_Partnerships&utm_content=Home
+  partner_tier: PLATINUM
+  triggers:
+  - key: call_recording
+    label: New Call Recording
+  - key: call_transcript
+    label: New Call Transcript
+  - key: call_v2
+    label: New Call
+  - key: contact_in_smart_view
+    label: New Contact in Contact Smart View
+  - key: contact_v2
+    label: New Contact
+  - key: custom_activity_v2
+    label: Published Custom Activity
+  - key: custom_object_v2
+    label: New or Updated Custom Object
+  - key: email_v3
+    label: New Email
+  - key: export_v2
+    label: New Export
+  - key: form_submission
+    label: New Form Submission
+  - key: inbox_item_v3
+    label: New Inbox Item
+  - key: lead_created
+    label: New Lead
+  - key: lead_in_status
+    label: New Lead in Status
+  - key: lead_v3
+    label: New Lead in Smart View
+  - key: meeting_v2
+    label: New Meeting
+  - key: membership
+    label: New Membership Added or Removed
+  - key: new_event_v4
+    label: New Event
+  - key: note_v2
+    label: New Note
+  - key: opportunity_in_status
+    label: New Opportunity in Status
+  - key: opportunity_v2
+    label: New Opportunity
+  - key: sequence_subscription_v2
+    label: New or Updated Workflow Subscription
+  - key: sms_v2
+    label: New SMS
+  - key: task_v3
+    label: New Task
+  - key: unsubscribed_email
+    label: New Unsubscribed Email
+  - key: whatsapp_message
+    label: New WhatsApp Message
+  actions:
+  - key: add_address
+    label: Add Address to Lead
+  - key: create_whatsapp_message
+    label: Create WhatsApp Message
+  - key: delete_call
+    label: Delete Logged Call
+  - key: delete_email
+    label: Delete Email
+  - key: delete_email_address
+    label: Delete Email Address From Contact
+  - key: export_activity_report
+    label: Export Activity Report to CSV
+  - key: merge_two_leads
+    label: Merge Two Leads
+  - key: new_activity_overview_report
+    label: Run Activity Overview Report
+  - key: new_bulk_action_v3
+    label: Create Bulk Action
+  - key: new_bulk_email_v2
+    label: Create Bulk Email
+  - key: new_bulk_sequence_subscription_v2
+    label: Create Bulk Workflow Subscription Action
+  - key: new_call
+    label: Create Call
+  - key: new_call_task
+    label: Create Call Task
+  - key: new_contact
+    label: Create Contact
+  - key: new_custom_activity
+    label: Create Custom Activity
+  - key: new_custom_object_v2
+    label: Create Custom Object
+  - key: new_email_v2
+    label: Create Email
+  - key: new_export
+    label: Create Export
+  - key: new_invite
+    label: Add User
+  - key: new_lead_v5
+    label: Create Lead
+  - key: new_note_v3
+    label: Create Note
+  - key: new_number_of_leads_report
+    label: Find Number of Leads in Smart View
+  - key: new_opportunity_funnel_report
+    label: Run Opportunity Funnel Report
+  - key: new_opportunity_report
+    label: Run Opportunity Report
+  - key: new_opportunity_v2
+    label: Create Opportunity
+  - key: new_sent_email_report
+    label: Run Sent Email Report
+  - key: new_sequence_subscription
+    label: Subscribe Contact to Workflow
+  - key: new_smart_view
+    label: Create Lead Smart View
+  - key: new_sms
+    label: Create SMS
+  - key: new_status_change_report
+    label: Run Status Change Report
+  - key: new_task
+    label: Create Task
+  - key: random_user_v2
+    label: Select Random User
+  - key: resubscribe_email
+    label: Resubscribe Email
+  - key: toggle_forwarding
+    label: Toggle Forwarding on Phone Number
+  - key: unsubscribe_email
+    label: Unsubscribe Email
+  - key: update_call
+    label: Update Call
+  - key: update_contact
+    label: Update Contact
+  - key: update_custom_activity
+    label: Update Custom Activity
+  - key: update_custom_object
+    label: Update Custom Object
+  - key: update_lead_v2
+    label: Update Lead
+  - key: update_note_v3
+    label: Update Note
+  - key: update_opportunity
+    label: Update Opportunity
+  - key: update_sequence_subscription
+    label: Update Workflow Subscription
+  - key: update_smart_view
+    label: Update Lead Smart View
+  - key: update_task
+    label: Update Task
+  - key: _zap_raw_request
+    label: API Request (Beta)
+  searches:
+  - key: search_call
+    label: Find Call
+  - key: search_connected_account
+    label: Find Connected Account
+  - key: search_contacts_v2
+    label: Find Contacts
+  - key: search_custom_activity
+    label: Find Custom Activity
+  - key: search_custom_objects
+    label: Find Custom Objects
+  - key: search_group
+    label: Find Group
+  - key: search_lead_v6
+    label: Find Lead
+  - key: search_meetings
+    label: Find Meetings
+  - key: search_note_v2
+    label: Find Note
+  - key: search_opportunity_v3
+    label: Find Opportunities
+  - key: search_sequence_subscription
+    label: Find Workflow Subscription
+  - key: search_task
+    label: Find Task
+  - key: search_user_v2
+    label: Find User
+  - key: search_whatsapp_messages
+    label: Find WhatsApp Messages
+- marketplace: composio
+  channel: agent-gateway
+  app: close
+  url: https://composio.dev/toolkits/close
+  identity: action-prefix
+  actions:
+  - key: CLOSE_CLOSE_CREATE_SMS
+  - key: CLOSE_CREATE_CALL
+  - key: CLOSE_CREATE_LEAD
+  - key: CLOSE_CREATE_SMS
+  - key: CLOSE_CREATE_TASK
+  - key: CLOSE_DELETE_CALL
+  - key: CLOSE_GET_NOTE
+edges:
+- partner_name: Typeform
+  partner: typeform
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/typeform
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: https://www.typeform.com/signup?utm_medium=referral&utm_source=zapier&utm_campaign=zapier_integration&utm_content=marketplace
+- partner_name: Calendly
+  partner: calendly
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/calendly
+  direction: third-party
+  category: Scheduling & Booking
+  partner_url: https://calendly.com/?utm_medium=partner&utm_source=zapier&utm_campaign=main_partner_page&utm_content=main_inbound_link
+- partner_name: ClickFunnels Classic
+  partner: clickfunnels
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/clickfunnels-classic
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://www.clickfunnels.com/
+- partner_name: Airtable
+  partner: airtable
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/airtable
+  direction: third-party
+  category: Databases
+  partner_url: https://airtable.com/
+- partner_name: OnceHub
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/oncehub
+  direction: third-party
+  category: Scheduling & Booking
+  partner_url: https://www.oncehub.com/scheduleonce/home
+- partner_name: Facebook Lead Ads
+  partner: facebook-lead-ads
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/facebook-lead-ads
+  direction: third-party
+  category: Ads & Conversion
+  partner_url: https://www.facebook.com/business/ads/lead-ads
+- partner_name: Perspective
+  partner: perspective
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/perspective
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://perspective.co/
+- partner_name: Google Forms
+  partner: google-forms
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/google-forms
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: http://google.com/
+- partner_name: iClosed
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/iclosed
+  direction: third-party
+  category: Scheduling & Booking
+  partner_url: https://iclosed.io/
+- partner_name: PandaDoc
+  partner: pandadoc
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/pandadoc
+  direction: third-party
+  category: Documents
+  partner_url: https://www.pandadoc.com/integrations/zapier/?utm_source=zapier-marketplace&utm_medium=partner&utm_campaign=2020-11-inbd-marketplace-websitevisit-pandadoc-zapier-integration
+- partner_name: Google Calendar
+  partner: google-calendar
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/google-calendar
+  direction: third-party
+  category: Calendar
+  partner_url: https://calendar.google.com/
+- partner_name: Instantly
+  partner: instantly-ai
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/instantly
+  direction: third-party
+  category: Email
+  partner_url: https://instantly.ai/
+- partner_name: Kajabi
+  partner: kajabi
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/kajabi
+  direction: third-party
+  category: eCommerce
+  partner_url: http://kajabi.com/
+- partner_name: LeadConnector
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/leadconnector
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://www.leadconnectorhq.com/
+- partner_name: HubSpot
+  partner: hubspot
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/hubspot
+  direction: third-party
+  category: Marketing Automation
+  partner_url: http://www.hubspot.com/
+- partner_name: Onepage
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/onepage
+  direction: third-party
+  category: App Builder
+  partner_url: http://onepage.io/
+- partner_name: Slack
+  partner: slack
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/slack
+  direction: third-party
+  category: Team Chat
+  partner_url: https://slack.com/
+- partner_name: Superchat
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/superchat
+  direction: third-party
+  category: CRM (Customer Relationship Management)
+  partner_url: https://app.superchat.de/
+- partner_name: Gmail
+  partner: gmail
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/gmail
+  direction: third-party
+  category: Email
+  partner_url: https://mail.google.com/
+- partner_name: ClickFunnels
+  partner: clickfunnels
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/clickfunnels
+  direction: third-party
+  category: Website & App Building
+  partner_url: https://help.myclickfunnels.com/hc/en-us/articles/9655675588119-ClickFunnels-FAQs
+- partner_name: Heyflow
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/heyflow
+  direction: third-party
+  category: Website & App Building
+  partner_url: https://heyflow.com/
+- partner_name: Google Sheets
+  partner: google-sheets
+  partner_match: name-exact
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/google-sheets
+  direction: third-party
+  category: Google
+  partner_url: http://sheets.google.com/
+- partner_name: monday.com
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/monday
+  direction: third-party
+  category: Project Management
+  partner_url: https://monday.com/
+- partner_name: ablefy
+  partner: ablefy
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/ablefy
+  direction: third-party
+  category: eCommerce
+  partner_url: https://ablefy.io/?utm_source=zapier&utm_medium=coop&utm_campaign=about_page
+- partner_name: Jotform
+  partner: jotform
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/jotform
+  direction: third-party
+  category: Forms & Surveys
+  partner_url: http://www.jotform.com/
+- partner_name: FunnelCockpit
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/funnelcockpit
+  direction: third-party
+  category: Contact Management
+  partner_url: https://funnelcockpit.com/
+- partner_name: ActiveCampaign
+  partner: activecampaign
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/activecampaign
+  direction: third-party
+  category: Marketing Automation
+  partner_url: https://www.activecampaign.com/?utm_source=unpaid_syndication_website&utm_medium=referral&utm_campaign=zapier_listing
+- partner_name: Trello
+  partner: trello
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/trello
+  direction: third-party
+  category: Project Management
+  partner_url: https://trello.com/
+- partner_name: ClickUp
+  partner: clickup
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/clickup
+  direction: third-party
+  category: Project Management
+  partner_url: https://clickup.com/zapier
+- partner_name: Shopify
+  partner: shopify
+  partner_match: domain
+  partner_candidate: null
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/shopify
+  direction: third-party
+  category: eCommerce
+  partner_url: https://www.shopify.com/
+- partner_name: cacheflow
+  partner: cacheflow
+  partner_match: domain
+  type: contract
+  channel: partner-built
+  relationship: processor-connection
+  direction: partner-built
+  evidence: https://github.com/api-evangelist/cacheflow/blob/main/openapi/cacheflow-self-service-api-openapi.yml
+  contract_reference:
+    repo: cacheflow
+    spec_file: cacheflow-self-service-api-openapi.yml
+    value: close
+    property: schemas.ExternalSource.sourceType
+    detected_by: detect-payment-method-edges.py
+    detected: '2026-10-12'
+templates:
+- title: Create new Close leads from new Jotform submissions
+  url: https://zapier.com/apps/close/integrations/jotform/1585761/create-new-close-leads-from-new-jotform-submissions
+  apps:
+  - jotform
+  - close
+- title: Generate Close leads from new Calendly invitees
+  url: https://zapier.com/apps/calendly/integrations/close/222536/generate-close-leads-from-new-calendly-invitees
+  apps:
+  - calendly
+  - close
+- title: Get Slack notifications for new Close leads
+  url: https://zapier.com/apps/close/integrations/slack/322/get-slack-notifications-for-new-close-leads
+  apps:
+  - close
+  - slack
+- title: Create leads in Close from new Unbounce form submissions
+  url: https://zapier.com/apps/close/integrations/unbounce/3004/create-leads-in-close-from-new-unbounce-form-submissions
+  apps:
+  - unbounce
+  - close
+- title: Send funnel events to Facebook Conversions from Close
+  url: https://zapier.com/apps/close/integrations/facebook-conversions/1130097/send-funnel-events-to-facebook-conversions-from-close
+  apps:
+  - close
+  - facebook-conversions
+- title: Send new Typeform entries to Close as leads
+  url: https://zapier.com/apps/close/integrations/typeform/4676/send-new-typeform-entries-to-close-as-leads
+  apps:
+  - typeform
+  - close
+- title: Send Slack channel messages for new opportunities in specific status in Close
+  url: https://zapier.com/apps/close/integrations/slack/163614/send-slack-channel-messages-for-new-opportunities-in-specific-status-in-close
+  apps:
+  - close
+  - slack
+- title: Create notes in Close for new recordings added in tl;dv
+  url: https://zapier.com/apps/close/integrations/tldv/1589798/create-notes-in-close-for-new-recordings-added-in-tldv
+  apps:
+  - tldv
+  - close
+- title: Send new Close leads to Mailchimp
+  url: https://zapier.com/apps/close/integrations/mailchimp/202/send-new-close-leads-to-mailchimp
+  apps:
+  - close
+  - mailchimp
+- title: Create leads in Close from new OnceHub bookings
+  url: https://zapier.com/apps/close/integrations/oncehub/26888/create-leads-in-close-from-new-oncehub-bookings
+  apps:
+  - oncehub
+  - close
+- title: Create Close leads from new submissions in Jotform
+  url: https://zapier.com/apps/close/integrations/jotform/411445/create-close-leads-from-new-submissions-in-jotform
+  apps:
+  - jotform
+  - close
+- title: Add Google Ads offline conversions for new Close opportunities in a status
+  url: https://zapier.com/apps/close/integrations/google-ads/88834/add-google-ads-offline-conversions-for-new-close-opportunities-in-a-status
+  apps:
+  - close
+  - delay
+  - google-ads
+template_total: 3567
