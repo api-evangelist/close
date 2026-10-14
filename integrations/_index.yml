@@ -313,7 +313,6 @@
   arazzo: null
 - slug: close-monday-com
   label: monday.com
-  partner: monday-com
   partner_name: monday.com
   category: Project Management
   type: marketplace
@@ -321,7 +320,7 @@
   channel: ipaas-usage
   evidence: https://zapier.com/apps/close/integrations/monday
   source: edge
-  status: pending-generation
+  status: pending-partner-spec
   arazzo: null
 - slug: close-ablefy
   label: ablefy
@@ -410,5 +409,29 @@
     property: schemas.ExternalSource.sourceType
     detected_by: detect-payment-method-edges.py
     detected: '2026-10-12'
+  status: not-a-workflow
+  arazzo: null
+- slug: close-twilio-segment
+  label: Twilio Segment
+  partner: segment
+  partner_name: Twilio Segment
+  type: coverage
+  marketplace: coverage
+  channel: partner-built
+  evidence: https://www.twilio.com/docs/segment/connections/destinations/catalog/close
+  source: edge
+  relationship: connector-coverage
+  status: not-a-workflow
+  arazzo: null
+- slug: close-hightouch
+  label: Hightouch
+  partner: hightouch
+  partner_name: Hightouch
+  type: coverage
+  marketplace: coverage
+  channel: partner-built
+  evidence: https://hightouch.com/docs/destinations/closeio
+  source: edge
+  relationship: connector-coverage
   status: not-a-workflow
   arazzo: null
