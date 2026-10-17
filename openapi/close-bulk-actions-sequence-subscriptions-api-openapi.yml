@@ -266,6 +266,26 @@ paths:
           description: Not found
 components:
   schemas:
+    BulkActionStatus:
+      title: BulkActionStatus
+      type: string
+      enum:
+      - created
+      - loading
+      - processing
+      - done
+      - paused
+      - resuming
+      - error
+    BulkSequenceSubscriptionActionType:
+      title: BulkSequenceSubscriptionActionType
+      type: string
+      enum:
+      - subscribe
+      - resume
+      - resume_finished
+      - pause
+      - reassign
     BulkSequenceSubscriptionAction:
       title: BulkSequenceSubscriptionAction
       type: object
@@ -404,41 +424,13 @@ components:
       - sort
       - status
       - updated_by
-    BulkActionStatus:
-      title: BulkActionStatus
-      type: string
-      enum:
-      - created
-      - loading
-      - processing
-      - done
-      - paused
-      - resuming
-      - error
     BulkSequenceSubscriptionContactPreference:
       title: BulkSequenceSubscriptionContactPreference
       type: string
       enum:
       - lead
       - contact
-    BulkSequenceSubscriptionActionType:
-      title: BulkSequenceSubscriptionActionType
-      type: string
-      enum:
-      - subscribe
-      - resume
-      - resume_finished
-      - pause
-      - reassign
   parameters:
-    SkipParam:
-      description: Number of results to skip before returning, for pagination.
-      in: query
-      name: _skip
-      required: false
-      schema:
-        default: 0
-        type: integer
     LimitParam:
       description: Number of results to return.
       in: query
@@ -454,6 +446,14 @@ components:
       required: false
       schema:
         type: string
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

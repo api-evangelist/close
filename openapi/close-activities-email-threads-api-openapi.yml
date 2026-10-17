@@ -601,193 +601,6 @@ paths:
         '404':
           description: Not found
 components:
-  parameters:
-    SkipParam:
-      description: Number of results to skip before returning, for pagination.
-      in: query
-      name: _skip
-      required: false
-      schema:
-        default: 0
-        type: integer
-    ActivityFilters_IdInParam:
-      description: Filter by activity IDs (comma-separated)
-      in: query
-      name: id__in
-      required: false
-      schema:
-        title: ID In
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    ActivityFilters_ActivityAtLteParam:
-      in: query
-      name: activity_at__lte
-      required: false
-      schema:
-        title: Activity At (<=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_LeadIdParam:
-      description: Filter by lead IDs (comma-separated)
-      in: query
-      name: lead_id
-      required: false
-      schema:
-        title: Lead ID
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    LimitParam:
-      description: Number of results to return.
-      in: query
-      name: _limit
-      required: false
-      schema:
-        default: 100
-        type: integer
-    ActivityFilters_ActivityAtGteParam:
-      in: query
-      name: activity_at__gte
-      required: false
-      schema:
-        title: Activity At (>=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_OrganizationIdParam:
-      in: query
-      name: organization_id
-      required: false
-      schema:
-        title: Organization ID
-        default: null
-        anyOf:
-        - type: string
-        - type: 'null'
-    ActivityFilters_UserIdParam:
-      description: Filter by user IDs (comma-separated)
-      in: query
-      name: user_id
-      required: false
-      schema:
-        title: User ID
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    ActivityFilters_TypeParam:
-      description: Filter by activity type, e.g. Call (comma-separated)
-      in: query
-      name: _type
-      required: false
-      schema:
-        title: Type
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    FieldsParam:
-      description: Comma-separated list of fields to include in the response.
-      in: query
-      name: _fields
-      required: false
-      schema:
-        type: string
-    ActivityFilters_ActivityAtLtParam:
-      in: query
-      name: activity_at__lt
-      required: false
-      schema:
-        title: Activity At (<)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_DateCreatedLteParam:
-      in: query
-      name: date_created__lte
-      required: false
-      schema:
-        title: Date Created (<=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_DateCreatedGtParam:
-      in: query
-      name: date_created__gt
-      required: false
-      schema:
-        title: Date Created (>)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_ActivityAtGtParam:
-      in: query
-      name: activity_at__gt
-      required: false
-      schema:
-        title: Activity At (>)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_DateCreatedGteParam:
-      in: query
-      name: date_created__gte
-      required: false
-      schema:
-        title: Date Created (>=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_ContactIdParam:
-      description: Filter by contact IDs (comma-separated)
-      in: query
-      name: contact_id
-      required: false
-      schema:
-        title: Contact ID
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    ActivityFilters_DateCreatedLtParam:
-      in: query
-      name: date_created__lt
-      required: false
-      schema:
-        title: Date Created (<)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
   schemas:
     EmailThreadActivity:
       title: EmailThreadActivity
@@ -919,52 +732,48 @@ components:
       - updated_by
       - user_id
       - users
-    CommunicationDirection:
-      title: CommunicationDirection
-      description: Direction of communication. Outgoing means the communication flowing from the user to the lead/contact. Inbound means the opposite.
-      type: string
-      enum:
-      - incoming
-      - outgoing
-    MessageStatus:
-      title: MessageStatus
-      description: Status of a message, such as Email or SMS.
-      type: string
-      enum:
-      - inbox
-      - draft
-      - scheduled
-      - outbox
-      - sent
-      - error
-    EmailThreadSummaryFeedback:
-      title: EmailThreadSummaryFeedback
+    EmailThreadSummary:
+      title: EmailThreadSummary
       type: object
       properties:
-        detail:
-          title: Detail
+        expired_at:
+          title: Expired At
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        feedback:
+          title: Feedback
+          $ref: '#/components/schemas/EmailThreadSummaryFeedback'
+        generated_at:
+          title: Generated At
+          anyOf:
+          - type: string
+            format: date-time
+          - type: 'null'
+        status:
+          $ref: '#/components/schemas/SummaryStatus'
+        summary_html:
+          title: Summary HTML
           anyOf:
           - type: string
           - type: 'null'
-        given_at:
-          title: Given At
+        summary_text:
+          title: Summary Text
+          anyOf:
+          - type: string
+          - type: 'null'
+        updated_at:
+          title: Updated At
           type: string
           format: date-time
-        rating:
-          $ref: '#/components/schemas/SummaryFeedbackRating'
       required:
-      - detail
-      - given_at
-      - rating
-    NotImportantThreadReason:
-      title: NotImportantThreadReason
-      type: string
-      enum:
-      - manual
-      - scheduling-emails
-      - automated-outbound
-      - marketing-or-transactional
-      - by-default
+      - expired_at
+      - generated_at
+      - status
+      - summary_html
+      - summary_text
+      - updated_at
     EmailEnvelope:
       title: EmailEnvelope
       type: object
@@ -1034,19 +843,51 @@ components:
       - sender
       - subject
       - to
-    ImportantEmailThread:
-      title: ImportantEmailThread
+    EmailIdentity:
+      title: EmailIdentity
       type: object
       properties:
-        reason:
-          $ref: '#/components/schemas/ImportantThreadReason'
-        type:
-          title: Type
+        email:
+          title: Email
           type: string
-          const: important
+        name:
+          title: Name
+          type: string
       required:
-      - reason
-      - type
+      - email
+      - name
+    CommentSummary:
+      title: CommentSummary
+      type: object
+      properties:
+        comment_count:
+          title: Comment Count
+          type: integer
+        thread_id:
+          title: Thread ID
+          type: string
+      required:
+      - comment_count
+      - thread_id
+    EmailThreadSummaryFeedback:
+      title: EmailThreadSummaryFeedback
+      type: object
+      properties:
+        detail:
+          title: Detail
+          anyOf:
+          - type: string
+          - type: 'null'
+        given_at:
+          title: Given At
+          type: string
+          format: date-time
+        rating:
+          $ref: '#/components/schemas/SummaryFeedbackRating'
+      required:
+      - detail
+      - given_at
+      - rating
     QuotedEmailHTML:
       title: QuotedEmailHTML
       type: object
@@ -1060,23 +901,6 @@ components:
       required:
       - expand
       - html
-    ImportantThreadReason:
-      title: ImportantThreadReason
-      type: string
-      enum:
-      - manual
-      - contains-manual-message
-      - most-recent-communication
-      - has-response
-      - whitelisted
-      - by-default
-      - unset-initial-default
-    SummaryFeedbackRating:
-      title: SummaryFeedbackRating
-      type: string
-      enum:
-      - positive
-      - negative
     EmailInThread:
       title: EmailInThread
       type: object
@@ -1400,32 +1224,6 @@ components:
       - updated_by
       - user_id
       - users
-    CommentSummary:
-      title: CommentSummary
-      type: object
-      properties:
-        comment_count:
-          title: Comment Count
-          type: integer
-        thread_id:
-          title: Thread ID
-          type: string
-      required:
-      - comment_count
-      - thread_id
-    EmailIdentity:
-      title: EmailIdentity
-      type: object
-      properties:
-        email:
-          title: Email
-          type: string
-        name:
-          title: Name
-          type: string
-      required:
-      - email
-      - name
     EmailOpen:
       title: EmailOpen
       type: object
@@ -1454,6 +1252,76 @@ components:
       - opened_at
       - opened_by
       - user_agent
+    SummaryFeedbackRating:
+      title: SummaryFeedbackRating
+      type: string
+      enum:
+      - positive
+      - negative
+    NotImportantEmailThread:
+      title: NotImportantEmailThread
+      type: object
+      properties:
+        reason:
+          $ref: '#/components/schemas/NotImportantThreadReason'
+        type:
+          title: Type
+          type: string
+          const: not_important
+      required:
+      - reason
+      - type
+    MessageStatus:
+      title: MessageStatus
+      description: Status of a message, such as Email or SMS.
+      type: string
+      enum:
+      - inbox
+      - draft
+      - scheduled
+      - outbox
+      - sent
+      - error
+    ImportantEmailThread:
+      title: ImportantEmailThread
+      type: object
+      properties:
+        reason:
+          $ref: '#/components/schemas/ImportantThreadReason'
+        type:
+          title: Type
+          type: string
+          const: important
+      required:
+      - reason
+      - type
+    CommunicationDirection:
+      title: CommunicationDirection
+      description: Direction of communication. Outgoing means the communication flowing from the user to the lead/contact. Inbound means the opposite.
+      type: string
+      enum:
+      - incoming
+      - outgoing
+    NotImportantThreadReason:
+      title: NotImportantThreadReason
+      type: string
+      enum:
+      - manual
+      - scheduling-emails
+      - automated-outbound
+      - marketing-or-transactional
+      - by-default
+    ImportantThreadReason:
+      title: ImportantThreadReason
+      type: string
+      enum:
+      - manual
+      - contains-manual-message
+      - most-recent-communication
+      - has-response
+      - whitelisted
+      - by-default
+      - unset-initial-default
     EmailPreview:
       title: EmailPreview
       type: object
@@ -1553,19 +1421,6 @@ components:
       - subject
       - to
       - user_id
-    QuotedEmailText:
-      title: QuotedEmailText
-      type: object
-      properties:
-        expand:
-          title: Expand
-          type: boolean
-        text:
-          title: Text
-          type: string
-      required:
-      - expand
-      - text
     Attachment:
       title: Attachment
       type: object
@@ -1598,6 +1453,19 @@ components:
       - filename
       - size
       - url
+    QuotedEmailText:
+      title: QuotedEmailText
+      type: object
+      properties:
+        expand:
+          title: Expand
+          type: boolean
+        text:
+          title: Text
+          type: string
+      required:
+      - expand
+      - text
     SummaryStatus:
       title: SummaryStatus
       type: string
@@ -1606,61 +1474,193 @@ components:
       - success
       - failure
       - expired
-    NotImportantEmailThread:
-      title: NotImportantEmailThread
-      type: object
-      properties:
-        reason:
-          $ref: '#/components/schemas/NotImportantThreadReason'
-        type:
-          title: Type
-          type: string
-          const: not_important
-      required:
-      - reason
-      - type
-    EmailThreadSummary:
-      title: EmailThreadSummary
-      type: object
-      properties:
-        expired_at:
-          title: Expired At
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-        feedback:
-          title: Feedback
-          $ref: '#/components/schemas/EmailThreadSummaryFeedback'
-        generated_at:
-          title: Generated At
-          anyOf:
-          - type: string
-            format: date-time
-          - type: 'null'
-        status:
-          $ref: '#/components/schemas/SummaryStatus'
-        summary_html:
-          title: Summary HTML
-          anyOf:
-          - type: string
-          - type: 'null'
-        summary_text:
-          title: Summary Text
-          anyOf:
-          - type: string
-          - type: 'null'
-        updated_at:
-          title: Updated At
-          type: string
+  parameters:
+    ActivityFilters_OrganizationIdParam:
+      in: query
+      name: organization_id
+      required: false
+      schema:
+        title: Organization ID
+        default: null
+        anyOf:
+        - type: string
+        - type: 'null'
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
+    ActivityFilters_DateCreatedGtParam:
+      in: query
+      name: date_created__gt
+      required: false
+      schema:
+        title: Date Created (>)
+        anyOf:
+        - type: string
           format: date-time
-      required:
-      - expired_at
-      - generated_at
-      - status
-      - summary_html
-      - summary_text
-      - updated_at
+        - type: string
+          format: date
+    ActivityFilters_ActivityAtGtParam:
+      in: query
+      name: activity_at__gt
+      required: false
+      schema:
+        title: Activity At (>)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
+    ActivityFilters_UserIdParam:
+      description: Filter by user IDs (comma-separated)
+      in: query
+      name: user_id
+      required: false
+      schema:
+        title: User ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    ActivityFilters_DateCreatedLtParam:
+      in: query
+      name: date_created__lt
+      required: false
+      schema:
+        title: Date Created (<)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_LeadIdParam:
+      description: Filter by lead IDs (comma-separated)
+      in: query
+      name: lead_id
+      required: false
+      schema:
+        title: Lead ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    ActivityFilters_ContactIdParam:
+      description: Filter by contact IDs (comma-separated)
+      in: query
+      name: contact_id
+      required: false
+      schema:
+        title: Contact ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    ActivityFilters_ActivityAtLteParam:
+      in: query
+      name: activity_at__lte
+      required: false
+      schema:
+        title: Activity At (<=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_IdInParam:
+      description: Filter by activity IDs (comma-separated)
+      in: query
+      name: id__in
+      required: false
+      schema:
+        title: ID In
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    ActivityFilters_TypeParam:
+      description: Filter by activity type, e.g. Call (comma-separated)
+      in: query
+      name: _type
+      required: false
+      schema:
+        title: Type
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    ActivityFilters_DateCreatedGteParam:
+      in: query
+      name: date_created__gte
+      required: false
+      schema:
+        title: Date Created (>=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_ActivityAtGteParam:
+      in: query
+      name: activity_at__gte
+      required: false
+      schema:
+        title: Activity At (>=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
+    ActivityFilters_ActivityAtLtParam:
+      in: query
+      name: activity_at__lt
+      required: false
+      schema:
+        title: Activity At (<)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_DateCreatedLteParam:
+      in: query
+      name: date_created__lte
+      required: false
+      schema:
+        title: Date Created (<=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

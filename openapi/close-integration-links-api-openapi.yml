@@ -217,6 +217,13 @@ components:
       - type
       - url
       additionalProperties: false
+    IntegrationLinkType:
+      title: IntegrationLinkType
+      type: string
+      enum:
+      - lead
+      - contact
+      - opportunity
     IntegrationLink:
       title: IntegrationLink
       type: object
@@ -267,13 +274,6 @@ components:
       - type
       - updated_by
       - url
-    IntegrationLinkType:
-      title: IntegrationLinkType
-      type: string
-      enum:
-      - lead
-      - contact
-      - opportunity
     UpdateIntegrationLink:
       title: UpdateIntegrationLink
       type: object

@@ -454,44 +454,13 @@ paths:
         '404':
           description: Not found
 components:
-  parameters:
-    SkipParam:
-      description: Number of results to skip before returning, for pagination.
-      in: query
-      name: _skip
-      required: false
-      schema:
-        default: 0
-        type: integer
-    LimitParam:
-      description: Number of results to return.
-      in: query
-      name: _limit
-      required: false
-      schema:
-        default: 100
-        type: integer
-    FieldsParam:
-      description: Comma-separated list of fields to include in the response.
-      in: query
-      name: _fields
-      required: false
-      schema:
-        type: string
   schemas:
-    PhoneNumberType:
-      title: PhoneNumberType
+    UnderlyingCarrier:
+      title: UnderlyingCarrier
       type: string
       enum:
-      - internal
-      - external
-      - virtual
-    PhoneNumberSharing:
-      title: PhoneNumberSharing
-      type: string
-      enum:
-      - personal
-      - group
+      - twilio
+      - plivo
     PhoneNumber:
       title: PhoneNumber
       type: object
@@ -658,6 +627,66 @@ components:
       - supports_sms_to_countries
       - type
       - user_id
+    UpdatePhoneNumber:
+      title: UpdatePhoneNumber
+      type: object
+      properties:
+        forward_to:
+          title: Forward To
+          type: string
+        forward_to_enabled:
+          title: Forward To Enabled
+          type: boolean
+        inbound_ring_duration:
+          title: Inbound Ring Duration
+          description: Number of seconds (15-90) to ring this number on inbound calls before moving on (e.g. to voicemail).
+          type: integer
+          minimum: 15
+          maximum: 90
+        label:
+          title: Label
+          type: string
+        participants:
+          title: Participants
+          type: array
+          items:
+            type: string
+        phone_numbers:
+          title: Phone Numbers
+          type: array
+          items:
+            type: string
+        press_1_to_accept:
+          title: Press 1 To Accept
+          type: boolean
+        voicemail_greeting_url:
+          title: Voicemail Greeting URL
+          anyOf:
+          - type: string
+          - type: 'null'
+      additionalProperties: false
+    CarrierNumberType:
+      title: CarrierNumberType
+      type: string
+      enum:
+      - local
+      - national
+      - mobile
+      - tollfree
+      - shortcode
+    PhoneNumberType:
+      title: PhoneNumberType
+      type: string
+      enum:
+      - internal
+      - external
+      - virtual
+    PhoneNumberSharing:
+      title: PhoneNumberSharing
+      type: string
+      enum:
+      - personal
+      - group
     CreatePhoneNumberRequest:
       title: CreatePhoneNumberRequest
       type: object
@@ -711,59 +740,30 @@ components:
       required:
       - country
       additionalProperties: false
-    CarrierNumberType:
-      title: CarrierNumberType
-      type: string
-      enum:
-      - local
-      - national
-      - mobile
-      - tollfree
-      - shortcode
-    UnderlyingCarrier:
-      title: UnderlyingCarrier
-      type: string
-      enum:
-      - twilio
-      - plivo
-    UpdatePhoneNumber:
-      title: UpdatePhoneNumber
-      type: object
-      properties:
-        forward_to:
-          title: Forward To
-          type: string
-        forward_to_enabled:
-          title: Forward To Enabled
-          type: boolean
-        inbound_ring_duration:
-          title: Inbound Ring Duration
-          description: Number of seconds (15-90) to ring this number on inbound calls before moving on (e.g. to voicemail).
-          type: integer
-          minimum: 15
-          maximum: 90
-        label:
-          title: Label
-          type: string
-        participants:
-          title: Participants
-          type: array
-          items:
-            type: string
-        phone_numbers:
-          title: Phone Numbers
-          type: array
-          items:
-            type: string
-        press_1_to_accept:
-          title: Press 1 To Accept
-          type: boolean
-        voicemail_greeting_url:
-          title: Voicemail Greeting URL
-          anyOf:
-          - type: string
-          - type: 'null'
-      additionalProperties: false
+  parameters:
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

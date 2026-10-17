@@ -258,23 +258,6 @@ paths:
           description: Not found
 components:
   schemas:
-    CreateMembership:
-      title: CreateMembership
-      type: object
-      properties:
-        email:
-          title: Email
-          type: string
-          format: email
-        role_id:
-          title: Role ID
-          description: One of `superuser`, `user`, or `restricteduser` for the corresponding predefined role, or the ID of a custom [Role](https://developer.close.com/api/resources/roles). The role must not grant the `manage_organization` permission.
-          type: string
-          minLength: 1
-      required:
-      - email
-      - role_id
-      additionalProperties: false
     SetPinnedSavedView:
       title: SetPinnedSavedView
       type: object
@@ -294,6 +277,23 @@ components:
       - enabled
       - disabled
       - unset
+    CreateMembership:
+      title: CreateMembership
+      type: object
+      properties:
+        email:
+          title: Email
+          type: string
+          format: email
+        role_id:
+          title: Role ID
+          description: One of `superuser`, `user`, or `restricteduser` for the corresponding predefined role, or the ID of a custom [Role](https://developer.close.com/api/resources/roles). The role must not grant the `manage_organization` permission.
+          type: string
+          minLength: 1
+      required:
+      - email
+      - role_id
+      additionalProperties: false
     Membership:
       title: Membership
       description: Editable settings for an organization membership.

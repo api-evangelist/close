@@ -242,27 +242,15 @@ paths:
         '404':
           description: Not found
 components:
+  parameters:
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
   schemas:
-    CreateGroup:
-      title: CreateGroup
-      type: object
-      properties:
-        name:
-          title: Name
-          type: string
-      required:
-      - name
-      additionalProperties: false
-    CreateGroupMember:
-      title: CreateGroupMember
-      type: object
-      properties:
-        user_id:
-          title: User ID
-          type: string
-      required:
-      - user_id
-      additionalProperties: false
     Group:
       title: Group
       type: object
@@ -288,6 +276,26 @@ components:
       - id
       - name
       - organization_id
+    CreateGroup:
+      title: CreateGroup
+      type: object
+      properties:
+        name:
+          title: Name
+          type: string
+      required:
+      - name
+      additionalProperties: false
+    CreateGroupMember:
+      title: CreateGroupMember
+      type: object
+      properties:
+        user_id:
+          title: User ID
+          type: string
+      required:
+      - user_id
+      additionalProperties: false
     GroupMember:
       title: GroupMember
       type: object
@@ -297,14 +305,6 @@ components:
           type: string
       required:
       - user_id
-  parameters:
-    FieldsParam:
-      description: Comma-separated list of fields to include in the response.
-      in: query
-      name: _fields
-      required: false
-      schema:
-        type: string
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

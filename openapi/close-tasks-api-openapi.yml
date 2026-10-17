@@ -1036,14 +1036,6 @@ paths:
           description: Not found
 components:
   parameters:
-    SkipParam:
-      description: Number of results to skip before returning, for pagination.
-      in: query
-      name: _skip
-      required: false
-      schema:
-        default: 0
-        type: integer
     ActivityFilters_OrganizationIdParam:
       in: query
       name: organization_id
@@ -1069,17 +1061,15 @@ components:
       required: false
       schema:
         type: string
+    SkipParam:
+      description: Number of results to skip before returning, for pagination.
+      in: query
+      name: _skip
+      required: false
+      schema:
+        default: 0
+        type: integer
   schemas:
-    CreateTask:
-      title: CreateTask
-      oneOf:
-      - $ref: '#/components/schemas/CreateLeadTask'
-      - $ref: '#/components/schemas/CreateCallTask'
-      discriminator:
-        mapping:
-          lead: '#/components/schemas/CreateLeadTask'
-          outgoing_call: '#/components/schemas/CreateCallTask'
-        propertyName: _type
     UpdateNotification:
       title: UpdateNotification
       type: object
@@ -1123,6 +1113,107 @@ components:
         lead_id:
           title: Lead ID
           type: string
+        organization_id:
+          title: Organization ID
+          type: string
+        priority:
+          $ref: '#/components/schemas/TaskPriority'
+        resolution:
+          anyOf:
+          - $ref: '#/components/schemas/NotificationResolution'
+          - type: 'null'
+        text:
+          title: Text
+          type: string
+      additionalProperties: false
+    NotificationResolution:
+      title: NotificationResolution
+      type: string
+      enum:
+      - abandoned
+      - skipped
+    TaskPriority:
+      title: TaskPriority
+      type: string
+      enum:
+      - high
+      - medium
+    CreateTask:
+      title: CreateTask
+      oneOf:
+      - $ref: '#/components/schemas/CreateLeadTask'
+      - $ref: '#/components/schemas/CreateCallTask'
+      discriminator:
+        mapping:
+          lead: '#/components/schemas/CreateLeadTask'
+          outgoing_call: '#/components/schemas/CreateCallTask'
+        propertyName: _type
+    CreateCallTask:
+      title: CreateCallTask
+      type: object
+      properties:
+        _type:
+          title: Type
+          type: string
+          default: outgoing_call
+          const: outgoing_call
+        agent_config_id:
+          title: Agent Config ID
+          anyOf:
+          - type: string
+          - type: 'null'
+        assigned_to:
+          title: Assigned To
+          anyOf:
+          - type: string
+          - type: 'null'
+        contact_id:
+          title: Contact ID
+          type: string
+        created_by:
+          title: Created By
+          type: string
+        date:
+          title: Date
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            format: date
+        is_complete:
+          title: Is Complete
+          type: boolean
+        lead_id:
+          title: Lead ID
+          type: string
+        organization_id:
+          title: Organization ID
+          type: string
+        text:
+          title: Text
+          anyOf:
+          - type: string
+          - type: 'null'
+      required:
+      - contact_id
+      - lead_id
+    BulkUpdateNotifications:
+      title: BulkUpdateNotifications
+      type: object
+      properties:
+        assigned_to:
+          title: Assigned To
+          type: string
+        date:
+          title: Date
+          anyOf:
+          - type: string
+            format: date-time
+          - type: string
+            format: date
+        is_complete:
+          title: Is Complete
+          type: boolean
         organization_id:
           title: Organization ID
           type: string
@@ -1204,97 +1295,6 @@ components:
       required:
       - lead_id
       - text
-    CreateCallTask:
-      title: CreateCallTask
-      type: object
-      properties:
-        _type:
-          title: Type
-          type: string
-          default: outgoing_call
-          const: outgoing_call
-        agent_config_id:
-          title: Agent Config ID
-          anyOf:
-          - type: string
-          - type: 'null'
-        assigned_to:
-          title: Assigned To
-          anyOf:
-          - type: string
-          - type: 'null'
-        contact_id:
-          title: Contact ID
-          type: string
-        created_by:
-          title: Created By
-          type: string
-        date:
-          title: Date
-          anyOf:
-          - type: string
-            format: date-time
-          - type: string
-            format: date
-        is_complete:
-          title: Is Complete
-          type: boolean
-        lead_id:
-          title: Lead ID
-          type: string
-        organization_id:
-          title: Organization ID
-          type: string
-        text:
-          title: Text
-          anyOf:
-          - type: string
-          - type: 'null'
-      required:
-      - contact_id
-      - lead_id
-    BulkUpdateNotifications:
-      title: BulkUpdateNotifications
-      type: object
-      properties:
-        assigned_to:
-          title: Assigned To
-          type: string
-        date:
-          title: Date
-          anyOf:
-          - type: string
-            format: date-time
-          - type: string
-            format: date
-        is_complete:
-          title: Is Complete
-          type: boolean
-        organization_id:
-          title: Organization ID
-          type: string
-        priority:
-          $ref: '#/components/schemas/TaskPriority'
-        resolution:
-          anyOf:
-          - $ref: '#/components/schemas/NotificationResolution'
-          - type: 'null'
-        text:
-          title: Text
-          type: string
-      additionalProperties: false
-    TaskPriority:
-      title: TaskPriority
-      type: string
-      enum:
-      - high
-      - medium
-    NotificationResolution:
-      title: NotificationResolution
-      type: string
-      enum:
-      - abandoned
-      - skipped
   securitySchemes:
     ApiKeyAuth:
       description: Use your API key as the username and leave the password empty.

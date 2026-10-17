@@ -208,6 +208,35 @@ paths:
           description: Not found
 components:
   parameters:
+    ActivityFilters_OrganizationIdParam:
+      in: query
+      name: organization_id
+      required: false
+      schema:
+        title: Organization ID
+        default: null
+        anyOf:
+        - type: string
+        - type: 'null'
+    LimitParam:
+      description: Number of results to return.
+      in: query
+      name: _limit
+      required: false
+      schema:
+        default: 100
+        type: integer
+    ActivityFilters_DateCreatedLtParam:
+      in: query
+      name: date_created__lt
+      required: false
+      schema:
+        title: Date Created (<)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
     SkipParam:
       description: Number of results to skip before returning, for pagination.
       in: query
@@ -216,69 +245,12 @@ components:
       schema:
         default: 0
         type: integer
-    ActivityFilters_ActivityAtLtParam:
+    ActivityFilters_ActivityAtGteParam:
       in: query
-      name: activity_at__lt
+      name: activity_at__gte
       required: false
       schema:
-        title: Activity At (<)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_IdInParam:
-      description: Filter by activity IDs (comma-separated)
-      in: query
-      name: id__in
-      required: false
-      schema:
-        title: ID In
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    ActivityFilters_DateCreatedLteParam:
-      in: query
-      name: date_created__lte
-      required: false
-      schema:
-        title: Date Created (<=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_DateCreatedGtParam:
-      in: query
-      name: date_created__gt
-      required: false
-      schema:
-        title: Date Created (>)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_ActivityAtGtParam:
-      in: query
-      name: activity_at__gt
-      required: false
-      schema:
-        title: Activity At (>)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    ActivityFilters_DateCreatedGteParam:
-      in: query
-      name: date_created__gte
-      required: false
-      schema:
-        title: Date Created (>=)
+        title: Activity At (>=)
         anyOf:
         - type: string
           format: date-time
@@ -290,6 +262,17 @@ components:
       required: false
       schema:
         title: Activity At (<=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_DateCreatedGtParam:
+      in: query
+      name: date_created__gt
+      required: false
+      schema:
+        title: Date Created (>)
         anyOf:
         - type: string
           format: date-time
@@ -308,15 +291,60 @@ components:
           items:
             type: string
         - type: 'null'
-    ActivityFilters_OrganizationIdParam:
+    ActivityFilters_IdInParam:
+      description: Filter by activity IDs (comma-separated)
       in: query
-      name: organization_id
+      name: id__in
       required: false
       schema:
-        title: Organization ID
+        title: ID In
         default: null
         anyOf:
+        - type: array
+          items:
+            type: string
+        - type: 'null'
+    FieldsParam:
+      description: Comma-separated list of fields to include in the response.
+      in: query
+      name: _fields
+      required: false
+      schema:
+        type: string
+    ActivityFilters_ActivityAtGtParam:
+      in: query
+      name: activity_at__gt
+      required: false
+      schema:
+        title: Activity At (>)
+        anyOf:
         - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_ActivityAtLtParam:
+      in: query
+      name: activity_at__lt
+      required: false
+      schema:
+        title: Activity At (<)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
+    ActivityFilters_ContactIdParam:
+      description: Filter by contact IDs (comma-separated)
+      in: query
+      name: contact_id
+      required: false
+      schema:
+        title: Contact ID
+        default: null
+        anyOf:
+        - type: array
+          items:
+            type: string
         - type: 'null'
     ActivityFilters_TypeParam:
       description: Filter by activity type, e.g. Call (comma-separated)
@@ -331,6 +359,17 @@ components:
           items:
             type: string
         - type: 'null'
+    ActivityFilters_DateCreatedLteParam:
+      in: query
+      name: date_created__lte
+      required: false
+      schema:
+        title: Date Created (<=)
+        anyOf:
+        - type: string
+          format: date-time
+        - type: string
+          format: date
     ActivityFilters_UserIdParam:
       description: Filter by user IDs (comma-separated)
       in: query
@@ -344,51 +383,12 @@ components:
           items:
             type: string
         - type: 'null'
-    ActivityFilters_ContactIdParam:
-      description: Filter by contact IDs (comma-separated)
+    ActivityFilters_DateCreatedGteParam:
       in: query
-      name: contact_id
+      name: date_created__gte
       required: false
       schema:
-        title: Contact ID
-        default: null
-        anyOf:
-        - type: array
-          items:
-            type: string
-        - type: 'null'
-    LimitParam:
-      description: Number of results to return.
-      in: query
-      name: _limit
-      required: false
-      schema:
-        default: 100
-        type: integer
-    ActivityFilters_ActivityAtGteParam:
-      in: query
-      name: activity_at__gte
-      required: false
-      schema:
-        title: Activity At (>=)
-        anyOf:
-        - type: string
-          format: date-time
-        - type: string
-          format: date
-    FieldsParam:
-      description: Comma-separated list of fields to include in the response.
-      in: query
-      name: _fields
-      required: false
-      schema:
-        type: string
-    ActivityFilters_DateCreatedLtParam:
-      in: query
-      name: date_created__lt
-      required: false
-      schema:
-        title: Date Created (<)
+        title: Date Created (>=)
         anyOf:
         - type: string
           format: date-time

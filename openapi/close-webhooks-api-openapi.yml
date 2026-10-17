@@ -266,6 +266,26 @@ paths:
           description: Not found
 components:
   schemas:
+    WebhookSubscriptionEvent:
+      title: WebhookSubscriptionEvent
+      type: object
+      properties:
+        action:
+          title: Action
+          type: string
+        extra_filter:
+          title: Extra Filter
+          default: null
+          anyOf:
+          - type: object
+            additionalProperties: true
+          - type: 'null'
+        object_type:
+          title: Object Type
+          type: string
+      required:
+      - action
+      - object_type
     WebhookStatus:
       title: WebhookStatus
       type: string
@@ -305,26 +325,6 @@ components:
           - type: boolean
           - type: 'null'
       additionalProperties: false
-    WebhookSubscriptionEvent:
-      title: WebhookSubscriptionEvent
-      type: object
-      properties:
-        action:
-          title: Action
-          type: string
-        extra_filter:
-          title: Extra Filter
-          default: null
-          anyOf:
-          - type: object
-            additionalProperties: true
-          - type: 'null'
-        object_type:
-          title: Object Type
-          type: string
-      required:
-      - action
-      - object_type
     CreateWebhook:
       title: CreateWebhook
       type: object
