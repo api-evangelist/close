@@ -533,7 +533,7 @@
     - beta
     in_cloud: true
     builder: unknown (community connector; contributor not in the record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: close-fivetran
   label: Fivetran
@@ -559,7 +559,7 @@
     - connectors/applications/close
     vendor_link: https://www.close.com/
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: close-meltano
   label: Meltano
@@ -590,7 +590,7 @@
     quality:
     - bronze
     builder: 'community (Meltano Hub variant maintainers: airbyte, singer-io)'
-  status: pending-partner-spec
+  status: not-a-workflow
   arazzo: null
 - slug: close-zoom-own
   label: Zoom (own)
