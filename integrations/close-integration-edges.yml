@@ -18,6 +18,7 @@ checked:
 - https://www.twilio.com/docs/segment/connections/destinations/catalog/close
 - https://zapier.com/api/v4/apps/
 - https://zapier.com/apps/close/integrations
+- zoom/integrations/zoom-integration-edges.yml
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -772,6 +773,23 @@ edges:
     builder: 'community (Meltano Hub variant maintainers: airbyte, singer-io)'
   detected_by: sweep-data-integration.py
   first_seen: '2026-10-18'
+- partner_name: Zoom (own)
+  partner: zoom
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.zoom.us/apps/85_-N9QgTrOSnSk4P8wmtg
+  mirror_of: zoom/integrations/zoom-integration-edges.yml
+  apps:
+  - Close
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Zoom app
 templates:
 - title: Create new Close leads from new Jotform submissions
   url: https://zapier.com/apps/close/integrations/jotform/1585761/create-new-close-leads-from-new-jotform-submissions
