@@ -15,6 +15,7 @@
   evidence: https://zapier.com/apps/close/integrations/jotform/1585761/create-new-close-leads-from-new-jotform-submissions
   template: https://zapier.com/apps/close/integrations/jotform/1585761/create-new-close-leads-from-new-jotform-submissions
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: close-generate-close-leads-from-new-calendly-invitees
@@ -29,6 +30,7 @@
   evidence: https://zapier.com/apps/calendly/integrations/close/222536/generate-close-leads-from-new-calendly-invitees
   template: https://zapier.com/apps/calendly/integrations/close/222536/generate-close-leads-from-new-calendly-invitees
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: close-get-slack-notifications-for-new-close-leads
@@ -43,6 +45,7 @@
   evidence: https://zapier.com/apps/close/integrations/slack/322/get-slack-notifications-for-new-close-leads
   template: https://zapier.com/apps/close/integrations/slack/322/get-slack-notifications-for-new-close-leads
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: close-send-new-typeform-entries-to-close-as-leads
@@ -57,6 +60,7 @@
   evidence: https://zapier.com/apps/close/integrations/typeform/4676/send-new-typeform-entries-to-close-as-leads
   template: https://zapier.com/apps/close/integrations/typeform/4676/send-new-typeform-entries-to-close-as-leads
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: close-send-slack-channel-messages-for-new-opportunities-in-specific-status-in-close
@@ -71,6 +75,7 @@
   evidence: https://zapier.com/apps/close/integrations/slack/163614/send-slack-channel-messages-for-new-opportunities-in-specific-status-in-close
   template: https://zapier.com/apps/close/integrations/slack/163614/send-slack-channel-messages-for-new-opportunities-in-specific-status-in-close
   source: template
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: close-create-leads-in-close-from-new-oncehub-bookings
@@ -84,6 +89,7 @@
   evidence: https://zapier.com/apps/close/integrations/oncehub/26888/create-leads-in-close-from-new-oncehub-bookings
   template: https://zapier.com/apps/close/integrations/oncehub/26888/create-leads-in-close-from-new-oncehub-bookings
   source: template
+  relationship: ipaas-bridge
   status: pending-partner-spec
   arazzo: null
 - slug: close-create-close-leads-from-new-submissions-in-jotform
@@ -98,299 +104,7 @@
   evidence: https://zapier.com/apps/close/integrations/jotform/411445/create-close-leads-from-new-submissions-in-jotform
   template: https://zapier.com/apps/close/integrations/jotform/411445/create-close-leads-from-new-submissions-in-jotform
   source: template
-  status: pending-generation
-  arazzo: null
-- slug: close-clickfunnels-classic
-  label: ClickFunnels Classic
-  partner: clickfunnels
-  partner_name: ClickFunnels Classic
-  category: Marketing Automation
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/clickfunnels-classic
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: close-airtable
-  label: Airtable
-  partner: airtable
-  partner_name: Airtable
-  category: Databases
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/airtable
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: close-facebook-lead-ads
-  label: Facebook Lead Ads
-  partner: facebook-lead-ads
-  partner_name: Facebook Lead Ads
-  category: Ads & Conversion
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/facebook-lead-ads
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: close-perspective
-  label: Perspective
-  partner: perspective
-  partner_name: Perspective
-  category: Marketing Automation
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/perspective
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: close-google-forms
-  label: Google Forms
-  partner: google-forms
-  partner_name: Google Forms
-  category: Forms & Surveys
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/google-forms
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: close-iclosed
-  label: iClosed
-  partner_name: iClosed
-  category: Scheduling & Booking
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/iclosed
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: close-pandadoc
-  label: PandaDoc
-  partner: pandadoc
-  partner_name: PandaDoc
-  category: Documents
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/pandadoc
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: close-google-calendar
-  label: Google Calendar
-  partner: google-calendar
-  partner_name: Google Calendar
-  category: Calendar
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/google-calendar
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: close-instantly
-  label: Instantly
-  partner: instantly-ai
-  partner_name: Instantly
-  category: Email
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/instantly
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: close-kajabi
-  label: Kajabi
-  partner: kajabi
-  partner_name: Kajabi
-  category: eCommerce
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/kajabi
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: close-leadconnector
-  label: LeadConnector
-  partner_name: LeadConnector
-  category: Marketing Automation
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/leadconnector
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: close-hubspot
-  label: HubSpot
-  partner: hubspot
-  partner_name: HubSpot
-  category: Marketing Automation
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/hubspot
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: close-onepage
-  label: Onepage
-  partner_name: Onepage
-  category: App Builder
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/onepage
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: close-superchat
-  label: Superchat
-  partner_name: Superchat
-  category: CRM (Customer Relationship Management)
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/superchat
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: close-gmail
-  label: Gmail
-  partner: gmail
-  partner_name: Gmail
-  category: Email
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/gmail
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: close-clickfunnels
-  label: ClickFunnels
-  partner: clickfunnels
-  partner_name: ClickFunnels
-  category: Website & App Building
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/clickfunnels
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: close-heyflow
-  label: Heyflow
-  partner_name: Heyflow
-  category: Website & App Building
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/heyflow
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: close-google-sheets
-  label: Google Sheets
-  partner: google-sheets
-  partner_name: Google Sheets
-  category: Google
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/google-sheets
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: close-monday-com
-  label: monday.com
-  partner_name: monday.com
-  category: Project Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/monday
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: close-ablefy
-  label: ablefy
-  partner: ablefy
-  partner_name: ablefy
-  category: eCommerce
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/ablefy
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: close-funnelcockpit
-  label: FunnelCockpit
-  partner_name: FunnelCockpit
-  category: Contact Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/funnelcockpit
-  source: edge
-  status: pending-partner-spec
-  arazzo: null
-- slug: close-activecampaign
-  label: ActiveCampaign
-  partner: activecampaign
-  partner_name: ActiveCampaign
-  category: Marketing Automation
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/activecampaign
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: close-trello
-  label: Trello
-  partner: trello
-  partner_name: Trello
-  category: Project Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/trello
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: close-clickup
-  label: ClickUp
-  partner: clickup
-  partner_name: ClickUp
-  category: Project Management
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/clickup
-  source: edge
-  status: pending-generation
-  arazzo: null
-- slug: close-shopify
-  label: Shopify
-  partner: shopify
-  partner_name: Shopify
-  category: eCommerce
-  type: marketplace
-  marketplace: zapier
-  channel: ipaas-usage
-  evidence: https://zapier.com/apps/close/integrations/shopify
-  source: edge
+  relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
 - slug: close-cacheflow
@@ -604,4 +318,323 @@
     sources: true
     builder: Pipedream repo (component)
   status: not-a-workflow
+  arazzo: null
+- slug: close-airtable
+  label: Airtable
+  partner: airtable
+  partner_name: Airtable
+  category: Databases
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/airtable
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: close-clickfunnels-classic
+  label: ClickFunnels Classic
+  partner: clickfunnels
+  partner_name: ClickFunnels Classic
+  category: Marketing Automation
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/clickfunnels-classic
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: close-facebook-lead-ads
+  label: Facebook Lead Ads
+  partner: facebook-lead-ads
+  partner_name: Facebook Lead Ads
+  category: Ads & Conversion
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/facebook-lead-ads
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: close-perspective
+  label: Perspective
+  partner: perspective
+  partner_name: Perspective
+  category: Marketing Automation
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/perspective
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: close-google-forms
+  label: Google Forms
+  partner: google-forms
+  partner_name: Google Forms
+  category: Forms & Surveys
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/google-forms
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: close-iclosed
+  label: iClosed
+  partner_name: iClosed
+  category: Scheduling & Booking
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/iclosed
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: close-pandadoc
+  label: PandaDoc
+  partner: pandadoc
+  partner_name: PandaDoc
+  category: Documents
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/pandadoc
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: close-google-calendar
+  label: Google Calendar
+  partner: google-calendar
+  partner_name: Google Calendar
+  category: Calendar
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/google-calendar
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: close-instantly
+  label: Instantly
+  partner: instantly-ai
+  partner_name: Instantly
+  category: Email
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/instantly
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: close-kajabi
+  label: Kajabi
+  partner: kajabi
+  partner_name: Kajabi
+  category: eCommerce
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/kajabi
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: close-leadconnector
+  label: LeadConnector
+  partner_name: LeadConnector
+  category: Marketing Automation
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/leadconnector
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: close-hubspot
+  label: HubSpot
+  partner: hubspot
+  partner_name: HubSpot
+  category: Marketing Automation
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/hubspot
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: close-onepage
+  label: Onepage
+  partner_name: Onepage
+  category: App Builder
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/onepage
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: close-superchat
+  label: Superchat
+  partner_name: Superchat
+  category: CRM (Customer Relationship Management)
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/superchat
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: close-gmail
+  label: Gmail
+  partner: gmail
+  partner_name: Gmail
+  category: Email
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/gmail
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: close-clickfunnels
+  label: ClickFunnels
+  partner: clickfunnels
+  partner_name: ClickFunnels
+  category: Website & App Building
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/clickfunnels
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: close-heyflow
+  label: Heyflow
+  partner_name: Heyflow
+  category: Website & App Building
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/heyflow
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: close-google-sheets
+  label: Google Sheets
+  partner: google-sheets
+  partner_name: Google Sheets
+  category: Google
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/google-sheets
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: close-monday-com
+  label: monday.com
+  partner: monday-com
+  partner_name: monday.com
+  category: Project Management
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/monday
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: close-ablefy
+  label: ablefy
+  partner: ablefy
+  partner_name: ablefy
+  category: eCommerce
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/ablefy
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: close-funnelcockpit
+  label: FunnelCockpit
+  partner_name: FunnelCockpit
+  category: Contact Management
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/funnelcockpit
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-partner-spec
+  arazzo: null
+- slug: close-activecampaign
+  label: ActiveCampaign
+  partner: activecampaign
+  partner_name: ActiveCampaign
+  category: Marketing Automation
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/activecampaign
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: close-trello
+  label: Trello
+  partner: trello
+  partner_name: Trello
+  category: Project Management
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/trello
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: close-clickup
+  label: ClickUp
+  partner: clickup
+  partner_name: ClickUp
+  category: Project Management
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/clickup
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
+  arazzo: null
+- slug: close-shopify
+  label: Shopify
+  partner: shopify
+  partner_name: Shopify
+  category: eCommerce
+  type: marketplace
+  marketplace: zapier
+  channel: ipaas-usage
+  evidence: https://zapier.com/apps/close/integrations/shopify
+  source: edge
+  relationship: ipaas-bridge
+  status: pending-generation
   arazzo: null
