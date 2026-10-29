@@ -1,4 +1,4 @@
-# Close (close)
+# Close
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,495 +66,266 @@
 
 Close is an inside-sales CRM with calling, email, SMS, and WhatsApp built in. The Close API exposes leads, contacts, opportunities, tasks, activities (calls, emails, SMS, meetings, notes), pipelines, custom objects, sequences, smart views, scheduling, phone numbers, reporting, and webhooks for sales automation.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/close/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/close/refs/heads/main/apis.yml)
+**Areas:** CRM · Sales Engagement · Inside Sales · Calling · SMS · WhatsApp · Sales Automation · Pipeline Management · AI Agents · MCP · Webhook · Software-as-a-Service
+
+## Close on APIs.io
+
+Everything profiled for Close is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/close/](https://apis.io/providers/close/)** — or go straight to one of the APIs or properties below.
+
+### APIs (64)
+
+- [Close Activities API](https://apis.io/apis/close/close-activities-api/) — The activities API from Close — 1 operation(s) for activities.
+- [Close Activities.calls API](https://apis.io/apis/close/close-activities-calls-api/) — The activities.calls API from Close — 2 operation(s) for activities.calls.
+- [Close Activities.creations API](https://apis.io/apis/close/close-activities-creations-api/) — The activities.creations API from Close — 2 operation(s) for activities.creations.
+- [Close Activities.custom Activities API](https://apis.io/apis/close/close-activities-custom-activities-api/) — The activities.custom_activities API from Close — 2 operation(s) for activities.custom_activities.
+- [Close Activities.email Threads API](https://apis.io/apis/close/close-activities-email-threads-api/) — The activities.email_threads API from Close — 2 operation(s) for activities.email_threads.
+- [Close Activities.emails API](https://apis.io/apis/close/close-activities-emails-api/) — The activities.emails API from Close — 2 operation(s) for activities.emails.
+- [Close Activities.form Submissions API](https://apis.io/apis/close/close-activities-form-submissions-api/) — The activities.form_submissions API from Close — 2 operation(s) for activities.form_submissions.
+- [Close Activities.import Updates API](https://apis.io/apis/close/close-activities-import-updates-api/) — The activities.import_updates API from Close — 2 operation(s) for activities.import_updates.
+- [Close Activities.lead Merges API](https://apis.io/apis/close/close-activities-lead-merges-api/) — The activities.lead_merges API from Close — 2 operation(s) for activities.lead_merges.
+- [Close Activities.lead Status Changes API](https://apis.io/apis/close/close-activities-lead-status-changes-api/) — The activities.lead_status_changes API from Close — 2 operation(s) for activities.lead_status_changes.
+- [Close Activities.meetings API](https://apis.io/apis/close/close-activities-meetings-api/) — The activities.meetings API from Close — 3 operation(s) for activities.meetings.
+- [Close Activities.notes API](https://apis.io/apis/close/close-activities-notes-api/) — The activities.notes API from Close — 2 operation(s) for activities.notes.
+- [Close Activities.opportunity Status Changes API](https://apis.io/apis/close/close-activities-opportunity-status-changes-api/) — The activities.opportunity_status_changes API from Close — 2 operation(s) for activities.opportunity_status_changes.
+- [Close Activities.sms API](https://apis.io/apis/close/close-activities-sms-api/) — The activities.sms API from Close — 2 operation(s) for activities.sms.
+- [Close Activities.task Completions API](https://apis.io/apis/close/close-activities-task-completions-api/) — The activities.task_completions API from Close — 2 operation(s) for activities.task_completions.
+- [Close Activities.whatsapp Messages API](https://apis.io/apis/close/close-activities-whatsapp-messages-api/) — The activities.whatsapp_messages API from Close — 2 operation(s) for activities.whatsapp_messages.
+- [Close Blocked Phone Numbers API](https://apis.io/apis/close/close-blocked-phone-numbers-api/) — The blocked_phone_numbers API from Close — 3 operation(s) for blocked_phone_numbers.
+- [Close Bulk Actions.delete API](https://apis.io/apis/close/close-bulk-actions-delete-api/) — The bulk_actions.delete API from Close — 2 operation(s) for bulk_actions.delete.
+- [Close Bulk Actions.edit API](https://apis.io/apis/close/close-bulk-actions-edit-api/) — The bulk_actions.edit API from Close — 2 operation(s) for bulk_actions.edit.
+- [Close Bulk Actions.email API](https://apis.io/apis/close/close-bulk-actions-email-api/) — The bulk_actions.email API from Close — 2 operation(s) for bulk_actions.email.
+- [Close Bulk Actions.sequence Subscriptions API](https://apis.io/apis/close/close-bulk-actions-sequence-subscriptions-api/) — The bulk_actions.sequence_subscriptions API from Close — 2 operation(s) for bulk_actions.sequence_subscriptions.
+- [Close Comments API](https://apis.io/apis/close/close-comments-api/) — The comments API from Close — 4 operation(s) for comments.
+- [Close Connected Accounts API](https://apis.io/apis/close/close-connected-accounts-api/) — The connected_accounts API from Close — 2 operation(s) for connected_accounts.
+- [Close Contacts API](https://apis.io/apis/close/close-contacts-api/) — The contacts API from Close — 2 operation(s) for contacts.
+- [Close Custom Activity Types API](https://apis.io/apis/close/close-custom-activity-types-api/) — The custom_activity_types API from Close — 2 operation(s) for custom_activity_types.
+- [Close Custom Field Schemas API](https://apis.io/apis/close/close-custom-field-schemas-api/) — The custom_field_schemas API from Close — 1 operation(s) for custom_field_schemas.
+- [Close Custom Fields.activity API](https://apis.io/apis/close/close-custom-fields-activity-api/) — The custom_fields.activity API from Close — 2 operation(s) for custom_fields.activity.
+- [Close Custom Fields.contact API](https://apis.io/apis/close/close-custom-fields-contact-api/) — The custom_fields.contact API from Close — 2 operation(s) for custom_fields.contact.
+- [Close Custom Fields.custom Object API](https://apis.io/apis/close/close-custom-fields-custom-object-api/) — The custom_fields.custom_object API from Close — 2 operation(s) for custom_fields.custom_object.
+- [Close Custom Fields.lead API](https://apis.io/apis/close/close-custom-fields-lead-api/) — The custom_fields.lead API from Close — 2 operation(s) for custom_fields.lead.
+- [Close Custom Fields.opportunity API](https://apis.io/apis/close/close-custom-fields-opportunity-api/) — The custom_fields.opportunity API from Close — 2 operation(s) for custom_fields.opportunity.
+- [Close Custom Fields.shared API](https://apis.io/apis/close/close-custom-fields-shared-api/) — The custom_fields.shared API from Close — 4 operation(s) for custom_fields.shared.
+- [Close Custom Object Types API](https://apis.io/apis/close/close-custom-object-types-api/) — The custom_object_types API from Close — 2 operation(s) for custom_object_types.
+- [Close Custom Objects API](https://apis.io/apis/close/close-custom-objects-api/) — The custom_objects API from Close — 2 operation(s) for custom_objects.
+- [Close Dialers API](https://apis.io/apis/close/close-dialers-api/) — The dialers API from Close — 2 operation(s) for dialers.
+- [Close Email Templates API](https://apis.io/apis/close/close-email-templates-api/) — The email_templates API from Close — 3 operation(s) for email_templates.
+- [Close Events API](https://apis.io/apis/close/close-events-api/) — The events API from Close — 2 operation(s) for events.
+- [Close Exports API](https://apis.io/apis/close/close-exports-api/) — The exports API from Close — 6 operation(s) for exports.
+- [Close Field Enrichment API](https://apis.io/apis/close/close-field-enrichment-api/) — The field_enrichment API from Close — 1 operation(s) for field_enrichment.
+- [Close Files API](https://apis.io/apis/close/close-files-api/) — The files API from Close — 1 operation(s) for files.
+- [Close Forms API](https://apis.io/apis/close/close-forms-api/) — The forms API from Close — 2 operation(s) for forms.
+- [Close Groups API](https://apis.io/apis/close/close-groups-api/) — The groups API from Close — 4 operation(s) for groups.
+- [Close Integration Links API](https://apis.io/apis/close/close-integration-links-api/) — The integration_links API from Close — 2 operation(s) for integration_links.
+- [Close Lead Statuses API](https://apis.io/apis/close/close-lead-statuses-api/) — The lead_statuses API from Close — 2 operation(s) for lead_statuses.
+- [Close Leads API](https://apis.io/apis/close/close-leads-api/) — The leads API from Close — 3 operation(s) for leads.
+- [Close Memberships API](https://apis.io/apis/close/close-memberships-api/) — The memberships API from Close — 3 operation(s) for memberships.
+- [Close Opportunities API](https://apis.io/apis/close/close-opportunities-api/) — The opportunities API from Close — 2 operation(s) for opportunities.
+- [Close Opportunity Statuses API](https://apis.io/apis/close/close-opportunity-statuses-api/) — The opportunity_statuses API from Close — 2 operation(s) for opportunity_statuses.
+- [Close Organizations API](https://apis.io/apis/close/close-organizations-api/) — The organizations API from Close — 1 operation(s) for organizations.
+- [Close Outcomes API](https://apis.io/apis/close/close-outcomes-api/) — The outcomes API from Close — 2 operation(s) for outcomes.
+- [Close Phone Numbers API](https://apis.io/apis/close/close-phone-numbers-api/) — The phone_numbers API from Close — 3 operation(s) for phone_numbers.
+- [Close Pipelines API](https://apis.io/apis/close/close-pipelines-api/) — The pipelines API from Close — 2 operation(s) for pipelines.
+- [Close Playbooks API](https://apis.io/apis/close/close-playbooks-api/) — The playbooks API from Close — 4 operation(s) for playbooks.
+- [Close Reporting API](https://apis.io/apis/close/close-reporting-api/) — The reporting API from Close — 8 operation(s) for reporting.
+- [Close Roles API](https://apis.io/apis/close/close-roles-api/) — The roles API from Close — 2 operation(s) for roles.
+- [Close Scheduling Links API](https://apis.io/apis/close/close-scheduling-links-api/) — The scheduling_links API from Close — 8 operation(s) for scheduling_links.
+- [Close Send As API](https://apis.io/apis/close/close-send-as-api/) — The send_as API from Close — 3 operation(s) for send_as.
+- [Close Sequences API](https://apis.io/apis/close/close-sequences-api/) — The sequences API from Close — 4 operation(s) for sequences.
+- [Close Smart Views API](https://apis.io/apis/close/close-smart-views-api/) — The smart_views API from Close — 2 operation(s) for smart_views.
+- [Close Sms Templates API](https://apis.io/apis/close/close-sms-templates-api/) — The sms_templates API from Close — 2 operation(s) for sms_templates.
+- [Close Tasks API](https://apis.io/apis/close/close-tasks-api/) — The tasks API from Close — 2 operation(s) for tasks.
+- [Close Unsubscribed Emails API](https://apis.io/apis/close/close-unsubscribed-emails-api/) — The unsubscribed_emails API from Close — 2 operation(s) for unsubscribed_emails.
+- [Close Users API](https://apis.io/apis/close/close-users-api/) — The users API from Close — 4 operation(s) for users.
+- [Close Webhooks API](https://apis.io/apis/close/close-webhooks-api/) — The webhooks API from Close — 2 operation(s) for webhooks.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Close Webhooks](https://apis.io/asyncapis/close/close-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [close](https://apis.io/servers/close/close/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Close Agentic Access](https://apis.io/agentic-access/close/close-agentic-access/)
+
+#### Collections (63)
+
+Postman and Open Collection request collections.
+
+- [API Endpoints](https://apis.io/collections/close/open-close/)
+- [API Endpoints subpackage_activities API](https://apis.io/collections/close/open-close-subpackage-activities-api/)
+- [API Endpoints subpackage_activities subpackage_activitiesCalls API](https://apis.io/collections/close/open-close-subpackage-activitiescalls-api/)
+- [API Endpoints subpackage_activities subpackage_activitiesCreations API](https://apis.io/collections/close/open-close-subpackage-activitiescreations-api/)
+- [API Endpoints subpackage_activities subpackage_activitiesCustomActivities API](https://apis.io/collections/close/open-close-subpackage-activitiescustomactivities-api/)
+- [API Endpoints subpackage_activities subpackage_activitiesEmails API](https://apis.io/collections/close/open-close-subpackage-activitiesemails-api/)
+- [API Endpoints subpackage_activities subpackage_activitiesEmailThreads API](https://apis.io/collections/close/open-close-subpackage-activitiesemailthreads-api/)
+- [API Endpoints subpackage_activities subpackage_activitiesFormSubmissions API](https://apis.io/collections/close/open-close-subpackage-activitiesformsubmissions-api/)
+- [API Endpoints subpackage_activities subpackage_activitiesLeadMerges API](https://apis.io/collections/close/open-close-subpackage-activitiesleadmerges-api/)
+- [API Endpoints subpackage_activities subpackage_activitiesLeadStatusChanges API](https://apis.io/collections/close/open-close-subpackage-activitiesleadstatuschanges-api/)
+- [API Endpoints subpackage_activities subpackage_activitiesMeetings API](https://apis.io/collections/close/open-close-subpackage-activitiesmeetings-api/)
+- [API Endpoints subpackage_activities subpackage_activitiesNotes API](https://apis.io/collections/close/open-close-subpackage-activitiesnotes-api/)
+- [API Endpoints subpackage_activities subpackage_activitiesOpportunityStatusChanges API](https://apis.io/collections/close/open-close-subpackage-activitiesopportunitystatuschanges-api/)
+- [API Endpoints subpackage_activities subpackage_activitiesSms API](https://apis.io/collections/close/open-close-subpackage-activitiessms-api/)
+- [API Endpoints subpackage_activities subpackage_activitiesTaskCompletions API](https://apis.io/collections/close/open-close-subpackage-activitiestaskcompletions-api/)
+- [API Endpoints subpackage_activities subpackage_activitiesWhatsappMessages API](https://apis.io/collections/close/open-close-subpackage-activitieswhatsappmessages-api/)
+- [API Endpoints subpackage_activities subpackage_blockedPhoneNumbers API](https://apis.io/collections/close/open-close-subpackage-blockedphonenumbers-api/)
+- [API Endpoints subpackage_activities subpackage_bulkActionsDelete API](https://apis.io/collections/close/open-close-subpackage-bulkactionsdelete-api/)
+- [API Endpoints subpackage_activities subpackage_bulkActionsEdit API](https://apis.io/collections/close/open-close-subpackage-bulkactionsedit-api/)
+- [API Endpoints subpackage_activities subpackage_bulkActionsEmail API](https://apis.io/collections/close/open-close-subpackage-bulkactionsemail-api/)
+- [API Endpoints subpackage_activities subpackage_bulkActionsSequenceSubscriptions API](https://apis.io/collections/close/open-close-subpackage-bulkactionssequencesubscriptions-api/)
+- [API Endpoints subpackage_activities subpackage_comments API](https://apis.io/collections/close/open-close-subpackage-comments-api/)
+- [API Endpoints subpackage_activities subpackage_connectedAccounts API](https://apis.io/collections/close/open-close-subpackage-connectedaccounts-api/)
+- [API Endpoints subpackage_activities subpackage_contacts API](https://apis.io/collections/close/open-close-subpackage-contacts-api/)
+- [API Endpoints subpackage_activities subpackage_customActivityTypes API](https://apis.io/collections/close/open-close-subpackage-customactivitytypes-api/)
+- …and 38 more published on APIs.io
+
+#### Overlays (65)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Close Activities Api Phrasing Overlay](https://apis.io/overlays/close/close-activities-api-phrasing-overlay/)
+- [Close Activities Calls Api Phrasing Overlay](https://apis.io/overlays/close/close-activities-calls-api-phrasing-overlay/)
+- [Close Activities Creations Api Phrasing Overlay](https://apis.io/overlays/close/close-activities-creations-api-phrasing-overlay/)
+- [Close Activities Custom Activities Api Phrasing Overlay](https://apis.io/overlays/close/close-activities-custom-activities-api-phrasing-overlay/)
+- [Close Activities Email Threads Api Phrasing Overlay](https://apis.io/overlays/close/close-activities-email-threads-api-phrasing-overlay/)
+- [Close Activities Emails Api Phrasing Overlay](https://apis.io/overlays/close/close-activities-emails-api-phrasing-overlay/)
+- [Close Activities Form Submissions Api Phrasing Overlay](https://apis.io/overlays/close/close-activities-form-submissions-api-phrasing-overlay/)
+- [Close Activities Import Updates Api Phrasing Overlay](https://apis.io/overlays/close/close-activities-import-updates-api-phrasing-overlay/)
+- [Close Activities Lead Merges Api Phrasing Overlay](https://apis.io/overlays/close/close-activities-lead-merges-api-phrasing-overlay/)
+- [Close Activities Lead Status Changes Api Phrasing Overlay](https://apis.io/overlays/close/close-activities-lead-status-changes-api-phrasing-overlay/)
+- [Close Activities Meetings Api Phrasing Overlay](https://apis.io/overlays/close/close-activities-meetings-api-phrasing-overlay/)
+- [Close Activities Notes Api Phrasing Overlay](https://apis.io/overlays/close/close-activities-notes-api-phrasing-overlay/)
+- [Close Activities Opportunity Status Changes Api Phrasing Overlay](https://apis.io/overlays/close/close-activities-opportunity-status-changes-api-phrasing-overlay/)
+- [Close Activities Sms Api Phrasing Overlay](https://apis.io/overlays/close/close-activities-sms-api-phrasing-overlay/)
+- [Close Activities Task Completions Api Phrasing Overlay](https://apis.io/overlays/close/close-activities-task-completions-api-phrasing-overlay/)
+- [Close Activities Whatsapp Messages Api Phrasing Overlay](https://apis.io/overlays/close/close-activities-whatsapp-messages-api-phrasing-overlay/)
+- [Close Api Overlay](https://apis.io/overlays/close/close-api-overlay/)
+- [Close Blocked Phone Numbers Api Phrasing Overlay](https://apis.io/overlays/close/close-blocked-phone-numbers-api-phrasing-overlay/)
+- [Close Bulk Actions Delete Api Phrasing Overlay](https://apis.io/overlays/close/close-bulk-actions-delete-api-phrasing-overlay/)
+- [Close Bulk Actions Edit Api Phrasing Overlay](https://apis.io/overlays/close/close-bulk-actions-edit-api-phrasing-overlay/)
+- [Close Bulk Actions Email Api Phrasing Overlay](https://apis.io/overlays/close/close-bulk-actions-email-api-phrasing-overlay/)
+- [Close Bulk Actions Sequence Subscriptions Api Phrasing Overlay](https://apis.io/overlays/close/close-bulk-actions-sequence-subscriptions-api-phrasing-overlay/)
+- [Close Comments Api Phrasing Overlay](https://apis.io/overlays/close/close-comments-api-phrasing-overlay/)
+- [Close Connected Accounts Api Phrasing Overlay](https://apis.io/overlays/close/close-connected-accounts-api-phrasing-overlay/)
+- [Close Contacts Api Phrasing Overlay](https://apis.io/overlays/close/close-contacts-api-phrasing-overlay/)
+- …and 40 more published on APIs.io
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Close Authentication](https://apis.io/security/close/close-authentication/)
+- [Close Domain Security](https://apis.io/security/close/close-domain-security/)
+- [Close Trust Center](https://apis.io/security/close/close-trust-center/)
+- [Close Vulnerability Disclosure](https://apis.io/security/close/close-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Close Scopes](https://apis.io/scopes/close/close-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Close Plans Pricing](https://apis.io/plans/close/close-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Close Rate Limits](https://apis.io/rate-limits/close/close-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Close Finops](https://apis.io/finops/close/close-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-## Tags
-
-- CRM
-- Sales Engagement
-- Inside Sales
-- Calling
-- SMS
-- SaaS
-
-## Timestamps
-
-- **Created:** 2026-05-08
-- **Modified:** 2026-05-19
-
-## APIs
-
-### Close Leads API
-
-Manage leads — Close's central CRM object representing a company / account. Includes contacts, opportunities, custom fields, addresses, and status.
-
-#### Tags
-
-- Leads
-- Companies
-
-#### Properties
-
-- [Documentation](https://developer.close.com/)
-- [API Reference](https://developer.close.com/resources/leads/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Contacts API
-
-Manage individual contacts (people) within a lead, including emails, phones, custom fields, and titles.
-
-#### Tags
-
-- Contacts
-- People
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/contacts/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Opportunities API
-
-Manage opportunities (deals) attached to leads, with pipeline stage, value, status, and custom fields.
-
-#### Tags
-
-- Opportunities
-- Pipeline
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/opportunities/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Tasks API
-
-Manage tasks assigned to users with due dates, supporting bulk updates and snooze actions.
-
-#### Tags
-
-- Tasks
-- Action Items
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/tasks/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Activities API
-
-Read and create activities — notes, calls, emails, SMS, WhatsApp, meetings, and custom activity types — that build a lead's timeline.
-
-#### Tags
-
-- Activities
-- Timeline
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/activities/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Calls API
-
-Log inbound and outbound calls with duration, direction, recording URLs, transcripts, and disposition outcomes.
-
-#### Tags
-
-- Calls
-- Voice
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/activities/call/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Emails API
-
-Send and log emails with templates, attachments, and tracking against contacts and leads.
-
-#### Tags
-
-- Emails
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/activities/email/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close SMS API
-
-Send and log SMS and WhatsApp messages, with conversation threading against contacts.
-
-#### Tags
-
-- SMS
-- Texting
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/activities/sms/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Meetings API
-
-Log meeting activities synced from connected Zoom / Microsoft / Calendly accounts, with outcomes and notes.
-
-#### Tags
-
-- Meetings
-- Calendar
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/activities/meeting/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Pipelines & Statuses API
-
-Manage opportunity pipelines and the configurable lead and opportunity statuses driving funnel progression.
-
-#### Tags
-
-- Pipelines
-- Statuses
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/pipelines/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Custom Fields API
-
-Define and read custom field schemas across leads, contacts, opportunities, activities, and custom objects.
-
-#### Tags
-
-- Custom Fields
-- Metadata
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/custom-fields/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Custom Objects API
-
-Define user-defined object types with custom fields for tenant- specific data models.
-
-#### Tags
-
-- Custom Objects
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/custom-objects/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Templates API
-
-Manage email and SMS templates with variable substitution and rendering for outbound messaging.
-
-#### Tags
-
-- Templates
-- Email
-- SMS
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/templates/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Sequences API
-
-Manage automated multi-step sequences (cadences) and subscriber enrollment with stop conditions.
-
-#### Tags
-
-- Sequences
-- Automation
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/sequences/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Bulk Actions API
-
-Submit bulk email send / edit / delete / sequence-subscribe jobs that execute as background tasks.
-
-#### Tags
-
-- Bulk
-- Background Jobs
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/bulk-actions/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Smart Views API
-
-Manage saved search queries (Smart Views) with structured filter grammar across leads, contacts, and opportunities.
-
-#### Tags
-
-- Smart Views
-- Saved Searches
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/smart-views/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Exports API
-
-Export leads, opportunities, and activities to CSV asynchronously for downstream analytics.
-
-#### Tags
-
-- Exports
-- Reporting
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/exports/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Reporting API
-
-Generate activity reports, funnel analysis, and status-change tracking across the team.
-
-#### Tags
-
-- Reporting
-- Analytics
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/reports/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Phone Numbers API
-
-Rent and manage Close-provided phone numbers for inbound and outbound calling and SMS.
-
-#### Tags
-
-- Phone Numbers
-- Telephony
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/phone-numbers/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Scheduling Links API
-
-Manage user and shared scheduling links that customers use to book meetings into rep calendars.
-
-#### Tags
-
-- Scheduling
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/scheduling/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Connected Accounts API
-
-Manage connected email, Zoom, Microsoft, and Calendly accounts backing the Close calling, email, and meeting integrations.
-
-#### Tags
-
-- Connected Accounts
-- Integrations
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/connected-accounts/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Users API
-
-Manage users (sales reps, managers) and their availability, membership in organizations, and roles.
-
-#### Tags
-
-- Users
-- Memberships
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/users/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Organizations API
-
-Manage organizations (Close workspaces) including settings, memberships, and inboxes.
-
-#### Tags
-
-- Organizations
-- Workspaces
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/organization/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Roles & Permissions API
-
-Manage roles and permission sets that govern access to leads, activities, and admin functions (Scale plan only).
-
-#### Tags
-
-- Roles
-- Permissions
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/roles/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Groups API
-
-Manage user groups for assignment, reporting, and permission scoping.
-
-#### Tags
-
-- Groups
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/groups/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Event Log API
-
-Query the 30-day historical event log of all changes across leads, contacts, opportunities, and activities.
-
-#### Tags
-
-- Event Log
-- Audit
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/event-log/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close Webhooks API
-
-Subscribe to Close events with advanced filtering on event type and object attributes; deliveries include HMAC signatures.
-
-#### Tags
-
-- Webhooks
-- Events
-
-#### Properties
-
-- [API Reference](https://developer.close.com/resources/webhooks/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Close OAuth & Apps API
-
-OAuth 2.0 authorization for third-party applications building against Close, plus app registration in the Close Marketplace.
-
-#### Tags
-
-- OAuth
-- Apps
-
-#### Properties
-
-- [Documentation](https://developer.close.com/topics/oauth/)
-- [OpenAPI](openapi/close-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/close.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/close.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/close-crm)
 - [Website](https://www.close.com/)
 - [Documentation](https://developer.close.com/)
-- [API Reference](https://developer.close.com/resources/)
+- [Getting started](https://developer.close.com/api/overview)
+- [API reference](https://developer.close.com/api/resources/leads)
 - [Pricing](https://www.close.com/pricing)
-- [Login](https://app.close.com/)
-- [Status Page](https://status.close.com/)
-- [Blog](https://www.close.com/blog)
+- [Sign up](https://app.close.com/signup/)
 - [Support](https://help.close.com/)
-- [GitHub Organization](https://github.com/closeio)
-- [Privacy Policy](https://www.close.com/privacy)
-- [Terms of Service](https://www.close.com/terms)
-- [Authentication](https://developer.close.com/topics/authentication/)
-- [Rate Limits](https://developer.close.com/api/overview/rate-limits.md)
-- [Webhooks](https://developer.close.com/resources/webhooks/)
-- [Plans](plans/close-plans-pricing.yml)
-- [Rate Limits](rate-limits/close-rate-limits.yml)
-- [Fin Ops](finops/close-finops.yml)
-- [Features](undefined)
-- [Integrations](https://close.com/integrations)
-- [L L Ms Txt](https://developer.close.com/llms.txt)
+- [Blog](https://www.close.com/blog)
+- [Security](https://close.com/security/submit-report)
+- [Compliance](https://close.com/security)
+- [Terms of service](https://www.close.com/terms)
+- [Privacy policy](https://www.close.com/privacy)
+- [GitHub](https://github.com/closeio)
+- [Status](https://status.close.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 73.7** — exemplar · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 59.5 |
+| Contract governance | 18.2 |
+| Operational transparency | 97.4 |
+| Developer ergonomics | 66.1 |
+| Access clarity | 85.5 |
+
+**Agent readiness 60.0** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | yes |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | paginated |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 44.2** — Telecommunications
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/close/](https://apis.io/providers/close/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Close: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/close/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
